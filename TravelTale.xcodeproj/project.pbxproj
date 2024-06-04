@@ -51,6 +51,8 @@
 		37CB88162C0DB648002798BE /* GrayBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88152C0DB648002798BE /* GrayBackgroundView.swift */; };
 		37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88172C0DB66D002798BE /* GrayButton.swift */; };
 		37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88192C0DB677002798BE /* GreenButton.swift */; };
+		4D0E3CD52C0F36110089D6C1 /* TravelAdditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD42C0F36110089D6C1 /* TravelAdditionView.swift */; };
+		4D0E3CD72C0F36280089D6C1 /* TravelAdditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD62C0F36280089D6C1 /* TravelAdditionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +95,8 @@
 		37CB88152C0DB648002798BE /* GrayBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayBackgroundView.swift; sourceTree = "<group>"; };
 		37CB88172C0DB66D002798BE /* GrayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayButton.swift; sourceTree = "<group>"; };
 		37CB88192C0DB677002798BE /* GreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenButton.swift; sourceTree = "<group>"; };
+		4D0E3CD42C0F36110089D6C1 /* TravelAdditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAdditionView.swift; sourceTree = "<group>"; };
+		4D0E3CD62C0F36280089D6C1 /* TravelAdditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAdditionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +269,8 @@
 				37CB88152C0DB648002798BE /* GrayBackgroundView.swift */,
 				37CB88172C0DB66D002798BE /* GrayButton.swift */,
 				37CB88192C0DB677002798BE /* GreenButton.swift */,
+				4D0E3CD42C0F36110089D6C1 /* TravelAdditionView.swift */,
+				4D0E3CD62C0F36280089D6C1 /* TravelAdditionViewController.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -410,6 +416,8 @@
 				378CEC262C0D64FB00DF1C3F /* BaseTableViewCell.swift in Sources */,
 				378CEC282C0D651E00DF1C3F /* BaseCollectionViewCell.swift in Sources */,
 				378CEC382C0D690800DF1C3F /* DiscoveryViewController.swift in Sources */,
+				4D0E3CD52C0F36110089D6C1 /* TravelAdditionView.swift in Sources */,
+				4D0E3CD72C0F36280089D6C1 /* TravelAdditionViewController.swift in Sources */,
 				378CEBEC2C0D563C00DF1C3F /* AppDelegate.swift in Sources */,
 				378CEC362C0D68F900DF1C3F /* TravelViewController.swift in Sources */,
 				378CEC302C0D68A200DF1C3F /* TravelView.swift in Sources */,
