@@ -55,6 +55,13 @@
 		37CB88162C0DB648002798BE /* GrayBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88152C0DB648002798BE /* GrayBackgroundView.swift */; };
 		37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88172C0DB66D002798BE /* GrayButton.swift */; };
 		37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88192C0DB677002798BE /* GreenButton.swift */; };
+		F1B301F12C10035F00D26B75 /* AddTravelTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B301F02C10035F00D26B75 /* AddTravelTitleVC.swift */; };
+		F1B301F42C1005DA00D26B75 /* AddTravelTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B301F32C1005DA00D26B75 /* AddTravelTitleView.swift */; };
+		F1B301F72C10501000D26B75 /* AddTravelPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B301F62C10501000D26B75 /* AddTravelPlaceView.swift */; };
+		F1B301F92C10501C00D26B75 /* AddTravelPlaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B301F82C10501C00D26B75 /* AddTravelPlaceVC.swift */; };
+		F1B301FB2C10783A00D26B75 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B301FA2C10783A00D26B75 /* LocationTableViewCell.swift */; };
+		F1B301FE2C10B42400D26B75 /* AddTravelCalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B301FD2C10B42400D26B75 /* AddTravelCalenderView.swift */; };
+		F1B302002C10B43F00D26B75 /* AddTravelCalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B301FF2C10B43F00D26B75 /* AddTravelCalenderVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +108,13 @@
 		37CB88152C0DB648002798BE /* GrayBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayBackgroundView.swift; sourceTree = "<group>"; };
 		37CB88172C0DB66D002798BE /* GrayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayButton.swift; sourceTree = "<group>"; };
 		37CB88192C0DB677002798BE /* GreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenButton.swift; sourceTree = "<group>"; };
+		F1B301F02C10035F00D26B75 /* AddTravelTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelTitleVC.swift; sourceTree = "<group>"; };
+		F1B301F32C1005DA00D26B75 /* AddTravelTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelTitleView.swift; sourceTree = "<group>"; };
+		F1B301F62C10501000D26B75 /* AddTravelPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelPlaceView.swift; sourceTree = "<group>"; };
+		F1B301F82C10501C00D26B75 /* AddTravelPlaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelPlaceVC.swift; sourceTree = "<group>"; };
+		F1B301FA2C10783A00D26B75 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		F1B301FD2C10B42400D26B75 /* AddTravelCalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelCalenderView.swift; sourceTree = "<group>"; };
+		F1B301FF2C10B43F00D26B75 /* AddTravelCalenderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelCalenderVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +228,12 @@
 				378CEC2C2C0D685300DF1C3F /* Travel */,
 				1AD537882C105D0300A70D5E /* TravelViewModel.swift */,
 				378CEC352C0D68F900DF1C3F /* TravelViewController.swift */,
+				F1B301F22C1005AC00D26B75 /* AddTravelTitle */,
+				F1B301F02C10035F00D26B75 /* AddTravelTitleVC.swift */,
+				F1B301F52C104FC100D26B75 /* AddTravelPlace */,
+				F1B301F82C10501C00D26B75 /* AddTravelPlaceVC.swift */,
+				F1B301FC2C10B3D100D26B75 /* AddTravelCalender */,
+				F1B301FF2C10B43F00D26B75 /* AddTravelCalenderVC.swift */,
 			);
 			path = Travels;
 			sourceTree = "<group>";
@@ -321,6 +341,31 @@
 				378CEC582C0D732600DF1C3F /* OAGothic-Medium.otf */,
 			);
 			path = OAGothic;
+			sourceTree = "<group>";
+		};
+		F1B301F22C1005AC00D26B75 /* AddTravelTitle */ = {
+			isa = PBXGroup;
+			children = (
+				F1B301F32C1005DA00D26B75 /* AddTravelTitleView.swift */,
+			);
+			path = AddTravelTitle;
+			sourceTree = "<group>";
+		};
+		F1B301F52C104FC100D26B75 /* AddTravelPlace */ = {
+			isa = PBXGroup;
+			children = (
+				F1B301F62C10501000D26B75 /* AddTravelPlaceView.swift */,
+				F1B301FA2C10783A00D26B75 /* LocationTableViewCell.swift */,
+			);
+			path = AddTravelPlace;
+			sourceTree = "<group>";
+		};
+		F1B301FC2C10B3D100D26B75 /* AddTravelCalender */ = {
+			isa = PBXGroup;
+			children = (
+				F1B301FD2C10B42400D26B75 /* AddTravelCalenderView.swift */,
+			);
+			path = AddTravelCalender;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,6 +476,7 @@
 				378CEC262C0D64FB00DF1C3F /* BaseTableViewCell.swift in Sources */,
 				378CEC282C0D651E00DF1C3F /* BaseCollectionViewCell.swift in Sources */,
 				378CEC382C0D690800DF1C3F /* DiscoveryViewController.swift in Sources */,
+				F1B301FE2C10B42400D26B75 /* AddTravelCalenderView.swift in Sources */,
 				378CEBEC2C0D563C00DF1C3F /* AppDelegate.swift in Sources */,
 				378CEC362C0D68F900DF1C3F /* TravelViewController.swift in Sources */,
 				378CEC302C0D68A200DF1C3F /* TravelView.swift in Sources */,
@@ -445,12 +491,18 @@
 				37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */,
 				37CB880F2C0D7979002798BE /* UIButton+Extension.swift in Sources */,
 				37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */,
+				F1B302002C10B43F00D26B75 /* AddTravelCalenderVC.swift in Sources */,
 				37CB88072C0D7632002798BE /* PlaceDetailView.swift in Sources */,
 				378CEC222C0D649D00DF1C3F /* BaseView.swift in Sources */,
 				378CEC202C0D649000DF1C3F /* UIFont+Extension.swift in Sources */,
+				F1B301F72C10501000D26B75 /* AddTravelPlaceView.swift in Sources */,
 				37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */,
+				F1B301FB2C10783A00D26B75 /* LocationTableViewCell.swift in Sources */,
 				378CEC242C0D64AB00DF1C3F /* BaseViewController.swift in Sources */,
+				F1B301F92C10501C00D26B75 /* AddTravelPlaceVC.swift in Sources */,
 				378CEC1E2C0D644D00DF1C3F /* UIColor+Extension.swift in Sources */,
+				F1B301F12C10035F00D26B75 /* AddTravelTitleVC.swift in Sources */,
+				F1B301F42C1005DA00D26B75 /* AddTravelTitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
