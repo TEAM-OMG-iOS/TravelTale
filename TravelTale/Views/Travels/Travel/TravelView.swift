@@ -15,7 +15,6 @@ class TravelView: BaseView {
     let segmentButtonStackView = UIStackView()
     let planButton = UIButton()
     let memoryButton = UIButton()
-//    let mapButton = UIButton()
     
     let borderLine = UIView()
     
@@ -29,11 +28,6 @@ class TravelView: BaseView {
     let tableView = UITableView()
     
     
-    
-    // MARK: - Life Cycles
-    
-    
-    
     // MARK: - Methods
     
     override func configureUI() {
@@ -41,8 +35,7 @@ class TravelView: BaseView {
         
         // segment button
         [planButton,
-        memoryButton,
-         /*mapButton*/].forEach {
+        memoryButton].forEach {
             $0.configureView(color: .gray10, cornerRadius: 25)
             $0.titleLabel?.snp.makeConstraints {
                 $0.horizontalEdges.equalToSuperview().inset(12)
@@ -51,7 +44,6 @@ class TravelView: BaseView {
         
         planButton.configureButton(fontColor: .gray80,font: .oaGothic(size: 24, weight: .heavy), text: "Plan")
         memoryButton.configureButton(fontColor: .gray80,font: .oaGothic(size: 24, weight: .heavy), text: "Memory")
-//        mapButton.configureButton(fontColor: .gray80,font: .oaGothic(size: 24, weight: .heavy), text: "Map")
         
         segmentButtonStackView.axis = .horizontal
         segmentButtonStackView.spacing = 16
@@ -96,8 +88,7 @@ class TravelView: BaseView {
         }
         
         [planButton, 
-         memoryButton,
-         /*mapButton*/].forEach {
+         memoryButton].forEach {
             segmentButtonStackView.addArrangedSubview($0)
         }
         

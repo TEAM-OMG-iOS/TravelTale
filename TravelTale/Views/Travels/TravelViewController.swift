@@ -82,7 +82,7 @@ extension TravelViewController: UITableViewDataSource {
         let travelPeriod = travelViewModel.returnPeriodString(startDate: travel.startDate, endDate: travel.endDate)
         
         cell.bind(image: travel.image, title: travel.title, period: travelPeriod, province: travel.province)
-        print("cell - province: \(travel.province)")
+        print("cell - province: \(String(describing: travel.province))")
         return cell
     }
 }
