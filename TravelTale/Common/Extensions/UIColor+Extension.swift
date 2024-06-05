@@ -25,15 +25,15 @@ extension UIColor {
     }
     
     static var gray5: UIColor {
-        return .init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-    }
-    
-    static var gray10: UIColor {
         return .init(red: 0.9608, green: 0.9608, blue: 0.9608, alpha: 1.0)
     }
     
-    static var gray20: UIColor {
+    static var gray10: UIColor {
         return .init(red: 0.9451, green: 0.9451, blue: 0.9451, alpha: 1.0)
+    }
+    
+    static var gray20: UIColor {
+        return .init(red: 0.8902, green: 0.8902, blue: 0.8902, alpha: 1.0)
     }
     
     static var gray70: UIColor {
