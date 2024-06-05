@@ -20,8 +20,6 @@ class TravelTableViewCell: UITableViewCell {
     let provinceNameLabel = UILabel()
     let titleLabel = UILabel()
     
-    // MARK: - Life Cycles
-    
     // MARK: - Methods
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
