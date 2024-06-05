@@ -22,10 +22,16 @@ class MemoAdditionView: BaseView {
         $0.font = UIFont(name: "Pretendard-Bold", size: 16)
     }
     
-    let memoTF = UITextView().then {
+    let memoTV = UITextView().then {
         $0.textAlignment = .natural
         $0.backgroundColor = .clear
-        $0.text = "여기에 메모를 입력해보세요"
+    }
+    
+    let completeBtn = GreenButton().then {
+        $0.backgroundColor = .green10
+        $0.setTitle("완료", for: .normal)
+        $0.titleLabel?.font = UIFont(name: "Pretendard-SemiBold", size: 18)
+        $0.titleLabel?.textColor = .white
     }
     
     // MARK: - life cycles
@@ -51,7 +57,7 @@ class MemoAdditionView: BaseView {
             self.addSubview($0)
         }
         
-        [memoTitle, memoTF].forEach {
+        [memoTitle, memoTV, completeBtn].forEach {
             self.memoView.addSubview($0)
         }
     }
@@ -71,10 +77,16 @@ class MemoAdditionView: BaseView {
         }
         memoTitle.setContentHuggingPriority(.init(rawValue: 999), for: .vertical)
         
-        memoTF.snp.makeConstraints {
+        memoTV.snp.makeConstraints {
             $0.top.equalTo(memoTitle.snp.bottom)
             $0.horizontalEdges.equalToSuperview().inset(10)
             $0.bottom.equalToSuperview()
+        }
+        
+        completeBtn.snp.makeConstraints {
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(15)
+            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
+            $0.height.equalTo(52)
         }
     }
     

@@ -8,19 +8,23 @@
 import UIKit
 
 class MemoAdditionViewController: BaseViewController {
-
+    
     // MARK: - properties
-    let memoAdditionView = MemoAdditionView()
+    let memoAdditionView = MemoAdditionView().then {
+        $0.memoTV.text = "메세지를 입력하세요"
+        $0.memoTV.textColor = .lightGray
+    }
     
     // MARK: - life cycles
     override func loadView() {
         super.loadView()
         view = memoAdditionView
+        memoAdditionView.memoTV.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configureStyle()
         configureDelegate()
         configureAddTarget()
@@ -53,8 +57,28 @@ class MemoAdditionViewController: BaseViewController {
     }
     
     @objc private func handleBackButton() {
-            navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            view.endEditing(true)
         }
     
-    // MARK: - extensions
+}
+// MARK: - extensions
+extension MemoAdditionViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        // TextColor로 처리합니다. text로 처리하게 된다면 placeholder와 같은걸 써버리면 동작이 이상하겠죠?
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil // 텍스트를 날려줌
+            textView.textColor = UIColor.black
+        }
+        
+    }
+    // UITextView의 placeholder
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "메세지를 입력하세요"
+            textView.textColor = UIColor.lightGray
+        }
+    }
 }
