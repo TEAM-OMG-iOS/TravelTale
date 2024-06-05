@@ -29,7 +29,7 @@ class TravelViewController: BaseViewController {
     
     // MARK: - Methods
     
-    // 임시 travel 데이터 넣는 함수
+    // 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
     func addTemporaryData() {
         travelViewModel.travelArray.value.append(contentsOf: [
             Travel(
