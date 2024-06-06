@@ -241,12 +241,16 @@ final class TravelPlaceAddView2: BaseView {
         }
     }
     
-     func startLoadingAnimation() {
-         self.loadingBar.snp.remakeConstraints {
-             $0.width.equalTo(354)
-         }
-         UIView.animate(withDuration: 2.0, delay: 0, animations: {
-            self.loadingBar.layoutIfNeeded()
+    func startLoadingAnimation() {
+        self.loadingBar.snp.remakeConstraints {
+            $0.leading.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.width.equalTo(354)
+        }
+        UIView.animate(withDuration: 2.0, delay: 0, animations: {
+            self.layoutIfNeeded()
             
         }, completion: nil)
     }

@@ -26,8 +26,12 @@ final class TravelAddViewController1: BaseViewController {
         configureAddTarget()
         bind()
         configureNavigationBar()
-        travelPlaceAddView1.startLoadingAnimation()
+        
         setAddTarget()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        travelPlaceAddView1.startLoadingAnimation()
     }
     
     
@@ -65,10 +69,7 @@ final class TravelAddViewController1: BaseViewController {
     }
     
     @objc private func tappedNextButton() {
-        let nextVC = TravelAddViewController2()
+        let nextVC = TravelPlaceAddViewController2()
         navigationController?.pushViewController(nextVC, animated: true)
     }
-    
-    
-    // MARK: - extensions
 }

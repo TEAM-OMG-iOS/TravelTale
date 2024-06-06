@@ -28,6 +28,9 @@ final class TravelPlaceAddViewController2: BaseViewController {
         configureAddTarget()
         bind()
         configureNavigationBar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         travelPlaceAddView2.startLoadingAnimation()
     }
     

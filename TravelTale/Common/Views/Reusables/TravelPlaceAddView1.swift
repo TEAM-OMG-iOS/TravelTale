@@ -128,11 +128,12 @@ final class TravelPlaceAddView1: BaseView {
          self.loadingBar.snp.remakeConstraints {
              $0.leading.equalToSuperview()
              $0.top.equalToSuperview()
-             $0.height.equalToSuperview()
+             $0.centerY.equalToSuperview()
+             $0.bottom.equalToSuperview()
              $0.width.equalTo(177)
          }
          UIView.animate(withDuration: 2.0, delay: 0, animations: {
-            self.loadingBackBar.layoutIfNeeded()
+            self.layoutIfNeeded()
             
         }, completion: nil)
     }
