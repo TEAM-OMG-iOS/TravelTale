@@ -80,7 +80,7 @@ class MemoAdditionView: BaseView {
         memoTV.snp.makeConstraints {
             $0.top.equalTo(memoTitle.snp.bottom)
             $0.horizontalEdges.equalToSuperview().inset(10)
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(10)
         }
         
         completeBtn.snp.makeConstraints {
