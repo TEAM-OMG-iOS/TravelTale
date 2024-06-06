@@ -10,13 +10,13 @@ import SnapKit
 
 final class TravelAddViewController1: BaseViewController {
     // MARK: - properties
-    let travelAddView1 = TravelAddView1()
+    let travelPlaceAddView1 = TravelPlaceAddView1()
     
     
     // MARK: - life cycles
     override func loadView() {
         super.loadView()
-        view = travelAddView1
+        view = travelPlaceAddView1
     }
     
     override func viewDidLoad() {
@@ -26,7 +26,8 @@ final class TravelAddViewController1: BaseViewController {
         configureAddTarget()
         bind()
         configureNavigationBar()
-        travelAddView1.startLoadingAnimation()
+        travelPlaceAddView1.startLoadingAnimation()
+        setAddTarget()
     }
     
     
@@ -39,6 +40,10 @@ final class TravelAddViewController1: BaseViewController {
     override func configureAddTarget() { }
     
     override func bind() { }
+    
+    private func setAddTarget() {
+        travelPlaceAddView1.nextBtn.addTarget(self, action: #selector(tappedNextButton), for: .touchUpInside)
+    }
     
     private func configureNavigationBar() {
         navigationItem.title = "내 여행에 추가"
@@ -56,8 +61,13 @@ final class TravelAddViewController1: BaseViewController {
     }
     
     @objc private func handleBackButton() {
-            navigationController?.popViewController(animated: true)
-        }
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func tappedNextButton() {
+        let nextVC = TravelAddViewController2()
+        navigationController?.pushViewController(nextVC, animated: true)
+    }
     
     
     // MARK: - extensions

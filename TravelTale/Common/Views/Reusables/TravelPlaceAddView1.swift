@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class TravelAddView1: BaseView {
+final class TravelPlaceAddView1: BaseView {
     
     // MARK: - properties
     let loadingBackBar = UIView().then {
@@ -131,7 +131,7 @@ final class TravelAddView1: BaseView {
              $0.height.equalToSuperview()
              $0.width.equalTo(177)
          }
-         UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
+         UIView.animate(withDuration: 2.0, delay: 0, animations: {
             self.loadingBackBar.layoutIfNeeded()
             
         }, completion: nil)
