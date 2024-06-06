@@ -57,8 +57,8 @@
 		37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88192C0DB677002798BE /* GreenButton.swift */; };
 		4D0E3CD52C0F36110089D6C1 /* TravelAdditionView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD42C0F36110089D6C1 /* TravelAdditionView1.swift */; };
 		4D0E3CD72C0F36280089D6C1 /* TravelAdditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD62C0F36280089D6C1 /* TravelAdditionViewController.swift */; };
-		4D0E3CDB2C10391A0089D6C1 /* MemoAdditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDA2C10391A0089D6C1 /* MemoAdditionViewController.swift */; };
-		4D0E3CDF2C103D430089D6C1 /* MemoAdditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDE2C103D430089D6C1 /* MemoAdditionView.swift */; };
+		4D0E3CDB2C10391A0089D6C1 /* MemoAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */; };
+		4D0E3CDF2C103D430089D6C1 /* MemoAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDE2C103D430089D6C1 /* MemoAddView.swift */; };
 		4D0E3CE12C10763C0089D6C1 /* PlaceAddEditView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */; };
 		4D0E3CE32C1076570089D6C1 /* PlaceAdditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE22C1076570089D6C1 /* PlaceAdditionViewController.swift */; };
 		4D0E3CE52C11EA930089D6C1 /* TravelAdditionView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE42C11EA930089D6C1 /* TravelAdditionView2.swift */; };
@@ -111,8 +111,8 @@
 		37CB88192C0DB677002798BE /* GreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenButton.swift; sourceTree = "<group>"; };
 		4D0E3CD42C0F36110089D6C1 /* TravelAdditionView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAdditionView1.swift; sourceTree = "<group>"; };
 		4D0E3CD62C0F36280089D6C1 /* TravelAdditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAdditionViewController.swift; sourceTree = "<group>"; };
-		4D0E3CDA2C10391A0089D6C1 /* MemoAdditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAdditionViewController.swift; sourceTree = "<group>"; };
-		4D0E3CDE2C103D430089D6C1 /* MemoAdditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAdditionView.swift; sourceTree = "<group>"; };
+		4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAddViewController.swift; sourceTree = "<group>"; };
+		4D0E3CDE2C103D430089D6C1 /* MemoAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAddView.swift; sourceTree = "<group>"; };
 		4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlaceAddEditView.storyboard; sourceTree = "<group>"; };
 		4D0E3CE22C1076570089D6C1 /* PlaceAdditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAdditionViewController.swift; sourceTree = "<group>"; };
 		4D0E3CE42C11EA930089D6C1 /* TravelAdditionView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAdditionView2.swift; sourceTree = "<group>"; };
@@ -256,8 +256,8 @@
 			isa = PBXGroup;
 			children = (
 				378CEC2F2C0D68A200DF1C3F /* TravelView.swift */,
-				4D0E3CDA2C10391A0089D6C1 /* MemoAdditionViewController.swift */,
-				4D0E3CDE2C103D430089D6C1 /* MemoAdditionView.swift */,
+				4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */,
+				4D0E3CDE2C103D430089D6C1 /* MemoAddView.swift */,
 				4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */,
 				4D0E3CE22C1076570089D6C1 /* PlaceAdditionViewController.swift */,
 			);
@@ -476,11 +476,11 @@
 				37CB88072C0D7632002798BE /* PlaceDetailView.swift in Sources */,
 				378CEC222C0D649D00DF1C3F /* BaseView.swift in Sources */,
 				378CEC202C0D649000DF1C3F /* UIFont+Extension.swift in Sources */,
-				4D0E3CDB2C10391A0089D6C1 /* MemoAdditionViewController.swift in Sources */,
+				4D0E3CDB2C10391A0089D6C1 /* MemoAddViewController.swift in Sources */,
 				4D0E3CE52C11EA930089D6C1 /* TravelAdditionView2.swift in Sources */,
 				37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */,
 				378CEC242C0D64AB00DF1C3F /* BaseViewController.swift in Sources */,
-				4D0E3CDF2C103D430089D6C1 /* MemoAdditionView.swift in Sources */,
+				4D0E3CDF2C103D430089D6C1 /* MemoAddView.swift in Sources */,
 				4D0E3CE72C1206480089D6C1 /* TravelAddViewController2.swift in Sources */,
 				378CEC1E2C0D644D00DF1C3F /* UIColor+Extension.swift in Sources */,
 			);

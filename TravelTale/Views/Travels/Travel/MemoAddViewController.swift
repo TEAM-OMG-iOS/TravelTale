@@ -7,10 +7,10 @@
 
 import UIKit
 
-class MemoAdditionViewController: BaseViewController {
+class MemoAddViewController: BaseViewController {
     
     // MARK: - properties
-    let memoAdditionView = MemoAdditionView().then {
+    let memoAddView = MemoAddView().then {
         $0.memoTV.text = "메세지를 입력하세요"
         $0.memoTV.textColor = .lightGray
     }
@@ -18,8 +18,8 @@ class MemoAdditionViewController: BaseViewController {
     // MARK: - life cycles
     override func loadView() {
         super.loadView()
-        view = memoAdditionView
-        memoAdditionView.memoTV.delegate = self
+        view = memoAddView
+        memoAddView.memoTV.delegate = self
     }
     
     override func viewDidLoad() {
@@ -65,7 +65,7 @@ class MemoAdditionViewController: BaseViewController {
     
 }
 // MARK: - extensions
-extension MemoAdditionViewController: UITextViewDelegate {
+extension MemoAddViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         // TextColor로 처리합니다. text로 처리하게 된다면 placeholder와 같은걸 써버리면 동작이 이상하겠죠?
         if textView.textColor == UIColor.lightGray {

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class MemoAdditionView: BaseView {
+class MemoAddView: BaseView {
 
     // MARK: - properties
     let memoView = UIView().then {
