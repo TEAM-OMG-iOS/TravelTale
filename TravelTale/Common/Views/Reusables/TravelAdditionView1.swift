@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class TravelAdditionView1: BaseView {
+final class TravelAddView1: BaseView {
     
     // MARK: - properties
     let loadingBackBar = UIView().then {

@@ -8,15 +8,15 @@
 import UIKit
 import SnapKit
 
-final class TravelAdditionViewController: BaseViewController {
+final class TravelAddViewController1: BaseViewController {
     // MARK: - properties
-    let travelAdditionView1 = TravelAdditionView1()
+    let travelAddView1 = TravelAddView1()
     
     
     // MARK: - life cycles
     override func loadView() {
         super.loadView()
-        view = travelAdditionView1
+        view = travelAddView1
     }
     
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ final class TravelAdditionViewController: BaseViewController {
         configureAddTarget()
         bind()
         configureNavigationBar()
-        travelAdditionView1.startLoadingAnimation()
+        travelAddView1.startLoadingAnimation()
     }
     
     
