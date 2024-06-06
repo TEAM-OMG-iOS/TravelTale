@@ -61,6 +61,7 @@
 		4D0E3CDF2C103D430089D6C1 /* MemoAdditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDE2C103D430089D6C1 /* MemoAdditionView.swift */; };
 		4D0E3CE12C10763C0089D6C1 /* PlaceAddEditView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */; };
 		4D0E3CE32C1076570089D6C1 /* PlaceAdditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE22C1076570089D6C1 /* PlaceAdditionViewController.swift */; };
+		4D0E3CE52C11EA930089D6C1 /* TravelAdditionView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE42C11EA930089D6C1 /* TravelAdditionView2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +114,7 @@
 		4D0E3CDE2C103D430089D6C1 /* MemoAdditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAdditionView.swift; sourceTree = "<group>"; };
 		4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlaceAddEditView.storyboard; sourceTree = "<group>"; };
 		4D0E3CE22C1076570089D6C1 /* PlaceAdditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAdditionViewController.swift; sourceTree = "<group>"; };
+		4D0E3CE42C11EA930089D6C1 /* TravelAdditionView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAdditionView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +305,7 @@
 				4D0E3CD42C0F36110089D6C1 /* TravelAdditionView1.swift */,
 				4D0E3CD62C0F36280089D6C1 /* TravelAdditionViewController.swift */,
 				1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */,
+				4D0E3CE42C11EA930089D6C1 /* TravelAdditionView2.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				378CEC222C0D649D00DF1C3F /* BaseView.swift in Sources */,
 				378CEC202C0D649000DF1C3F /* UIFont+Extension.swift in Sources */,
 				4D0E3CDB2C10391A0089D6C1 /* MemoAdditionViewController.swift in Sources */,
+				4D0E3CE52C11EA930089D6C1 /* TravelAdditionView2.swift in Sources */,
 				37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */,
 				378CEC242C0D64AB00DF1C3F /* BaseViewController.swift in Sources */,
 				4D0E3CDF2C103D430089D6C1 /* MemoAdditionView.swift in Sources */,
