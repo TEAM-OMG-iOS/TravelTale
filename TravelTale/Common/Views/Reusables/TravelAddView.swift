@@ -29,6 +29,7 @@ class TravelAddView: BaseView {
         $0.backgroundColor = .clear
     }
     
+    
     // MARK: - methods
     override func configureUI() {
         self.configureView(color: .green10, cornerRadius: 24)

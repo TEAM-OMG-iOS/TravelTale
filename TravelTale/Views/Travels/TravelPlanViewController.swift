@@ -13,6 +13,7 @@ class TravelPlanViewController: BaseViewController {
     private let travelPlanView = TravelPlanView()
     private let travelViewModel = TravelViewModel()
     
+    
     // MARK: - life cycles
     override func loadView() {
         view = travelPlanView
@@ -22,6 +23,7 @@ class TravelPlanViewController: BaseViewController {
         super.viewDidLoad()
         addTemporaryData()
     }
+    
     
     // MARK: - methods
     // 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
@@ -61,12 +63,13 @@ class TravelPlanViewController: BaseViewController {
         }
     }
     
+    
     // MARK: - objc method
     @objc func tappedAddButton() {
         print("tappedAddButton")
     }
-
 }
+
 
 // MARK: - Extensions
 extension TravelPlanViewController: UITableViewDataSource {
@@ -79,13 +82,14 @@ extension TravelPlanViewController: UITableViewDataSource {
         
         
         let travel = travelViewModel.travelArray.value[indexPath.row]
-        let travelPeriod = travelViewModel.returnPeriodString(startDate: travel.startDate, endDate: travel.endDate)
+        let travelPeriod = travelViewModel.returnPeriodString(
+            startDate: travel.startDate,
+            endDate: travel.endDate
+        )
         
         cell.bind(image: travel.image, title: travel.title, period: travelPeriod, province: travel.province)
-        
         cell.selectionStyle = .none
         
         return cell
     }
 }
-
