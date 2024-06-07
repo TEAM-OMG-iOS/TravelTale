@@ -8,7 +8,7 @@
 import UIKit
 
 class TravelPlanView: BaseView {
-
+    
     // MARK: - properties
     let addView = TravelAddView()
     let tableView = UITableView()
