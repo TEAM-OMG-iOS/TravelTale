@@ -17,7 +17,7 @@ class TravelPlanView: BaseView {
     // MARK: - methods
     override func configureUI() {
         super.configureUI()
-        addView.label.text = "새 여행 추가"
+        addView.bind(text: "새 여행 추가")
     }
     
     override func configureHierarchy() {

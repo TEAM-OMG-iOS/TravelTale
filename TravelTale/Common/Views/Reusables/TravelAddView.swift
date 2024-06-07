@@ -10,18 +10,18 @@ import UIKit
 class TravelAddView: BaseView {
     
     // MARK: - properties
-    let stackView = UIStackView().then {
+    private let stackView = UIStackView().then {
         $0.axis = .horizontal
         $0.spacing = 12
     }
     
-    let circleView = UIView().then {
+    private let circleView = UIView().then {
         $0.configureView(color: .green100, cornerRadius: 10)
     }
     
-    let plusImageView = UIImageView()
+    private let plusImageView = UIImageView()
     
-    let label = UILabel().then {
+    private let label = UILabel().then {
         $0.configureLabel(color: .blueBlack100, font: .pretendard(size: 18, weight: .semibold))
     }
     
@@ -70,6 +70,10 @@ class TravelAddView: BaseView {
         plusImageView.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
+    }
+    
+    func bind(text: String) {
+        label.text = text
     }
 }
 

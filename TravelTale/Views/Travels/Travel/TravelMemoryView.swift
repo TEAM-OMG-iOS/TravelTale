@@ -17,7 +17,7 @@ class TravelMemoryView: BaseView {
     // MARK: - methods
     override func configureUI() {
         super.configureUI()
-        addView.label.text = "추억 남기기"
+        addView.bind(text: "추억 남기기")
     }
     
     override func configureHierarchy() {
