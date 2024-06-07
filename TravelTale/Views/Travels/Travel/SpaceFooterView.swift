@@ -9,6 +9,7 @@ import UIKit
 
 class SpaceFooterView: UITableViewHeaderFooterView {
     
+    // MARK: - methods
     static let identifier = String(describing: SpaceFooterView.self)
     
     override init(reuseIdentifier: String?) {
@@ -19,5 +20,4 @@ class SpaceFooterView: UITableViewHeaderFooterView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
