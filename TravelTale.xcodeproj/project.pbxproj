@@ -170,7 +170,6 @@
 				378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */,
 				378CEC192C0D632000DF1C3F /* Common */,
 				378CEC1A2C0D633700DF1C3F /* Views */,
-				4D0E3CE82C12E8CC0089D6C1 /* Commons */,
 				378CEBF42C0D563D00DF1C3F /* Assets.xcassets */,
 				378CEBF62C0D563D00DF1C3F /* LaunchScreen.storyboard */,
 				378CEBF92C0D563D00DF1C3F /* Info.plist */,
@@ -198,6 +197,7 @@
 				378CEC2B2C0D66E600DF1C3F /* Discoveries */,
 				378CEC2A2C0D660400DF1C3F /* MyPages */,
 				378CEC3B2C0D6ADA00DF1C3F /* TabBar */,
+				4D0E3CE82C12E8CC0089D6C1 /* Commons */,
 			);
 			path = Views;
 			sourceTree = "<group>";
