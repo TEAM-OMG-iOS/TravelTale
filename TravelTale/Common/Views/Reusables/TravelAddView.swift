@@ -38,7 +38,6 @@ class TravelAddView: BaseView {
             systemName: "plus",
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 12, weight: .bold))
         plusImageView.tintColor = .blueBlack100
-        
     }
     
     override func configureHierarchy() {
