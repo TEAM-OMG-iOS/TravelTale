@@ -35,7 +35,7 @@ class TravelView: BaseView {
         super.configureUI()
         
         [planButton,
-        memoryButton].forEach {
+         memoryButton].forEach {
             $0.configureView(color: .gray10, cornerRadius: 25)
             $0.titleLabel?.snp.makeConstraints {
                 $0.horizontalEdges.equalToSuperview().inset(12)
@@ -85,15 +85,31 @@ class TravelView: BaseView {
         }
     }
     
-    func changeButtonUI(tappedButton: travelSegment) {
-        switch tappedButton {
+    func changeButtonUI(tapped button: travelSegment) {
+        switch button {
         case .plan:
-            planButton.configureButton(fontColor: .blueBlack100, font: .oaGothic(size: 24, weight: .heavy), text: "Plan")
-            memoryButton.configureButton(fontColor: .gray80,font: .oaGothic(size: 24, weight: .heavy), text: "Memory")
+            planButton.configureButton(
+                fontColor: .blueBlack100,
+                font: .oaGothic(size: 24, weight: .heavy),
+                text: "Plan"
+            )
+            memoryButton.configureButton(
+                fontColor: .gray80,
+                font: .oaGothic(size: 24, weight: .heavy),
+                text: "Memory"
+            )
             
         case .memory:
-            planButton.configureButton(fontColor: .gray80,font: .oaGothic(size: 24, weight: .heavy), text: "Plan")
-            memoryButton.configureButton(fontColor: .blueBlack100, font: .oaGothic(size: 24, weight: .heavy), text: "Memory")
+            planButton.configureButton(
+                fontColor: .gray80,
+                font: .oaGothic(size: 24, weight: .heavy),
+                text: "Plan"
+            )
+            memoryButton.configureButton(
+                fontColor: .blueBlack100,
+                font: .oaGothic(size: 24, weight: .heavy),
+                text: "Memory"
+            )
         }
     }
 }

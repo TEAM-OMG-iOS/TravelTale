@@ -9,20 +9,19 @@ import UIKit
 
 class TravelViewController: BaseViewController {
     
-    // MARK: - Properties
-    
-    let travelView = TravelView()
-    let travelViewModel = TravelViewModel()
+    // MARK: - properties
+    private let travelView = TravelView()
+    private let travelViewModel = TravelViewModel()
     
     //  childVC
-    let travelPlanVC = TravelPlanViewController()
-    let travelMemoryVC = TravelMemoryViewController()
+    private let travelPlanVC = TravelPlanViewController()
+    private let travelMemoryVC = TravelMemoryViewController()
     
-    // MARK: - Life Cycles
     
+    // MARK: - life cycles
     override func loadView() {
-        view = travelView
         addChildViews()
+        view = travelView
     }
     
     override func viewDidLoad() {
@@ -30,24 +29,22 @@ class TravelViewController: BaseViewController {
         tappedButton(travelView.planButton)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-    }
     
-    // MARK: - Methods
-    
-    override func configureStyle() { }
-    
+    // MARK: - methods
     override func configureAddTarget() {
-        travelView.planButton.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
+        travelView.planButton.addTarget(
+            self,
+            action: #selector(tappedButton),
+            for: .touchUpInside
+        )
         travelView.planButton.tag = 0
         
-        
-        travelView.memoryButton.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
+        travelView.memoryButton.addTarget(
+            self,
+            action: #selector(tappedButton),
+            for: .touchUpInside
+        )
         travelView.memoryButton.tag = 1
-        
     }
     
     func addChildViews() {
@@ -70,17 +67,17 @@ class TravelViewController: BaseViewController {
         case 0:
             travelPlanVC.view.isHidden = false
             travelMemoryVC.view.isHidden = true
-            travelView.changeButtonUI(tappedButton: .plan) // 선택한 버튼 컬러 바꾸기
+            travelView.changeButtonUI(tapped: .plan)
             
         case 1:
             travelPlanVC.view.isHidden = true
             travelMemoryVC.view.isHidden = false
-            travelView.changeButtonUI(tappedButton: .memory) // 선택한 버튼 컬러 바꾸기
+            travelView.changeButtonUI(tapped: .memory)
             
         default:
             travelPlanVC.view.isHidden = false
             travelMemoryVC.view.isHidden = true
-            travelView.changeButtonUI(tappedButton: .plan) // 선택한 버튼 컬러 바꾸기
+            travelView.changeButtonUI(tapped: .plan)
         }
     }
 }
