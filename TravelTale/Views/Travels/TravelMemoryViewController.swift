@@ -32,10 +32,20 @@ class TravelMemoryViewController: BaseViewController {
             Travel(
                 image: nil,
                 title: "24년의 가족 여행",
-                startDate: DateComponents(year: 2024, month: 4, day: 2).date ?? Date(),
-                endDate: DateComponents(year: 2024, month: 4, day: 5).date ?? Date(),
+                startDate: createDate(year: 2024, month: 4, day: 1) ?? Date(),
+                endDate: createDate(year: 2024, month: 4, day: 5) ?? Date(),
                 province: nil)
         ])
+    }
+    
+    // date 데이터 만드는 함수 (추후 삭제 예정)
+    private func createDate(year: Int, month: Int, day: Int) -> Date? {
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        dateComponents.day = day
+        
+        return Calendar.current.date(from: dateComponents)
     }
     
     override func configureStyle() {
