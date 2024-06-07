@@ -76,12 +76,12 @@ extension TravelMemoryViewController: UITableViewDataSource {
         
         
         let travel = travelViewModel.travelArray.value[indexPath.row]
-        let travelPeriod = travelViewModel.returnPeriodString(
+        let period = travelViewModel.returnPeriodString(
             startDate: travel.startDate,
             endDate: travel.endDate
         )
         
-        cell.bind(image: travel.image, title: travel.title, period: travelPeriod, province: travel.province)
+        cell.bind(travel: travel, period: period)
         cell.selectionStyle = .none
         
         return cell
