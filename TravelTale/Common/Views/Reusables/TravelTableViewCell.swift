@@ -13,6 +13,7 @@ class TravelTableViewCell: UITableViewCell {
     
     static let identifier = String(describing: TravelTableViewCell.self)
     
+    let containerView = UIView()
     let thumbnailImageView = UIImageView()
     let borderLine = UIView()
     let periodLabel = UILabel()
@@ -36,9 +37,9 @@ class TravelTableViewCell: UITableViewCell {
     
     private func configureUI() {
         
-        contentView.layer.cornerRadius = 15
-        contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.gray20.cgColor
+        containerView.layer.cornerRadius = 15
+        containerView.layer.borderWidth = 1
+        containerView.layer.borderColor = UIColor.gray20.cgColor
         
         thumbnailImageView.layer.cornerRadius = 16
         thumbnailImageView.contentMode = .scaleAspectFill
@@ -62,16 +63,23 @@ class TravelTableViewCell: UITableViewCell {
     
     private func configureHierarchy() {
         
+        contentView.addSubview(containerView)
+        
         [thumbnailImageView,
          borderLine,
          periodLabel,
          provinceCapsuleView,
-         titleLabel].forEach { contentView.addSubview($0) }
+         titleLabel].forEach { containerView.addSubview($0) }
         
         provinceCapsuleView.addSubview(provinceNameLabel)
     }
     
     private func configureConstraints() {
+        
+        containerView.snp.makeConstraints {
+            $0.verticalEdges.equalToSuperview().inset(6)
+            $0.horizontalEdges.equalToSuperview()
+        }
         
         thumbnailImageView.snp.makeConstraints {
             $0.size.equalTo(64)

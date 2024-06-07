@@ -48,7 +48,9 @@ class TravelViewController: BaseViewController {
     }
     
     
-    override func configureStyle() { }
+    override func configureStyle() { 
+        travelView.tableView.separatorStyle = .none
+    }
     
     override func configureDelegate() {
         travelView.tableView.dataSource = self
@@ -82,14 +84,9 @@ extension TravelViewController: UITableViewDataSource {
         let travelPeriod = travelViewModel.returnPeriodString(startDate: travel.startDate, endDate: travel.endDate)
         
         cell.bind(image: travel.image, title: travel.title, period: travelPeriod, province: travel.province)
-        print("cell - province: \(String(describing: travel.province))")
+        
+        cell.selectionStyle = .none
+        
         return cell
-    }
-}
-
-
-extension TravelViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 96
     }
 }
