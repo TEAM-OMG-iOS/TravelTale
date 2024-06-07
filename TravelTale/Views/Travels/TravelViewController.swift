@@ -54,7 +54,6 @@ class TravelViewController: BaseViewController {
     
     override func configureDelegate() {
         travelView.tableView.dataSource = self
-        travelView.tableView.delegate = self
         travelView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
     }
     
