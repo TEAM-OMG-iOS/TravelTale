@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum travelSegment {
+    case plan
+    case memory
+}
