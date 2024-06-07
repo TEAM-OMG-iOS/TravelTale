@@ -99,16 +99,16 @@ class TravelTableViewCell: BaseTableViewCell {
         }
     }
     
-    func bind(image: Data?, title: String?, period: String?, province: String?) {
-        if let image = image {
+    func bind(travel: Travel, period: String?) {
+        if let image = travel.image {
             thumbnailImageView.image = UIImage(data: image)
         } else {
             thumbnailImageView.backgroundColor = .gray20
             thumbnailImageView.tintColor = .white
         }
         
-        titleLabel.text = title ?? "여행 이름을 불러올 수 없습니다."
+        titleLabel.text = travel.title
         periodLabel.text = period ?? "여행 기간을 불러올 수 없습니다."
-        provinceNameLabel.text = province ?? "미정"
+        provinceNameLabel.text = travel.province ?? "미정"
     }
 }
