@@ -76,4 +76,3 @@ class TravelAddView: BaseView {
         label.text = text
     }
 }
-
