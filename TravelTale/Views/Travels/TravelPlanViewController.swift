@@ -12,7 +12,6 @@ class TravelPlanViewController: BaseViewController {
     // MARK: - properties
     private let travelPlanView = TravelPlanView()
     private let travelViewModel = TravelViewModel()
-    private let sectionHeader = ["다가오는 여행", "다녀온 여행"]
     
     // MARK: - life cycles
     override func loadView() {
@@ -30,31 +29,46 @@ class TravelPlanViewController: BaseViewController {
     
     // MARK: - methods
     // 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
-    func addTemporaryData() {
+    private func addTemporaryData() {
         travelViewModel.travelArray.value.append(contentsOf: [
             Travel(
                 image: nil,
                 title: "200일 여행 with 남자친구",
-                startDate: DateComponents(year: 2024, month: 9, day: 19).date ?? Date(),
-                endDate: DateComponents(year: 2024, month: 9, day: 21).date ?? Date(),
+                startDate: createDate(year: 2024, month: 9, day: 19) ?? Date(),
+                endDate: createDate(year: 2024, month: 9, day: 21) ?? Date(),
                 province: "대구"),
             Travel(
                 image: nil,
                 title: "24년의 가족 여행",
-                startDate: DateComponents(year: 2024, month: 4, day: 2).date ?? Date(),
-                endDate: DateComponents(year: 2024, month: 4, day: 5).date ?? Date(),
+                startDate: createDate(year: 2024, month: 4, day: 1) ?? Date(),
+                endDate: createDate(year: 2024, month: 4, day: 5) ?? Date(),
                 province: nil)
         ])
     }
     
+    // date 데이터 만드는 함수 (추후 삭제 예정)
+    private func createDate(year: Int, month: Int, day: Int) -> Date? {
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        dateComponents.day = day
+        
+        return Calendar.current.date(from: dateComponents)
+    }
+    
     override func configureStyle() {
         travelPlanView.tableView.separatorStyle = .none
+        travelPlanView.tableView.sectionHeaderTopPadding = 0
     }
     
     override func configureDelegate() {
         travelPlanView.tableView.dataSource = self
-        //        travelPlanView.tableView.delegate = self
+        travelPlanView.tableView.delegate = self
+        
+        // register
         travelPlanView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
+        travelPlanView.tableView.register(TravelSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: TravelSectionHeaderView.identifier)
+        travelPlanView.tableView.register(SpaceFooterView.self, forHeaderFooterViewReuseIdentifier: SpaceFooterView.identifier)
     }
     
     override func configureAddTarget() {
@@ -80,20 +94,14 @@ class TravelPlanViewController: BaseViewController {
 extension TravelPlanViewController: UITableViewDataSource {
     // section
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionHeader.count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionHeader[section]
+        return 2
     }
     
     // row cell
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            print("section 0 -> \(travelViewModel.upcomingTravels.count)열")
             return travelViewModel.upcomingTravels.count
         } else {
-            print("section 1 -> \(travelViewModel.pastTravels.count)열")
             return travelViewModel.pastTravels.count
         }
     }
@@ -112,7 +120,7 @@ extension TravelPlanViewController: UITableViewDataSource {
             startDate: travel.startDate,
             endDate: travel.endDate
         )
-        
+        print("startDate: \(travel.startDate), period: \(period)")
         cell.bind(travel: travel, period: period)
         cell.selectionStyle = .none
         
@@ -120,3 +128,28 @@ extension TravelPlanViewController: UITableViewDataSource {
     }
 }
 
+extension TravelPlanViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TravelSectionHeaderView.identifier) as? TravelSectionHeaderView else { return UIView() }
+        
+        if section == 0 {
+            headerView.bind(title: "다가오는 여행")
+        } else {
+            headerView.bind(title: "다녀온 여행")
+        }
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 28
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return SpaceFooterView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 20
+    }
+}
