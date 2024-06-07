@@ -12,80 +12,75 @@ class TravelViewController: BaseViewController {
     // MARK: - Properties
     
     let travelView = TravelView()
-    
     let travelViewModel = TravelViewModel()
+    
+    //  childVC
+    let travelPlanVC = TravelPlanViewController()
+    let travelMemoryVC = TravelMemoryViewController()
     
     // MARK: - Life Cycles
     
     override func loadView() {
         view = travelView
+        addChildViews()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTemporaryData()
-        travelView.addButtonLabel.text = "새 여행 추가"
+        tappedButton(travelView.planButton)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
     }
     
     // MARK: - Methods
     
-    // 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
-    func addTemporaryData() {
-        travelViewModel.travelArray.value.append(contentsOf: [
-            Travel(
-                image: nil,
-                title: "200일 여행 with 남자친구",
-                startDate: DateComponents(year: 2024, month: 9, day: 19).date ?? Date(),
-                endDate: DateComponents(year: 2024, month: 9, day: 21).date ?? Date(),
-                province: "대구"),
-            Travel(
-                image: nil,
-                title: "24년의 가족 여행",
-                startDate: DateComponents(year: 2024, month: 4, day: 2).date ?? Date(),
-                endDate: DateComponents(year: 2024, month: 4, day: 5).date ?? Date(),
-                province: nil)
-        ])
+    override func configureStyle() { }
+    
+    override func configureAddTarget() {
+        travelView.planButton.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
+        travelView.planButton.tag = 0
+        
+        
+        travelView.memoryButton.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
+        travelView.memoryButton.tag = 1
+        
     }
     
-    
-    override func configureStyle() { 
-        travelView.tableView.separatorStyle = .none
-    }
-    
-    override func configureDelegate() {
-        travelView.tableView.dataSource = self
-        travelView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
-    }
-    
-    override func configureAddTarget() { }
-    
-    override func bind() { 
-        travelViewModel.travelArray.bind { _ in
-            self.travelView.tableView.reloadData()
+    func addChildViews() {
+        let childVCs = [
+            travelPlanVC,
+            travelMemoryVC
+        ]
+        
+        childVCs.forEach {
+            travelView.addChildView($0.view)
+            self.addChild($0)
+            $0.didMove(toParent: self)
         }
     }
     
-}
-
-
-// MARK: - Extensions
-
-extension TravelViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return travelViewModel.travelArray.value.count
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
-        
-        
-        let travel = travelViewModel.travelArray.value[indexPath.row]
-        let travelPeriod = travelViewModel.returnPeriodString(startDate: travel.startDate, endDate: travel.endDate)
-        
-        cell.bind(image: travel.image, title: travel.title, period: travelPeriod, province: travel.province)
-        
-        cell.selectionStyle = .none
-        
-        return cell
+    // MARK: - objc functions
+    @objc func tappedButton(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            travelPlanVC.view.isHidden = false
+            travelMemoryVC.view.isHidden = true
+            travelView.changeButtonUI(tappedButton: .plan) // 선택한 버튼 컬러 바꾸기
+            
+        case 1:
+            travelPlanVC.view.isHidden = true
+            travelMemoryVC.view.isHidden = false
+            travelView.changeButtonUI(tappedButton: .memory) // 선택한 버튼 컬러 바꾸기
+            
+        default:
+            travelPlanVC.view.isHidden = false
+            travelMemoryVC.view.isHidden = true
+            travelView.changeButtonUI(tappedButton: .plan) // 선택한 버튼 컬러 바꾸기
+        }
     }
 }
