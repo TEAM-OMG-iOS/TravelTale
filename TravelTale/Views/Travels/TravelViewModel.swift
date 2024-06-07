@@ -8,11 +8,14 @@
 import Foundation
 
 class TravelViewModel {
+    
+    // MARK: - properties
     var travelArray: Observable<[Travel]> = .init([])
     
     var upcomingTravels: [Travel] = []
     var pastTravels: [Travel] = []
     
+    // MARK: - methods
     func returnPeriodString(startDate: Date, endDate: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
