@@ -23,11 +23,11 @@ class TravelView: BaseView {
         $0.configureButton(fontColor: .gray80,font: .oaGothic(size: 24, weight: .heavy), text: "Memory")
     }
     
-    let borderLine = UIView().then {
+    private let borderLine = UIView().then {
         $0.configureView(color: .gray20)
     }
     
-    let convertableView = UIView()
+    private let convertableView = UIView()
     
     
     // MARK: - methods
@@ -43,7 +43,6 @@ class TravelView: BaseView {
         }
     }
     
-    
     override func configureHierarchy() {
         [buttonStackView,
          borderLine,
@@ -56,7 +55,6 @@ class TravelView: BaseView {
             buttonStackView.addArrangedSubview($0)
         }
     }
-    
     
     override func configureConstraints() {
         let horizontalInset = 20
@@ -85,7 +83,6 @@ class TravelView: BaseView {
         newView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        
     }
     
     func changeButtonUI(tappedButton: travelSegment) {
