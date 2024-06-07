@@ -12,7 +12,7 @@ class TravelPlanViewController: BaseViewController {
     // MARK: - properties
     private let travelPlanView = TravelPlanView()
     private let travelViewModel = TravelViewModel()
-    
+    private let sectionHeader = ["다가오는 여행", "다녀온 여행"]
     
     // MARK: - life cycles
     override func loadView() {
@@ -24,6 +24,9 @@ class TravelPlanViewController: BaseViewController {
         addTemporaryData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
     
     // MARK: - methods
     // 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
@@ -50,6 +53,7 @@ class TravelPlanViewController: BaseViewController {
     
     override func configureDelegate() {
         travelPlanView.tableView.dataSource = self
+        //        travelPlanView.tableView.delegate = self
         travelPlanView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
     }
     
@@ -59,6 +63,7 @@ class TravelPlanViewController: BaseViewController {
     
     override func bind() {
         travelViewModel.travelArray.bind { _ in
+            self.travelViewModel.splitTravelArray()
             self.travelPlanView.tableView.reloadData()
         }
     }
@@ -73,23 +78,45 @@ class TravelPlanViewController: BaseViewController {
 
 // MARK: - Extensions
 extension TravelPlanViewController: UITableViewDataSource {
+    // section
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionHeader.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionHeader[section]
+    }
+    
+    // row cell
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return travelViewModel.travelArray.value.count
+        if section == 0 {
+            print("section 0 -> \(travelViewModel.upcomingTravels.count)열")
+            return travelViewModel.upcomingTravels.count
+        } else {
+            print("section 1 -> \(travelViewModel.pastTravels.count)열")
+            return travelViewModel.pastTravels.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
         
+        let travel: Travel
+        if indexPath.section == 0 {
+            travel = travelViewModel.upcomingTravels[indexPath.row]
+        } else {
+            travel = travelViewModel.pastTravels[indexPath.row]
+        }
         
-        let travel = travelViewModel.travelArray.value[indexPath.row]
-        let travelPeriod = travelViewModel.returnPeriodString(
+        let period = travelViewModel.returnPeriodString(
             startDate: travel.startDate,
             endDate: travel.endDate
         )
         
-        cell.bind(image: travel.image, title: travel.title, period: travelPeriod, province: travel.province)
+        cell.bind(travel: travel, period: period)
         cell.selectionStyle = .none
         
         return cell
     }
 }
+
