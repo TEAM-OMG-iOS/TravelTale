@@ -7,62 +7,45 @@
 
 import UIKit
 
-class TravelTableViewCell: UITableViewCell {
+class TravelTableViewCell: BaseTableViewCell {
     
-    // MARK: - Properties
-    
+    // MARK: - properties
     static let identifier = String(describing: TravelTableViewCell.self)
     
-    let containerView = UIView()
-    let thumbnailImageView = UIImageView()
-    let borderLine = UIView()
-    let periodLabel = UILabel()
-    let provinceCapsuleView = UIView()
-    let provinceNameLabel = UILabel()
-    let titleLabel = UILabel()
-    
-    // MARK: - Methods
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureUI()
-        configureHierarchy()
-        configureConstraints()
+    let containerView = UIView().then {
+        $0.configureView(cornerRadius: 15)
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.gray20.cgColor
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    let thumbnailImageView = UIImageView().then {
+        $0.configureView(cornerRadius: 16)
+        $0.contentMode = .scaleAspectFill
     }
     
-    
-    private func configureUI() {
-        
-        containerView.layer.cornerRadius = 15
-        containerView.layer.borderWidth = 1
-        containerView.layer.borderColor = UIColor.gray20.cgColor
-        
-        thumbnailImageView.layer.cornerRadius = 16
-        thumbnailImageView.contentMode = .scaleAspectFill
-        
-        borderLine.backgroundColor = .gray20
-        
-        periodLabel.font = .oaGothic(size: 10, weight: .medium)
-        periodLabel.textColor = .gray90
-        
-        provinceCapsuleView.backgroundColor = .blueBlack100
-        provinceCapsuleView.layer.cornerRadius = 10
-        
-        provinceNameLabel.font = .pretendard(size: 12, weight: .medium)
-        provinceNameLabel.textColor = .white
-        provinceNameLabel.textAlignment = .center
-        
-        titleLabel.font = .pretendard(size: 18, weight: .medium)
-        titleLabel.textColor = .black
-        
+    let borderLine = UIView().then {
+        $0.configureView(color: .gray20)
     }
     
-    private func configureHierarchy() {
-        
+    let periodLabel = UILabel().then {
+        $0.configureLabel(color: .gray90, font: .oaGothic(size: 10, weight: .medium))
+    }
+    
+    let provinceCapsuleView = UIView().then {
+        $0.configureView(color: .blueBlack100, cornerRadius: 10)
+    }
+    
+    let provinceNameLabel = UILabel().then {
+        $0.configureLabel(color: .white, font: .pretendard(size: 12, weight: .medium))
+        $0.textAlignment = .center
+    }
+    
+    let titleLabel = UILabel().then {
+        $0.configureLabel(color: .black, font: .pretendard(size: 18, weight: .medium))
+    }
+    
+    // MARK: - methods
+    override func configureHierarchy() {
         contentView.addSubview(containerView)
         
         [thumbnailImageView,
@@ -74,8 +57,7 @@ class TravelTableViewCell: UITableViewCell {
         provinceCapsuleView.addSubview(provinceNameLabel)
     }
     
-    private func configureConstraints() {
-        
+    override func configureConstraints() {
         containerView.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview().inset(6)
             $0.horizontalEdges.equalToSuperview()
@@ -117,22 +99,15 @@ class TravelTableViewCell: UITableViewCell {
     }
     
     func bind(image: Data?, title: String?, period: String?, province: String?) {
-        
         if let image = image {
             thumbnailImageView.image = UIImage(data: image)
         } else {
             thumbnailImageView.backgroundColor = .gray20
             thumbnailImageView.tintColor = .white
-//            thumbnailImageView.image = UIImage(systemName: "photo")
-//            thumbnailImageView.contentMode = .scaleAspectFit
         }
         
         titleLabel.text = title ?? "여행 이름을 불러올 수 없습니다."
-        
         periodLabel.text = period ?? "여행 기간을 불러올 수 없습니다."
-        
         provinceNameLabel.text = province ?? "미정"
-        
     }
-    
 }
