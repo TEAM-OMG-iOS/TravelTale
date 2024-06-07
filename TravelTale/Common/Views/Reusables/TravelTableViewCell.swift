@@ -12,35 +12,35 @@ class TravelTableViewCell: BaseTableViewCell {
     // MARK: - properties
     static let identifier = String(describing: TravelTableViewCell.self)
     
-    let containerView = UIView().then {
+    private let containerView = UIView().then {
         $0.configureView(cornerRadius: 15)
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.gray20.cgColor
     }
     
-    let thumbnailImageView = UIImageView().then {
+    private let thumbnailImageView = UIImageView().then {
         $0.configureView(cornerRadius: 16)
         $0.contentMode = .scaleAspectFill
     }
     
-    let borderLine = UIView().then {
+    private let borderLine = UIView().then {
         $0.configureView(color: .gray20)
     }
     
-    let periodLabel = UILabel().then {
+    private let periodLabel = UILabel().then {
         $0.configureLabel(color: .gray90, font: .oaGothic(size: 10, weight: .medium))
     }
     
-    let provinceCapsuleView = UIView().then {
+    private let provinceCapsuleView = UIView().then {
         $0.configureView(color: .blueBlack100, cornerRadius: 10)
     }
     
-    let provinceNameLabel = UILabel().then {
+    private let provinceNameLabel = UILabel().then {
         $0.configureLabel(color: .white, font: .pretendard(size: 12, weight: .medium))
         $0.textAlignment = .center
     }
     
-    let titleLabel = UILabel().then {
+    private let titleLabel = UILabel().then {
         $0.configureLabel(color: .black, font: .pretendard(size: 18, weight: .medium))
     }
     
