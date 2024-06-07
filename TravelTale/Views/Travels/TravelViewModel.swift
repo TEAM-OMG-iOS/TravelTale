@@ -8,7 +8,6 @@
 import Foundation
 
 class TravelViewModel {
-    
     var travelArray: Observable<[Travel]> = .init([])
     
     func returnPeriodString(startDate: Date, endDate: Date) -> String {
@@ -20,5 +19,4 @@ class TravelViewModel {
         
         return "\(startDateString) ~ \(endDateString)"
     }
-    
 }
