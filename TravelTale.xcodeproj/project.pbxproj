@@ -55,13 +55,13 @@
 		37CB88162C0DB648002798BE /* GrayBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88152C0DB648002798BE /* GrayBackgroundView.swift */; };
 		37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88172C0DB66D002798BE /* GrayButton.swift */; };
 		37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88192C0DB677002798BE /* GreenButton.swift */; };
-		4D0E3CD52C0F36110089D6C1 /* TravelPlaceAddView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD42C0F36110089D6C1 /* TravelPlaceAddView1.swift */; };
-		4D0E3CD72C0F36280089D6C1 /* TravelPlaceAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD62C0F36280089D6C1 /* TravelPlaceAddViewController.swift */; };
+		4D0E3CD52C0F36110089D6C1 /* TravelSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */; };
+		4D0E3CD72C0F36280089D6C1 /* TravelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */; };
 		4D0E3CDB2C10391A0089D6C1 /* MemoAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */; };
 		4D0E3CDF2C103D430089D6C1 /* MemoAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDE2C103D430089D6C1 /* MemoAddView.swift */; };
 		4D0E3CE12C10763C0089D6C1 /* PlaceAddEditView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */; };
-		4D0E3CE32C1076570089D6C1 /* PlaceAdditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE22C1076570089D6C1 /* PlaceAdditionViewController.swift */; };
-		4D0E3CE52C11EA930089D6C1 /* TravelPlaceAddView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE42C11EA930089D6C1 /* TravelPlaceAddView2.swift */; };
+		4D0E3CE32C1076570089D6C1 /* PlaceAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE22C1076570089D6C1 /* PlaceAddViewController.swift */; };
+		4D0E3CE52C11EA930089D6C1 /* ScheduleCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */; };
 		4D0E3CE72C1206480089D6C1 /* TravelPlaceAddViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE62C1206480089D6C1 /* TravelPlaceAddViewController2.swift */; };
 /* End PBXBuildFile section */
 
@@ -109,13 +109,13 @@
 		37CB88152C0DB648002798BE /* GrayBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayBackgroundView.swift; sourceTree = "<group>"; };
 		37CB88172C0DB66D002798BE /* GrayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayButton.swift; sourceTree = "<group>"; };
 		37CB88192C0DB677002798BE /* GreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenButton.swift; sourceTree = "<group>"; };
-		4D0E3CD42C0F36110089D6C1 /* TravelPlaceAddView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlaceAddView1.swift; sourceTree = "<group>"; };
-		4D0E3CD62C0F36280089D6C1 /* TravelPlaceAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlaceAddViewController.swift; sourceTree = "<group>"; };
+		4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSelectView.swift; sourceTree = "<group>"; };
+		4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSelectViewController.swift; sourceTree = "<group>"; };
 		4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAddViewController.swift; sourceTree = "<group>"; };
 		4D0E3CDE2C103D430089D6C1 /* MemoAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAddView.swift; sourceTree = "<group>"; };
 		4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlaceAddEditView.storyboard; sourceTree = "<group>"; };
-		4D0E3CE22C1076570089D6C1 /* PlaceAdditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAdditionViewController.swift; sourceTree = "<group>"; };
-		4D0E3CE42C11EA930089D6C1 /* TravelPlaceAddView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlaceAddView2.swift; sourceTree = "<group>"; };
+		4D0E3CE22C1076570089D6C1 /* PlaceAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAddViewController.swift; sourceTree = "<group>"; };
+		4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCreateView.swift; sourceTree = "<group>"; };
 		4D0E3CE62C1206480089D6C1 /* TravelPlaceAddViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlaceAddViewController2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +170,7 @@
 				378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */,
 				378CEC192C0D632000DF1C3F /* Common */,
 				378CEC1A2C0D633700DF1C3F /* Views */,
+				4D0E3CE82C12E8CC0089D6C1 /* Commons */,
 				378CEBF42C0D563D00DF1C3F /* Assets.xcassets */,
 				378CEBF62C0D563D00DF1C3F /* LaunchScreen.storyboard */,
 				378CEBF92C0D563D00DF1C3F /* Info.plist */,
@@ -227,9 +228,13 @@
 		378CEC292C0D65E700DF1C3F /* Travels */ = {
 			isa = PBXGroup;
 			children = (
+				4D0E3CEA2C12E9440089D6C1 /* PlaceAddEdit */,
+				4D0E3CE92C12E9240089D6C1 /* MemoAdd */,
 				378CEC2C2C0D685300DF1C3F /* Travel */,
 				1AD537882C105D0300A70D5E /* TravelViewModel.swift */,
 				378CEC352C0D68F900DF1C3F /* TravelViewController.swift */,
+				4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */,
+				4D0E3CE22C1076570089D6C1 /* PlaceAddViewController.swift */,
 			);
 			path = Travels;
 			sourceTree = "<group>";
@@ -256,10 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				378CEC2F2C0D68A200DF1C3F /* TravelView.swift */,
-				4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */,
-				4D0E3CDE2C103D430089D6C1 /* MemoAddView.swift */,
-				4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */,
-				4D0E3CE22C1076570089D6C1 /* PlaceAdditionViewController.swift */,
 			);
 			path = Travel;
 			sourceTree = "<group>";
@@ -304,11 +305,7 @@
 				37CB88152C0DB648002798BE /* GrayBackgroundView.swift */,
 				37CB88172C0DB66D002798BE /* GrayButton.swift */,
 				37CB88192C0DB677002798BE /* GreenButton.swift */,
-				4D0E3CD42C0F36110089D6C1 /* TravelPlaceAddView1.swift */,
-				4D0E3CD62C0F36280089D6C1 /* TravelPlaceAddViewController.swift */,
 				1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */,
-				4D0E3CE42C11EA930089D6C1 /* TravelPlaceAddView2.swift */,
-				4D0E3CE62C1206480089D6C1 /* TravelPlaceAddViewController2.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -345,6 +342,33 @@
 				378CEC582C0D732600DF1C3F /* OAGothic-Medium.otf */,
 			);
 			path = OAGothic;
+			sourceTree = "<group>";
+		};
+		4D0E3CE82C12E8CC0089D6C1 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */,
+				4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */,
+				4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */,
+				4D0E3CE62C1206480089D6C1 /* TravelPlaceAddViewController2.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		4D0E3CE92C12E9240089D6C1 /* MemoAdd */ = {
+			isa = PBXGroup;
+			children = (
+				4D0E3CDE2C103D430089D6C1 /* MemoAddView.swift */,
+			);
+			path = MemoAdd;
+			sourceTree = "<group>";
+		};
+		4D0E3CEA2C12E9440089D6C1 /* PlaceAddEdit */ = {
+			isa = PBXGroup;
+			children = (
+				4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */,
+			);
+			path = PlaceAddEdit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,10 +479,10 @@
 				37CB88162C0DB648002798BE /* GrayBackgroundView.swift in Sources */,
 				378CEC262C0D64FB00DF1C3F /* BaseTableViewCell.swift in Sources */,
 				378CEC282C0D651E00DF1C3F /* BaseCollectionViewCell.swift in Sources */,
-				4D0E3CE32C1076570089D6C1 /* PlaceAdditionViewController.swift in Sources */,
+				4D0E3CE32C1076570089D6C1 /* PlaceAddViewController.swift in Sources */,
 				378CEC382C0D690800DF1C3F /* DiscoveryViewController.swift in Sources */,
-				4D0E3CD52C0F36110089D6C1 /* TravelPlaceAddView1.swift in Sources */,
-				4D0E3CD72C0F36280089D6C1 /* TravelPlaceAddViewController.swift in Sources */,
+				4D0E3CD52C0F36110089D6C1 /* TravelSelectView.swift in Sources */,
+				4D0E3CD72C0F36280089D6C1 /* TravelSelectViewController.swift in Sources */,
 				378CEBEC2C0D563C00DF1C3F /* AppDelegate.swift in Sources */,
 				378CEC362C0D68F900DF1C3F /* TravelViewController.swift in Sources */,
 				378CEC302C0D68A200DF1C3F /* TravelView.swift in Sources */,
@@ -477,7 +501,7 @@
 				378CEC222C0D649D00DF1C3F /* BaseView.swift in Sources */,
 				378CEC202C0D649000DF1C3F /* UIFont+Extension.swift in Sources */,
 				4D0E3CDB2C10391A0089D6C1 /* MemoAddViewController.swift in Sources */,
-				4D0E3CE52C11EA930089D6C1 /* TravelPlaceAddView2.swift in Sources */,
+				4D0E3CE52C11EA930089D6C1 /* ScheduleCreateView.swift in Sources */,
 				37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */,
 				378CEC242C0D64AB00DF1C3F /* BaseViewController.swift in Sources */,
 				4D0E3CDF2C103D430089D6C1 /* MemoAddView.swift in Sources */,
