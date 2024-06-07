@@ -7,14 +7,37 @@
 
 import UIKit
 
-class TravelPlanView: UIView {
+class TravelPlanView: BaseView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    // MARK: - properties
+    let addView = TravelAddView()
+    let tableView = UITableView()
+    
+    
+    // MARK: - methods
+    override func configureUI() {
+        super.configureUI()
+        addView.label.text = "새 여행 추가"
     }
-    */
-
+    
+    override func configureHierarchy() {
+        [addView,
+         tableView].forEach { self.addSubview($0) }
+    }
+    
+    override func configureConstraints() {
+        
+        let horizontalInset = 20
+        
+        addView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(26)
+            $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
+        }
+        
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(addView.snp.bottom).offset(26)
+            $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
+            $0.bottom.equalToSuperview()
+        }
+    }
 }
