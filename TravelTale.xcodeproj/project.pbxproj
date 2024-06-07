@@ -11,6 +11,8 @@
 		1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537882C105D0300A70D5E /* TravelViewModel.swift */; };
 		1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378A2C10612F00A70D5E /* Observable.swift */; };
 		1AD5378E2C10838A00A70D5E /* Travel(temporary).swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */; };
+		3740FE542C12EE020024E08F /* TravelPlanDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740FE532C12EE020024E08F /* TravelPlanDetailsView.swift */; };
+		3740FE562C12EE140024E08F /* TravelPlanDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740FE552C12EE140024E08F /* TravelPlanDetailsViewController.swift */; };
 		378CEBEC2C0D563C00DF1C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */; };
 		378CEBEE2C0D563C00DF1C3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */; };
 		378CEBF52C0D563D00DF1C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 378CEBF42C0D563D00DF1C3F /* Assets.xcassets */; };
@@ -62,6 +64,8 @@
 		1AD537882C105D0300A70D5E /* TravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewModel.swift; sourceTree = "<group>"; };
 		1AD5378A2C10612F00A70D5E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Travel(temporary).swift"; sourceTree = "<group>"; };
+		3740FE532C12EE020024E08F /* TravelPlanDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanDetailsView.swift; sourceTree = "<group>"; };
+		3740FE552C12EE140024E08F /* TravelPlanDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanDetailsViewController.swift; sourceTree = "<group>"; };
 		378CEBE82C0D563C00DF1C3F /* TravelTale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelTale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +132,14 @@
 				1AD5378A2C10612F00A70D5E /* Observable.swift */,
 			);
 			path = Class;
+			sourceTree = "<group>";
+		};
+		3740FE522C12EDD50024E08F /* TravelPlanDetails */ = {
+			isa = PBXGroup;
+			children = (
+				3740FE532C12EE020024E08F /* TravelPlanDetailsView.swift */,
+			);
+			path = TravelPlanDetails;
 			sourceTree = "<group>";
 		};
 		378CEBDF2C0D563C00DF1C3F = {
@@ -212,8 +224,10 @@
 			isa = PBXGroup;
 			children = (
 				378CEC2C2C0D685300DF1C3F /* Travel */,
+				3740FE522C12EDD50024E08F /* TravelPlanDetails */,
 				1AD537882C105D0300A70D5E /* TravelViewModel.swift */,
 				378CEC352C0D68F900DF1C3F /* TravelViewController.swift */,
+				3740FE552C12EE140024E08F /* TravelPlanDetailsViewController.swift */,
 			);
 			path = Travels;
 			sourceTree = "<group>";
@@ -443,6 +457,7 @@
 				378CEC322C0D68C600DF1C3F /* DiscoveryView.swift in Sources */,
 				378CEC3A2C0D691900DF1C3F /* MyPageViewController.swift in Sources */,
 				37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */,
+				3740FE562C12EE140024E08F /* TravelPlanDetailsViewController.swift in Sources */,
 				37CB880F2C0D7979002798BE /* UIButton+Extension.swift in Sources */,
 				37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */,
 				37CB88072C0D7632002798BE /* PlaceDetailView.swift in Sources */,
@@ -451,6 +466,7 @@
 				37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */,
 				378CEC242C0D64AB00DF1C3F /* BaseViewController.swift in Sources */,
 				378CEC1E2C0D644D00DF1C3F /* UIColor+Extension.swift in Sources */,
+				3740FE542C12EE020024E08F /* TravelPlanDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
