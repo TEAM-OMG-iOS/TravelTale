@@ -1,5 +1,5 @@
 //
-//  TravelPlanDetailsView.swift
+//  TravelDetailView.swift
 //  TravelTale
 //
 //  Created by 김정호 on 6/7/24.
@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-final class TravelPlanDetailsView: BaseView {
+final class TravelDetailView: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {

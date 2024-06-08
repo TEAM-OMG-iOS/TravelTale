@@ -10,11 +10,11 @@ import UIKit
 final class TravelPlanDetailsViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelPlanDetailsView = TravelPlanDetailsView()
+    private let travelDetailView = TravelDetailView()
     
     // MARK: - life cycles
     override func loadView() {
-        view = travelPlanDetailsView
+        view = travelDetailView
     }
     
     override func viewDidLoad() {
@@ -39,16 +39,16 @@ final class TravelPlanDetailsViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        travelPlanDetailsView.backButton.target = self
-        travelPlanDetailsView.backButton.action = #selector(tappedBackButton)
+        travelDetailView.backButton.target = self
+        travelDetailView.backButton.action = #selector(tappedBackButton)
         
-        travelPlanDetailsView.settingButton.target = self
-        travelPlanDetailsView.settingButton.action = #selector(tappedSettingButton)
+        travelDetailView.settingButton.target = self
+        travelDetailView.settingButton.action = #selector(tappedSettingButton)
     }
     
     private func configureNavigation() {
-        navigationItem.leftBarButtonItem = travelPlanDetailsView.backButton
-        navigationItem.rightBarButtonItem = travelPlanDetailsView.settingButton
+        navigationItem.leftBarButtonItem = travelDetailView.backButton
+        navigationItem.rightBarButtonItem = travelDetailView.settingButton
     }
     
     @objc private func tappedBackButton() {
