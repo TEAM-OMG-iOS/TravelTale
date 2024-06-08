@@ -1,5 +1,5 @@
 //
-//  TravelPlanDetailsViewController.swift
+//  TravelDetailViewController.swift
 //  TravelTale
 //
 //  Created by 김정호 on 6/7/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TravelPlanDetailsViewController: BaseViewController {
+final class TravelDetailViewController: BaseViewController {
     
     // MARK: - properties
     private let travelDetailView = TravelDetailView()
