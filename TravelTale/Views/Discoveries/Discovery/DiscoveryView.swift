@@ -31,6 +31,10 @@ final class DiscoveryView: BaseView {
         $0.textColor = UIColor.black
     }
     
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.contentInset = UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
+    }
+    
     // MARK: - life cycles
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,6 +75,7 @@ final class DiscoveryView: BaseView {
         categoryStackView.addArrangedSubview(accommodationButton)
         categoryStackView.addArrangedSubview(entertainmentButton)
         self.addSubview(recentlyAddedLabel)
+        self.addSubview(collectionView)
     }
     
     override func configureConstraints() {
@@ -95,6 +100,11 @@ final class DiscoveryView: BaseView {
         recentlyAddedLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(24)
             $0.top.equalTo(categoryStackView.snp.bottom).offset(48)
+        }
+        
+        collectionView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.top.equalTo(recentlyAddedLabel.snp.bottom)
         }
     }
     
