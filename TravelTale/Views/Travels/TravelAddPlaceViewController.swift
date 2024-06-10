@@ -104,11 +104,14 @@ final class AddLocationViewController: BaseViewController {
     // MARK: - Methods
     
     override func configureStyle() {
-       
+        addLocationView.tableView.reloadData()
     }
     
     override func configureDelegate() {
-       
+        addLocationView.tableView.dataSource = self
+        addLocationView.tableView.delegate = self
+        
+        addLocationView.tableView.register(TravelLocationTableViewCell.self, forCellReuseIdentifier: TravelLocationTableViewCell.identifier)
     }
     
     override func configureAddTarget() {
@@ -119,3 +122,27 @@ final class AddLocationViewController: BaseViewController {
     }
 }
 
+// MARK: - Extensions
+
+extension AddLocationViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return addLocationView.locations.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelLocationTableViewCell.identifier, for: indexPath) as? TravelLocationTableViewCell else { return TravelLocationTableViewCell() }
+        cell.locationLabel.text = addLocationView.locations[indexPath.row]
+        
+        return cell
+    }
+}
+
+extension AddLocationViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? TravelLocationTableViewCell else { return }
+        if let text = cell.locationLabel.text {
+            travelAddPlaceVC.updateInputBox(with: text)
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+}
