@@ -7,71 +7,62 @@
 
 import UIKit
 
-class TravelTableViewCell: UITableViewCell {
+final class TravelTableViewCell: BaseTableViewCell {
     
-    // MARK: - Properties
-    
+    // MARK: - properties
     static let identifier = String(describing: TravelTableViewCell.self)
     
-    let thumbnailImageView = UIImageView()
-    let borderLine = UIView()
-    let periodLabel = UILabel()
-    let provinceCapsuleView = UIView()
-    let provinceNameLabel = UILabel()
-    let titleLabel = UILabel()
-    
-    // MARK: - Methods
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureUI()
-        configureHierarchy()
-        configureConstraints()
+    private let containerView = UIView().then {
+        $0.configureView(cornerRadius: 15)
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.gray20.cgColor
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private let thumbnailImageView = UIImageView().then {
+        $0.configureView(color: .gray20, cornerRadius: 16)
+        $0.contentMode = .scaleAspectFill
+    }
+    
+    private let borderLine = UIView().then {
+        $0.configureView(color: .gray20)
+    }
+    
+    private let periodLabel = UILabel().then {
+        $0.configureLabel(color: .gray90, font: .oaGothic(size: 10, weight: .medium))
+    }
+    
+    private let provinceCapsuleView = UIView().then {
+        $0.configureView(color: .blueBlack100, cornerRadius: 10)
+    }
+    
+    private let provinceNameLabel = UILabel().then {
+        $0.configureLabel(color: .white, font: .pretendard(size: 12, weight: .medium))
+        $0.textAlignment = .center
+    }
+    
+    private let titleLabel = UILabel().then {
+        $0.configureLabel(color: .black, font: .pretendard(size: 18, weight: .medium))
     }
     
     
-    private func configureUI() {
-        
-        contentView.layer.cornerRadius = 15
-        contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.gray20.cgColor
-        
-        thumbnailImageView.layer.cornerRadius = 16
-        thumbnailImageView.contentMode = .scaleAspectFill
-        
-        borderLine.backgroundColor = .gray20
-        
-        periodLabel.font = .oaGothic(size: 10, weight: .medium)
-        periodLabel.textColor = .gray90
-        
-        provinceCapsuleView.backgroundColor = .blueBlack100
-        provinceCapsuleView.layer.cornerRadius = 10
-        
-        provinceNameLabel.font = .pretendard(size: 12, weight: .medium)
-        provinceNameLabel.textColor = .white
-        provinceNameLabel.textAlignment = .center
-        
-        titleLabel.font = .pretendard(size: 18, weight: .medium)
-        titleLabel.textColor = .black
-        
-    }
-    
-    private func configureHierarchy() {
+    // MARK: - methods
+    override func configureHierarchy() {
+        contentView.addSubview(containerView)
         
         [thumbnailImageView,
          borderLine,
          periodLabel,
          provinceCapsuleView,
-         titleLabel].forEach { contentView.addSubview($0) }
+         titleLabel].forEach { containerView.addSubview($0) }
         
         provinceCapsuleView.addSubview(provinceNameLabel)
     }
     
-    private func configureConstraints() {
+    override func configureConstraints() {
+        containerView.snp.makeConstraints {
+            $0.verticalEdges.equalToSuperview().inset(6)
+            $0.horizontalEdges.equalToSuperview()
+        }
         
         thumbnailImageView.snp.makeConstraints {
             $0.size.equalTo(64)
@@ -108,23 +99,13 @@ class TravelTableViewCell: UITableViewCell {
         }
     }
     
-    func bind(image: Data?, title: String?, period: String?, province: String?) {
-        
-        if let image = image {
+    func bind(travel: Travel, period: String) {
+        if let image = travel.image {
             thumbnailImageView.image = UIImage(data: image)
-        } else {
-            thumbnailImageView.backgroundColor = .gray20
-            thumbnailImageView.tintColor = .white
-//            thumbnailImageView.image = UIImage(systemName: "photo")
-//            thumbnailImageView.contentMode = .scaleAspectFit
         }
         
-        titleLabel.text = title ?? "여행 이름을 불러올 수 없습니다."
-        
-        periodLabel.text = period ?? "여행 기간을 불러올 수 없습니다."
-        
-        provinceNameLabel.text = province ?? "미정"
-        
+        titleLabel.text = travel.title
+        periodLabel.text = period
+        provinceNameLabel.text = travel.province ?? "미정"
     }
-    
 }
