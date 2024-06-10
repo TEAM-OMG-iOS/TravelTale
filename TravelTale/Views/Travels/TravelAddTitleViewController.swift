@@ -20,7 +20,6 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         addTravelTitleView.startLoadingAnimation()
     }
     
@@ -42,7 +41,6 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     override func configureAddTarget() {
         addTravelTitleView.textField.addTarget(self, action: #selector(tappedToRootView), for: .editingChanged)
         addTravelTitleView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
-        addTravelTitleView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
     }
     
     override func bind() {
@@ -59,10 +57,6 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     @objc func tappedOkButton() {
         let nextVC = TravelAddPlaceViewController()
         self.navigationController?.pushViewController(nextVC, animated: false)
-    }
-    
-    @objc func tappedCancelButton() {
-        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func tappedToRootView() {

@@ -38,7 +38,7 @@ final class TravelAddPlaceView: BaseView {
         $0.configureView(color: .green100, cornerRadius: 24)
     }
     
-    private let progressView = UIView().then {
+    let progressView = UIView().then {
         $0.configureView(color: .gray20, clipsToBounds: true, cornerRadius: 4)
     }
     private let loadingBar = UIView().then {
@@ -124,14 +124,8 @@ final class TravelAddPlaceView: BaseView {
     }
     
     func startLoadingAnimation() {
-        self.loadingBar.snp.remakeConstraints {
-            $0.leading.equalToSuperview()
-            $0.top.equalToSuperview()
-            $0.height.equalToSuperview()
-            $0.width.equalToSuperview().multipliedBy(2.0 / 3.0)
-        }
         UIView.animate(withDuration: 2.0, delay: 0, animations: {
-            self.progressView.layoutIfNeeded()
+            self.loadingBar.transform = CGAffineTransform(scaleX: 3, y: 1)
         }, completion: nil)
     }
     

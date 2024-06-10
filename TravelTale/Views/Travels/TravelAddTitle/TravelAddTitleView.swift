@@ -27,11 +27,6 @@ final class TravelAddTitleView: BaseView {
         $0.font = UIFont.pretendard(size: 16, weight: .medium)
     }
     
-    let cancelButton = UIButton().then {
-        $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "취소")
-        $0.configureView(color: .gray70, cornerRadius: 24)
-    }
-    
     let okButton = UIButton().then {
         $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "장소 선택하러 가기")
         $0.configureView(color: .green10, cornerRadius: 24)
@@ -69,7 +64,6 @@ final class TravelAddTitleView: BaseView {
         [pageTitleLabel,
          inputTitleLabel,
          textField,
-         cancelButton,
          okButton,
          progressView].forEach { self.addSubview($0) }
         progressView.addSubview(loadingBar)
@@ -110,15 +104,8 @@ final class TravelAddTitleView: BaseView {
             $0.height.equalTo(60)
         }
         
-        cancelButton.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(20)
-            $0.bottom.equalToSuperview().offset(-31)
-            $0.width.equalTo(100)
-            $0.height.equalTo(52)
-        }
-        
         okButton.snp.makeConstraints {
-            $0.leading.equalTo(cancelButton.snp.trailing).offset(15)
+            $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview().offset(-20)
             $0.bottom.equalToSuperview().offset(-31)
             $0.height.equalTo(52)
@@ -126,6 +113,7 @@ final class TravelAddTitleView: BaseView {
     }
     
     func startLoadingAnimation() {
+        
         self.loadingBar.snp.remakeConstraints {
             $0.leading.equalToSuperview()
             $0.top.equalToSuperview()

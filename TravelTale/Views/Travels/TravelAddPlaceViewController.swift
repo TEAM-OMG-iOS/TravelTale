@@ -63,8 +63,12 @@ final class TravelAddPlaceViewController: BaseViewController {
     
     @objc func tappedInputBox() {
         let locationList = AddLocationViewController()
-        locationList.travelAddPlaceVC = self
-        self.present(locationList, animated: true, completion: nil)
+        if let sheet = locationList.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.prefersGrabberVisible = true
+            locationList.travelAddPlaceVC = self
+            self.present(locationList, animated: true, completion: nil)
+        }
     }
     
     @objc func tappedOkButton() {
@@ -74,7 +78,7 @@ final class TravelAddPlaceViewController: BaseViewController {
     }
     
     @objc func tappedCancelButton() {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false)
     }
     
     @objc func tappedToRootView() {
