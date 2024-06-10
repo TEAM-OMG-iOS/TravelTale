@@ -28,7 +28,7 @@ class TravelPlanViewController: BaseViewController {
     }
     
     // MARK: - methods
-    // 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
+    // TODO: 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
     private func addTemporaryData() {
         travelViewModel.travelArray.value.append(contentsOf: [
             Travel(
@@ -46,7 +46,7 @@ class TravelPlanViewController: BaseViewController {
         ])
     }
     
-    // date 데이터 만드는 함수 (추후 삭제 예정)
+    // TODO: date 데이터 만드는 함수 (추후 삭제 예정)
     private func createDate(year: Int, month: Int, day: Int) -> Date? {
         var dateComponents = DateComponents()
         dateComponents.year = year
