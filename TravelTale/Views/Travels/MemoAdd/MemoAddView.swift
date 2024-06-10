@@ -6,18 +6,22 @@
 //
 
 import UIKit
-import SnapKit
-import Then
 
-class MemoAddView: BaseView {
-
+final class MemoAddView: BaseView {
+    
     // MARK: - properties
-    let memoView = UIView().then {
+    let exitButton = UIBarButtonItem().then {
+        $0.image = UIImage(systemName: "xmark.app.fill")
+        $0.style = .done
+        $0.tintColor = UIColor(red: 0.84, green: 0.84, blue: 0.84, alpha: 1.00)
+    }
+    
+    private let memoView = UIView().then {
         $0.configureView(color: .gray10, cornerRadius: 20)
     }
     
-    let memoTitle = UILabel().then {
-        $0.configureLabel(font: UIFont(name: "Pretendard-Bold", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .bold), text: "메모")
+    private let memoTitle = UILabel().then {
+        $0.configureLabel(font: .pretendard(size: 18, weight: .bold), text: "메모")
     }
     
     let memoTV = UITextView().then {
@@ -28,27 +32,17 @@ class MemoAddView: BaseView {
     }
     
     let completeBtn = GreenButton().then {
-        $0.configureButton(fontColor: .white, font: UIFont(name: "Pretendard-SemiBold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold), text: "완료")
+        $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .semibold), text: "완료")
     }
     
-    let naviTitle = UILabel()
-    
-    // MARK: - life cycles
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        configureUI()
-        configureHierarchy()
-        configureConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    let naviTitle = UILabel().then {
+        $0.configureLabel(font: .oaGothic(size: 18, weight: .heavy), text: "메모 추가")
     }
     
     // MARK: - methods
     override func configureUI() {
-        self.backgroundColor = .white
+        super.configureUI()
+        checkTextViewContent()
     }
     
     override func configureHierarchy() {
@@ -73,6 +67,7 @@ class MemoAddView: BaseView {
             $0.top.equalToSuperview().inset(15)
             $0.leading.equalToSuperview().offset(15)
         }
+        
         memoTitle.setContentHuggingPriority(.init(rawValue: 999), for: .vertical)
         
         memoTV.snp.makeConstraints {
@@ -85,6 +80,33 @@ class MemoAddView: BaseView {
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(15)
             $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
             $0.height.equalTo(52)
+        }
+    }
+    
+    func checkTextViewContent() {
+        let text = memoTV.text ?? ""
+        let isPlaceholder = text == "메세지를 입력하세요"
+        
+        if isPlaceholder || text.isEmpty {
+            completeBtn.isEnabled = false
+            completeBtn.backgroundColor = .green10
+        } else {
+            completeBtn.isEnabled = true
+            completeBtn.backgroundColor = .green100
+        }
+    }
+    
+    func setBeginText(textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func setEndText(textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "메세지를 입력하세요"
+            textView.textColor = UIColor.lightGray
         }
     }
 }
