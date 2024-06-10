@@ -7,89 +7,85 @@
 
 import UIKit
 
-class TravelViewController: BaseViewController {
+final class TravelViewController: BaseViewController {
     
-    // MARK: - Properties
+    // MARK: - properties
+    private let travelView = TravelView()
+    private let travelViewModel = TravelViewModel()
     
-    let travelView = TravelView()
+    //  childVC
+    private let travelPlanVC = TravelPlanViewController()
+    private let travelMemoryVC = TravelMemoryViewController()
     
-    let travelViewModel = TravelViewModel()
     
-    // MARK: - Life Cycles
-    
+    // MARK: - life cycles
     override func loadView() {
+        addChildViews()
         view = travelView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTemporaryData()
-        travelView.addButtonLabel.text = "새 여행 추가"
     }
     
-    // MARK: - Methods
-    
-    // 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
-    func addTemporaryData() {
-        travelViewModel.travelArray.value.append(contentsOf: [
-            Travel(
-                image: nil,
-                title: "200일 여행 with 남자친구",
-                startDate: DateComponents(year: 2024, month: 9, day: 19).date ?? Date(),
-                endDate: DateComponents(year: 2024, month: 9, day: 21).date ?? Date(),
-                province: "대구"),
-            Travel(
-                image: nil,
-                title: "24년의 가족 여행",
-                startDate: DateComponents(year: 2024, month: 4, day: 2).date ?? Date(),
-                endDate: DateComponents(year: 2024, month: 4, day: 5).date ?? Date(),
-                province: nil)
-        ])
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tappedButton(travelView.planButton)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     
-    override func configureStyle() { }
-    
-    override func configureDelegate() {
-        travelView.tableView.dataSource = self
-        travelView.tableView.delegate = self
-        travelView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
+    // MARK: - methods
+    override func configureAddTarget() {
+        travelView.planButton.addTarget(
+            self,
+            action: #selector(tappedButton),
+            for: .touchUpInside
+        )
+        travelView.planButton.tag = 0
+        
+        travelView.memoryButton.addTarget(
+            self,
+            action: #selector(tappedButton),
+            for: .touchUpInside
+        )
+        travelView.memoryButton.tag = 1
     }
     
-    override func configureAddTarget() { }
-    
-    override func bind() { 
-        travelViewModel.travelArray.bind { _ in
-            self.travelView.tableView.reloadData()
+    private func addChildViews() {
+        let childVCs = [
+            travelPlanVC,
+            travelMemoryVC
+        ]
+        
+        childVCs.forEach {
+            travelView.addConvertableView($0.view)
+            self.addChild($0)
+            $0.didMove(toParent: self)
         }
     }
     
-}
-
-
-// MARK: - Extensions
-
-extension TravelViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return travelViewModel.travelArray.value.count
+    private func showOnlyView(viewToShow: UIView) {
+        let views = [travelPlanVC.view,
+                     travelMemoryVC.view]
+        views.forEach { $0?.isHidden = $0 != viewToShow}
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
-        
-        
-        let travel = travelViewModel.travelArray.value[indexPath.row]
-        let travelPeriod = travelViewModel.returnPeriodString(startDate: travel.startDate, endDate: travel.endDate)
-        
-        cell.bind(image: travel.image, title: travel.title, period: travelPeriod, province: travel.province)
-        print("cell - province: \(String(describing: travel.province))")
-        return cell
-    }
-}
-
-
-extension TravelViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 96
+    // MARK: - objc functions
+    @objc func tappedButton(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            showOnlyView(viewToShow: travelPlanVC.view)
+            travelView.changeButtonUI(tapped: .plan)
+            
+        case 1:
+            showOnlyView(viewToShow: travelMemoryVC.view)
+            travelView.changeButtonUI(tapped: .memory)
+            
+        default:
+            showOnlyView(viewToShow: travelPlanVC.view)
+            travelView.changeButtonUI(tapped: .plan)
+        }
     }
 }
