@@ -66,9 +66,12 @@ final class TravelAddTitleView: BaseView {
     
     override func configureHierarchy() {
         
-        [pageTitleLabel, inputTitleLabel, textField, cancelButton, okButton, progressView].forEach {
-            self.addSubview($0)
-        }
+        [pageTitleLabel,
+         inputTitleLabel,
+         textField,
+         cancelButton,
+         okButton,
+         progressView].forEach { self.addSubview($0) }
         progressView.addSubview(loadingBar)
     }
     
@@ -114,7 +117,7 @@ final class TravelAddTitleView: BaseView {
             $0.height.equalTo(52)
         }
         
-        okButton.snp.makeConstraints {            
+        okButton.snp.makeConstraints {
             $0.leading.equalTo(cancelButton.snp.trailing).offset(15)
             $0.trailing.equalToSuperview().offset(-20)
             $0.bottom.equalToSuperview().offset(-31)

@@ -64,9 +64,12 @@ final class TravelAddPlaceView: BaseView {
     
     override func configureHierarchy() {
         
-        [pageTitleLabel, inputTitleLabel, placePickButton, cancelButton, okButton, progressView].forEach {
-            self.addSubview($0)
-        }
+        [pageTitleLabel, 
+         inputTitleLabel,
+         placePickButton,
+         cancelButton,
+         okButton,
+         progressView].forEach { self.addSubview($0)}
         progressView.addSubview(loadingBar)
     }
     
@@ -169,9 +172,8 @@ class AddLocationView: BaseView {
     }
     
     override func configureHierarchy() {
-        [guideLabel, tableView].forEach {
-            self.addSubview($0)
-        }
+        [guideLabel, 
+         tableView].forEach { self.addSubview($0) }
     }
     
     override func configureConstraints() {

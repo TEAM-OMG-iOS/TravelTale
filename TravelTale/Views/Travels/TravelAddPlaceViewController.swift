@@ -66,7 +66,7 @@ final class TravelAddPlaceViewController: BaseViewController {
         locationList.travelAddPlaceVC = self
         self.present(locationList, animated: true, completion: nil)
     }
-
+    
     @objc func tappedOkButton() {
         let nextVC = TravelAddCalenderViewController()
         self.navigationController?.pushViewController(nextVC, animated: false)
@@ -98,7 +98,7 @@ final class AddLocationViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        
     }
     
     // MARK: - Methods
