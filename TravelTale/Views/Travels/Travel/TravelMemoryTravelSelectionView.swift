@@ -11,7 +11,7 @@ class TravelMemoryTravelSelectionView: BaseView {
     
     // MARK: - properties
     let titleLabel = UILabel()
-    
+    let exitButtonView = ExitButtonView()
     
     // MARK: - methods
     

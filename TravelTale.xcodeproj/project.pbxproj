@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A95EB5B2C168E78007D575A /* TravelMemoryTravelSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95EB5A2C168E78007D575A /* TravelMemoryTravelSelectionView.swift */; };
+		1A95EB5D2C169153007D575A /* ExitButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95EB5C2C169153007D575A /* ExitButtonView.swift */; };
 		1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */; };
 		1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537882C105D0300A70D5E /* TravelViewModel.swift */; };
 		1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378A2C10612F00A70D5E /* Observable.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		1A95EB5A2C168E78007D575A /* TravelMemoryTravelSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryTravelSelectionView.swift; sourceTree = "<group>"; };
+		1A95EB5C2C169153007D575A /* ExitButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButtonView.swift; sourceTree = "<group>"; };
 		1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTableViewCell.swift; sourceTree = "<group>"; };
 		1AD537882C105D0300A70D5E /* TravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewModel.swift; sourceTree = "<group>"; };
 		1AD5378A2C10612F00A70D5E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				37CB88172C0DB66D002798BE /* GrayButton.swift */,
 				37CB88192C0DB677002798BE /* GreenButton.swift */,
 				1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */,
+				1A95EB5C2C169153007D575A /* ExitButtonView.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				37CB88072C0D7632002798BE /* PlaceDetailView.swift in Sources */,
 				378CEC222C0D649D00DF1C3F /* BaseView.swift in Sources */,
 				378CEC202C0D649000DF1C3F /* UIFont+Extension.swift in Sources */,
+				1A95EB5D2C169153007D575A /* ExitButtonView.swift in Sources */,
 				37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */,
 				378CEC242C0D64AB00DF1C3F /* BaseViewController.swift in Sources */,
 				378CEC1E2C0D644D00DF1C3F /* UIColor+Extension.swift in Sources */,
