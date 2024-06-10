@@ -147,14 +147,8 @@ final class TravelAddCalenderView: BaseView {
     }
     
     func startLoadingAnimation() {
-        self.loadingBar.snp.remakeConstraints {
-            $0.leading.equalToSuperview()
-            $0.top.equalToSuperview()
-            $0.height.equalToSuperview()
-            $0.width.equalToSuperview().multipliedBy(3.0 / 3.0)
-        }
         UIView.animate(withDuration: 2.0, delay: 0, animations: {
-            self.progressView.layoutIfNeeded()
+            self.loadingBar.transform = CGAffineTransform(scaleX: 3, y: 1)
             
         }, completion: nil)
     }
@@ -164,12 +158,12 @@ final class TravelAddCalenderView: BaseView {
         let startDate = calendar.date(byAdding: .month, value: 0, to: Date())!
         let endDate = calendar.date(byAdding: .year, value: 3, to: Date())!
         
-        var lowerDate: Date = defaultDate
+        let lowerDate: Date = defaultDate
         if let selectedStartDay {
             let lowerDate = calendar.date(from: DateComponents(year: selectedStartDay.month.year, month: selectedStartDay.month.month, day: selectedStartDay.day))!
         }
         
-        var upperDate: Date = defaultDate
+        let upperDate: Date = defaultDate
         if let selectedEndDay {
             let upperDate = calendar.date(from: DateComponents(year: selectedEndDay.month.year, month: selectedEndDay.month.month, day: selectedEndDay.day))!
         }
@@ -212,6 +206,8 @@ final class TravelAddCalenderView: BaseView {
     }
 }
 
+//MARK: - DayLabel
+
 struct DayLabel: CalendarItemViewRepresentable {
     
     struct InvariantViewProperties: Hashable {
@@ -243,6 +239,9 @@ struct DayLabel: CalendarItemViewRepresentable {
         
     }
 }
+
+//MARK: - MonthLabel
+
 struct MonthLabel: CalendarItemViewRepresentable {
     
     struct InvariantViewProperties: Hashable {
@@ -275,6 +274,8 @@ struct MonthLabel: CalendarItemViewRepresentable {
         view.text = "\(content.year)년 \(content.month.month)월"
     }
 }
+
+//MARK: - MonthDayLabel
 
 struct MonthDayLabel: CalendarItemViewRepresentable {
     
@@ -323,5 +324,4 @@ enum DayOfWeek: Int {
         case .sat: return "토"
         }
     }
-    
 }

@@ -57,10 +57,10 @@ final class TravelAddCalenderViewController: BaseViewController {
     }
     
     @objc func tappedCancelButton() {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false)
     }
     
     @objc func tappedToRootView() {
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: false)
     }
 }
