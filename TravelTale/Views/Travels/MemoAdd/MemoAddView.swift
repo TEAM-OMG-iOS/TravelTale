@@ -21,8 +21,8 @@ class MemoAddView: BaseView {
     }
     
     let memoTV = UITextView().then {
+        $0.configureView(color: .clear)
         $0.textAlignment = .natural
-        $0.backgroundColor = .clear
         $0.text = "메세지를 입력하세요"
         $0.textColor = .lightGray
     }
