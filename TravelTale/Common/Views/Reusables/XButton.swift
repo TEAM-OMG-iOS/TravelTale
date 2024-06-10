@@ -32,7 +32,7 @@ final class XButton: UIButton {
     
     func configureConstraints() {
         self.snp.makeConstraints {
-            $0.width.height.equalTo(30)
+            $0.width.height.equalTo(20)
         }
     }
 }
