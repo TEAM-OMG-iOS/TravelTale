@@ -72,7 +72,7 @@ class LightGreenButton: BaseView {
         }
     }
     
-    func bind(text: String) {
+    func configureButton(text: String = "") {
         label.text = text
     }
 }
