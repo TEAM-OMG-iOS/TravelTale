@@ -10,18 +10,18 @@ import UIKit
 class TravelPlanView: BaseView {
     
     // MARK: - properties
-    let addView = TravelAddView()
+    let addButtonView = LightGreenButtonView()
     let tableView = UITableView()
     
     
     // MARK: - methods
     override func configureUI() {
         super.configureUI()
-        addView.bind(text: "새 여행 추가")
+        addButtonView.bind(text: "새 여행 추가")
     }
     
     override func configureHierarchy() {
-        [addView,
+        [addButtonView,
          tableView].forEach { self.addSubview($0) }
     }
     
@@ -29,13 +29,13 @@ class TravelPlanView: BaseView {
         
         let horizontalInset = 20
         
-        addView.snp.makeConstraints {
+        addButtonView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(26)
             $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
         }
         
         tableView.snp.makeConstraints {
-            $0.top.equalTo(addView.snp.bottom).offset(26)
+            $0.top.equalTo(addButtonView.snp.bottom).offset(26)
             $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
             $0.bottom.equalToSuperview()
         }

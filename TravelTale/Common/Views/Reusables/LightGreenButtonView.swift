@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TravelAddView: BaseView {
+class LightGreenButtonView: BaseView {
     
     // MARK: - properties
     private let stackView = UIStackView().then {

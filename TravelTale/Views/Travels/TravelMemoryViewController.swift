@@ -58,7 +58,7 @@ class TravelMemoryViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        travelMemoryView.addView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
+        travelMemoryView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
     }
     
     override func bind() {

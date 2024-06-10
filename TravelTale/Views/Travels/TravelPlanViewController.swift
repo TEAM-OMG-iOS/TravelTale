@@ -72,7 +72,7 @@ class TravelPlanViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        travelPlanView.addView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
+        travelPlanView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
     }
     
     override func bind() {
