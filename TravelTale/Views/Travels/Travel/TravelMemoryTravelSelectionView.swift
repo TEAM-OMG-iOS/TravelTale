@@ -21,15 +21,26 @@ class TravelMemoryTravelSelectionView: BaseView {
     
     let tableView = UITableView()
     
+    let confirmButton = GreenButton().then {
+        $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "선택 완료")
+    }
+    
     // MARK: - methods
     override func configureHierarchy() {
-        self.addSubview(tableView)
+        [tableView,
+         confirmButton].forEach { self.addSubview($0) }
     }
     
     override func configureConstraints() {
         tableView.snp.makeConstraints {
-            $0.verticalEdges.equalTo(self.safeAreaLayoutGuide)
+            $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.horizontalEdges.equalToSuperview().inset(20)
+        }
+        
+        confirmButton.snp.makeConstraints {
+            $0.top.equalTo(tableView.snp.bottom).offset(20)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
 }
