@@ -18,7 +18,7 @@ final class DiscoveryCell: BaseCollectionViewCell {
     
     private let placeImageView = UIImageView().then {
         $0.configureView(color: .gray20, clipsToBounds: true, cornerRadius: 15)
-        $0.tintColor = UIColor.white
+        $0.tintColor = .white
     }
     
     private let placeLabel = UILabel().then {

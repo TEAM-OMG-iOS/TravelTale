@@ -14,15 +14,15 @@ final class DiscoveryView: BaseView {
         guard let chevron = UIImage(systemName: "chevron.down") else { return }
         
         $0.configuration = configureButton(titleString: "대구시 달서구",
-                                           titleFont: UIFont.pretendard(size: 18, weight: .bold),
+                                           titleFont: .pretendard(size: 18, weight: .bold),
                                            image: chevron,
                                            imagePlacement: .trailing,
                                            imagePadding: 8,
-                                           imgaeSize: 12)
+                                           imageSize: 12)
     }
     
     let searchButton = UIButton().then {
-        $0.setImage(UIImage(named: "search"), for: .normal)
+        $0.setImage( .search, for: .normal)
     }
     
     private let categoryStackView = UIStackView().then {
@@ -32,12 +32,15 @@ final class DiscoveryView: BaseView {
     lazy var touristSpotButton = UIButton().then {
         $0.configuration = configureButton(titleString: "관광지", image: .touristSpot)
     }
+    
     lazy var restaurantButton = UIButton().then {
         $0.configuration = configureButton(titleString: "음식점", image: .restaurant)
     }
+    
     lazy var accommodationButton = UIButton().then {
         $0.configuration = configureButton(titleString: "숙박", image: .accommodation)
     }
+    
     lazy var entertainmentButton = UIButton().then {
         $0.configuration = configureButton(titleString: "놀거리", image: .entertainment)
     }
@@ -98,22 +101,22 @@ final class DiscoveryView: BaseView {
     }
     
     private func configureButton(titleString: String,
-                                 titleFont: UIFont = UIFont.pretendard(size: 15, weight: .regular),
+                                 titleFont: UIFont = .pretendard(size: 15, weight: .regular),
                                  image: UIImage,
                                  imagePlacement: NSDirectionalRectEdge = .top,
                                  imagePadding: CGFloat = 4,
-                                 imgaeSize: CGFloat = 35) -> UIButton.Configuration {
+                                 imageSize: CGFloat = 35) -> UIButton.Configuration {
         var configuration = UIButton.Configuration.plain()
         
         var title = AttributedString.init(titleString)
         title.font = titleFont
         
         configuration.attributedTitle = title
-        configuration.baseForegroundColor = UIColor.black
+        configuration.baseForegroundColor = .black
         configuration.image = image
         configuration.imagePlacement = imagePlacement
         configuration.imagePadding = imagePadding
-        configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: imgaeSize)
+        configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: imageSize)
         
         return configuration
     }
