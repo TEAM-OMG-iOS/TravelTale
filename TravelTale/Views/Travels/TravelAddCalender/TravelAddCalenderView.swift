@@ -13,6 +13,9 @@ final class TravelAddCalenderView: BaseView {
     // MARK: - Properties
     
     private lazy var calenderView = CalendarView(initialContent: makeContent())
+    private var selectedStartDay: DayComponents? = nil
+    private var selectedEndDay: DayComponents? = nil
+    private var defaultDate = Date()
     
     private let pageTitleLabel = UILabel().then {
         $0.configureLabel(alignment: .center, color: .blueBlack100, font: .oaGothic(size: 18, weight: .heavy), text: "새 여행 추가")
@@ -52,7 +55,6 @@ final class TravelAddCalenderView: BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -157,13 +159,34 @@ final class TravelAddCalenderView: BaseView {
         let startDate = calendar.date(byAdding: .month, value: 0, to: Date())!
         let endDate = calendar.date(byAdding: .year, value: 3, to: Date())!
         
+        var lowerDate: Date = defaultDate
+        if let selectedStartDay {
+            let lowerDate = calendar.date(from: DateComponents(year: selectedStartDay.month.year, month: selectedStartDay.month.month, day: selectedStartDay.day))!
+        }
+        
+        var upperDate: Date = defaultDate
+        if let selectedEndDay {
+            let upperDate = calendar.date(from: DateComponents(year: selectedEndDay.month.year, month: selectedEndDay.month.month, day: selectedEndDay.day))!
+        }
+        
+        let dateRangeToHighlight = lowerDate...upperDate
+        
         return CalendarViewContent (calendar: calendar,
                                     visibleDateRange: startDate...endDate,
                                     monthsLayout: .vertical(options: VerticalMonthsLayoutOptions())
         )
-        
         .dayItemProvider { day in
             var invariantViewProperties = DayLabel.InvariantViewProperties(font: UIFont.pretendard(size: 15, weight: .medium), textColor: .gray70, backgrgoundColor: .clear)
+            
+            if day == self.selectedStartDay {
+                invariantViewProperties.textColor = .white
+                invariantViewProperties.backgrgoundColor = .green80
+            } else if day == self.selectedEndDay {
+                invariantViewProperties.textColor = .white
+                invariantViewProperties.backgrgoundColor = .green80
+            } else if dateRangeToHighlight.contains(calendar.date(from: DateComponents(year: day.month.year, month: day.month.month, day: day.day))!) {
+                invariantViewProperties.textColor = .green10
+            }
             
             return DayLabel.calendarItemModel(invariantViewProperties: invariantViewProperties, content: .init(day: day))
         }
