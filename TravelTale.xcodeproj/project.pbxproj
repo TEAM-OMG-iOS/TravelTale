@@ -215,11 +215,11 @@
 		378CEC1A2C0D633700DF1C3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4D0E3CE82C12E8CC0089D6C1 /* Common */,
 				378CEC292C0D65E700DF1C3F /* Travels */,
 				378CEC2B2C0D66E600DF1C3F /* Discoveries */,
 				378CEC2A2C0D660400DF1C3F /* MyPages */,
 				378CEC3B2C0D6ADA00DF1C3F /* TabBar */,
-				4D0E3CE82C12E8CC0089D6C1 /* Commons */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -377,15 +377,12 @@
 			path = OAGothic;
 			sourceTree = "<group>";
 		};
-		4D0E3CE82C12E8CC0089D6C1 /* Commons */ = {
+		4D0E3CE82C12E8CC0089D6C1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */,
-				4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */,
-				4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */,
-				4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */,
+				4D0E3CF12C1722C60089D6C1 /* AddSchedule */,
 			);
-			path = Commons;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		4D0E3CE92C12E9240089D6C1 /* MemoAdd */ = {
@@ -402,6 +399,17 @@
 				4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */,
 			);
 			path = PlaceAddEdit;
+			sourceTree = "<group>";
+		};
+		4D0E3CF12C1722C60089D6C1 /* AddSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */,
+				4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */,
+				4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */,
+				4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */,
+			);
+			path = AddSchedule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
