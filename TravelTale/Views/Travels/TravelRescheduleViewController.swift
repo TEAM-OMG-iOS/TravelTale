@@ -17,7 +17,7 @@ final class TravelRescheduleViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func configureStyle() { }

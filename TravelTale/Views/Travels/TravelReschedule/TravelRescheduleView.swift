@@ -76,9 +76,14 @@ final class TravelRescheduleView: BaseView {
     }
     
     override func configureHierarchy() {
-        [pageTitleLabel, travelTitleLabel, textField, travelPlaceLabel, placePickButton, travelDateLabel, datePickButton, okButton].forEach {
-            self.addSubview($0)
-        }
+        [pageTitleLabel, 
+         travelTitleLabel,
+         textField,
+         travelPlaceLabel,
+         placePickButton,
+         travelDateLabel,
+         datePickButton,
+         okButton].forEach { self.addSubview($0)}
     }
     
     override func configureConstraints() {
