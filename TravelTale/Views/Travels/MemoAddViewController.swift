@@ -20,7 +20,7 @@ class MemoAddViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureDelegate()
+        setAddTarget()
         configureNavigationBar()
         checkTextViewContent()
     }
@@ -36,11 +36,15 @@ class MemoAddViewController: BaseViewController {
     
     override func bind() { }
     
+    private func setAddTarget() {
+        memoAddView.completeBtn.addTarget(self, action: #selector(tapCompleteButton), for: .touchUpInside)
+    }
+    
     private func configureNavigationBar() {
         navigationItem.title = "메모 추가"
         
         let xbutton = XButton()
-        xbutton.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
+        xbutton.addTarget(self, action: #selector(tapBackButton), for: .touchUpInside)
         let exitButtonItem = UIBarButtonItem(customView: xbutton)
         navigationItem.rightBarButtonItem = exitButtonItem
         
@@ -52,8 +56,13 @@ class MemoAddViewController: BaseViewController {
         }
     }
     
-    @objc private func handleBackButton() {
+    @objc private func tapBackButton() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func tapCompleteButton() {
+        navigationController?.popViewController(animated: true)
+        // MARK: - TODO 메모 데이터 저장 로직 구현
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,7 +79,7 @@ class MemoAddViewController: BaseViewController {
         } else {
             memoAddView.completeBtn.isEnabled = true
             memoAddView.completeBtn.backgroundColor = .green100
-            // MARK: - TODO 메모 데이터 저장
+
         }
     }
 }
