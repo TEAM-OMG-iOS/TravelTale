@@ -19,7 +19,7 @@ class TravelTableViewCell: BaseTableViewCell {
     }
     
     private let thumbnailImageView = UIImageView().then {
-        $0.configureView(cornerRadius: 16)
+        $0.configureView(color: .gray20, cornerRadius: 16)
         $0.contentMode = .scaleAspectFill
     }
     
@@ -99,16 +99,13 @@ class TravelTableViewCell: BaseTableViewCell {
         }
     }
     
-    func bind(travel: Travel, period: String?) {
+    func bind(travel: Travel, period: String) {
         if let image = travel.image {
             thumbnailImageView.image = UIImage(data: image)
-        } else {
-            thumbnailImageView.backgroundColor = .gray20
-            thumbnailImageView.tintColor = .white
         }
         
         titleLabel.text = travel.title
-        periodLabel.text = period ?? "여행 기간을 불러올 수 없습니다."
+        periodLabel.text = period
         provinceNameLabel.text = travel.province ?? "미정"
     }
 }
