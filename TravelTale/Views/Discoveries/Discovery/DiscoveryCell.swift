@@ -42,6 +42,10 @@ final class DiscoveryCell: BaseCollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
+        placeImageView.image = nil
+        placeLabel.text = nil
+        placeAddressLabel.text = nil
     }
     
     // MARK: - methods
