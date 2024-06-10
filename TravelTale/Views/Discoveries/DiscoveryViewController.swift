@@ -28,6 +28,14 @@ final class DiscoveryViewController: BaseViewController {
         discoveryView.collectionView.dataSource = self
         discoveryView.collectionView.register(DiscoveryCell.self, forCellWithReuseIdentifier: DiscoveryCell.identifier)
     }
+    
+    override func configureAddTarget() {
+        discoveryView.regionButton.addTarget(self, action: #selector(tappedRegionButton), for: .touchUpInside)
+    }
+    
+    @objc private func tappedRegionButton() {
+        // todo : 지역 설정 모달 띄우기
+    }
 }
 
 // MARK: - extension
