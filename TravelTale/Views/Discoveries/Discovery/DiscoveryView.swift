@@ -10,7 +10,16 @@ import UIKit
 final class DiscoveryView: BaseView {
     
     // MARK: - properties
-    let regionButton = UIButton()
+    lazy var regionButton = UIButton().then {
+        guard let chevron = UIImage(systemName: "chevron.down") else { return }
+        
+        $0.configuration = configureButton(titleString: "대구시 달서구",
+                                           titleFont: UIFont.pretendard(size: 18, weight: .bold),
+                                           image: chevron,
+                                           imagePlacement: .trailing,
+                                           imagePadding: 8,
+                                           imgaeSize: 12)
+    }
     
     let searchButton = UIButton().then {
         $0.setImage(UIImage(named: "search"), for: .normal)
@@ -20,10 +29,18 @@ final class DiscoveryView: BaseView {
         $0.distribution = .fillEqually
     }
     
-    let touristSpotButton = UIButton()
-    let restaurantButton = UIButton()
-    let accommodationButton = UIButton()
-    let entertainmentButton = UIButton()
+    lazy var touristSpotButton = UIButton().then {
+        $0.configuration = configureButton(titleString: "관광지", image: .touristSpot)
+    }
+    lazy var restaurantButton = UIButton().then {
+        $0.configuration = configureButton(titleString: "음식점", image: .restaurant)
+    }
+    lazy var accommodationButton = UIButton().then {
+        $0.configuration = configureButton(titleString: "숙박", image: .accommodation)
+    }
+    lazy var entertainmentButton = UIButton().then {
+        $0.configuration = configureButton(titleString: "놀거리", image: .entertainment)
+    }
     
     private let recentlyAddedLabel = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 18, weight: .bold), text: "최근 등록된 플레이스")
@@ -37,27 +54,6 @@ final class DiscoveryView: BaseView {
     private let minimumLineSpacing: CGFloat = 20
     
     // MARK: - methods
-    override func configureUI() {
-        super.configureUI()
-        
-        guard let chevron = UIImage(systemName: "chevron.down"),
-              let touristSpot = UIImage(named: "tourist_spot"),
-              let restaurant = UIImage(named: "restaurant"),
-              let accommodation = UIImage(named: "accommodation"),
-              let entertainment = UIImage(named: "entertainment") else { return }
-        
-        regionButton.configuration = configureButton(titleString: "대구시 달서구",
-                                                     titleFont: UIFont.pretendard(size: 18, weight: .bold),
-                                                     image: chevron,
-                                                     imagePlacement: .trailing,
-                                                     imagePadding: 8,
-                                                     imgaeSize: 12)
-        touristSpotButton.configuration = configureButton(titleString: "관광지", image: touristSpot)
-        restaurantButton.configuration = configureButton(titleString: "음식점", image: restaurant)
-        accommodationButton.configuration = configureButton(titleString: "숙박", image: accommodation)
-        entertainmentButton.configuration = configureButton(titleString: "놀거리", image: entertainment)
-    }
-    
     override func configureHierarchy() {
         self.addSubview(regionButton)
         self.addSubview(searchButton)
