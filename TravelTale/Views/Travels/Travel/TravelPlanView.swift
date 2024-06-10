@@ -10,7 +10,7 @@ import UIKit
 class TravelPlanView: BaseView {
     
     // MARK: - properties
-    let addButtonView = LightGreenButtonView()
+    let addButtonView = LightGreenButton()
     let tableView = UITableView()
     
     
