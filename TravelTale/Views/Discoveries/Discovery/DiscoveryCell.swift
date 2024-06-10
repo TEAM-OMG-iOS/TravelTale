@@ -21,19 +21,11 @@ final class DiscoveryCell: BaseCollectionViewCell {
     }
     
     private let placeLabel = UILabel().then {
-        $0.text = "설빙 석촌호수 동호점"
-        $0.textColor = .black
-        $0.textAlignment = .left
-        $0.numberOfLines = 0
-        $0.font = .pretendard(size: 15, weight: .semibold)
+        $0.configureLabel(font: .pretendard(size: 15, weight: .semibold), numberOfLines: 3)
     }
     
     private let placeAddressLabel = UILabel().then {
-        $0.text = "서울 송파구 석촌호수로 278"
-        $0.textColor = .black
-        $0.textAlignment = .left
-        $0.numberOfLines = 0
-        $0.font = .pretendard(size: 10, weight: .regular)
+        $0.configureLabel(font: .pretendard(size: 10, weight: .regular), numberOfLines: 2)
     }
     
     // MARK: - life cycles
@@ -62,19 +54,23 @@ final class DiscoveryCell: BaseCollectionViewCell {
         }
         
         placeImageView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(placeImageView.snp.width).multipliedBy(0.7738095238)
+            $0.top.equalTo(placeContainerView.snp.top)
+            $0.leading.equalTo(placeContainerView.snp.leading)
+            $0.trailing.equalTo(placeContainerView.snp.trailing)
+            $0.height.equalTo(placeImageView.snp.width).multipliedBy(0.78)
         }
         
         placeLabel.snp.makeConstraints {
             $0.top.equalTo(placeImageView.snp.bottom).offset(12)
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.equalTo(placeContainerView.snp.leading)
+            $0.trailing.equalTo(placeContainerView.snp.trailing)
         }
         
         placeAddressLabel.snp.makeConstraints {
             $0.top.equalTo(placeLabel.snp.bottom).offset(12)
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.leading.equalTo(placeContainerView.snp.leading)
+            $0.trailing.equalTo(placeContainerView.snp.trailing)
+            $0.bottom.equalTo(placeContainerView.snp.bottom)
         }
     }
 }

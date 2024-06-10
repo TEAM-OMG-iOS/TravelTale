@@ -31,7 +31,8 @@ final class DiscoveryView: BaseView {
         $0.textColor = UIColor.black
     }
     
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    let collectionView = UICollectionView(frame: .zero,
+                                          collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.contentInset = UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
     }
     
