@@ -13,7 +13,7 @@ final class TravelAddCalenderView: BaseView {
     // MARK: - Properties
     
     private lazy var calenderView = CalendarView(initialContent: makeContent())
-
+    
     private let pageTitleLabel = UILabel().then {
         $0.configureLabel(alignment: .center, color: .blueBlack100, font: .oaGothic(size: 18, weight: .heavy), text: "새 여행 추가")
     }
@@ -151,4 +151,149 @@ final class TravelAddCalenderView: BaseView {
             
         }, completion: nil)
     }
+    private func makeContent() -> CalendarViewContent {
+        let calendar = Calendar.current
+        
+        let startDate = calendar.date(byAdding: .month, value: 0, to: Date())!
+        let endDate = calendar.date(byAdding: .year, value: 3, to: Date())!
+        
+        return CalendarViewContent (calendar: calendar,
+                                    visibleDateRange: startDate...endDate,
+                                    monthsLayout: .vertical(options: VerticalMonthsLayoutOptions())
+        )
+        
+        .dayItemProvider { day in
+            var invariantViewProperties = DayLabel.InvariantViewProperties(font: UIFont.pretendard(size: 15, weight: .medium), textColor: .gray70, backgrgoundColor: .clear)
+            
+            return DayLabel.calendarItemModel(invariantViewProperties: invariantViewProperties, content: .init(day: day))
+        }
+        
+        .monthHeaderItemProvider { month in
+            MonthLabel.calendarItemModel(invariantViewProperties: .init(font: UIFont.pretendard(size: 16, weight: .bold), textColor: .blueBlack100), content: .init(month: month))
+        }
+        
+        .dayOfWeekItemProvider{ month, weekdayIndex in
+            let dayOfWeek = DayOfWeek(rawValue: weekdayIndex) ?? .sun
+            return MonthDayLabel.calendarItemModel(invariantViewProperties: .init(font: UIFont.pretendard(size: 15, weight: .medium), textColor: .gray70), content: .init(dayOfWeek: dayOfWeek)
+            )
+        }
+        
+        .interMonthSpacing(30)
+        .verticalDayMargin(8)
+        .horizontalDayMargin(8)
+    }
+}
+
+struct DayLabel: CalendarItemViewRepresentable {
+    
+    struct InvariantViewProperties: Hashable {
+        let font: UIFont
+        var textColor: UIColor
+        var backgrgoundColor: UIColor
+    }
+    
+    struct Content: Equatable {
+        let day: DayComponents
+    }
+    
+    static func makeView(withInvariantViewProperties invariantViewProperties: InvariantViewProperties) -> UILabel {
+        let label = UILabel()
+    
+        label.font = invariantViewProperties.font
+        label.textColor = invariantViewProperties.textColor
+        label.backgroundColor = invariantViewProperties.backgrgoundColor
+        
+        label.textAlignment = .center
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 6
+        
+        return label
+    }
+    
+    static func setContent(_ content: Content, on view: UILabel) {
+        view.text = "\(content.day.day)"
+        
+    }
+}
+struct MonthLabel: CalendarItemViewRepresentable {
+    
+    struct InvariantViewProperties: Hashable {
+        let font: UIFont
+        let textColor: UIColor
+    }
+    
+    struct Content: Equatable {
+        let month: MonthComponents
+        let year: Int
+        
+        init(month: MonthComponents) {
+            self.month = month
+            self.year = month.year
+        }
+    }
+    
+    static func makeView(withInvariantViewProperties invariantViewProperties: InvariantViewProperties) -> UILabel {
+        let label = UILabel()
+    
+        label.font = invariantViewProperties.font
+        label.textColor = invariantViewProperties.textColor
+       
+        label.textAlignment = .left
+        
+        return label
+    }
+    
+    static func setContent(_ content: Content, on view: UILabel) {
+        view.text = "\(content.year)년 \(content.month.month)월"
+    }
+}
+
+struct MonthDayLabel: CalendarItemViewRepresentable {
+    
+    struct InvariantViewProperties: Hashable {
+        let font: UIFont
+        let textColor: UIColor
+    }
+    
+    struct Content: Equatable{
+        let dayOfWeek: DayOfWeek
+    }
+    
+    static func makeView(withInvariantViewProperties invariantViewProperties: InvariantViewProperties) -> UILabel {
+        let label = UILabel()
+        
+        label.font = invariantViewProperties.font
+        label.textColor = invariantViewProperties.textColor
+        
+        label.textAlignment = .center
+        
+        return label
+    }
+    
+    static func setContent(_ content: Content, on view: UILabel) {
+        view.text = content.dayOfWeek.text
+        
+    }
+}
+enum DayOfWeek: Int {
+    case sun = 0
+    case mon
+    case tue
+    case wed
+    case thr
+    case fri
+    case sat
+    
+    var text: String {
+        switch self {
+        case .sun: return "일"
+        case .mon: return "월"
+        case .tue: return "화"
+        case .wed: return "수"
+        case .thr: return "목"
+        case .fri: return "금"
+        case .sat: return "토"
+        }
+    }
+    
 }
