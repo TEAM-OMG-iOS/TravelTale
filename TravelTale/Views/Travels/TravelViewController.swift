@@ -54,7 +54,7 @@ class TravelViewController: BaseViewController {
         ]
         
         childVCs.forEach {
-            travelView.addChildView($0.view)
+            travelView.addConvertableView($0.view)
             self.addChild($0)
             $0.didMove(toParent: self)
         }

@@ -78,7 +78,7 @@ class TravelView: BaseView {
         }
     }
     
-    func addChildView(_ newView: UIView) {
+    func addConvertableView(_ newView: UIView) {
         convertableView.addSubview(newView)
         newView.snp.makeConstraints {
             $0.edges.equalToSuperview()
