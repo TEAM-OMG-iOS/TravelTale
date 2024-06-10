@@ -69,9 +69,14 @@ final class TravelAddCalenderView: BaseView {
     
     override func configureHierarchy() {
         
-        [pageTitleLabel, inputTitleLabel, startLabel, endLabel, cancelButton, okButton, progressView, calenderView].forEach {
-            self.addSubview($0)
-        }
+        [pageTitleLabel,
+         inputTitleLabel,
+         startLabel,
+         endLabel,
+         cancelButton,
+         okButton,
+         progressView,
+         calenderView].forEach { self.addSubview($0)}
         progressView.addSubview(loadingBar)
     }
     
@@ -104,7 +109,7 @@ final class TravelAddCalenderView: BaseView {
             $0.trailing.equalToSuperview().offset(-20)
             $0.height.equalTo(21)
         }
-
+        
         startLabel.snp.makeConstraints {
             $0.top.equalTo(inputTitleLabel.snp.bottom).offset(24)
             $0.leading.equalToSuperview().offset(32)
@@ -221,7 +226,7 @@ struct DayLabel: CalendarItemViewRepresentable {
     
     static func makeView(withInvariantViewProperties invariantViewProperties: InvariantViewProperties) -> UILabel {
         let label = UILabel()
-    
+        
         label.font = invariantViewProperties.font
         label.textColor = invariantViewProperties.textColor
         label.backgroundColor = invariantViewProperties.backgrgoundColor
@@ -257,10 +262,10 @@ struct MonthLabel: CalendarItemViewRepresentable {
     
     static func makeView(withInvariantViewProperties invariantViewProperties: InvariantViewProperties) -> UILabel {
         let label = UILabel()
-    
+        
         label.font = invariantViewProperties.font
         label.textColor = invariantViewProperties.textColor
-       
+        
         label.textAlignment = .left
         
         return label
