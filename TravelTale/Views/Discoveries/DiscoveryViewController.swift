@@ -31,10 +31,15 @@ final class DiscoveryViewController: BaseViewController {
     
     override func configureAddTarget() {
         discoveryView.regionButton.addTarget(self, action: #selector(tappedRegionButton), for: .touchUpInside)
+        discoveryView.searchButton.addTarget(self, action: #selector(tappedSearchButton), for: .touchUpInside)
     }
     
     @objc private func tappedRegionButton() {
         // todo : 지역 설정 모달 띄우기
+    }
+    
+    @objc private func tappedSearchButton() {
+        // todo : 검색 창 Navi로 띄우기
     }
 }
 
