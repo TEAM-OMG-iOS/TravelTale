@@ -121,5 +121,14 @@ final class TravelAddTitleView: BaseView {
             $0.height.equalTo(52)
         }
     }
-
+    
+    @objc func buttonColorChanged() {
+        if textField.text?.isEmpty != true {
+            okButton.isEnabled = true
+            okButton.backgroundColor = .green100
+        } else {
+            okButton.isEnabled = false
+            okButton.backgroundColor = .green10
+        }
+    }
 }
