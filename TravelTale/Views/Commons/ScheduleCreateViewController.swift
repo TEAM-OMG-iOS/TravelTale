@@ -15,6 +15,8 @@ final class ScheduleCreateViewController: BaseViewController {
         $0.memoTV.textColor = .lightGray
     }
     
+    let dayPopoverVC = DaySelectPopover()
+    
     // MARK: - life cycles
     override func loadView() {
         super.loadView()
@@ -28,6 +30,7 @@ final class ScheduleCreateViewController: BaseViewController {
         configureAddTarget()
         bind()
         configureNavigationBar()
+        setAddTarget()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,6 +61,10 @@ final class ScheduleCreateViewController: BaseViewController {
         }
     }
     
+    private func setAddTarget() {
+        scheduleCreateView.scheduleBtn.addTarget(self, action: #selector(tappedScheduleBtn), for: .touchUpInside)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             view.endEditing(true)
         }
@@ -66,7 +73,7 @@ final class ScheduleCreateViewController: BaseViewController {
             navigationController?.popViewController(animated: true)
         }
     
-//    @objc private func
+    
 }
 // MARK: - extensions
 extension ScheduleCreateViewController: UITextViewDelegate {
@@ -82,5 +89,21 @@ extension ScheduleCreateViewController: UITextViewDelegate {
             textView.text = "메세지를 입력하세요"
             textView.textColor = UIColor.lightGray
         }
+    }
+}
+
+extension ScheduleCreateViewController: UIPopoverPresentationControllerDelegate {
+    @objc private func tappedScheduleBtn() {
+        dayPopoverVC.modalPresentationStyle = .popover
+        dayPopoverVC.preferredContentSize = .init(width: 300, height: 200)
+        dayPopoverVC.popoverPresentationController?.sourceView = scheduleCreateView.scheduleBtn
+        dayPopoverVC.popoverPresentationController?.sourceRect = CGRect(origin: CGPoint(x: scheduleCreateView.scheduleBtn.bounds.midX, y: scheduleCreateView.scheduleBtn.bounds.midY), size: .zero)
+        dayPopoverVC.popoverPresentationController?.permittedArrowDirections = .any
+        dayPopoverVC.popoverPresentationController?.delegate = self
+        present(dayPopoverVC, animated: true)
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 }
