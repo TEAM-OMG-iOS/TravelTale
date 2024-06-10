@@ -228,7 +228,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="myO-bl-qwB">
-                                        <rect key="frame" x="16" y="33.333333333333314" width="321" height="133.66666666666666"/>
+                                        <rect key="frame" x="16" y="37.333333333333314" width="321" height="129.66666666666666"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
                                             <fragment>
@@ -249,7 +249,7 @@
                                     <constraint firstItem="T3q-q8-U2r" firstAttribute="leading" secondItem="SaE-cv-40y" secondAttribute="leading" constant="16" id="N8G-Vr-jdT"/>
                                     <constraint firstAttribute="bottom" secondItem="myO-bl-qwB" secondAttribute="bottom" constant="10" id="REC-ch-Kb2"/>
                                     <constraint firstItem="T3q-q8-U2r" firstAttribute="top" secondItem="SaE-cv-40y" secondAttribute="top" constant="14" id="TtN-vy-dcj"/>
-                                    <constraint firstItem="myO-bl-qwB" firstAttribute="top" secondItem="T3q-q8-U2r" secondAttribute="bottom" id="dfo-cQ-OQo"/>
+                                    <constraint firstItem="myO-bl-qwB" firstAttribute="top" secondItem="T3q-q8-U2r" secondAttribute="bottom" constant="4" id="dfo-cQ-OQo"/>
                                     <constraint firstAttribute="height" constant="177" id="yLm-FM-qTS"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -539,7 +539,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B3p-co-nlB">
-                                        <rect key="frame" x="16" y="33.333333333333314" width="321" height="133.66666666666666"/>
+                                        <rect key="frame" x="16" y="37.333333333333314" width="321" height="129.66666666666666"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
                                             <fragment>
@@ -561,7 +561,7 @@
                                     <constraint firstItem="OFT-eu-LeE" firstAttribute="top" secondItem="075-OT-8PQ" secondAttribute="top" constant="14" id="b0o-Tk-Huy"/>
                                     <constraint firstAttribute="bottom" secondItem="B3p-co-nlB" secondAttribute="bottom" constant="10" id="rcj-6N-lsq"/>
                                     <constraint firstItem="B3p-co-nlB" firstAttribute="leading" secondItem="OFT-eu-LeE" secondAttribute="leading" id="xgk-gF-o0P"/>
-                                    <constraint firstItem="B3p-co-nlB" firstAttribute="top" secondItem="OFT-eu-LeE" secondAttribute="bottom" id="zLM-fj-5Nm"/>
+                                    <constraint firstItem="B3p-co-nlB" firstAttribute="top" secondItem="OFT-eu-LeE" secondAttribute="bottom" constant="4" id="zLM-fj-5Nm"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
