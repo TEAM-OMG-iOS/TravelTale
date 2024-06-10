@@ -13,83 +13,67 @@ final class ScheduleCreateView: BaseView {
     
     // MARK: - properties
     let loadingBackBar = UIView().then {
-        $0.backgroundColor = .gray10
-        $0.layer.cornerRadius = 4
+        $0.configureView(color: .gray10, cornerRadius: 4)
     }
     
     let loadingBar = UIView().then {
-        $0.backgroundColor = .green80
-        $0.layer.cornerRadius = 4
+        $0.configureView(color: .green80, cornerRadius: 4)
     }
     
     let ViewLabel = UILabel().then {
-        $0.text = "일정을 생성해주세요"
-        $0.font = UIFont(name: "Pretendard-SemiBold", size: 18)
+        $0.configureLabel(font: UIFont(name: "Pretendard-SemiBold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold), text: "일정을 생성해주세요")
     }
     
     let placeView = UIView().then {
-        $0.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00)
-        $0.layer.cornerRadius = 20
+        $0.configureView(color: UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00), cornerRadius: 20)
     }
     
     let placeTitle = UILabel().then {
-        $0.text = "장소"
-        $0.font = UIFont(name: "Pretendard-Bold", size: 16)
+        $0.configureLabel(font: UIFont(name: "Pretendard-Bold", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .bold), text: "장소")
     }
     
     let placeContents = UILabel().then {
-        $0.text = "설빙 석촌호수 동호점"
-        $0.font = UIFont(name: "Pretendard-Regular", size: 16)
+        $0.configureLabel(font: UIFont(name: "Pretendard-Regular", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .regular), text: "설빙 석촌호수 동호점")
     }
     
     let scheduleView = UIView().then {
-        $0.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00)
-        $0.layer.cornerRadius = 20
+        $0.configureView(color: UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00), cornerRadius: 20)
     }
     
     let scheduleBtn = UIButton().then {
-        $0.backgroundColor = .clear
+        $0.configureView(color: .clear)
     }
     
     let scheduleTitle = UILabel().then {
-        $0.text = "일정"
-        $0.font = UIFont(name: "Pretendard-Bold", size: 16)
+        $0.configureLabel(font: UIFont(name: "Pretendard-Bold", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .bold), text: "일정")
     }
     
     let scheduleContents = UILabel().then {
-        $0.text = "일정을 선택하세요"
-        $0.font = UIFont(name: "Pretendard-Regular", size: 16)
-        $0.textColor = UIColor(red: 0.70, green: 0.70, blue: 0.70, alpha: 1.00)
+        $0.configureLabel(color: UIColor(red: 0.70, green: 0.70, blue: 0.70, alpha: 1.00), font: UIFont(name: "Pretendard-Regular", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .regular), text: "일정을 선택하세요")
     }
     
     let startTimeView = UIView().then {
-        $0.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00)
-        $0.layer.cornerRadius = 20
+        $0.configureView(color: UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00), cornerRadius: 20)
     }
     
     let startTiemBtn = UIButton().then {
-        $0.backgroundColor = .clear
+        $0.configureView(color: .clear)
     }
     
     let startTimeTitle = UILabel().then {
-        $0.text = "시작 시간"
-        $0.font = UIFont(name: "Pretendard-Bold", size: 16)
+        $0.configureLabel(font: UIFont(name: "Pretendard-Bold", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .bold), text: "시작 시간")
     }
     
     let startTimeContents = UILabel().then {
-        $0.text = "시간을 선택하세요"
-        $0.font = UIFont(name: "Pretendard-Regular", size: 16)
-        $0.textColor = UIColor(red: 0.70, green: 0.70, blue: 0.70, alpha: 1.00)
+        $0.configureLabel(color: UIColor(red: 0.70, green: 0.70, blue: 0.70, alpha: 1.00), font: UIFont(name: "Pretendard-Regular", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .regular), text: "시간을 선택하세요")
     }
     
     let memoView = UIView().then {
-        $0.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00)
-        $0.layer.cornerRadius = 20
+        $0.configureView(color: UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00), cornerRadius: 20)
     }
     
     let memoTitle = UILabel().then {
-        $0.text = "메모"
-        $0.font = UIFont(name: "Pretendard-Bold", size: 16)
+        $0.configureLabel(font: UIFont(name: "Pretendard-Bold", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .bold), text: "메모")
     }
     
     let memoTV = UITextView().then {
@@ -98,22 +82,17 @@ final class ScheduleCreateView: BaseView {
     }
     
     let btnStackView = UIStackView().then {
-        $0.backgroundColor = .clear
+        $0.configureView(color: .clear)
         $0.axis = .horizontal
         $0.spacing = 15
     }
     
     let cancelBtn = GrayButton().then {
-        $0.setTitle("취소", for: .normal)
-        $0.titleLabel?.font = UIFont(name: "Pretendard-SemiBold", size: 18)
-        $0.titleLabel?.textColor = .white
+        $0.configureButton(fontColor: .white, font: UIFont(name: "Pretendard-SemiBold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold), text: "취소")
     }
     
     let nextBtn = GreenButton().then {
-        $0.backgroundColor = .green10
-        $0.setTitle("일정 생성하러 가기", for: .normal)
-        $0.titleLabel?.font = UIFont(name: "Pretendard-SemiBold", size: 18)
-        $0.titleLabel?.textColor = .white
+        $0.configureButton(fontColor: .white, font: UIFont(name: "Pretendard-SemiBold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold), text: "일정 생성하러 가기")
     }
     
     // MARK: - life cycles
@@ -130,7 +109,6 @@ final class ScheduleCreateView: BaseView {
     
     // MARK: - methods
     override func configureUI() {
-        self.backgroundColor = .white
     }
     
     override func configureHierarchy() {

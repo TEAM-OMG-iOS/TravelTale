@@ -13,42 +13,33 @@ final class TravelSelectView: BaseView {
     
     // MARK: - properties
     let loadingBackBar = UIView().then {
-        $0.backgroundColor = .gray10
-        $0.layer.cornerRadius = 4
+        $0.configureView(color: .gray10, cornerRadius: 4)
     }
     
     let loadingBar = UIView().then {
-        $0.backgroundColor = .green80
-        $0.layer.cornerRadius = 4
+        $0.configureView(color: .gray80, cornerRadius: 4)
     }
     
     let tableViewLabel = UILabel().then {
-        $0.text = "여행을 선택해주세요"
-        $0.font = UIFont(name: "Pretendard-SemiBold", size: 18)
+        $0.configureLabel(font: UIFont(name: "Pretendard-SemiBold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold), text: "여행을 선택해주세요")
     }
     
     let tableView = UITableView().then {
-        $0.backgroundColor = .red
+        $0.configureView(color: .gray10, cornerRadius: 4)
     }
     
     let btnStackView = UIStackView().then {
-        $0.backgroundColor = .clear
+        $0.configureView(color: .clear)
         $0.axis = .horizontal
         $0.spacing = 15
     }
     
     let cancelBtn = GrayButton().then {
-        $0.setTitle("취소", for: .normal)
-        $0.titleLabel?.font = UIFont(name: "Pretendard-SemiBold", size: 18)
-        
-        $0.titleLabel?.textColor = .white
+        $0.configureButton(fontColor: .white, font: UIFont(name: "Pretendard-SemiBold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold), text: "취소")
     }
     
     let nextBtn = GreenButton().then {
-        $0.backgroundColor = .green10
-        $0.setTitle("일정 생성하러 가기", for: .normal)
-        $0.titleLabel?.font = UIFont(name: "Pretendard-SemiBold", size: 18)
-        $0.titleLabel?.textColor = .white
+        $0.configureButton(fontColor: .white, font: UIFont(name: "Pretendard-SemiBold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold), text: "일정 생성하러 가기")
     }
     
     
