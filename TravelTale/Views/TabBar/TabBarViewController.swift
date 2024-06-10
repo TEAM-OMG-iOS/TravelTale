@@ -20,7 +20,7 @@ final class TabBarViewController: UITabBarController {
     
     // MARK: - methods
     private func configureViewControllers() {
-        let travelViewController = TravelViewController()
+        let travelViewController = UINavigationController(rootViewController: TravelViewController())
         let discoveryViewController = DiscoveryViewController()
         let myPageViewController = MyPageViewController()
         let viewControllers = [travelViewController, discoveryViewController, myPageViewController]
