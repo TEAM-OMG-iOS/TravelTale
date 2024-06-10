@@ -11,6 +11,14 @@
 		1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537882C105D0300A70D5E /* TravelViewModel.swift */; };
 		1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378A2C10612F00A70D5E /* Observable.swift */; };
 		1AD5378E2C10838A00A70D5E /* Travel(temporary).swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */; };
+		1AD537902C12CF4900A70D5E /* TravelPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378F2C12CF4900A70D5E /* TravelPlanView.swift */; };
+		1AD537942C12DCC600A70D5E /* LightGreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537932C12DCC600A70D5E /* LightGreenButton.swift */; };
+		1AD537962C12E5E300A70D5E /* TravelPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537952C12E5E300A70D5E /* TravelPlanViewController.swift */; };
+		1AD537982C1362A900A70D5E /* TravelMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537972C1362A800A70D5E /* TravelMemoryView.swift */; };
+		1AD5379A2C1362F500A70D5E /* TravelMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537992C1362F500A70D5E /* TravelMemoryViewController.swift */; };
+		1AD5379E2C1367AB00A70D5E /* TravelSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5379D2C1367AB00A70D5E /* TravelSegment.swift */; };
+		1AD537A02C13999600A70D5E /* TravelSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5379F2C13999600A70D5E /* TravelSectionHeaderView.swift */; };
+		1AD537A22C13A9F200A70D5E /* SpaceFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */; };
 		378CEBEC2C0D563C00DF1C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */; };
 		378CEBEE2C0D563C00DF1C3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */; };
 		378CEBF52C0D563D00DF1C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 378CEBF42C0D563D00DF1C3F /* Assets.xcassets */; };
@@ -73,6 +81,14 @@
 		1AD537882C105D0300A70D5E /* TravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewModel.swift; sourceTree = "<group>"; };
 		1AD5378A2C10612F00A70D5E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Travel(temporary).swift"; sourceTree = "<group>"; };
+		1AD5378F2C12CF4900A70D5E /* TravelPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanView.swift; sourceTree = "<group>"; };
+		1AD537932C12DCC600A70D5E /* LightGreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightGreenButton.swift; sourceTree = "<group>"; };
+		1AD537952C12E5E300A70D5E /* TravelPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanViewController.swift; sourceTree = "<group>"; };
+		1AD537972C1362A800A70D5E /* TravelMemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryView.swift; sourceTree = "<group>"; };
+		1AD537992C1362F500A70D5E /* TravelMemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryViewController.swift; sourceTree = "<group>"; };
+		1AD5379D2C1367AB00A70D5E /* TravelSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSegment.swift; sourceTree = "<group>"; };
+		1AD5379F2C13999600A70D5E /* TravelSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSectionHeaderView.swift; sourceTree = "<group>"; };
+		1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceFooterView.swift; sourceTree = "<group>"; };
 		378CEBE82C0D563C00DF1C3F /* TravelTale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelTale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -238,9 +254,12 @@
 				4D0E3CE92C12E9240089D6C1 /* MemoAdd */,
 				378CEC2C2C0D685300DF1C3F /* Travel */,
 				1AD537882C105D0300A70D5E /* TravelViewModel.swift */,
+				1AD5379D2C1367AB00A70D5E /* TravelSegment.swift */,
 				378CEC352C0D68F900DF1C3F /* TravelViewController.swift */,
 				4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */,
 				4D0E3CE22C1076570089D6C1 /* PlaceAddViewController.swift */,
+				1AD537952C12E5E300A70D5E /* TravelPlanViewController.swift */,
+				1AD537992C1362F500A70D5E /* TravelMemoryViewController.swift */,
 			);
 			path = Travels;
 			sourceTree = "<group>";
@@ -267,6 +286,10 @@
 			isa = PBXGroup;
 			children = (
 				378CEC2F2C0D68A200DF1C3F /* TravelView.swift */,
+				1AD5378F2C12CF4900A70D5E /* TravelPlanView.swift */,
+				1AD537972C1362A800A70D5E /* TravelMemoryView.swift */,
+				1AD5379F2C13999600A70D5E /* TravelSectionHeaderView.swift */,
+				1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */,
 			);
 			path = Travel;
 			sourceTree = "<group>";
@@ -315,6 +338,7 @@
 				4D0E3CEB2C131EBB0089D6C1 /* DaySelectPopover.swift */,
 				4D0E3CED2C131ECB0089D6C1 /* TimeSelectPopover.swift */,
 				4D0E3CEF2C1696720089D6C1 /* XButton.swift */,
+				1AD537932C12DCC600A70D5E /* LightGreenButton.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -493,14 +517,18 @@
 				378CEC382C0D690800DF1C3F /* DiscoveryViewController.swift in Sources */,
 				4D0E3CD52C0F36110089D6C1 /* TravelSelectView.swift in Sources */,
 				4D0E3CD72C0F36280089D6C1 /* TravelSelectViewController.swift in Sources */,
+				1AD537962C12E5E300A70D5E /* TravelPlanViewController.swift in Sources */,
 				378CEBEC2C0D563C00DF1C3F /* AppDelegate.swift in Sources */,
 				378CEC362C0D68F900DF1C3F /* TravelViewController.swift in Sources */,
+				1AD537902C12CF4900A70D5E /* TravelPlanView.swift in Sources */,
 				378CEC302C0D68A200DF1C3F /* TravelView.swift in Sources */,
 				37CB880D2C0D796C002798BE /* UILabel+Extension.swift in Sources */,
 				1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */,
 				1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */,
 				378CEC342C0D68DE00DF1C3F /* MyPageView.swift in Sources */,
+				1AD5379E2C1367AB00A70D5E /* TravelSegment.swift in Sources */,
 				1AD5378E2C10838A00A70D5E /* Travel(temporary).swift in Sources */,
+				1AD537942C12DCC600A70D5E /* LightGreenButton.swift in Sources */,
 				378CEBEE2C0D563C00DF1C3F /* SceneDelegate.swift in Sources */,
 				378CEC322C0D68C600DF1C3F /* DiscoveryView.swift in Sources */,
 				378CEC3A2C0D691900DF1C3F /* MyPageViewController.swift in Sources */,
@@ -510,6 +538,9 @@
 				37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */,
 				37CB88072C0D7632002798BE /* PlaceDetailView.swift in Sources */,
 				378CEC222C0D649D00DF1C3F /* BaseView.swift in Sources */,
+				1AD537982C1362A900A70D5E /* TravelMemoryView.swift in Sources */,
+				1AD537A02C13999600A70D5E /* TravelSectionHeaderView.swift in Sources */,
+				1AD537A22C13A9F200A70D5E /* SpaceFooterView.swift in Sources */,
 				378CEC202C0D649000DF1C3F /* UIFont+Extension.swift in Sources */,
 				4D0E3CDB2C10391A0089D6C1 /* MemoAddViewController.swift in Sources */,
 				4D0E3CE52C11EA930089D6C1 /* ScheduleCreateView.swift in Sources */,
@@ -518,6 +549,7 @@
 				4D0E3CDF2C103D430089D6C1 /* MemoAddView.swift in Sources */,
 				4D0E3CE72C1206480089D6C1 /* ScheduleCreateViewController.swift in Sources */,
 				4D0E3CEE2C131ECB0089D6C1 /* TimeSelectPopover.swift in Sources */,
+				1AD5379A2C1362F500A70D5E /* TravelMemoryViewController.swift in Sources */,
 				378CEC1E2C0D644D00DF1C3F /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

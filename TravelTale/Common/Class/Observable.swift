@@ -7,11 +7,10 @@
 
 import Foundation
 
-class Observable<T> { // T: 무슨 타입인지 같이 명시하기 위해. 여러 타입이 될 수 있어서 제네릭으로 선언
+class Observable<T> {
     
     var value: T {
         didSet {
-//            print("나 바뀜!", value) // 변화를 print하기 위해 사용
             listener?(value) // didset을 통해 이 값이 변경되면 listener에게 알림
         }
     }
