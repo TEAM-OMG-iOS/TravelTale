@@ -89,7 +89,7 @@ extension DiscoveryViewController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width - minimumLineSpacing - 40) / 2
         
-        return CGSize(width: width, height: 210)
+        return CGSize(width: width, height: 220)
     }
     
     func collectionView(_ collectionView: UICollectionView,

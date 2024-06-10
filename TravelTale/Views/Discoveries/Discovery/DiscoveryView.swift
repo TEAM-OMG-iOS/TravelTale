@@ -26,9 +26,7 @@ final class DiscoveryView: BaseView {
     let entertainmentButton = UIButton()
     
     private let recentlyAddedLabel = UILabel().then {
-        $0.font = UIFont.pretendard(size: 18, weight: .bold)
-        $0.text = "최근 등록된 플레이스"
-        $0.textColor = UIColor.black
+        $0.configureLabel(font: .pretendard(size: 18, weight: .bold), text: "최근 등록된 플레이스")
     }
     
     let collectionView = UICollectionView(frame: .zero,
