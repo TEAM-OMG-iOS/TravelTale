@@ -32,6 +32,10 @@ final class DiscoveryViewController: BaseViewController {
     override func configureAddTarget() {
         discoveryView.regionButton.addTarget(self, action: #selector(tappedRegionButton), for: .touchUpInside)
         discoveryView.searchButton.addTarget(self, action: #selector(tappedSearchButton), for: .touchUpInside)
+        [discoveryView.touristSpotButton,
+         discoveryView.accommodationButton,
+         discoveryView.restaurantButton,
+         discoveryView.entertainmentButton].forEach{ $0.addTarget(self, action: #selector(tappedCategoryButton(_:)), for: .touchUpInside)}
     }
     
     @objc private func tappedRegionButton() {
@@ -40,6 +44,12 @@ final class DiscoveryViewController: BaseViewController {
     
     @objc private func tappedSearchButton() {
         // todo : 검색 창 Navi로 띄우기
+    }
+    
+    @objc private func tappedCategoryButton(_ sender: UIButton) {
+        guard let category = sender.titleLabel else { return }
+        
+        // todo : category 화면 navi로 띄우기
     }
 }
 

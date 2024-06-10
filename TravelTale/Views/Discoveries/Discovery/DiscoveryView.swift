@@ -83,7 +83,7 @@ final class DiscoveryView: BaseView {
     
     override func configureConstraints() {
         regionButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(72)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(12)
             $0.leading.equalToSuperview().inset(12)
         }
         
