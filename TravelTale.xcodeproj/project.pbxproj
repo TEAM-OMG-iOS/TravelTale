@@ -65,6 +65,7 @@
 		4D0E3CE72C1206480089D6C1 /* ScheduleCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */; };
 		4D0E3CEC2C131EBB0089D6C1 /* DaySelectPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CEB2C131EBB0089D6C1 /* DaySelectPopover.swift */; };
 		4D0E3CEE2C131ECB0089D6C1 /* TimeSelectPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CED2C131ECB0089D6C1 /* TimeSelectPopover.swift */; };
+		4D0E3CF02C1696720089D6C1 /* XButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CEF2C1696720089D6C1 /* XButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +122,7 @@
 		4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCreateViewController.swift; sourceTree = "<group>"; };
 		4D0E3CEB2C131EBB0089D6C1 /* DaySelectPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySelectPopover.swift; sourceTree = "<group>"; };
 		4D0E3CED2C131ECB0089D6C1 /* TimeSelectPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectPopover.swift; sourceTree = "<group>"; };
+		4D0E3CEF2C1696720089D6C1 /* XButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +314,7 @@
 				1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */,
 				4D0E3CEB2C131EBB0089D6C1 /* DaySelectPopover.swift */,
 				4D0E3CED2C131ECB0089D6C1 /* TimeSelectPopover.swift */,
+				4D0E3CEF2C1696720089D6C1 /* XButton.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D0E3CF02C1696720089D6C1 /* XButton.swift in Sources */,
 				1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */,
 				378CEC3D2C0D6B0B00DF1C3F /* TabBarViewController.swift in Sources */,
 				37CB88162C0DB648002798BE /* GrayBackgroundView.swift in Sources */,
