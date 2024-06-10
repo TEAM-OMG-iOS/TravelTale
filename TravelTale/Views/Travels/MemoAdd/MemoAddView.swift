@@ -13,26 +13,25 @@ class MemoAddView: BaseView {
 
     // MARK: - properties
     let memoView = UIView().then {
-        $0.backgroundColor = .gray10
-        $0.layer.cornerRadius = 20
+        $0.configureView(color: .gray10, cornerRadius: 20)
     }
     
     let memoTitle = UILabel().then {
-        $0.text = "메모"
-        $0.font = UIFont(name: "Pretendard-Bold", size: 16)
+        $0.configureLabel(font: UIFont(name: "Pretendard-Bold", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .bold), text: "메모")
     }
     
     let memoTV = UITextView().then {
         $0.textAlignment = .natural
         $0.backgroundColor = .clear
+        $0.text = "메세지를 입력하세요"
+        $0.textColor = .lightGray
     }
     
     let completeBtn = GreenButton().then {
-        $0.backgroundColor = .green10
-        $0.setTitle("완료", for: .normal)
-        $0.titleLabel?.font = UIFont(name: "Pretendard-SemiBold", size: 18)
-        $0.titleLabel?.textColor = .white
+        $0.configureButton(fontColor: .white, font: UIFont(name: "Pretendard-SemiBold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold), text: "완료")
     }
+    
+    let naviTitle = UILabel()
     
     // MARK: - life cycles
     override init(frame: CGRect) {
@@ -77,7 +76,7 @@ class MemoAddView: BaseView {
         memoTitle.setContentHuggingPriority(.init(rawValue: 999), for: .vertical)
         
         memoTV.snp.makeConstraints {
-            $0.top.equalTo(memoTitle.snp.bottom)
+            $0.top.equalTo(memoTitle.snp.bottom).offset(4)
             $0.horizontalEdges.equalToSuperview().inset(10)
             $0.bottom.equalToSuperview().inset(10)
         }

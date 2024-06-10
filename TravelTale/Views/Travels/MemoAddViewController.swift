@@ -10,27 +10,27 @@ import UIKit
 class MemoAddViewController: BaseViewController {
     
     // MARK: - properties
-    let memoAddView = MemoAddView().then {
-        $0.memoTV.text = "메세지를 입력하세요"
-        $0.memoTV.textColor = .lightGray
-    }
+    let memoAddView = MemoAddView()
     
     // MARK: - life cycles
     override func loadView() {
         super.loadView()
         view = memoAddView
-        memoAddView.memoTV.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureDelegate()
         configureNavigationBar()
+        checkTextViewContent()
     }
     
     // MARK: - methods
     override func configureStyle() { }
     
-    override func configureDelegate() { }
+    override func configureDelegate() {
+        memoAddView.memoTV.delegate = self
+    }
     
     override func configureAddTarget() { }
     
@@ -39,9 +39,10 @@ class MemoAddViewController: BaseViewController {
     private func configureNavigationBar() {
         navigationItem.title = "메모 추가"
         
-        let exitButton = UIBarButtonItem(image: UIImage(systemName: "x.square.fill"), style: .plain, target: self, action: #selector(handleBackButton))
-        navigationItem.rightBarButtonItem = exitButton
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0.84, green: 0.84, blue: 0.84, alpha: 1.00)
+        let xbutton = XButton()
+        xbutton.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
+        let exitButtonItem = UIBarButtonItem(customView: xbutton)
+        navigationItem.rightBarButtonItem = exitButtonItem
         
         if let navigationBar = self.navigationController?.navigationBar {
             navigationBar.titleTextAttributes = [
@@ -54,10 +55,24 @@ class MemoAddViewController: BaseViewController {
     @objc private func handleBackButton() {
         navigationController?.popViewController(animated: true)
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
+    private func checkTextViewContent() {
+        let text = memoAddView.memoTV.text ?? ""
+        let isPlaceholder = text == "메세지를 입력하세요"
+        
+        if isPlaceholder || text.isEmpty {
+            memoAddView.completeBtn.isEnabled = false
+            memoAddView.completeBtn.backgroundColor = .green10
+        } else {
+            memoAddView.completeBtn.isEnabled = true
+            memoAddView.completeBtn.backgroundColor = .green100
+            // MARK: - TODO 메모 데이터 저장
+        }
+    }
 }
 // MARK: - extensions
 extension MemoAddViewController: UITextViewDelegate {
@@ -72,5 +87,9 @@ extension MemoAddViewController: UITextViewDelegate {
             textView.text = "메세지를 입력하세요"
             textView.textColor = UIColor.lightGray
         }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        checkTextViewContent()
     }
 }
