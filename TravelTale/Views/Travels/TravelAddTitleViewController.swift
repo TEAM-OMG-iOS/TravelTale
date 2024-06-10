@@ -27,6 +27,7 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     // MARK: - Methods
     
     override func configureStyle() {
+        customNavigationBar()
     }
     
     override func configureDelegate() {
@@ -34,9 +35,33 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     }
     
     override func configureAddTarget() {
+        addTravelTitleView.textField.addTarget(self, action: #selector(tappedToRootView), for: .editingChanged)
+        addTravelTitleView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
+        addTravelTitleView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
     }
     
     override func bind() {
         
+    }
+    
+    private func customNavigationBar() {
+        let image = UIImage(systemName: "chevron.backward")
+        let backButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(tappedToRootView))
+        backButtonItem.tintColor = .darkGray
+        self.navigationItem.leftBarButtonItem = backButtonItem
+    }
+    
+    @objc func tappedOkButton() {
+        let nextVC = TravelAddPlaceViewController()
+        self.navigationController?.pushViewController(nextVC, animated: false)
+    }
+    
+    @objc func tappedCancelButton() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func tappedToRootView() {
+        addTravelTitleView.buttonColorChanged()
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
