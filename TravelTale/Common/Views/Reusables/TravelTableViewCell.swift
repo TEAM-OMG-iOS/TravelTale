@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TravelTableViewCell: BaseTableViewCell {
+final class TravelTableViewCell: BaseTableViewCell {
     
     // MARK: - properties
     static let identifier = String(describing: TravelTableViewCell.self)

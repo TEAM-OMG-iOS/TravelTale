@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TravelView: BaseView {
+final class TravelView: BaseView {
     
     // MARK: - properties
     private let buttonStackView = UIStackView().then {

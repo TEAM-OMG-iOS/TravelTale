@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TravelViewModel {
+final class TravelViewModel {
     
     // MARK: - properties
     var travelArray: Observable<[Travel]> = .init([])

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SpaceFooterView: UITableViewHeaderFooterView {
+final class SpaceFooterView: UITableViewHeaderFooterView {
     
     // MARK: - methods
     static let identifier = String(describing: SpaceFooterView.self)

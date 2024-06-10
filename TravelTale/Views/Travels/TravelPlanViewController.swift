@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TravelPlanViewController: BaseViewController {
+final class TravelPlanViewController: BaseViewController {
     
     // MARK: - properties
     private let travelPlanView = TravelPlanView()

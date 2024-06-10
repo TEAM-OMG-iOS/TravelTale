@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TravelMemoryView: BaseView {
+final class TravelMemoryView: BaseView {
     
     // MARK: - properties
     let addButtonView = LightGreenButton()
