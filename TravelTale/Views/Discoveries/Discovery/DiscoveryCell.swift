@@ -10,18 +10,21 @@ import UIKit
 final class DiscoveryCell: BaseCollectionViewCell {
     
     // MARK: - properties
+    static let identifier = "DiscoveryCell"
+    
     private let placeContainerView = UIView().then {
         $0.backgroundColor = .white
     }
     
     private let placeImageView = UIImageView().then {
-        $0.image = UIImage(systemName: "photo")
+        $0.backgroundColor = UIColor.gray20
+        $0.tintColor = UIColor.white
         $0.clipsToBounds = true
         $0.layer.cornerRadius = 15
     }
     
     private let placeLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 15, weight: .semibold), numberOfLines: 3)
+        $0.configureLabel(font: .pretendard(size: 15, weight: .semibold), numberOfLines: 2)
     }
     
     private let placeAddressLabel = UILabel().then {
@@ -43,6 +46,7 @@ final class DiscoveryCell: BaseCollectionViewCell {
     
     // MARK: - methods
     override func configureHierarchy() {
+        self.addSubview(placeContainerView)
         self.placeContainerView.addSubview(placeImageView)
         self.placeContainerView.addSubview(placeLabel)
         self.placeContainerView.addSubview(placeAddressLabel)
@@ -57,7 +61,7 @@ final class DiscoveryCell: BaseCollectionViewCell {
             $0.top.equalTo(placeContainerView.snp.top)
             $0.leading.equalTo(placeContainerView.snp.leading)
             $0.trailing.equalTo(placeContainerView.snp.trailing)
-            $0.height.equalTo(placeImageView.snp.width).multipliedBy(0.78)
+            $0.height.equalTo(130)
         }
         
         placeLabel.snp.makeConstraints {
@@ -67,10 +71,17 @@ final class DiscoveryCell: BaseCollectionViewCell {
         }
         
         placeAddressLabel.snp.makeConstraints {
-            $0.top.equalTo(placeLabel.snp.bottom).offset(12)
+            $0.top.equalTo(placeLabel.snp.bottom).offset(8)
             $0.leading.equalTo(placeContainerView.snp.leading)
             $0.trailing.equalTo(placeContainerView.snp.trailing)
-            $0.bottom.equalTo(placeContainerView.snp.bottom)
         }
+    }
+    
+    func bind(placeImage: UIImage?, place: String, placeAddress: String) {
+        if let image = placeImage {
+            placeImageView.image = image
+        }
+        placeLabel.text = place
+        placeAddressLabel.text = placeAddress
     }
 }

@@ -33,8 +33,10 @@ final class DiscoveryView: BaseView {
     
     let collectionView = UICollectionView(frame: .zero,
                                           collectionViewLayout: UICollectionViewFlowLayout()).then {
-        $0.contentInset = UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
+        $0.contentInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     }
+    
+    private let minimumLineSpacing: CGFloat = 20
     
     // MARK: - life cycles
     override init(frame: CGRect) {
@@ -104,8 +106,9 @@ final class DiscoveryView: BaseView {
         }
         
         collectionView.snp.makeConstraints {
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
             $0.top.equalTo(recentlyAddedLabel.snp.bottom)
+            $0.height.equalTo(476)
         }
     }
     

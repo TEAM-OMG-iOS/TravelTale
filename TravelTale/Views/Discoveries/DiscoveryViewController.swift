@@ -11,7 +11,7 @@ final class DiscoveryViewController: BaseViewController {
 
     // MARK: - properties
     private let discoveryView = DiscoveryView()
-    private let minimumLineSpacing: CGFloat = 20
+    private let minimumLineSpacing: CGFloat = 16
     
     // MARK: - life cycles
     override func loadView() {
@@ -26,7 +26,7 @@ final class DiscoveryViewController: BaseViewController {
     override func configureDelegate() {
         discoveryView.collectionView.delegate = self
         discoveryView.collectionView.dataSource = self
-        discoveryView.collectionView.register(DiscoveryCell.self, forCellWithReuseIdentifier: "DiscoveryCell")
+        discoveryView.collectionView.register(DiscoveryCell.self, forCellWithReuseIdentifier: DiscoveryCell.identifier)
     }
 }
 
@@ -46,15 +46,28 @@ extension DiscoveryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, 
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiscoveryCell", for: indexPath) as? DiscoveryCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoveryCell.identifier, 
+                                                            for: indexPath) as? DiscoveryCell else {
             return UICollectionViewCell()
         }
+        
+        // Todo : 데이터에서 가져온 값 넣어야 함.
+        cell.bind(placeImage: nil,
+                  place: "석촌호수 공원 안녕하세요 여기는 저희 집 입니다.ㅎㅎㅎㅎㅎㅎㅎㅎ",
+                  placeAddress: "테헤란로 412 우주 끝까지 달려나가자~~~~!!!!!!!!!!!!!!!")
         
         return cell
     }
 }
 
 extension DiscoveryViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.bounds.width - minimumLineSpacing - 40) / 2
+        
+        return CGSize(width: width, height: 210)
+    }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
