@@ -54,8 +54,6 @@ final class DiscoveryView: BaseView {
         $0.contentInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     }
     
-    private let minimumLineSpacing: CGFloat = 20
-    
     // MARK: - methods
     override func configureHierarchy() {
         self.addSubview(regionButton)
