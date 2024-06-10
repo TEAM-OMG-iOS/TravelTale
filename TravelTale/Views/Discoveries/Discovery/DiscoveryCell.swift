@@ -17,10 +17,8 @@ final class DiscoveryCell: BaseCollectionViewCell {
     }
     
     private let placeImageView = UIImageView().then {
-        $0.backgroundColor = UIColor.gray20
+        $0.configureView(color: .gray20, clipsToBounds: true, cornerRadius: 15)
         $0.tintColor = UIColor.white
-        $0.clipsToBounds = true
-        $0.layer.cornerRadius = 15
     }
     
     private let placeLabel = UILabel().then {
