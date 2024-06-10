@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TravelMemoryTravelSelectionView: BaseView {
+class TravelMemoryAddView: BaseView {
     
     // MARK: - properties
     let titleLabel = UILabel().then {
