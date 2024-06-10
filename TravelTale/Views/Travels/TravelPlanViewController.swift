@@ -120,7 +120,6 @@ extension TravelPlanViewController: UITableViewDataSource {
             startDate: travel.startDate,
             endDate: travel.endDate
         )
-        
         cell.bind(travel: travel, period: period)
         cell.selectionStyle = .none
         
