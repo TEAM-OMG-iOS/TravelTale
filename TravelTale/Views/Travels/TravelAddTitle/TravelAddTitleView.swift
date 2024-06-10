@@ -122,6 +122,19 @@ final class TravelAddTitleView: BaseView {
         }
     }
     
+    func startLoadingAnimation() {
+        self.loadingBar.snp.remakeConstraints {
+            $0.leading.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.height.equalToSuperview()
+            $0.width.equalToSuperview().multipliedBy(1.0 / 3.0)
+        }
+        UIView.animate(withDuration: 2.0, delay: 0, animations: {
+            self.progressView.layoutIfNeeded()
+            
+        }, completion: nil)
+    }
+    
     @objc func buttonColorChanged() {
         if textField.text?.isEmpty != true {
             okButton.isEnabled = true
