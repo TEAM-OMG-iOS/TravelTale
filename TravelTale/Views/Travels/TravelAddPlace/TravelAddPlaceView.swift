@@ -77,7 +77,7 @@ final class TravelAddPlaceView: BaseView {
             $0.trailing.equalToSuperview().offset(-20)
         }
         
-        progressView.snp.makeConstraints {
+        progressView.snp.makeConstraints {            
             $0.top.equalTo(pageTitleLabel.snp.bottom).offset(42)
             $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview().offset(-20)
@@ -119,6 +119,19 @@ final class TravelAddPlaceView: BaseView {
             $0.height.equalTo(52)
         }
     }
+    
+    func startLoadingAnimation() {
+        self.loadingBar.snp.remakeConstraints {
+            $0.leading.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.height.equalToSuperview()
+            $0.width.equalToSuperview().multipliedBy(2.0 / 3.0)
+        }
+        UIView.animate(withDuration: 2.0, delay: 0, animations: {
+            self.progressView.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
 }
 
 // MARK: - AddLocationView
