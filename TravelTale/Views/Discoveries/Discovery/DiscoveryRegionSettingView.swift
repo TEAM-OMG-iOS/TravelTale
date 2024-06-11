@@ -13,7 +13,7 @@ final class DiscoveryRegionSettingView: BaseView {
     private let cityBackground = GrayBackgroundView()
     
     private let cityLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 16, weight: .bold), 
+        $0.configureLabel(font: .pretendard(size: 16, weight: .bold),
                           text: "시/도")
     }
     
@@ -25,13 +25,13 @@ final class DiscoveryRegionSettingView: BaseView {
     private let currentCityLabel = UILabel().then {
         $0.configureLabel(color: .gray80,
                           font: .pretendard(size: 16, weight: .regular),
-                          text: "시/도를 선택해주세요.")
+                          text: "대구시")
     }
     
     private let districtBackground = GrayBackgroundView()
     
     private let districtLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 16, weight: .bold), 
+        $0.configureLabel(font: .pretendard(size: 16, weight: .bold),
                           text: "구/군")
     }
     
@@ -41,10 +41,12 @@ final class DiscoveryRegionSettingView: BaseView {
     }
     
     private let currentDistrictLabel = UILabel().then {
-        $0.configureLabel(color: .gray80, 
+        $0.configureLabel(color: .gray80,
                           font: .pretendard(size: 16, weight: .regular),
-                          text: "구/군을 선택해주세요.")
+                          text: "달서구")
     }
+    
+    let submitButton = GreenButton()
     
     // MARK: - methods
     override func configureHierarchy() {
