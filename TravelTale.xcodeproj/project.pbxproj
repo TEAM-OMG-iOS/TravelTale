@@ -21,6 +21,7 @@
 		1AD537A22C13A9F200A70D5E /* SpaceFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */; };
 		2E3525402C1756EF00D82D34 /* DiscoveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */; };
 		2EED24852C17F63E00F3673A /* DiscoveryRegionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24842C17F63E00F3673A /* DiscoveryRegionSettingView.swift */; };
+		2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */; };
 		378CEBEC2C0D563C00DF1C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */; };
 		378CEBEE2C0D563C00DF1C3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */; };
 		378CEBF52C0D563D00DF1C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 378CEBF42C0D563D00DF1C3F /* Assets.xcassets */; };
@@ -82,6 +83,7 @@
 		1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceFooterView.swift; sourceTree = "<group>"; };
 		2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryCell.swift; sourceTree = "<group>"; };
 		2EED24842C17F63E00F3673A /* DiscoveryRegionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionSettingView.swift; sourceTree = "<group>"; };
+		2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionViewController.swift; sourceTree = "<group>"; };
 		378CEBE82C0D563C00DF1C3F /* TravelTale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelTale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			children = (
 				378CEC2D2C0D685D00DF1C3F /* Discovery */,
 				378CEC372C0D690800DF1C3F /* DiscoveryViewController.swift */,
+				2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */,
 			);
 			path = Discoveries;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */,
 				378CEC3D2C0D6B0B00DF1C3F /* TabBarViewController.swift in Sources */,
 				37CB88162C0DB648002798BE /* GrayBackgroundView.swift in Sources */,
+				2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */,
 				378CEC262C0D64FB00DF1C3F /* BaseTableViewCell.swift in Sources */,
 				378CEC282C0D651E00DF1C3F /* BaseCollectionViewCell.swift in Sources */,
 				378CEC382C0D690800DF1C3F /* DiscoveryViewController.swift in Sources */,
