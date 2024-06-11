@@ -61,16 +61,18 @@ final class TravelMemoryViewController: BaseViewController {
         travelMemoryView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
     }
     
-    override func bind() {
-        travelViewModel.travelArray.bind { _ in
-            self.travelMemoryView.tableView.reloadData()
+    override func bind() { 
+        travelViewModel.travelArray.bind { [weak self] _ in
+            guard let self = self else { return }
+            travelMemoryView.tableView.reloadData()
         }
     }
     
     
     // MARK: - objc method
     @objc func tappedAddButton() {
-        print("tappedAddButton")
+        let travelMemoryAddVC = TravelMemoryAddViewController()
+        self.navigationController?.pushViewController(travelMemoryAddVC, animated: true)
     }
 }
 
