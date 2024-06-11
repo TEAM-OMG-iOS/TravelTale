@@ -8,7 +8,7 @@
 import UIKit
 
 final class DiscoveryViewController: BaseViewController {
-
+    
     // MARK: - properties
     private let discoveryView = DiscoveryView()
     private let minimumLineSpacing: CGFloat = 16
@@ -36,7 +36,7 @@ final class DiscoveryViewController: BaseViewController {
         [discoveryView.touristSpotButton,
          discoveryView.accommodationButton,
          discoveryView.restaurantButton,
-         discoveryView.entertainmentButton].forEach{ $0.addTarget(self, action: #selector(tappedCategoryButton(_:)), for: .touchUpInside)}
+         discoveryView.entertainmentButton].forEach { $0.addTarget(self, action: #selector(tappedCategoryButton(_:)), for: .touchUpInside) }
     }
     
     func configureNavigationBarItems() {
@@ -66,21 +66,21 @@ final class DiscoveryViewController: BaseViewController {
 
 // MARK: - extension
 extension DiscoveryViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, 
+    func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         // todo : 디테일 VC로 이동
     }
 }
 
 extension DiscoveryViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, 
+    func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         return 4
     }
     
-    func collectionView(_ collectionView: UICollectionView, 
+    func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoveryCell.identifier, 
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoveryCell.identifier,
                                                             for: indexPath) as? DiscoveryCell else {
             return UICollectionViewCell()
         }
@@ -109,7 +109,7 @@ extension DiscoveryViewController: UICollectionViewDelegateFlowLayout {
         return minimumLineSpacing
     }
     
-    func collectionView(_ collectionView: UICollectionView, 
+    func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return minimumLineSpacing
