@@ -1,5 +1,5 @@
 //
-//  DiscoveryRegionSettingView.swift
+//  DiscoveryRegionView.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/11/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DiscoveryRegionSettingView: BaseView {
+final class DiscoveryRegionView: BaseView {
     
     // MARK: - properties
     private let cityBackground = GrayBackgroundView()
