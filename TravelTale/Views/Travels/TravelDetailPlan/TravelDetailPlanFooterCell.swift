@@ -1,5 +1,5 @@
 //
-//  TravelDetailPlanButtonCell.swift
+//  TravelDetailPlanFooterCell.swift
 //  TravelTale
 //
 //  Created by 김정호 on 6/11/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TravelDetailPlanButtonCell: BaseTableViewCell {
+final class TravelDetailPlanFooterCell: BaseTableViewCell {
     
     // MARK: - properties
     private let verticalLineView = UIView().then {
