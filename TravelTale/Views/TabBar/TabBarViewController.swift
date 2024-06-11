@@ -54,7 +54,7 @@ final class TabBarViewController: UITabBarController {
         appearance.shadowColor = nil
         appearance.backgroundColor = .white
         appearance.titleTextAttributes = [.font: UIFont.oaGothic(size: 18, weight: .heavy),
-                                          .foregroundColor: UIColor.blueBlack100]
+                                          .foregroundColor: UIColor.black]
         
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
