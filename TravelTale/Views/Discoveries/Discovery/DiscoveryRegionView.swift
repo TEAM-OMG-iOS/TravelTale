@@ -54,13 +54,13 @@ final class DiscoveryRegionView: BaseView {
     // MARK: - methods
     override func configureHierarchy() {
         self.addSubview(cityBackground)
-        cityBackground.addSubview(cityLabel)
-        cityBackground.addSubview(cityButton)
-        cityBackground.addSubview(currentCityLabel)
+        self.addSubview(cityLabel)
+        self.addSubview(cityButton)
+        self.addSubview(currentCityLabel)
         self.addSubview(districtBackground)
-        districtLabel.addSubview(districtLabel)
-        districtLabel.addSubview(districtButton)
-        districtLabel.addSubview(currentDistrictLabel)
+        self.addSubview(districtLabel)
+        self.addSubview(districtButton)
+        self.addSubview(currentDistrictLabel)
         self.addSubview(submitButton)
     }
     
