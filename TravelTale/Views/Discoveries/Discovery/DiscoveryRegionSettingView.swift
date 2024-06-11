@@ -46,7 +46,10 @@ final class DiscoveryRegionSettingView: BaseView {
                           text: "달서구")
     }
     
-    let submitButton = GreenButton()
+    let submitButton = GreenButton().then {
+        $0.configureButton(font: .pretendard(size: 20, weight: .heavy),
+                           text: "완료")
+    }
     
     // MARK: - methods
     override func configureHierarchy() {
@@ -58,6 +61,7 @@ final class DiscoveryRegionSettingView: BaseView {
         districtLabel.addSubview(districtLabel)
         districtLabel.addSubview(districtButton)
         districtLabel.addSubview(currentDistrictLabel)
+        self.addSubview(submitButton)
     }
     
     override func configureConstraints() {
@@ -103,6 +107,11 @@ final class DiscoveryRegionSettingView: BaseView {
         currentDistrictLabel.snp.makeConstraints {
             $0.trailing.equalTo(districtButton.snp.leading).offset(4)
             $0.centerY.equalTo(districtBackground.snp.centerY)
+        }
+        
+        submitButton.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.bottom.equalToSuperview().inset(28)
         }
     }
 }
