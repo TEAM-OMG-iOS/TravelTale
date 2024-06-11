@@ -32,7 +32,7 @@ final class MemoAddView: BaseView {
     }
     
     let completeBtn = GreenButton().then {
-        $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .semibold), text: "완료")
+        $0.configureButton(fontColor: .white, font: .pretendard(size: 20, weight: .bold), text: "완료")
     }
     
     // MARK: - methods
