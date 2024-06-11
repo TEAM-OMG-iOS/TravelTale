@@ -11,12 +11,23 @@ final class TravelAddTitleView: BaseView {
     
     // MARK: - Properties
     
-    private let pageTitleLabel = UILabel().then {
-        $0.configureLabel(alignment: .center, color: .blueBlack100,font: .oaGothic(size: 18, weight: .heavy), text: "새 여행 추가")
+    let backButtonItem = UIBarButtonItem().then {
+        $0.style = .done
+        $0.image = UIImage(systemName: "xmark")
+        $0.tintColor = .gray90
+    }
+    
+    let pageTitleLabel = UILabel().then {
+        $0.configureLabel(alignment: .center, 
+                          color: .blueBlack100,
+                          font: .oaGothic(size: 18, weight: .heavy),
+                          text: "새 여행 추가")
     }
     
     private let inputTitleLabel = UILabel().then {
-        $0.configureLabel(color: .blueBlack100, font: .pretendard(size: 18, weight: .semibold), text: "여행 제목을 입력해주세요")
+        $0.configureLabel(color: .blueBlack100, 
+                          font: .pretendard(size: 18, weight: .semibold),
+                          text: "여행 제목을 입력해주세요")
     }
     
     let textField = UITextField().then {
@@ -28,16 +39,23 @@ final class TravelAddTitleView: BaseView {
     }
     
     let okButton = UIButton().then {
-        $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "장소 선택하러 가기")
-        $0.configureView(color: .green10, cornerRadius: 24)
+        $0.configureButton(fontColor: .white, 
+                           font: .pretendard(size: 18, weight: .bold),
+                           text: "장소 선택하러 가기")
+        $0.configureView(color: .green10, 
+                         cornerRadius: 24)
     }
     
     private let progressView = UIView().then {
-        $0.configureView(color: .gray20, clipsToBounds: true, cornerRadius: 4)
+        $0.configureView(color: .gray20, 
+                         clipsToBounds: true,
+                         cornerRadius: 4)
     }
     
     private let loadingBar = UIView().then {
-        $0.configureView(color: .green80, clipsToBounds: true, cornerRadius: 4)
+        $0.configureView(color: .green80, 
+                         clipsToBounds: true,
+                         cornerRadius: 4)
     }
     
     // MARK: - Lifecycle
@@ -61,23 +79,18 @@ final class TravelAddTitleView: BaseView {
     
     override func configureHierarchy() {
         
-        [pageTitleLabel,
-         inputTitleLabel,
+        [inputTitleLabel,
          textField,
          okButton,
-         progressView].forEach { self.addSubview($0) }
+         progressView].forEach {
+            self.addSubview($0)
+        }
         progressView.addSubview(loadingBar)
     }
     
     override func configureConstraints() {
-        pageTitleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(64)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
-        }
-        
         progressView.snp.makeConstraints {
-            $0.top.equalTo(pageTitleLabel.snp.bottom).offset(42)
+            $0.top.equalToSuperview().offset(116)
             $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview().offset(-20)
             $0.height.equalTo(8)
@@ -107,7 +120,7 @@ final class TravelAddTitleView: BaseView {
         okButton.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview().offset(-20)
-            $0.bottom.equalToSuperview().offset(-31)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
             $0.height.equalTo(52)
         }
     }

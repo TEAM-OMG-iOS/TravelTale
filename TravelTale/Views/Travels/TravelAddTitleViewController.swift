@@ -11,36 +11,37 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     
     // MARK: - Properties
     
-    let addTravelTitleView = TravelAddTitleView()
+    let travelAddTitleView = TravelAddTitleView()
     
     // MARK: - Lifecycle
     
     override func loadView() {
-        view = addTravelTitleView
+        view = travelAddTitleView
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        addTravelTitleView.startLoadingAnimation()
+        travelAddTitleView.startLoadingAnimation()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        customNavigationBar()
     }
     
     // MARK: - Methods
     
     override func configureStyle() {
-        customNavigationBar()
     }
     
     override func configureDelegate() {
-        addTravelTitleView.textField.delegate = self
+        travelAddTitleView.textField.delegate = self
     }
     
     override func configureAddTarget() {
-        addTravelTitleView.textField.addTarget(self, action: #selector(tappedToRootView), for: .editingChanged)
-        addTravelTitleView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
+        travelAddTitleView.textField.addTarget(self, action: #selector(changedButtonColor), for: .editingChanged)
+        travelAddTitleView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
+        travelAddTitleView.backButtonItem.action = #selector(tappedToRootView)
+        travelAddTitleView.backButtonItem.target = self
     }
     
     override func bind() {
@@ -48,10 +49,8 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     }
     
     private func customNavigationBar() {
-        let image = UIImage(systemName: "chevron.backward")
-        let backButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(tappedToRootView))
-        backButtonItem.tintColor = .darkGray
-        self.navigationItem.leftBarButtonItem = backButtonItem
+        navigationItem.titleView = travelAddTitleView.pageTitleLabel
+        self.navigationItem.leftBarButtonItem = travelAddTitleView.backButtonItem
     }
     
     @objc func tappedOkButton() {
@@ -60,7 +59,10 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     }
     
     @objc func tappedToRootView() {
-        addTravelTitleView.buttonColorChanged()
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @objc func changedButtonColor() {
+        travelAddTitleView.buttonColorChanged()
     }
 }

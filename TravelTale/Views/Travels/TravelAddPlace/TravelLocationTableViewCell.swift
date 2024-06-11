@@ -14,7 +14,9 @@ final class TravelLocationTableViewCell: BaseTableViewCell {
     static let identifier = "LocationTableViewCell"
     
     let locationLabel = UILabel().then {
-        $0.configureLabel(alignment: .left, color: .blueBlack100, font: .pretendard(size: 15, weight: .bold))
+        $0.configureLabel(alignment: .left, 
+                          color: .blueBlack100,
+                          font: .pretendard(size: 15, weight: .bold))
     }
     
     let locationButton = UIButton()
@@ -42,7 +44,8 @@ final class TravelLocationTableViewCell: BaseTableViewCell {
     }
     
     override func configureHierarchy() {
-        [locationLabel, locationButton].forEach {
+        [locationLabel, 
+         locationButton].forEach {
             self.addSubview($0)
         }
     }

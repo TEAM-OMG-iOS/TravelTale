@@ -26,14 +26,12 @@ final class TravelAddPlaceViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         customNavigationBar()
     }
     
     // MARK: - Methods
     
     override func configureStyle() {
-        
     }
     
     override func configureDelegate() {
@@ -42,8 +40,10 @@ final class TravelAddPlaceViewController: BaseViewController {
     
     override func configureAddTarget() {
         travelAddPlaceView.placePickButton.addTarget(self, action: #selector(tappedInputBox), for: .touchUpInside)
-        travelAddPlaceView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
         travelAddPlaceView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
+        travelAddPlaceView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
+        travelAddPlaceView.backButtonItem.action = #selector(tappedToRootView)
+        travelAddPlaceView.backButtonItem.target = self
     }
     
     override func bind() {
@@ -51,10 +51,8 @@ final class TravelAddPlaceViewController: BaseViewController {
     }
     
     private func customNavigationBar() {
-        let image = UIImage(systemName: "chevron.backward")
-        let backButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(tappedToRootView))
-        backButtonItem.tintColor = .gray90
-        self.navigationItem.leftBarButtonItem = backButtonItem
+        navigationItem.titleView = travelAddPlaceView.pageTitleLabel
+        self.navigationItem.leftBarButtonItem = travelAddPlaceView.backButtonItem
     }
     
     func updateInputBox(with text: String) {
@@ -74,7 +72,6 @@ final class TravelAddPlaceViewController: BaseViewController {
     @objc func tappedOkButton() {
         let nextVC = TravelAddCalenderViewController()
         self.navigationController?.pushViewController(nextVC, animated: false)
-        print("작동")
     }
     
     @objc func tappedCancelButton() {
@@ -93,6 +90,7 @@ final class AddLocationViewController: BaseViewController {
     // MARK: - Properties
     let addLocationView = AddLocationView()
     var travelAddPlaceVC = TravelAddPlaceViewController()
+    var travelRescheduleVC = TravelRescheduleViewController()
     
     // MARK: - Lifecycle
     
@@ -146,6 +144,7 @@ extension AddLocationViewController: UITableViewDelegate {
         guard let cell = tableView.cellForRow(at: indexPath) as? TravelLocationTableViewCell else { return }
         if let text = cell.locationLabel.text {
             travelAddPlaceVC.updateInputBox(with: text)
+            travelRescheduleVC.updateInputBox(with: text)
         }
         self.dismiss(animated: true, completion: nil)
     }
