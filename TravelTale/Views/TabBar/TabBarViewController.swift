@@ -24,9 +24,11 @@ final class TabBarViewController: UITabBarController {
         let discoveryViewController = DiscoveryViewController()
         let myPageViewController = MyPageViewController()
         
+        let travelNavigation = UINavigationController(rootViewController: travelViewController)
         let discoveryNavigation = UINavigationController(rootViewController: discoveryViewController)
+        let myPageNavigation = UINavigationController(rootViewController: myPageViewController)
         
-        let viewControllers = [travelViewController, discoveryNavigation, myPageViewController]
+        let viewControllers = [travelNavigation, discoveryNavigation, myPageNavigation]
         
         setViewControllers(viewControllers, animated: true)
         
