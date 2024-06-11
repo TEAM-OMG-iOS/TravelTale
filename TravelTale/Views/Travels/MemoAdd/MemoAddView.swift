@@ -73,7 +73,7 @@ final class MemoAddView: BaseView {
         }
         
         completeBtn.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(15)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
             $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
             $0.height.equalTo(52)
         }
