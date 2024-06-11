@@ -10,6 +10,12 @@ import UIKit
 final class DiscoveryRegionView: BaseView {
     
     // MARK: - properties
+    let backButton = UIBarButtonItem().then {
+        $0.style = .done
+        $0.image = UIImage(systemName: "chevron.left")
+        $0.tintColor = .gray90
+    }
+    
     private let cityBackground = GrayBackgroundView()
     
     private let cityLabel = UILabel().then {
@@ -112,7 +118,7 @@ final class DiscoveryRegionView: BaseView {
         
         submitButton.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(24)
-            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(32)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
         }
     }
 }

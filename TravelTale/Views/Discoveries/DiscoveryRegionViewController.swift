@@ -34,6 +34,8 @@ final class DiscoveryRegionViewController: BaseViewController {
     
     // MARK: - methods
     override func configureAddTarget() {
+        discoveryRegionView.backButton.target = self
+        discoveryRegionView.backButton.action = #selector(tappedBackButton)
         discoveryRegionView.cityButton.addTarget(self, action: #selector(tappedCityButton), for: .touchUpInside)
         discoveryRegionView.districtButton.addTarget(self, action: #selector(tappedDistrictButton), for: .touchUpInside)
         discoveryRegionView.submitButton.addTarget(self, action: #selector(tappedSubmitButton), for: .touchUpInside)
@@ -51,7 +53,12 @@ final class DiscoveryRegionViewController: BaseViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc private func tappedBackButton() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     func configureNavigationBarItems() {
         navigationItem.title = "지역 설정"
+        navigationItem.leftBarButtonItem = discoveryRegionView.backButton
     }
 }
