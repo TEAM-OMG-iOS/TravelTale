@@ -14,7 +14,7 @@ final class TravelSelectViewController: BaseViewController {
     
     private let travelViewModel = TravelViewModel()
     
-    private var previouslySelectedIndexPath: IndexPath?
+    private var preselectedIndexPath: IndexPath?
     
     // MARK: - life cycles
     override func loadView() {
@@ -82,15 +82,15 @@ final class TravelSelectViewController: BaseViewController {
 extension TravelSelectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selectedIndexPath =
-            previouslySelectedIndexPath {
+            preselectedIndexPath {
             if selectedIndexPath == indexPath {
                 travelSelectView.tableView.deselectRow(at: indexPath, animated: true)
-                previouslySelectedIndexPath = nil
+                preselectedIndexPath = nil
                 travelSelectView.updateButtonState()
                 return
             }
         }
-        previouslySelectedIndexPath = indexPath
+        preselectedIndexPath = indexPath
         travelSelectView.updateButtonState()
     }
     
