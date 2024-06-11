@@ -61,6 +61,7 @@
 		37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88172C0DB66D002798BE /* GrayButton.swift */; };
 		37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88192C0DB677002798BE /* GreenButton.swift */; };
 		37E19F432C18680A0084F899 /* TravelDetailPlanFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E19F422C18680A0084F899 /* TravelDetailPlanFooterCell.swift */; };
+		37E36D872C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E36D862C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +114,7 @@
 		37CB88172C0DB66D002798BE /* GrayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayButton.swift; sourceTree = "<group>"; };
 		37CB88192C0DB677002798BE /* GreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenButton.swift; sourceTree = "<group>"; };
 		37E19F422C18680A0084F899 /* TravelDetailPlanFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanFooterCell.swift; sourceTree = "<group>"; };
+		37E36D862C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanHeaderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				370B839B2C149AC7009430B9 /* TravelDetailPlanView.swift */,
+				37E36D862C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift */,
 				370B839F2C149E66009430B9 /* TravelDetailPlanContentCell.swift */,
 				37E19F422C18680A0084F899 /* TravelDetailPlanFooterCell.swift */,
 			);
@@ -488,6 +491,7 @@
 				378CEC222C0D649D00DF1C3F /* BaseView.swift in Sources */,
 				378CEC202C0D649000DF1C3F /* UIFont+Extension.swift in Sources */,
 				37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */,
+				37E36D872C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift in Sources */,
 				378CEC242C0D64AB00DF1C3F /* BaseViewController.swift in Sources */,
 				378CEC1E2C0D644D00DF1C3F /* UIColor+Extension.swift in Sources */,
 				3740FE542C12EE020024E08F /* TravelDetailView.swift in Sources */,
