@@ -10,29 +10,21 @@ import SnapKit
 
 final class ScheduleCreateViewController: BaseViewController {
     // MARK: - properties
-    let scheduleCreateView = ScheduleCreateView().then {
-        $0.memoTV.text = "메세지를 입력하세요"
-        $0.memoTV.textColor = .lightGray
-    }
+    let scheduleCreateView = ScheduleCreateView()
     
     let dayPopoverVC = DaySelectPopover()
     
+    // 데이터 모델에 따라 변경될 예정
     var selectedData: Travel? = nil
     
     // MARK: - life cycles
     override func loadView() {
-        super.loadView()
         view = scheduleCreateView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureStyle()
-        configureDelegate()
-        configureAddTarget()
-        bind()
         configureNavigationBar()
-        setAddTarget()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,42 +32,28 @@ final class ScheduleCreateViewController: BaseViewController {
     }
     
     // MARK: - methods
-    override func configureStyle() { }
-    
-    override func configureDelegate() { }
-    
-    override func configureAddTarget() { }
-    
-    override func bind() { }
-    
-    private func configureNavigationBar() {
-        navigationItem.title = "내 여행에 추가"
-        
-        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(handleBackButton))
-        navigationItem.leftBarButtonItem = backButton
-        navigationItem.leftBarButtonItem?.tintColor = .black
-        
-        if let navigationBar = self.navigationController?.navigationBar {
-            navigationBar.titleTextAttributes = [
-                NSAttributedString.Key.font: UIFont.oaGothic(size: 18, weight: .heavy),
-                NSAttributedString.Key.foregroundColor: UIColor.black
-            ]
-        }
+    override func configureAddTarget() {
+        scheduleCreateView.scheduleBtn.addTarget(self, action: #selector(tappedScheduleBtn), for: .touchUpInside)
     }
     
-    private func setAddTarget() {
-        scheduleCreateView.scheduleBtn.addTarget(self, action: #selector(tappedScheduleBtn), for: .touchUpInside)
+    override func bind() {
+        // TODO: - 데이터 생성 후 편집 예정
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             view.endEditing(true)
         }
     
+    private func configureNavigationBar() {
+        navigationItem.title = "내 여행에 추가"
+        navigationItem.leftBarButtonItem = scheduleCreateView.backButton
+    }
+
+    
     @objc private func handleBackButton() {
             navigationController?.popViewController(animated: true)
         }
-    
-    
+
 }
 // MARK: - extensions
 extension ScheduleCreateViewController: UITextViewDelegate {

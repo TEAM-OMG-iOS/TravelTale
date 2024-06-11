@@ -6,82 +6,88 @@
 //
 
 import UIKit
-import SnapKit
-import Then
 
 final class ScheduleCreateView: BaseView {
     
     // MARK: - properties
-    let loadingBackBar = UIView().then {
+    let backButton = UIBarButtonItem().then {
+        $0.style = .done
+        $0.image = UIImage(systemName: "chevron.left")
+        $0.tintColor = .gray90
+    }
+    
+    private let loadingBackBar = UIView().then {
         $0.configureView(color: .gray10, cornerRadius: 4)
     }
     
-    let loadingBar = UIView().then {
+    private let loadingBar = UIView().then {
         $0.configureView(color: .green80, cornerRadius: 4)
     }
     
-    let ViewLabel = UILabel().then {
+    private let ViewLabel = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 18, weight: .semibold), text: "일정을 생성해주세요")
     }
     
-    let placeView = UIView().then {
-        $0.configureView(color: UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00), cornerRadius: 20)
+    private let placeView = UIView().then {
+        $0.configureView(color: .gray5, cornerRadius: 20)
     }
     
-    let placeTitle = UILabel().then {
+    private let placeTitle = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold), text: "장소")
     }
     
-    let placeContents = UILabel().then {
+    private let placeContents = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 16, weight: .regular), text: "설빙 석촌호수 동호점")
     }
     
-    let scheduleView = UIView().then {
-        $0.configureView(color: UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00), cornerRadius: 20)
+    private let scheduleView = UIView().then {
+        $0.configureView(color: .gray5, cornerRadius: 20)
     }
     
     let scheduleBtn = UIButton().then {
         $0.configureView(color: .clear)
     }
     
-    let scheduleTitle = UILabel().then {
+    private let scheduleTitle = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold), text: "일정")
     }
     
-    let scheduleContents = UILabel().then {
-        $0.configureLabel(color: UIColor(red: 0.70, green: 0.70, blue: 0.70, alpha: 1.00), font: .pretendard(size: 16, weight: .regular), text: "일정을 선택하세요")
+    private let scheduleContents = UILabel().then {
+        $0.configureLabel(color: .gray80, font: .pretendard(size: 16, weight: .regular), text: "일정을 선택하세요")
     }
     
-    let startTimeView = UIView().then {
-        $0.configureView(color: UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00), cornerRadius: 20)
+    private let startTimeView = UIView().then {
+        $0.configureView(color: .gray5, cornerRadius: 20)
     }
     
     let startTiemBtn = UIButton().then {
         $0.configureView(color: .clear)
     }
     
-    let startTimeTitle = UILabel().then {
+    private let startTimeTitle = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold), text: "시작 시간")
     }
     
-    let startTimeContents = UILabel().then {
-        $0.configureLabel(color: UIColor(red: 0.70, green: 0.70, blue: 0.70, alpha: 1.00), font: .pretendard(size: 16, weight: .regular), text: "시간을 선택하세요")
+    private let startTimeContents = UILabel().then {
+        $0.configureLabel(color: .gray80, font: .pretendard(size: 16, weight: .regular), text: "시간을 선택하세요")
     }
     
-    let memoView = UIView().then {
-        $0.configureView(color: UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00), cornerRadius: 20)
+    private let memoView = UIView().then {
+        $0.configureView(color: .gray5, cornerRadius: 20)
     }
     
-    let memoTitle = UILabel().then {
+    private let memoTitle = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold), text: "메모")
     }
     
-    let memoTV = UITextView().then {
+    private let memoTV = UITextView().then {
+        $0.text = "메모를 입력하세요"
+        $0.textColor = .gray80
         $0.textAlignment = .natural
         $0.backgroundColor = .clear
     }
     
-    let btnStackView = UIStackView().then {
+    private let btnStackView = UIStackView().then {
         $0.configureView(color: .clear)
         $0.axis = .horizontal
         $0.spacing = 15
@@ -95,22 +101,7 @@ final class ScheduleCreateView: BaseView {
         $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .semibold), text: "일정 생성하러 가기")
     }
     
-    // MARK: - life cycles
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureUI()
-        configureHierarchy()
-        configureConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     // MARK: - methods
-    override func configureUI() {
-    }
-    
     override func configureHierarchy() {
         [loadingBackBar, ViewLabel, placeView, scheduleView, startTimeView, memoView ,btnStackView].forEach {
             self.addSubview($0)
@@ -153,7 +144,8 @@ final class ScheduleCreateView: BaseView {
             $0.top.equalToSuperview()
             $0.height.equalToSuperview()
             $0.bottom.equalToSuperview()
-            $0.width.equalTo(177)
+            let halfwidth = loadingBackBar.frame.size.width / 2
+            $0.width.equalTo(halfwidth)
         }
         
         ViewLabel.snp.makeConstraints {
@@ -258,7 +250,7 @@ final class ScheduleCreateView: BaseView {
             $0.top.equalToSuperview()
             $0.centerY.equalToSuperview()
             $0.bottom.equalToSuperview()
-            $0.width.equalTo(354)
+            $0.width.equalToSuperview()
         }
         
         UIView.animate(withDuration: 1.0, delay: 0, animations: {

@@ -14,7 +14,7 @@ final class TravelSelectView: BaseView {
         $0.style = .done
         $0.image = UIImage(systemName: "chevron.left")
         $0.tintColor = .gray90
-      }
+    }
     
     private let loadingBackBar = UIView().then {
         $0.configureView(color: .gray10, cornerRadius: 4)
@@ -99,12 +99,12 @@ final class TravelSelectView: BaseView {
     }
     
     func updateButtonState() {
-            if tableView.indexPathForSelectedRow == nil {
-                nextBtn.isEnabled = false
-                nextBtn.configureView(color: .green10, cornerRadius: 24)
-            } else {
-                nextBtn.isEnabled = true
-                nextBtn.configureView(color: .green100, cornerRadius: 24)
-            }
+        if tableView.indexPathForSelectedRow == nil {
+            nextBtn.isEnabled = false
+            nextBtn.configureView(color: .green10, cornerRadius: 24)
+        } else {
+            nextBtn.isEnabled = true
+            nextBtn.configureView(color: .green100, cornerRadius: 24)
         }
+    }
 }
