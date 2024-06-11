@@ -52,22 +52,18 @@ final class DiscoveryCell: BaseCollectionViewCell {
         }
         
         placeImageView.snp.makeConstraints {
-            $0.top.equalTo(placeContainerView.snp.top)
-            $0.leading.equalTo(placeContainerView.snp.leading)
-            $0.trailing.equalTo(placeContainerView.snp.trailing)
+            $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(130)
         }
         
         placeLabel.snp.makeConstraints {
             $0.top.equalTo(placeImageView.snp.bottom).offset(12)
-            $0.leading.equalTo(placeContainerView.snp.leading)
-            $0.trailing.equalTo(placeContainerView.snp.trailing)
+            $0.leading.trailing.equalToSuperview()
         }
         
         placeAddressLabel.snp.makeConstraints {
             $0.top.equalTo(placeLabel.snp.bottom).offset(8)
-            $0.leading.equalTo(placeContainerView.snp.leading)
-            $0.trailing.equalTo(placeContainerView.snp.trailing)
+            $0.leading.trailing.equalToSuperview()
         }
     }
     

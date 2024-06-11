@@ -78,46 +78,44 @@ final class DiscoveryRegionView: BaseView {
         }
         
         cityLabel.snp.makeConstraints {
-            $0.leading.equalTo(cityBackground.snp.leading).offset(16)
-            $0.centerY.equalTo(cityBackground.snp.centerY)
+            $0.leading.equalTo(cityBackground).offset(16)
+            $0.centerY.equalTo(cityBackground)
         }
         
         cityButton.snp.makeConstraints {
-            $0.trailing.equalTo(cityBackground.snp.trailing).offset(-16)
-            $0.top.equalTo(cityBackground.snp.top).offset(12)
-            $0.bottom.equalTo(cityBackground.snp.bottom).offset(-12)
+            $0.trailing.equalTo(cityBackground).offset(-16)
+            $0.verticalEdges.equalTo(cityBackground).inset(12)
             $0.height.equalTo(cityButton.snp.width)
         }
         
         currentCityLabel.snp.makeConstraints {
             $0.trailing.equalTo(cityButton.snp.leading).offset(-4)
-            $0.centerY.equalTo(cityBackground.snp.centerY)
+            $0.centerY.equalTo(cityBackground)
         }
         
         districtBackground.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.top.equalTo(cityBackground.snp.bottom).offset(24)
         }
         
         districtLabel.snp.makeConstraints {
-            $0.leading.equalTo(districtBackground.snp.leading).offset(16)
-            $0.centerY.equalTo(districtBackground.snp.centerY)
+            $0.leading.equalTo(districtBackground).offset(16)
+            $0.centerY.equalTo(districtBackground)
         }
         
         districtButton.snp.makeConstraints {
-            $0.trailing.equalTo(districtBackground.snp.trailing).offset(-16)
-            $0.top.equalTo(districtBackground.snp.top).offset(12)
-            $0.bottom.equalTo(districtBackground.snp.bottom).offset(-12)
+            $0.trailing.equalTo(districtBackground).offset(-16)
+            $0.verticalEdges.equalTo(districtBackground).inset(12)
             $0.height.equalTo(districtButton.snp.width)
         }
         
         currentDistrictLabel.snp.makeConstraints {
             $0.trailing.equalTo(districtButton.snp.leading).offset(-4)
-            $0.centerY.equalTo(districtBackground.snp.centerY)
+            $0.centerY.equalTo(districtBackground)
         }
         
         submitButton.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.verticalEdges.equalToSuperview().inset(24)
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
         }
     }
