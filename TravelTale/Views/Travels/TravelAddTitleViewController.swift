@@ -30,8 +30,7 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     
     // MARK: - Methods
     
-    override func configureStyle() {
-    }
+    override func configureStyle() { }
     
     override func configureDelegate() {
         travelAddTitleView.textField.delegate = self
@@ -44,9 +43,7 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
         travelAddTitleView.backButtonItem.target = self
     }
     
-    override func bind() {
-        
-    }
+    override func bind() { }
     
     private func customNavigationBar() {
         navigationItem.titleView = travelAddTitleView.pageTitleLabel

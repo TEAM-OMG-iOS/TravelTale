@@ -31,12 +31,9 @@ final class TravelAddPlaceViewController: BaseViewController {
     
     // MARK: - Methods
     
-    override func configureStyle() {
-    }
+    override func configureStyle() { }
     
-    override func configureDelegate() {
-        
-    }
+    override func configureDelegate() { }
     
     override func configureAddTarget() {
         travelAddPlaceView.placePickButton.addTarget(self, action: #selector(tappedInputBox), for: .touchUpInside)
@@ -46,9 +43,7 @@ final class TravelAddPlaceViewController: BaseViewController {
         travelAddPlaceView.backButtonItem.target = self
     }
     
-    override func bind() {
-        
-    }
+    override func bind() { }
     
     private func customNavigationBar() {
         navigationItem.titleView = travelAddPlaceView.pageTitleLabel
@@ -88,6 +83,7 @@ final class TravelAddPlaceViewController: BaseViewController {
 final class AddLocationViewController: BaseViewController {
     
     // MARK: - Properties
+    
     let addLocationView = AddLocationView()
     var travelAddPlaceVC = TravelAddPlaceViewController()
     var travelRescheduleVC = TravelRescheduleViewController()
@@ -113,15 +109,13 @@ final class AddLocationViewController: BaseViewController {
         addLocationView.tableView.dataSource = self
         addLocationView.tableView.delegate = self
         
-        addLocationView.tableView.register(TravelLocationTableViewCell.self, forCellReuseIdentifier: TravelLocationTableViewCell.identifier)
+        addLocationView.tableView.register(TravelLocationTableViewCell.self,
+                                           forCellReuseIdentifier: TravelLocationTableViewCell.identifier)
     }
     
-    override func configureAddTarget() {
-        
-    }
+    override func configureAddTarget() { }
     
-    override func bind() {
-    }
+    override func bind() { }
 }
 
 // MARK: - Extensions
@@ -146,6 +140,7 @@ extension AddLocationViewController: UITableViewDelegate {
             travelAddPlaceVC.updateInputBox(with: text)
             travelRescheduleVC.updateInputBox(with: text)
         }
+        
         self.dismiss(animated: true, completion: nil)
     }
 }

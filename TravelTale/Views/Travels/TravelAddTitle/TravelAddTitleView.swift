@@ -126,7 +126,6 @@ final class TravelAddTitleView: BaseView {
     }
     
     func startLoadingAnimation() {
-        
         self.loadingBar.snp.remakeConstraints {
             $0.leading.equalToSuperview()
             $0.top.equalToSuperview()
