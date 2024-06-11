@@ -30,13 +30,13 @@ final class MemoAddViewController: BaseViewController {
     
     override func configureAddTarget() {
         memoAddView.completeBtn.addTarget(self, action: #selector(tapCompleteButton), for: .touchUpInside)
-        memoAddView.leftBarButtonItem.target = self
-        memoAddView.leftBarButtonItem.action = #selector(tapBackButton)
+        memoAddView.backButton.target = self
+        memoAddView.backButton.action = #selector(tapBackButton)
     }
     
     private func configureNavigationBar() {
         navigationItem.titleView = memoAddView.naviTitle
-        navigationItem.leftBarButtonItem = memoAddView.leftBarButtonItem
+        navigationItem.leftBarButtonItem = memoAddView.backButton
     }
     
     @objc private func tapBackButton() {
