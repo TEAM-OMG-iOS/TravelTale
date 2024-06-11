@@ -21,8 +21,8 @@ final class DiscoveryView: BaseView {
                                            imageSize: 12)
     }
     
-    let searchButton = UIButton().then {
-        $0.setImage( .search, for: .normal)
+    let searchButton = UIBarButtonItem().then {
+        $0.image = .search
     }
     
     private let categoryStackView = UIStackView().then {

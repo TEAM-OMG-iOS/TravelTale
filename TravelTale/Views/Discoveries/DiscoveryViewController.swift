@@ -20,10 +20,13 @@ final class DiscoveryViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBarItems()
     }
     
     // MARK: - methods
+    override func configureStyle() {
+        configureNavigationBarItems()
+    }
+    
     override func configureDelegate() {
         discoveryView.collectionView.delegate = self
         discoveryView.collectionView.dataSource = self
@@ -32,7 +35,8 @@ final class DiscoveryViewController: BaseViewController {
     
     override func configureAddTarget() {
         discoveryView.regionButton.addTarget(self, action: #selector(tappedRegionButton), for: .touchUpInside)
-        discoveryView.searchButton.addTarget(self, action: #selector(tappedSearchButton), for: .touchUpInside)
+        discoveryView.searchButton.target = self
+        discoveryView.searchButton.action = #selector(tappedSearchButton)
         [discoveryView.touristSpotButton,
          discoveryView.accommodationButton,
          discoveryView.restaurantButton,
@@ -43,8 +47,7 @@ final class DiscoveryViewController: BaseViewController {
         let regionButton = UIBarButtonItem(customView: discoveryView.regionButton)
         navigationItem.leftBarButtonItem = regionButton
         
-        let searchButton = UIBarButtonItem(customView: discoveryView.searchButton)
-        navigationItem.rightBarButtonItem = searchButton
+        navigationItem.rightBarButtonItem = discoveryView.searchButton
     }
     
     @objc private func tappedRegionButton() {
