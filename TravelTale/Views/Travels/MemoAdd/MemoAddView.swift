@@ -10,16 +10,11 @@ import UIKit
 final class MemoAddView: BaseView {
     
     // MARK: - properties
-    private let exitButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        $0.tintColor = UIColor(red: 0.39, green: 0.39, blue: 0.39, alpha: 1.00)
-    }
-    
-    private let leftButtonView = UIView().then {
-        $0.frame = CGRect(x: -10, y: 0, width: 50, height: 50)
-    }
-    
-    lazy var leftBarButtonItem = UIBarButtonItem(customView: leftButtonView)
+    let backButton = UIBarButtonItem().then {
+        $0.style = .done
+        $0.image = UIImage(systemName: "chevron.left")
+        $0.tintColor = .gray90
+      }
     
     private let memoView = UIView().then {
         $0.configureView(color: .gray10, cornerRadius: 20)
@@ -37,11 +32,7 @@ final class MemoAddView: BaseView {
     }
     
     let completeBtn = GreenButton().then {
-        $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .semibold), text: "완료")
-    }
-    
-    let naviTitle = UILabel().then {
-        $0.configureLabel(font: .oaGothic(size: 18, weight: .heavy), text: "메모 추가")
+        $0.configureButton(fontColor: .white, font: .pretendard(size: 20, weight: .bold), text: "완료")
     }
     
     // MARK: - methods
@@ -58,18 +49,9 @@ final class MemoAddView: BaseView {
         [memoTitle, memoTV, completeBtn].forEach {
             self.memoView.addSubview($0)
         }
-        
-        [exitButton].forEach {
-            self.leftButtonView.addSubview($0)
-        }
     }
     
     override func configureConstraints() {
-        exitButton.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview().inset(5)
-            $0.leading.equalToSuperview().inset(20)
-        }
-        
         memoView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).inset(20)
             $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
@@ -91,7 +73,7 @@ final class MemoAddView: BaseView {
         }
         
         completeBtn.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(15)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
             $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
             $0.height.equalTo(52)
         }
