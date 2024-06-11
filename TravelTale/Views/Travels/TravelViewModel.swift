@@ -5,15 +5,20 @@
 //  Created by 유림 on 6/5/24.
 //
 
-import Foundation
+import UIKit
 
 final class TravelViewModel {
     
     // MARK: - properties
+    // input
     var travelArray: Observable<[Travel]> = .init([])
     
     var upcomingTravels: [Travel] = []
     var pastTravels: [Travel] = []
+    
+    // output
+    var selectedTravel: Observable<Travel?> = .init(nil)
+    
     
     // MARK: - methods
     func returnPeriodString(startDate: Date, endDate: Date) -> String {
