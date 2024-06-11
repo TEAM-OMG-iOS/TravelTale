@@ -24,7 +24,7 @@ final class DiscoveryViewController: BaseViewController {
     
     // MARK: - methods
     override func configureStyle() {
-        configureNavigationBarItems()
+        configureNavigationBar()
     }
     
     override func configureDelegate() {
@@ -43,7 +43,7 @@ final class DiscoveryViewController: BaseViewController {
          discoveryView.entertainmentButton].forEach { $0.addTarget(self, action: #selector(tappedCategoryButton(_:)), for: .touchUpInside) }
     }
     
-    func configureNavigationBarItems() {
+    private func configureNavigationBar() {
         let regionButton = UIBarButtonItem(customView: discoveryView.regionButton)
         navigationItem.leftBarButtonItem = regionButton
         
