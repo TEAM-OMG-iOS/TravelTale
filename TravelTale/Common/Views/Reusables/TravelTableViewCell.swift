@@ -19,12 +19,12 @@ final class TravelTableViewCell: BaseTableViewCell {
     }
     
     private let thumbnailImageView = UIImageView().then {
-        $0.configureView(color: .gray20, cornerRadius: 16)
+        $0.configureView(color: .gray70, cornerRadius: 16)
         $0.contentMode = .scaleAspectFill
     }
     
     private let borderLine = UIView().then {
-        $0.configureView(color: .gray20)
+        $0.configureView(color: .gray70)
     }
     
     private let periodLabel = UILabel().then {
@@ -44,8 +44,12 @@ final class TravelTableViewCell: BaseTableViewCell {
         $0.configureLabel(color: .black, font: .pretendard(size: 18, weight: .medium))
     }
     
-    
     // MARK: - methods
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        updateCellColor(selected)
+    }
+    
     override func configureHierarchy() {
         contentView.addSubview(containerView)
         
@@ -107,5 +111,9 @@ final class TravelTableViewCell: BaseTableViewCell {
         titleLabel.text = travel.title
         periodLabel.text = period
         provinceNameLabel.text = travel.province ?? "미정"
+    }
+    
+    private func updateCellColor(_ selected: Bool) {
+        containerView.backgroundColor = selected ? .gray20 : .clear
     }
 }
