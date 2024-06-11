@@ -25,7 +25,7 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        customNavigationBar()
+        configureNavigationBarItems()
     }
     
     // MARK: - Methods
@@ -39,15 +39,15 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     override func configureAddTarget() {
         travelAddTitleView.textField.addTarget(self, action: #selector(changedButtonColor), for: .editingChanged)
         travelAddTitleView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
-        travelAddTitleView.backButtonItem.action = #selector(tappedToRootView)
-        travelAddTitleView.backButtonItem.target = self
+        travelAddTitleView.backButton.action = #selector(tappedToRootView)
+        travelAddTitleView.backButton.target = self
     }
     
     override func bind() { }
     
-    private func customNavigationBar() {
+    private func configureNavigationBarItems() {
         navigationItem.titleView = travelAddTitleView.pageTitleLabel
-        self.navigationItem.leftBarButtonItem = travelAddTitleView.backButtonItem
+        self.navigationItem.leftBarButtonItem = travelAddTitleView.backButton
     }
     
     @objc func tappedOkButton() {

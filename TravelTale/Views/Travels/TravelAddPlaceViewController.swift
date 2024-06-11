@@ -26,7 +26,7 @@ final class TravelAddPlaceViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        customNavigationBar()
+        configureNavigationBarItems()
     }
     
     // MARK: - Methods
@@ -39,15 +39,15 @@ final class TravelAddPlaceViewController: BaseViewController {
         travelAddPlaceView.placePickButton.addTarget(self, action: #selector(tappedInputBox), for: .touchUpInside)
         travelAddPlaceView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
         travelAddPlaceView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
-        travelAddPlaceView.backButtonItem.action = #selector(tappedToRootView)
-        travelAddPlaceView.backButtonItem.target = self
+        travelAddPlaceView.backButton.action = #selector(tappedToRootView)
+        travelAddPlaceView.backButton.target = self
     }
     
     override func bind() { }
     
-    private func customNavigationBar() {
+    private func configureNavigationBarItems() {
         navigationItem.titleView = travelAddPlaceView.pageTitleLabel
-        self.navigationItem.leftBarButtonItem = travelAddPlaceView.backButtonItem
+        self.navigationItem.leftBarButtonItem = travelAddPlaceView.backButton
     }
     
     func updateInputBox(with text: String) {

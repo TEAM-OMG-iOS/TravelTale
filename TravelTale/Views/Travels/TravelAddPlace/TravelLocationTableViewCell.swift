@@ -21,23 +21,12 @@ final class TravelLocationTableViewCell: BaseTableViewCell {
     
     let locationButton = UIButton()
     
-    // MARK: - Lifecycle
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    // MARK: - Methods
     
     override func prepareForReuse() {
         super.prepareForReuse()
         locationLabel.text = ""
     }
-    
-    // MARK: - Methods
     
     override func configureUI() {
         super.configureUI()

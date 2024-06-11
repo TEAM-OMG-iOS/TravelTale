@@ -11,7 +11,7 @@ final class TravelAddTitleView: BaseView {
     
     // MARK: - Properties
     
-    let backButtonItem = UIBarButtonItem().then {
+    let backButton = UIBarButtonItem().then {
         $0.style = .done
         $0.image = UIImage(systemName: "xmark")
         $0.tintColor = .gray90
@@ -57,18 +57,7 @@ final class TravelAddTitleView: BaseView {
                          clipsToBounds: true,
                          cornerRadius: 4)
     }
-    
-    // MARK: - Lifecycle
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+  
     // MARK: - Methods
     
     override func configureUI() {

@@ -11,7 +11,7 @@ final class TravelAddPlaceView: BaseView {
     
     // MARK: - Properties
     
-    let backButtonItem = UIBarButtonItem().then {
+    let backButton = UIBarButtonItem().then {
         $0.style = .done
         $0.image = UIImage(systemName: "xmark")
         $0.tintColor = .gray90
@@ -64,23 +64,12 @@ final class TravelAddPlaceView: BaseView {
                          cornerRadius: 4)
     }
     
-    // MARK: - Lifecycle
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     // MARK: - Methods
     
     override func configureUI() {
         super.configureUI()
         
-        backButtonItem.tintColor = .gray90
+        backButton.tintColor = .gray90
     }
     
     override func configureHierarchy() {
@@ -114,7 +103,7 @@ final class TravelAddPlaceView: BaseView {
             $0.top.equalTo(progressView.snp.bottom).offset(56)
             $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview().offset(-20)
-            $0.height.equalTo(21)
+            $0.height.equalTo(20)
         }
         
         placePickButton.snp.makeConstraints {
@@ -127,15 +116,15 @@ final class TravelAddPlaceView: BaseView {
         cancelButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
             $0.leading.equalToSuperview().offset(20)
-            $0.width.equalTo(100)
+            $0.trailing.equalTo(okButton.snp.leading).offset(-15)
             $0.height.equalTo(52)
         }
         
         okButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
-            $0.leading.equalTo(cancelButton.snp.trailing).offset(15)
             $0.trailing.equalToSuperview().offset(-20)
             $0.height.equalTo(52)
+            $0.width.equalTo(cancelButton.snp.width).multipliedBy(2)
         }
     }
     
