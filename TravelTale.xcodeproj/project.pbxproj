@@ -66,6 +66,16 @@
 		37CB88162C0DB648002798BE /* GrayBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88152C0DB648002798BE /* GrayBackgroundView.swift */; };
 		37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88172C0DB66D002798BE /* GrayButton.swift */; };
 		37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88192C0DB677002798BE /* GreenButton.swift */; };
+		4D0E3CD52C0F36110089D6C1 /* TravelSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */; };
+		4D0E3CD72C0F36280089D6C1 /* TravelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */; };
+		4D0E3CDB2C10391A0089D6C1 /* MemoAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */; };
+		4D0E3CDF2C103D430089D6C1 /* MemoAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDE2C103D430089D6C1 /* MemoAddView.swift */; };
+		4D0E3CE12C10763C0089D6C1 /* PlaceAddEditView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */; };
+		4D0E3CE32C1076570089D6C1 /* PlaceAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE22C1076570089D6C1 /* PlaceAddViewController.swift */; };
+		4D0E3CE52C11EA930089D6C1 /* ScheduleCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */; };
+		4D0E3CE72C1206480089D6C1 /* ScheduleCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */; };
+		4D0E3CEC2C131EBB0089D6C1 /* DaySelectPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CEB2C131EBB0089D6C1 /* DaySelectPopover.swift */; };
+		4D0E3CEE2C131ECB0089D6C1 /* TimeSelectPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CED2C131ECB0089D6C1 /* TimeSelectPopover.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +133,16 @@
 		37CB88152C0DB648002798BE /* GrayBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayBackgroundView.swift; sourceTree = "<group>"; };
 		37CB88172C0DB66D002798BE /* GrayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayButton.swift; sourceTree = "<group>"; };
 		37CB88192C0DB677002798BE /* GreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenButton.swift; sourceTree = "<group>"; };
+		4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSelectView.swift; sourceTree = "<group>"; };
+		4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSelectViewController.swift; sourceTree = "<group>"; };
+		4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAddViewController.swift; sourceTree = "<group>"; };
+		4D0E3CDE2C103D430089D6C1 /* MemoAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAddView.swift; sourceTree = "<group>"; };
+		4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlaceAddEditView.storyboard; sourceTree = "<group>"; };
+		4D0E3CE22C1076570089D6C1 /* PlaceAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAddViewController.swift; sourceTree = "<group>"; };
+		4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCreateView.swift; sourceTree = "<group>"; };
+		4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCreateViewController.swift; sourceTree = "<group>"; };
+		4D0E3CEB2C131EBB0089D6C1 /* DaySelectPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySelectPopover.swift; sourceTree = "<group>"; };
+		4D0E3CED2C131ECB0089D6C1 /* TimeSelectPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectPopover.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +219,7 @@
 		378CEC1A2C0D633700DF1C3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4D0E3CE82C12E8CC0089D6C1 /* Common */,
 				378CEC292C0D65E700DF1C3F /* Travels */,
 				378CEC2B2C0D66E600DF1C3F /* Discoveries */,
 				378CEC2A2C0D660400DF1C3F /* MyPages */,
@@ -233,10 +254,14 @@
 		378CEC292C0D65E700DF1C3F /* Travels */ = {
 			isa = PBXGroup;
 			children = (
+				4D0E3CEA2C12E9440089D6C1 /* PlaceAddEdit */,
+				4D0E3CE92C12E9240089D6C1 /* MemoAdd */,
 				378CEC2C2C0D685300DF1C3F /* Travel */,
 				1AD537882C105D0300A70D5E /* TravelViewModel.swift */,
 				1AD5379D2C1367AB00A70D5E /* TravelSegment.swift */,
 				378CEC352C0D68F900DF1C3F /* TravelViewController.swift */,
+				4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */,
+				4D0E3CE22C1076570089D6C1 /* PlaceAddViewController.swift */,
 				1AD537952C12E5E300A70D5E /* TravelPlanViewController.swift */,
 				1AD537992C1362F500A70D5E /* TravelMemoryViewController.swift */,
 			);
@@ -317,6 +342,8 @@
 				37CB88172C0DB66D002798BE /* GrayButton.swift */,
 				37CB88192C0DB677002798BE /* GreenButton.swift */,
 				1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */,
+				4D0E3CEB2C131EBB0089D6C1 /* DaySelectPopover.swift */,
+				4D0E3CED2C131ECB0089D6C1 /* TimeSelectPopover.swift */,
 				1AD537932C12DCC600A70D5E /* LightGreenButton.swift */,
 			);
 			path = Reusables;
@@ -354,6 +381,41 @@
 				378CEC582C0D732600DF1C3F /* OAGothic-Medium.otf */,
 			);
 			path = OAGothic;
+			sourceTree = "<group>";
+		};
+		4D0E3CE82C12E8CC0089D6C1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4D0E3CF12C1722C60089D6C1 /* AddSchedule */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4D0E3CE92C12E9240089D6C1 /* MemoAdd */ = {
+			isa = PBXGroup;
+			children = (
+				4D0E3CDE2C103D430089D6C1 /* MemoAddView.swift */,
+			);
+			path = MemoAdd;
+			sourceTree = "<group>";
+		};
+		4D0E3CEA2C12E9440089D6C1 /* PlaceAddEdit */ = {
+			isa = PBXGroup;
+			children = (
+				4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */,
+			);
+			path = PlaceAddEdit;
+			sourceTree = "<group>";
+		};
+		4D0E3CF12C1722C60089D6C1 /* AddSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */,
+				4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */,
+				4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */,
+				4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */,
+			);
+			path = AddSchedule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,6 +507,7 @@
 				378CEC522C0D721200DF1C3F /* Pretendard-ExtraLight.otf in Resources */,
 				378CEBF82C0D563D00DF1C3F /* Base in Resources */,
 				378CEC4D2C0D721200DF1C3F /* Pretendard-Black.otf in Resources */,
+				4D0E3CE12C10763C0089D6C1 /* PlaceAddEditView.storyboard in Resources */,
 				378CEC4F2C0D721200DF1C3F /* Pretendard-Light.otf in Resources */,
 				378CEC512C0D721200DF1C3F /* Pretendard-Medium.otf in Resources */,
 				378CEC5A2C0D732600DF1C3F /* OAGothic-Medium.otf in Resources */,
@@ -465,7 +528,10 @@
 				2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */,
 				378CEC262C0D64FB00DF1C3F /* BaseTableViewCell.swift in Sources */,
 				378CEC282C0D651E00DF1C3F /* BaseCollectionViewCell.swift in Sources */,
+				4D0E3CE32C1076570089D6C1 /* PlaceAddViewController.swift in Sources */,
 				378CEC382C0D690800DF1C3F /* DiscoveryViewController.swift in Sources */,
+				4D0E3CD52C0F36110089D6C1 /* TravelSelectView.swift in Sources */,
+				4D0E3CD72C0F36280089D6C1 /* TravelSelectViewController.swift in Sources */,
 				1AD537962C12E5E300A70D5E /* TravelPlanViewController.swift in Sources */,
 				378CEBEC2C0D563C00DF1C3F /* AppDelegate.swift in Sources */,
 				378CEC362C0D68F900DF1C3F /* TravelViewController.swift in Sources */,
@@ -483,6 +549,7 @@
 				378CEC3A2C0D691900DF1C3F /* MyPageViewController.swift in Sources */,
 				37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */,
 				37CB880F2C0D7979002798BE /* UIButton+Extension.swift in Sources */,
+				4D0E3CEC2C131EBB0089D6C1 /* DaySelectPopover.swift in Sources */,
 				37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */,
 				37CB88072C0D7632002798BE /* PlaceDetailView.swift in Sources */,
 				378CEC222C0D649D00DF1C3F /* BaseView.swift in Sources */,
@@ -491,8 +558,13 @@
 				1AD537A02C13999600A70D5E /* TravelSectionHeaderView.swift in Sources */,
 				1AD537A22C13A9F200A70D5E /* SpaceFooterView.swift in Sources */,
 				378CEC202C0D649000DF1C3F /* UIFont+Extension.swift in Sources */,
+				4D0E3CDB2C10391A0089D6C1 /* MemoAddViewController.swift in Sources */,
+				4D0E3CE52C11EA930089D6C1 /* ScheduleCreateView.swift in Sources */,
 				37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */,
 				378CEC242C0D64AB00DF1C3F /* BaseViewController.swift in Sources */,
+				4D0E3CDF2C103D430089D6C1 /* MemoAddView.swift in Sources */,
+				4D0E3CE72C1206480089D6C1 /* ScheduleCreateViewController.swift in Sources */,
+				4D0E3CEE2C131ECB0089D6C1 /* TimeSelectPopover.swift in Sources */,
 				1AD5379A2C1362F500A70D5E /* TravelMemoryViewController.swift in Sources */,
 				378CEC1E2C0D644D00DF1C3F /* UIColor+Extension.swift in Sources */,
 			);
