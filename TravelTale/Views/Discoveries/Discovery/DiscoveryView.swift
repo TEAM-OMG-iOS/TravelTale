@@ -56,8 +56,6 @@ final class DiscoveryView: BaseView {
     
     // MARK: - methods
     override func configureHierarchy() {
-        self.addSubview(regionButton)
-        self.addSubview(searchButton)
         self.addSubview(categoryStackView)
         categoryStackView.addArrangedSubview(touristSpotButton)
         categoryStackView.addArrangedSubview(restaurantButton)
@@ -68,21 +66,9 @@ final class DiscoveryView: BaseView {
     }
     
     override func configureConstraints() {
-        regionButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(12)
-            $0.leading.equalToSuperview().inset(12)
-        }
-        
-        searchButton.snp.makeConstraints {
-            $0.centerY.equalTo(regionButton.snp.centerY)
-            $0.height.equalToSuperview().multipliedBy(0.04225352113)
-            $0.height.equalTo(searchButton.snp.width)
-            $0.trailing.equalToSuperview().inset(24)
-        }
-        
         categoryStackView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(24)
-            $0.top.equalTo(regionButton.snp.bottom).offset(32)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(32)
             $0.height.equalToSuperview().multipliedBy(0.06572769953)
         }
         

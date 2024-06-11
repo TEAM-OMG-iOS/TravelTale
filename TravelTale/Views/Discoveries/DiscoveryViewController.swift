@@ -20,6 +20,7 @@ final class DiscoveryViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationBarItems()
     }
     
     // MARK: - methods
@@ -36,6 +37,14 @@ final class DiscoveryViewController: BaseViewController {
          discoveryView.accommodationButton,
          discoveryView.restaurantButton,
          discoveryView.entertainmentButton].forEach{ $0.addTarget(self, action: #selector(tappedCategoryButton(_:)), for: .touchUpInside)}
+    }
+    
+    func configureNavigationBarItems() {
+        let regionButton = UIBarButtonItem(customView: discoveryView.regionButton)
+        navigationItem.leftBarButtonItem = regionButton
+        
+        let searchButton = UIBarButtonItem(customView: discoveryView.searchButton)
+        navigationItem.rightBarButtonItem = searchButton
     }
     
     @objc private func tappedRegionButton() {
