@@ -261,10 +261,7 @@ final class ScheduleCreateView: BaseView {
     
     func checkTextViewContent() {
         // TODO: - 장소, 일정, 시작 시간이 채워져야 green100으로 변경
-        let text = memoTV.text ?? ""
-        let isPlaceholder = text == "메세지를 입력하세요"
-        
-        if isPlaceholder || text.isEmpty {
+        if  scheduleContents.textColor == .gray80 && startTimeContents.textColor == .gray80 {
             nextBtn.isEnabled = false
             nextBtn.backgroundColor = .green10
         } else {

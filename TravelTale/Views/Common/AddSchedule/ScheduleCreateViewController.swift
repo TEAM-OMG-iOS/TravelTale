@@ -25,6 +25,7 @@ final class ScheduleCreateViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
+        scheduleCreateView.checkTextViewContent()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,6 +39,9 @@ final class ScheduleCreateViewController: BaseViewController {
     
     override func configureAddTarget() {
         scheduleCreateView.scheduleBtn.addTarget(self, action: #selector(tappedScheduleBtn), for: .touchUpInside)
+        scheduleCreateView.cancelBtn.tag = 0
+        scheduleCreateView.cancelBtn.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
+        scheduleCreateView.backButton.tag = 1
         scheduleCreateView.backButton.target = self
         scheduleCreateView.backButton.action = #selector(handleBackButton)
     }
@@ -55,8 +59,16 @@ final class ScheduleCreateViewController: BaseViewController {
         navigationItem.leftBarButtonItem = scheduleCreateView.backButton
     }
     
-    @objc private func handleBackButton() {
-        navigationController?.popViewController(animated: true)
+    // MARK: - objc func
+    @objc private func handleBackButton(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            navigationController?.popViewController(animated: true)
+        case 1:
+            navigationController?.popToRootViewController(animated: true)
+        default:
+            navigationController?.popViewController(animated: true)
+        }
     }
 }
 
