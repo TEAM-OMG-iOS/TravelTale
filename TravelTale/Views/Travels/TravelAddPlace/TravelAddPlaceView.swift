@@ -9,8 +9,7 @@ import UIKit
 
 final class TravelAddPlaceView: BaseView {
     
-    // MARK: - Properties
-    
+    // MARK: - properties
     let backButton = UIBarButtonItem().then {
         $0.style = .done
         $0.image = UIImage(systemName: "xmark")
@@ -64,12 +63,10 @@ final class TravelAddPlaceView: BaseView {
                          cornerRadius: 4)
     }
     
-    // MARK: - Methods
-    
+    // MARK: - methods
     override func configureUI() {
         super.configureUI()
         
-        backButton.tintColor = .gray90
     }
     
     override func configureHierarchy() {
@@ -87,8 +84,7 @@ final class TravelAddPlaceView: BaseView {
     override func configureConstraints() {  
         progressView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(116)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
+            $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(8)
         }
         
@@ -101,15 +97,13 @@ final class TravelAddPlaceView: BaseView {
         
         inputTitleLabel.snp.makeConstraints {
             $0.top.equalTo(progressView.snp.bottom).offset(56)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
+            $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(20)
         }
         
         placePickButton.snp.makeConstraints {
             $0.top.equalTo(inputTitleLabel.snp.bottom).offset(28)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
+            $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(60)
         }
         
@@ -134,66 +128,4 @@ final class TravelAddPlaceView: BaseView {
         }, completion: nil)
     }
     
-}
-
-// MARK: - AddLocationView
-
-final class AddLocationView: BaseView {
-    
-    // MARK: - Properties
-    
-    private let guideLabel = UILabel().then {
-        $0.text = "대표 여행 장소를 선택해주세요"
-        $0.font = UIFont(name: "Pretendard-SemiBold", size: 18)
-    }
-    
-    let tableView = UITableView().then {
-        $0.backgroundColor = .darkGray
-    }
-    
-    var locations: [String] = ["서울특별시", "인천광역시", "부산광역시", 
-                               "대전광역시", "대구광역시", "울산광역시",
-                               "광주광역시", "제주특별자치도", "세종특별자치시",
-                               "경기도", "강원도", "충청북도", "충청남도",
-                               "경상북도", "경상남도", "전라북도", "전라남도"]
-    
-    // MARK: - Lifecycle
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Methods
-    
-    override func configureUI() {
-        super.configureUI()
-    }
-    
-    override func configureHierarchy() {
-        [guideLabel,
-         tableView].forEach {
-            self.addSubview($0)
-        }
-    }
-    
-    override func configureConstraints() {
-        guideLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(39)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
-            $0.height.equalTo(42)
-        }
-        
-        tableView.snp.makeConstraints {
-            $0.top.equalTo(guideLabel.snp.bottom).offset(12)
-            $0.leading.equalToSuperview().offset(0)
-            $0.trailing.equalToSuperview().offset(0)
-            $0.bottom.equalTo(self.safeAreaLayoutGuide)
-        }
-    }
 }

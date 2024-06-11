@@ -9,12 +9,10 @@ import UIKit
 
 final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegate {
     
-    // MARK: - Properties
+    // MARK: - properties
+    private let travelAddTitleView = TravelAddTitleView()
     
-    let travelAddTitleView = TravelAddTitleView()
-    
-    // MARK: - Lifecycle
-    
+    // MARK: - lifecycle
     override func loadView() {
         view = travelAddTitleView
     }
@@ -28,10 +26,7 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
         configureNavigationBarItems()
     }
     
-    // MARK: - Methods
-    
-    override func configureStyle() { }
-    
+    // MARK: - methods
     override func configureDelegate() {
         travelAddTitleView.textField.delegate = self
     }
@@ -42,9 +37,7 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
         travelAddTitleView.backButton.action = #selector(tappedToRootView)
         travelAddTitleView.backButton.target = self
     }
-    
-    override func bind() { }
-    
+
     private func configureNavigationBarItems() {
         navigationItem.titleView = travelAddTitleView.pageTitleLabel
         self.navigationItem.leftBarButtonItem = travelAddTitleView.backButton

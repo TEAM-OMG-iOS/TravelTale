@@ -9,8 +9,7 @@ import UIKit
 
 final class TravelLocationTableViewCell: BaseTableViewCell {
     
-    // MARK: - Properties
-    
+    // MARK: - properties
     static let identifier = "LocationTableViewCell"
     
     let locationLabel = UILabel().then {
@@ -21,8 +20,7 @@ final class TravelLocationTableViewCell: BaseTableViewCell {
     
     let locationButton = UIButton()
     
-    // MARK: - Methods
-    
+    // MARK: - methods
     override func prepareForReuse() {
         super.prepareForReuse()
         locationLabel.text = ""
@@ -42,15 +40,13 @@ final class TravelLocationTableViewCell: BaseTableViewCell {
     override func configureConstraints() {
         locationLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
+            $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().offset(-10)
         }
         
         locationButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
+            $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().offset(-10)
         }
     }

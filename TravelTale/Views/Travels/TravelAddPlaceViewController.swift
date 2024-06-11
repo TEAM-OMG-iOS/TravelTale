@@ -9,12 +9,10 @@ import UIKit
 
 final class TravelAddPlaceViewController: BaseViewController {
     
-    // MARK: - Properties
+    // MARK: - properties
+    private let travelAddPlaceView = TravelAddPlaceView()
     
-    let travelAddPlaceView = TravelAddPlaceView()
-    
-    // MARK: - Lifecycle
-    
+    // MARK: - lifecycle
     override func loadView() {
         view = travelAddPlaceView
     }
@@ -29,8 +27,7 @@ final class TravelAddPlaceViewController: BaseViewController {
         configureNavigationBarItems()
     }
     
-    // MARK: - Methods
-    
+    // MARK: - methods
     override func configureStyle() { }
     
     override func configureDelegate() { }
@@ -43,8 +40,6 @@ final class TravelAddPlaceViewController: BaseViewController {
         travelAddPlaceView.backButton.target = self
     }
     
-    override func bind() { }
-    
     private func configureNavigationBarItems() {
         navigationItem.titleView = travelAddPlaceView.pageTitleLabel
         self.navigationItem.leftBarButtonItem = travelAddPlaceView.backButton
@@ -55,15 +50,14 @@ final class TravelAddPlaceViewController: BaseViewController {
     }
     
     @objc func tappedInputBox() {
-        let locationList = AddLocationViewController()
-        if let sheet = locationList.sheetPresentationController {
+        let locationList = TravelAddLocationViewController()
+        guard let sheet = locationList.sheetPresentationController else { return }
             sheet.detents = [.medium()]
             sheet.prefersGrabberVisible = true
             locationList.travelAddPlaceVC = self
             self.present(locationList, animated: true, completion: nil)
         }
-    }
-    
+
     @objc func tappedOkButton() {
         let nextVC = TravelAddCalenderViewController()
         self.navigationController?.pushViewController(nextVC, animated: false)
@@ -75,72 +69,5 @@ final class TravelAddPlaceViewController: BaseViewController {
     
     @objc func tappedToRootView() {
         self.navigationController?.popToRootViewController(animated: true)
-    }
-}
-
-// MARK: - AddLocationVC
-
-final class AddLocationViewController: BaseViewController {
-    
-    // MARK: - Properties
-    
-    let addLocationView = AddLocationView()
-    var travelAddPlaceVC = TravelAddPlaceViewController()
-    var travelRescheduleVC = TravelRescheduleViewController()
-    
-    // MARK: - Lifecycle
-    
-    override func loadView() {
-        view = addLocationView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
-    // MARK: - Methods
-    
-    override func configureStyle() {
-        addLocationView.tableView.reloadData()
-    }
-    
-    override func configureDelegate() {
-        addLocationView.tableView.dataSource = self
-        addLocationView.tableView.delegate = self
-        
-        addLocationView.tableView.register(TravelLocationTableViewCell.self,
-                                           forCellReuseIdentifier: TravelLocationTableViewCell.identifier)
-    }
-    
-    override func configureAddTarget() { }
-    
-    override func bind() { }
-}
-
-// MARK: - Extensions
-
-extension AddLocationViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return addLocationView.locations.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelLocationTableViewCell.identifier, for: indexPath) as? TravelLocationTableViewCell else { return TravelLocationTableViewCell() }
-        cell.locationLabel.text = addLocationView.locations[indexPath.row]
-        
-        return cell
-    }
-}
-
-extension AddLocationViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? TravelLocationTableViewCell else { return }
-        if let text = cell.locationLabel.text {
-            travelAddPlaceVC.updateInputBox(with: text)
-            travelRescheduleVC.updateInputBox(with: text)
-        }
-        
-        self.dismiss(animated: true, completion: nil)
     }
 }

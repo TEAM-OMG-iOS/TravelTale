@@ -9,8 +9,7 @@ import UIKit
 
 final class TravelAddTitleView: BaseView {
     
-    // MARK: - Properties
-    
+    // MARK: - properties
     let backButton = UIBarButtonItem().then {
         $0.style = .done
         $0.image = UIImage(systemName: "xmark")
@@ -58,8 +57,7 @@ final class TravelAddTitleView: BaseView {
                          cornerRadius: 4)
     }
   
-    // MARK: - Methods
-    
+    // MARK: - methods
     override func configureUI() {
         super.configureUI()
         
@@ -67,7 +65,6 @@ final class TravelAddTitleView: BaseView {
     }
     
     override func configureHierarchy() {
-        
         [inputTitleLabel,
          textField,
          okButton,
@@ -80,8 +77,7 @@ final class TravelAddTitleView: BaseView {
     override func configureConstraints() {
         progressView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(116)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
+            $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(8)
         }
         
@@ -94,21 +90,18 @@ final class TravelAddTitleView: BaseView {
         
         inputTitleLabel.snp.makeConstraints {
             $0.top.equalTo(progressView.snp.bottom).offset(56)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
-            $0.height.equalTo(21)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(20)
         }
         
         textField.snp.makeConstraints {
             $0.top.equalTo(inputTitleLabel.snp.bottom).offset(28)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
+            $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(60)
         }
         
         okButton.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
+            $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
             $0.height.equalTo(52)
         }
