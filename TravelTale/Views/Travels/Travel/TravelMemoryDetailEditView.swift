@@ -36,7 +36,24 @@ class TravelMemoryDetailEditView: BaseView {
         $0.configureLabel(alignment: .left, font: .pretendard(size: 20, weight: .bold))
     }
     
-    let tableView = UITableView()
+    private let memoView = UIView().then {
+        $0.configureView(color: .gray5, cornerRadius: 20)
+    }
+    
+    private let memoTitle = UILabel().then {
+        $0.configureLabel(font: .pretendard(size: 18, weight: .bold), text: "기록")
+    }
+    
+    let memoTextView = UITextView().then {
+        $0.configureView(color: .clear)
+        $0.textAlignment = .natural
+        $0.text = "메세지를 입력하세요"
+        $0.textColor = .lightGray
+    }
+    
+    let completeBtn = GreenButton().then {
+        $0.configureButton(fontColor: .white, font: .pretendard(size: 20, weight: .bold), text: "완료")
+    }
     
     let confirmButton = GreenButton().then {
         $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "선택 완료")
