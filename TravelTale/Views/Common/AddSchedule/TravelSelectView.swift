@@ -10,20 +10,11 @@ import UIKit
 final class TravelSelectView: BaseView {
     
     // MARK: - properties
-    let naviTitle = UILabel().then {
-        $0.configureLabel(font: .oaGothic(size: 18, weight: .heavy), text: "내 여행에 추가")
-    }
-    
-    private let exitButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "xmark"), for: .normal)
-        $0.tintColor = UIColor(red: 0.39, green: 0.39, blue: 0.39, alpha: 1.00)
-    }
-    
-    private let leftButtonView = UIView().then {
-        $0.frame = CGRect(x: 20, y: 0, width: 50, height: 50)
-    }
-    
-    lazy var leftBarButtonItem = UIBarButtonItem(customView: leftButtonView)
+    let backButton = UIBarButtonItem().then {
+        $0.style = .done
+        $0.image = UIImage(systemName: "chevron.left")
+        $0.tintColor = .gray90
+      }
     
     private let loadingBackBar = UIView().then {
         $0.configureView(color: .gray10, cornerRadius: 4)
@@ -48,10 +39,6 @@ final class TravelSelectView: BaseView {
         $0.isEnabled = false
     }
     
-    let cellbackgroundView = UIView().then {
-        $0.configureView(color: .green10, cornerRadius: 15)
-    }
-    
     // MARK: - methods
     override func configureHierarchy() {
         [loadingBackBar, tableViewLabel, tableView, nextBtn].forEach {
@@ -61,18 +48,9 @@ final class TravelSelectView: BaseView {
         [loadingBar].forEach {
             self.loadingBackBar.addSubview($0)
         }
-        
-        [exitButton].forEach {
-            self.leftButtonView.addSubview($0)
-        }
     }
     
     override func configureConstraints() {
-        exitButton.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview().inset(5)
-            $0.leading.equalToSuperview().inset(20)
-        }
-        
         loadingBackBar.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(18)
             $0.height.equalTo(8)

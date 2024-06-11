@@ -46,8 +46,8 @@ final class TravelSelectViewController: BaseViewController {
     }
     
     private func configureNavigationBar() {
-        navigationItem.titleView = travelSelectView.naviTitle
-        navigationItem.leftBarButtonItem = travelSelectView.leftBarButtonItem
+        navigationItem.title = "내 여행에 추가"
+        navigationItem.leftBarButtonItem = travelSelectView.backButton
     }
     
     // TODO: 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
@@ -81,21 +81,19 @@ final class TravelSelectViewController: BaseViewController {
 
 extension TravelSelectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return }
+        
         if let selectedIndexPath =
             preselectedIndexPath {
             if selectedIndexPath == indexPath {
                 travelSelectView.tableView.deselectRow(at: indexPath, animated: true)
                 preselectedIndexPath = nil
-                travelSelectView.updateButtonState()
-                return
+                cell.setSelected(false, animated: true)
             }
+        } else {
+            preselectedIndexPath = indexPath
+            cell.setSelected(false, animated: true)
         }
-        preselectedIndexPath = indexPath
-        travelSelectView.updateButtonState()
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        travelSelectView.updateButtonState()
     }
 }
 
@@ -115,10 +113,6 @@ extension TravelSelectViewController: UITableViewDataSource {
         )
         
         cell.bind(travel: travel, period: period)
-        
-        let backgroundView = travelSelectView.cellbackgroundView
-        cell.selectedBackgroundView = backgroundView
-    
         return cell
     }
 }
