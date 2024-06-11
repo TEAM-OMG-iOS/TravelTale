@@ -102,7 +102,7 @@ final class DaySelectPopover: BaseViewController {
 
 // MARK: - extensions
 extension DaySelectPopover: UIPickerViewDelegate {
-    
+    // TODO: 값이 선택 된 후 로직 구현
 }
 
 extension DaySelectPopover: UIPickerViewDataSource {
@@ -117,6 +117,4 @@ extension DaySelectPopover: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return days[row]
     }
-    
-    
 }

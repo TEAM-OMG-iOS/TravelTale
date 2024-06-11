@@ -21,7 +21,7 @@ final class TravelSelectView: BaseView {
     }
     
     let tableViewLabel = UILabel().then {
-        $0.configureLabel(font: UIFont(name: "Pretendard-SemiBold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold), text: "여행을 선택해주세요")
+        $0.configureLabel(font: .pretendard(size: 18, weight: .semibold), text: "여행을 선택해주세요")
     }
     
     let tableView = UITableView().then {
@@ -35,11 +35,11 @@ final class TravelSelectView: BaseView {
     }
     
     let cancelBtn = GrayButton().then {
-        $0.configureButton(fontColor: .white, font: UIFont(name: "Pretendard-SemiBold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold), text: "취소")
+        $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .semibold), text: "취소")
     }
     
     let nextBtn = GreenButton().then {
-        $0.configureButton(fontColor: .white, font: UIFont(name: "Pretendard-SemiBold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold), text: "일정 생성하러 가기")
+        $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .semibold), text: "일정 생성하러 가기")
     }
     
     

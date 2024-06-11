@@ -73,7 +73,6 @@
 		4D0E3CE72C1206480089D6C1 /* ScheduleCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */; };
 		4D0E3CEC2C131EBB0089D6C1 /* DaySelectPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CEB2C131EBB0089D6C1 /* DaySelectPopover.swift */; };
 		4D0E3CEE2C131ECB0089D6C1 /* TimeSelectPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CED2C131ECB0089D6C1 /* TimeSelectPopover.swift */; };
-		4D0E3CF02C1696720089D6C1 /* XButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CEF2C1696720089D6C1 /* XButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,7 +137,6 @@
 		4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCreateViewController.swift; sourceTree = "<group>"; };
 		4D0E3CEB2C131EBB0089D6C1 /* DaySelectPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySelectPopover.swift; sourceTree = "<group>"; };
 		4D0E3CED2C131ECB0089D6C1 /* TimeSelectPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectPopover.swift; sourceTree = "<group>"; };
-		4D0E3CEF2C1696720089D6C1 /* XButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,11 +213,11 @@
 		378CEC1A2C0D633700DF1C3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4D0E3CE82C12E8CC0089D6C1 /* Common */,
 				378CEC292C0D65E700DF1C3F /* Travels */,
 				378CEC2B2C0D66E600DF1C3F /* Discoveries */,
 				378CEC2A2C0D660400DF1C3F /* MyPages */,
 				378CEC3B2C0D6ADA00DF1C3F /* TabBar */,
-				4D0E3CE82C12E8CC0089D6C1 /* Commons */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -337,7 +335,6 @@
 				1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */,
 				4D0E3CEB2C131EBB0089D6C1 /* DaySelectPopover.swift */,
 				4D0E3CED2C131ECB0089D6C1 /* TimeSelectPopover.swift */,
-				4D0E3CEF2C1696720089D6C1 /* XButton.swift */,
 				1AD537932C12DCC600A70D5E /* LightGreenButton.swift */,
 			);
 			path = Reusables;
@@ -377,15 +374,12 @@
 			path = OAGothic;
 			sourceTree = "<group>";
 		};
-		4D0E3CE82C12E8CC0089D6C1 /* Commons */ = {
+		4D0E3CE82C12E8CC0089D6C1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */,
-				4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */,
-				4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */,
-				4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */,
+				4D0E3CF12C1722C60089D6C1 /* AddSchedule */,
 			);
-			path = Commons;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		4D0E3CE92C12E9240089D6C1 /* MemoAdd */ = {
@@ -402,6 +396,17 @@
 				4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */,
 			);
 			path = PlaceAddEdit;
+			sourceTree = "<group>";
+		};
+		4D0E3CF12C1722C60089D6C1 /* AddSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */,
+				4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */,
+				4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */,
+				4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */,
+			);
+			path = AddSchedule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -507,7 +512,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D0E3CF02C1696720089D6C1 /* XButton.swift in Sources */,
 				1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */,
 				378CEC3D2C0D6B0B00DF1C3F /* TabBarViewController.swift in Sources */,
 				37CB88162C0DB648002798BE /* GrayBackgroundView.swift in Sources */,
