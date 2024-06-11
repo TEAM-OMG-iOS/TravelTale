@@ -75,10 +75,11 @@ final class TravelPlanViewController: BaseViewController {
         travelPlanView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
     }
     
-    override func bind() {
-        travelViewModel.travelArray.bind { _ in
-            self.travelViewModel.splitTravelArray()
-            self.travelPlanView.tableView.reloadData()
+    override func bind() {   
+        travelViewModel.travelArray.bind { [weak self] _ in
+            guard let self = self else { return }
+            travelViewModel.splitTravelArray()
+            travelPlanView.tableView.reloadData()
         }
     }
     
