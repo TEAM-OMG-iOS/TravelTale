@@ -16,6 +16,7 @@ final class TabBarViewController: UITabBarController {
         super.viewDidLoad()
 
         configureViewControllers()
+        configureBarAppearance()
     }
     
     // MARK: - methods
@@ -45,5 +46,17 @@ final class TabBarViewController: UITabBarController {
         tabBar.backgroundColor = .white
         tabBar.tintColor = .green100
         tabBar.unselectedItemTintColor = .gray80
+    }
+    
+    private func configureBarAppearance() {
+        let appearance = UINavigationBarAppearance()
+        
+        appearance.shadowColor = nil
+        appearance.backgroundColor = .white
+        appearance.titleTextAttributes = [.font: UIFont.oaGothic(size: 18, weight: .heavy),
+                                          .foregroundColor: UIColor.blueBlack100]
+        
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
 }
