@@ -22,7 +22,8 @@ final class DiscoveryView: BaseView {
     }
     
     let searchButton = UIBarButtonItem().then {
-        $0.image = .search
+        $0.style = .done
+        $0.image = .search.withRenderingMode(.alwaysOriginal)
     }
     
     private let categoryStackView = UIStackView().then {
