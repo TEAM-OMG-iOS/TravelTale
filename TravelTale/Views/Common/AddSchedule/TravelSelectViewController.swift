@@ -88,11 +88,11 @@ extension TravelSelectViewController: UITableViewDelegate {
             if selectedIndexPath == indexPath {
                 travelSelectView.tableView.deselectRow(at: indexPath, animated: true)
                 preselectedIndexPath = nil
-                cell.setSelected(false, animated: true)
+                travelSelectView.updateButtonState()
             }
         } else {
             preselectedIndexPath = indexPath
-            cell.setSelected(false, animated: true)
+            travelSelectView.updateButtonState()
         }
     }
 }

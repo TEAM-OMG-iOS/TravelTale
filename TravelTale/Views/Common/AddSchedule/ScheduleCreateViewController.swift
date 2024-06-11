@@ -32,8 +32,14 @@ final class ScheduleCreateViewController: BaseViewController {
     }
     
     // MARK: - methods
+    override func configureDelegate() {
+        scheduleCreateView.memoTV.delegate = self
+    }
+    
     override func configureAddTarget() {
         scheduleCreateView.scheduleBtn.addTarget(self, action: #selector(tappedScheduleBtn), for: .touchUpInside)
+        scheduleCreateView.backButton.target = self
+        scheduleCreateView.backButton.action = #selector(handleBackButton)
     }
     
     override func bind() {
@@ -41,37 +47,20 @@ final class ScheduleCreateViewController: BaseViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            view.endEditing(true)
-        }
+        view.endEditing(true)
+    }
     
     private func configureNavigationBar() {
         navigationItem.title = "내 여행에 추가"
         navigationItem.leftBarButtonItem = scheduleCreateView.backButton
     }
-
     
     @objc private func handleBackButton() {
-            navigationController?.popViewController(animated: true)
-        }
-
+        navigationController?.popViewController(animated: true)
+    }
 }
+
 // MARK: - extensions
-extension ScheduleCreateViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
-        
-    }
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "메세지를 입력하세요"
-            textView.textColor = UIColor.lightGray
-        }
-    }
-}
-
 extension ScheduleCreateViewController: UIPopoverPresentationControllerDelegate {
     @objc private func tappedScheduleBtn() {
         dayPopoverVC.modalPresentationStyle = .popover
@@ -85,5 +74,18 @@ extension ScheduleCreateViewController: UIPopoverPresentationControllerDelegate 
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
+    }
+}
+
+extension ScheduleCreateViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        scheduleCreateView.setBeginText(textView: textView)
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        scheduleCreateView.setEndText(textView: textView)
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        scheduleCreateView.checkTextViewContent()
     }
 }

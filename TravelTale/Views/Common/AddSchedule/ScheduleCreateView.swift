@@ -20,7 +20,7 @@ final class ScheduleCreateView: BaseView {
         $0.configureView(color: .gray10, cornerRadius: 4)
     }
     
-    private let loadingBar = UIView().then {
+    private var loadingBar = UIView().then {
         $0.configureView(color: .green80, cornerRadius: 4)
     }
     
@@ -80,7 +80,7 @@ final class ScheduleCreateView: BaseView {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold), text: "메모")
     }
     
-    private let memoTV = UITextView().then {
+    let memoTV = UITextView().then {
         $0.text = "메모를 입력하세요"
         $0.textColor = .gray80
         $0.textAlignment = .natural
@@ -144,8 +144,7 @@ final class ScheduleCreateView: BaseView {
             $0.top.equalToSuperview()
             $0.height.equalToSuperview()
             $0.bottom.equalToSuperview()
-            let halfwidth = loadingBackBar.frame.size.width / 2
-            $0.width.equalTo(halfwidth)
+            $0.width.equalToSuperview().multipliedBy(0.5)
         }
         
         ViewLabel.snp.makeConstraints {
@@ -212,7 +211,7 @@ final class ScheduleCreateView: BaseView {
         memoView.snp.makeConstraints {
             $0.top.equalTo(startTimeView.snp.bottom).offset(20)
             $0.horizontalEdges.equalTo(startTimeView.snp.horizontalEdges)
-            $0.bottom.greaterThanOrEqualTo(btnStackView.snp.top)
+            $0.bottom.greaterThanOrEqualTo(btnStackView.snp.top).offset(-20)
         }
         
         memoTitle.snp.makeConstraints {
@@ -221,14 +220,14 @@ final class ScheduleCreateView: BaseView {
         }
         
         memoTV.snp.makeConstraints {
-            $0.top.equalTo(memoTitle.snp.bottom)
-            $0.horizontalEdges.equalTo(memoTitle.snp.horizontalEdges)
-            $0.bottom.equalToSuperview().inset(10)
+            $0.top.equalTo(memoTitle.snp.bottom).offset(4)
+            $0.horizontalEdges.equalToSuperview().inset(10)
+            $0.bottom.equalToSuperview()
         }
         
         btnStackView.snp.makeConstraints {
             $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(26)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(25)
         }
         
         cancelBtn.snp.makeConstraints {
@@ -250,13 +249,42 @@ final class ScheduleCreateView: BaseView {
             $0.top.equalToSuperview()
             $0.centerY.equalToSuperview()
             $0.bottom.equalToSuperview()
-            $0.width.equalToSuperview()
+            let fullwidth = loadingBackBar.frame.size.width
+            $0.width.equalTo(fullwidth)
         }
         
         UIView.animate(withDuration: 1.0, delay: 0, animations: {
             self.layoutIfNeeded()
             
         }, completion: nil)
+    }
+    
+    func checkTextViewContent() {
+        // TODO: - 장소, 일정, 시작 시간이 채워져야 green100으로 변경
+        let text = memoTV.text ?? ""
+        let isPlaceholder = text == "메세지를 입력하세요"
+        
+        if isPlaceholder || text.isEmpty {
+            nextBtn.isEnabled = false
+            nextBtn.backgroundColor = .green10
+        } else {
+            nextBtn.isEnabled = true
+            nextBtn.backgroundColor = .green100
+        }
+    }
+    
+    func setBeginText(textView: UITextView) {
+        if textView.textColor == .gray80 {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func setEndText(textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "메세지를 입력하세요"
+            textView.textColor = .gray80
+        }
     }
 }
 
