@@ -17,6 +17,8 @@ final class ScheduleCreateViewController: BaseViewController {
     
     let dayPopoverVC = DaySelectPopover()
     
+    var selectedData: Travel? = nil
+    
     // MARK: - life cycles
     override func loadView() {
         super.loadView()
