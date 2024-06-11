@@ -39,7 +39,9 @@ final class DiscoveryViewController: BaseViewController {
     }
     
     @objc private func tappedRegionButton() {
-        // todo : 지역 설정 모달 띄우기
+        let discoveryRegionVC = DiscoveryRegionViewController()
+        
+        self.navigationController?.pushViewController(discoveryRegionVC, animated: true)
     }
     
     @objc private func tappedSearchButton() {
