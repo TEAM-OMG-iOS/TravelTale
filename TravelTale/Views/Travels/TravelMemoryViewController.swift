@@ -76,7 +76,6 @@ final class TravelMemoryViewController: BaseViewController {
     }
 }
 
-
 // MARK: - Extensions
 extension TravelMemoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
