@@ -19,7 +19,6 @@ final class DiscoveryRegionViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBarItems()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +32,10 @@ final class DiscoveryRegionViewController: BaseViewController {
     }
     
     // MARK: - methods
+    override func configureStyle() {
+        configureNavigationBar()
+    }
+    
     override func configureAddTarget() {
         discoveryRegionView.backButton.target = self
         discoveryRegionView.backButton.action = #selector(tappedBackButton)
@@ -57,7 +60,7 @@ final class DiscoveryRegionViewController: BaseViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    func configureNavigationBarItems() {
+    private func configureNavigationBar() {
         navigationItem.title = "지역 설정"
         navigationItem.leftBarButtonItem = discoveryRegionView.backButton
     }
