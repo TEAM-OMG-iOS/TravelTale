@@ -10,7 +10,10 @@ import UIKit
 final class TravelDetailPlanView: BaseView {
     
     // MARK: - properties
-    let tableView = UITableView()
+    let tableView = UITableView().then {
+        $0.bounces = false
+        $0.contentInsetAdjustmentBehavior = .never
+    }
     
     // MARK: - methods
     override func configureHierarchy() {
