@@ -10,13 +10,8 @@ import UIKit
 class TravelMemoryAddView: BaseView {
     
     // MARK: - properties
-    let titleLabel = UILabel().then {
-        $0.configureLabel(alignment: .center, color: .black, font: .oaGothic(size: 18, weight: .heavy), text: "추억 남기기")
-    }
-    
-    let exitButtonView = UIButton().then {
-        $0.configureView(color: .gray70)
-        $0.configureButton(fontColor: .white, font: .pretendard(size: 12, weight: .bold), text: "x")
+    let navTitleLabel = UILabel().then {
+        $0.configureLabel(color: .black, font: .oaGothic(size: 18, weight: .heavy), text: "추억 남기기")
     }
     
     let tableView = UITableView()
@@ -33,7 +28,7 @@ class TravelMemoryAddView: BaseView {
     
     override func configureConstraints() {
         tableView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(16)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
         
