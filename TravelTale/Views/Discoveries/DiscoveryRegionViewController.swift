@@ -32,14 +32,24 @@ final class DiscoveryRegionViewController: BaseViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
-//    // MARK: - methods
-//    override func configureAddTarget() {
-//        discoveryRegionView.cityButton.addTarget(self, action: #selector(tappedCityButton), for: .touchUpInside)
-//        discoveryRegionView.districtButton.addTarget(self, action: #selector(tappedDistrictButton), for: .touchUpInside)
-//        discoveryRegionView.submitButton.addTarget(self, action: #selector(tappedSubmitButton), for: .touchUpInside)
-//    }
-//    
-//    @objc private func tappedCityButton
+    // MARK: - methods
+    override func configureAddTarget() {
+        discoveryRegionView.cityButton.addTarget(self, action: #selector(tappedCityButton), for: .touchUpInside)
+        discoveryRegionView.districtButton.addTarget(self, action: #selector(tappedDistrictButton), for: .touchUpInside)
+        discoveryRegionView.submitButton.addTarget(self, action: #selector(tappedSubmitButton), for: .touchUpInside)
+    }
+    
+    @objc private func tappedCityButton() {
+        // TODO : 시/도 모달 창 이동
+    }
+    
+    @objc private func tappedDistrictButton() {
+        // TODO : 구/군 모달 창 이동
+    }
+    
+    @objc private func tappedSubmitButton() {
+        navigationController?.popViewController(animated: true)
+    }
     
     func configureNavigationBarItems() {
         navigationItem.title = "지역 설정"
