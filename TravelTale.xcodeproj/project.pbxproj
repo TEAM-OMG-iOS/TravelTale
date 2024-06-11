@@ -146,9 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				3740FE532C12EE020024E08F /* TravelDetailView.swift */,
-				370B839B2C149AC7009430B9 /* TravelDetailPlanView.swift */,
-				370B839F2C149E66009430B9 /* TravelDetailPlanCell.swift */,
-				37E19F422C18680A0084F899 /* TravelDetailPlanButtonCell.swift */,
 			);
 			path = TravelDetail;
 			sourceTree = "<group>";
@@ -236,6 +233,7 @@
 			children = (
 				378CEC2C2C0D685300DF1C3F /* Travel */,
 				3740FE522C12EDD50024E08F /* TravelDetail */,
+				37E19F442C18837F0084F899 /* TravelDetailPlan */,
 				1AD537882C105D0300A70D5E /* TravelViewModel.swift */,
 				378CEC352C0D68F900DF1C3F /* TravelViewController.swift */,
 				3740FE552C12EE140024E08F /* TravelDetailViewController.swift */,
@@ -347,6 +345,16 @@
 				378CEC582C0D732600DF1C3F /* OAGothic-Medium.otf */,
 			);
 			path = OAGothic;
+			sourceTree = "<group>";
+		};
+		37E19F442C18837F0084F899 /* TravelDetailPlan */ = {
+			isa = PBXGroup;
+			children = (
+				370B839B2C149AC7009430B9 /* TravelDetailPlanView.swift */,
+				370B839F2C149E66009430B9 /* TravelDetailPlanCell.swift */,
+				37E19F422C18680A0084F899 /* TravelDetailPlanButtonCell.swift */,
+			);
+			path = TravelDetailPlan;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
