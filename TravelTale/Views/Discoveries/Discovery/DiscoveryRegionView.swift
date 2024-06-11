@@ -47,7 +47,8 @@ final class DiscoveryRegionView: BaseView {
     }
     
     let submitButton = GreenButton().then {
-        $0.configureButton(font: .pretendard(size: 20, weight: .heavy),
+        $0.configureButton(fontColor: .white,
+                           font: .pretendard(size: 20, weight: .heavy),
                            text: "완료")
     }
     
@@ -111,7 +112,7 @@ final class DiscoveryRegionView: BaseView {
         
         submitButton.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(24)
-            $0.bottom.equalToSuperview().inset(28)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(12)
         }
     }
 }
