@@ -40,10 +40,10 @@ final class DiscoveryCell: BaseCollectionViewCell {
     
     // MARK: - methods
     override func configureHierarchy() {
-        self.addSubview(placeContainerView)
-        self.placeContainerView.addSubview(placeImageView)
-        self.placeContainerView.addSubview(placeLabel)
-        self.placeContainerView.addSubview(placeAddressLabel)
+        contentView.addSubview(placeContainerView)
+        contentView.addSubview(placeImageView)
+        contentView.addSubview(placeLabel)
+        contentView.addSubview(placeAddressLabel)
     }
     
     override func configureConstraints() {
