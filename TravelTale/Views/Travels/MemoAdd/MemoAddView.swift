@@ -35,10 +35,6 @@ final class MemoAddView: BaseView {
         $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .semibold), text: "완료")
     }
     
-    let naviTitle = UILabel().then {
-        $0.configureLabel(font: .oaGothic(size: 18, weight: .heavy), text: "메모 추가")
-    }
-    
     // MARK: - methods
     override func configureUI() {
         super.configureUI()

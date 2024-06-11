@@ -35,7 +35,7 @@ final class MemoAddViewController: BaseViewController {
     }
     
     private func configureNavigationBar() {
-        navigationItem.titleView = memoAddView.naviTitle
+        navigationItem.title = "메모 추가"
         navigationItem.leftBarButtonItem = memoAddView.backButton
     }
     
