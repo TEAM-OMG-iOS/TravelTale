@@ -10,6 +10,12 @@ import UIKit
 class TravelMemoryDetailEditView: BaseView {
     
     // MARK: - properties
+    let exitButton = UIBarButtonItem().then {
+        $0.style = .done
+        $0.image = UIImage(systemName: "xmark")
+        $0.tintColor = .gray90
+    }
+    
     private let travelInfoStackView = UIStackView().then {
         $0.axis = .horizontal
         $0.spacing = 4
