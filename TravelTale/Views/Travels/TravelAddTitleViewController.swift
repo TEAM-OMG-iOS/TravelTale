@@ -43,7 +43,7 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     
     private func configureNavigationBarItems() {
         navigationItem.title = "새 여행 추가"
-        self.navigationItem.leftBarButtonItem = travelAddTitleView.backButton
+        navigationItem.leftBarButtonItem = travelAddTitleView.backButton
     }
     
     @objc func tappedOkButton() {
