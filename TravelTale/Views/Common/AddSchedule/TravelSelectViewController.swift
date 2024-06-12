@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 final class TravelSelectViewController: BaseViewController {
     // MARK: - properties
@@ -41,7 +40,6 @@ final class TravelSelectViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        travelSelectView.nextBtn.tag = 0
         travelSelectView.nextBtn.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
     }
     
@@ -53,20 +51,9 @@ final class TravelSelectViewController: BaseViewController {
     // TODO: 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
     private func addTemporaryData() {
         travelViewModel.upcomingTravels.append(contentsOf: [
-            Travel(
-                image: nil,
-                title: "200일 여행 with 남자친구",
-                startDate: Date(),
-                endDate: Date(),
-                province: "대구"),
-            Travel(
-                image: nil,
-                title: "24년의 가족 여행",
-                startDate: Date(),
-                endDate: Date(),
-                province: nil)
+            Travel(image: nil, title: "200일 여행 with 남자친구", startDate: Date(), endDate: Date(), province: "대구"),
+            Travel(image: nil,title: "24년의 가족 여행", startDate: Date(), endDate: Date(), province: nil)
         ])
-        print(travelViewModel.upcomingTravels.count)
     }
     
     // MARK: - objc func
@@ -81,6 +68,7 @@ final class TravelSelectViewController: BaseViewController {
 
 extension TravelSelectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO: - 유림님 셀 수정 PR업로드 이후 코드 수정
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return }
         
         if let selectedIndexPath =
@@ -106,11 +94,7 @@ extension TravelSelectViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
         
         let travel = travelViewModel.upcomingTravels[indexPath.row]
-        
-        let period = travelViewModel.returnPeriodString(
-            startDate: travel.startDate,
-            endDate: travel.endDate
-        )
+        let period = travelViewModel.returnPeriodString(startDate: travel.startDate, endDate: travel.endDate)
         
         cell.bind(travel: travel, period: period)
         return cell

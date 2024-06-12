@@ -95,7 +95,7 @@ final class TravelSelectView: BaseView {
         
         UIView.animate(withDuration: 1.0, delay: 0, animations: {
             self.layoutIfNeeded()
-        }, completion: nil)
+        })
     }
     
     func updateButtonState() {
