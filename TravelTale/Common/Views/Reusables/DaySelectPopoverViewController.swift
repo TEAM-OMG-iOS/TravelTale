@@ -10,9 +10,12 @@ import UIKit
 final class DaySelectPopoverViewController: BaseViewController {
     
     // MARK: - properties
-    let daySelectPopoverView = DaySelectPopoverView()
+    private let daySelectPopoverView = DaySelectPopoverView()
     
-    var days: [String] = ["Day 1", "Day 2","Day 3","Day 4"]
+    // TODO: - 데이터 변경 시 수정 예정
+    private let days: [String] = ["Day 1", "Day 2","Day 3","Day 4"]
+    
+    var selectedDays: String?
     
     // MARK: - life cycles
     override func loadView() {
@@ -41,15 +44,21 @@ final class DaySelectPopoverViewController: BaseViewController {
     }
     
     @objc private func tappedOkBtn() {
-        print("close")
+        guard let selectedDays = selectedDays else { return }
+        NotificationCenter.default.post(name: .selectedDaysUpdated, object: nil, userInfo: ["selectedDays": selectedDays])
         self.dismiss(animated: true)
-        // TODO: - 데이터가 지정되는 로직 구현
     }
 }
 
 // MARK: - extensions
 extension DaySelectPopoverViewController: UIPickerViewDelegate {
-    // TODO: 값이 선택 된 후 로직 구현
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return days[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedDays = days[row]
+    }
 }
 
 extension DaySelectPopoverViewController: UIPickerViewDataSource {
@@ -60,8 +69,8 @@ extension DaySelectPopoverViewController: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return days.count
     }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return days[row]
-    }
+}
+
+extension Notification.Name {
+    static let selectedDaysUpdated = Notification.Name("selectedDaysUpdated")
 }

@@ -19,7 +19,7 @@ final class TimeSelectPopoverView: BaseView {
     }
     
     private let title = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 16, weight: .semibold), text: "일정 선택")
+        $0.configureLabel(font: .pretendard(size: 16, weight: .semibold), text: "시간 선택")
     }
     
     let rightBtn = UIButton().then {

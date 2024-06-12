@@ -52,7 +52,7 @@ final class ScheduleCreateView: BaseView {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold), text: "일정")
     }
     
-    private let scheduleContents = UILabel().then {
+    let scheduleContents = UILabel().then {
         $0.configureLabel(color: .gray80, font: .pretendard(size: 16, weight: .regular), text: "일정을 선택하세요")
     }
     
@@ -68,7 +68,7 @@ final class ScheduleCreateView: BaseView {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold), text: "시작 시간")
     }
     
-    private let startTimeContents = UILabel().then {
+    let startTimeContents = UILabel().then {
         $0.configureLabel(color: .gray80, font: .pretendard(size: 16, weight: .regular), text: "시간을 선택하세요")
     }
     
@@ -83,6 +83,7 @@ final class ScheduleCreateView: BaseView {
     let memoTV = UITextView().then {
         $0.text = "메모를 입력하세요"
         $0.textColor = .gray80
+        $0.font = .pretendard(size: 16, weight: .regular)
         $0.textAlignment = .natural
         $0.backgroundColor = .clear
     }
@@ -255,19 +256,7 @@ final class ScheduleCreateView: BaseView {
         
         UIView.animate(withDuration: 1.0, delay: 0, animations: {
             self.layoutIfNeeded()
-            
-        }, completion: nil)
-    }
-    
-    func checkTextViewContent() {
-        // TODO: - 장소, 일정, 시작 시간이 채워져야 green100으로 변경
-        if  scheduleContents.textColor == .gray80 && startTimeContents.textColor == .gray80 {
-            nextBtn.isEnabled = false
-            nextBtn.backgroundColor = .green10
-        } else {
-            nextBtn.isEnabled = true
-            nextBtn.backgroundColor = .green100
-        }
+        })
     }
     
     func setBeginText(textView: UITextView) {
@@ -283,5 +272,43 @@ final class ScheduleCreateView: BaseView {
             textView.textColor = .gray80
         }
     }
+    
+    func configurePopover(for popoverVC: UIViewController, sourceButton: UIButton) {
+            popoverVC.modalPresentationStyle = .popover
+            popoverVC.preferredContentSize = CGSize(width: 300, height: 200)
+            let popoverPresentationController = popoverVC.popoverPresentationController
+            popoverPresentationController?.sourceView = sourceButton
+            popoverPresentationController?.sourceRect = CGRect(
+                origin: CGPoint(x: sourceButton.bounds.maxX - 50, y: sourceButton.bounds.midY + 10),
+                size: .zero
+            )
+        popoverPresentationController?.permittedArrowDirections = .up
+        }
+    
+    func checkBlackText() {
+        var scheduleIsBlack = false
+        var startTimeIsBlack = false
+        
+        if scheduleContents.text != "일정을 선택하세요" {
+            scheduleContents.textColor = .black
+            scheduleIsBlack = true
+        } else {
+            scheduleContents.textColor = .gray80
+        }
+        
+        if startTimeContents.text != "시간을 선택하세요" {
+            startTimeContents.textColor = .black
+            startTimeIsBlack = true
+        } else {
+            startTimeContents.textColor = .gray80
+        }
+        
+        if scheduleIsBlack && startTimeIsBlack {
+            nextBtn.isEnabled = true
+            nextBtn.backgroundColor = .green100
+        } else {
+            nextBtn.isEnabled = false
+            nextBtn.backgroundColor = .green10
+        }
+    }
 }
-

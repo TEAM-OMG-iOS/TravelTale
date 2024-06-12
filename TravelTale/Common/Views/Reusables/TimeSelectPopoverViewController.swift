@@ -22,9 +22,6 @@ final class TimeSelectPopoverViewController: BaseViewController {
     }
     
     // MARK: - methods
-    override func configureDelegate() {
-    }
-    
     override func configureAddTarget() {
         timeSelectPopoverView.leftBtn.addTarget(self, action: #selector(tappedcancelBtn), for: .touchUpInside)
         timeSelectPopoverView.rightBtn.addTarget(self, action: #selector(tappedOkBtn), for: .touchUpInside)
@@ -32,13 +29,17 @@ final class TimeSelectPopoverViewController: BaseViewController {
 
     // MARK: - objc func
     @objc private func tappedcancelBtn() {
-        print("close")
         self.dismiss(animated: true)
     }
     
     @objc private func tappedOkBtn() {
-        print("close")
+        let selectedTime = timeSelectPopoverView.datepickerView.date
+        NotificationCenter.default.post(name: .selectedTimeUpdated, object: nil, userInfo: ["selectedTime": selectedTime])
         self.dismiss(animated: true)
-        // TODO: - 데이터가 지정되는 로직 구현
     }
+}
+
+// MARK: - extensions
+extension Notification.Name {
+    static let selectedTimeUpdated = Notification.Name("selectedTimeUpdated")
 }
