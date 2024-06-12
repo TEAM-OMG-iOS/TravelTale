@@ -23,17 +23,13 @@ final class TravelDetailPlanFooterCell: BaseTableViewCell {
     }
     
     private let placeAddButton = UIButton().then {
-        $0.configureView(color: .green100, clipsToBounds: true, cornerRadius: 24)
+        $0.configureView(color: .green100, clipsToBounds: true, cornerRadius: 22)
         $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "장소 추가")
-        $0.configuration = .plain()
-        $0.configuration?.contentInsets = .init(top: 12, leading: 0, bottom: 12, trailing: 0)
     }
     
     private let memoAddButton = UIButton().then {
-        $0.configureView(color: .white, clipsToBounds: true, cornerRadius: 24)
+        $0.configureView(color: .white, clipsToBounds: true, cornerRadius: 22)
         $0.configureButton(fontColor: .green100, font: .pretendard(size: 18, weight: .bold), text: "메모 추가")
-        $0.configuration = .plain()
-        $0.configuration?.contentInsets = .init(top: 12, leading: 0, bottom: 12, trailing: 0)
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.green100.cgColor
     }
@@ -71,10 +67,10 @@ final class TravelDetailPlanFooterCell: BaseTableViewCell {
         }
         
         buttonStackView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(4)
+            $0.top.trailing.equalToSuperview().inset(16)
             $0.leading.equalTo(verticalLineView.snp.trailing).offset(26)
-            $0.trailing.equalToSuperview().offset(-16)
-            $0.bottom.equalToSuperview().offset(-8)
+            $0.bottom.equalToSuperview().offset(-24)
+            $0.height.equalTo(44)
         }
     }
 }
