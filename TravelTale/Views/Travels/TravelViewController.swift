@@ -17,6 +17,8 @@ final class TravelViewController: BaseViewController {
     private let travelPlanVC = TravelPlanViewController()
     private let travelMemoryVC = TravelMemoryViewController()
     
+    lazy var currentTappedButton: UIButton = travelView.planButton
+    
     
     // MARK: - life cycles
     override func loadView() {
@@ -34,7 +36,7 @@ final class TravelViewController: BaseViewController {
         tabBarController?.tabBar.isHidden = false
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
-        tappedButton(travelView.planButton)
+        tappedButton(currentTappedButton)
     }
     
     
@@ -45,13 +47,14 @@ final class TravelViewController: BaseViewController {
             action: #selector(tappedButton),
             for: .touchUpInside
         )
-        travelView.planButton.tag = 0
         
         travelView.memoryButton.addTarget(
             self,
             action: #selector(tappedButton),
             for: .touchUpInside
         )
+        
+        travelView.planButton.tag = 0
         travelView.memoryButton.tag = 1
     }
     
@@ -80,10 +83,12 @@ final class TravelViewController: BaseViewController {
         case 0:
             showOnlyView(viewToShow: travelPlanVC.view)
             travelView.changeButtonUI(tapped: .plan)
+            currentTappedButton = travelView.planButton
             
         case 1:
             showOnlyView(viewToShow: travelMemoryVC.view)
             travelView.changeButtonUI(tapped: .memory)
+            currentTappedButton = travelView.memoryButton
             
         default:
             showOnlyView(viewToShow: travelPlanVC.view)
