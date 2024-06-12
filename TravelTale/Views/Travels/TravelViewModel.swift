@@ -18,16 +18,6 @@ final class TravelViewModel {
     
     
     // MARK: - methods
-    func returnPeriodString(startDate: Date, endDate: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd"
-        
-        let startDateString = dateFormatter.string(from: startDate)
-        let endDateString = dateFormatter.string(from: endDate)
-        
-        return "\(startDateString) ~ \(endDateString)"
-    }
-    
     func splitTravelArray() {
         let today = Date()
         
