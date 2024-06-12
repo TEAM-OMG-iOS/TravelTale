@@ -16,15 +16,8 @@ final class TravelAddPlaceView: BaseView {
         $0.tintColor = .gray90
     }
     
-    let pageTitleLabel = UILabel().then {
-        $0.configureLabel(alignment: .center, 
-                          color: .blueBlack100,
-                          font: .oaGothic(size: 18, weight: .heavy),
-                          text: "새 여행 추가")
-    }
-    
     private let inputTitleLabel = UILabel().then {
-        $0.configureLabel(alignment: .left, 
+        $0.configureLabel(alignment: .left,
                           color: .blueBlack100,
                           font: .pretendard(size: 18, weight: .semibold),
                           text: "대표 장소를 선택해주세요")
@@ -40,25 +33,25 @@ final class TravelAddPlaceView: BaseView {
     }
     
     let cancelButton = GrayButton().then {
-        $0.configureButton(fontColor: .white, 
+        $0.configureButton(fontColor: .white,
                            font: UIFont.pretendard(size: 18, weight: .bold),
                            text: "이전")
     }
     
     let okButton = GreenButton().then {
-        $0.configureButton(fontColor: .white, 
+        $0.configureButton(fontColor: .white,
                            font: UIFont.pretendard(size: 18, weight: .bold),
                            text: "날짜 선택하러 가기")
     }
     
     let progressView = UIView().then {
-        $0.configureView(color: .gray20, 
+        $0.configureView(color: .gray20,
                          clipsToBounds: true,
                          cornerRadius: 4)
     }
     
     private let loadingBar = UIView().then {
-        $0.configureView(color: .green80, 
+        $0.configureView(color: .green80,
                          clipsToBounds: true,
                          cornerRadius: 4)
     }
@@ -81,7 +74,7 @@ final class TravelAddPlaceView: BaseView {
         progressView.addSubview(loadingBar)
     }
     
-    override func configureConstraints() {  
+    override func configureConstraints() {
         progressView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(116)
             $0.horizontalEdges.equalToSuperview().inset(20)
@@ -89,9 +82,7 @@ final class TravelAddPlaceView: BaseView {
         }
         
         loadingBar.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.top.equalToSuperview()
-            $0.height.equalToSuperview()
+            $0.leading.top.height.equalToSuperview()
             $0.width.equalTo(118)
         }
         

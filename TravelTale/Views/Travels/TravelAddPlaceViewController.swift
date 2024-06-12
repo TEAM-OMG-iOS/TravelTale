@@ -41,7 +41,7 @@ final class TravelAddPlaceViewController: BaseViewController {
     }
     
     private func configureNavigationBarItems() {
-        navigationItem.titleView = travelAddPlaceView.pageTitleLabel
+        navigationItem.title = "새 여행 추가"
         self.navigationItem.leftBarButtonItem = travelAddPlaceView.backButton
     }
     

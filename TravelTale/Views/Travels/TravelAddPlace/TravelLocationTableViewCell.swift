@@ -13,7 +13,7 @@ final class TravelLocationTableViewCell: BaseTableViewCell {
     static let identifier = "LocationTableViewCell"
     
     let locationLabel = UILabel().then {
-        $0.configureLabel(alignment: .left, 
+        $0.configureLabel(alignment: .left,
                           color: .blueBlack100,
                           font: .pretendard(size: 15, weight: .bold))
     }
@@ -31,7 +31,7 @@ final class TravelLocationTableViewCell: BaseTableViewCell {
     }
     
     override func configureHierarchy() {
-        [locationLabel, 
+        [locationLabel,
          locationButton].forEach {
             self.addSubview($0)
         }
@@ -39,15 +39,13 @@ final class TravelLocationTableViewCell: BaseTableViewCell {
     
     override func configureConstraints() {
         locationLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(10)
+            $0.verticalEdges.equalToSuperview().inset(10)
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().offset(-10)
         }
         
         locationButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(10)
+            $0.verticalEdges.equalToSuperview().inset(10)
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().offset(-10)
         }
     }
 }
