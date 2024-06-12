@@ -46,6 +46,8 @@ final class DiscoveryRegionViewController: BaseViewController {
     
     @objc private func tappedCityButton() {
         // TODO : 시/도 모달 창 이동
+        self.present(DiscoveryRegionModalViewController(), animated: true)
+        
     }
     
     @objc private func tappedDistrictButton() {

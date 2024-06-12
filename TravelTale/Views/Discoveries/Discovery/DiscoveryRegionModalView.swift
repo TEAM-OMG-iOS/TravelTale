@@ -34,4 +34,8 @@ final class DiscoveryRegionModalView: BaseView {
             $0.bottom.equalToSuperview()
         }
     }
+    
+    func bind(selectString: String) {
+        selectLabel.text = selectString
+    }
 }
