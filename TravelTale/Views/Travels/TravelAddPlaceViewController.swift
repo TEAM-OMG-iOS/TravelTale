@@ -26,7 +26,7 @@ final class TravelAddPlaceViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     // MARK: - methods
     override func configureStyle() { 
         configureNavigationBarItems()
@@ -44,7 +44,7 @@ final class TravelAddPlaceViewController: BaseViewController {
         navigationItem.title = "새 여행 추가"
         navigationItem.leftBarButtonItem = travelAddPlaceView.backButton
     }
-
+    
     @objc func tappedInputBox() {
         let locationList = TravelAddLocationViewController()
         guard let sheet = locationList.sheetPresentationController else { return }
