@@ -99,7 +99,7 @@ final class TravelDetailPlanContentCell: BaseTableViewCell {
         basedView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview().inset(4)
             $0.leading.equalTo(verticalLineView.snp.trailing).offset(26)
-            $0.trailing.equalToSuperview().offset(-16)
+            $0.trailing.equalToSuperview().offset(-20)
         }
         
         contentStackView.snp.makeConstraints {
