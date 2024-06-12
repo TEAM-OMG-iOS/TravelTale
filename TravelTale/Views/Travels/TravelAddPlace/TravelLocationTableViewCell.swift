@@ -18,13 +18,16 @@ final class TravelLocationTableViewCell: BaseTableViewCell {
                           font: .pretendard(size: 15, weight: .bold))
     }
     
-    private let locationButton = UIButton()
     private let checkmarkImage = UIImageView(image: UIImage(systemName: "checkmark"))
+    
+    override func prepareForReuse() {
+        //        locationLabel.text = nil
+        //        checkmarkImage.image = nil
+    }
     
     // MARK: - methods
     override func configureUI() {
         super.configureUI()
-        locationLabel.text = ""
         checkmarkImage.isHidden = true
         checkmarkImage.tintColor = .black
         
@@ -37,19 +40,13 @@ final class TravelLocationTableViewCell: BaseTableViewCell {
     
     override func configureHierarchy() {
         [locationLabel,
-         locationButton,
          checkmarkImage].forEach {
-            self.addSubview($0)
+            self.contentView.addSubview($0)
         }
     }
     
     override func configureConstraints() {
         locationLabel.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview().inset(5)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-        }
-        
-        locationButton.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview().inset(5)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
