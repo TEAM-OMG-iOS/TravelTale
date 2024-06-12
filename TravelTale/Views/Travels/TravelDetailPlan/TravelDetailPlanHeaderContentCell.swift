@@ -10,6 +10,8 @@ import UIKit
 final class TravelDetailPlanHeaderContentCell: BaseCollectionViewCell {
     
     // MARK: - properties
+    static let identifier = "TravelDetailPlanHeaderContentCell"
+    
     private let dayLabel = UILabel().then {
         $0.configureLabel(alignment: .center, color: .green100, font: .oaGothic(size: 15, weight: .heavy))
     }

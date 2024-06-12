@@ -10,6 +10,8 @@ import UIKit
 final class TravelDetailPlanFooterCell: BaseTableViewCell {
     
     // MARK: - properties
+    static let identifier = "TravelDetailPlanFooterCell"
+    
     private let verticalLineView = UIView().then {
         $0.configureView(color: .black)
     }

@@ -10,6 +10,8 @@ import UIKit
 final class TravelDetailPlanHeaderCell: BaseTableViewCell {
     
     // MARK: - properties
+    static let identifier = "TravelDetailPlanHeaderCell"
+    
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createFlowLayout()).then {
         $0.showsHorizontalScrollIndicator = false
     }

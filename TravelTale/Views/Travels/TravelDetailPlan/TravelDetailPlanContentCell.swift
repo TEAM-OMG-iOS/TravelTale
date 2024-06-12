@@ -11,6 +11,8 @@ import FloatingPanel
 final class TravelDetailPlanContentCell: BaseTableViewCell {
     
     // MARK: - properties
+    static let identifier = "TravelDetailPlanContentCell"
+    
     private let verticalLineView = UIView().then {
         $0.configureView(color: .black)
     }
