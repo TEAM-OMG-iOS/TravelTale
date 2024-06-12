@@ -10,6 +10,12 @@ import UIKit
 class TravelMemoryAddView: BaseView {
     
     // MARK: - properties
+    let exitButton = UIBarButtonItem().then {
+        $0.style = .done
+        $0.image = UIImage(systemName: "xmark")
+        $0.tintColor = .gray90
+    }
+    
     let navTitleLabel = UILabel().then {
         $0.configureLabel(color: .black, font: .oaGothic(size: 18, weight: .heavy), text: "추억 남기기")
     }
