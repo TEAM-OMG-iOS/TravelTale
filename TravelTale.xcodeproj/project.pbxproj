@@ -78,6 +78,7 @@
 		4D0E3CEE2C131ECB0089D6C1 /* TimeSelectPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CED2C131ECB0089D6C1 /* TimeSelectPopoverViewController.swift */; };
 		4D0E3CF32C18A4E30089D6C1 /* DaySelectPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CF22C18A4E30089D6C1 /* DaySelectPopoverView.swift */; };
 		4D0E3CF52C195A9A0089D6C1 /* TimeSelectPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CF42C195A9A0089D6C1 /* TimeSelectPopoverView.swift */; };
+		4D27194C2C1A0295004DDC38 /* PlaceEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D27194B2C1A0295004DDC38 /* PlaceEditionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,6 +148,7 @@
 		4D0E3CED2C131ECB0089D6C1 /* TimeSelectPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectPopoverViewController.swift; sourceTree = "<group>"; };
 		4D0E3CF22C18A4E30089D6C1 /* DaySelectPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySelectPopoverView.swift; sourceTree = "<group>"; };
 		4D0E3CF42C195A9A0089D6C1 /* TimeSelectPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectPopoverView.swift; sourceTree = "<group>"; };
+		4D27194B2C1A0295004DDC38 /* PlaceEditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceEditionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +270,7 @@
 				4D0E3CE22C1076570089D6C1 /* PlaceAddViewController.swift */,
 				1AD537952C12E5E300A70D5E /* TravelPlanViewController.swift */,
 				1AD537992C1362F500A70D5E /* TravelMemoryViewController.swift */,
+				4D27194B2C1A0295004DDC38 /* PlaceEditionViewController.swift */,
 			);
 			path = Travels;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */,
+				4D27194C2C1A0295004DDC38 /* PlaceEditionViewController.swift in Sources */,
 				1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */,
 				378CEC3D2C0D6B0B00DF1C3F /* TabBarViewController.swift in Sources */,
 				37CB88162C0DB648002798BE /* GrayBackgroundView.swift in Sources */,
