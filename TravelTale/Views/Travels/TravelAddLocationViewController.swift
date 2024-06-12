@@ -55,11 +55,16 @@ extension TravelAddLocationViewController: UITableViewDataSource {
 extension TravelAddLocationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? TravelLocationTableViewCell else { return }
+        cell.selectLocation(true)
+        
         if let text = cell.locationLabel.text {
             travelAddPlaceVC.updateInputBox(with: text)
             travelRescheduleVC.updateInputBox(with: text)
         }
-        
-        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? TravelLocationTableViewCell else { return }
+        cell.selectLocation(false)
     }
 }

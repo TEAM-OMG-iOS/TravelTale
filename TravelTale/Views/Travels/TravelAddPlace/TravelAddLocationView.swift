@@ -16,7 +16,7 @@ final class TravelAddLocationView: BaseView {
     }
     
     let tableView = UITableView().then {
-        $0.backgroundColor = .darkGray
+        $0.backgroundColor = .white
     }
     
     var locations: [String] = ["서울특별시", "인천광역시", "부산광역시",
@@ -39,14 +39,14 @@ final class TravelAddLocationView: BaseView {
     
     override func configureConstraints() {
         guideLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(39)
+            $0.top.equalToSuperview().offset(40)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(42)
         }
         
         tableView.snp.makeConstraints {
             $0.top.equalTo(guideLabel.snp.bottom).offset(12)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(0)
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
