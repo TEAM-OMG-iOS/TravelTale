@@ -24,34 +24,35 @@ final class DaySelectPopoverViewController: BaseViewController {
     }
     
     // MARK: - methods
-    override func configureStyle() {
-        
-    }
-    
     override func configureDelegate() {
-        pickerView.delegate = self
-        pickerView.dataSource = self
+        daySelectPopoverView.pickerView.delegate = self
+        daySelectPopoverView.pickerView.dataSource = self
     }
     
-    override func configureAddTarget() { }
-    
-    override func bind() { }
-    
+    override func configureAddTarget() {
+        daySelectPopoverView.leftBtn.addTarget(self, action: #selector(tappedcancelBtn), for: .touchUpInside)
+        daySelectPopoverView.rightBtn.addTarget(self, action: #selector(tappedOkBtn), for: .touchUpInside)
+    }
+
+    // MARK: - objc func
     @objc private func tappedcancelBtn() {
-        navigationController?.dismiss(animated: true)
+        print("close")
+        self.dismiss(animated: true)
     }
     
     @objc private func tappedOkBtn() {
-        navigationController?.dismiss(animated: true)
+        print("close")
+        self.dismiss(animated: true)
+        // TODO: - 데이터가 지정되는 로직 구현
     }
 }
 
 // MARK: - extensions
-extension DaySelectPopover: UIPickerViewDelegate {
+extension DaySelectPopoverViewController: UIPickerViewDelegate {
     // TODO: 값이 선택 된 후 로직 구현
 }
 
-extension DaySelectPopover: UIPickerViewDataSource {
+extension DaySelectPopoverViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

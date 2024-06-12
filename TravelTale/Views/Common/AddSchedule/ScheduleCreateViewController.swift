@@ -10,9 +10,11 @@ import SnapKit
 
 final class ScheduleCreateViewController: BaseViewController {
     // MARK: - properties
-    let scheduleCreateView = ScheduleCreateView()
+    private let scheduleCreateView = ScheduleCreateView()
     
-    let dayPopoverVC = DaySelectPopover()
+    private let dayPopoverVC = DaySelectPopoverViewController()
+    
+    private let timePopoverVC = TimeSelectPopoverViewController()
     
     // 데이터 모델에 따라 변경될 예정
     var selectedData: Travel? = nil
@@ -38,7 +40,11 @@ final class ScheduleCreateViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
+        //popoverview
         scheduleCreateView.scheduleBtn.addTarget(self, action: #selector(tappedScheduleBtn), for: .touchUpInside)
+        scheduleCreateView.startTiemBtn.addTarget(self, action: #selector(tappedStartTimeBtn), for: .touchUpInside)
+        
+        //common btn
         scheduleCreateView.cancelBtn.tag = 0
         scheduleCreateView.cancelBtn.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
         scheduleCreateView.backButton.tag = 1
@@ -79,9 +85,19 @@ extension ScheduleCreateViewController: UIPopoverPresentationControllerDelegate 
         dayPopoverVC.preferredContentSize = .init(width: 300, height: 200)
         dayPopoverVC.popoverPresentationController?.sourceView = scheduleCreateView.scheduleBtn
         dayPopoverVC.popoverPresentationController?.sourceRect = CGRect(origin: CGPoint(x: scheduleCreateView.scheduleBtn.bounds.midX, y: scheduleCreateView.scheduleBtn.bounds.midY), size: .zero)
-        dayPopoverVC.popoverPresentationController?.permittedArrowDirections = .any
+        dayPopoverVC.popoverPresentationController?.permittedArrowDirections = .up
         dayPopoverVC.popoverPresentationController?.delegate = self
         present(dayPopoverVC, animated: true)
+    }
+    
+    @objc private func tappedStartTimeBtn() {
+        timePopoverVC.modalPresentationStyle = .popover
+        timePopoverVC.preferredContentSize = .init(width: 300, height: 200)
+        timePopoverVC.popoverPresentationController?.sourceView = scheduleCreateView.startTiemBtn
+        timePopoverVC.popoverPresentationController?.sourceRect = CGRect(origin: CGPoint(x: scheduleCreateView.startTiemBtn.bounds.midX, y: scheduleCreateView.startTiemBtn.bounds.midY), size: .zero)
+        timePopoverVC.popoverPresentationController?.permittedArrowDirections = .up
+        timePopoverVC.popoverPresentationController?.delegate = self
+        present(timePopoverVC, animated: true)
     }
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
