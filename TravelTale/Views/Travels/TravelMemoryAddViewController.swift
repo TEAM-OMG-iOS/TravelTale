@@ -62,7 +62,7 @@ class TravelMemoryAddViewController: BaseViewController {
     }
     
     override func configureStyle() {
-        configureNavigationBar(title: "추억 남기기")
+        configureNavigationBarItems()
         travelMemoryAddView.tableView.separatorStyle = .none
     }
     
@@ -71,35 +71,22 @@ class TravelMemoryAddViewController: BaseViewController {
         travelMemoryAddView.tableView.delegate = self
         
         travelMemoryAddView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
-        
-        
     }
     
     override func configureAddTarget() {
-//        travelMemoryAddView.exitBarButtonItem.target = self
-//        travelMemoryAddView.exitBarButtonItem.action = #selector(tappedExitButton)
+        travelMemoryAddView.exitButton.target = self
+        travelMemoryAddView.exitButton.action = #selector(tappedExitButton)
         
         travelMemoryAddView.confirmButton.addTarget(self, action: #selector(tappedConfirmButton), for: .touchUpInside)
-        
     }
     
     override func bind() { }
     
     
-    func configureNavigationBar(title: String) {
-        navigationItem.titleView = travelMemoryAddView.navTitleLabel
-//        navigationItem.titleView = ReturnNavigationItem.shared.returnTitleView(text: "내 여행 추가")
-        
-//        navigationItem.leftBarButtonItem = travelMemoryAddView.exitBarButtonItem
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "xmark"),
-            style: .done,
-            target: self,
-            action: #selector(tappedExitButton)
-        )
-        navigationItem.leftBarButtonItem?.tintColor = .darkGray
-        
-    }
+    func configureNavigationBarItems() {
+        navigationItem.title = "추억 남기기"
+        navigationItem.leftBarButtonItem = travelMemoryAddView.exitButton
+      }
     
     // MARK: - objc functions
     @objc func tappedExitButton() {
