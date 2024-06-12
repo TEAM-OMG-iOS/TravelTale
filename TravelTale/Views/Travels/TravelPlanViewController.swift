@@ -117,11 +117,7 @@ extension TravelPlanViewController: UITableViewDataSource {
             travel = travelViewModel.pastTravels[indexPath.row]
         }
         
-        let period = travelViewModel.returnPeriodString(
-            startDate: travel.startDate,
-            endDate: travel.endDate
-        )
-        cell.bind(travel: travel, period: period)
+        cell.bind(travel: travel)
         cell.selectionStyle = .none
         
         return cell

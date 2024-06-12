@@ -103,13 +103,13 @@ final class TravelTableViewCell: BaseTableViewCell {
         }
     }
     
-    func bind(travel: Travel, period: String) {
+    func bind(travel: Travel) {
         if let image = travel.image {
             thumbnailImageView.image = UIImage(data: image)
         }
-        
         titleLabel.text = travel.title
-        periodLabel.text = period
+        periodLabel.text = String(startDate: travel.startDate, 
+                                  endDate: travel.endDate)
         provinceNameLabel.text = travel.province ?? "미정"
     }
     

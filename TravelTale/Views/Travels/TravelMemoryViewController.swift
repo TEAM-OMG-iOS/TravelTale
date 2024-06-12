@@ -85,14 +85,9 @@ extension TravelMemoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
         
-        
         let travel = travelViewModel.travelArray.value[indexPath.row]
-        let period = travelViewModel.returnPeriodString(
-            startDate: travel.startDate,
-            endDate: travel.endDate
-        )
         
-        cell.bind(travel: travel, period: period)
+        cell.bind(travel: travel)
         cell.selectionStyle = .none
         
         return cell

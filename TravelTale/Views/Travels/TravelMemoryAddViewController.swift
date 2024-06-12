@@ -22,12 +22,12 @@ class TravelMemoryAddViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarController?.tabBar.isHidden = true
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         addTemporaryData()
     }
     
@@ -78,6 +78,9 @@ class TravelMemoryAddViewController: BaseViewController {
     override func configureAddTarget() {
 //        travelMemoryAddView.exitBarButtonItem.target = self
 //        travelMemoryAddView.exitBarButtonItem.action = #selector(tappedExitButton)
+        
+        travelMemoryAddView.confirmButton.addTarget(self, action: #selector(tappedConfirmButton), for: .touchUpInside)
+        
     }
     
     override func bind() { }
@@ -102,6 +105,16 @@ class TravelMemoryAddViewController: BaseViewController {
     @objc func tappedExitButton() {
         self.navigationController?.popToRootViewController(animated: true)
     }
+    
+    @objc func tappedConfirmButton() {
+        if let selectedIndexPath = selectedIndexPath {
+            let selectedTravel = travelViewModel.travelArray.value[selectedIndexPath.row]
+            let nextVC = TravelMemoryDetailEditViewController(travelData: selectedTravel)
+            navigationController?.pushViewController(nextVC, animated: true)
+        } else {
+            print("selectedIndexPath 없음")
+        }
+    }
 }
 
 extension TravelMemoryAddViewController: UITableViewDataSource {
@@ -113,12 +126,8 @@ extension TravelMemoryAddViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return UITableViewCell() }
         
         let travel = travelViewModel.travelArray.value[indexPath.row]
-        let period = travelViewModel.returnPeriodString(
-            startDate: travel.startDate,
-            endDate: travel.endDate
-        )
         
-        cell.bind(travel: travel, period: period)
+        cell.bind(travel: travel)
         cell.selectionStyle = .none
         
         return cell
