@@ -42,20 +42,12 @@ final class TravelViewController: BaseViewController {
     
     // MARK: - methods
     override func configureAddTarget() {
-        travelView.planButton.addTarget(
-            self,
-            action: #selector(tappedButton),
-            for: .touchUpInside
-        )
-        
-        travelView.memoryButton.addTarget(
-            self,
-            action: #selector(tappedButton),
-            for: .touchUpInside
-        )
-        
-        travelView.planButton.tag = 0
-        travelView.memoryButton.tag = 1
+        [travelView.planButton,
+         travelView.memoryButton].forEach {
+            $0.addTarget(self,
+                         action: #selector(tappedButton),
+                         for: .touchUpInside)
+        }
     }
     
     private func addChildViews() {
@@ -77,22 +69,19 @@ final class TravelViewController: BaseViewController {
         views.forEach { $0?.isHidden = $0 != viewToShow}
     }
     
+    
     // MARK: - objc functions
     @objc func tappedButton(_ sender: UIButton) {
-        switch sender.tag {
-        case 0:
-            showOnlyView(viewToShow: travelPlanVC.view)
-            travelView.changeButtonUI(tapped: .plan)
-            currentTappedButton = travelView.planButton
-            
-        case 1:
+        switch sender {
+        case travelView.memoryButton:
             showOnlyView(viewToShow: travelMemoryVC.view)
-            travelView.changeButtonUI(tapped: .memory)
+            travelView.changeButtonUI(tapped: sender)
             currentTappedButton = travelView.memoryButton
             
-        default:
+        default: // planButton
             showOnlyView(viewToShow: travelPlanVC.view)
-            travelView.changeButtonUI(tapped: .plan)
+            travelView.changeButtonUI(tapped: sender)
+            currentTappedButton = travelView.planButton
         }
     }
 }
