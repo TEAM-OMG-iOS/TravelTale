@@ -23,10 +23,13 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBarItems()
     }
     
     // MARK: - methods
+    override func configureStyle() {
+        configureNavigationBarItems()
+    }
+    
     override func configureDelegate() {
         travelAddTitleView.textField.delegate = self
     }
@@ -37,7 +40,7 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
         travelAddTitleView.backButton.action = #selector(tappedToRootView)
         travelAddTitleView.backButton.target = self
     }
-
+    
     private func configureNavigationBarItems() {
         navigationItem.title = "새 여행 추가"
         self.navigationItem.leftBarButtonItem = travelAddTitleView.backButton

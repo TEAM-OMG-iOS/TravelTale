@@ -15,7 +15,7 @@ final class TravelAddTitleView: BaseView {
         $0.image = UIImage(systemName: "xmark")
         $0.tintColor = .gray90
     }
-
+    
     private let inputTitleLabel = UILabel().then {
         $0.configureLabel(color: .blueBlack100,
                           font: .pretendard(size: 18, weight: .semibold),
@@ -49,7 +49,7 @@ final class TravelAddTitleView: BaseView {
                          clipsToBounds: true,
                          cornerRadius: 4)
     }
-  
+    
     // MARK: - methods
     override func configureUI() {
         super.configureUI()
@@ -64,6 +64,7 @@ final class TravelAddTitleView: BaseView {
          progressView].forEach {
             self.addSubview($0)
         }
+        
         progressView.addSubview(loadingBar)
     }
     
@@ -103,13 +104,13 @@ final class TravelAddTitleView: BaseView {
             $0.leading.top.height.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(1.0 / 3.0)
         }
+        
         UIView.animate(withDuration: 2.0, delay: 0, animations: {
             self.progressView.layoutIfNeeded()
-            
-        }, completion: nil)
+        })
     }
     
-    @objc func buttonColorChanged() {
+    func buttonColorChanged() {
         if textField.text?.isEmpty != true {
             okButton.isEnabled = true
             okButton.backgroundColor = .green100

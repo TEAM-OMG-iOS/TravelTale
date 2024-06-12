@@ -24,11 +24,12 @@ final class TravelAddPlaceViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    // MARK: - methods
+    override func configureStyle() { 
         configureNavigationBarItems()
     }
-    
-    // MARK: - methods
-    override func configureStyle() { }
     
     override func configureDelegate() { }
     
@@ -52,12 +53,17 @@ final class TravelAddPlaceViewController: BaseViewController {
     @objc func tappedInputBox() {
         let locationList = TravelAddLocationViewController()
         guard let sheet = locationList.sheetPresentationController else { return }
-            sheet.detents = [.medium()]
-            sheet.prefersGrabberVisible = true
-            locationList.travelAddPlaceVC = self
-            self.present(locationList, animated: true, completion: nil)
+        sheet.detents = [.medium()]
+        sheet.prefersGrabberVisible = true
+        locationList.completion = { [weak self] text in
+            guard let self = self else { return }
+            
+            travelAddPlaceView.placePickButton.setTitle(text, for: .normal)
         }
-
+        
+        self.present(locationList, animated: true, completion: nil)
+    }
+    
     @objc func tappedOkButton() {
         let nextVC = TravelAddCalenderViewController()
         self.navigationController?.pushViewController(nextVC, animated: false)

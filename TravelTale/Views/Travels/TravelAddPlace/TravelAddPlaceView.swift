@@ -59,11 +59,9 @@ final class TravelAddPlaceView: BaseView {
     // MARK: - methods
     override func configureUI() {
         super.configureUI()
-        
     }
     
     override func configureHierarchy() {
-        
         [inputTitleLabel,
          placePickButton,
          cancelButton,
@@ -71,6 +69,7 @@ final class TravelAddPlaceView: BaseView {
          progressView].forEach {
             self.addSubview($0)
         }
+        
         progressView.addSubview(loadingBar)
     }
     
@@ -116,7 +115,7 @@ final class TravelAddPlaceView: BaseView {
     func startLoadingAnimation() {
         UIView.animate(withDuration: 2.0, delay: 0, animations: {
             self.loadingBar.transform = CGAffineTransform(scaleX: 3, y: 1)
-        }, completion: nil)
+        })
     }
     
 }
