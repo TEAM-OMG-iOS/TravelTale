@@ -84,7 +84,7 @@ extension ScheduleCreateViewController: UIPopoverPresentationControllerDelegate 
         dayPopoverVC.modalPresentationStyle = .popover
         dayPopoverVC.preferredContentSize = .init(width: 300, height: 200)
         dayPopoverVC.popoverPresentationController?.sourceView = scheduleCreateView.scheduleBtn
-        dayPopoverVC.popoverPresentationController?.sourceRect = CGRect(origin: CGPoint(x: scheduleCreateView.scheduleBtn.bounds.midX, y: scheduleCreateView.scheduleBtn.bounds.midY), size: .zero)
+        dayPopoverVC.popoverPresentationController?.sourceRect = CGRect(origin: CGPoint(x: scheduleCreateView.scheduleBtn.bounds.maxX - 50, y: scheduleCreateView.scheduleBtn.bounds.midY + 10), size: .zero)
         dayPopoverVC.popoverPresentationController?.permittedArrowDirections = .up
         dayPopoverVC.popoverPresentationController?.delegate = self
         present(dayPopoverVC, animated: true)
@@ -94,7 +94,7 @@ extension ScheduleCreateViewController: UIPopoverPresentationControllerDelegate 
         timePopoverVC.modalPresentationStyle = .popover
         timePopoverVC.preferredContentSize = .init(width: 300, height: 200)
         timePopoverVC.popoverPresentationController?.sourceView = scheduleCreateView.startTiemBtn
-        timePopoverVC.popoverPresentationController?.sourceRect = CGRect(origin: CGPoint(x: scheduleCreateView.startTiemBtn.bounds.midX, y: scheduleCreateView.startTiemBtn.bounds.midY), size: .zero)
+        timePopoverVC.popoverPresentationController?.sourceRect = CGRect(origin: CGPoint(x: scheduleCreateView.startTiemBtn.bounds.maxX - 50, y: scheduleCreateView.startTiemBtn.bounds.midY + 10), size: .zero)
         timePopoverVC.popoverPresentationController?.permittedArrowDirections = .up
         timePopoverVC.popoverPresentationController?.delegate = self
         present(timePopoverVC, animated: true)
