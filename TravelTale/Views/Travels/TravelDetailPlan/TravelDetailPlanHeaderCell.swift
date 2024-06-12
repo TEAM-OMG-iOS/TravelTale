@@ -7,17 +7,36 @@
 
 import UIKit
 
-class TravelDetailPlanHeaderCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+final class TravelDetailPlanHeaderCell: BaseTableViewCell {
+    
+    // MARK: - properties
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createFlowLayout()).then {
+        $0.showsHorizontalScrollIndicator = false
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    // MARK: - methods
+    override func configureHierarchy() {
+        self.contentView.addSubview(collectionView)
     }
-
+    
+    override func configureConstraints() {
+        collectionView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(8)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().offset(-18)
+            $0.height.equalTo(27)
+        }
+    }
+    
+    private func createFlowLayout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        let itemsSize = ("Day 0").size(withAttributes: [.font: UIFont.oaGothic(size: 15, weight: .heavy)]).width * 5
+        let horizontalEdges: CGFloat = 20 * 2
+        
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = ((UIScreen.main.bounds.width - horizontalEdges - itemsSize) / 4)
+        layout.minimumInteritemSpacing = ((UIScreen.main.bounds.width - horizontalEdges - itemsSize) / 4)
+        
+        return layout
+    }
 }
