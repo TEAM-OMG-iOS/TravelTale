@@ -12,13 +12,14 @@ final class TravelAddPlaceViewController: BaseViewController {
     // MARK: - properties
     private let travelAddPlaceView = TravelAddPlaceView()
     
-    // MARK: - lifecycle
+    // MARK: - life cycles
     override func loadView() {
         view = travelAddPlaceView
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         travelAddPlaceView.startLoadingAnimation()
     }
     
@@ -31,8 +32,6 @@ final class TravelAddPlaceViewController: BaseViewController {
         configureNavigationBarItems()
     }
     
-    override func configureDelegate() { }
-    
     override func configureAddTarget() {
         travelAddPlaceView.placePickButton.addTarget(self, action: #selector(tappedInputBox), for: .touchUpInside)
         travelAddPlaceView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
@@ -43,13 +42,9 @@ final class TravelAddPlaceViewController: BaseViewController {
     
     private func configureNavigationBarItems() {
         navigationItem.title = "새 여행 추가"
-        self.navigationItem.leftBarButtonItem = travelAddPlaceView.backButton
+        navigationItem.leftBarButtonItem = travelAddPlaceView.backButton
     }
-    
-    func updateInputBox(with text: String) {
-        travelAddPlaceView.placePickButton.setTitle(text, for: .normal)
-    }
-    
+
     @objc func tappedInputBox() {
         let locationList = TravelAddLocationViewController()
         guard let sheet = locationList.sheetPresentationController else { return }

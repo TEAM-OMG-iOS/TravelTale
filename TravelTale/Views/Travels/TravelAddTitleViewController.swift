@@ -12,7 +12,7 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     // MARK: - properties
     private let travelAddTitleView = TravelAddTitleView()
     
-    // MARK: - lifecycle
+    // MARK: - life cycles
     override func loadView() {
         view = travelAddTitleView
     }

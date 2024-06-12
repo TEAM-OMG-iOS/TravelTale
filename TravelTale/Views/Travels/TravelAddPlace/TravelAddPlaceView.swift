@@ -25,7 +25,7 @@ final class TravelAddPlaceView: BaseView {
     
     let placePickButton = UIButton().then {
         $0.configureView(color: .gray10, cornerRadius: 24)
-        $0.titleLabel?.font = UIFont.pretendard(size: 16, weight: .medium)
+        $0.titleLabel?.font = .pretendard(size: 16, weight: .medium)
         $0.setTitle("미정", for: .normal)
         $0.setTitleColor(.gray90, for: .normal)
         $0.contentHorizontalAlignment = .left
@@ -34,17 +34,17 @@ final class TravelAddPlaceView: BaseView {
     
     let cancelButton = GrayButton().then {
         $0.configureButton(fontColor: .white,
-                           font: UIFont.pretendard(size: 18, weight: .bold),
+                           font: .pretendard(size: 18, weight: .bold),
                            text: "이전")
     }
     
     let okButton = GreenButton().then {
         $0.configureButton(fontColor: .white,
-                           font: UIFont.pretendard(size: 18, weight: .bold),
+                           font: .pretendard(size: 18, weight: .bold),
                            text: "날짜 선택하러 가기")
     }
     
-    let progressView = UIView().then {
+    private let progressView = UIView().then {
         $0.configureView(color: .gray20,
                          clipsToBounds: true,
                          cornerRadius: 4)
@@ -117,5 +117,4 @@ final class TravelAddPlaceView: BaseView {
             self.loadingBar.transform = CGAffineTransform(scaleX: 3, y: 1)
         })
     }
-    
 }

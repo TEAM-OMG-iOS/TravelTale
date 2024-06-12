@@ -27,7 +27,7 @@ final class TravelAddTitleView: BaseView {
         $0.placeholder = "남자친구와 100일 여행"
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         $0.leftViewMode = .always
-        $0.font = UIFont.pretendard(size: 16, weight: .medium)
+        $0.font = .pretendard(size: 16, weight: .medium)
     }
     
     let okButton = UIButton().then {

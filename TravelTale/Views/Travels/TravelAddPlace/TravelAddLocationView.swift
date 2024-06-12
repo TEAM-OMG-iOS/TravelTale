@@ -11,19 +11,13 @@ final class TravelAddLocationView: BaseView {
     
     // MARK: - properties
     private let guideLabel = UILabel().then {
-        $0.text = "대표 여행 장소를 선택해주세요"
-        $0.font = UIFont(name: "Pretendard-SemiBold", size: 18)
+        $0.configureLabel(font: .pretendard(size: 18, weight: .semibold),
+                          text: "대표 여행 장소를 선택해주세요")
     }
     
-    let tableView = UITableView().then {
-        $0.backgroundColor = .white
-    }
+    let tableView = UITableView()
     
     // MARK: - methods
-    override func configureUI() {
-        super.configureUI()
-    }
-    
     override func configureHierarchy() {
         [guideLabel,
          tableView].forEach {
@@ -40,9 +34,8 @@ final class TravelAddLocationView: BaseView {
         
         tableView.snp.makeConstraints {
             $0.top.equalTo(guideLabel.snp.bottom).offset(12)
-            $0.horizontalEdges.equalToSuperview().inset(0)
+            $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
 }
-
