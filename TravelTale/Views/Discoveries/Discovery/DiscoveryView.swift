@@ -19,10 +19,12 @@ final class DiscoveryView: BaseView {
         $0.tintColor = .black
     }
     
-    let regionStackView = UIStackView().then {
+    private let regionStackView = UIStackView().then {
         $0.spacing = 4
         $0.distribution = .fillProportionally
     }
+    
+    lazy var regionBarItem = UIBarButtonItem(customView: regionStackView)
     
     let searchButton = UIBarButtonItem().then {
         $0.style = .done
@@ -111,7 +113,7 @@ final class DiscoveryView: BaseView {
         return configuration
     }
     
-    func bind(location: String) {
-        regionLabelButton.configureButton(font: .pretendard(size: 18, weight: .bold), text: location)
+    func bind(region: String) {
+        regionLabelButton.configureButton(font: .pretendard(size: 18, weight: .bold), text: region)
     }
 }

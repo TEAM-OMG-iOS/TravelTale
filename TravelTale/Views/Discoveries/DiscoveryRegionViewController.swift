@@ -69,7 +69,7 @@ final class DiscoveryRegionViewController: BaseViewController {
         discoveryRegionModalVC.completion = { [weak self] text in
             guard let self = self else { return }
             selectedCity = text
-            discoveryRegionView.bind(text: selectedCity, isCity: true)
+            discoveryRegionView.selectCity(cityName: selectedCity)
         }
         
         self.present(discoveryRegionModalVC, animated: true)
@@ -86,7 +86,7 @@ final class DiscoveryRegionViewController: BaseViewController {
         discoveryRegionModalVC.completion = { [weak self] text in
             guard let self = self else { return }
             selectedDistrict = text
-            discoveryRegionView.bind(text: text, isCity: false)
+            discoveryRegionView.selectDistrict(districtName: selectedDistrict)
         }
         
         self.present(discoveryRegionModalVC, animated: true)
@@ -107,13 +107,11 @@ final class DiscoveryRegionViewController: BaseViewController {
     }
     
     private func updateSubmitButtonState() {
-        discoveryRegionView.submitButton.isEnabled = !selectedCity.isEmpty && !selectedDistrict.isEmpty || selectedCity == "세종특별자치시"
-        discoveryRegionView.updateSubmitButtonAppearance()
+        discoveryRegionView.updateSubmitButtonState(city: selectedCity, district: selectedDistrict)
     }
     
-    func setRegionLabel(region: String) {
+    func setRegionLabels(region: String) {
         let regionArray = region.components(separatedBy: " ")
-        discoveryRegionView.currentCityLabel.text = regionArray[0]
-        discoveryRegionView.currentDistrictLabel.text = regionArray[1]
+        discoveryRegionView.setCityAndDistrictLabels(cityName: regionArray[0], districtName: regionArray[1])
     }
 }

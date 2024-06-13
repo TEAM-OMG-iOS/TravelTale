@@ -34,7 +34,6 @@ final class DiscoveryViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        
         discoveryView.regionLabelButton.addTarget(self, action: #selector(tappedRegionButton), for: .touchUpInside)
         discoveryView.regionButton.addTarget(self, action: #selector(tappedRegionButton), for: .touchUpInside)
         
@@ -48,7 +47,7 @@ final class DiscoveryViewController: BaseViewController {
     }
     
     private func configureNavigationBar() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: discoveryView.regionStackView)
+        navigationItem.leftBarButtonItem = discoveryView.regionBarItem
         navigationItem.rightBarButtonItem = discoveryView.searchButton
     }
     
@@ -56,12 +55,12 @@ final class DiscoveryViewController: BaseViewController {
         let discoveryRegionVC = DiscoveryRegionViewController()
         
         if let region = discoveryView.regionLabelButton.titleLabel?.text {
-            discoveryRegionVC.setRegionLabel(region: region)
+            discoveryRegionVC.setRegionLabels(region: region)
         }
         
         discoveryRegionVC.completion = { [weak self] text in
             guard let self = self else { return }
-            discoveryView.bind(location: text)
+            discoveryView.bind(region: text)
         }
         
         self.navigationController?.pushViewController(discoveryRegionVC, animated: true)

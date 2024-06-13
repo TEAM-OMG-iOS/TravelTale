@@ -147,6 +147,11 @@ final class DiscoveryRegionView: BaseView {
         submitButton.backgroundColor = submitButton.isEnabled ? .green100 : .green10
     }
     
+    func updateSubmitButtonState(city: String, district: String) {
+        submitButton.isEnabled = !city.isEmpty && !district.isEmpty || city == "세종특별자치시"
+        updateSubmitButtonAppearance()
+    }
+    
     func setCityAndDistrictLabels(cityName: String, districtName: String) {
         currentCityLabel.text = cityName
         currentDistrictLabel.text = districtName

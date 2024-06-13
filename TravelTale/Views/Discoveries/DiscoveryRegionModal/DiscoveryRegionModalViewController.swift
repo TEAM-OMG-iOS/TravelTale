@@ -12,7 +12,7 @@ final class DiscoveryRegionModalViewController: BaseViewController {
     // MARK: - properties
     private let locationView = LocationView()
     
-    private var data: [String] = []
+    private var regionData: [String] = []
     
     var completion: ((String) -> Void)?
     
@@ -35,10 +35,10 @@ final class DiscoveryRegionModalViewController: BaseViewController {
     
     func bind(isCity: Bool, city: String = "서울특별시") {
         if isCity {
-            data = RegionData().getCityData()
+            regionData = RegionData().getCityData()
             locationView.bind(text: "시/도 선택")
-        }else {
-            data = RegionData().getRegionData(cityString: city)
+        } else {
+            regionData = RegionData().getRegionData(cityString: city)
             locationView.bind(text: "구/군 선택")
         }
     }
@@ -47,7 +47,7 @@ final class DiscoveryRegionModalViewController: BaseViewController {
 // MARK: - extentions
 extension DiscoveryRegionModalViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        completion?(data[indexPath.row])
+        completion?(regionData[indexPath.row])
         
         dismiss(animated: true)
     }
@@ -55,7 +55,7 @@ extension DiscoveryRegionModalViewController: UITableViewDelegate {
 
 extension DiscoveryRegionModalViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return regionData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,7 +64,7 @@ extension DiscoveryRegionModalViewController: UITableViewDataSource {
         }
         
         cell.selectionStyle = .none
-        cell.bind(text: data[indexPath.row])
+        cell.bind(text: regionData[indexPath.row])
         
         return cell
     }
