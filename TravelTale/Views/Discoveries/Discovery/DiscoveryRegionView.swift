@@ -28,10 +28,9 @@ final class DiscoveryRegionView: BaseView {
         $0.tintColor = .gray90
     }
     
-    private let currentCityLabel = UILabel().then {
+    let currentCityLabel = UILabel().then {
         $0.configureLabel(color: .gray80,
-                          font: .pretendard(size: 16, weight: .regular),
-                          text: "대구시")
+                          font: .pretendard(size: 16, weight: .regular))
     }
     
     private let districtBackground = GrayBackgroundView()
@@ -44,21 +43,27 @@ final class DiscoveryRegionView: BaseView {
     let districtButton = UIButton().then {
         $0.setImage(.init(systemName: "chevron.down"), for: .normal)
         $0.tintColor = .gray90
+        $0.isEnabled = false
     }
     
-    private let currentDistrictLabel = UILabel().then {
+    let currentDistrictLabel = UILabel().then {
         $0.configureLabel(color: .gray80,
-                          font: .pretendard(size: 16, weight: .regular),
-                          text: "달서구")
+                          font: .pretendard(size: 16, weight: .regular))
     }
     
     let submitButton = GreenButton().then {
         $0.configureButton(fontColor: .white,
                            font: .pretendard(size: 20, weight: .heavy),
                            text: "완료")
+        $0.isEnabled = false
     }
     
     // MARK: - methods
+    override func configureUI() {
+        super.configureUI()
+        updateSubmitButtonAppearance()
+    }
+    
     override func configureHierarchy() {
         self.addSubview(cityBackground)
         self.addSubview(cityLabel)
@@ -118,5 +123,23 @@ final class DiscoveryRegionView: BaseView {
             $0.horizontalEdges.equalToSuperview().inset(24)
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
         }
+    }
+    
+    func bind(text: String, isCity: Bool) {
+        if isCity {
+            districtButton.isEnabled = true
+            currentCityLabel.text = text
+            currentCityLabel.textColor = .black
+            currentDistrictLabel.text = "구/군을 선택해주세요."
+            currentDistrictLabel.textColor = .gray80
+        }else {
+            currentDistrictLabel.text = text
+            currentDistrictLabel.textColor = .black
+        }
+        updateSubmitButtonAppearance()
+    }
+    
+    func updateSubmitButtonAppearance() {
+        submitButton.backgroundColor = submitButton.isEnabled ? .green100 : .green10
     }
 }

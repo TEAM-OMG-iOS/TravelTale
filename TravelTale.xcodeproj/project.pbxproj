@@ -202,6 +202,14 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
+		2E36056F2C1AF38A007DFBC1 /* DiscoveryRegionModal */ = {
+			isa = PBXGroup;
+			children = (
+				2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */,
+			);
+			path = DiscoveryRegionModal;
+			sourceTree = "<group>";
+		};
 		378CEBDF2C0D563C00DF1C3F = {
 			isa = PBXGroup;
 			children = (
@@ -317,8 +325,8 @@
 			children = (
 				378CEC2D2C0D685D00DF1C3F /* Discovery */,
 				378CEC372C0D690800DF1C3F /* DiscoveryViewController.swift */,
-				2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */,
 				2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */,
+				2E36056F2C1AF38A007DFBC1 /* DiscoveryRegionModal */,
 			);
 			path = Discoveries;
 			sourceTree = "<group>";

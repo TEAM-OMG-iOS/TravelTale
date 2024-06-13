@@ -105,4 +105,10 @@ final class DiscoveryView: BaseView {
         
         return configuration
     }
+    
+    func bind(text: String) {
+        let attributes: [NSAttributedString.Key: Any] = [ .font: UIFont.pretendard(size: 18, weight: .bold) ]
+        let attributedString = NSAttributedString(string: text, attributes: attributes)
+        regionButton.setAttributedTitle(attributedString, for: .normal)
+    }
 }

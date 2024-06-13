@@ -14,6 +14,8 @@ final class DiscoveryRegionModalViewController: BaseViewController {
     
     private var data: [String] = []
     
+    var completion: ((String) -> Void)?
+    
     // MARK: - life cycles
     override func loadView() {
         view = locationView
@@ -31,12 +33,12 @@ final class DiscoveryRegionModalViewController: BaseViewController {
         locationView.tableView.register(LocationTableViewCell.self, forCellReuseIdentifier: LocationTableViewCell.identifier)
     }
     
-    func bind(isCity: Bool) {
+    func bind(isCity: Bool, city: String = "서울특별시") {
         if isCity {
             data = RegionData().getCityData()
             locationView.bind(text: "시/도 선택")
         }else {
-            data = RegionData().getRegionData(cityString: "대구광역시")
+            data = RegionData().getRegionData(cityString: city)
             locationView.bind(text: "구/군 선택")
         }
     }
@@ -45,14 +47,14 @@ final class DiscoveryRegionModalViewController: BaseViewController {
 // MARK: - extentions
 extension DiscoveryRegionModalViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: 데이터 RegionVC으로 넘기기
+        completion?(data[indexPath.row])
+        
         dismiss(animated: true)
     }
 }
 
 extension DiscoveryRegionModalViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: 데이터 생기면 넣기
         return data.count
     }
     

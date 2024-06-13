@@ -53,6 +53,15 @@ final class DiscoveryViewController: BaseViewController {
     @objc private func tappedRegionButton() {
         let discoveryRegionVC = DiscoveryRegionViewController()
         
+        if let region = discoveryView.regionButton.titleLabel?.text {
+            discoveryRegionVC.setRegionLabel(region: region)
+        }
+        
+        discoveryRegionVC.completion = { [weak self] text in
+            guard let self = self else { return }
+            discoveryView.bind(text: text)
+        }
+        
         self.navigationController?.pushViewController(discoveryRegionVC, animated: true)
     }
     
@@ -61,7 +70,7 @@ final class DiscoveryViewController: BaseViewController {
     }
     
     @objc private func tappedCategoryButton(_ sender: UIButton) {
-        guard let category = sender.titleLabel else { return }
+        // guard let category = sender.titleLabel else { return }
         
         // todo : category 화면 navi로 띄우기
     }
