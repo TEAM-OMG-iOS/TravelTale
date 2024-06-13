@@ -88,6 +88,16 @@ final class ScheduleCreateViewController: BaseViewController {
         scheduleCreateView.startTimeContents.text = dateFormat(date: selectedTime ?? Date())
     }
     
+    func configurePopover(for popoverVC: UIViewController, sourceButton: UIButton) {
+        popoverVC.modalPresentationStyle = .popover
+        popoverVC.preferredContentSize = CGSize(width: 300, height: 200)
+        let popoverPresentationController = popoverVC.popoverPresentationController
+        popoverPresentationController?.sourceView = sourceButton
+        popoverPresentationController?.sourceRect = CGRect(
+            origin: CGPoint(x: sourceButton.bounds.maxX - 50, y: sourceButton.bounds.midY + 10), size: .zero)
+        popoverPresentationController?.permittedArrowDirections = .up
+    }
+    
     // MARK: - objc func
     @objc private func handleBackButton(_ sender: UIButton) {
         switch sender.tag {
@@ -129,13 +139,13 @@ final class ScheduleCreateViewController: BaseViewController {
 // MARK: - extensions
 extension ScheduleCreateViewController: UIPopoverPresentationControllerDelegate {
     @objc private func tappedScheduleBtn() {
-        scheduleCreateView.configurePopover(for: dayPopoverVC, sourceButton: scheduleCreateView.scheduleBtn)
+        configurePopover(for: dayPopoverVC, sourceButton: scheduleCreateView.scheduleBtn)
         dayPopoverVC.popoverPresentationController?.delegate = self
         present(dayPopoverVC, animated: true)
     }
     
     @objc private func tappedStartTimeBtn() {
-        scheduleCreateView.configurePopover(for: timePopoverVC, sourceButton: scheduleCreateView.startTiemBtn)
+        configurePopover(for: timePopoverVC, sourceButton: scheduleCreateView.startTiemBtn)
         timePopoverVC.popoverPresentationController?.delegate = self
         present(timePopoverVC, animated: true)
     }

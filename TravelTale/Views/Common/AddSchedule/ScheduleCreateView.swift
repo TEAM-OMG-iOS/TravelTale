@@ -272,16 +272,6 @@ final class ScheduleCreateView: BaseView {
             textView.textColor = .gray80
         }
     }
-    //컨트롤러로 이동
-    func configurePopover(for popoverVC: UIViewController, sourceButton: UIButton) {
-        popoverVC.modalPresentationStyle = .popover
-        popoverVC.preferredContentSize = CGSize(width: 300, height: 200)
-        let popoverPresentationController = popoverVC.popoverPresentationController
-        popoverPresentationController?.sourceView = sourceButton
-        popoverPresentationController?.sourceRect = CGRect(
-            origin: CGPoint(x: sourceButton.bounds.maxX - 50, y: sourceButton.bounds.midY + 10), size: .zero)
-        popoverPresentationController?.permittedArrowDirections = .up
-    }
     
     func checkBlackText() {
         var scheduleIsBlack = false
