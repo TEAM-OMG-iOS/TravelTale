@@ -80,8 +80,6 @@
 		4D6694532C1AD9F00095CC42 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4D6694522C1AD9F00095CC42 /* IQKeyboardManagerSwift */; };
 		4D6694562C1AE3410095CC42 /* DaySelectPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6694542C1AE3410095CC42 /* DaySelectPopoverViewController.swift */; };
 		4D6694572C1AE3410095CC42 /* TimeSelectPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6694552C1AE3410095CC42 /* TimeSelectPopoverViewController.swift */; };
-		4D66945A2C1AE42C0095CC42 /* TimeSelectPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6694582C1AE42C0095CC42 /* TimeSelectPopoverViewController.swift */; };
-		4D66945B2C1AE42C0095CC42 /* DaySelectPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6694592C1AE42C0095CC42 /* DaySelectPopoverViewController.swift */; };
 		F193681A2C194D50000AC7B2 /* TravelRenewCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19368192C194D50000AC7B2 /* TravelRenewCalendarView.swift */; };
 		F193681C2C194D73000AC7B2 /* TravelRenewCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193681B2C194D73000AC7B2 /* TravelRenewCalendarViewController.swift */; };
 		F19368202C1ACB88000AC7B2 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193681F2C1ACB88000AC7B2 /* LocationTableViewCell.swift */; };
@@ -165,8 +163,6 @@
 		4D27194B2C1A0295004DDC38 /* PlaceEditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceEditionViewController.swift; sourceTree = "<group>"; };
 		4D6694542C1AE3410095CC42 /* DaySelectPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaySelectPopoverViewController.swift; sourceTree = "<group>"; };
 		4D6694552C1AE3410095CC42 /* TimeSelectPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSelectPopoverViewController.swift; sourceTree = "<group>"; };
-		4D6694582C1AE42C0095CC42 /* TimeSelectPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSelectPopoverViewController.swift; sourceTree = "<group>"; };
-		4D6694592C1AE42C0095CC42 /* DaySelectPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaySelectPopoverViewController.swift; sourceTree = "<group>"; };
 		F19368192C194D50000AC7B2 /* TravelRenewCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelRenewCalendarView.swift; sourceTree = "<group>"; };
 		F193681B2C194D73000AC7B2 /* TravelRenewCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelRenewCalendarViewController.swift; sourceTree = "<group>"; };
 		F193681F2C1ACB88000AC7B2 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
@@ -390,8 +386,6 @@
 				4D0E3CF42C195A9A0089D6C1 /* TimeSelectPopoverView.swift */,
 				4D6694542C1AE3410095CC42 /* DaySelectPopoverViewController.swift */,
 				4D6694552C1AE3410095CC42 /* TimeSelectPopoverViewController.swift */,
-				4D6694592C1AE42C0095CC42 /* DaySelectPopoverViewController.swift */,
-				4D6694582C1AE42C0095CC42 /* TimeSelectPopoverViewController.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -639,7 +633,6 @@
 				1AD537902C12CF4900A70D5E /* TravelPlanView.swift in Sources */,
 				4D6694562C1AE3410095CC42 /* DaySelectPopoverViewController.swift in Sources */,
 				378CEC302C0D68A200DF1C3F /* TravelView.swift in Sources */,
-				4D66945B2C1AE42C0095CC42 /* DaySelectPopoverViewController.swift in Sources */,
 				37CB880D2C0D796C002798BE /* UILabel+Extension.swift in Sources */,
 				1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */,
 				F19368202C1ACB88000AC7B2 /* LocationTableViewCell.swift in Sources */,
@@ -649,7 +642,6 @@
 				1AD5378E2C10838A00A70D5E /* Travel(temporary).swift in Sources */,
 				1AD537942C12DCC600A70D5E /* LightGreenButton.swift in Sources */,
 				F193681C2C194D73000AC7B2 /* TravelRenewCalendarViewController.swift in Sources */,
-				4D66945A2C1AE42C0095CC42 /* TimeSelectPopoverViewController.swift in Sources */,
 				378CEBEE2C0D563C00DF1C3F /* SceneDelegate.swift in Sources */,
 				378CEC322C0D68C600DF1C3F /* DiscoveryView.swift in Sources */,
 				378CEC3A2C0D691900DF1C3F /* MyPageViewController.swift in Sources */,
