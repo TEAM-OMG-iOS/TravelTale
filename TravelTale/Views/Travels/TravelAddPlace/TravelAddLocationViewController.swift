@@ -10,7 +10,7 @@ import UIKit
 final class TravelAddLocationViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelAddLocationView = TravelAddLocationView()
+    private let travelAddLocationView = AddLocationView()
     
     private let locations: [String] = ["서울특별시", "인천광역시", "부산광역시",
                                        "대전광역시", "대구광역시", "울산광역시",
@@ -34,8 +34,8 @@ final class TravelAddLocationViewController: BaseViewController {
         travelAddLocationView.tableView.dataSource = self
         travelAddLocationView.tableView.delegate = self
         
-        travelAddLocationView.tableView.register(TravelLocationTableViewCell.self,
-                                                 forCellReuseIdentifier: TravelLocationTableViewCell.identifier)
+        travelAddLocationView.tableView.register(LocationTableViewCell.self,
+                                                 forCellReuseIdentifier: LocationTableViewCell.identifier)
     }
 }
 
@@ -46,9 +46,10 @@ extension TravelAddLocationViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelLocationTableViewCell.identifier, for: indexPath) as? TravelLocationTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.identifier, for: indexPath) as? LocationTableViewCell else { return UITableViewCell() }
         
         cell.bind(text: locations[indexPath.row])
+        travelAddLocationView.bind(text: "대표 여행 장소를 선택해주세요")
         
         return cell
     }
@@ -56,14 +57,10 @@ extension TravelAddLocationViewController: UITableViewDataSource {
 
 extension TravelAddLocationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? TravelLocationTableViewCell else { return }
-        cell.selectLocation(true)
         
         completion?(locations[indexPath.row])
+        
+        self.dismiss(animated: true, completion: nil)
     }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? TravelLocationTableViewCell else { return }
-        cell.selectLocation(false)
-    }
+
 }
