@@ -28,11 +28,51 @@ final class MyPageView: BaseView {
         $0.setTitle("전체보기", for: .normal)
     }
     
+    private let buttonTopStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.spacing = 12
+        $0.distribution = .fillEqually
+        $0.alignment = .fill
+    }
+    
+    private let buttonBottomStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.spacing = 12
+        $0.distribution = .fillEqually
+        $0.alignment = .fill
+    }
+    
+    let toristSpotBookMarkButton = BookMarkButton().then {
+        $0.text = "관광지"
+        $0.bookMarkImage = .touristSpotCircle
+    }
+    
+    let restaurantBookMarkButton = BookMarkButton().then {
+        $0.text = "음식점"
+        $0.bookMarkImage = .restaurantCircle
+    }
+    
+    let accommodationBookMarkButton = BookMarkButton().then {
+        $0.text = "숙박"
+        $0.bookMarkImage = .accommodationCircle
+    }
+    
+    let entertainmentBookMarkButton = BookMarkButton().then {
+        $0.text = "놀거리"
+        $0.bookMarkImage = .entertainmentCircle
+    }
+    
     // MARK: - methods
     override func configureHierarchy() {
         self.addSubview(bookMarkBackgroundView)
         self.addSubview(bookMarkLabel)
         self.addSubview(totalViewLabel)
+        self.addSubview(buttonTopStackView)
+        self.addSubview(buttonBottomStackView)
+        buttonTopStackView.addArrangedSubview(toristSpotBookMarkButton)
+        buttonTopStackView.addArrangedSubview(restaurantBookMarkButton)
+        buttonBottomStackView.addArrangedSubview(accommodationBookMarkButton)
+        buttonBottomStackView.addArrangedSubview(entertainmentBookMarkButton)
     }
     
     override func configureConstraints() {
@@ -48,6 +88,16 @@ final class MyPageView: BaseView {
         totalViewLabel.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(24)
             $0.centerX.equalTo(totalViewLabel)
+        }
+        
+        buttonTopStackView.snp.makeConstraints {
+            $0.top.horizontalEdges.equalToSuperview().inset(24)
+        }
+        
+        buttonBottomStackView.snp.makeConstraints {
+            $0.top.equalTo(buttonTopStackView.snp.bottom).inset(12)
+            $0.horizontalEdges.equalToSuperview().inset(24)
+            $0.bottom.equalTo(bookMarkBackgroundView).inset(24)
         }
     }
 }
