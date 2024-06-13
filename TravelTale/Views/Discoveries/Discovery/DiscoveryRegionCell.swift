@@ -12,12 +12,14 @@ final class DiscoveryRegionCell: BaseTableViewCell {
     // MARK: - properties
     static let identifier = "DiscoveryRegionCell"
     
-    let regionContainerView = UIView().then {
+    private let regionContainerView = UIView().then {
         $0.configureView(color: .white, clipsToBounds: true, cornerRadius: 20)
     }
     
-    let checkImageView = UIImageView().then {
+    private let checkImageView = UIImageView().then {
         $0.image = UIImage(systemName: "checkmark")
+        $0.tintColor = .black
+        $0.isHidden = true
     }
     
     private let regionLabel = UILabel().then {
@@ -46,13 +48,24 @@ final class DiscoveryRegionCell: BaseTableViewCell {
         }
         
         checkImageView.snp.makeConstraints {
-            $0.verticalEdges.leading.equalToSuperview().inset(16)
+            $0.verticalEdges.trailing.equalToSuperview().inset(16)
             $0.width.equalTo(checkImageView.snp.height)
         }
         
         regionLabel.snp.makeConstraints {
-            $0.leading.verticalEdges.equalToSuperview()
+            $0.leading.equalToSuperview().inset(16)
+            $0.verticalEdges.equalToSuperview()
             $0.trailing.equalTo(checkImageView.snp.leading).inset(16)
+        }
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        if selected {
+            regionContainerView.backgroundColor = .green10
+            checkImageView.isHidden = false
+        }else {
+            regionContainerView.backgroundColor = .white
+            checkImageView.isHidden = true
         }
     }
     
