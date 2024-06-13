@@ -14,6 +14,7 @@ class TravelMemoryDetailEditView: BaseView {
         $0.style = .done
         $0.image = UIImage(systemName: "xmark")
         $0.tintColor = .gray90
+        $0.width = 10
     }
     
     private let travelInfoStackView = UIStackView().then {
@@ -58,7 +59,7 @@ class TravelMemoryDetailEditView: BaseView {
     let recordTextView = UITextView().then {
         $0.configureView(color: .clear)
         $0.font = .pretendard(size: 16, weight: .regular)
-        $0.text = "기록하고 싶은 내용을 작성해주세요"
+        $0.text = "기록하고 싶은 내용을 작성해주세요."
         $0.textColor = .lightGray
         
         $0.textContainerInset = .zero // default: (8, 0, 8, 0)
@@ -67,11 +68,8 @@ class TravelMemoryDetailEditView: BaseView {
     
     private let photoButtonView = UIView().then {
         $0.configureView(color: .white, cornerRadius: 10)
-        $0.layer.shadowRadius = 4
-        $0.layer.shadowOpacity = 0.25
-        $0.layer.shadowOffset = CGSize(width: 2, height: 2)
         $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.gray5.cgColor
+        $0.layer.borderColor = UIColor.gray10.cgColor
     }
     
     private let photoButtonImageView = UIImageView().then {
@@ -89,7 +87,7 @@ class TravelMemoryDetailEditView: BaseView {
     }
     
     private let photoCountLabel = UILabel().then {
-        $0.configureLabel(color: .green100, font: .pretendard(size: 16, weight: .medium))
+        $0.configureLabel(color: .gray80, font: .pretendard(size: 16, weight: .regular), text: "0")
     }
     
     let photoButton = UIButton().then {
@@ -99,12 +97,12 @@ class TravelMemoryDetailEditView: BaseView {
     private let layout = UICollectionViewFlowLayout().then {
         let spacing = 8
         $0.scrollDirection = .horizontal
-        $0.minimumInteritemSpacing = 8
-        $0.itemSize = .init(width: 82, height: 82)
+        $0.minimumLineSpacing = 8
+        $0.itemSize = .init(width: 80, height: 80)
     }
     
     lazy var collectionView = UICollectionView(frame: .zero,
-                                          collectionViewLayout: layout)
+                                               collectionViewLayout: layout)
     
     private let buttonStackView = UIStackView().then {
         $0.axis = .horizontal
@@ -140,7 +138,8 @@ class TravelMemoryDetailEditView: BaseView {
          recordTextView].forEach { recordView.addSubview($0) }
         
         [photoButtonImageView,
-         photoButtonLabelStackView].forEach { photoButtonView.addSubview($0) }
+         photoButtonLabelStackView,
+         photoButton].forEach { photoButtonView.addSubview($0) }
         
         [photoCountLabel,
          photoTotalLabel].forEach { photoButtonLabelStackView.addArrangedSubview($0) }
@@ -205,10 +204,15 @@ class TravelMemoryDetailEditView: BaseView {
             $0.centerX.equalToSuperview()
         }
         
+        photoButton.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
         collectionView.snp.makeConstraints {
             $0.bottom.equalTo(photoButtonView)
             $0.leading.equalTo(photoButtonView.snp.trailing).offset(8)
             $0.trailing.equalToSuperview().inset(horizontalInset)
+            $0.height.equalTo(80)
         }
         
         buttonStackView.snp.makeConstraints {
@@ -226,7 +230,40 @@ class TravelMemoryDetailEditView: BaseView {
         provinceLabel.text = travel.province ?? "미정"
         periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
         travelTitleLabel.text = travel.title
+    }
+    
+    func updatePhotoCount(count: Int) {
+        if count == 0 {
+            photoCountLabel.configureLabel(color: .gray80, font: .pretendard(size: 16, weight: .regular), text: "0")
+        } else {
+            photoCountLabel.configureLabel(color: .green100, font: .pretendard(size: 16, weight: .medium), text: String(count))
+        }
+    }
+    
+    func checkTextViewContent() {
+        let text = recordTextView.text ?? ""
+        let isPlaceholder = text == "기록하고 싶은 내용을 작성해주세요."
         
-        photoCountLabel.text = "5"
+        if isPlaceholder || text.isEmpty {
+            confirmButton.isEnabled = false
+            confirmButton.backgroundColor = .green10
+        } else {
+            confirmButton.isEnabled = true
+            confirmButton.backgroundColor = .green100
+        }
+    }
+    
+    func setBeginText(textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func setEndText(textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "메세지를 입력하세요"
+            textView.textColor = UIColor.lightGray
+        }
     }
 }
