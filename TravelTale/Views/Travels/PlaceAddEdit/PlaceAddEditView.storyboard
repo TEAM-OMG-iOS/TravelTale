@@ -8,11 +8,19 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pretendard-Bold.otf">
+            <string>Pretendard-Bold</string>
+        </array>
+        <array key="Pretendard-Regular.otf">
+            <string>Pretendard-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Place Addition View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="PlaceAdditionViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlaceAdditionView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PlaceAdditionViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,7 +85,7 @@
                                         <buttonConfiguration key="configuration" style="plain"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSk-IK-Dfw">
-                                        <rect key="frame" x="16" y="14" width="28" height="20"/>
+                                        <rect key="frame" x="16" y="14.666666666666659" width="28" height="18.666666666666671"/>
                                         <attributedString key="attributedText">
                                             <fragment content="일정">
                                                 <attributes>
@@ -154,7 +162,7 @@
                                 <rect key="frame" x="20" y="267" width="353" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8S-cl-s9K">
-                                        <rect key="frame" x="16" y="14" width="59" height="20"/>
+                                        <rect key="frame" x="16" y="14.666666666666687" width="59" height="18.666666666666671"/>
                                         <attributedString key="attributedText">
                                             <fragment content="시작">
                                                 <attributes>
@@ -177,7 +185,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9p2-mc-mqr">
-                                        <rect key="frame" x="272" y="14" width="65" height="20"/>
+                                        <rect key="frame" x="272" y="14.666666666666687" width="65" height="18.666666666666671"/>
                                         <attributedString key="attributedText">
                                             <fragment content="오후">
                                                 <attributes>
@@ -222,7 +230,7 @@
                                 <rect key="frame" x="20" y="339" width="353" height="177"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3q-q8-U2r">
-                                        <rect key="frame" x="16" y="13.999999999999998" width="27.666666666666671" height="19.333333333333329"/>
+                                        <rect key="frame" x="16" y="13.999999999999998" width="28" height="19.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -232,7 +240,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
                                             <fragment>
-                                                <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <attributes>
                                                     <color key="NSColor" systemColor="labelColor"/>
                                                     <font key="NSFont" size="16" name="Pretendard-Regular"/>
@@ -264,7 +272,7 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="장소 추가" id="q09-FR-rwG">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="dmT-ey-SqO">
+                                        <barButtonItem key="rightBarButtonItem" style="done" id="dmT-ey-SqO">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="i82-H9-2VC">
                                                 <rect key="frame" x="277" y="5" width="100" height="34.333333333333336"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -332,7 +340,7 @@
         <!--Place Addition View Controller-->
         <scene sceneID="Vcm-Kk-qao">
             <objects>
-                <viewController id="Srw-9g-lQl" customClass="PlaceAdditionViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlaceEditionView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Srw-9g-lQl" customClass="PlaceAdditionViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hHC-ow-BVp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -448,6 +456,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ekx-Oc-6Lc" secondAttribute="trailing" id="3t6-4W-vpM"/>
                                     <constraint firstItem="aGm-oe-x6g" firstAttribute="centerY" secondItem="wv2-bk-nYo" secondAttribute="centerY" id="QP7-xJ-T0L"/>
+                                    <constraint firstAttribute="trailing" secondItem="aGm-oe-x6g" secondAttribute="trailing" constant="16" id="TSh-xY-mFX"/>
                                     <constraint firstItem="lcD-0o-1hX" firstAttribute="centerY" secondItem="wv2-bk-nYo" secondAttribute="centerY" id="WPV-e7-SpI"/>
                                     <constraint firstAttribute="bottom" secondItem="ekx-Oc-6Lc" secondAttribute="bottom" id="YN4-VK-G9q"/>
                                     <constraint firstItem="ekx-Oc-6Lc" firstAttribute="leading" secondItem="wv2-bk-nYo" secondAttribute="leading" id="j3f-Ps-bEc"/>
@@ -575,7 +584,7 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="장소 수정" id="cDi-Sf-qWl">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="Z5h-8A-9wD">
+                                        <barButtonItem key="rightBarButtonItem" style="done" id="Z5h-8A-9wD">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="nch-sr-9dF">
                                                 <rect key="frame" x="321.33333333333331" y="5" width="55.666666666666686" height="34.333333333333336"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -617,7 +626,6 @@
                             <constraint firstItem="075-OT-8PQ" firstAttribute="width" secondItem="nQN-oh-TOP" secondAttribute="width" id="Rce-o1-2fr"/>
                             <constraint firstItem="1M5-Do-1h6" firstAttribute="trailing" secondItem="bPO-7z-SdT" secondAttribute="trailing" constant="20" id="RlX-v0-R06"/>
                             <constraint firstItem="075-OT-8PQ" firstAttribute="leading" secondItem="nQN-oh-TOP" secondAttribute="leading" id="SQ7-Kt-Mmk"/>
-                            <constraint firstItem="wv2-bk-nYo" firstAttribute="trailing" secondItem="aGm-oe-x6g" secondAttribute="trailing" constant="16" id="TSh-xY-mFX"/>
                             <constraint firstItem="B3p-co-nlB" firstAttribute="trailing" secondItem="LZs-ej-0kW" secondAttribute="trailing" id="Tfi-al-TAs"/>
                             <constraint firstItem="gAc-gQ-r42" firstAttribute="trailing" secondItem="1M5-Do-1h6" secondAttribute="trailing" id="UYy-Q0-nbv"/>
                             <constraint firstItem="aGm-oe-x6g" firstAttribute="trailing" secondItem="1e5-7s-ECC" secondAttribute="trailing" id="W6J-EE-Qdz"/>
