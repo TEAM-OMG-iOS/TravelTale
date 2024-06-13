@@ -375,8 +375,6 @@
 				4D0E3CEB2C131EBB0089D6C1 /* DaySelectPopover.swift */,
 				4D0E3CED2C131ECB0089D6C1 /* TimeSelectPopover.swift */,
 				1AD537932C12DCC600A70D5E /* LightGreenButton.swift */,
-				F193681F2C1ACB88000AC7B2 /* LocationTableViewCell.swift */,
-				F19368212C1ACDA8000AC7B2 /* LocationView.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -418,6 +416,7 @@
 		4D0E3CE82C12E8CC0089D6C1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F19368232C1AD9F4000AC7B2 /* Location */,
 				4D0E3CF12C1722C60089D6C1 /* AddSchedule */,
 			);
 			path = Common;
@@ -448,6 +447,15 @@
 				4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */,
 			);
 			path = AddSchedule;
+			sourceTree = "<group>";
+		};
+		F19368232C1AD9F4000AC7B2 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				F19368212C1ACDA8000AC7B2 /* LocationView.swift */,
+				F193681F2C1ACB88000AC7B2 /* LocationTableViewCell.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		F1B301F22C1005AC00D26B75 /* TravelAddTitle */ = {
