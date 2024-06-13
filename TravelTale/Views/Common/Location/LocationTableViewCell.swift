@@ -55,12 +55,8 @@ final class LocationTableViewCell: BaseTableViewCell {
         self.layer.masksToBounds = true
     }
     
-    func selectLocation(_ selected: Bool) {
-        if selected {
-            backgroundColor = .green10
-        } else {
-            backgroundColor = .white
-        }
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        backgroundColor = selected ? .green10 : .white
     }
     
     func bind(text: String) {
