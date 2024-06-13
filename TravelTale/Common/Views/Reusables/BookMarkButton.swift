@@ -10,6 +10,10 @@ import UIKit
 class BookMarkButton: UIButton {
     
     // MARK: - properties
+    private let backgroundView = UIView().then {
+        $0.configureView(color: .white, clipsToBounds: true, cornerRadius: 15)
+    }
+    
     private let bookMarkImageView = UIImageView()
     
     private let bookMarkLabel = UILabel().then {
@@ -18,6 +22,7 @@ class BookMarkButton: UIButton {
     
     private let chevronImageView = UIImageView().then {
         $0.image = UIImage(systemName: "chevron.right")
+        $0.tintColor = .gray90
     }
     
     var text: String? {
@@ -40,12 +45,17 @@ class BookMarkButton: UIButton {
     }
     
     func configureHierarchy() {
-        addSubview(bookMarkImageView)
-        addSubview(bookMarkLabel)
-        addSubview(chevronImageView)
+        addSubview(backgroundView)
+        backgroundView.addSubview(bookMarkImageView)
+        backgroundView.addSubview(bookMarkLabel)
+        backgroundView.addSubview(chevronImageView)
     }
     
     func configureConstraints() {
+        backgroundView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
         bookMarkImageView.snp.makeConstraints{
             $0.top.leading.equalToSuperview().inset(16)
             $0.width.height.equalTo(35)
