@@ -64,10 +64,6 @@ final class ScheduleCreateViewController: BaseViewController {
         // TODO: - 추후 장소 데이터 바인딩 추가 예정
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    
     private func configureNavigationBar() {
         navigationItem.title = "내 여행에 추가"
         navigationItem.leftBarButtonItem = scheduleCreateView.backButton
