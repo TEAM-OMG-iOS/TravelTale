@@ -11,7 +11,7 @@ import FloatingPanel
 final class TravelDetailPlanContentCell: BaseTableViewCell {
     
     // MARK: - properties
-    static let identifier = "TravelDetailPlanContentCell"
+    static let identifier = String(describing: TravelDetailPlanContentCell.self)
     
     private let verticalLineView = UIView().then {
         $0.configureView(color: .black)
@@ -88,7 +88,7 @@ final class TravelDetailPlanContentCell: BaseTableViewCell {
     
     override func configureConstraints() {
         verticalLineView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
+            $0.verticalEdges.equalToSuperview()
             $0.leading.equalToSuperview().offset(30)
             $0.width.equalTo(0.8)
         }
@@ -100,19 +100,19 @@ final class TravelDetailPlanContentCell: BaseTableViewCell {
         }
         
         basedView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview().inset(4)
+            $0.verticalEdges.equalToSuperview().inset(4)
             $0.leading.equalTo(verticalLineView.snp.trailing).offset(26)
             $0.trailing.equalToSuperview().offset(-20)
         }
         
         contentStackView.snp.makeConstraints {
-            $0.top.leading.bottom.equalToSuperview().inset(12)
+            $0.verticalEdges.leading.equalToSuperview().inset(12)
             $0.trailing.equalTo(optionButton.snp.leading).inset(12)
         }
         
         memoLabel.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview().inset(8)
-            $0.leading.trailing.equalToSuperview().inset(12)
+            $0.verticalEdges.equalToSuperview().inset(8)
+            $0.horizontalEdges.equalToSuperview().inset(12)
         }
         
         optionButton.snp.makeConstraints {

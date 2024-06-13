@@ -41,15 +41,6 @@ final class TravelDetailView: BaseView {
     
     private let mapView = MKMapView()
     
-    // MARK: - life cycles
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     // MARK: - methods
     override func configureHierarchy() {
         self.addSubview(periodLabel)
@@ -61,29 +52,29 @@ final class TravelDetailView: BaseView {
     
     override func configureConstraints() {
         periodLabel.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(12)
-            $0.leading.equalToSuperview().inset(20)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(12)
+            $0.leading.equalToSuperview().offset(20)
         }
         
         locationImageView.snp.makeConstraints {
-            $0.centerY.equalTo(periodLabel.snp.centerY)
+            $0.centerY.equalTo(periodLabel)
             $0.leading.equalTo(periodLabel.snp.trailing)
         }
         
         locationLabel.snp.makeConstraints {
-            $0.top.equalTo(periodLabel.snp.top)
+            $0.top.equalTo(periodLabel)
             $0.leading.equalTo(locationImageView.snp.trailing).offset(4)
             $0.trailing.lessThanOrEqualToSuperview().inset(-20)
         }
         
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(periodLabel.snp.bottom).offset(6)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(20)
         }
         
         mapView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(14)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.horizontalEdges.bottom.equalToSuperview()
         }
     }
 }

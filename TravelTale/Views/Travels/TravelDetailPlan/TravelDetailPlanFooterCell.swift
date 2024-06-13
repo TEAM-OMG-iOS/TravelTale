@@ -10,7 +10,7 @@ import UIKit
 final class TravelDetailPlanFooterCell: BaseTableViewCell {
     
     // MARK: - properties
-    static let identifier = "TravelDetailPlanFooterCell"
+    static let identifier = String(describing: TravelDetailPlanFooterCell.self)
     
     private let verticalLineView = UIView().then {
         $0.configureView(color: .black)
@@ -53,7 +53,7 @@ final class TravelDetailPlanFooterCell: BaseTableViewCell {
     
     override func configureConstraints() {
         verticalLineView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
+            $0.verticalEdges.equalToSuperview()
             $0.leading.equalToSuperview().offset(30)
             $0.width.equalTo(0.8)
         }
