@@ -6,13 +6,13 @@
 //
 
 import UIKit
+import PhotosUI
 
-class TravelMemoryDetailEditViewController: BaseViewController {
+final class TravelMemoryDetailEditViewController: BaseViewController {
     
     // MARK: - properties
     private let travelMemoryDetailEditView = TravelMemoryDetailEditView()
     private var travelData: Travel
-    
     
     // MARK: - life cycles
     override func loadView() {
@@ -24,12 +24,6 @@ class TravelMemoryDetailEditViewController: BaseViewController {
         tabBarController?.tabBar.isHidden = true
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("former width: \(travelMemoryDetailEditView.formerButton.bounds.width), confirm width: \(travelMemoryDetailEditView.confirmButton.bounds.width)")
-    }
-    
     
     // MARK: - methods
     init(travelData: Travel) {
@@ -46,20 +40,24 @@ class TravelMemoryDetailEditViewController: BaseViewController {
     }
     
     override func configureDelegate() {
-//        travelMemoryDetailEditView.collectionView.dataSource = self
-//
-//        travelMemoryAddView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
+        travelMemoryDetailEditView.collectionView.dataSource = self
+        travelMemoryDetailEditView.collectionView
+            .register(TravelMemoryEditPhotoCollectionViewCell.self,
+                      forCellWithReuseIdentifier: TravelMemoryEditPhotoCollectionViewCell.identifier)
         
-        
+        travelMemoryDetailEditView.recordTextView.delegate = self
     }
     
     override func configureAddTarget() {
         travelMemoryDetailEditView.exitButton.target = self
         travelMemoryDetailEditView.exitButton.action = #selector(tappedExitButton)
+        
+        travelMemoryDetailEditView.photoButton.addTarget(self, action: #selector(tappedPhotoButton), for: .touchUpInside)
     }
     
     override func bind() { 
         travelMemoryDetailEditView.bind(travel: travelData)
+        TravelMemoryPhotoManager.shared.clearPhotoResults()
     }
     
     func configureNavigationBarItems() {
@@ -72,17 +70,72 @@ class TravelMemoryDetailEditViewController: BaseViewController {
     @objc func tappedExitButton() {
         self.navigationController?.popToRootViewController(animated: true)
     }
+    
+    @objc func tappedPhotoButton() {
+        print("photoButtonTapped")
+        var config = PHPickerConfiguration()
+        config.selectionLimit = 10
+        config.filter = .images
+        
+        let picker = PHPickerViewController(configuration: config)
+        picker.delegate = self
+        present(picker, animated: true)
+    }
 }
 
 // MARK: - extensions
-//extension TravelMemoryDetailEditViewController: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        <#code#>
-//    }
-//    
-//    
-//}
+extension TravelMemoryDetailEditViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return TravelMemoryPhotoManager.shared.photoResults.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: TravelMemoryEditPhotoCollectionViewCell.identifier,
+            for: indexPath)
+                as? TravelMemoryEditPhotoCollectionViewCell
+        else {
+            return UICollectionViewCell()
+        }
+        
+        let result = TravelMemoryPhotoManager.shared.photoResults[indexPath.row]
+        TravelMemoryPhotoManager.shared.loadImage(for: result) { image in
+            DispatchQueue.main.async {
+                cell.imageView.image = image
+            }
+        }
+        
+        if indexPath.row == 0 {
+            cell.showPrimaryPhotoLabel()
+        }
+        
+        return cell
+    }
+}
+
+extension TravelMemoryDetailEditViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        travelMemoryDetailEditView.setBeginText(textView: textView)
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        travelMemoryDetailEditView.setEndText(textView: textView)
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        travelMemoryDetailEditView.checkTextViewContent()
+    }
+    
+    
+}
+
+extension TravelMemoryDetailEditViewController: PHPickerViewControllerDelegate {
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        TravelMemoryPhotoManager.shared.photoResults = results
+        travelMemoryDetailEditView.collectionView.reloadData()
+        travelMemoryDetailEditView.updatePhotoCount(count: TravelMemoryPhotoManager.shared.photoResults.count)
+    }
+}
