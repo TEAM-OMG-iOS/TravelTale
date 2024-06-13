@@ -10,13 +10,13 @@ import UIKit
 final class DiscoveryRegionModalViewController: BaseViewController {
     
     // MARK: - properties
-    private let discoveryRegionModalView = DiscoveryRegionModalView()
+    private let locationView = LocationView()
     
     private var data: [String] = []
     
     // MARK: - life cycles
     override func loadView() {
-        view = discoveryRegionModalView
+        view = locationView
     }
     
     override func viewDidLoad() {
@@ -25,18 +25,19 @@ final class DiscoveryRegionModalViewController: BaseViewController {
     
     // MARK: - methods
     override func configureDelegate() {
-        discoveryRegionModalView.regionTableView.dataSource = self
-        discoveryRegionModalView.regionTableView.delegate = self
-        discoveryRegionModalView.regionTableView.register(DiscoveryRegionCell.self, forCellReuseIdentifier: DiscoveryRegionCell.identifier)
+        locationView.tableView.dataSource = self
+        locationView.tableView.delegate = self
+        
+        locationView.tableView.register(LocationTableViewCell.self, forCellReuseIdentifier: LocationTableViewCell.identifier)
     }
     
     func bind(isCity: Bool) {
         if isCity {
             data = RegionData().getCityData()
-            discoveryRegionModalView.bind(selectString: "시/도 선택")
+            locationView.bind(text: "시/도 선택")
         }else {
             data = RegionData().getRegionData(cityString: "대구광역시")
-            discoveryRegionModalView.bind(selectString: "구/군 선택")
+            locationView.bind(text: "구/군 선택")
         }
     }
 }
@@ -56,12 +57,12 @@ extension DiscoveryRegionModalViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DiscoveryRegionCell.identifier, for: indexPath) as? DiscoveryRegionCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.identifier, for: indexPath) as? LocationTableViewCell else {
             return UITableViewCell()
         }
         
         cell.selectionStyle = .none
-        cell.bind(regionString: data[indexPath.row])
+        cell.bind(text: data[indexPath.row])
         
         return cell
     }

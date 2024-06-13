@@ -20,8 +20,6 @@
 		1AD537A02C13999600A70D5E /* TravelSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5379F2C13999600A70D5E /* TravelSectionHeaderView.swift */; };
 		1AD537A22C13A9F200A70D5E /* SpaceFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */; };
 		2E3525402C1756EF00D82D34 /* DiscoveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */; };
-		2E3605672C19923B007DFBC1 /* DiscoveryRegionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3605662C19923B007DFBC1 /* DiscoveryRegionModalView.swift */; };
-		2E3605692C19CEA1007DFBC1 /* DiscoveryRegionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3605682C19CEA1007DFBC1 /* DiscoveryRegionCell.swift */; };
 		2E36056B2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */; };
 		2E36056D2C1AA70F007DFBC1 /* RegionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E36056C2C1AA70F007DFBC1 /* RegionData.swift */; };
 		2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */; };
@@ -109,8 +107,6 @@
 		1AD5379F2C13999600A70D5E /* TravelSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSectionHeaderView.swift; sourceTree = "<group>"; };
 		1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceFooterView.swift; sourceTree = "<group>"; };
 		2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryCell.swift; sourceTree = "<group>"; };
-		2E3605662C19923B007DFBC1 /* DiscoveryRegionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionModalView.swift; sourceTree = "<group>"; };
-		2E3605682C19CEA1007DFBC1 /* DiscoveryRegionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionCell.swift; sourceTree = "<group>"; };
 		2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionModalViewController.swift; sourceTree = "<group>"; };
 		2E36056C2C1AA70F007DFBC1 /* RegionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionData.swift; sourceTree = "<group>"; };
 		2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionView.swift; sourceTree = "<group>"; };
@@ -321,8 +317,8 @@
 			children = (
 				378CEC2D2C0D685D00DF1C3F /* Discovery */,
 				378CEC372C0D690800DF1C3F /* DiscoveryViewController.swift */,
-				2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */,
 				2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */,
+				2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */,
 			);
 			path = Discoveries;
 			sourceTree = "<group>";
@@ -345,8 +341,6 @@
 				2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */,
 				378CEC312C0D68C600DF1C3F /* DiscoveryView.swift */,
 				2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */,
-				2E3605662C19923B007DFBC1 /* DiscoveryRegionModalView.swift */,
-				2E3605682C19CEA1007DFBC1 /* DiscoveryRegionCell.swift */,
 			);
 			path = Discovery;
 			sourceTree = "<group>";
@@ -628,7 +622,6 @@
 				378CEBEC2C0D563C00DF1C3F /* AppDelegate.swift in Sources */,
 				378CEC362C0D68F900DF1C3F /* TravelViewController.swift in Sources */,
 				F193681A2C194D50000AC7B2 /* TravelRenewCalendarView.swift in Sources */,
-				2E3605672C19923B007DFBC1 /* DiscoveryRegionModalView.swift in Sources */,
 				1AD537902C12CF4900A70D5E /* TravelPlanView.swift in Sources */,
 				378CEC302C0D68A200DF1C3F /* TravelView.swift in Sources */,
 				37CB880D2C0D796C002798BE /* UILabel+Extension.swift in Sources */,
@@ -650,7 +643,6 @@
 				37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */,
 				F1B302002C10B43F00D26B75 /* TravelAddCalenderViewController.swift in Sources */,
 				37CB88072C0D7632002798BE /* PlaceDetailView.swift in Sources */,
-				2E3605692C19CEA1007DFBC1 /* DiscoveryRegionCell.swift in Sources */,
 				378CEC222C0D649D00DF1C3F /* BaseView.swift in Sources */,
 				1AD537982C1362A900A70D5E /* TravelMemoryView.swift in Sources */,
 				2E3525402C1756EF00D82D34 /* DiscoveryCell.swift in Sources */,
