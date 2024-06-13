@@ -141,7 +141,7 @@ extension TravelMemoryDetailEditViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
         
-        TravelMemoryPhotoManager.shared.imageDatas.removeAll()
+        imageDatas.removeAll()
         
         for result in results {
             let itemProvider = result.itemProvider
