@@ -8,12 +8,13 @@
 import UIKit
 
 final class TravelSelectViewController: BaseViewController {
+    
     // MARK: - properties
     private let travelSelectView = TravelSelectView()
     
     private let travelViewModel = TravelViewModel()
     
-    private var preselectedIndexPath: IndexPath?
+    private var preSelectedIndexPath: IndexPath?
     
     // MARK: - life cycles
     override func loadView() {
@@ -22,7 +23,6 @@ final class TravelSelectViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar()
         addTemporaryData()
     }
     
@@ -31,6 +31,10 @@ final class TravelSelectViewController: BaseViewController {
     }
     
     // MARK: - methods
+    override func configureStyle() {
+        configureNavigationBar()
+    }
+    
     override func configureDelegate() {
         travelSelectView.tableView.delegate = self
         travelSelectView.tableView.dataSource = self
@@ -71,15 +75,15 @@ extension TravelSelectViewController: UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return }
         
         if let selectedIndexPath =
-            preselectedIndexPath {
+            preSelectedIndexPath {
             if selectedIndexPath == indexPath {
                 travelSelectView.tableView.deselectRow(at: indexPath, animated: true)
-                preselectedIndexPath = nil
+                preSelectedIndexPath = nil
                 travelSelectView.updateButtonState() // TODO: 셀 수정 PR 머지 이후 삭제
 //                cell.setSelected(false, animated: true) // 셀 수정 PR 머지 이후 주석 해제
             }
         } else {
-            preselectedIndexPath = indexPath
+            preSelectedIndexPath = indexPath
             travelSelectView.updateButtonState() // TODO: 셀 수정 PR 머지 이후 삭제
 //            cell.setSelected(true, animated: true) // 셀 수정 PR 머지 이후 주석 해제
         }

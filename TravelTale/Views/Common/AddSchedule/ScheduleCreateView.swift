@@ -24,7 +24,7 @@ final class ScheduleCreateView: BaseView {
         $0.configureView(color: .green80, cornerRadius: 4)
     }
     
-    private let ViewLabel = UILabel().then {
+    private let viewLabel = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 18, weight: .semibold), text: "일정을 생성해주세요")
     }
     
@@ -104,7 +104,7 @@ final class ScheduleCreateView: BaseView {
     
     // MARK: - methods
     override func configureHierarchy() {
-        [loadingBackBar, ViewLabel, placeView, scheduleView, startTimeView, memoView ,btnStackView].forEach {
+        [loadingBackBar, viewLabel, placeView, scheduleView, startTimeView, memoView ,btnStackView].forEach {
             self.addSubview($0)
         }
         
@@ -148,13 +148,13 @@ final class ScheduleCreateView: BaseView {
             $0.width.equalToSuperview().multipliedBy(0.5)
         }
         
-        ViewLabel.snp.makeConstraints {
+        viewLabel.snp.makeConstraints {
             $0.top.equalTo(loadingBackBar.snp.bottom).offset(56)
             $0.leading.equalTo(safeAreaLayoutGuide).offset(24)
         }
         
         placeView.snp.makeConstraints {
-            $0.top.equalTo(ViewLabel.snp.bottom).offset(20)
+            $0.top.equalTo(viewLabel.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(48)
         }
@@ -272,18 +272,6 @@ final class ScheduleCreateView: BaseView {
             textView.textColor = .gray80
         }
     }
-    
-    func configurePopover(for popoverVC: UIViewController, sourceButton: UIButton) {
-            popoverVC.modalPresentationStyle = .popover
-            popoverVC.preferredContentSize = CGSize(width: 300, height: 200)
-            let popoverPresentationController = popoverVC.popoverPresentationController
-            popoverPresentationController?.sourceView = sourceButton
-            popoverPresentationController?.sourceRect = CGRect(
-                origin: CGPoint(x: sourceButton.bounds.maxX - 50, y: sourceButton.bounds.midY + 10),
-                size: .zero
-            )
-        popoverPresentationController?.permittedArrowDirections = .up
-        }
     
     func checkBlackText() {
         var scheduleIsBlack = false
