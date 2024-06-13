@@ -14,7 +14,6 @@ class TravelMemoryDetailEditView: BaseView {
         $0.style = .done
         $0.image = UIImage(systemName: "xmark")
         $0.tintColor = .gray90
-        $0.width = 10
     }
     
     private let travelInfoStackView = UIStackView().then {
