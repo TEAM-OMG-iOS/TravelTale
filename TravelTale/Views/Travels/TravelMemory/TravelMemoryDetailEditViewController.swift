@@ -13,6 +13,14 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
     // MARK: - properties
     private let travelMemoryDetailEditView = TravelMemoryDetailEditView()
     private var travelData: Travel
+    var imageDatas: [Data] = [] {
+        didSet {
+            DispatchQueue.main.async { [self] in
+                travelMemoryDetailEditView.collectionView.reloadData()
+                travelMemoryDetailEditView.updatePhotoCount(count: imageDatas.count)
+            }
+        }
+    }
     
     // MARK: - life cycles
     override func loadView() {
@@ -57,7 +65,6 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
     
     override func bind() { 
         travelMemoryDetailEditView.bind(travel: travelData)
-        TravelMemoryPhotoManager.shared.clearPhotoResults()
     }
     
     func configureNavigationBarItems() {
@@ -87,7 +94,7 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
 extension TravelMemoryDetailEditViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return TravelMemoryPhotoManager.shared.photoResults.count
+        return imageDatas.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -99,11 +106,10 @@ extension TravelMemoryDetailEditViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        let result = TravelMemoryPhotoManager.shared.photoResults[indexPath.row]
-        TravelMemoryPhotoManager.shared.loadImage(for: result) { image in
-            DispatchQueue.main.async {
-                cell.imageView.image = image
-            }
+        let imageData = self.imageDatas[indexPath.row]
+        
+        DispatchQueue.main.async {
+            cell.bind(image: UIImage(data: imageData) ?? UIImage())
         }
         
         if indexPath.row == 0 {
@@ -134,8 +140,25 @@ extension TravelMemoryDetailEditViewController: PHPickerViewControllerDelegate {
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
-        TravelMemoryPhotoManager.shared.photoResults = results
-        travelMemoryDetailEditView.collectionView.reloadData()
-        travelMemoryDetailEditView.updatePhotoCount(count: TravelMemoryPhotoManager.shared.photoResults.count)
+        
+        TravelMemoryPhotoManager.shared.imageDatas.removeAll()
+        
+        for result in results {
+            let itemProvider = result.itemProvider
+            
+            if itemProvider.canLoadObject(ofClass: UIImage.self) {
+                print("canLoadObject")
+                itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
+                    if let image = image as? UIImage {
+                        if let imageData = image.jpegData(compressionQuality: 1.0) {
+                            self.imageDatas.append(imageData)
+                            print("imageAppended")
+                        }
+                    } else {
+                        print("[loadObject error]: \(String(describing: error))")
+                    }
+                }
+            }
+        }
     }
 }
