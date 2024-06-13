@@ -12,8 +12,7 @@ final class DiscoveryRegionModalViewController: BaseViewController {
     // MARK: - properties
     private let discoveryRegionModalView = DiscoveryRegionModalView()
     
-    // 임시 데이터
-    private let data = ["강원특별자치도", "경기도", "경상남도", "경상북도"]
+    private var data: [String] = []
     
     // MARK: - life cycles
     override func loadView() {
@@ -22,7 +21,6 @@ final class DiscoveryRegionModalViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        discoveryRegionModalView.bind(selectString: "시/도 선택")
     }
     
     // MARK: - methods
@@ -30,6 +28,14 @@ final class DiscoveryRegionModalViewController: BaseViewController {
         discoveryRegionModalView.regionTableView.dataSource = self
         discoveryRegionModalView.regionTableView.delegate = self
         discoveryRegionModalView.regionTableView.register(DiscoveryRegionCell.self, forCellReuseIdentifier: DiscoveryRegionCell.identifier)
+    }
+    
+    func bind(isCity: Bool) {
+        if isCity {
+            discoveryRegionModalView.bind(selectString: "시/도 선택")
+        }else {
+            discoveryRegionModalView.bind(selectString: "구/군 선택")
+        }
     }
 }
 
