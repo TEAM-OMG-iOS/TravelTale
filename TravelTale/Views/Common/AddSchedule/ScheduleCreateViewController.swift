@@ -75,6 +75,7 @@ final class ScheduleCreateViewController: BaseViewController {
     
     private func dateFormat(date: Date) -> String {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "a hh:mm"
         return formatter.string(from: date)
     }
