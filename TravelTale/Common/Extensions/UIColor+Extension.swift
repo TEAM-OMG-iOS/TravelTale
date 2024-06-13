@@ -49,7 +49,7 @@ extension UIColor {
     }
     
     static var gray100: UIColor {
-        return .init(red: 0.396, green: 0.396, blue: 0.396, alpha: 1.0)
+        return .init(red: 0.3961, green: 0.3961, blue: 0.3961, alpha: 1.0)
     }
     
     static var red100: UIColor {
