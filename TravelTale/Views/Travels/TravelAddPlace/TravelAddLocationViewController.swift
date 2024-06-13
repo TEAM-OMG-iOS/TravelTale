@@ -59,7 +59,7 @@ extension TravelAddLocationViewController: UITableViewDataSource {
 extension TravelAddLocationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? LocationTableViewCell else { return }
-        cell.selectLocation(true)
+        cell.setSelected(true, animated: true)
         
         completion?(locations[indexPath.row])
         
@@ -68,6 +68,6 @@ extension TravelAddLocationViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? LocationTableViewCell else { return }
-        cell.selectLocation(false)
+        cell.setSelected(false, animated: false)
     }
 }
