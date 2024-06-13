@@ -76,37 +76,37 @@ final class TravelAddPlaceView: BaseView {
     override func configureConstraints() {
         progressView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(116)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(8)
         }
         
         loadingBar.snp.makeConstraints {
             $0.leading.top.height.equalToSuperview()
-            $0.width.equalTo(118)
+            $0.width.equalTo(progressView.snp.width).multipliedBy(0.33)
         }
         
         inputTitleLabel.snp.makeConstraints {
             $0.top.equalTo(progressView.snp.bottom).offset(56)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(20)
         }
         
         placePickButton.snp.makeConstraints {
             $0.top.equalTo(inputTitleLabel.snp.bottom).offset(28)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(60)
         }
         
         cancelButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
-            $0.leading.equalToSuperview().offset(20)
+            $0.leading.equalToSuperview().offset(24)
             $0.trailing.equalTo(okButton.snp.leading).offset(-15)
             $0.height.equalTo(52)
         }
         
         okButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
-            $0.trailing.equalToSuperview().offset(-20)
+            $0.trailing.equalToSuperview().offset(-24)
             $0.height.equalTo(52)
             $0.width.equalTo(cancelButton.snp.width).multipliedBy(2)
         }

@@ -71,7 +71,7 @@ final class TravelAddTitleView: BaseView {
     override func configureConstraints() {
         progressView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(116)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(8)
         }
         
@@ -82,18 +82,18 @@ final class TravelAddTitleView: BaseView {
         
         inputTitleLabel.snp.makeConstraints {
             $0.top.equalTo(progressView.snp.bottom).offset(56)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(20)
         }
         
         textField.snp.makeConstraints {
             $0.top.equalTo(inputTitleLabel.snp.bottom).offset(28)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(60)
         }
         
         okButton.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
             $0.height.equalTo(52)
         }
