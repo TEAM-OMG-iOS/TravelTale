@@ -28,7 +28,7 @@ final class DiscoveryRegionView: BaseView {
         $0.tintColor = .gray90
     }
     
-    let currentCityLabel = UILabel().then {
+    private let currentCityLabel = UILabel().then {
         $0.configureLabel(color: .gray80,
                           font: .pretendard(size: 16, weight: .regular))
     }
@@ -46,7 +46,7 @@ final class DiscoveryRegionView: BaseView {
         $0.isEnabled = false
     }
     
-    let currentDistrictLabel = UILabel().then {
+    private let currentDistrictLabel = UILabel().then {
         $0.configureLabel(color: .gray80,
                           font: .pretendard(size: 16, weight: .regular))
     }
@@ -125,27 +125,30 @@ final class DiscoveryRegionView: BaseView {
         }
     }
     
-    func bind(text: String, isCity: Bool) {
-        let isSejongCity = (text == "세종특별자치시")
-
-        if isCity {
-            configureSelectedLabel(label: currentCityLabel, location: text)
-            currentDistrictLabel.text = isSejongCity ? "" : "구/군을 선택해주세요."
-            currentDistrictLabel.textColor = isSejongCity ? .black : .gray80
-            districtButton.isEnabled = !isSejongCity
-        } else {
-            configureSelectedLabel(label: currentDistrictLabel, location: text)
-        }
+    func selectCity(cityName: String) {
+        let isSejongCity = (cityName == "세종특별자치시")
         
-        updateSubmitButtonAppearance()
+        updateLabel(label: currentCityLabel, text: cityName)
+        currentDistrictLabel.text = isSejongCity ? "" : "구/군을 선택해주세요."
+        currentDistrictLabel.textColor = isSejongCity ? .black : .gray80
+        districtButton.isEnabled = !isSejongCity
     }
     
-    private func configureSelectedLabel(label: UILabel, location: String) {
-        label.text = location
+    func selectDistrict(districtName: String) {
+        updateLabel(label: currentDistrictLabel, text: districtName)
+    }
+    
+    private func updateLabel(label: UILabel, text: String) {
+        label.text = text
         label.textColor = .black
     }
     
     func updateSubmitButtonAppearance() {
         submitButton.backgroundColor = submitButton.isEnabled ? .green100 : .green10
+    }
+    
+    func setCityAndDistrictLabels(cityName: String, districtName: String) {
+        currentCityLabel.text = cityName
+        currentDistrictLabel.text = districtName
     }
 }
