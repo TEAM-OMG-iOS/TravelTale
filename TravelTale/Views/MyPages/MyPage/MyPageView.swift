@@ -7,14 +7,12 @@
 
 import UIKit
 
-class MyPageView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+final class MyPageView: BaseView {
+    
+    // MARK: - properties
+    
+    let mypageLabel = UIBarItem().then {
+        $0.setTitleTextAttributes([ .font: UIFont.oaGothic(size: 20, weight: .heavy) ], for: .normal)
+        $0.title = "마이페이지"
     }
-    */
-
 }
