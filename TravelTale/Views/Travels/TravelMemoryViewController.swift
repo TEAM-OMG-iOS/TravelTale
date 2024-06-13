@@ -34,7 +34,9 @@ final class TravelMemoryViewController: BaseViewController {
                 title: "24년의 가족 여행",
                 startDate: createDate(year: 2024, month: 4, day: 1) ?? Date(),
                 endDate: createDate(year: 2024, month: 4, day: 5) ?? Date(),
-                province: nil)
+                province: nil,
+                travelJournal: nil,
+                travelPhotos: nil)
         ])
     }
     

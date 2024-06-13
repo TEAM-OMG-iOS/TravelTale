@@ -36,13 +36,17 @@ final class TravelPlanViewController: BaseViewController {
                 title: "200일 여행 with 남자친구",
                 startDate: createDate(year: 2024, month: 9, day: 19) ?? Date(),
                 endDate: createDate(year: 2024, month: 9, day: 21) ?? Date(),
-                province: "대구"),
+                province: "대구",
+                travelJournal: nil,
+                travelPhotos: nil),
             Travel(
                 image: nil,
                 title: "24년의 가족 여행",
                 startDate: createDate(year: 2024, month: 4, day: 1) ?? Date(),
                 endDate: createDate(year: 2024, month: 4, day: 5) ?? Date(),
-                province: nil)
+                province: nil,
+                travelJournal: nil,
+                travelPhotos: nil)
         ])
     }
     
