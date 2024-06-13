@@ -11,11 +11,13 @@ final class DiscoveryRegionViewController: BaseViewController {
     
     // MARK: - properties
     private let discoveryRegionView = DiscoveryRegionView()
+    
     private var selectedCity = "" {
         didSet {
             updateSubmitButtonState()
         }
     }
+    
     private var selectedDistrict = "" {
         didSet {
             updateSubmitButtonState()

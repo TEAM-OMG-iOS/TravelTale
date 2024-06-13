@@ -126,22 +126,23 @@ final class DiscoveryRegionView: BaseView {
     }
     
     func bind(text: String, isCity: Bool) {
+        let isSejongCity = (text == "세종특별자치시")
+
         if isCity {
-            currentCityLabel.text = text
-            currentCityLabel.textColor = .black
-            
-            if text == "세종특별자치시" {
-                currentDistrictLabel.text = ""
-            }else {
-                districtButton.isEnabled = true
-                currentDistrictLabel.text = "구/군을 선택해주세요."
-                currentDistrictLabel.textColor = .gray80
-            }
-        }else {
-            currentDistrictLabel.text = text
-            currentDistrictLabel.textColor = .black
+            configureSelectedLabel(label: currentCityLabel, location: text)
+            currentDistrictLabel.text = isSejongCity ? "" : "구/군을 선택해주세요."
+            currentDistrictLabel.textColor = isSejongCity ? .black : .gray80
+            districtButton.isEnabled = !isSejongCity
+        } else {
+            configureSelectedLabel(label: currentDistrictLabel, location: text)
         }
+        
         updateSubmitButtonAppearance()
+    }
+    
+    private func configureSelectedLabel(label: UILabel, location: String) {
+        label.text = location
+        label.textColor = .black
     }
     
     func updateSubmitButtonAppearance() {
