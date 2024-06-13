@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -44,7 +44,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어디로" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0G-Jv-XNZ">
-                                        <rect key="frame" x="295.33333333333331" y="14.666666666666657" width="41.666666666666686" height="19"/>
+                                        <rect key="frame" x="295" y="14.666666666666657" width="42" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                         <color key="textColor" red="0.792156862745098" green="0.792156862745098" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -88,13 +88,13 @@
                                         <buttonConfiguration key="configuration" style="plain"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일정" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSk-IK-Dfw">
-                                        <rect key="frame" x="16" y="14.666666666666659" width="28" height="18.666666666666671"/>
+                                        <rect key="frame" x="16" y="14.666666666666657" width="28" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day 1 | 24년 01월 01일" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mi9-U6-3Sy">
-                                        <rect key="frame" x="183.33333333333337" y="14.666666666666659" width="153.66666666666663" height="18.666666666666671"/>
+                                        <rect key="frame" x="183.33333333333337" y="14.666666666666657" width="153.66666666666663" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -120,7 +120,7 @@
                                 <rect key="frame" x="20" y="267" width="353" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8S-cl-s9K">
-                                        <rect key="frame" x="16" y="14.666666666666687" width="59" height="18.666666666666671"/>
+                                        <rect key="frame" x="16" y="14.666666666666686" width="59" height="19"/>
                                         <attributedString key="attributedText">
                                             <fragment content="시작">
                                                 <attributes>
@@ -143,7 +143,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9p2-mc-mqr">
-                                        <rect key="frame" x="222.33333333333334" y="14.666666666666687" width="114.66666666666666" height="18.666666666666671"/>
+                                        <rect key="frame" x="222.66666666666666" y="14.666666666666686" width="114.33333333333334" height="19"/>
                                         <attributedString key="attributedText">
                                             <fragment content="시간을">
                                                 <attributes>
@@ -201,13 +201,13 @@
                                 <rect key="frame" x="20" y="339" width="353" height="177"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3q-q8-U2r">
-                                        <rect key="frame" x="16" y="13.999999999999998" width="28" height="19.333333333333329"/>
+                                        <rect key="frame" x="16" y="14" width="28" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="myO-bl-qwB">
-                                        <rect key="frame" x="10" y="37.333333333333314" width="333" height="129.66666666666666"/>
+                                        <rect key="frame" x="10" y="37" width="333" height="130"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
                                             <fragment content="메모를 입력해주세요">
@@ -397,13 +397,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일정" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meY-em-pfz">
-                                        <rect key="frame" x="16" y="14.666666666666659" width="28" height="18.666666666666671"/>
+                                        <rect key="frame" x="16" y="14.666666666666657" width="28" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day 1 | 24년 01월 01일" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cW6-Is-0vw">
-                                        <rect key="frame" x="183.33333333333337" y="14.666666666666659" width="153.66666666666663" height="18.666666666666671"/>
+                                        <rect key="frame" x="183.33333333333337" y="14.666666666666657" width="153.66666666666663" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -429,7 +429,7 @@
                                 <rect key="frame" x="20" y="267" width="353" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPO-QZ-V02">
-                                        <rect key="frame" x="16" y="14.666666666666687" width="59" height="18.666666666666671"/>
+                                        <rect key="frame" x="16" y="14.666666666666686" width="59" height="19"/>
                                         <attributedString key="attributedText">
                                             <fragment content="시작">
                                                 <attributes>
@@ -452,7 +452,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오전 9:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFz-fA-VhN">
-                                        <rect key="frame" x="272.33333333333331" y="14.666666666666687" width="64.666666666666686" height="18.666666666666671"/>
+                                        <rect key="frame" x="272" y="14.666666666666686" width="65" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -487,13 +487,13 @@
                                 <rect key="frame" x="20" y="339" width="353" height="177"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybr-CU-bjg">
-                                        <rect key="frame" x="16" y="13.999999999999998" width="28" height="19.333333333333329"/>
+                                        <rect key="frame" x="16" y="14.000000000000002" width="28" height="19.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S3B-Wn-c32">
-                                        <rect key="frame" x="10" y="37.333333333333314" width="333" height="129.66666666666666"/>
+                                        <rect key="frame" x="10" y="37.666666666666686" width="333" height="129.33333333333334"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
                                             <fragment content="메모를 입력해주세요">
@@ -544,7 +544,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Item" style="done" id="WKw-bK-ZnC">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="OVe-Yu-bgQ">
-                                                <rect key="frame" x="290" y="4.3333333333333321" width="87" height="35.666666666666671"/>
+                                                <rect key="frame" x="290" y="4" width="87" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" red="0.55294117647058827" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -612,7 +612,6 @@
                             <constraint firstItem="6KB-MS-z4a" firstAttribute="top" secondItem="dc7-67-G8u" secondAttribute="bottom" constant="24" id="3KN-q1-lzd"/>
                             <constraint firstItem="ger-fl-XEh" firstAttribute="top" secondItem="bb9-Hc-aYn" secondAttribute="bottom" constant="20" id="4Ii-zb-hCT"/>
                             <constraint firstItem="dc7-67-G8u" firstAttribute="width" secondItem="ger-fl-XEh" secondAttribute="width" id="6ei-oN-SNQ"/>
-                            <constraint firstItem="cW6-Is-0vw" firstAttribute="trailing" secondItem="v0c-MB-oJU" secondAttribute="trailing" id="6jk-pH-mMj"/>
                             <constraint firstItem="dc7-67-G8u" firstAttribute="leading" secondItem="ger-fl-XEh" secondAttribute="leading" id="70h-Xp-DvY"/>
                             <constraint firstItem="dc7-67-G8u" firstAttribute="height" secondItem="ger-fl-XEh" secondAttribute="height" id="8EM-du-ixI"/>
                             <constraint firstItem="dPO-QZ-V02" firstAttribute="leading" secondItem="meY-em-pfz" secondAttribute="leading" id="8zW-qS-uaO"/>
@@ -631,6 +630,7 @@
                             <constraint firstItem="fgB-XL-isr" firstAttribute="leading" secondItem="Ipo-yO-KYN" secondAttribute="leading" constant="20" id="fWr-JS-zAT"/>
                             <constraint firstItem="meY-em-pfz" firstAttribute="leading" secondItem="fEP-pe-Xr0" secondAttribute="leading" id="heY-6p-uwN"/>
                             <constraint firstItem="Ipo-yO-KYN" firstAttribute="trailing" secondItem="ger-fl-XEh" secondAttribute="trailing" constant="20" id="kzP-eo-api"/>
+                            <constraint firstItem="cW6-Is-0vw" firstAttribute="trailing" secondItem="v0c-MB-oJU" secondAttribute="trailing" id="nV3-3I-j4O"/>
                             <constraint firstItem="6KB-MS-z4a" firstAttribute="leading" secondItem="dc7-67-G8u" secondAttribute="leading" id="pO2-zh-eK9"/>
                             <constraint firstItem="3qH-eL-G84" firstAttribute="width" secondItem="6KB-MS-z4a" secondAttribute="width" id="sPl-0t-y08"/>
                             <constraint firstItem="fgB-XL-isr" firstAttribute="bottom" secondItem="Ipo-yO-KYN" secondAttribute="bottom" constant="-20" id="ztm-jD-n0z"/>
