@@ -10,15 +10,23 @@ import UIKit
 final class DiscoveryView: BaseView {
     
     // MARK: - properties
-    lazy var regionButton = UIButton().then {
-        guard let chevron = UIImage(systemName: "chevron.down") else { return }
-        
-        $0.configuration = configureButton(titleString: "대구시 달서구",
-                                           titleFont: .pretendard(size: 18, weight: .bold),
-                                           image: chevron,
-                                           imagePlacement: .trailing,
-                                           imagePadding: 8,
-                                           imageSize: 12)
+    var regionLabelButton = UIButton().then {
+        let attributes: [NSAttributedString.Key: Any] = [ .font: UIFont.pretendard(size: 18, weight: .bold) ]
+        let attributedString = NSAttributedString(string: "서울특별시 강남구",
+                                                  attributes: attributes)
+        $0.setAttributedTitle(attributedString, for: .normal)
+    }
+    
+    let regionButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        $0.tintColor = .black
+    }
+    
+    let regionStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.spacing = 4
+        $0.alignment = .fill
+        $0.distribution = .fillProportionally
     }
     
     let searchButton = UIBarButtonItem().then {
@@ -57,6 +65,8 @@ final class DiscoveryView: BaseView {
     
     // MARK: - methods
     override func configureHierarchy() {
+        regionStackView.addArrangedSubview(regionLabelButton)
+        regionStackView.addArrangedSubview(regionButton)
         self.addSubview(categoryStackView)
         categoryStackView.addArrangedSubview(touristSpotButton)
         categoryStackView.addArrangedSubview(restaurantButton)
@@ -109,6 +119,6 @@ final class DiscoveryView: BaseView {
     func bind(text: String) {
         let attributes: [NSAttributedString.Key: Any] = [ .font: UIFont.pretendard(size: 18, weight: .bold) ]
         let attributedString = NSAttributedString(string: text, attributes: attributes)
-        regionButton.setAttributedTitle(attributedString, for: .normal)
+        regionLabelButton.setAttributedTitle(attributedString, for: .normal)
     }
 }

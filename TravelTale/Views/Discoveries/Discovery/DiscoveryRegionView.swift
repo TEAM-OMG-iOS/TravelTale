@@ -127,11 +127,16 @@ final class DiscoveryRegionView: BaseView {
     
     func bind(text: String, isCity: Bool) {
         if isCity {
-            districtButton.isEnabled = true
             currentCityLabel.text = text
             currentCityLabel.textColor = .black
-            currentDistrictLabel.text = "구/군을 선택해주세요."
-            currentDistrictLabel.textColor = .gray80
+            
+            if text == "세종특별자치시" {
+                currentDistrictLabel.text = ""
+            }else {
+                districtButton.isEnabled = true
+                currentDistrictLabel.text = "구/군을 선택해주세요."
+                currentDistrictLabel.textColor = .gray80
+            }
         }else {
             currentDistrictLabel.text = text
             currentDistrictLabel.textColor = .black

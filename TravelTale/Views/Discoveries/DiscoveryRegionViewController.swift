@@ -11,7 +11,11 @@ final class DiscoveryRegionViewController: BaseViewController {
     
     // MARK: - properties
     private let discoveryRegionView = DiscoveryRegionView()
-    private var selectedCity = ""
+    private var selectedCity = "" {
+        didSet {
+            updateSubmitButtonState()
+        }
+    }
     private var selectedDistrict = "" {
         didSet {
             updateSubmitButtonState()
@@ -101,7 +105,7 @@ final class DiscoveryRegionViewController: BaseViewController {
     }
     
     private func updateSubmitButtonState() {
-        discoveryRegionView.submitButton.isEnabled = !selectedCity.isEmpty && !selectedDistrict.isEmpty
+        discoveryRegionView.submitButton.isEnabled = !selectedCity.isEmpty && !selectedDistrict.isEmpty || selectedCity == "세종특별자치시"
         discoveryRegionView.updateSubmitButtonAppearance()
     }
     
