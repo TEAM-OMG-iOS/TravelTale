@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AddLocationView: BaseView {
+final class LocationView: BaseView {
     
     // MARK: - properties
     private let guideLabel = UILabel().then {
