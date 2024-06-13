@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,11 +8,19 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pretendard-Bold.otf">
+            <string>Pretendard-Bold</string>
+        </array>
+        <array key="Pretendard-Regular.otf">
+            <string>Pretendard-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Place Addition View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="PlaceAdditionViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlaceAdditionView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PlaceAdditionViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +46,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어디로" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0G-Jv-XNZ">
                                         <rect key="frame" x="295.33333333333331" y="14.666666666666657" width="41.666666666666686" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.792156862745098" green="0.792156862745098" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sL4-QZ-zkK">
@@ -46,6 +54,9 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="tappedPlaceBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="5Xg-VI-QOU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -76,61 +87,16 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSk-IK-Dfw">
-                                        <rect key="frame" x="16" y="14" width="28" height="20"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="일정">
-                                                <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
-                                                    <font key="NSOriginalFont" metaFont="system" size="17"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일정" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSk-IK-Dfw">
+                                        <rect key="frame" x="16" y="14.666666666666659" width="28" height="18.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="16"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mi9-U6-3Sy">
-                                        <rect key="frame" x="184" y="14.333333333333341" width="153" height="19.333333333333329"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="Day 1 | 24">
-                                                <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content="년">
-                                                <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
-                                                    <font key="NSOriginalFont" metaFont="system" size="17"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content=" 01">
-                                                <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content="월">
-                                                <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
-                                                    <font key="NSOriginalFont" metaFont="system" size="17"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content=" 17">
-                                                <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content="일">
-                                                <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
-                                                    <font key="NSOriginalFont" metaFont="system" size="17"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day 1 | 24년 01월 01일" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mi9-U6-3Sy">
+                                        <rect key="frame" x="183.33333333333337" y="14.666666666666659" width="153.66666666666663" height="18.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -154,7 +120,7 @@
                                 <rect key="frame" x="20" y="267" width="353" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8S-cl-s9K">
-                                        <rect key="frame" x="16" y="14" width="59" height="20"/>
+                                        <rect key="frame" x="16" y="14.666666666666687" width="59" height="18.666666666666671"/>
                                         <attributedString key="attributedText">
                                             <fragment content="시작">
                                                 <attributes>
@@ -177,19 +143,29 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9p2-mc-mqr">
-                                        <rect key="frame" x="272" y="14" width="65" height="20"/>
+                                        <rect key="frame" x="222.33333333333334" y="14.666666666666687" width="114.66666666666666" height="18.666666666666671"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="오후">
+                                            <fragment content="시간을">
                                                 <attributes>
-                                                    <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="NSColor" red="0.792156862745098" green="0.792156862745098" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                     <font key="NSFont" size="16" name="Pretendard-Regular"/>
                                                     <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
-                                            <fragment content=" 3:00">
+                                            <fragment content=" ">
                                                 <attributes>
-                                                    <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="NSColor" red="0.792156862745098" green="0.792156862745098" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                     <font key="NSFont" size="16" name="Pretendard-Regular"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="선택하세요">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.792156862745098" green="0.792156862745098" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
+                                                    <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
@@ -200,6 +176,9 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="tappedStartTimeBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="IAU-XL-dH7"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -222,19 +201,18 @@
                                 <rect key="frame" x="20" y="339" width="353" height="177"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3q-q8-U2r">
-                                        <rect key="frame" x="16" y="13.999999999999998" width="27.666666666666671" height="19.333333333333329"/>
+                                        <rect key="frame" x="16" y="13.999999999999998" width="28" height="19.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="myO-bl-qwB">
-                                        <rect key="frame" x="16" y="37.333333333333314" width="321" height="129.66666666666666"/>
+                                        <rect key="frame" x="10" y="37.333333333333314" width="333" height="129.66666666666666"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
-                                            <fragment>
-                                                <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                            <fragment content="메모를 입력해주세요">
                                                 <attributes>
-                                                    <color key="NSColor" systemColor="labelColor"/>
+                                                    <color key="NSColor" red="0.792156862745098" green="0.792156862745098" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="16" name="Pretendard-Regular"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -245,7 +223,8 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="myO-bl-qwB" firstAttribute="leading" secondItem="T3q-q8-U2r" secondAttribute="leading" id="Csq-p1-wUY"/>
+                                    <constraint firstItem="myO-bl-qwB" firstAttribute="trailing" secondItem="SaE-cv-40y" secondAttribute="trailing" constant="-10" id="6zj-UZ-Iau"/>
+                                    <constraint firstItem="myO-bl-qwB" firstAttribute="leading" secondItem="SaE-cv-40y" secondAttribute="leading" constant="10" id="Csq-p1-wUY"/>
                                     <constraint firstItem="T3q-q8-U2r" firstAttribute="leading" secondItem="SaE-cv-40y" secondAttribute="leading" constant="16" id="N8G-Vr-jdT"/>
                                     <constraint firstAttribute="bottom" secondItem="myO-bl-qwB" secondAttribute="bottom" constant="10" id="REC-ch-Kb2"/>
                                     <constraint firstItem="T3q-q8-U2r" firstAttribute="top" secondItem="SaE-cv-40y" secondAttribute="top" constant="14" id="TtN-vy-dcj"/>
@@ -264,33 +243,53 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="장소 추가" id="q09-FR-rwG">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="dmT-ey-SqO">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="i82-H9-2VC">
-                                                <rect key="frame" x="277" y="5" width="100" height="34.333333333333336"/>
+                                        <barButtonItem key="leftBarButtonItem" style="done" id="4rI-Nw-Z7J">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Pfl-fr-lco">
+                                                <rect key="frame" x="16" y="5" width="100" height="34.333333333333336"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" red="0.55294117649999996" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="xmark.app.fill" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
+                                                <connections>
+                                                    <action selector="tappedExitBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VJi-uE-3yu"/>
+                                                </connections>
                                             </button>
+                                            <color key="tintColor" red="0.55294117649999996" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="tappedExitBtn:" destination="Y6W-OH-hqX" id="ZH2-YM-TdP"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p71-gQ-e5G">
-                                <rect key="frame" x="20" y="766" width="353" height="52"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p71-gQ-e5G">
+                                <rect key="frame" x="20" y="746" width="353" height="52"/>
                                 <color key="backgroundColor" red="0.85882352941176465" green="0.95686274509803915" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="JbF-eE-3mM"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="완료"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="완료">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <font key="NSFont" size="20" name="Pretendard-Bold"/>
+                                                <font key="NSOriginalFont" size="18" name="HelveticaNeue"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="24"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tappedCompletedBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HR5-8b-kSi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -300,7 +299,6 @@
                             <constraint firstItem="pWD-jc-ZKY" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="2mE-jK-yTp"/>
                             <constraint firstItem="pWD-jc-ZKY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3Tp-sg-JNj"/>
                             <constraint firstItem="SaE-cv-40y" firstAttribute="leading" secondItem="0Ob-9Q-YWT" secondAttribute="leading" id="4cK-JH-ReX"/>
-                            <constraint firstItem="myO-bl-qwB" firstAttribute="trailing" secondItem="9p2-mc-mqr" secondAttribute="trailing" id="6zj-UZ-Iau"/>
                             <constraint firstItem="NNX-G9-3xK" firstAttribute="width" secondItem="Acv-Gq-8OH" secondAttribute="width" id="93c-xl-fFu"/>
                             <constraint firstItem="SaE-cv-40y" firstAttribute="top" secondItem="0Ob-9Q-YWT" secondAttribute="bottom" constant="24" id="9iM-hY-RO4"/>
                             <constraint firstItem="SaE-cv-40y" firstAttribute="width" secondItem="0Ob-9Q-YWT" secondAttribute="width" id="9ls-Ff-WpA"/>
@@ -313,7 +311,7 @@
                             <constraint firstItem="Mi9-U6-3Sy" firstAttribute="trailing" secondItem="R0G-Jv-XNZ" secondAttribute="trailing" id="Ow5-kx-ocM"/>
                             <constraint firstItem="0Ob-9Q-YWT" firstAttribute="top" secondItem="NNX-G9-3xK" secondAttribute="bottom" constant="24" id="ShY-DK-CQK"/>
                             <constraint firstItem="p71-gQ-e5G" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Suh-ka-O5B"/>
-                            <constraint firstItem="p71-gQ-e5G" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="Wg0-pB-M6W"/>
+                            <constraint firstItem="p71-gQ-e5G" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="-20" id="Wg0-pB-M6W"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="p71-gQ-e5G" secondAttribute="trailing" constant="20" id="XfF-kL-JIw"/>
                             <constraint firstItem="Acv-Gq-8OH" firstAttribute="top" secondItem="pWD-jc-ZKY" secondAttribute="bottom" constant="20" id="Yr2-F3-8Bf"/>
                             <constraint firstItem="NNX-G9-3xK" firstAttribute="top" secondItem="Acv-Gq-8OH" secondAttribute="bottom" constant="24" id="akh-cy-ulE"/>
@@ -324,26 +322,35 @@
                             <constraint firstItem="L8S-cl-s9K" firstAttribute="leading" secondItem="mSk-IK-Dfw" secondAttribute="leading" id="opK-h7-aHR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="completedBtn" destination="p71-gQ-e5G" id="8TH-O2-2wG"/>
+                        <outlet property="memoTV" destination="myO-bl-qwB" id="FEe-Bn-Sqm"/>
+                        <outlet property="naviTitle" destination="q09-FR-rwG" id="8Da-kZ-6cY"/>
+                        <outlet property="placeContents" destination="R0G-Jv-XNZ" id="GpJ-FO-9DZ"/>
+                        <outlet property="scheduleContents" destination="Mi9-U6-3Sy" id="Zlz-OH-bmO"/>
+                        <outlet property="startTimeBtn" destination="AkE-1p-vMC" id="gby-Y1-dFj"/>
+                        <outlet property="startTimeContents" destination="9p2-mc-mqr" id="fsh-Yc-JqK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1046.5648854961833" y="-17.605633802816904"/>
+            <point key="canvasLocation" x="937" y="-9"/>
         </scene>
-        <!--Place Addition View Controller-->
-        <scene sceneID="Vcm-Kk-qao">
+        <!--Place Edition View Controller-->
+        <scene sceneID="zRI-F5-j7J">
             <objects>
-                <viewController id="Srw-9g-lQl" customClass="PlaceAdditionViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hHC-ow-BVp">
+                <viewController storyboardIdentifier="PlaceEditionView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2P1-mE-glx" customClass="PlaceEditionViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AWy-zy-mGa">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPO-7z-SdT">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ger-fl-XEh">
                                 <rect key="frame" x="20" y="123" width="353" height="48"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYC-9H-txq">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEP-pe-Xr0">
                                         <rect key="frame" x="16" y="14.666666666666657" width="28" height="19"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="19" id="XDZ-Bh-L3v"/>
+                                            <constraint firstAttribute="height" constant="19" id="xJQ-Dh-TY7"/>
                                         </constraints>
                                         <attributedString key="attributedText">
                                             <fragment content="장소">
@@ -355,20 +362,20 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어디로" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1e5-7s-ECC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이월드" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0c-MB-oJU">
                                         <rect key="frame" x="295.33333333333331" y="14.666666666666657" width="41.666666666666686" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="eYC-9H-txq" firstAttribute="centerY" secondItem="bPO-7z-SdT" secondAttribute="centerY" id="8tc-hP-0NI"/>
-                                    <constraint firstItem="eYC-9H-txq" firstAttribute="leading" secondItem="bPO-7z-SdT" secondAttribute="leading" constant="16" id="Gsq-DN-hUo"/>
-                                    <constraint firstItem="1e5-7s-ECC" firstAttribute="centerY" secondItem="bPO-7z-SdT" secondAttribute="centerY" id="W1A-eV-41q"/>
-                                    <constraint firstAttribute="trailing" secondItem="1e5-7s-ECC" secondAttribute="trailing" constant="16" id="Yav-mA-V3V"/>
-                                    <constraint firstAttribute="height" constant="48" id="oYm-fy-GQf"/>
+                                    <constraint firstItem="v0c-MB-oJU" firstAttribute="centerY" secondItem="ger-fl-XEh" secondAttribute="centerY" id="EWA-0H-Tok"/>
+                                    <constraint firstItem="fEP-pe-Xr0" firstAttribute="leading" secondItem="ger-fl-XEh" secondAttribute="leading" constant="16" id="F9W-sI-P7H"/>
+                                    <constraint firstAttribute="height" constant="48" id="HUX-Tb-CJA"/>
+                                    <constraint firstAttribute="trailing" secondItem="v0c-MB-oJU" secondAttribute="trailing" constant="16" id="JZF-IW-mlU"/>
+                                    <constraint firstItem="fEP-pe-Xr0" firstAttribute="centerY" secondItem="ger-fl-XEh" secondAttribute="centerY" id="f7t-kI-TPd"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -377,81 +384,39 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wv2-bk-nYo">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dc7-67-G8u">
                                 <rect key="frame" x="20" y="195" width="353" height="48"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcD-0o-1hX">
-                                        <rect key="frame" x="16" y="14" width="28" height="20"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="일정">
-                                                <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
-                                                    <font key="NSOriginalFont" metaFont="system" size="17"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGm-oe-x6g">
-                                        <rect key="frame" x="184" y="14.333333333333341" width="153" height="19.333333333333329"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="Day 1 | 24">
-                                                <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content="년">
-                                                <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
-                                                    <font key="NSOriginalFont" metaFont="system" size="17"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content=" 01">
-                                                <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content="월">
-                                                <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
-                                                    <font key="NSOriginalFont" metaFont="system" size="17"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content=" 17">
-                                                <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content="일">
-                                                <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
-                                                    <font key="NSOriginalFont" metaFont="system" size="17"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekx-Oc-6Lc">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xW-mG-Fze">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="48"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="tappedScheduleBtn:" destination="2P1-mE-glx" eventType="touchUpInside" id="YQH-u5-E71"/>
+                                        </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일정" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meY-em-pfz">
+                                        <rect key="frame" x="16" y="14.666666666666659" width="28" height="18.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day 1 | 24년 01월 01일" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cW6-Is-0vw">
+                                        <rect key="frame" x="183.33333333333337" y="14.666666666666659" width="153.66666666666663" height="18.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="ekx-Oc-6Lc" secondAttribute="trailing" id="3t6-4W-vpM"/>
-                                    <constraint firstItem="aGm-oe-x6g" firstAttribute="centerY" secondItem="wv2-bk-nYo" secondAttribute="centerY" id="QP7-xJ-T0L"/>
-                                    <constraint firstItem="lcD-0o-1hX" firstAttribute="centerY" secondItem="wv2-bk-nYo" secondAttribute="centerY" id="WPV-e7-SpI"/>
-                                    <constraint firstAttribute="bottom" secondItem="ekx-Oc-6Lc" secondAttribute="bottom" id="YN4-VK-G9q"/>
-                                    <constraint firstItem="ekx-Oc-6Lc" firstAttribute="leading" secondItem="wv2-bk-nYo" secondAttribute="leading" id="j3f-Ps-bEc"/>
-                                    <constraint firstItem="ekx-Oc-6Lc" firstAttribute="top" secondItem="wv2-bk-nYo" secondAttribute="top" id="vEY-qZ-jNP"/>
+                                    <constraint firstAttribute="trailing" secondItem="7xW-mG-Fze" secondAttribute="trailing" id="3eV-J6-7IA"/>
+                                    <constraint firstItem="cW6-Is-0vw" firstAttribute="centerY" secondItem="dc7-67-G8u" secondAttribute="centerY" id="9w5-kc-kss"/>
+                                    <constraint firstItem="meY-em-pfz" firstAttribute="centerY" secondItem="dc7-67-G8u" secondAttribute="centerY" id="Mpq-91-IcT"/>
+                                    <constraint firstAttribute="bottom" secondItem="7xW-mG-Fze" secondAttribute="bottom" id="htp-zm-eFM"/>
+                                    <constraint firstItem="7xW-mG-Fze" firstAttribute="top" secondItem="dc7-67-G8u" secondAttribute="top" id="iTB-bn-03u"/>
+                                    <constraint firstItem="7xW-mG-Fze" firstAttribute="leading" secondItem="dc7-67-G8u" secondAttribute="leading" id="sJO-f2-big"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -460,11 +425,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nQN-oh-TOP">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6KB-MS-z4a">
                                 <rect key="frame" x="20" y="267" width="353" height="48"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzg-K6-Yye">
-                                        <rect key="frame" x="16" y="14" width="59" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPO-QZ-V02">
+                                        <rect key="frame" x="16" y="14.666666666666687" width="59" height="18.666666666666671"/>
                                         <attributedString key="attributedText">
                                             <fragment content="시작">
                                                 <attributes>
@@ -486,41 +451,30 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZs-ej-0kW">
-                                        <rect key="frame" x="272" y="14" width="65" height="20"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="오후">
-                                                <attributes>
-                                                    <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
-                                                    <font key="NSOriginalFont" metaFont="system" size="17"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content=" 3:00">
-                                                <attributes>
-                                                    <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오전 9:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFz-fA-VhN">
+                                        <rect key="frame" x="272.33333333333331" y="14.666666666666687" width="64.666666666666686" height="18.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsA-w8-QS9">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTP-HN-Y1l">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="48"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="tappedStartTimeBtn:" destination="2P1-mE-glx" eventType="touchUpInside" id="c37-Ho-ZRm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="zsA-w8-QS9" secondAttribute="bottom" id="DA8-i1-6eF"/>
-                                    <constraint firstItem="zsA-w8-QS9" firstAttribute="leading" secondItem="nQN-oh-TOP" secondAttribute="leading" id="N5X-Qh-D8s"/>
-                                    <constraint firstItem="Zzg-K6-Yye" firstAttribute="centerY" secondItem="nQN-oh-TOP" secondAttribute="centerY" id="QWn-Of-ji1"/>
-                                    <constraint firstAttribute="trailing" secondItem="zsA-w8-QS9" secondAttribute="trailing" id="TM3-Wz-dDk"/>
-                                    <constraint firstItem="LZs-ej-0kW" firstAttribute="centerY" secondItem="nQN-oh-TOP" secondAttribute="centerY" id="dGK-sT-FX4"/>
-                                    <constraint firstItem="LZs-ej-0kW" firstAttribute="trailing" secondItem="nQN-oh-TOP" secondAttribute="trailing" constant="-16" id="gDA-me-HtW"/>
-                                    <constraint firstItem="zsA-w8-QS9" firstAttribute="top" secondItem="nQN-oh-TOP" secondAttribute="top" id="o7k-Cy-ifV"/>
+                                    <constraint firstItem="RTP-HN-Y1l" firstAttribute="leading" secondItem="6KB-MS-z4a" secondAttribute="leading" id="8Ui-MQ-Toz"/>
+                                    <constraint firstItem="DFz-fA-VhN" firstAttribute="centerY" secondItem="6KB-MS-z4a" secondAttribute="centerY" id="EfK-dG-sHZ"/>
+                                    <constraint firstItem="dPO-QZ-V02" firstAttribute="centerY" secondItem="6KB-MS-z4a" secondAttribute="centerY" id="Fv4-EN-Mtf"/>
+                                    <constraint firstItem="RTP-HN-Y1l" firstAttribute="top" secondItem="6KB-MS-z4a" secondAttribute="top" id="blm-q9-43e"/>
+                                    <constraint firstAttribute="trailing" secondItem="RTP-HN-Y1l" secondAttribute="trailing" id="msq-gZ-Xme"/>
+                                    <constraint firstAttribute="bottom" secondItem="RTP-HN-Y1l" secondAttribute="bottom" id="qDU-ep-tJd"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -529,23 +483,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="075-OT-8PQ">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3qH-eL-G84">
                                 <rect key="frame" x="20" y="339" width="353" height="177"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFT-eu-LeE">
-                                        <rect key="frame" x="16" y="13.999999999999998" width="27.666666666666671" height="19.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybr-CU-bjg">
+                                        <rect key="frame" x="16" y="13.999999999999998" width="28" height="19.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B3p-co-nlB">
-                                        <rect key="frame" x="16" y="37.333333333333314" width="321" height="129.66666666666666"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S3B-Wn-c32">
+                                        <rect key="frame" x="10" y="37.333333333333314" width="333" height="129.66666666666666"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
-                                            <fragment>
-                                                <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <fragment content="메모를 입력해주세요">
                                                 <attributes>
-                                                    <color key="NSColor" systemColor="labelColor"/>
+                                                    <color key="NSColor" red="0.792156862745098" green="0.792156862745098" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="16" name="Pretendard-Regular"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -556,12 +509,13 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="OFT-eu-LeE" firstAttribute="leading" secondItem="075-OT-8PQ" secondAttribute="leading" constant="16" id="DwZ-ka-8Ds"/>
-                                    <constraint firstAttribute="height" constant="177" id="ZPB-Yc-ko1"/>
-                                    <constraint firstItem="OFT-eu-LeE" firstAttribute="top" secondItem="075-OT-8PQ" secondAttribute="top" constant="14" id="b0o-Tk-Huy"/>
-                                    <constraint firstAttribute="bottom" secondItem="B3p-co-nlB" secondAttribute="bottom" constant="10" id="rcj-6N-lsq"/>
-                                    <constraint firstItem="B3p-co-nlB" firstAttribute="leading" secondItem="OFT-eu-LeE" secondAttribute="leading" id="xgk-gF-o0P"/>
-                                    <constraint firstItem="B3p-co-nlB" firstAttribute="top" secondItem="OFT-eu-LeE" secondAttribute="bottom" constant="4" id="zLM-fj-5Nm"/>
+                                    <constraint firstItem="Ybr-CU-bjg" firstAttribute="leading" secondItem="3qH-eL-G84" secondAttribute="leading" constant="16" id="23I-mx-eXg"/>
+                                    <constraint firstItem="S3B-Wn-c32" firstAttribute="trailing" secondItem="3qH-eL-G84" secondAttribute="trailing" constant="-10" id="4fK-DU-gcY"/>
+                                    <constraint firstAttribute="bottom" secondItem="S3B-Wn-c32" secondAttribute="bottom" constant="10" id="MxL-jJ-BYn"/>
+                                    <constraint firstAttribute="height" constant="177" id="bl9-tP-4zh"/>
+                                    <constraint firstItem="S3B-Wn-c32" firstAttribute="top" secondItem="Ybr-CU-bjg" secondAttribute="bottom" constant="4" id="ftb-me-PrP"/>
+                                    <constraint firstItem="S3B-Wn-c32" firstAttribute="leading" secondItem="3qH-eL-G84" secondAttribute="leading" constant="10" id="ht3-p6-71R"/>
+                                    <constraint firstItem="Ybr-CU-bjg" firstAttribute="top" secondItem="3qH-eL-G84" secondAttribute="top" constant="14" id="iNK-tY-A5y"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -570,82 +524,136 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gAc-gQ-r42">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bb9-Hc-aYn">
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <navigationItem title="장소 수정" id="cDi-Sf-qWl">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="Z5h-8A-9wD">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="nch-sr-9dF">
-                                                <rect key="frame" x="321.33333333333331" y="5" width="55.666666666666686" height="34.333333333333336"/>
+                                    <navigationItem title="장소 수정" id="dND-Qj-8Gy">
+                                        <barButtonItem key="leftBarButtonItem" style="done" id="vmt-1l-Dle">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Q3c-ha-5P2">
+                                                <rect key="frame" x="16" y="5" width="100" height="34.333333333333336"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" red="0.55294117649999996" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="xmark.app.fill" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
+                                                <connections>
+                                                    <action selector="tappedExitBtn:" destination="2P1-mE-glx" eventType="touchUpInside" id="o4d-BX-vqR"/>
+                                                </connections>
+                                            </button>
+                                            <color key="tintColor" red="0.55294117649999996" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" style="done" id="WKw-bK-ZnC">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="OVe-Yu-bgQ">
+                                                <rect key="frame" x="290" y="4.3333333333333321" width="87" height="35.666666666666671"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" red="0.55294117647058827" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Button">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="삭제">
+                                                            <attributes>
+                                                                <font key="NSFont" size="18" name="Pretendard-Medium"/>
+                                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                </state>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="삭제">
+                                                            <attributes>
+                                                                <font key="NSFont" size="18" name="Pretendard-Medium"/>
+                                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="tappedDeleteBtn:" destination="2P1-mE-glx" eventType="touchUpInside" id="aVr-JX-hCb"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enK-E0-A7k">
-                                <rect key="frame" x="20" y="766" width="353" height="52"/>
-                                <color key="backgroundColor" red="0.85882352939999995" green="0.95686274510000002" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fgB-XL-isr">
+                                <rect key="frame" x="20" y="746" width="353" height="52"/>
+                                <color key="backgroundColor" red="0.11764705882352941" green="0.69411764705882351" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="ojF-tf-7Ea"/>
+                                    <constraint firstAttribute="height" constant="52" id="Y4k-VQ-nwm"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="완료"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="수정">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <font key="NSFont" size="20" name="Pretendard-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="24"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tappedCompletedBtn:" destination="2P1-mE-glx" eventType="touchUpInside" id="Od3-bX-kr3"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="1M5-Do-1h6"/>
+                        <viewLayoutGuide key="safeArea" id="Ipo-yO-KYN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="nQN-oh-TOP" firstAttribute="leading" secondItem="wv2-bk-nYo" secondAttribute="leading" id="D5H-pe-aXd"/>
-                            <constraint firstItem="bPO-7z-SdT" firstAttribute="leading" secondItem="1M5-Do-1h6" secondAttribute="leading" constant="20" id="Gq6-QQ-W1e"/>
-                            <constraint firstItem="Zzg-K6-Yye" firstAttribute="leading" secondItem="lcD-0o-1hX" secondAttribute="leading" id="IjR-Vq-iDQ"/>
-                            <constraint firstItem="nQN-oh-TOP" firstAttribute="top" secondItem="wv2-bk-nYo" secondAttribute="bottom" constant="24" id="NAJ-kk-DeB"/>
-                            <constraint firstItem="lcD-0o-1hX" firstAttribute="leading" secondItem="eYC-9H-txq" secondAttribute="leading" id="R4M-rz-q65"/>
-                            <constraint firstItem="gAc-gQ-r42" firstAttribute="leading" secondItem="1M5-Do-1h6" secondAttribute="leading" id="RCQ-si-MZP"/>
-                            <constraint firstItem="wv2-bk-nYo" firstAttribute="top" secondItem="bPO-7z-SdT" secondAttribute="bottom" constant="24" id="RIb-4b-ooq"/>
-                            <constraint firstItem="075-OT-8PQ" firstAttribute="width" secondItem="nQN-oh-TOP" secondAttribute="width" id="Rce-o1-2fr"/>
-                            <constraint firstItem="1M5-Do-1h6" firstAttribute="trailing" secondItem="bPO-7z-SdT" secondAttribute="trailing" constant="20" id="RlX-v0-R06"/>
-                            <constraint firstItem="075-OT-8PQ" firstAttribute="leading" secondItem="nQN-oh-TOP" secondAttribute="leading" id="SQ7-Kt-Mmk"/>
-                            <constraint firstItem="wv2-bk-nYo" firstAttribute="trailing" secondItem="aGm-oe-x6g" secondAttribute="trailing" constant="16" id="TSh-xY-mFX"/>
-                            <constraint firstItem="B3p-co-nlB" firstAttribute="trailing" secondItem="LZs-ej-0kW" secondAttribute="trailing" id="Tfi-al-TAs"/>
-                            <constraint firstItem="gAc-gQ-r42" firstAttribute="trailing" secondItem="1M5-Do-1h6" secondAttribute="trailing" id="UYy-Q0-nbv"/>
-                            <constraint firstItem="aGm-oe-x6g" firstAttribute="trailing" secondItem="1e5-7s-ECC" secondAttribute="trailing" id="W6J-EE-Qdz"/>
-                            <constraint firstItem="wv2-bk-nYo" firstAttribute="width" secondItem="bPO-7z-SdT" secondAttribute="width" id="YjR-kz-E5f"/>
-                            <constraint firstItem="1M5-Do-1h6" firstAttribute="trailing" secondItem="enK-E0-A7k" secondAttribute="trailing" constant="20" id="a6x-F8-tqI"/>
-                            <constraint firstItem="enK-E0-A7k" firstAttribute="leading" secondItem="1M5-Do-1h6" secondAttribute="leading" constant="20" id="bIg-ty-s77"/>
-                            <constraint firstItem="nQN-oh-TOP" firstAttribute="width" secondItem="wv2-bk-nYo" secondAttribute="width" id="ehp-6c-soZ"/>
-                            <constraint firstItem="bPO-7z-SdT" firstAttribute="top" secondItem="gAc-gQ-r42" secondAttribute="bottom" constant="20" id="gih-uZ-9HS"/>
-                            <constraint firstItem="wv2-bk-nYo" firstAttribute="height" secondItem="bPO-7z-SdT" secondAttribute="height" id="h77-1V-SVb"/>
-                            <constraint firstItem="nQN-oh-TOP" firstAttribute="height" secondItem="wv2-bk-nYo" secondAttribute="height" id="joq-U3-GSL"/>
-                            <constraint firstItem="enK-E0-A7k" firstAttribute="bottom" secondItem="1M5-Do-1h6" secondAttribute="bottom" id="r6A-x4-ddn"/>
-                            <constraint firstItem="075-OT-8PQ" firstAttribute="top" secondItem="nQN-oh-TOP" secondAttribute="bottom" constant="24" id="sC5-sY-1TS"/>
-                            <constraint firstItem="wv2-bk-nYo" firstAttribute="leading" secondItem="bPO-7z-SdT" secondAttribute="leading" id="uAp-jg-WPc"/>
-                            <constraint firstItem="gAc-gQ-r42" firstAttribute="top" secondItem="1M5-Do-1h6" secondAttribute="top" id="ulh-2B-6VZ"/>
-                            <constraint firstItem="1M5-Do-1h6" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="075-OT-8PQ" secondAttribute="bottom" constant="20" id="vqD-O3-rWm"/>
+                            <constraint firstItem="6KB-MS-z4a" firstAttribute="top" secondItem="dc7-67-G8u" secondAttribute="bottom" constant="24" id="3KN-q1-lzd"/>
+                            <constraint firstItem="ger-fl-XEh" firstAttribute="top" secondItem="bb9-Hc-aYn" secondAttribute="bottom" constant="20" id="4Ii-zb-hCT"/>
+                            <constraint firstItem="dc7-67-G8u" firstAttribute="width" secondItem="ger-fl-XEh" secondAttribute="width" id="6ei-oN-SNQ"/>
+                            <constraint firstItem="cW6-Is-0vw" firstAttribute="trailing" secondItem="v0c-MB-oJU" secondAttribute="trailing" id="6jk-pH-mMj"/>
+                            <constraint firstItem="dc7-67-G8u" firstAttribute="leading" secondItem="ger-fl-XEh" secondAttribute="leading" id="70h-Xp-DvY"/>
+                            <constraint firstItem="dc7-67-G8u" firstAttribute="height" secondItem="ger-fl-XEh" secondAttribute="height" id="8EM-du-ixI"/>
+                            <constraint firstItem="dPO-QZ-V02" firstAttribute="leading" secondItem="meY-em-pfz" secondAttribute="leading" id="8zW-qS-uaO"/>
+                            <constraint firstItem="3qH-eL-G84" firstAttribute="leading" secondItem="6KB-MS-z4a" secondAttribute="leading" id="AOU-gb-KAO"/>
+                            <constraint firstItem="3qH-eL-G84" firstAttribute="top" secondItem="6KB-MS-z4a" secondAttribute="bottom" constant="24" id="Bzm-Ge-W5l"/>
+                            <constraint firstItem="bb9-Hc-aYn" firstAttribute="trailing" secondItem="Ipo-yO-KYN" secondAttribute="trailing" id="K1m-yh-dJz"/>
+                            <constraint firstItem="dc7-67-G8u" firstAttribute="top" secondItem="ger-fl-XEh" secondAttribute="bottom" constant="24" id="Mmk-6r-LIT"/>
+                            <constraint firstItem="Ipo-yO-KYN" firstAttribute="trailing" secondItem="fgB-XL-isr" secondAttribute="trailing" constant="20" id="OVH-14-e0d"/>
+                            <constraint firstItem="DFz-fA-VhN" firstAttribute="trailing" secondItem="cW6-Is-0vw" secondAttribute="trailing" id="PlS-U5-Npe"/>
+                            <constraint firstItem="ger-fl-XEh" firstAttribute="leading" secondItem="Ipo-yO-KYN" secondAttribute="leading" constant="20" id="QDU-LJ-Ain"/>
+                            <constraint firstItem="6KB-MS-z4a" firstAttribute="width" secondItem="dc7-67-G8u" secondAttribute="width" id="SMx-QS-n48"/>
+                            <constraint firstItem="bb9-Hc-aYn" firstAttribute="leading" secondItem="Ipo-yO-KYN" secondAttribute="leading" id="XdD-xd-4R9"/>
+                            <constraint firstItem="6KB-MS-z4a" firstAttribute="height" secondItem="dc7-67-G8u" secondAttribute="height" id="cnN-az-3BZ"/>
+                            <constraint firstItem="Ipo-yO-KYN" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3qH-eL-G84" secondAttribute="bottom" constant="20" id="cyU-lz-fwm"/>
+                            <constraint firstItem="bb9-Hc-aYn" firstAttribute="top" secondItem="Ipo-yO-KYN" secondAttribute="top" id="et4-fw-Sro"/>
+                            <constraint firstItem="fgB-XL-isr" firstAttribute="leading" secondItem="Ipo-yO-KYN" secondAttribute="leading" constant="20" id="fWr-JS-zAT"/>
+                            <constraint firstItem="meY-em-pfz" firstAttribute="leading" secondItem="fEP-pe-Xr0" secondAttribute="leading" id="heY-6p-uwN"/>
+                            <constraint firstItem="Ipo-yO-KYN" firstAttribute="trailing" secondItem="ger-fl-XEh" secondAttribute="trailing" constant="20" id="kzP-eo-api"/>
+                            <constraint firstItem="6KB-MS-z4a" firstAttribute="leading" secondItem="dc7-67-G8u" secondAttribute="leading" id="pO2-zh-eK9"/>
+                            <constraint firstItem="3qH-eL-G84" firstAttribute="width" secondItem="6KB-MS-z4a" secondAttribute="width" id="sPl-0t-y08"/>
+                            <constraint firstItem="fgB-XL-isr" firstAttribute="bottom" secondItem="Ipo-yO-KYN" secondAttribute="bottom" constant="-20" id="ztm-jD-n0z"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="completedBtn" destination="fgB-XL-isr" id="uZi-8l-dX4"/>
+                        <outlet property="memoTV" destination="S3B-Wn-c32" id="lNW-dU-55h"/>
+                        <outlet property="naviTitle" destination="dND-Qj-8Gy" id="NAH-h3-6JM"/>
+                        <outlet property="placeContents" destination="v0c-MB-oJU" id="Pvk-DZ-PnS"/>
+                        <outlet property="scheduleBtn" destination="7xW-mG-Fze" id="r8Q-Zn-I5f"/>
+                        <outlet property="scheduleContents" destination="cW6-Is-0vw" id="syt-D7-i6B"/>
+                        <outlet property="startTimeBtn" destination="RTP-HN-Y1l" id="pkm-Hm-fiI"/>
+                        <outlet property="startTimeContents" destination="DFz-fA-VhN" id="HUJ-aP-bd5"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="67C-pj-BKb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a5B-LY-9Vj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1842" y="-18"/>
+            <point key="canvasLocation" x="1767" y="-9"/>
         </scene>
     </scenes>
     <resources>
-        <image name="xmark.app.fill" catalog="system" width="128" height="114"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
