@@ -241,7 +241,6 @@
 				37E19F442C18837F0084F899 /* TravelDetailPlan */,
 				1AD537882C105D0300A70D5E /* TravelViewModel.swift */,
 				378CEC352C0D68F900DF1C3F /* TravelViewController.swift */,
-				370B839D2C149AE8009430B9 /* TravelDetailPlanViewController.swift */,
 			);
 			path = Travels;
 			sourceTree = "<group>";
@@ -359,6 +358,7 @@
 				37DDF5C92C18B54400842DA4 /* TravelDetailPlanHeaderContentCell.swift */,
 				370B839F2C149E66009430B9 /* TravelDetailPlanContentCell.swift */,
 				37E19F422C18680A0084F899 /* TravelDetailPlanFooterCell.swift */,
+				370B839D2C149AE8009430B9 /* TravelDetailPlanViewController.swift */,
 			);
 			path = TravelDetailPlan;
 			sourceTree = "<group>";
