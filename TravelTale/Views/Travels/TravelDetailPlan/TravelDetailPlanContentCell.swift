@@ -48,7 +48,7 @@ final class TravelDetailPlanContentCell: BaseTableViewCell {
         $0.configureLabel(font: .pretendard(size: 16, weight: .semibold))
     }
     
-    private let optionButton = UIButton().then {
+    let optionButton = UIButton().then {
         $0.setImage(.planDetailsCellEllipsis, for: .normal)
     }
     

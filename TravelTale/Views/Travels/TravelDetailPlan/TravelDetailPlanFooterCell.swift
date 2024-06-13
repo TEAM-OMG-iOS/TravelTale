@@ -24,12 +24,12 @@ final class TravelDetailPlanFooterCell: BaseTableViewCell {
         $0.image = .planDetailsPlus
     }
     
-    private let placeAddButton = UIButton().then {
+    let placeAddButton = UIButton().then {
         $0.configureView(color: .green100, clipsToBounds: true, cornerRadius: 22)
         $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "장소 추가")
     }
     
-    private let memoAddButton = UIButton().then {
+    let memoAddButton = UIButton().then {
         $0.configureView(color: .white, clipsToBounds: true, cornerRadius: 22)
         $0.configureButton(fontColor: .green100, font: .pretendard(size: 18, weight: .bold), text: "메모 추가")
         $0.layer.borderWidth = 1
