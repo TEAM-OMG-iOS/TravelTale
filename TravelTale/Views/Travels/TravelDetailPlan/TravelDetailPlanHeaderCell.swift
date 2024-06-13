@@ -25,7 +25,7 @@ final class TravelDetailPlanHeaderCell: BaseTableViewCell {
         collectionView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(8)
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().offset(-18)
+            $0.bottom.equalToSuperview().offset(-26)
             $0.height.equalTo(27)
         }
     }
