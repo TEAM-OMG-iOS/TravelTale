@@ -98,6 +98,7 @@ final class TravelSelectView: BaseView {
         })
     }
     
+    // TODO: 셀 수정 머지 후 삭제
     func updateButtonState() {
         if tableView.indexPathForSelectedRow == nil {
             nextBtn.isEnabled = false
