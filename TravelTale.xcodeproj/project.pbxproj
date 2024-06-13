@@ -78,6 +78,7 @@
 		4D0E3CEE2C131ECB0089D6C1 /* TimeSelectPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CED2C131ECB0089D6C1 /* TimeSelectPopoverViewController.swift */; };
 		4D0E3CF32C18A4E30089D6C1 /* DaySelectPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CF22C18A4E30089D6C1 /* DaySelectPopoverView.swift */; };
 		4D0E3CF52C195A9A0089D6C1 /* TimeSelectPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CF42C195A9A0089D6C1 /* TimeSelectPopoverView.swift */; };
+		4D6694532C1AD9F00095CC42 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4D6694522C1AD9F00095CC42 /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -159,6 +160,7 @@
 				378CEC092C0D57DF00DF1C3F /* Alamofire in Frameworks */,
 				378CEC152C0D606800DF1C3F /* XLPagerTabStrip in Frameworks */,
 				378CEC032C0D579900DF1C3F /* SnapKit in Frameworks */,
+				4D6694532C1AD9F00095CC42 /* IQKeyboardManagerSwift in Frameworks */,
 				378CEC0F2C0D59E200DF1C3F /* RealmSwift in Frameworks */,
 				378CEC122C0D5E6100DF1C3F /* HorizonCalendar in Frameworks */,
 				378CEC062C0D57A800DF1C3F /* Then in Frameworks */,
@@ -449,6 +451,7 @@
 				378CEC112C0D5E6100DF1C3F /* HorizonCalendar */,
 				378CEC142C0D606800DF1C3F /* XLPagerTabStrip */,
 				37CB88112C0D9885002798BE /* FloatingPanel */,
+				4D6694522C1AD9F00095CC42 /* IQKeyboardManagerSwift */,
 			);
 			productName = TravelTale;
 			productReference = 378CEBE82C0D563C00DF1C3F /* TravelTale.app */;
@@ -487,6 +490,7 @@
 				378CEC102C0D5E6000DF1C3F /* XCRemoteSwiftPackageReference "HorizonCalendar" */,
 				378CEC132C0D606800DF1C3F /* XCRemoteSwiftPackageReference "XLPagerTabStrip" */,
 				37CB88102C0D9885002798BE /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+				4D6694512C1AD9F00095CC42 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 378CEBE92C0D563C00DF1C3F /* Products */;
 			projectDirPath = "";
@@ -865,6 +869,14 @@
 				minimumVersion = 2.8.2;
 			};
 		};
+		4D6694512C1AD9F00095CC42 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -907,6 +919,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 37CB88102C0D9885002798BE /* XCRemoteSwiftPackageReference "FloatingPanel" */;
 			productName = FloatingPanel;
+		};
+		4D6694522C1AD9F00095CC42 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4D6694512C1AD9F00095CC42 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
