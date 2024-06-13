@@ -23,10 +23,16 @@ final class MyPageView: BaseView {
         $0.configureLabel(font: .pretendard(size: 18, weight: .bold), text: "북마크")
     }
     
+    let totalViewLabel = UIButton().then {
+        $0.configureButton(font: .pretendard(size: 14, weight: .regular))
+        $0.setTitle("전체보기", for: .normal)
+    }
+    
     // MARK: - life cycles
     override func configureHierarchy() {
         self.addSubview(bookMarkBackgroundView)
         self.addSubview(bookMarkLabel)
+        self.addSubview(totalViewLabel)
     }
     
     override func configureConstraints() {
@@ -38,5 +44,12 @@ final class MyPageView: BaseView {
         bookMarkLabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview().inset(24)
         }
+        
+        totalViewLabel.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(24)
+            $0.centerX.equalTo(totalViewLabel)
+        }
+        
+        
     }
 }
