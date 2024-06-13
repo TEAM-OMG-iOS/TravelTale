@@ -166,7 +166,7 @@ class TravelMemoryDetailEditView: BaseView {
         }
         
         borderLine.snp.makeConstraints {
-            $0.top.equalTo(travelTitleLabel.snp.bottom).offset(18)
+            $0.top.equalTo(travelTitleLabel.snp.bottom).offset(16)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(4)
         }
