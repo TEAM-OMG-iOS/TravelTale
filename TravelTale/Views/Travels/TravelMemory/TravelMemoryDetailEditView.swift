@@ -229,6 +229,13 @@ class TravelMemoryDetailEditView: BaseView {
         provinceLabel.text = travel.province ?? "미정"
         periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
         travelTitleLabel.text = travel.title
+        recordTextView.text = travel.travelJournal
+        
+        if isTextViewEmpty() {
+            setTextViewPlaceHolder()
+        } else {
+            recordTextView.textColor = UIColor.black
+        }
     }
     
     func updatePhotoCount(count: Int) {
@@ -239,30 +246,39 @@ class TravelMemoryDetailEditView: BaseView {
         }
     }
     
-    func checkTextViewContent() {
+    func isTextViewEmpty() -> Bool {
         let text = recordTextView.text ?? ""
         let isPlaceholder = text == "기록하고 싶은 내용을 작성해주세요."
-        
-        if isPlaceholder || text.isEmpty {
+        return text.isEmpty || isPlaceholder ? true : false
+    }
+    
+    func setTextViewPlaceHolder() {
+        recordTextView.text = "기록하고 싶은 내용을 작성해주세요."
+        recordTextView.textColor = UIColor.gray80
+    }
+    
+    func checkTextViewContent() {
+        if isTextViewEmpty() {
             confirmButton.isEnabled = false
             confirmButton.backgroundColor = .green10
+            recordTextView.textColor = UIColor.gray80
         } else {
             confirmButton.isEnabled = true
             confirmButton.backgroundColor = .green100
+            recordTextView.textColor = UIColor.black
         }
     }
     
     func setBeginText(textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if isTextViewEmpty() {
             textView.text = nil
             textView.textColor = UIColor.black
         }
     }
     
     func setEndText(textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "메세지를 입력하세요"
-            textView.textColor = UIColor.lightGray
+        if isTextViewEmpty() {
+            setTextViewPlaceHolder()
         }
     }
 }
