@@ -1,18 +1,17 @@
 //
-//  TravelAddLocationView.swift
+//  AddLocationView.swift
 //  TravelTale
 //
-//  Created by SAMSUNG on 6/11/24.
+//  Created by SAMSUNG on 6/13/24.
 //
 
 import UIKit
 
-final class TravelAddLocationView: BaseView {
+final class AddLocationView: BaseView {
     
     // MARK: - properties
     private let guideLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 18, weight: .semibold),
-                          text: "대표 여행 장소를 선택해주세요")
+        $0.configureLabel(font: .pretendard(size: 18, weight: .bold))
     }
     
     let tableView = UITableView()
@@ -27,15 +26,19 @@ final class TravelAddLocationView: BaseView {
     
     override func configureConstraints() {
         guideLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(40)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(42)
+            $0.top.equalToSuperview().offset(36)
+            $0.horizontalEdges.equalToSuperview().inset(24)
         }
         
         tableView.snp.makeConstraints {
-            $0.top.equalTo(guideLabel.snp.bottom).offset(12)
-            $0.horizontalEdges.equalToSuperview()
+            $0.top.equalTo(guideLabel.snp.bottom).offset(16)
+            $0.horizontalEdges.equalToSuperview().inset(16)
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
+    
+    func bind(text: String) {
+        guideLabel.text = text
+    }
 }
+

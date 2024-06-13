@@ -1,26 +1,21 @@
 //
-//  TravelLocationTableViewCell.swift
+//  LocationTableViewCell.swift
 //  TravelTale
 //
-//  Created by SAMSUNG on 6/5/24.
+//  Created by SAMSUNG on 6/13/24.
 //
 
 import UIKit
 
-final class TravelLocationTableViewCell: BaseTableViewCell {
+final class LocationTableViewCell: BaseTableViewCell {
     
     // MARK: - properties
-    static let identifier = "LocationTableViewCell"
+    static let identifier = String(describing: LocationTableViewCell.self)
     
     private let locationLabel = UILabel().then {
         $0.configureLabel(alignment: .left,
-                          color: .blueBlack100,
+                          color: .black,
                           font: .pretendard(size: 15, weight: .bold))
-    }
-    
-    private let checkmarkImage = UIImageView(image: UIImage(systemName: "checkmark")).then {
-        $0.tintColor = .black
-        $0.isHidden = true
     }
     
     // MARK: - life cycles
@@ -28,7 +23,6 @@ final class TravelLocationTableViewCell: BaseTableViewCell {
         super.prepareForReuse()
         
         locationLabel.text = nil
-        checkmarkImage.isHidden = true
         backgroundColor = .white
     }
     
@@ -40,23 +34,16 @@ final class TravelLocationTableViewCell: BaseTableViewCell {
     }
     
     override func configureHierarchy() {
-        [locationLabel,
-         checkmarkImage].forEach {
+        [locationLabel].forEach {
             self.contentView.addSubview($0)
         }
     }
     
     override func configureConstraints() {
         locationLabel.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview().inset(5)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.verticalEdges.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(12)
             $0.height.equalTo(48)
-        }
-        
-        checkmarkImage.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview().inset(16)
-            $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(16)
-            $0.size.equalTo(18)
         }
     }
     
@@ -71,10 +58,8 @@ final class TravelLocationTableViewCell: BaseTableViewCell {
     func selectLocation(_ selected: Bool) {
         if selected {
             backgroundColor = .green10
-            checkmarkImage.isHidden = false
         } else {
             backgroundColor = .white
-            checkmarkImage.isHidden = true
         }
     }
     
