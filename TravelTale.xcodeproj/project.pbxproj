@@ -176,6 +176,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1AA861732C1ACB7C007F69E7 /* TravelMemory */ = {
+			isa = PBXGroup;
+			children = (
+				1A95EB5A2C168E78007D575A /* TravelMemoryAddView.swift */,
+				1A95EB622C184EC7007D575A /* TravelMemoryDetailEditView.swift */,
+				1AA8616F2C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift */,
+			);
+			path = TravelMemory;
+			sourceTree = "<group>";
+		};
 		1AD5378C2C10613900A70D5E /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,9 +320,7 @@
 				1AD537972C1362A800A70D5E /* TravelMemoryView.swift */,
 				1AD5379F2C13999600A70D5E /* TravelSectionHeaderView.swift */,
 				1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */,
-				1A95EB5A2C168E78007D575A /* TravelMemoryAddView.swift */,
-				1A95EB622C184EC7007D575A /* TravelMemoryDetailEditView.swift */,
-				1AA8616F2C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift */,
+				1AA861732C1ACB7C007F69E7 /* TravelMemory */,
 			);
 			path = Travel;
 			sourceTree = "<group>";
