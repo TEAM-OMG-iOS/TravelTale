@@ -28,7 +28,7 @@ final class MyPageView: BaseView {
         $0.setTitle("전체보기", for: .normal)
     }
     
-    // MARK: - life cycles
+    // MARK: - methods
     override func configureHierarchy() {
         self.addSubview(bookMarkBackgroundView)
         self.addSubview(bookMarkLabel)
@@ -49,7 +49,5 @@ final class MyPageView: BaseView {
             $0.trailing.equalToSuperview().inset(24)
             $0.centerX.equalTo(totalViewLabel)
         }
-        
-        
     }
 }
