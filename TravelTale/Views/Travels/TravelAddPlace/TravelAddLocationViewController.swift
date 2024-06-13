@@ -10,7 +10,7 @@ import UIKit
 final class TravelAddLocationViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelAddLocationView = AddLocationView()
+    private let travelAddLocationView = LocationView()
     
     private let locations: [String] = ["서울특별시", "인천광역시", "부산광역시",
                                        "대전광역시", "대구광역시", "울산광역시",
@@ -51,16 +51,23 @@ extension TravelAddLocationViewController: UITableViewDataSource {
         cell.bind(text: locations[indexPath.row])
         travelAddLocationView.bind(text: "대표 여행 장소를 선택해주세요")
         
+        
         return cell
     }
 }
 
 extension TravelAddLocationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? LocationTableViewCell else { return }
+        cell.selectLocation(true)
         
         completion?(locations[indexPath.row])
         
         self.dismiss(animated: true, completion: nil)
     }
-
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? LocationTableViewCell else { return }
+        cell.selectLocation(false)
+    }
 }
