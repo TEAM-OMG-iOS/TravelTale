@@ -78,7 +78,7 @@ final class DiscoveryRegionView: BaseView {
     
     override func configureConstraints() {
         cityBackground.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.top.equalTo(safeAreaLayoutGuide).offset(44)
         }
         
