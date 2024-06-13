@@ -8,6 +8,7 @@
 import UIKit
 
 final class TravelSelectViewController: BaseViewController {
+    
     // MARK: - properties
     private let travelSelectView = TravelSelectView()
     
@@ -22,7 +23,6 @@ final class TravelSelectViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar()
         addTemporaryData()
     }
     
@@ -31,6 +31,10 @@ final class TravelSelectViewController: BaseViewController {
     }
     
     // MARK: - methods
+    override func configureStyle() {
+        configureNavigationBar()
+    }
+    
     override func configureDelegate() {
         travelSelectView.tableView.delegate = self
         travelSelectView.tableView.dataSource = self

@@ -8,6 +8,7 @@
 import UIKit
 
 final class ScheduleCreateViewController: BaseViewController {
+    
     // MARK: - properties
     private let scheduleCreateView = ScheduleCreateView()
     
@@ -29,7 +30,6 @@ final class ScheduleCreateViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar()
         scheduleCreateView.checkBlackText()
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedDays), name: .selectedDaysUpdated, object: nil)
@@ -42,6 +42,10 @@ final class ScheduleCreateViewController: BaseViewController {
     }
     
     // MARK: - methods
+    override func configureStyle() {
+        configureNavigationBar()
+    }
+    
     override func configureDelegate() {
         scheduleCreateView.memoTV.delegate = self
     }
