@@ -68,7 +68,6 @@ final class TravelSelectViewController: BaseViewController {
 
 extension TravelSelectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: - 유림님 셀 수정 PR업로드 이후 코드 수정
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return }
         
         if let selectedIndexPath =
@@ -76,11 +75,13 @@ extension TravelSelectViewController: UITableViewDelegate {
             if selectedIndexPath == indexPath {
                 travelSelectView.tableView.deselectRow(at: indexPath, animated: true)
                 preselectedIndexPath = nil
-                travelSelectView.updateButtonState()
+                travelSelectView.updateButtonState() // TODO: 셀 수정 PR 머지 이후 삭제
+//                cell.setSelected(false, animated: true) // 셀 수정 PR 머지 이후 주석 해제
             }
         } else {
             preselectedIndexPath = indexPath
-            travelSelectView.updateButtonState()
+            travelSelectView.updateButtonState() // TODO: 셀 수정 PR 머지 이후 삭제
+//            cell.setSelected(true, animated: true) // 셀 수정 PR 머지 이후 주석 해제
         }
     }
 }
