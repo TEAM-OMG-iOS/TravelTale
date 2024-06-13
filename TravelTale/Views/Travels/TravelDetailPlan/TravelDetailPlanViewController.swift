@@ -42,7 +42,7 @@ final class TravelDetailPlanViewController: BaseViewController {
                                                 forCellReuseIdentifier: TravelDetailPlanFooterCell.identifier)
     }
     
-    @objc private func tappedOptionButton() {
+    private func tappedOptionButton(action: UIAction) {
         print("tappedOptionButton")
     }
     
@@ -85,7 +85,10 @@ extension TravelDetailPlanViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelDetailPlanContentCell.identifier, for: indexPath) as? TravelDetailPlanContentCell else { return UITableViewCell() }
             
             cell.selectionStyle = .none
-            cell.optionButton.addTarget(self, action: #selector(tappedOptionButton), for: .touchUpInside)
+            cell.optionButton.menu = UIMenu(children: [
+                UIAction(title: "수정", handler: tappedOptionButton),
+                UIAction(title: "삭제", attributes: .destructive, handler: tappedOptionButton),
+            ])
             
             return cell
         default:

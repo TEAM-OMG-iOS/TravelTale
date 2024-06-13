@@ -50,6 +50,7 @@ final class TravelDetailPlanContentCell: BaseTableViewCell {
     
     let optionButton = UIButton().then {
         $0.setImage(.planDetailsCellEllipsis, for: .normal)
+        $0.showsMenuAsPrimaryAction = true
     }
     
     private let contentStackView = UIStackView().then {
