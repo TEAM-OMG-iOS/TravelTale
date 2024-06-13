@@ -61,7 +61,7 @@ final class DiscoveryViewController: BaseViewController {
         
         discoveryRegionVC.completion = { [weak self] text in
             guard let self = self else { return }
-            discoveryView.bind(text: text)
+            discoveryView.bind(location: text)
         }
         
         self.navigationController?.pushViewController(discoveryRegionVC, animated: true)

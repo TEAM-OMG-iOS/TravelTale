@@ -11,10 +11,7 @@ final class DiscoveryView: BaseView {
     
     // MARK: - properties
     var regionLabelButton = UIButton().then {
-        let attributes: [NSAttributedString.Key: Any] = [ .font: UIFont.pretendard(size: 18, weight: .bold) ]
-        let attributedString = NSAttributedString(string: "서울특별시 강남구",
-                                                  attributes: attributes)
-        $0.setAttributedTitle(attributedString, for: .normal)
+        $0.configureButton(font: .pretendard(size: 18, weight: .bold), text: "서울특별시 강남구")
     }
     
     let regionButton = UIButton().then {
@@ -23,9 +20,7 @@ final class DiscoveryView: BaseView {
     }
     
     let regionStackView = UIStackView().then {
-        $0.axis = .horizontal
         $0.spacing = 4
-        $0.alignment = .fill
         $0.distribution = .fillProportionally
     }
     
@@ -116,9 +111,7 @@ final class DiscoveryView: BaseView {
         return configuration
     }
     
-    func bind(text: String) {
-        let attributes: [NSAttributedString.Key: Any] = [ .font: UIFont.pretendard(size: 18, weight: .bold) ]
-        let attributedString = NSAttributedString(string: text, attributes: attributes)
-        regionLabelButton.setAttributedTitle(attributedString, for: .normal)
+    func bind(location: String) {
+        regionLabelButton.configureButton(font: .pretendard(size: 18, weight: .bold), text: location)
     }
 }
