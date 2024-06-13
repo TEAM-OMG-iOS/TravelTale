@@ -14,5 +14,5 @@ struct Travel {
     let endDate: Date
     let province: String?
     let travelJournal: String?
-    let travelImages: [Data]?
+    let memoryImages: [Data]?
 }

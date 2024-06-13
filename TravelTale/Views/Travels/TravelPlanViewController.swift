@@ -38,7 +38,7 @@ final class TravelPlanViewController: BaseViewController {
                 endDate: createDate(year: 2024, month: 9, day: 21) ?? Date(),
                 province: "대구",
                 travelJournal: nil,
-                travelPhotos: nil),
+                memoryImages: nil),
             Travel(
                 image: nil,
                 title: "24년의 가족 여행",
@@ -46,7 +46,7 @@ final class TravelPlanViewController: BaseViewController {
                 endDate: createDate(year: 2024, month: 4, day: 5) ?? Date(),
                 province: nil,
                 travelJournal: nil,
-                travelPhotos: nil)
+                memoryImages: nil)
         ])
     }
     
