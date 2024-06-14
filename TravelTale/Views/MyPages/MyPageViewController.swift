@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyPageViewController: BaseViewController {
+final class MyPageViewController: BaseViewController {
     
     // MARK: - properties
     private let myPageView = MyPageView()

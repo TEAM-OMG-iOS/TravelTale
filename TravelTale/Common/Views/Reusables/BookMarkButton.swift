@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BookMarkButton: UIButton {
+final class BookMarkButton: UIButton {
     
     // MARK: - properties
     private let backgroundView = UIView().then {
