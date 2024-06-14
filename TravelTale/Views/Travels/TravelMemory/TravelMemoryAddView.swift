@@ -35,12 +35,12 @@ class TravelMemoryAddView: BaseView {
     override func configureConstraints() {
         tableView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(16)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
         }
         
         confirmButton.snp.makeConstraints {
             $0.top.equalTo(tableView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
