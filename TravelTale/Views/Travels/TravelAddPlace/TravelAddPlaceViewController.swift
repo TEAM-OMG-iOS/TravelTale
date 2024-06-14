@@ -54,13 +54,14 @@ final class TravelAddPlaceViewController: BaseViewController {
             guard let self = self else { return }
             
             travelAddPlaceView.placePickButton.setTitle(text, for: .normal)
+            travelAddPlaceView.placePickButton.setTitleColor(.black, for: .normal)
         }
         
         self.present(locationList, animated: true, completion: nil)
     }
     
     @objc func tappedOkButton() {
-        let nextVC = TravelAddCalenderViewController()
+        let nextVC = TravelAddCalenderViewController(monthsLayout: .vertical)
         self.navigationController?.pushViewController(nextVC, animated: false)
     }
     

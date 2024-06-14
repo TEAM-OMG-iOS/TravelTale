@@ -24,7 +24,7 @@ final class TravelAddPlaceView: BaseView {
     }
     
     let placePickButton = UIButton().then {
-        $0.configureView(color: .gray10, cornerRadius: 24)
+        $0.configureView(color: .gray5, cornerRadius: 24)
         $0.titleLabel?.font = .pretendard(size: 16, weight: .medium)
         $0.setTitle("미정", for: .normal)
         $0.setTitleColor(.gray90, for: .normal)
