@@ -53,6 +53,14 @@ final class TravelPlanViewController: BaseViewController {
                 startDate: createDate(year: 2024, month: 4, day: 1) ?? Date(),
                 endDate: createDate(year: 2024, month: 4, day: 5) ?? Date(),
                 province: nil,
+                memoryNote: "yayyyy~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                memoryImageDatas: [UIImage(named: "splash")?.jpegData(compressionQuality: 0.5), UIImage(named: "my_travel")?.jpegData(compressionQuality: 1)]),
+            Travel(
+                image: nil,
+                title: "25년의 가족 여행",
+                startDate: createDate(year: 2025, month: 4, day: 1) ?? Date(),
+                endDate: createDate(year: 2025, month: 4, day: 5) ?? Date(),
+                province: nil,
                 memoryNote: nil)
         ])
     }
@@ -143,7 +151,6 @@ extension TravelPlanViewController: UITableViewDataSource {
 extension TravelPlanViewController: UITableViewDelegate {
     // cell 선택 시
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let travel: Travel
         if indexPath.section == 0 {
             travel = upcomingTravels[indexPath.row]
