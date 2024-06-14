@@ -60,7 +60,6 @@ final class TravelSelectViewController: BaseViewController {
         ])
     }
     
-    // MARK: - objc func
     @objc private func tappedButton() {
         guard let selectedIndexPath = travelSelectView.tableView.indexPathForSelectedRow else { return }
         let selectedData = travelViewModel.upcomingTravels[selectedIndexPath.row]

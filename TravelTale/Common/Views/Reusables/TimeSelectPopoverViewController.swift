@@ -27,7 +27,6 @@ final class TimeSelectPopoverViewController: BaseViewController {
         timeSelectPopoverView.rightBtn.addTarget(self, action: #selector(tappedOkBtn), for: .touchUpInside)
     }
 
-    // MARK: - objc func
     @objc private func tappedcancelBtn() {
         self.dismiss(animated: true)
     }
