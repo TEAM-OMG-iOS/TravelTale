@@ -40,10 +40,6 @@ class PlaceAdditionViewController: BaseViewController {
         // TODO: - 일정 데이터 추가 시 수정 예정
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    
     private func setBeginText(textView: UITextView) {
         if textView.text == "메모를 입력해주세요" {
             textView.text = nil
@@ -103,6 +99,7 @@ class PlaceAdditionViewController: BaseViewController {
     
     private func dateFormat(date: Date) -> String {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "a hh:mm"
         return formatter.string(from: date)
     }
@@ -138,6 +135,7 @@ class PlaceAdditionViewController: BaseViewController {
     }
 }
 
+// MARK: - extensions
 extension PlaceAdditionViewController: UIPopoverPresentationControllerDelegate {
     @IBAction func tappedStartTimeBtn(_ sender: UIButton) {
         configurePopover(for: timePopoverVC, sourceButton: startTimeBtn)

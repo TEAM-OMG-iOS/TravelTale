@@ -46,10 +46,6 @@ class PlaceEditionViewController: BaseViewController {
         // TODO: - 일정 데이터 추가 시 수정 예정
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    
     private func setBeginText(textView: UITextView) {
         if textView.text == "메모를 입력해주세요" {
             textView.text = nil
@@ -139,6 +135,7 @@ class PlaceEditionViewController: BaseViewController {
     }
 }
 
+// MARK: - extensions
 extension PlaceEditionViewController: UIPopoverPresentationControllerDelegate {
     @IBAction func tappedScheduleBtn(_ sender: UIButton) {
         configurePopover(for: dayPopoverVC, sourceButton: scheduleBtn)
