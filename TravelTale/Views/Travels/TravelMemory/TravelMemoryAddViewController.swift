@@ -94,9 +94,6 @@ final class TravelMemoryAddViewController: BaseViewController {
         travelMemoryAddView.confirmButton.addTarget(self, action: #selector(tappedConfirmButton), for: .touchUpInside)
     }
     
-    override func bind() { }
-    
-    
     func configureNavigationBarItems() {
         navigationItem.title = "추억 남기기"
         navigationItem.leftBarButtonItem = travelMemoryAddView.exitButton
@@ -151,14 +148,18 @@ extension TravelMemoryAddViewController: UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return }
         
         if let selectedIndexPath = selectedIndexPath {
+            // 셀 선택을 해제하는 경우
             if selectedIndexPath == indexPath {
                 travelMemoryAddView.tableView.deselectRow(at: indexPath, animated: true)
                 self.selectedIndexPath = nil
                 cell.setSelected(false, animated: true)
+                travelMemoryAddView.setConfirmButtonStatus(isEnabled: false)
             }
         } else {
+            // 셀을 선택하는 경우
             self.selectedIndexPath = indexPath
             cell.setSelected(true, animated: true)
+            travelMemoryAddView.setConfirmButtonStatus(isEnabled: true)
         }
     }
 }
