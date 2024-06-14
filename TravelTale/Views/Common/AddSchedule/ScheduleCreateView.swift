@@ -6,82 +6,89 @@
 //
 
 import UIKit
-import SnapKit
-import Then
 
 final class ScheduleCreateView: BaseView {
     
     // MARK: - properties
-    let loadingBackBar = UIView().then {
+    let backButton = UIBarButtonItem().then {
+        $0.style = .done
+        $0.image = UIImage(systemName: "chevron.left")
+        $0.tintColor = .gray90
+    }
+    
+    private let loadingBackBar = UIView().then {
         $0.configureView(color: .gray10, cornerRadius: 4)
     }
     
-    let loadingBar = UIView().then {
+    private var loadingBar = UIView().then {
         $0.configureView(color: .green80, cornerRadius: 4)
     }
     
-    let ViewLabel = UILabel().then {
+    private let viewLabel = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 18, weight: .semibold), text: "일정을 생성해주세요")
     }
     
-    let placeView = UIView().then {
-        $0.configureView(color: UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00), cornerRadius: 20)
+    private let placeView = UIView().then {
+        $0.configureView(color: .gray5, cornerRadius: 20)
     }
     
-    let placeTitle = UILabel().then {
+    private let placeTitle = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold), text: "장소")
     }
     
-    let placeContents = UILabel().then {
+    private let placeContents = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 16, weight: .regular), text: "설빙 석촌호수 동호점")
     }
     
-    let scheduleView = UIView().then {
-        $0.configureView(color: UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00), cornerRadius: 20)
+    private let scheduleView = UIView().then {
+        $0.configureView(color: .gray5, cornerRadius: 20)
     }
     
     let scheduleBtn = UIButton().then {
         $0.configureView(color: .clear)
     }
     
-    let scheduleTitle = UILabel().then {
+    private let scheduleTitle = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold), text: "일정")
     }
     
     let scheduleContents = UILabel().then {
-        $0.configureLabel(color: UIColor(red: 0.70, green: 0.70, blue: 0.70, alpha: 1.00), font: .pretendard(size: 16, weight: .regular), text: "일정을 선택하세요")
+        $0.configureLabel(color: .gray80, font: .pretendard(size: 16, weight: .regular), text: "일정을 선택하세요")
     }
     
-    let startTimeView = UIView().then {
-        $0.configureView(color: UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00), cornerRadius: 20)
+    private let startTimeView = UIView().then {
+        $0.configureView(color: .gray5, cornerRadius: 20)
     }
     
     let startTiemBtn = UIButton().then {
         $0.configureView(color: .clear)
     }
     
-    let startTimeTitle = UILabel().then {
+    private let startTimeTitle = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold), text: "시작 시간")
     }
     
     let startTimeContents = UILabel().then {
-        $0.configureLabel(color: UIColor(red: 0.70, green: 0.70, blue: 0.70, alpha: 1.00), font: .pretendard(size: 16, weight: .regular), text: "시간을 선택하세요")
+        $0.configureLabel(color: .gray80, font: .pretendard(size: 16, weight: .regular), text: "시간을 선택하세요")
     }
     
-    let memoView = UIView().then {
-        $0.configureView(color: UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00), cornerRadius: 20)
+    private let memoView = UIView().then {
+        $0.configureView(color: .gray5, cornerRadius: 20)
     }
     
-    let memoTitle = UILabel().then {
+    private let memoTitle = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold), text: "메모")
     }
     
     let memoTV = UITextView().then {
+        $0.text = "메모를 입력하세요"
+        $0.textColor = .gray80
+        $0.font = .pretendard(size: 16, weight: .regular)
         $0.textAlignment = .natural
         $0.backgroundColor = .clear
     }
     
-    let btnStackView = UIStackView().then {
+    private let btnStackView = UIStackView().then {
         $0.configureView(color: .clear)
         $0.axis = .horizontal
         $0.spacing = 15
@@ -95,24 +102,9 @@ final class ScheduleCreateView: BaseView {
         $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .semibold), text: "일정 생성하러 가기")
     }
     
-    // MARK: - life cycles
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureUI()
-        configureHierarchy()
-        configureConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     // MARK: - methods
-    override func configureUI() {
-    }
-    
     override func configureHierarchy() {
-        [loadingBackBar, ViewLabel, placeView, scheduleView, startTimeView, memoView ,btnStackView].forEach {
+        [loadingBackBar, viewLabel, placeView, scheduleView, startTimeView, memoView ,btnStackView].forEach {
             self.addSubview($0)
         }
         
@@ -145,25 +137,24 @@ final class ScheduleCreateView: BaseView {
         loadingBackBar.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(18)
             $0.height.equalTo(8)
-            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(19.5)
+            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(24)
         }
         
         loadingBar.snp.makeConstraints {
             $0.leading.equalToSuperview()
-            $0.top.equalToSuperview()
+            $0.verticalEdges.equalToSuperview()
             $0.height.equalToSuperview()
-            $0.bottom.equalToSuperview()
-            $0.width.equalTo(177)
+            $0.width.equalToSuperview().multipliedBy(0.5)
         }
         
-        ViewLabel.snp.makeConstraints {
+        viewLabel.snp.makeConstraints {
             $0.top.equalTo(loadingBackBar.snp.bottom).offset(56)
             $0.leading.equalTo(safeAreaLayoutGuide).offset(24)
         }
         
         placeView.snp.makeConstraints {
-            $0.top.equalTo(ViewLabel.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.equalTo(viewLabel.snp.bottom).offset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(48)
         }
         
@@ -179,7 +170,7 @@ final class ScheduleCreateView: BaseView {
         
         scheduleView.snp.makeConstraints {
             $0.top.equalTo(placeView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalTo(placeView.snp.horizontalEdges)
+            $0.horizontalEdges.equalTo(placeView)
             $0.height.equalTo(placeView.snp.height)
         }
         
@@ -199,7 +190,7 @@ final class ScheduleCreateView: BaseView {
         
         startTimeView.snp.makeConstraints {
             $0.top.equalTo(scheduleView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalTo(scheduleView.snp.horizontalEdges)
+            $0.horizontalEdges.equalTo(scheduleView)
             $0.height.equalTo(scheduleView.snp.height)
         }
         
@@ -219,8 +210,8 @@ final class ScheduleCreateView: BaseView {
         
         memoView.snp.makeConstraints {
             $0.top.equalTo(startTimeView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalTo(startTimeView.snp.horizontalEdges)
-            $0.bottom.greaterThanOrEqualTo(btnStackView.snp.top)
+            $0.horizontalEdges.equalTo(startTimeView)
+            $0.bottom.greaterThanOrEqualTo(btnStackView.snp.top).offset(-20)
         }
         
         memoTitle.snp.makeConstraints {
@@ -229,14 +220,14 @@ final class ScheduleCreateView: BaseView {
         }
         
         memoTV.snp.makeConstraints {
-            $0.top.equalTo(memoTitle.snp.bottom)
-            $0.horizontalEdges.equalTo(memoTitle.snp.horizontalEdges)
-            $0.bottom.equalToSuperview().inset(10)
+            $0.top.equalTo(memoTitle.snp.bottom).offset(4)
+            $0.horizontalEdges.equalToSuperview().inset(10)
+            $0.bottom.equalToSuperview()
         }
         
         btnStackView.snp.makeConstraints {
-            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(26)
+            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(24)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(25)
         }
         
         cancelBtn.snp.makeConstraints {
@@ -255,16 +246,55 @@ final class ScheduleCreateView: BaseView {
     func startLoadingAnimation() {
         self.loadingBar.snp.remakeConstraints {
             $0.leading.equalToSuperview()
-            $0.top.equalToSuperview()
+            $0.verticalEdges.equalToSuperview()
             $0.centerY.equalToSuperview()
-            $0.bottom.equalToSuperview()
-            $0.width.equalTo(354)
+            let fullwidth = loadingBackBar.frame.size.width
+            $0.width.equalTo(fullwidth)
         }
         
         UIView.animate(withDuration: 1.0, delay: 0, animations: {
             self.layoutIfNeeded()
-            
-        }, completion: nil)
+        })
+    }
+    
+    func setBeginText(textView: UITextView) {
+        if textView.textColor == .gray80 {
+            textView.text = nil
+            textView.textColor = .black
+        }
+    }
+    
+    func setEndText(textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "메세지를 입력하세요"
+            textView.textColor = .gray80
+        }
+    }
+    
+    func checkBlackText() {
+        var scheduleIsBlack = false
+        var startTimeIsBlack = false
+        
+        if scheduleContents.text != "일정을 선택하세요" {
+            scheduleContents.textColor = .black
+            scheduleIsBlack = true
+        } else {
+            scheduleContents.textColor = .gray80
+        }
+        
+        if startTimeContents.text != "시간을 선택하세요" {
+            startTimeContents.textColor = .black
+            startTimeIsBlack = true
+        } else {
+            startTimeContents.textColor = .gray80
+        }
+        
+        if scheduleIsBlack && startTimeIsBlack {
+            nextBtn.isEnabled = true
+            nextBtn.backgroundColor = .green100
+        } else {
+            nextBtn.isEnabled = false
+            nextBtn.backgroundColor = .green10
+        }
     }
 }
-

@@ -10,16 +10,21 @@ import UIKit
 final class DiscoveryView: BaseView {
     
     // MARK: - properties
-    lazy var regionButton = UIButton().then {
-        guard let chevron = UIImage(systemName: "chevron.down") else { return }
-        
-        $0.configuration = configureButton(titleString: "대구시 달서구",
-                                           titleFont: .pretendard(size: 18, weight: .bold),
-                                           image: chevron,
-                                           imagePlacement: .trailing,
-                                           imagePadding: 8,
-                                           imageSize: 12)
+    var regionLabelButton = UIButton().then {
+        $0.configureButton(font: .pretendard(size: 18, weight: .bold), text: "서울특별시 강남구")
     }
+    
+    let regionButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        $0.tintColor = .black
+    }
+    
+    private let regionStackView = UIStackView().then {
+        $0.spacing = 4
+        $0.distribution = .fillProportionally
+    }
+    
+    lazy var regionBarItem = UIBarButtonItem(customView: regionStackView)
     
     let searchButton = UIBarButtonItem().then {
         $0.style = .done
@@ -57,6 +62,8 @@ final class DiscoveryView: BaseView {
     
     // MARK: - methods
     override func configureHierarchy() {
+        regionStackView.addArrangedSubview(regionLabelButton)
+        regionStackView.addArrangedSubview(regionButton)
         self.addSubview(categoryStackView)
         categoryStackView.addArrangedSubview(touristSpotButton)
         categoryStackView.addArrangedSubview(restaurantButton)
@@ -104,5 +111,9 @@ final class DiscoveryView: BaseView {
         configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: imageSize)
         
         return configuration
+    }
+    
+    func bind(region: String) {
+        regionLabelButton.configureButton(font: .pretendard(size: 18, weight: .bold), text: region)
     }
 }

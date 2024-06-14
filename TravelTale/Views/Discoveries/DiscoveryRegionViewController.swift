@@ -11,7 +11,21 @@ final class DiscoveryRegionViewController: BaseViewController {
     
     // MARK: - properties
     private let discoveryRegionView = DiscoveryRegionView()
-
+    
+    private var selectedCity = "" {
+        didSet {
+            updateSubmitButtonState()
+        }
+    }
+    
+    private var selectedDistrict = "" {
+        didSet {
+            updateSubmitButtonState()
+        }
+    }
+    
+    var completion: ((String) -> Void)?
+    
     // MARK: - life cycles
     override func loadView() {
         view = discoveryRegionView
@@ -45,14 +59,41 @@ final class DiscoveryRegionViewController: BaseViewController {
     }
     
     @objc private func tappedCityButton() {
-        // TODO : 시/도 모달 창 이동
+        let discoveryRegionModalVC = DiscoveryRegionModalViewController()
+        
+        guard let sheet = discoveryRegionModalVC.sheetPresentationController else { return }
+        sheet.detents = [.medium()]
+        sheet.prefersGrabberVisible = true
+        
+        discoveryRegionModalVC.bind(isCity: true)
+        discoveryRegionModalVC.completion = { [weak self] text in
+            guard let self = self else { return }
+            self.selectedCity = text
+            discoveryRegionView.selectCity(cityName: self.selectedCity)
+        }
+        
+        self.present(discoveryRegionModalVC, animated: true)
     }
     
     @objc private func tappedDistrictButton() {
-        // TODO : 구/군 모달 창 이동
+        let discoveryRegionModalVC = DiscoveryRegionModalViewController()
+        
+        guard let sheet = discoveryRegionModalVC.sheetPresentationController else { return }
+        sheet.detents = [.medium()]
+        sheet.prefersGrabberVisible = true
+        
+        discoveryRegionModalVC.bind(isCity: false, city: selectedCity)
+        discoveryRegionModalVC.completion = { [weak self] text in
+            guard let self = self else { return }
+            self.selectedDistrict = text
+            discoveryRegionView.selectDistrict(districtName: self.selectedDistrict)
+        }
+        
+        self.present(discoveryRegionModalVC, animated: true)
     }
     
     @objc private func tappedSubmitButton() {
+        completion?("\(selectedCity) \(selectedDistrict)")
         navigationController?.popViewController(animated: true)
     }
     
@@ -63,5 +104,14 @@ final class DiscoveryRegionViewController: BaseViewController {
     private func configureNavigationBar() {
         navigationItem.title = "지역 설정"
         navigationItem.leftBarButtonItem = discoveryRegionView.backButton
+    }
+    
+    private func updateSubmitButtonState() {
+        discoveryRegionView.updateSubmitButtonState(city: selectedCity, district: selectedDistrict)
+    }
+    
+    func setRegionLabels(region: String) {
+        let regionArray = region.components(separatedBy: " ")
+        discoveryRegionView.setCityAndDistrictLabels(cityName: regionArray[0], districtName: regionArray[1])
     }
 }
