@@ -24,7 +24,7 @@ final class TravelDetailPlanHeaderCell: BaseTableViewCell {
     override func configureConstraints() {
         collectionView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(8)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.bottom.equalToSuperview().offset(-26)
             $0.height.equalTo(27)
         }
@@ -32,13 +32,18 @@ final class TravelDetailPlanHeaderCell: BaseTableViewCell {
     
     private func createFlowLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        let itemsSize = ("Day 0").size(withAttributes: [.font: UIFont.oaGothic(size: 15, weight: .heavy)]).width * 5
-        let horizontalEdges: CGFloat = 20 * 2
         
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = ((UIScreen.main.bounds.width - horizontalEdges - itemsSize) / 4)
-        layout.minimumInteritemSpacing = ((UIScreen.main.bounds.width - horizontalEdges - itemsSize) / 4)
+        layout.minimumLineSpacing = getItemSpacing()
+        layout.minimumInteritemSpacing = getItemSpacing()
         
         return layout
+    }
+    
+    private func getItemSpacing() -> CGFloat {
+        let itemSize = ("Day 0").size(withAttributes: [.font: UIFont.oaGothic(size: 15, weight: .heavy)]).width
+        let horizontalEdges: CGFloat = 24 * 2
+        
+        return ((UIScreen.main.bounds.width - (itemSize * 5) - horizontalEdges) / 4)
     }
 }
