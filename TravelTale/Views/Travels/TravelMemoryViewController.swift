@@ -94,10 +94,8 @@ extension TravelMemoryViewController: UITableViewDataSource {
 
 extension TravelMemoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return }
-        
-        let travelMemoryDetailViewController = TravelMemoryDetailViewController(travelData: travels[indexPath.row])
-        navigationController?.pushViewController(travelMemoryDetailViewController, animated: true)
+        let nextVC = TravelMemoryDetailViewController(travelData: travels[indexPath.row])
+        navigationController?.pushViewController(nextVC, animated: true)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             tableView.deselectRow(at: indexPath, animated: true)
