@@ -5,7 +5,7 @@
 //  Created by 유림 on 6/5/24.
 //
 
-import PhotosUI
+import Foundation
 
 struct Travel {
     var image: Data?
