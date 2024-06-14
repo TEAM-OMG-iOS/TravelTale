@@ -12,7 +12,12 @@ final class TravelMemoryAddViewController: BaseViewController {
     // MARK: - properties
     private let travelMemoryAddView = TravelMemoryAddView()
     
-    private var travels: [Travel] = []
+    private var travels: [Travel] = [] {
+        didSet {
+            setNoMemoryTravels()
+        }
+    }
+    private var noMemoryTravels: [Travel] = []
     
     private var selectedIndexPath: IndexPath?
     
@@ -43,12 +48,20 @@ final class TravelMemoryAddViewController: BaseViewController {
                 startDate: createDate(year: 2024, month: 9, day: 19) ?? Date(),
                 endDate: createDate(year: 2024, month: 9, day: 21) ?? Date(),
                 province: "대구",
-                memoryNote: "너무 좋았다!"),
+                memoryNote: nil),
             Travel(
                 image: nil,
                 title: "24년의 가족 여행",
                 startDate: createDate(year: 2024, month: 4, day: 1) ?? Date(),
                 endDate: createDate(year: 2024, month: 4, day: 5) ?? Date(),
+                province: nil,
+                memoryNote: "yayyyy~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                memoryImageDatas: [UIImage(named: "splash")?.jpegData(compressionQuality: 0.5), UIImage(named: "my_travel")?.jpegData(compressionQuality: 1)]),
+            Travel(
+                image: nil,
+                title: "25년의 가족 여행",
+                startDate: createDate(year: 2025, month: 4, day: 1) ?? Date(),
+                endDate: createDate(year: 2025, month: 4, day: 5) ?? Date(),
                 province: nil,
                 memoryNote: nil)
         ])
@@ -89,7 +102,18 @@ final class TravelMemoryAddViewController: BaseViewController {
     func configureNavigationBarItems() {
         navigationItem.title = "추억 남기기"
         navigationItem.leftBarButtonItem = travelMemoryAddView.exitButton
-      }
+    }
+    
+    func setNoMemoryTravels() {
+        for travel in travels {
+            let isMemoryNoteEmpty = travel.memoryNote == nil
+            let isMemoryImagesEmpty = travel.memoryImageDatas.isEmpty
+            
+            if isMemoryNoteEmpty && isMemoryImagesEmpty {
+                noMemoryTravels.append(travel)
+            }
+        }
+    }
     
     // MARK: - objc functions
     @objc func tappedExitButton() {
@@ -98,7 +122,7 @@ final class TravelMemoryAddViewController: BaseViewController {
     
     @objc func tappedConfirmButton() {
         if let selectedIndexPath = selectedIndexPath {
-            let selectedTravel = travels[selectedIndexPath.row]
+            let selectedTravel = noMemoryTravels[selectedIndexPath.row]
             let nextVC = TravelMemoryDetailEditViewController(travelData: selectedTravel)
             navigationController?.pushViewController(nextVC, animated: true)
         } else {
@@ -109,13 +133,13 @@ final class TravelMemoryAddViewController: BaseViewController {
 
 extension TravelMemoryAddViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return travels.count
+        return noMemoryTravels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return UITableViewCell() }
         
-        let travel = travels[indexPath.row]
+        let travel = noMemoryTravels[indexPath.row]
         
         cell.bind(travel: travel)
         cell.selectionStyle = .none
