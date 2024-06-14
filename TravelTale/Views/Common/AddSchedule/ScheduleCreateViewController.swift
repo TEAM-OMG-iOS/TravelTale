@@ -6,31 +6,35 @@
 //
 
 import UIKit
-import SnapKit
 
 final class ScheduleCreateViewController: BaseViewController {
-    // MARK: - properties
-    let scheduleCreateView = ScheduleCreateView().then {
-        $0.memoTV.text = "메세지를 입력하세요"
-        $0.memoTV.textColor = .lightGray
-    }
     
-    let dayPopoverVC = DaySelectPopover()
+    // MARK: - properties
+    private let scheduleCreateView = ScheduleCreateView()
+    
+    private let dayPopoverVC = DaySelectPopoverViewController()
+    
+    private let timePopoverVC = TimeSelectPopoverViewController()
+    
+    // TODO: 데이터 모델에 따라 변경될 예정
+    var selectedData: Travel? = nil
+    
+    var selectedDays: String?
+    
+    var selectedTime: Date?
     
     // MARK: - life cycles
     override func loadView() {
-        super.loadView()
         view = scheduleCreateView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureStyle()
-        configureDelegate()
-        configureAddTarget()
-        bind()
-        configureNavigationBar()
-        setAddTarget()
+        scheduleCreateView.checkBlackText()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedDays), name: .selectedDaysUpdated, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedTime), name: .selectedTimeUpdated, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,72 +42,123 @@ final class ScheduleCreateViewController: BaseViewController {
     }
     
     // MARK: - methods
-    override func configureStyle() { }
+    override func configureStyle() {
+        configureNavigationBar()
+    }
     
-    override func configureDelegate() { }
+    override func configureDelegate() {
+        scheduleCreateView.memoTV.delegate = self
+    }
     
-    override func configureAddTarget() { }
+    override func configureAddTarget() {
+        //popoverview
+        scheduleCreateView.scheduleBtn.addTarget(self, action: #selector(tappedScheduleBtn), for: .touchUpInside)
+        scheduleCreateView.startTiemBtn.addTarget(self, action: #selector(tappedStartTimeBtn), for: .touchUpInside)
+        
+        //common btn
+        scheduleCreateView.cancelBtn.tag = 0
+        scheduleCreateView.cancelBtn.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
+        scheduleCreateView.backButton.tag = 1
+        scheduleCreateView.backButton.target = self
+        scheduleCreateView.backButton.action = #selector(handleBackButton)
+        scheduleCreateView.nextBtn.addTarget(self, action: #selector(tappedAddScheduleBtn), for: .touchUpInside)
+    }
     
-    override func bind() { }
+    override func bind() {
+        // TODO: - 추후 장소 데이터 바인딩 추가 예정
+    }
     
     private func configureNavigationBar() {
         navigationItem.title = "내 여행에 추가"
-        
-        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(handleBackButton))
-        navigationItem.leftBarButtonItem = backButton
-        navigationItem.leftBarButtonItem?.tintColor = .black
-        
-        if let navigationBar = self.navigationController?.navigationBar {
-            navigationBar.titleTextAttributes = [
-                NSAttributedString.Key.font: UIFont.oaGothic(size: 18, weight: .heavy),
-                NSAttributedString.Key.foregroundColor: UIColor.black
-            ]
-        }
+        navigationItem.leftBarButtonItem = scheduleCreateView.backButton
     }
     
-    private func setAddTarget() {
-        scheduleCreateView.scheduleBtn.addTarget(self, action: #selector(tappedScheduleBtn), for: .touchUpInside)
+    private func dateFormat(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "a hh:mm"
+        return formatter.string(from: date)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            view.endEditing(true)
-        }
+    private func bindingDays() {
+        scheduleCreateView.scheduleContents.text = selectedDays
+    }
     
-    @objc private func handleBackButton() {
+    private func bindingTime() {
+        scheduleCreateView.startTimeContents.text = dateFormat(date: selectedTime ?? Date())
+    }
+    
+    func configurePopover(for popoverVC: UIViewController, sourceButton: UIButton) {
+        popoverVC.modalPresentationStyle = .popover
+        popoverVC.preferredContentSize = CGSize(width: 300, height: 200)
+        let popoverPresentationController = popoverVC.popoverPresentationController
+        popoverPresentationController?.sourceView = sourceButton
+        popoverPresentationController?.sourceRect = CGRect(
+            origin: CGPoint(x: sourceButton.bounds.maxX - 50, y: sourceButton.bounds.midY + 10), size: .zero)
+        popoverPresentationController?.permittedArrowDirections = .up
+    }
+    
+    @objc private func handleBackButton(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
             navigationController?.popViewController(animated: true)
+        default:
+            navigationController?.popToRootViewController(animated: true)
         }
-    
-    
-}
-// MARK: - extensions
-extension ScheduleCreateViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
-        
     }
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "메세지를 입력하세요"
-            textView.textColor = UIColor.lightGray
-        }
+    
+    @objc func updateSelectedDays(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let selectedDays = userInfo["selectedDays"] as? String else { return }
+        
+        self.selectedDays = selectedDays
+        self.bindingDays()
+        self.scheduleCreateView.checkBlackText()
+    }
+    
+    @objc func updateSelectedTime(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let selectedTime = userInfo["selectedTime"] as? Date else { return }
+        
+        self.selectedTime = selectedTime
+        self.bindingTime()
+        self.scheduleCreateView.checkBlackText()
+    }
+    
+    @objc func tappedAddScheduleBtn() {
+        // TODO: - 페이지 플로우 확인 후 이동, 저장 로직 수정 예정
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
+// MARK: - extensions
 extension ScheduleCreateViewController: UIPopoverPresentationControllerDelegate {
     @objc private func tappedScheduleBtn() {
-        dayPopoverVC.modalPresentationStyle = .popover
-        dayPopoverVC.preferredContentSize = .init(width: 300, height: 200)
-        dayPopoverVC.popoverPresentationController?.sourceView = scheduleCreateView.scheduleBtn
-        dayPopoverVC.popoverPresentationController?.sourceRect = CGRect(origin: CGPoint(x: scheduleCreateView.scheduleBtn.bounds.midX, y: scheduleCreateView.scheduleBtn.bounds.midY), size: .zero)
-        dayPopoverVC.popoverPresentationController?.permittedArrowDirections = .any
+        configurePopover(for: dayPopoverVC, sourceButton: scheduleCreateView.scheduleBtn)
         dayPopoverVC.popoverPresentationController?.delegate = self
         present(dayPopoverVC, animated: true)
     }
     
+    @objc private func tappedStartTimeBtn() {
+        configurePopover(for: timePopoverVC, sourceButton: scheduleCreateView.startTiemBtn)
+        timePopoverVC.popoverPresentationController?.delegate = self
+        present(timePopoverVC, animated: true)
+    }
+    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
+    }
+}
+
+extension ScheduleCreateViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        scheduleCreateView.setBeginText(textView: textView)
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        scheduleCreateView.setEndText(textView: textView)
     }
 }
