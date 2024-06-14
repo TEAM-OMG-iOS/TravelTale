@@ -9,7 +9,7 @@ import UIKit
 
 class PlaceAdditionViewController: BaseViewController {
     
-    // MARK: - IBOutlet
+    // MARK: - properties
     @IBOutlet weak var placeContents: UILabel!
     @IBOutlet weak var startTimeContents: UILabel!
     @IBOutlet weak var startTimeBtn: UIButton!
@@ -18,7 +18,6 @@ class PlaceAdditionViewController: BaseViewController {
     @IBOutlet weak var naviTitle: UINavigationItem!
     @IBOutlet weak var completedBtn: UIButton!
     
-    // MARK: - properties
     private let timePopoverVC = TimeSelectPopoverViewController()
     
     var selectedTime: Date?
@@ -108,8 +107,7 @@ class PlaceAdditionViewController: BaseViewController {
         startTimeContents.text = dateFormat(date: selectedTime ?? Date())
     }
     
-    // MARK: - objc func
-    @objc func updateSelectedTime(_ notification: Notification) {
+    @objc private func updateSelectedTime(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let selectedTime = userInfo["selectedTime"] as? Date else { return }
         
@@ -118,7 +116,6 @@ class PlaceAdditionViewController: BaseViewController {
         self.checkBlackText()
     }
     
-    // MARK: - IBAction
     @IBAction func tappedPlaceBtn(_ sender: UIButton) {
         // TODO: - 장소 검색 화면으로 이동 구현 예정
         print("move")

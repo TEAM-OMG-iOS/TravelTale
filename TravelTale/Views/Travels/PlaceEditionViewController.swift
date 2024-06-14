@@ -111,22 +111,22 @@ class PlaceEditionViewController: BaseViewController {
     // MARK: - IBAction
     @IBAction func tappedPlaceBtn(_ sender: UIButton) {
         // TODO: - 장소 검색 화면으로 이동 구현 예정
-        print("move")
+        print("tappedPlaceBtn")
     }
     
     @IBAction func tappedCompletedBtn(_ sender: UIButton) {
-        print("close")
+        print("tappedCompletedBtn")
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func tappedExitBtn(_ sender: UIButton) {
-        print("close")
+        print("tappedExitBtn")
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func tappedDeleteBtn(_ sender: UIButton) {
         // TODO: - 데이터 삭제 로직 구현 예정
-        print("delete")
+        print("tappedDeleteBtn")
         navigationController?.popViewController(animated: true)
     }
     
