@@ -20,4 +20,13 @@ class MyPageViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    // MARK: - methods
+    override func configureStyle() {
+        configureNavigationBar()
+    }
+    
+    private func configureNavigationBar() {
+        
+    }
 }

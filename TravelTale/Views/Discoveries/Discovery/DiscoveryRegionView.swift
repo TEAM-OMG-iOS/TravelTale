@@ -115,7 +115,7 @@ final class DiscoveryRegionView: BaseView {
         }
         
         submitButton.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview().inset(24)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
         }
     }
