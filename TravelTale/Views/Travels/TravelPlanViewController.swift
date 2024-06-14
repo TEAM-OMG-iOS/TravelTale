@@ -11,7 +11,16 @@ final class TravelPlanViewController: BaseViewController {
     
     // MARK: - properties
     private let travelPlanView = TravelPlanView()
-    private let travelViewModel = TravelViewModel()
+    
+    private var travels: [Travel] = [] {
+        didSet {
+            splitTravels()
+            travelPlanView.tableView.reloadData()
+        }
+    }
+    
+    private var upcomingTravels: [Travel] = []
+    private var pastTravels: [Travel] = []
     
     // MARK: - life cycles
     override func loadView() {
@@ -30,7 +39,7 @@ final class TravelPlanViewController: BaseViewController {
     // MARK: - methods
     // TODO: 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
     private func addTemporaryData() {
-        travelViewModel.travelArray.value.append(contentsOf: [
+        travels.append(contentsOf: [
             Travel(
                 image: nil,
                 title: "200일 여행 with 남자친구",
@@ -77,14 +86,19 @@ final class TravelPlanViewController: BaseViewController {
         travelPlanView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
     }
     
-    override func bind() {   
-        travelViewModel.travelArray.bind { [weak self] _ in
-            guard let self = self else { return }
-            travelViewModel.splitTravelArray()
-            travelPlanView.tableView.reloadData()
+    private func splitTravels() {
+        let today = Date()
+        upcomingTravels.removeAll()
+        pastTravels.removeAll()
+        
+        for travel in travels {
+            if travel.endDate >= today {
+                upcomingTravels.append(travel)
+            } else {
+                pastTravels.append(travel)
+            }
         }
     }
-    
     
     // MARK: - objc method
     @objc func tappedAddButton() {
@@ -103,9 +117,9 @@ extension TravelPlanViewController: UITableViewDataSource {
     // row cell
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return travelViewModel.upcomingTravels.count
+            return upcomingTravels.count
         } else {
-            return travelViewModel.pastTravels.count
+            return pastTravels.count
         }
     }
     
@@ -114,9 +128,9 @@ extension TravelPlanViewController: UITableViewDataSource {
         
         let travel: Travel
         if indexPath.section == 0 {
-            travel = travelViewModel.upcomingTravels[indexPath.row]
+            travel = upcomingTravels[indexPath.row]
         } else {
-            travel = travelViewModel.pastTravels[indexPath.row]
+            travel = pastTravels[indexPath.row]
         }
         
         cell.bind(travel: travel)
@@ -127,6 +141,19 @@ extension TravelPlanViewController: UITableViewDataSource {
 }
 
 extension TravelPlanViewController: UITableViewDelegate {
+    // cell 선택 시
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return }
+        
+        let travelMemoryDetailViewController = TravelMemoryDetailViewController(travelData: travels[indexPath.row])
+        navigationController?.pushViewController(travelMemoryDetailViewController, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
+    // Header, Footer
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TravelSectionHeaderView.identifier) as? TravelSectionHeaderView else { return UIView() }
         

@@ -18,7 +18,6 @@
 		1AA861792C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861782C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift */; };
 		1AA8617B2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8617A2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift */; };
 		1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */; };
-		1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537882C105D0300A70D5E /* TravelViewModel.swift */; };
 		1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378A2C10612F00A70D5E /* Observable.swift */; };
 		1AD5378E2C10838A00A70D5E /* Travel(temporary).swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */; };
 		1AD537902C12CF4900A70D5E /* TravelPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378F2C12CF4900A70D5E /* TravelPlanView.swift */; };
@@ -99,7 +98,6 @@
 		1AA861782C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailTableViewCell.swift; sourceTree = "<group>"; };
 		1AA8617A2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailHeaderView.swift; sourceTree = "<group>"; };
 		1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTableViewCell.swift; sourceTree = "<group>"; };
-		1AD537882C105D0300A70D5E /* TravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewModel.swift; sourceTree = "<group>"; };
 		1AD5378A2C10612F00A70D5E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Travel(temporary).swift"; sourceTree = "<group>"; };
 		1AD5378F2C12CF4900A70D5E /* TravelPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanView.swift; sourceTree = "<group>"; };
@@ -293,7 +291,6 @@
 				4D0E3CE92C12E9240089D6C1 /* MemoAdd */,
 				378CEC2C2C0D685300DF1C3F /* Travel */,
 				1AA861732C1ACB7C007F69E7 /* TravelMemory */,
-				1AD537882C105D0300A70D5E /* TravelViewModel.swift */,
 				378CEC352C0D68F900DF1C3F /* TravelViewController.swift */,
 				4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */,
 				4D0E3CE22C1076570089D6C1 /* PlaceAddViewController.swift */,
@@ -577,7 +574,6 @@
 				1AD537902C12CF4900A70D5E /* TravelPlanView.swift in Sources */,
 				378CEC302C0D68A200DF1C3F /* TravelView.swift in Sources */,
 				37CB880D2C0D796C002798BE /* UILabel+Extension.swift in Sources */,
-				1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */,
 				1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */,
 				378CEC342C0D68DE00DF1C3F /* MyPageView.swift in Sources */,
 				1AD5378E2C10838A00A70D5E /* Travel(temporary).swift in Sources */,

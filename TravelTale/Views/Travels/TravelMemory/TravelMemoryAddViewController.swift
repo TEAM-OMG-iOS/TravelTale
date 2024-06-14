@@ -11,7 +11,8 @@ class TravelMemoryAddViewController: BaseViewController {
     
     // MARK: - properties
     private let travelMemoryAddView = TravelMemoryAddView()
-    private let travelViewModel = TravelViewModel()
+    
+    private var travels: [Travel] = []
     
     private var selectedIndexPath: IndexPath?
     
@@ -35,7 +36,7 @@ class TravelMemoryAddViewController: BaseViewController {
     // MARK: - methods
     // TODO: 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
     private func addTemporaryData() {
-        travelViewModel.travelArray.value.append(contentsOf: [
+        travels.append(contentsOf: [
             Travel(
                 image: nil,
                 title: "200일 여행 with 남자친구",
@@ -97,7 +98,7 @@ class TravelMemoryAddViewController: BaseViewController {
     
     @objc func tappedConfirmButton() {
         if let selectedIndexPath = selectedIndexPath {
-            let selectedTravel = travelViewModel.travelArray.value[selectedIndexPath.row]
+            let selectedTravel = travels[selectedIndexPath.row]
             let nextVC = TravelMemoryDetailEditViewController(travelData: selectedTravel)
             navigationController?.pushViewController(nextVC, animated: true)
         } else {
@@ -108,13 +109,13 @@ class TravelMemoryAddViewController: BaseViewController {
 
 extension TravelMemoryAddViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return travelViewModel.travelArray.value.count
+        return travels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return UITableViewCell() }
         
-        let travel = travelViewModel.travelArray.value[indexPath.row]
+        let travel = travels[indexPath.row]
         
         cell.bind(travel: travel)
         cell.selectionStyle = .none

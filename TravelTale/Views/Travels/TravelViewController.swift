@@ -11,7 +11,6 @@ final class TravelViewController: BaseViewController {
     
     // MARK: - properties
     private let travelView = TravelView()
-    private let travelViewModel = TravelViewModel()
     
     //  childVC
     private let travelPlanVC = TravelPlanViewController()
