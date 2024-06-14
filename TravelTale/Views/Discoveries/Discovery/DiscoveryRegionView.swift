@@ -143,7 +143,7 @@ final class DiscoveryRegionView: BaseView {
         label.textColor = .black
     }
     
-    func updateSubmitButtonAppearance() {
+    private func updateSubmitButtonAppearance() {
         submitButton.backgroundColor = submitButton.isEnabled ? .green100 : .green10
     }
     
