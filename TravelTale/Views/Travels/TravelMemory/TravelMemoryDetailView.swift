@@ -16,15 +16,21 @@ class TravelMemoryDetailView: BaseView {
         $0.tintColor = .gray90
       }
     
+    let editButton = UIBarButtonItem().then {
+        $0.style = .done
+        $0.image = UIImage(systemName: "pencil.line")
+        $0.tintColor = .gray90
+    }
+    
     private let travelInfoStackView = UIStackView().then {
         $0.axis = .horizontal
     }
     
     private let provinceLabel = UILabel().then {
-        $0.configureView(color: .blueBlack100, cornerRadius: 10)
+        $0.configureView(color: .blueBlack100, clipsToBounds: true, cornerRadius: 10)
         $0.configureLabel(alignment: .center,
-                          color: .gray100,
-                          font: .oaGothic(size: 10, weight: .medium))
+                          color: .white,
+                          font: .pretendard(size: 12, weight: .medium))
         $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
@@ -41,11 +47,7 @@ class TravelMemoryDetailView: BaseView {
         $0.configureView(color: .gray10)
     }
     
-    private let recordLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 14, weight: .medium), numberOfLines: 0)
-    }
-    
-    let tableView = UITableView()
+    let tableView = UITableView(frame: CGRect.zero, style: .grouped)
     
     
     // MARK: - methods
@@ -53,16 +55,14 @@ class TravelMemoryDetailView: BaseView {
         [travelInfoStackView,
          travelTitleLabel,
          borderLine,
-         recordLabel,
          tableView].forEach { self.addSubview($0) }
         
-        [provinceLabel,
-         periodLabel].forEach { travelInfoStackView.addArrangedSubview($0) }
+        [periodLabel,
+         provinceLabel].forEach { travelInfoStackView.addArrangedSubview($0) }
     }
     
     override func configureConstraints() {
-        let phoneWidth = UIScreen.main.bounds.width
-        let horizontalInset = CGFloat(20)
+        let horizontalInset = CGFloat(24)
         
         travelInfoStackView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(10)
@@ -85,9 +85,10 @@ class TravelMemoryDetailView: BaseView {
             $0.height.equalTo(4)
         }
         
-        recordLabel.snp.makeConstraints {
-            $0.top.equalTo(borderLine.snp.bottom).offset(20)
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(borderLine.snp.bottom)
             $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
+            $0.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
     
@@ -95,6 +96,5 @@ class TravelMemoryDetailView: BaseView {
         provinceLabel.text = travel.province ?? "미정"
         periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
         travelTitleLabel.text = travel.title
-        recordLabel.text = travel.travelJournal
     }
 }
