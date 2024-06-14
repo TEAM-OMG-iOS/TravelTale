@@ -98,7 +98,6 @@ final class ScheduleCreateViewController: BaseViewController {
         popoverPresentationController?.permittedArrowDirections = .up
     }
     
-    // MARK: - objc func
     @objc private func handleBackButton(_ sender: UIButton) {
         switch sender.tag {
         case 0:

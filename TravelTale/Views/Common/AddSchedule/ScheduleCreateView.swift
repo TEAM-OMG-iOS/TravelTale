@@ -137,14 +137,13 @@ final class ScheduleCreateView: BaseView {
         loadingBackBar.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(18)
             $0.height.equalTo(8)
-            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(19.5)
+            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(24)
         }
         
         loadingBar.snp.makeConstraints {
             $0.leading.equalToSuperview()
-            $0.top.equalToSuperview()
+            $0.verticalEdges.equalToSuperview()
             $0.height.equalToSuperview()
-            $0.bottom.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(0.5)
         }
         
@@ -155,7 +154,7 @@ final class ScheduleCreateView: BaseView {
         
         placeView.snp.makeConstraints {
             $0.top.equalTo(viewLabel.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(48)
         }
         
@@ -171,7 +170,7 @@ final class ScheduleCreateView: BaseView {
         
         scheduleView.snp.makeConstraints {
             $0.top.equalTo(placeView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalTo(placeView.snp.horizontalEdges)
+            $0.horizontalEdges.equalTo(placeView)
             $0.height.equalTo(placeView.snp.height)
         }
         
@@ -191,7 +190,7 @@ final class ScheduleCreateView: BaseView {
         
         startTimeView.snp.makeConstraints {
             $0.top.equalTo(scheduleView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalTo(scheduleView.snp.horizontalEdges)
+            $0.horizontalEdges.equalTo(scheduleView)
             $0.height.equalTo(scheduleView.snp.height)
         }
         
@@ -211,7 +210,7 @@ final class ScheduleCreateView: BaseView {
         
         memoView.snp.makeConstraints {
             $0.top.equalTo(startTimeView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalTo(startTimeView.snp.horizontalEdges)
+            $0.horizontalEdges.equalTo(startTimeView)
             $0.bottom.greaterThanOrEqualTo(btnStackView.snp.top).offset(-20)
         }
         
@@ -227,7 +226,7 @@ final class ScheduleCreateView: BaseView {
         }
         
         btnStackView.snp.makeConstraints {
-            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
+            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(24)
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(25)
         }
         
@@ -247,9 +246,8 @@ final class ScheduleCreateView: BaseView {
     func startLoadingAnimation() {
         self.loadingBar.snp.remakeConstraints {
             $0.leading.equalToSuperview()
-            $0.top.equalToSuperview()
+            $0.verticalEdges.equalToSuperview()
             $0.centerY.equalToSuperview()
-            $0.bottom.equalToSuperview()
             let fullwidth = loadingBackBar.frame.size.width
             $0.width.equalTo(fullwidth)
         }
@@ -262,7 +260,7 @@ final class ScheduleCreateView: BaseView {
     func setBeginText(textView: UITextView) {
         if textView.textColor == .gray80 {
             textView.text = nil
-            textView.textColor = UIColor.black
+            textView.textColor = .black
         }
     }
     
