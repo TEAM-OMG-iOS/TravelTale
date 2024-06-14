@@ -47,7 +47,9 @@ class TravelMemoryDetailView: BaseView {
         $0.configureView(color: .gray10)
     }
     
-    let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+    let tableView = UITableView(frame: CGRect.zero, style: .grouped).then {
+        $0.backgroundColor = .clear
+    }
     
     
     // MARK: - methods
@@ -87,7 +89,7 @@ class TravelMemoryDetailView: BaseView {
         
         tableView.snp.makeConstraints {
             $0.top.equalTo(borderLine.snp.bottom)
-            $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
+            $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
