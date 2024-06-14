@@ -151,18 +151,10 @@ extension TravelPlanViewController: UITableViewDataSource {
 extension TravelPlanViewController: UITableViewDelegate {
     // cell 선택 시
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let travel: Travel
-        if indexPath.section == 0 {
-            travel = upcomingTravels[indexPath.row]
-        } else {
-            travel = pastTravels[indexPath.row]
-        }
-        
-        // TODO: nextVC 수정
-        let nextVC = TravelMemoryDetailViewController(travelData: travel)
+        let nextVC = TravelDetailViewController()
         navigationController?.pushViewController(nextVC, animated: true)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
