@@ -30,35 +30,40 @@ final class DiscoveryRegionView: BaseView {
     
     private let currentCityLabel = UILabel().then {
         $0.configureLabel(color: .gray80,
-                          font: .pretendard(size: 16, weight: .regular),
-                          text: "대구시")
+                          font: .pretendard(size: 16, weight: .regular))
     }
     
     private let districtBackground = GrayBackgroundView()
     
     private let districtLabel = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold),
-                          text: "구/군")
+                          text: "시/군/구")
     }
     
     let districtButton = UIButton().then {
         $0.setImage(.init(systemName: "chevron.down"), for: .normal)
         $0.tintColor = .gray90
+        $0.isEnabled = false
     }
     
     private let currentDistrictLabel = UILabel().then {
         $0.configureLabel(color: .gray80,
-                          font: .pretendard(size: 16, weight: .regular),
-                          text: "달서구")
+                          font: .pretendard(size: 16, weight: .regular))
     }
     
     let submitButton = GreenButton().then {
         $0.configureButton(fontColor: .white,
                            font: .pretendard(size: 20, weight: .heavy),
                            text: "완료")
+        $0.isEnabled = false
     }
     
     // MARK: - methods
+    override func configureUI() {
+        super.configureUI()
+        updateSubmitButtonAppearance()
+    }
+    
     override func configureHierarchy() {
         self.addSubview(cityBackground)
         self.addSubview(cityLabel)
@@ -73,7 +78,7 @@ final class DiscoveryRegionView: BaseView {
     
     override func configureConstraints() {
         cityBackground.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.top.equalTo(safeAreaLayoutGuide).offset(44)
         }
         
@@ -115,8 +120,44 @@ final class DiscoveryRegionView: BaseView {
         }
         
         submitButton.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview().inset(24)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
         }
+    }
+    
+    func selectCity(cityName: String) {
+        let isSejongCity = (cityName == "세종특별자치시")
+        
+        updateLabel(label: currentCityLabel, text: cityName)
+        currentDistrictLabel.text = isSejongCity ? "" : "시/구/군을 선택해주세요."
+        currentDistrictLabel.textColor = isSejongCity ? .black : .gray80
+        districtButton.isEnabled = !isSejongCity
+        
+        updateSubmitButtonState(city: cityName)
+    }
+    
+    func selectDistrict(districtName: String) {
+        updateLabel(label: currentDistrictLabel, text: districtName)
+        
+        updateSubmitButtonState(district: districtName)
+    }
+    
+    private func updateLabel(label: UILabel, text: String) {
+        label.text = text
+        label.textColor = .black
+    }
+    
+    private func updateSubmitButtonAppearance() {
+        submitButton.backgroundColor = submitButton.isEnabled ? .green100 : .green10
+    }
+    
+    func updateSubmitButtonState(city: String = "도시", district: String = "") {
+        submitButton.isEnabled = !city.isEmpty && !district.isEmpty || city == "세종특별자치시"
+        updateSubmitButtonAppearance()
+    }
+    
+    func setCityAndDistrictLabels(cityName: String, districtName: String) {
+        currentCityLabel.text = cityName
+        currentDistrictLabel.text = districtName
     }
 }
