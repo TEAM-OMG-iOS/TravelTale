@@ -94,8 +94,8 @@ final class TravelDetailPlanContentCell: BaseTableViewCell {
         }
         
         numberLabel.snp.makeConstraints {
-            $0.centerX.equalTo(verticalLineView.snp.centerX)
-            $0.centerY.equalTo(basedView.snp.centerY)
+            $0.centerX.equalTo(verticalLineView)
+            $0.centerY.equalTo(basedView)
             $0.size.equalTo(20)
         }
         

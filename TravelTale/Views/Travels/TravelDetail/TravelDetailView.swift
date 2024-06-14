@@ -53,7 +53,7 @@ final class TravelDetailView: BaseView {
     override func configureConstraints() {
         periodLabel.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(12)
-            $0.leading.equalToSuperview().offset(20)
+            $0.leading.equalToSuperview().offset(24)
         }
         
         locationImageView.snp.makeConstraints {
@@ -64,16 +64,16 @@ final class TravelDetailView: BaseView {
         locationLabel.snp.makeConstraints {
             $0.top.equalTo(periodLabel)
             $0.leading.equalTo(locationImageView.snp.trailing).offset(4)
-            $0.trailing.lessThanOrEqualToSuperview().inset(-20)
+            $0.trailing.lessThanOrEqualToSuperview().offset(-24)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(periodLabel.snp.bottom).offset(6)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.equalTo(periodLabel.snp.bottom).offset(4)
+            $0.horizontalEdges.equalToSuperview().inset(24)
         }
         
         mapView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(14)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(16)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
     }
