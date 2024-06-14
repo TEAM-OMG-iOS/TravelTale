@@ -41,7 +41,7 @@ class TravelMemoryAddView: BaseView {
         confirmButton.snp.makeConstraints {
             $0.top.equalTo(tableView.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(24)
-            $0.bottom.equalTo(self.safeAreaLayoutGuide)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
         }
     }
 }
