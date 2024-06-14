@@ -114,7 +114,7 @@ class TravelMemoryDetailEditView: BaseView {
     }
     
     let confirmButton = GreenButton().then {
-        $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "선택 완료")
+        $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "기록 완료")
         $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
     
@@ -149,7 +149,7 @@ class TravelMemoryDetailEditView: BaseView {
     
     override func configureConstraints() {
         let phoneWidth = UIScreen.main.bounds.width
-        let horizontalInset = CGFloat(20)
+        let horizontalInset = CGFloat(24)
         
         travelInfoStackView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(10)
@@ -229,7 +229,8 @@ class TravelMemoryDetailEditView: BaseView {
         provinceLabel.text = travel.province ?? "미정"
         periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
         travelTitleLabel.text = travel.title
-        recordTextView.text = travel.travelJournal
+        recordTextView.text = travel.memoryNote
+        updatePhotoCount(count: travel.memoryImageDatas.count)
         
         if isTextViewEmpty() {
             setTextViewPlaceHolder()
