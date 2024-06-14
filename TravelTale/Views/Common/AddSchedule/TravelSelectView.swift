@@ -54,7 +54,7 @@ final class TravelSelectView: BaseView {
         loadingBackBar.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(18)
             $0.height.equalTo(8)
-            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(19.5)
+            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(24)
         }
         
         loadingBar.snp.makeConstraints {
@@ -71,9 +71,8 @@ final class TravelSelectView: BaseView {
         
         tableView.snp.makeConstraints {
             $0.top.equalTo(tableViewLabel.snp.bottom).offset(28)
-            $0.leading.equalTo(loadingBackBar.snp.leading)
+            $0.horizontalEdges.equalTo(loadingBackBar)
             $0.bottom.equalTo(nextBtn.snp.top)
-            $0.width.equalTo(loadingBackBar)
         }
         
         nextBtn.snp.makeConstraints {
