@@ -54,7 +54,7 @@ final class MemoAddView: BaseView {
     override func configureConstraints() {
         memoView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
+            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(24)
             $0.bottom.lessThanOrEqualTo(safeAreaLayoutGuide).inset(50)
             $0.height.equalTo(300)
         }
@@ -74,7 +74,7 @@ final class MemoAddView: BaseView {
         
         completeBtn.snp.makeConstraints {
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
+            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(24)
             $0.height.equalTo(52)
         }
     }
