@@ -132,10 +132,14 @@ final class DiscoveryRegionView: BaseView {
         currentDistrictLabel.text = isSejongCity ? "" : "구/군을 선택해주세요."
         currentDistrictLabel.textColor = isSejongCity ? .black : .gray80
         districtButton.isEnabled = !isSejongCity
+        
+        updateSubmitButtonState(city: cityName)
     }
     
     func selectDistrict(districtName: String) {
         updateLabel(label: currentDistrictLabel, text: districtName)
+        
+        updateSubmitButtonState(district: districtName)
     }
     
     private func updateLabel(label: UILabel, text: String) {
@@ -147,7 +151,7 @@ final class DiscoveryRegionView: BaseView {
         submitButton.backgroundColor = submitButton.isEnabled ? .green100 : .green10
     }
     
-    func updateSubmitButtonState(city: String, district: String) {
+    func updateSubmitButtonState(city: String = "도시", district: String = "") {
         submitButton.isEnabled = !city.isEmpty && !district.isEmpty || city == "세종특별자치시"
         updateSubmitButtonAppearance()
     }
