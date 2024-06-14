@@ -37,7 +37,7 @@ final class DiscoveryRegionView: BaseView {
     
     private let districtLabel = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold),
-                          text: "구/군")
+                          text: "시/군/구")
     }
     
     let districtButton = UIButton().then {
@@ -129,7 +129,7 @@ final class DiscoveryRegionView: BaseView {
         let isSejongCity = (cityName == "세종특별자치시")
         
         updateLabel(label: currentCityLabel, text: cityName)
-        currentDistrictLabel.text = isSejongCity ? "" : "구/군을 선택해주세요."
+        currentDistrictLabel.text = isSejongCity ? "" : "시/구/군을 선택해주세요."
         currentDistrictLabel.textColor = isSejongCity ? .black : .gray80
         districtButton.isEnabled = !isSejongCity
         

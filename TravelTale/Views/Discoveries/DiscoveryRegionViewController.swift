@@ -68,8 +68,8 @@ final class DiscoveryRegionViewController: BaseViewController {
         discoveryRegionModalVC.bind(isCity: true)
         discoveryRegionModalVC.completion = { [weak self] text in
             guard let self = self else { return }
-            selectedCity = text
-            discoveryRegionView.selectCity(cityName: selectedCity)
+            self.selectedCity = text
+            discoveryRegionView.selectCity(cityName: self.selectedCity)
         }
         
         self.present(discoveryRegionModalVC, animated: true)
@@ -85,8 +85,8 @@ final class DiscoveryRegionViewController: BaseViewController {
         discoveryRegionModalVC.bind(isCity: false, city: selectedCity)
         discoveryRegionModalVC.completion = { [weak self] text in
             guard let self = self else { return }
-            selectedDistrict = text
-            discoveryRegionView.selectDistrict(districtName: selectedDistrict)
+            self.selectedDistrict = text
+            discoveryRegionView.selectDistrict(districtName: self.selectedDistrict)
         }
         
         self.present(discoveryRegionModalVC, animated: true)

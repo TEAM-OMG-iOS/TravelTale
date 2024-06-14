@@ -39,7 +39,7 @@ final class DiscoveryRegionModalViewController: BaseViewController {
             locationView.bind(text: "시/도 선택")
         } else {
             regionData = RegionData().getRegionData(cityString: city)
-            locationView.bind(text: "구/군 선택")
+            locationView.bind(text: "시/군/구 선택")
         }
     }
 }
