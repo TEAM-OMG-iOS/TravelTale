@@ -98,7 +98,8 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
     }
     
     @objc func tappedConfirmButton() {
-        print("tappedConfirmButton")
+        // TODO: realm - travel 데이터 업데이트 로직 추가
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
 
