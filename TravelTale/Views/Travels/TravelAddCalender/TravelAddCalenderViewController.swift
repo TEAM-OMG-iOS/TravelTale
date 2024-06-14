@@ -176,6 +176,7 @@ class TravelAddCalenderViewController: BaseViewController, CalendarViewControlle
                 existingDayRange: &selectedDayRange)
             
             selectedDate = calendar.date(from: day.components)
+            self.setDateLabel()
             calendarView.setContent(makeContent())
         }
         
@@ -189,10 +190,32 @@ class TravelAddCalenderViewController: BaseViewController, CalendarViewControlle
                 state: state,
                 calendar: calendar)
             
+            self.setDateLabel()
             calendarView.setContent(makeContent())
         }
     }
-
+    
+    private func setDateLabel() {
+        if let startDate = calendar.date(from: selectedDayRange?.lowerBound.components ?? DateComponents()),
+           let endDate = calendar.date(from: selectedDayRange?.upperBound.components ?? DateComponents()) {
+            travelAddCalenderView.setStartDate(startDate)
+            travelAddCalenderView.setEndDate(endDate)
+            
+            if startDate == endDate {
+                travelAddCalenderView.okButton.isEnabled = true
+                travelAddCalenderView.okButton.backgroundColor = .green100
+                travelAddCalenderView.okButton.setTitle("당일치기", for: .normal)
+            } else {
+                
+                if let days = calendar.dateComponents([.day], from: startDate, to: endDate).day {
+                    let n = days + 1
+                    travelAddCalenderView.okButton.setTitle("\(n-1)박 \(n)일", for: .normal)
+                    
+                }
+            }
+        }
+    }
+    
     private func configureNavigationBarItems() {
         navigationItem.title = "새 여행 추가"
         navigationItem.leftBarButtonItem = travelAddCalenderView.backButton
