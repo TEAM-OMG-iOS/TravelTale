@@ -15,10 +15,15 @@ class PlaceAdditionViewController: BaseViewController {
     @IBOutlet weak var startTimeBtn: UIButton!
     @IBOutlet weak var memoTV: UITextView!
     @IBOutlet weak var scheduleContents: UILabel!
+    @IBOutlet weak var scheduleBtn: UIButton!
     @IBOutlet weak var naviTitle: UINavigationItem!
     @IBOutlet weak var completedBtn: UIButton!
     
+    private let dayPopoverVC = DaySelectPopoverViewController()
+    
     private let timePopoverVC = TimeSelectPopoverViewController()
+    
+    var selectedDays: String?
     
     var selectedTime: Date?
     
@@ -26,8 +31,9 @@ class PlaceAdditionViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedDays), name: .selectedDaysUpdated, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedTime), name: .selectedTimeUpdated, object: nil)
-        checkBlackText()
     }
     
     // MARK: - methods
@@ -37,36 +43,6 @@ class PlaceAdditionViewController: BaseViewController {
     
     override func bind() {
         // TODO: - 일정 데이터 추가 시 수정 예정
-    }
-    
-    private func setBeginText(textView: UITextView) {
-        if textView.text == "메모를 입력해주세요" {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
-    }
-    
-    private func setEndText(textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "메모를 입력해주세요"
-            textView.textColor = .gray80
-        }
-    }
-    
-    private func configurePopover(for popoverVC: UIViewController, sourceButton: UIButton) {
-        popoverVC.modalPresentationStyle = .popover
-        popoverVC.preferredContentSize = CGSize(width: 300, height: 200)
-        let popoverPresentationController = popoverVC.popoverPresentationController
-        popoverPresentationController?.sourceView = sourceButton
-        popoverPresentationController?.sourceRect = CGRect(
-            origin: CGPoint(x: sourceButton.bounds.maxX - 50, y: sourceButton.bounds.midY + 10),
-            size: .zero
-        )
-        popoverPresentationController?.permittedArrowDirections = .up
-    }
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.none
     }
     
     private func checkBlackText() {
@@ -103,17 +79,44 @@ class PlaceAdditionViewController: BaseViewController {
         return formatter.string(from: date)
     }
     
+    private func bindingDays() {
+        scheduleContents.text = selectedDays
+    }
+    
     private func bindingTime() {
         startTimeContents.text = dateFormat(date: selectedTime ?? Date())
     }
     
-    @objc private func updateSelectedTime(_ notification: Notification) {
+    private func configurePopover(for popoverVC: UIViewController, sourceButton: UIButton) {
+        popoverVC.modalPresentationStyle = .popover
+        popoverVC.preferredContentSize = CGSize(width: 300, height: 200)
+        let popoverPresentationController = popoverVC.popoverPresentationController
+        popoverPresentationController?.sourceView = sourceButton
+        popoverPresentationController?.sourceRect = CGRect(
+            origin: CGPoint(x: sourceButton.bounds.maxX - 50, y: sourceButton.bounds.midY + 10),
+            size: .zero
+        )
+        popoverPresentationController?.permittedArrowDirections = .up
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+    
+    @objc func updateSelectedDays(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let selectedDays = userInfo["selectedDays"] as? String else { return }
+        
+        self.selectedDays = selectedDays
+        self.bindingDays()
+    }
+    
+    @objc func updateSelectedTime(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let selectedTime = userInfo["selectedTime"] as? Date else { return }
         
         self.selectedTime = selectedTime
         self.bindingTime()
-        self.checkBlackText()
     }
     
     @IBAction func tappedPlaceBtn(_ sender: UIButton) {
@@ -134,6 +137,12 @@ class PlaceAdditionViewController: BaseViewController {
 
 // MARK: - extensions
 extension PlaceAdditionViewController: UIPopoverPresentationControllerDelegate {
+    @IBAction func tappedScheduleBtn(_ sender: UIButton) {
+        configurePopover(for: dayPopoverVC, sourceButton: scheduleBtn)
+        dayPopoverVC.popoverPresentationController?.delegate = self
+        present(dayPopoverVC, animated: true)
+    }
+    
     @IBAction func tappedStartTimeBtn(_ sender: UIButton) {
         configurePopover(for: timePopoverVC, sourceButton: startTimeBtn)
         timePopoverVC.popoverPresentationController?.delegate = self
@@ -143,10 +152,16 @@ extension PlaceAdditionViewController: UIPopoverPresentationControllerDelegate {
 
 extension PlaceAdditionViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        setBeginText(textView: textView)
+        if textView.text == "메모를 입력해주세요" {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        setEndText(textView: textView)
+        if textView.text.isEmpty {
+            textView.text = "메모를 입력해주세요"
+            textView.textColor = .gray80
+        }
     }
 }

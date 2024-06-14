@@ -86,6 +86,9 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="tappedScheduleBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="lLl-DJ-Ali"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일정" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSk-IK-Dfw">
                                         <rect key="frame" x="16" y="14.666666666666657" width="28" height="19"/>
@@ -93,8 +96,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day 1 | 24년 01월 01일" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mi9-U6-3Sy">
-                                        <rect key="frame" x="175.33333333333337" y="14.666666666666657" width="153.66666666666663" height="19"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mi9-U6-3Sy">
+                                        <rect key="frame" x="290" y="14.666666666666657" width="39" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -327,6 +330,7 @@
                         <outlet property="memoTV" destination="myO-bl-qwB" id="FEe-Bn-Sqm"/>
                         <outlet property="naviTitle" destination="q09-FR-rwG" id="8Da-kZ-6cY"/>
                         <outlet property="placeContents" destination="R0G-Jv-XNZ" id="GpJ-FO-9DZ"/>
+                        <outlet property="scheduleBtn" destination="qG2-0c-hca" id="dxy-MN-Esz"/>
                         <outlet property="scheduleContents" destination="Mi9-U6-3Sy" id="Zlz-OH-bmO"/>
                         <outlet property="startTimeBtn" destination="AkE-1p-vMC" id="gby-Y1-dFj"/>
                         <outlet property="startTimeContents" destination="9p2-mc-mqr" id="fsh-Yc-JqK"/>
@@ -402,8 +406,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day 1 | 24년 01월 01일" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cW6-Is-0vw">
-                                        <rect key="frame" x="175.33333333333337" y="14.666666666666657" width="153.66666666666663" height="19"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cW6-Is-0vw">
+                                        <rect key="frame" x="290" y="14.666666666666657" width="39" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -452,7 +456,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오전 9:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFz-fA-VhN">
-                                        <rect key="frame" x="264" y="14.666666666666686" width="65" height="19"/>
+                                        <rect key="frame" x="264.33333333333331" y="14.666666666666686" width="64.666666666666686" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -487,13 +491,13 @@
                                 <rect key="frame" x="24" y="339" width="345" height="177"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybr-CU-bjg">
-                                        <rect key="frame" x="16" y="14.000000000000002" width="28" height="19.666666666666671"/>
+                                        <rect key="frame" x="16" y="14.000000000000002" width="28" height="18.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S3B-Wn-c32">
-                                        <rect key="frame" x="10" y="37.666666666666686" width="325" height="129.33333333333334"/>
+                                        <rect key="frame" x="10" y="36.666666666666686" width="325" height="130.33333333333334"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
                                             <fragment content="메모를 입력해주세요">

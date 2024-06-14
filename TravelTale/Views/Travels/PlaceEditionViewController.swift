@@ -9,7 +9,7 @@ import UIKit
 
 class PlaceEditionViewController: BaseViewController {
     
-    // MARK: - IBOutlet
+    // MARK: - properties
     @IBOutlet weak var placeContents: UILabel!
     @IBOutlet weak var startTimeContents: UILabel!
     @IBOutlet weak var startTimeBtn: UIButton!
@@ -19,7 +19,6 @@ class PlaceEditionViewController: BaseViewController {
     @IBOutlet weak var naviTitle: UINavigationItem!
     @IBOutlet weak var completedBtn: UIButton!
     
-    // MARK: - properties
     private let dayPopoverVC = DaySelectPopoverViewController()
     
     private let timePopoverVC = TimeSelectPopoverViewController()
@@ -46,18 +45,19 @@ class PlaceEditionViewController: BaseViewController {
         // TODO: - 일정 데이터 추가 시 수정 예정
     }
     
-    private func setBeginText(textView: UITextView) {
-        if textView.text == "메모를 입력해주세요" {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
+    private func dateFormat(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "a hh:mm"
+        return formatter.string(from: date)
     }
     
-    private func setEndText(textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "메모를 입력해주세요"
-            textView.textColor = .gray80
-        }
+    private func bindingDays() {
+        scheduleContents.text = selectedDays
+    }
+    
+    private func bindingTime() {
+        startTimeContents.text = dateFormat(date: selectedTime ?? Date())
     }
     
     private func configurePopover(for popoverVC: UIViewController, sourceButton: UIButton) {
@@ -76,22 +76,6 @@ class PlaceEditionViewController: BaseViewController {
         return UIModalPresentationStyle.none
     }
     
-    private func dateFormat(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "a hh:mm"
-        return formatter.string(from: date)
-    }
-    
-    private func bindingDays() {
-        scheduleContents.text = selectedDays
-    }
-    
-    private func bindingTime() {
-        startTimeContents.text = dateFormat(date: selectedTime ?? Date())
-    }
-    
-    // MARK: - objc func
     @objc func updateSelectedDays(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let selectedDays = userInfo["selectedDays"] as? String else { return }
@@ -106,12 +90,6 @@ class PlaceEditionViewController: BaseViewController {
         
         self.selectedTime = selectedTime
         self.bindingTime()
-    }
-    
-    // MARK: - IBAction
-    @IBAction func tappedPlaceBtn(_ sender: UIButton) {
-        // TODO: - 장소 검색 화면으로 이동 구현 예정
-        print("tappedPlaceBtn")
     }
     
     @IBAction func tappedCompletedBtn(_ sender: UIButton) {
@@ -152,10 +130,16 @@ extension PlaceEditionViewController: UIPopoverPresentationControllerDelegate {
 
 extension PlaceEditionViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        setBeginText(textView: textView)
+        if textView.text == "메모를 입력해주세요" {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        setEndText(textView: textView)
+        if textView.text.isEmpty {
+            textView.text = "메모를 입력해주세요"
+            textView.textColor = .gray80
+        }
     }
 }
