@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TravelMemoryDetailViewController: BaseViewController {
+final class TravelMemoryDetailViewController: BaseViewController {
     
     // MARK: - properties
     private let travelMemoryDetailView = TravelMemoryDetailView()

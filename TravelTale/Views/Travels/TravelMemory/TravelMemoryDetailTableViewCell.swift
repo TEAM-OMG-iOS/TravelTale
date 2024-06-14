@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TravelMemoryDetailTableViewCell: BaseTableViewCell {
+final class TravelMemoryDetailTableViewCell: BaseTableViewCell {
     
     static let identifier = String(describing: TravelMemoryDetailTableViewCell.self)
     

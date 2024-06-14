@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TravelMemoryEditPhotoCollectionViewCell: BaseCollectionViewCell {
+final class TravelMemoryEditPhotoCollectionViewCell: BaseCollectionViewCell {
     
     static let identifier = String(describing: TravelMemoryEditPhotoCollectionViewCell.self)
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TravelMemoryDetailEditView: BaseView {
+final class TravelMemoryDetailEditView: BaseView {
     
     // MARK: - properties
     let exitButton = UIBarButtonItem().then {

@@ -8,7 +8,7 @@
 import Then
 import UIKit
 
-class TravelMemoryDetailHeaderView: UITableViewHeaderFooterView {
+final class TravelMemoryDetailHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - properties
     static let identifier = String(String(describing: TravelMemoryDetailHeaderView.self))
