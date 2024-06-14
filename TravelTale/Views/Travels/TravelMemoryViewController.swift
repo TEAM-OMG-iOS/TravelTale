@@ -39,8 +39,8 @@ final class TravelMemoryViewController: BaseViewController {
                 startDate: createDate(year: 2024, month: 4, day: 1) ?? Date(),
                 endDate: createDate(year: 2024, month: 4, day: 5) ?? Date(),
                 province: nil,
-                travelJournal: nil,
-                memoryImages: [])
+                memoryNote: "yayyyy~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                memoryImageDatas: [UIImage(named: "splash")?.jpegData(compressionQuality: 0.5), UIImage(named: "my_travel")?.jpegData(compressionQuality: 1)])
         ])
     }
     
