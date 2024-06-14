@@ -57,7 +57,7 @@ final class TravelView: BaseView {
     }
     
     override func configureConstraints() {
-        let horizontalInset = 20
+        let horizontalInset = 24
         
         buttonStackView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide.snp.top).offset(10)
