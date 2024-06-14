@@ -20,6 +20,8 @@
 		1AD537A02C13999600A70D5E /* TravelSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5379F2C13999600A70D5E /* TravelSectionHeaderView.swift */; };
 		1AD537A22C13A9F200A70D5E /* SpaceFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */; };
 		2E3525402C1756EF00D82D34 /* DiscoveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */; };
+		2E36056B2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */; };
+		2E36056D2C1AA70F007DFBC1 /* RegionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E36056C2C1AA70F007DFBC1 /* RegionData.swift */; };
 		2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */; };
 		2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */; };
 		378CEBEC2C0D563C00DF1C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */; };
@@ -108,6 +110,8 @@
 		1AD5379F2C13999600A70D5E /* TravelSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSectionHeaderView.swift; sourceTree = "<group>"; };
 		1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceFooterView.swift; sourceTree = "<group>"; };
 		2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryCell.swift; sourceTree = "<group>"; };
+		2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionModalViewController.swift; sourceTree = "<group>"; };
+		2E36056C2C1AA70F007DFBC1 /* RegionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionData.swift; sourceTree = "<group>"; };
 		2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionView.swift; sourceTree = "<group>"; };
 		2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionViewController.swift; sourceTree = "<group>"; };
 		378CEBE82C0D563C00DF1C3F /* TravelTale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelTale.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +208,14 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
+		2E36056F2C1AF38A007DFBC1 /* DiscoveryRegionModal */ = {
+			isa = PBXGroup;
+			children = (
+				2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */,
+			);
+			path = DiscoveryRegionModal;
+			sourceTree = "<group>";
+		};
 		378CEBDF2C0D563C00DF1C3F = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +256,7 @@
 				378CEC402C0D707400DF1C3F /* Fonts */,
 				1AD5378C2C10613900A70D5E /* Class */,
 				1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */,
+				2E36056C2C1AA70F007DFBC1 /* RegionData.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -319,6 +332,7 @@
 				378CEC2D2C0D685D00DF1C3F /* Discovery */,
 				378CEC372C0D690800DF1C3F /* DiscoveryViewController.swift */,
 				2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */,
+				2E36056F2C1AF38A007DFBC1 /* DiscoveryRegionModal */,
 			);
 			path = Discoveries;
 			sourceTree = "<group>";
@@ -640,6 +654,7 @@
 				F193681C2C194D73000AC7B2 /* TravelRenewCalendarViewController.swift in Sources */,
 				4D66945A2C1AE42C0095CC42 /* TimeSelectPopoverViewController.swift in Sources */,
 				378CEBEE2C0D563C00DF1C3F /* SceneDelegate.swift in Sources */,
+				2E36056D2C1AA70F007DFBC1 /* RegionData.swift in Sources */,
 				378CEC322C0D68C600DF1C3F /* DiscoveryView.swift in Sources */,
 				378CEC3A2C0D691900DF1C3F /* MyPageViewController.swift in Sources */,
 				37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */,
@@ -652,6 +667,7 @@
 				378CEC222C0D649D00DF1C3F /* BaseView.swift in Sources */,
 				1AD537982C1362A900A70D5E /* TravelMemoryView.swift in Sources */,
 				2E3525402C1756EF00D82D34 /* DiscoveryCell.swift in Sources */,
+				2E36056B2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift in Sources */,
 				1AD537A02C13999600A70D5E /* TravelSectionHeaderView.swift in Sources */,
 				1AD537A22C13A9F200A70D5E /* SpaceFooterView.swift in Sources */,
 				378CEC202C0D649000DF1C3F /* UIFont+Extension.swift in Sources */,

@@ -34,9 +34,12 @@ final class DiscoveryViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
+        discoveryView.regionLabelButton.addTarget(self, action: #selector(tappedRegionButton), for: .touchUpInside)
         discoveryView.regionButton.addTarget(self, action: #selector(tappedRegionButton), for: .touchUpInside)
+        
         discoveryView.searchButton.target = self
         discoveryView.searchButton.action = #selector(tappedSearchButton)
+        
         [discoveryView.touristSpotButton,
          discoveryView.accommodationButton,
          discoveryView.restaurantButton,
@@ -44,14 +47,21 @@ final class DiscoveryViewController: BaseViewController {
     }
     
     private func configureNavigationBar() {
-        let regionButton = UIBarButtonItem(customView: discoveryView.regionButton)
-        navigationItem.leftBarButtonItem = regionButton
-        
+        navigationItem.leftBarButtonItem = discoveryView.regionBarItem
         navigationItem.rightBarButtonItem = discoveryView.searchButton
     }
     
     @objc private func tappedRegionButton() {
         let discoveryRegionVC = DiscoveryRegionViewController()
+        
+        if let region = discoveryView.regionLabelButton.titleLabel?.text {
+            discoveryRegionVC.setRegionLabels(region: region)
+        }
+        
+        discoveryRegionVC.completion = { [weak self] text in
+            guard let self = self else { return }
+            discoveryView.bind(region: text)
+        }
         
         self.navigationController?.pushViewController(discoveryRegionVC, animated: true)
     }
@@ -61,7 +71,7 @@ final class DiscoveryViewController: BaseViewController {
     }
     
     @objc private func tappedCategoryButton(_ sender: UIButton) {
-        guard let category = sender.titleLabel else { return }
+        // guard let category = sender.titleLabel else { return }
         
         // todo : category 화면 navi로 띄우기
     }
