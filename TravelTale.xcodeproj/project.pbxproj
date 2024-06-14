@@ -15,6 +15,8 @@
 		1AA861702C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8616F2C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift */; };
 		1AA861752C1ACDE5007F69E7 /* TravelMemoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861742C1ACDE5007F69E7 /* TravelMemoryDetailView.swift */; };
 		1AA861772C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861762C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift */; };
+		1AA861792C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861782C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift */; };
+		1AA8617B2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8617A2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift */; };
 		1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */; };
 		1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537882C105D0300A70D5E /* TravelViewModel.swift */; };
 		1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378A2C10612F00A70D5E /* Observable.swift */; };
@@ -94,6 +96,8 @@
 		1AA8616F2C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryEditPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		1AA861742C1ACDE5007F69E7 /* TravelMemoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailView.swift; sourceTree = "<group>"; };
 		1AA861762C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailViewController.swift; sourceTree = "<group>"; };
+		1AA861782C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailTableViewCell.swift; sourceTree = "<group>"; };
+		1AA8617A2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailHeaderView.swift; sourceTree = "<group>"; };
 		1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTableViewCell.swift; sourceTree = "<group>"; };
 		1AD537882C105D0300A70D5E /* TravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewModel.swift; sourceTree = "<group>"; };
 		1AD5378A2C10612F00A70D5E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 				1A95EB5A2C168E78007D575A /* TravelMemoryAddView.swift */,
 				1AA861742C1ACDE5007F69E7 /* TravelMemoryDetailView.swift */,
 				1A95EB622C184EC7007D575A /* TravelMemoryDetailEditView.swift */,
+				1AA8617A2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift */,
+				1AA861782C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift */,
 				1AA8616F2C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift */,
 				1A95EB5E2C16BA88007D575A /* TravelMemoryAddViewController.swift */,
 				1AA861762C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift */,
@@ -551,6 +557,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A95EB5F2C16BA88007D575A /* TravelMemoryAddViewController.swift in Sources */,
+				1AA861792C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift in Sources */,
 				2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */,
 				1AA861752C1ACDE5007F69E7 /* TravelMemoryDetailView.swift in Sources */,
 				1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */,
@@ -590,6 +597,7 @@
 				1AD537982C1362A900A70D5E /* TravelMemoryView.swift in Sources */,
 				1A95EB652C194AB6007D575A /* TravelMemoryDetailEditViewController.swift in Sources */,
 				2E3525402C1756EF00D82D34 /* DiscoveryCell.swift in Sources */,
+				1AA8617B2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift in Sources */,
 				1AD537A02C13999600A70D5E /* TravelSectionHeaderView.swift in Sources */,
 				1AD537A22C13A9F200A70D5E /* SpaceFooterView.swift in Sources */,
 				378CEC202C0D649000DF1C3F /* UIFont+Extension.swift in Sources */,

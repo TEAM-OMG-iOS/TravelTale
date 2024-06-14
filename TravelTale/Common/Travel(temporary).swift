@@ -8,11 +8,11 @@
 import PhotosUI
 
 struct Travel {
-    let image: Data?
-    let title: String
-    let startDate: Date
-    let endDate: Date
-    let province: String?
-    let travelJournal: String?
-    let memoryImages: [Data]?
+    var image: Data?
+    var title: String
+    var startDate: Date
+    var endDate: Date
+    var province: String?
+    var memoryNote: String?
+    var memoryImageDatas: [Data?] = []
 }
