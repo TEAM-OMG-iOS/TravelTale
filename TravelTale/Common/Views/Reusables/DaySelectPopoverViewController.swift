@@ -59,7 +59,7 @@ extension DaySelectPopoverViewController: UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 30.0
+        return 35.0
     }
 }
 
