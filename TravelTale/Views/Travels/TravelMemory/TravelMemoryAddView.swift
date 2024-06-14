@@ -16,10 +16,6 @@ final class TravelMemoryAddView: BaseView {
         $0.tintColor = .gray90
     }
     
-    let navTitleLabel = UILabel().then {
-        $0.configureLabel(color: .black, font: .oaGothic(size: 18, weight: .heavy), text: "추억 남기기")
-    }
-    
     let tableView = UITableView()
     
     let confirmButton = GreenButton().then {
