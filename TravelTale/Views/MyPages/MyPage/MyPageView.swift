@@ -10,10 +10,13 @@ import UIKit
 final class MyPageView: BaseView {
     
     // MARK: - properties
-//    let mypageLabel = UIBarItem().then {
-//        $0.setTitleTextAttributes([ .font: UIFont.oaGothic(size: 20, weight: .heavy) ], for: .normal)
-//        $0.title = "마이페이지"
-//    }
+    private let myPageLabel = UILabel().then {
+        $0.configureLabel(font: .oaGothic(size: 20, weight: .heavy), text: "마이페이지")
+    }
+    
+    private let containverView = UIView()
+    
+    lazy var myPageBarItem = UIBarButtonItem(customView: containverView)
     
     private let bookMarkBackgroundView = UIView().then {
         $0.configureView(color: .green10)
@@ -63,6 +66,7 @@ final class MyPageView: BaseView {
     
     // MARK: - methods
     override func configureHierarchy() {
+        containverView.addSubview(myPageLabel)
         self.addSubview(bookMarkBackgroundView)
         bookMarkBackgroundView.addSubview(bookMarkLabel)
         bookMarkBackgroundView.addSubview(totalButton)
@@ -75,8 +79,14 @@ final class MyPageView: BaseView {
     }
     
     override func configureConstraints() {
+        myPageLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(8)
+            $0.verticalEdges.equalToSuperview().inset(12)
+        }
+        
         bookMarkBackgroundView.snp.makeConstraints {
-            $0.horizontalEdges.top.equalToSuperview()
+            $0.top.equalTo(safeAreaLayoutGuide).offset(12)
+            $0.horizontalEdges.equalTo(safeAreaLayoutGuide)
         }
         
         bookMarkLabel.snp.makeConstraints {

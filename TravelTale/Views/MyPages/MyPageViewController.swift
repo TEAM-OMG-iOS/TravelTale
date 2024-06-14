@@ -27,6 +27,6 @@ class MyPageViewController: BaseViewController {
     }
     
     private func configureNavigationBar() {
-        
+        navigationItem.leftBarButtonItem = myPageView.myPageBarItem
     }
 }
