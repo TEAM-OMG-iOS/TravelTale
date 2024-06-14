@@ -13,7 +13,7 @@ final class DaySelectPopoverViewController: BaseViewController {
     private let daySelectPopoverView = DaySelectPopoverView()
     
     // TODO: - 데이터 변경 시 수정 예정
-    private let days: [String] = ["Day 1", "Day 2","Day 3","Day 4"]
+    private let days: [String] = ["Day 1", "Day 2", "Day 3", "Day 4"]
     
     var selectedDays: String?
     
@@ -37,9 +37,7 @@ final class DaySelectPopoverViewController: BaseViewController {
         daySelectPopoverView.rightBtn.addTarget(self, action: #selector(tappedOkBtn), for: .touchUpInside)
     }
 
-    // MARK: - objc func
     @objc private func tappedcancelBtn() {
-        print("close")
         self.dismiss(animated: true)
     }
     

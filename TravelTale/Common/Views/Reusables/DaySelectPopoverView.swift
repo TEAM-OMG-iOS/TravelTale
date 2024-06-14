@@ -41,13 +41,13 @@ final class DaySelectPopoverView: BaseView {
     
     override func configureConstraints() {
         daySelectView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(safeAreaLayoutGuide)
+            $0.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
             $0.height.equalTo(40)
         }
         
         pickerView.snp.makeConstraints {
             $0.top.equalTo(daySelectView.snp.bottom)
-            $0.leading.trailing.bottom.equalTo(safeAreaLayoutGuide)
+            $0.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
         
         leftBtn.snp.makeConstraints {

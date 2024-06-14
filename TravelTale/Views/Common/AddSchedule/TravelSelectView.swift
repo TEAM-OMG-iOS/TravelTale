@@ -59,9 +59,8 @@ final class TravelSelectView: BaseView {
         
         loadingBar.snp.makeConstraints {
             $0.leading.equalToSuperview()
-            $0.top.equalToSuperview()
+            $0.verticalEdges.equalToSuperview()
             $0.height.equalToSuperview()
-            $0.bottom.equalToSuperview()
             $0.width.equalTo(1)
         }
         
@@ -86,9 +85,8 @@ final class TravelSelectView: BaseView {
     func startLoadingAnimation() {
         self.loadingBar.snp.remakeConstraints {
             $0.leading.equalToSuperview()
-            $0.top.equalToSuperview()
+            $0.verticalEdges.equalToSuperview()
             $0.centerY.equalToSuperview()
-            $0.bottom.equalToSuperview()
             let halfwidth = loadingBackBar.frame.size.width / 2
             $0.width.equalTo(halfwidth)
         }

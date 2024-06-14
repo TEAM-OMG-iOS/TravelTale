@@ -142,9 +142,8 @@ final class ScheduleCreateView: BaseView {
         
         loadingBar.snp.makeConstraints {
             $0.leading.equalToSuperview()
-            $0.top.equalToSuperview()
+            $0.verticalEdges.equalToSuperview()
             $0.height.equalToSuperview()
-            $0.bottom.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(0.5)
         }
         
@@ -247,9 +246,8 @@ final class ScheduleCreateView: BaseView {
     func startLoadingAnimation() {
         self.loadingBar.snp.remakeConstraints {
             $0.leading.equalToSuperview()
-            $0.top.equalToSuperview()
+            $0.verticalEdges.equalToSuperview()
             $0.centerY.equalToSuperview()
-            $0.bottom.equalToSuperview()
             let fullwidth = loadingBackBar.frame.size.width
             $0.width.equalTo(fullwidth)
         }
@@ -262,7 +260,7 @@ final class ScheduleCreateView: BaseView {
     func setBeginText(textView: UITextView) {
         if textView.textColor == .gray80 {
             textView.text = nil
-            textView.textColor = UIColor.black
+            textView.textColor = .black
         }
     }
     
