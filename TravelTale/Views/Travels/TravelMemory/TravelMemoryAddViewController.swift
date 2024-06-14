@@ -42,16 +42,14 @@ class TravelMemoryAddViewController: BaseViewController {
                 startDate: createDate(year: 2024, month: 9, day: 19) ?? Date(),
                 endDate: createDate(year: 2024, month: 9, day: 21) ?? Date(),
                 province: "대구",
-                travelJournal: nil,
-                memoryImages: nil),
+                memoryNote: "너무 좋았다!"),
             Travel(
                 image: nil,
                 title: "24년의 가족 여행",
                 startDate: createDate(year: 2024, month: 4, day: 1) ?? Date(),
                 endDate: createDate(year: 2024, month: 4, day: 5) ?? Date(),
                 province: nil,
-                travelJournal: nil,
-                memoryImages: nil)
+                memoryNote: nil)
         ])
     }
     
