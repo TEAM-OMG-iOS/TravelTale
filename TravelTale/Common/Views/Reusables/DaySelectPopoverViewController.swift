@@ -57,6 +57,10 @@ extension DaySelectPopoverViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedDays = days[row]
     }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 30.0
+    }
 }
 
 extension DaySelectPopoverViewController: UIPickerViewDataSource {
