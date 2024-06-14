@@ -17,7 +17,7 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 travelMemoryDetailEditView.collectionView.reloadData()
-                travelMemoryDetailEditView.updatePhotoCount(count: travelData.memoryImages.count)
+                travelMemoryDetailEditView.updatePhotoCount(count: travelData.memoryImageDatas.count)
             }
         }
     }
@@ -62,6 +62,10 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
         travelMemoryDetailEditView.exitButton.action = #selector(tappedExitButton)
         
         travelMemoryDetailEditView.photoButton.addTarget(self, action: #selector(tappedPhotoButton), for: .touchUpInside)
+        
+        travelMemoryDetailEditView.formerButton.addTarget(self, action: #selector(tappedFormerButton), for: .touchUpInside)
+        
+        travelMemoryDetailEditView.confirmButton.addTarget(self, action: #selector(tappedConfirmButton), for: .touchUpInside)
     }
     
     override func bind() { 
@@ -88,6 +92,14 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
         picker.delegate = self
         present(picker, animated: true)
     }
+    
+    @objc func tappedFormerButton() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func tappedConfirmButton() {
+        print("tappedConfirmButton")
+    }
 }
 
 
@@ -95,7 +107,7 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
 extension TravelMemoryDetailEditViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return travelData.memoryImages.count
+        return travelData.memoryImageDatas.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -107,10 +119,10 @@ extension TravelMemoryDetailEditViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        let imageData = self.travelData.memoryImages[indexPath.row]
-        
-        DispatchQueue.main.async {
-            cell.bind(image: UIImage(data: imageData) ?? UIImage())
+        if let imageData = self.travelData.memoryImageDatas[indexPath.row] {
+            DispatchQueue.main.async {
+                cell.bind(image: UIImage(data: imageData) ?? UIImage())
+            }
         }
         
         if indexPath.row == 0 {
@@ -140,7 +152,8 @@ extension TravelMemoryDetailEditViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
         
-        travelData.memoryImages.removeAll()
+        // TODO: memory 생성 상황에서는 removeAll o, 수정 상황에서는 x
+        travelData.memoryImageDatas.removeAll()
         
         for result in results {
             let itemProvider = result.itemProvider
@@ -149,7 +162,7 @@ extension TravelMemoryDetailEditViewController: PHPickerViewControllerDelegate {
                 itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
                     if let image = image as? UIImage {
                         if let imageData = image.jpegData(compressionQuality: 1.0) {
-                            self.travelData.memoryImages.append(imageData)
+                            self.travelData.memoryImageDatas.append(imageData)
                         }
                     } else {
                         print("[loadObject error]: \(String(describing: error))")
