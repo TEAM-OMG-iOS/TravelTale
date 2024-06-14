@@ -47,11 +47,6 @@ final class MemoAddViewController: BaseViewController {
         navigationController?.popViewController(animated: true)
         // TODO: 메모 데이터 저장 로직 구현
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    
 }
 // MARK: - extensions
 extension MemoAddViewController: UITextViewDelegate {
