@@ -26,6 +26,7 @@ final class TravelRescheduleViewController: BaseViewController {
     
     // MARK: - methods
     override func configureStyle() {
+        configureNavigationBarItems()
     }
     
     override func configureDelegate() { }
@@ -34,12 +35,19 @@ final class TravelRescheduleViewController: BaseViewController {
         travelRescheduleView.textField.addTarget(self, action: #selector(changedButtonColor), for: .editingChanged)
         travelRescheduleView.placePickImageButton.addTarget(self, action: #selector(tappedPlacePickButton), for: .touchUpInside)
         travelRescheduleView.datePickButton.addTarget(self, action: #selector(tappedDatePickButton), for: .touchUpInside)
+        travelRescheduleView.backButton.action = #selector(tappedCancelButton)
+        travelRescheduleView.backButton.target = self
     }
     
     override func bind() { }
     
     private func updateInputBox(with text: String) {
         travelRescheduleView.placePickImageButton.setTitle(text, for: .normal)
+    }
+    
+    private func configureNavigationBarItems() {
+        navigationItem.title = "일정 변경"
+        navigationItem.leftBarButtonItem = travelRescheduleView.backButton
     }
     
     @objc func tappedPlacePickButton() {
@@ -73,5 +81,9 @@ final class TravelRescheduleViewController: BaseViewController {
     
     @objc func changedButtonColor() {
         travelRescheduleView.buttonColorChanged()
+    }
+    
+    @objc func tappedCancelButton() {
+        self.navigationController?.popViewController(animated: false)
     }
 }
