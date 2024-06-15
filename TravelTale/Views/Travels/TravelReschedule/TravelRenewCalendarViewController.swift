@@ -12,6 +12,7 @@ final class TravelRenewCalendarViewController: BaseViewController {
     
     // MARK: - properties
     let travelRenewCalendarView = TravelRenewCalendarView(monthsLayout: .vertical)
+    private let travelRescheduleView = TravelRescheduleView()
     
     // MARK: - lifecycle
     override func loadView() {
@@ -26,7 +27,6 @@ final class TravelRenewCalendarViewController: BaseViewController {
         super.viewDidLoad()
         
         travelRenewCalendarView.okButton.isEnabled = false
-        travelRenewCalendarView.okButton.setTitle("2박 3일", for: .normal)
     }
     
     // MARK: - methods
