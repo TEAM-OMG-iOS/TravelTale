@@ -11,8 +11,6 @@ final class TravelRescheduleViewController: BaseViewController {
     
     // MARK: - properties
     private let travelRescheduleView = TravelRescheduleView()
-    private let addLocationView = LocationView()
-    private let travelAddCalenderView = TravelAddCalenderView()
     
     // MARK: - life cycles
     override func loadView() {
