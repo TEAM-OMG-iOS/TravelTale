@@ -28,7 +28,6 @@ final class TravelRenewCalendarView: BaseView {
     // MARK: - methods
     override func configureUI() {
         super.configureUI()
-        
     }
     
     override func configureHierarchy() {
