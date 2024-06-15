@@ -76,20 +76,20 @@ final class TravelRenewCalendarView: BaseView, CalendarBaseView {
         
         inputTitleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(56)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(20)
-        }
-        
-        okButton.snp.makeConstraints {
-            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(52)
         }
         
         calendarView.snp.makeConstraints {
             $0.top.equalTo(inputTitleLabel.snp.bottom).offset(28)
-            $0.horizontalEdges.equalToSuperview().inset(30)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.bottom.equalTo(okButton.snp.top).offset(-12)
+        }
+        
+        okButton.snp.makeConstraints {
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
+            $0.height.equalTo(52)
         }
     }
     

@@ -33,7 +33,7 @@ final class TravelRenewCalendarViewController: BaseViewController {
     override func configureAddTarget() {
         travelRenewCalendarView.okButton.addTarget(self, action: #selector(tappedSetAlert), for: .touchUpInside)
     }
-
+    
     private func setAlert() {
         let alert = UIAlertController(title: "경고", message: """
     수정된 일정만큼 일부 삭제될 수 있습니다.

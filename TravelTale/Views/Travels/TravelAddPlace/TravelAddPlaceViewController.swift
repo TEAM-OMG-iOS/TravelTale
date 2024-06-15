@@ -58,7 +58,7 @@ final class TravelAddPlaceViewController: BaseViewController {
     }
     
     @objc func tappedOkButton() {
-        let nextVC = TravelAddCalenderViewController(monthsLayout: .vertical)
+        let nextVC = TravelAddCalenderViewController()
         self.navigationController?.pushViewController(nextVC, animated: false)
     }
     

@@ -27,10 +27,10 @@ final class TravelRescheduleViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        travelRescheduleView.textField.addTarget(self, action: #selector(changedButtonColor), for: .editingChanged)
         travelRescheduleView.placePickImageButton.addTarget(self, action: #selector(tappedPlacePickButton), for: .touchUpInside)
         travelRescheduleView.dayRangeButton.addTarget(self, action: #selector(tappedDatePickButton), for: .touchUpInside)
         travelRescheduleView.resetDateButton.addTarget(self, action: #selector(tappedResetDate), for: .touchUpInside)
+        travelRescheduleView.textField.addTarget(self, action: #selector(changedButtonColor), for: .editingChanged)
         travelRescheduleView.backButton.action = #selector(tappedCancelButton)
         travelRescheduleView.backButton.target = self
     }
@@ -57,14 +57,14 @@ final class TravelRescheduleViewController: BaseViewController {
     }
     
     @objc func tappedDatePickButton() {
-        let calendar = TravelRenewCalendarViewController(monthsLayout: .vertical)
-        calendar.dateCompletion = { [weak self] date in
+        let calendar = TravelRenewCalendarViewController()
+        calendar.travelRenewCalendarView.dateCompletion = { [weak self] date in
             guard let self = self else { return }
             
             travelRescheduleView.dayRangeButton.setTitle(date, for: .normal)
         }
         
-        calendar.completion = { [weak self] text in
+        calendar.travelRenewCalendarView.completion = { [weak self] text in
             guard let self = self else { return }
             
             travelRescheduleView.datePickButton.setTitle(text, for: .normal)
