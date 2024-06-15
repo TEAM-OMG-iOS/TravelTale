@@ -20,6 +20,7 @@
 		1AD537A02C13999600A70D5E /* TravelSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5379F2C13999600A70D5E /* TravelSectionHeaderView.swift */; };
 		1AD537A22C13A9F200A70D5E /* SpaceFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */; };
 		2E0671BC2C1DEC14001CDB2E /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0671BB2C1DEC14001CDB2E /* CategoryTableViewCell.swift */; };
+		2E0671BF2C1DF3D3001CDB2E /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0671BE2C1DF3D3001CDB2E /* CategoryView.swift */; };
 		2E3525402C1756EF00D82D34 /* DiscoveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */; };
 		2E36056B2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */; };
 		2E36056D2C1AA70F007DFBC1 /* RegionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E36056C2C1AA70F007DFBC1 /* RegionData.swift */; };
@@ -124,6 +125,7 @@
 		1AD5379F2C13999600A70D5E /* TravelSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSectionHeaderView.swift; sourceTree = "<group>"; };
 		1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceFooterView.swift; sourceTree = "<group>"; };
 		2E0671BB2C1DEC14001CDB2E /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		2E0671BE2C1DF3D3001CDB2E /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryCell.swift; sourceTree = "<group>"; };
 		2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionModalViewController.swift; sourceTree = "<group>"; };
 		2E36056C2C1AA70F007DFBC1 /* RegionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionData.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				2E0671BB2C1DEC14001CDB2E /* CategoryTableViewCell.swift */,
+				2E0671BE2C1DF3D3001CDB2E /* CategoryView.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -742,6 +745,7 @@
 				37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */,
 				4D0E3CF52C195A9A0089D6C1 /* TimeSelectPopoverView.swift in Sources */,
 				4D0E3CF32C18A4E30089D6C1 /* DaySelectPopoverView.swift in Sources */,
+				2E0671BF2C1DF3D3001CDB2E /* CategoryView.swift in Sources */,
 				37CB880F2C0D7979002798BE /* UIButton+Extension.swift in Sources */,
 				37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */,
 				F1B302002C10B43F00D26B75 /* TravelAddCalenderViewController.swift in Sources */,
