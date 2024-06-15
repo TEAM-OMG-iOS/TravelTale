@@ -181,18 +181,13 @@ final class TravelRescheduleView: BaseView {
     }
     
     func buttonColorChanged() {
-        if textField.text?.isEmpty != true &&
-            (placePickLabel.text != "서울특별시" || dayRangeButton.title(for: .normal) != "2024.05.08 - 2024.05.11") {
-            okButton.isEnabled = true
-            okButton.backgroundColor = .green100
-        } else if textField.text?.isEmpty != true &&
-                    (placePickLabel.text == "서울특별시" || dayRangeButton.title(for: .normal) == "2024.05.08 - 2024.05.11") {
-            okButton.isEnabled = true
-            okButton.backgroundColor = .green100
-        } else if textField.text?.isEmpty != false &&
-                    (placePickLabel.text == "서울특별시" || dayRangeButton.title(for: .normal) == "2024.05.08 - 2024.05.11") {
+        if textField.text?.isEmpty != false &&
+            (placePickLabel.text == "서울특별시" || dayRangeButton.title(for: .normal) == "2024.05.08 - 2024.05.11") {
             okButton.isEnabled = false
             okButton.backgroundColor = .green10
+        } else {
+            okButton.isEnabled = true
+            okButton.backgroundColor = .green100
         }
     }
 }

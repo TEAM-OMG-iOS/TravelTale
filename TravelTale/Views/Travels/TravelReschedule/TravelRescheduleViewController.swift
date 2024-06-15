@@ -29,6 +29,7 @@ final class TravelRescheduleViewController: BaseViewController {
     override func configureAddTarget() {
         travelRescheduleView.placePickImageButton.addTarget(self, action: #selector(tappedPlacePickButton), for: .touchUpInside)
         travelRescheduleView.dayRangeButton.addTarget(self, action: #selector(tappedDatePickButton), for: .touchUpInside)
+        travelRescheduleView.datePickButton.addTarget(self, action: #selector(tappedDatePickButton), for: .touchUpInside)
         travelRescheduleView.resetDateButton.addTarget(self, action: #selector(tappedResetDate), for: .touchUpInside)
         travelRescheduleView.textField.addTarget(self, action: #selector(changedButtonColor), for: .editingChanged)
         travelRescheduleView.backButton.action = #selector(tappedCancelButton)
