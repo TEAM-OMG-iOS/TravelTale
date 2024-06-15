@@ -25,6 +25,8 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
         $0.backgroundColor = .gray70
     }
     
+    var selectedIndexPath = 0
+    
     // MARK: - life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +51,10 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
         buttonBarView.isScrollEnabled = false
         
         configureButtonBar()
+        
+        DispatchQueue.main.async {
+            self.collectionView(self.buttonBarView, didSelectItemAt: IndexPath(row: self.selectedIndexPath, section: 0))
+        }
     }
     
     private func configureHierarchy() {

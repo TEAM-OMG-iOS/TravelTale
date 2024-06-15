@@ -72,9 +72,11 @@ final class DiscoveryViewController: BaseViewController {
     
     @objc private func tappedCategoryButton(_ sender: UIButton) {
         let discoveryCategoryVC = DiscoveryCategoryViewController()
+        let categoryArray = ["관광지", "음식점", "숙박", "놀거리"]
         
-        guard let category = sender.titleLabel else { return }
-        discoveryCategoryVC.navigationItem.title = category.text
+        guard let categoryText = sender.titleLabel?.text  else { return }
+        discoveryCategoryVC.navigationItem.title = categoryText
+        discoveryCategoryVC.selectedIndexPath = categoryArray.firstIndex(of: categoryText) ?? 0
         
         self.navigationController?.pushViewController(discoveryCategoryVC, animated: true)
     }
