@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import XLPagerTabStrip
 
 final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewController {
