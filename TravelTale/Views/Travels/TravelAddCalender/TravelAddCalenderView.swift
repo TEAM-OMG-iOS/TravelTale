@@ -9,7 +9,7 @@ import UIKit
 import HorizonCalendar
 
 final class TravelAddCalenderView: BaseView, CalendarBaseView {
-
+    
     // MARK: - properties
     lazy var calendarView = CalendarView(initialContent: makeContent())
     
@@ -114,7 +114,7 @@ final class TravelAddCalenderView: BaseView, CalendarBaseView {
     override func configureConstraints() {
         progressView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(116)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(8)
         }
         
@@ -125,7 +125,7 @@ final class TravelAddCalenderView: BaseView, CalendarBaseView {
         
         inputTitleLabel.snp.makeConstraints {
             $0.top.equalTo(progressView.snp.bottom).offset(56)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(20)
         }
         
@@ -143,6 +143,12 @@ final class TravelAddCalenderView: BaseView, CalendarBaseView {
             $0.height.equalTo(48)
         }
         
+        calendarView.snp.makeConstraints {
+            $0.top.equalTo(endLabel.snp.bottom).offset(52)
+            $0.horizontalEdges.equalToSuperview().inset(24)
+            $0.bottom.equalTo(okButton.snp.top).offset(-12)
+        }
+        
         cancelButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
             $0.leading.equalToSuperview().offset(24)
@@ -155,12 +161,6 @@ final class TravelAddCalenderView: BaseView, CalendarBaseView {
             $0.trailing.equalToSuperview().offset(-24)
             $0.height.equalTo(52)
             $0.width.equalTo(cancelButton.snp.width).multipliedBy(2)
-        }
-        
-        calendarView.snp.makeConstraints {
-            $0.top.equalTo(endLabel.snp.bottom).offset(52)
-            $0.horizontalEdges.equalToSuperview().inset(30)
-            $0.bottom.equalTo(okButton.snp.top).offset(-12)
         }
     }
     

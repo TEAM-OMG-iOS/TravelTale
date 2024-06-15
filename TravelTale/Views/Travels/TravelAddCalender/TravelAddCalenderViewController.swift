@@ -12,7 +12,7 @@ class TravelAddCalenderViewController: BaseViewController {
     
     // MARK: - properties
     private let travelAddCalenderView = TravelAddCalenderView(monthsLayout: .vertical)
-  
+    
     // MARK: - lifecycle
     override func loadView() {
         view = travelAddCalenderView
@@ -23,13 +23,13 @@ class TravelAddCalenderViewController: BaseViewController {
         
         travelAddCalenderView.startLoadingAnimation()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         travelAddCalenderView.okButton.isEnabled = false
     }
- 
+    
     // MARK: - methods
     override func configureStyle() {
         configureNavigationBarItems()
