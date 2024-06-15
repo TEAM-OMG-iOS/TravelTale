@@ -71,9 +71,11 @@ final class DiscoveryViewController: BaseViewController {
     }
     
     @objc private func tappedCategoryButton(_ sender: UIButton) {
-        // guard let category = sender.titleLabel else { return }
-        
+        guard let _ = sender.titleLabel else { return }
+    
         // todo : category 화면 navi로 띄우기
+        let discoveryCategoryVC = DiscoveryCategoryViewController()
+        self.navigationController?.pushViewController(discoveryCategoryVC, animated: true)
     }
 }
 
