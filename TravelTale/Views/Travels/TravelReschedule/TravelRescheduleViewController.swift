@@ -21,7 +21,6 @@ final class TravelRescheduleViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     // MARK: - methods
@@ -29,17 +28,14 @@ final class TravelRescheduleViewController: BaseViewController {
         configureNavigationBarItems()
     }
     
-    override func configureDelegate() { }
-    
     override func configureAddTarget() {
         travelRescheduleView.textField.addTarget(self, action: #selector(changedButtonColor), for: .editingChanged)
         travelRescheduleView.placePickImageButton.addTarget(self, action: #selector(tappedPlacePickButton), for: .touchUpInside)
-        travelRescheduleView.datePickButton.addTarget(self, action: #selector(tappedDatePickButton), for: .touchUpInside)
+        travelRescheduleView.dayRangeButton.addTarget(self, action: #selector(tappedDatePickButton), for: .touchUpInside)
+        travelRescheduleView.resetDateButton.addTarget(self, action: #selector(tappedResetDate), for: .touchUpInside)
         travelRescheduleView.backButton.action = #selector(tappedCancelButton)
         travelRescheduleView.backButton.target = self
     }
-    
-    override func bind() { }
     
     private func updateInputBox(with text: String) {
         travelRescheduleView.placePickImageButton.setTitle(text, for: .normal)
@@ -72,7 +68,7 @@ final class TravelRescheduleViewController: BaseViewController {
         
         calendar.completion = { [weak self] text in
             guard let self = self else { return }
-  
+            
             travelRescheduleView.datePickButton.setTitle(text, for: .normal)
         }
         
@@ -80,6 +76,12 @@ final class TravelRescheduleViewController: BaseViewController {
     }
     
     @objc func changedButtonColor() {
+        travelRescheduleView.buttonColorChanged()
+    }
+    
+    @objc func tappedResetDate() {
+        travelRescheduleView.dayRangeButton.setTitle("2024.05.08 - 2024.05.11", for: .normal)
+        travelRescheduleView.datePickButton.setTitle("3박 4일", for: .normal)
         travelRescheduleView.buttonColorChanged()
     }
     

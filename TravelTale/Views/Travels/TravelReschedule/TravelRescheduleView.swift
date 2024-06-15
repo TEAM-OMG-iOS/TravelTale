@@ -35,6 +35,10 @@ final class TravelRescheduleView: BaseView {
                           text: "대표 여행지")
     }
     
+    private let pickGuideLabel = UILabel().then {
+        $0.configureLabel(color: .lightGray, font: .pretendard(size: 14, weight: .light), text: "태그에 표시됩니다")
+    }
+    
     private let placePickBackView = UIView().then {
         $0.configureView(color: .gray5, clipsToBounds: true, cornerRadius: 20)
     }
@@ -55,6 +59,11 @@ final class TravelRescheduleView: BaseView {
                           text: "여행 날짜")
     }
     
+    let resetDateButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "arrow.counterclockwise"), for: .normal)
+        $0.tintColor = .black
+    }
+    
     let dayRangeButton = UIButton().then {
         $0.titleLabel?.font = .pretendard(size: 16, weight: .medium)
         $0.setTitle("2024.05.08 - 2024.05.11", for: .normal)
@@ -70,11 +79,6 @@ final class TravelRescheduleView: BaseView {
         $0.buttonConfiguration()
     }
     
-    private let returnDate = UIImageView().then {
-        $0.image = UIImage(systemName: "arrow.clockwise")
-        $0.tintColor = .black
-    }
-    
     let okButton = UIButton().then {
         $0.configureButton(fontColor: .white,
                            font: .pretendard(size: 18, weight: .bold),
@@ -83,27 +87,15 @@ final class TravelRescheduleView: BaseView {
                          cornerRadius: 24)
     }
     
-    // MARK: - lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     // MARK: - methods
-    override func configureUI() {
-        super.configureUI()
-    }
-    
     override func configureHierarchy() {
         [travelTitleLabel,
          textField,
          travelPlaceLabel,
+         pickGuideLabel,
          placePickBackView,
          travelDateLabel,
+         resetDateButton,
          datePickButton,
          okButton].forEach {
             self.addSubview($0)
@@ -134,6 +126,13 @@ final class TravelRescheduleView: BaseView {
             $0.height.equalTo(21)
         }
         
+        pickGuideLabel.snp.makeConstraints {
+            $0.top.equalTo(textField.snp.bottom).offset(32)
+            $0.trailing.equalToSuperview().inset(24)
+            $0.width.equalTo(104)
+            $0.height.equalTo(21)
+        }
+        
         placePickBackView.snp.makeConstraints {
             $0.top.equalTo(travelPlaceLabel.snp.bottom).offset(16)
             $0.horizontalEdges.equalToSuperview().inset(24)
@@ -152,7 +151,14 @@ final class TravelRescheduleView: BaseView {
         
         travelDateLabel.snp.makeConstraints {
             $0.top.equalTo(placePickBackView.snp.bottom).offset(32)
-            $0.horizontalEdges.equalToSuperview().inset(24)
+            $0.leading.equalToSuperview().inset(24)
+            $0.height.equalTo(21)
+        }
+        
+        resetDateButton.snp.makeConstraints {
+            $0.top.equalTo(placePickBackView.snp.bottom).offset(32)
+            $0.trailing.equalToSuperview().inset(24)
+            $0.width.equalTo(19)
             $0.height.equalTo(21)
         }
         
@@ -175,13 +181,18 @@ final class TravelRescheduleView: BaseView {
     }
     
     func buttonColorChanged() {
-        if textField.text?.isEmpty != false &&
-            (placePickLabel.text == "서울특별시" || dayRangeButton.title(for: .normal) == "2024.05.08 - 2024.05.11") {
-            okButton.isEnabled = false
-            okButton.backgroundColor = .green10
-        } else {
+        if textField.text?.isEmpty != true &&
+            (placePickLabel.text != "서울특별시" || dayRangeButton.title(for: .normal) != "2024.05.08 - 2024.05.11") {
             okButton.isEnabled = true
             okButton.backgroundColor = .green100
+        } else if textField.text?.isEmpty != true &&
+                    (placePickLabel.text == "서울특별시" || dayRangeButton.title(for: .normal) == "2024.05.08 - 2024.05.11") {
+            okButton.isEnabled = true
+            okButton.backgroundColor = .green100
+        } else if textField.text?.isEmpty != false &&
+                    (placePickLabel.text == "서울특별시" || dayRangeButton.title(for: .normal) == "2024.05.08 - 2024.05.11") {
+            okButton.isEnabled = false
+            okButton.backgroundColor = .green10
         }
     }
 }

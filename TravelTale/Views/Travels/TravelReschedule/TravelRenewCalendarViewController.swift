@@ -108,7 +108,6 @@ final class TravelRenewCalendarViewController: BaseViewController, CalendarViewC
     }
     
     private func setDateLabel() {
-        
         if let startDate = calendar.date(from: selectedDayRange?.lowerBound.components ?? DateComponents()),
            let endDate = calendar.date(from: selectedDayRange?.upperBound.components ?? DateComponents()) {
             setStartDate(startDate: startDate, endDate: endDate)
