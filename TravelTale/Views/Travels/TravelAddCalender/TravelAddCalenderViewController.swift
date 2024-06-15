@@ -78,6 +78,7 @@ class TravelAddCalenderViewController: BaseViewController, CalendarViewControlle
     
     override func configureAddTarget() {
         travelAddCalenderView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
+        travelAddCalenderView.okButton.addTarget(self, action: #selector(tappedToRootView), for: .touchUpInside)
         travelAddCalenderView.backButton.target = self
         travelAddCalenderView.backButton.action = #selector(tappedToRootView)
     }
