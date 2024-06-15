@@ -64,7 +64,6 @@ final class TravelAddCalenderView: BaseView {
     // MARK: - methods
     override func configureUI() {
         super.configureUI()
-        //        dayRangeSelection()
     }
     
     override func configureHierarchy() {

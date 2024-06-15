@@ -17,9 +17,9 @@ class TravelAddCalenderViewController: BaseViewController, CalendarViewControlle
     lazy var calendar = Calendar.current
     let monthsLayout: MonthsLayout
     
-    var selectedDate: Date?
+    private var selectedDate: Date?
     var selectedDayRange: DayComponentsRange?
-    var selectedDayRangeAtStartOfDrag: DayComponentsRange?
+    private var selectedDayRangeAtStartOfDrag: DayComponentsRange?
     
     lazy var dayDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -42,7 +42,7 @@ class TravelAddCalenderViewController: BaseViewController, CalendarViewControlle
         travelAddCalenderView.startLoadingAnimation()
     }
     
-    func configureConstraints() {
+    private func configureConstraints() {
         view.addSubview(calendarView)
         
         calendarView.snp.makeConstraints {
@@ -71,13 +71,10 @@ class TravelAddCalenderViewController: BaseViewController, CalendarViewControlle
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     // MARK: - methods
     override func configureStyle() {
         configureNavigationBarItems()
     }
-    
-    override func configureDelegate() { }
     
     override func configureAddTarget() {
         travelAddCalenderView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
@@ -85,89 +82,7 @@ class TravelAddCalenderViewController: BaseViewController, CalendarViewControlle
         travelAddCalenderView.backButton.action = #selector(tappedToRootView)
     }
     
-    override func bind() { }
-    
-    func makeContent() -> CalendarViewContent {
-        let startDate = calendar.date(byAdding: .month, value: -1, to: Date())!
-        let endDate = calendar.date(byAdding: .year, value: 3, to: Date())!
-        
-        let dateRanges: Set<ClosedRange<Date>>
-        let selectedDayRange = selectedDayRange
-        if let selectedDayRange,
-           let lowerBound = calendar.date(from: selectedDayRange.lowerBound.components),
-           let upperBound = calendar.date(from: selectedDayRange.upperBound.components) {
-            dateRanges = [lowerBound...upperBound]
-        } else {
-            dateRanges = []
-        }
-        
-        return CalendarViewContent(
-            calendar: calendar,
-            visibleDateRange: startDate...endDate,
-            monthsLayout: monthsLayout)
-        
-        .interMonthSpacing(24)
-        .verticalDayMargin(8)
-        .horizontalDayMargin(8)
-        
-        .dayItemProvider { [calendar, dayDateFormatter] day in
-            var invariantViewProperties = DayView.InvariantViewProperties.baseInteractive
-            
-            let isSelectedStyle: Bool
-            if let selectedDayRange {
-                isSelectedStyle = day == selectedDayRange.lowerBound || day == selectedDayRange.upperBound
-            } else {
-                isSelectedStyle = false
-            }
-            
-            if isSelectedStyle {
-                invariantViewProperties.textColor = .white
-                invariantViewProperties.font = .pretendard(size: 15, weight: .bold)
-                invariantViewProperties.shape = Shape.rectangle(cornerRadius: 6)
-                invariantViewProperties.backgroundShapeDrawingConfig = .init(fillColor: .green100)
-            } else {
-                invariantViewProperties.textColor = .gray90
-                invariantViewProperties.font = .pretendard(size: 15, weight: .medium)
-            }
-            
-            let date = calendar.date(from: day.components)
-            
-            return DayView.calendarItemModel(
-                invariantViewProperties: invariantViewProperties,
-                content: .init(
-                    dayText: "\(day.day)",
-                    accessibilityLabel: date.map { dayDateFormatter.string(from: $0) },
-                    accessibilityHint: nil))
-        }
-        
-        .monthHeaderItemProvider { month in
-            MonthLabel.calendarItemModel(
-                invariantViewProperties: .init(
-                    font: .pretendard(size: 16, weight: .bold),
-                    textColor: .blueBlack100),
-                content: .init(month: month))
-        }
-        
-        .dayOfWeekItemProvider{ month, weekdayIndex in
-            let dayOfWeek = DayOfWeek(rawValue: weekdayIndex) ?? .sun
-            return MonthDayLabel.calendarItemModel(
-                invariantViewProperties: .init(
-                    font: .pretendard(size: 15, weight: .medium),
-                    textColor: .gray70),
-                content: .init(dayOfWeek: dayOfWeek)
-            )
-        }
-        
-        .dayRangeItemProvider(for: dateRanges) { dayRangeLayoutContext in
-            let framesOfDaysToHighlight = dayRangeLayoutContext.daysAndFrames.map { $0.frame }
-            return DayRangeIndicatorView.calendarItemModel(
-                invariantViewProperties: .init(),
-                content: .init(framesOfDaysToHighlight: framesOfDaysToHighlight)
-            )
-        }
-    }
-    
-    func selectionHandler() {
+    private func selectionHandler() {
         calendarView.daySelectionHandler = { [weak self] day in
             guard let self else { return }
             
@@ -210,7 +125,6 @@ class TravelAddCalenderViewController: BaseViewController, CalendarViewControlle
                 if let days = calendar.dateComponents([.day], from: startDate, to: endDate).day {
                     let n = days + 1
                     travelAddCalenderView.okButton.setTitle("\(n-1)박 \(n)일", for: .normal)
-                    
                 }
             }
         }
