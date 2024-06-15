@@ -1,5 +1,5 @@
 //
-//  DiscoveryCategoryTableViewCell.swift
+//  CategoryTableViewCell.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/16/24.
@@ -7,9 +7,15 @@
 
 import UIKit
 
-final class DiscoveryCategoryTableViewCell: BaseTableViewCell {
+final class CategoryTableViewCell: BaseTableViewCell {
     
     // MARK: - properties
+    private let containerView = UIView().then {
+        $0.configureView(color: .white, clipsToBounds: true, cornerRadius: 15)
+        $0.layer.borderColor = UIColor.gray20.cgColor
+        $0.layer.borderWidth = 1
+    }
+    
     private let placeImage = UIImageView().then {
         $0.configureView(clipsToBounds: true, cornerRadius: 15)
     }
@@ -29,6 +35,7 @@ final class DiscoveryCategoryTableViewCell: BaseTableViewCell {
     
     // MARK: - methods
     override func configureHierarchy() {
+        addSubview(containerView)
         addSubview(placeImage)
         addSubview(placeLabel)
         addSubview(placeAddressLabel)
@@ -36,6 +43,11 @@ final class DiscoveryCategoryTableViewCell: BaseTableViewCell {
     }
     
     override func configureConstraints() {
+        containerView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(24)
+            $0.verticalEdges.equalToSuperview().inset(8)
+        }
+        
         placeImage.snp.makeConstraints {
             $0.horizontalEdges.top.equalToSuperview().inset(16)
         }
