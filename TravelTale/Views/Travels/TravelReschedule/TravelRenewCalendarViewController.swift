@@ -66,6 +66,7 @@ final class TravelRenewCalendarViewController: BaseViewController, CalendarViewC
     
     // MARK: - methods
     override func configureAddTarget() {
+        travelRenewCalendarView.okButton.addTarget(self, action: #selector(tappedSetAlert), for: .touchUpInside)
     }
     
     private func configureConstraints() {
@@ -110,6 +111,7 @@ final class TravelRenewCalendarViewController: BaseViewController, CalendarViewC
         
         if let startDate = calendar.date(from: selectedDayRange?.lowerBound.components ?? DateComponents()),
            let endDate = calendar.date(from: selectedDayRange?.upperBound.components ?? DateComponents()) {
+            setStartDate(startDate: startDate, endDate: endDate)
             
             if startDate == endDate {
                 travelRenewCalendarView.okButton.isEnabled = true
@@ -126,5 +128,15 @@ final class TravelRenewCalendarViewController: BaseViewController, CalendarViewC
                 }
             }
         }
+    }
+    
+    private func setStartDate(startDate: Date, endDate: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        let startDateString = dateFormatter.string(from: startDate)
+        let endDateString = dateFormatter.string(from: endDate)
+        
+        let dateRangeString = "\(startDateString) - \(endDateString)"
+        dateCompletion?(dateRangeString)
     }
 }

@@ -10,13 +10,6 @@ import UIKit
 final class TravelRescheduleView: BaseView {
     
     // MARK: - properties
-    private let pageTitleLabel = UILabel().then {
-        $0.configureLabel(alignment: .center,
-                          color: .black,
-                          font: .oaGothic(size: 18, weight: .heavy),
-                          text: "일정 변경")
-    }
-    
     private let travelTitleLabel = UILabel().then {
         $0.configureLabel(color: .black,
                           font: .pretendard(size: 18, weight: .semibold),
@@ -56,10 +49,10 @@ final class TravelRescheduleView: BaseView {
                           text: "여행 날짜")
     }
     
-    let dateLabel = UILabel().then {
-        $0.font = .pretendard(size: 16, weight: .medium)
-        $0.text = "2024.05.08 - 2024.05.11"
-        $0.textColor = .gray90
+    let dayRangeButton = UIButton().then {
+        $0.titleLabel?.font = .pretendard(size: 16, weight: .medium)
+        $0.setTitle("2024.05.08 - 2024.05.11", for: .normal)
+        $0.setTitleColor(.gray90, for: .normal)
     }
     
     let datePickButton = UIButton().then {
@@ -84,14 +77,6 @@ final class TravelRescheduleView: BaseView {
                          cornerRadius: 24)
     }
     
-    let alert = UIAlertController(title: "경고", message: """
-수정된 일정만큼 일부 삭제될 수 있습니다.
-그대로 진행하시겠습니까?
-""", preferredStyle: UIAlertController.Style.alert)
-    
-    let cancel = UIAlertAction(title: "취소", style: .destructive, handler: nil)
-    let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
-        
     // MARK: - lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -105,14 +90,10 @@ final class TravelRescheduleView: BaseView {
     // MARK: - methods
     override func configureUI() {
         super.configureUI()
-        
-        alert.addAction(cancel)
-        alert.addAction(ok)
     }
     
     override func configureHierarchy() {
-        [pageTitleLabel,
-         travelTitleLabel,
+        [travelTitleLabel,
          textField,
          travelPlaceLabel,
          placePickBackView,
@@ -124,19 +105,13 @@ final class TravelRescheduleView: BaseView {
         [placePickLabel,
          placePickImageButton].forEach {
             placePickBackView.addSubview($0)
-        }        
-        datePickButton.addSubview(dateLabel)
+        }
+        datePickButton.addSubview(dayRangeButton)
     }
     
     override func configureConstraints() {
-        
-        pageTitleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(64)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-        }
-        
         travelTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(pageTitleLabel.snp.bottom).offset(38)
+            $0.top.equalToSuperview().offset(116)
             $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(21)
         }
@@ -181,11 +156,11 @@ final class TravelRescheduleView: BaseView {
             $0.height.equalTo(48)
         }
         
-        dateLabel.snp.makeConstraints {
+        dayRangeButton.snp.makeConstraints {
             $0.trailing.equalTo(datePickButton).inset(16)
             $0.centerY.equalTo(datePickButton)
         }
-
+        
         okButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
             $0.horizontalEdges.equalToSuperview().inset(24)
@@ -194,12 +169,13 @@ final class TravelRescheduleView: BaseView {
     }
     
     func buttonColorChanged() {
-        if textField.text?.isEmpty != true {
-            okButton.isEnabled = true
-            okButton.backgroundColor = .green100
-        } else {
+        if textField.text?.isEmpty != false &&
+            (placePickLabel.text == "서울특별시" || dayRangeButton.title(for: .normal) == "2024.05.08 - 2024.05.11") {
             okButton.isEnabled = false
             okButton.backgroundColor = .green10
+        } else {
+            okButton.isEnabled = true
+            okButton.backgroundColor = .green100
         }
     }
 }
