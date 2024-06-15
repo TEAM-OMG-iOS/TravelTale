@@ -11,6 +11,12 @@ import XLPagerTabStrip
 final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewController {
     
     // MARK: - properties
+    private let backButton = UIBarButtonItem().then {
+        $0.style = .done
+        $0.image = UIImage(systemName: "chevron.left")
+        $0.tintColor = .gray90
+    }
+    
     private let topBorder = UIView().then {
         $0.backgroundColor = .gray70
     }
@@ -26,6 +32,8 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
         configureUI()
         configureHierarchy()
         configureConstraints()
+        configureAddTarget()
+        configureNavigationBar()
     }
     
     // MARK: - methods
@@ -34,6 +42,8 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
     }
     
     private func configureUI() {
+        view.backgroundColor = .white
+        
         buttonBarView.backgroundColor = .white
         buttonBarView.selectedBar.backgroundColor = .black
         buttonBarView.isScrollEnabled = false
@@ -48,7 +58,7 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
     
     private func configureConstraints() {
         buttonBarView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(12)
             $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(40)
         }
@@ -62,6 +72,15 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
             $0.horizontalEdges.bottom.equalTo(buttonBarView)
             $0.height.equalTo(1)
         }
+    }
+    
+    private func configureAddTarget() {
+        backButton.target = self
+        backButton.action = #selector(tappedBackButton)
+    }
+    
+    private func configureNavigationBar() {
+        navigationItem.leftBarButtonItem = backButton
     }
     
     private func configureButtonBar() {
@@ -89,5 +108,24 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
         let accommodationVC = AccommodationViewController()
         let entertainmentVC = EntertainmentViewController()
         return [touristSpotVC, restaurantVC, accommodationVC, entertainmentVC]
+    }
+    
+    @objc private func tappedBackButton() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        super.collectionView(collectionView, didSelectItemAt: indexPath)
+        
+        switch indexPath.row {
+        case 0 :
+            navigationItem.title = "관광지"
+        case 1 :
+            navigationItem.title = "음식점"
+        case 2 :
+            navigationItem.title = "숙박"
+        default:
+            navigationItem.title = "놀거리"
+        }
     }
 }
