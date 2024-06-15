@@ -47,9 +47,6 @@ final class TravelAddPlaceViewController: BaseViewController {
     
     @objc func tappedInputBox() {
         let locationList = TravelAddLocationViewController()
-        guard let sheet = locationList.sheetPresentationController else { return }
-        sheet.detents = [.medium()]
-        sheet.prefersGrabberVisible = true
         locationList.completion = { [weak self] text in
             guard let self = self else { return }
             
