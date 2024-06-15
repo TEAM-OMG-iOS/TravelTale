@@ -8,9 +8,29 @@
 import UIKit
 import HorizonCalendar
 
-final class TravelAddCalenderView: BaseView {
-    
+final class TravelAddCalenderView: BaseView, CalendarBaseView {
+
     // MARK: - properties
+    lazy var calendarView = CalendarView(initialContent: makeContent())
+    
+    lazy var calendar = Calendar.current
+    let monthsLayout: MonthsLayout
+    
+    private var selectedDate: Date?
+    var selectedDayRange: DayComponentsRange?
+    private var selectedDayRangeAtStartOfDrag: DayComponentsRange?
+    
+    lazy var dayDateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = calendar
+        dateFormatter.locale = calendar.locale
+        dateFormatter.dateFormat = DateFormatter.dateFormat(
+            fromTemplate: "EEEE, MMM d, yyyy",
+            options: 0,
+            locale: calendar.locale ?? Locale.current)
+        return dateFormatter
+    }()
+    
     let backButton = UIBarButtonItem().then {
         $0.style = .done
         $0.image = UIImage(systemName: "xmark")
@@ -23,7 +43,7 @@ final class TravelAddCalenderView: BaseView {
                           text: "여행 날짜를 선택해주세요")
     }
     
-    private let startLabel = UILabel().then {
+    let startLabel = UILabel().then {
         $0.configureLabel(color: .gray90,
                           font: .pretendard(size: 16, weight: .medium),
                           text: "출발일 |")
@@ -61,9 +81,20 @@ final class TravelAddCalenderView: BaseView {
                          cornerRadius: 4)
     }
     
+    // MARK: - life cycles
+    required init(monthsLayout: MonthsLayout) {
+        self.monthsLayout = monthsLayout
+        super.init(frame: .zero)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - methods
     override func configureUI() {
         super.configureUI()
+        selectionHandler()
     }
     
     override func configureHierarchy() {
@@ -72,7 +103,8 @@ final class TravelAddCalenderView: BaseView {
          endLabel,
          cancelButton,
          okButton,
-         progressView].forEach {
+         progressView,
+         calendarView].forEach {
             self.addSubview($0)
         }
         
@@ -124,6 +156,12 @@ final class TravelAddCalenderView: BaseView {
             $0.height.equalTo(52)
             $0.width.equalTo(cancelButton.snp.width).multipliedBy(2)
         }
+        
+        calendarView.snp.makeConstraints {
+            $0.top.equalTo(endLabel.snp.bottom).offset(52)
+            $0.horizontalEdges.equalToSuperview().inset(30)
+            $0.bottom.equalTo(okButton.snp.top).offset(-12)
+        }
     }
     
     func startLoadingAnimation() {
@@ -132,17 +170,59 @@ final class TravelAddCalenderView: BaseView {
         })
     }
     
-    func setStartDate(_ date: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd"
-        let dateString = dateFormatter.string(from: date)
-        startLabel.text = "출발일 | \(dateString)"
+    private func selectionHandler() {
+        calendarView.daySelectionHandler = { [weak self] day in
+            guard let self else { return }
+            
+            DayRangeSelectionHelper.updateDayRange(
+                afterTapSelectionOf: day,
+                existingDayRange: &selectedDayRange)
+            
+            selectedDate = calendar.date(from: day.components)
+            self.setDateLabel()
+            calendarView.setContent(makeContent())
+        }
+        
+        calendarView.multiDaySelectionDragHandler = { [weak self, calendar] day, state in
+            guard let self else { return }
+            
+            DayRangeSelectionHelper.updateDayRange(
+                afterDragSelectionOf: day,
+                existingDayRange: &selectedDayRange,
+                initialDayRange: &selectedDayRangeAtStartOfDrag,
+                state: state,
+                calendar: calendar)
+            
+            self.setDateLabel()
+            calendarView.setContent(makeContent())
+        }
     }
     
-    func setEndDate(_ date: Date) {
+    private func setDateLabel() {
+        if let startDate = calendar.date(from: selectedDayRange?.lowerBound.components ?? DateComponents()),
+           let endDate = calendar.date(from: selectedDayRange?.upperBound.components ?? DateComponents()) {
+            setStartDate(startDate: startDate, endDate: endDate)
+            
+            if startDate == endDate {
+                okButton.isEnabled = true
+                okButton.backgroundColor = .green100
+                okButton.setTitle("당일치기", for: .normal)
+            } else {
+                
+                if let days = calendar.dateComponents([.day], from: startDate, to: endDate).day {
+                    let n = days + 1
+                    okButton.setTitle("\(n-1)박 \(n)일", for: .normal)
+                }
+            }
+        }
+    }
+    
+    private func setStartDate(startDate: Date, endDate: Date) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
-        let dateString = dateFormatter.string(from: date)
-        endLabel.text = "도착일 | \(dateString)"
+        let startDateString = dateFormatter.string(from: startDate)
+        let endDateString = dateFormatter.string(from: endDate)
+        startLabel.text = "출발일 | \(startDateString)"
+        endLabel.text = "도착일 | \(endDateString)"
     }
 }

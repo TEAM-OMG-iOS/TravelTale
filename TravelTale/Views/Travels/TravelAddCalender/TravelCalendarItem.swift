@@ -9,9 +9,7 @@ import UIKit
 import HorizonCalendar
 
 // MARK: - protocol
-protocol CalendarViewController: BaseViewController {
-    
-    init(monthsLayout: MonthsLayout)
+protocol CalendarBaseView: BaseView {
     
     var calendar: Calendar { get }
     var monthsLayout: MonthsLayout { get }
@@ -289,8 +287,8 @@ extension DayRangeIndicatorView: CalendarItemViewRepresentable {
     }
 }
 
-// MARK: - CalendarViewController
-extension CalendarViewController {
+// MARK: - CalendarBaseView
+extension CalendarBaseView {
     func makeContent() -> CalendarViewContent {
         let startDate = calendar.date(byAdding: .month, value: 0, to: Date())!
         let endDate = calendar.date(byAdding: .year, value: 3, to: Date())!
@@ -370,5 +368,4 @@ extension CalendarViewController {
             )
         }
     }
-    
 }
