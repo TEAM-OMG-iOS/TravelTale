@@ -11,11 +11,6 @@
 		1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537882C105D0300A70D5E /* TravelViewModel.swift */; };
 		1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378A2C10612F00A70D5E /* Observable.swift */; };
 		1AD5378E2C10838A00A70D5E /* Travel(temporary).swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */; };
-		370B839C2C149AC7009430B9 /* TravelDetailPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B839B2C149AC7009430B9 /* TravelDetailPlanView.swift */; };
-		370B839E2C149AE8009430B9 /* TravelDetailPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B839D2C149AE8009430B9 /* TravelDetailPlanViewController.swift */; };
-		370B83A02C149E66009430B9 /* TravelDetailPlanContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B839F2C149E66009430B9 /* TravelDetailPlanContentCell.swift */; };
-		3740FE542C12EE020024E08F /* TravelDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740FE532C12EE020024E08F /* TravelDetailView.swift */; };
-		3740FE562C12EE140024E08F /* TravelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740FE552C12EE140024E08F /* TravelDetailViewController.swift */; };
 		1AD537902C12CF4900A70D5E /* TravelPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378F2C12CF4900A70D5E /* TravelPlanView.swift */; };
 		1AD537942C12DCC600A70D5E /* LightGreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537932C12DCC600A70D5E /* LightGreenButton.swift */; };
 		1AD537962C12E5E300A70D5E /* TravelPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537952C12E5E300A70D5E /* TravelPlanViewController.swift */; };
@@ -30,6 +25,11 @@
 		2E52F2F32C1B7BAB00E7D6D5 /* BookMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52F2F22C1B7BAB00E7D6D5 /* BookMarkButton.swift */; };
 		2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */; };
 		2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */; };
+		370B839C2C149AC7009430B9 /* TravelDetailPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B839B2C149AC7009430B9 /* TravelDetailPlanView.swift */; };
+		370B839E2C149AE8009430B9 /* TravelDetailPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B839D2C149AE8009430B9 /* TravelDetailPlanViewController.swift */; };
+		370B83A02C149E66009430B9 /* TravelDetailPlanContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B839F2C149E66009430B9 /* TravelDetailPlanContentCell.swift */; };
+		3740FE542C12EE020024E08F /* TravelDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740FE532C12EE020024E08F /* TravelDetailView.swift */; };
+		3740FE562C12EE140024E08F /* TravelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740FE552C12EE140024E08F /* TravelDetailViewController.swift */; };
 		378CEBEC2C0D563C00DF1C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */; };
 		378CEBEE2C0D563C00DF1C3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */; };
 		378CEBF52C0D563D00DF1C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 378CEBF42C0D563D00DF1C3F /* Assets.xcassets */; };
@@ -66,6 +66,9 @@
 		378CEC532C0D721200DF1C3F /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 378CEC4A2C0D721200DF1C3F /* Pretendard-Regular.otf */; };
 		378CEC592C0D732600DF1C3F /* OAGothic-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 378CEC572C0D732600DF1C3F /* OAGothic-ExtraBold.otf */; };
 		378CEC5A2C0D732600DF1C3F /* OAGothic-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 378CEC582C0D732600DF1C3F /* OAGothic-Medium.otf */; };
+		37C08C822C1EF54A00F5E308 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C08C812C1EF54A00F5E308 /* NetworkManager.swift */; };
+		37C08C842C1EF55400F5E308 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C08C832C1EF55400F5E308 /* RealmManager.swift */; };
+		37C08C862C1EF56500F5E308 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C08C852C1EF56500F5E308 /* UserDefaultsManager.swift */; };
 		37CB88072C0D7632002798BE /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88062C0D7632002798BE /* PlaceDetailView.swift */; };
 		37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88082C0D78C9002798BE /* UIView+Extension.swift */; };
 		37CB880D2C0D796C002798BE /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB880C2C0D796C002798BE /* UILabel+Extension.swift */; };
@@ -110,11 +113,6 @@
 		1AD537882C105D0300A70D5E /* TravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewModel.swift; sourceTree = "<group>"; };
 		1AD5378A2C10612F00A70D5E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Travel(temporary).swift"; sourceTree = "<group>"; };
-		370B839B2C149AC7009430B9 /* TravelDetailPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanView.swift; sourceTree = "<group>"; };
-		370B839D2C149AE8009430B9 /* TravelDetailPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanViewController.swift; sourceTree = "<group>"; };
-		370B839F2C149E66009430B9 /* TravelDetailPlanContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanContentCell.swift; sourceTree = "<group>"; };
-		3740FE532C12EE020024E08F /* TravelDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailView.swift; sourceTree = "<group>"; };
-		3740FE552C12EE140024E08F /* TravelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailViewController.swift; sourceTree = "<group>"; };
 		1AD5378F2C12CF4900A70D5E /* TravelPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanView.swift; sourceTree = "<group>"; };
 		1AD537932C12DCC600A70D5E /* LightGreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightGreenButton.swift; sourceTree = "<group>"; };
 		1AD537952C12E5E300A70D5E /* TravelPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +127,11 @@
 		2E52F2F22C1B7BAB00E7D6D5 /* BookMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkButton.swift; sourceTree = "<group>"; };
 		2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionView.swift; sourceTree = "<group>"; };
 		2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionViewController.swift; sourceTree = "<group>"; };
+		370B839B2C149AC7009430B9 /* TravelDetailPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanView.swift; sourceTree = "<group>"; };
+		370B839D2C149AE8009430B9 /* TravelDetailPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanViewController.swift; sourceTree = "<group>"; };
+		370B839F2C149E66009430B9 /* TravelDetailPlanContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanContentCell.swift; sourceTree = "<group>"; };
+		3740FE532C12EE020024E08F /* TravelDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailView.swift; sourceTree = "<group>"; };
+		3740FE552C12EE140024E08F /* TravelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailViewController.swift; sourceTree = "<group>"; };
 		378CEBE82C0D563C00DF1C3F /* TravelTale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelTale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +163,9 @@
 		378CEC4A2C0D721200DF1C3F /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		378CEC572C0D732600DF1C3F /* OAGothic-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OAGothic-ExtraBold.otf"; sourceTree = "<group>"; };
 		378CEC582C0D732600DF1C3F /* OAGothic-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OAGothic-Medium.otf"; sourceTree = "<group>"; };
+		37C08C812C1EF54A00F5E308 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		37C08C832C1EF55400F5E308 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		37C08C852C1EF56500F5E308 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		37CB88062C0D7632002798BE /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
 		37CB88082C0D78C9002798BE /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		37CB880C2C0D796C002798BE /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -226,6 +232,14 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
+		2E36056F2C1AF38A007DFBC1 /* DiscoveryRegionModal */ = {
+			isa = PBXGroup;
+			children = (
+				2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */,
+			);
+			path = DiscoveryRegionModal;
+			sourceTree = "<group>";
+		};
 		3740FE522C12EDD50024E08F /* TravelDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,14 +247,6 @@
 				3740FE552C12EE140024E08F /* TravelDetailViewController.swift */,
 			);
 			path = TravelDetail;
-            sourceTree = "<group>";
-        };
-		2E36056F2C1AF38A007DFBC1 /* DiscoveryRegionModal */ = {
-			isa = PBXGroup;
-			children = (
-				2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */,
-			);
-			path = DiscoveryRegionModal;
 			sourceTree = "<group>";
 		};
 		378CEBDF2C0D563C00DF1C3F = {
@@ -266,6 +272,7 @@
 				378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */,
 				378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */,
 				378CEC192C0D632000DF1C3F /* Common */,
+				37C08C7C2C1EF4FD00F5E308 /* Models */,
 				378CEC1A2C0D633700DF1C3F /* Views */,
 				378CEBF42C0D563D00DF1C3F /* Assets.xcassets */,
 				378CEBF62C0D563D00DF1C3F /* LaunchScreen.storyboard */,
@@ -465,19 +472,61 @@
 			path = OAGothic;
 			sourceTree = "<group>";
 		};
+		37C08C7C2C1EF4FD00F5E308 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				37C08C7E2C1EF50E00F5E308 /* Network */,
+				37C08C7D2C1EF50900F5E308 /* PersistentStorages */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		37C08C7D2C1EF50900F5E308 /* PersistentStorages */ = {
+			isa = PBXGroup;
+			children = (
+				37C08C7F2C1EF51D00F5E308 /* RealmStorage */,
+				37C08C802C1EF52C00F5E308 /* UserDefaultsStorage */,
+			);
+			path = PersistentStorages;
+			sourceTree = "<group>";
+		};
+		37C08C7E2C1EF50E00F5E308 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				37C08C812C1EF54A00F5E308 /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		37C08C7F2C1EF51D00F5E308 /* RealmStorage */ = {
+			isa = PBXGroup;
+			children = (
+				37C08C832C1EF55400F5E308 /* RealmManager.swift */,
+			);
+			path = RealmStorage;
+			sourceTree = "<group>";
+		};
+		37C08C802C1EF52C00F5E308 /* UserDefaultsStorage */ = {
+			isa = PBXGroup;
+			children = (
+				37C08C852C1EF56500F5E308 /* UserDefaultsManager.swift */,
+			);
+			path = UserDefaultsStorage;
+			sourceTree = "<group>";
+		};
 		37E19F442C18837F0084F899 /* TravelDetailPlan */ = {
-            isa = PBXGroup;
-            children = (
-                370B839B2C149AC7009430B9 /* TravelDetailPlanView.swift */,
-                37E36D862C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift */,
-                37DDF5C92C18B54400842DA4 /* TravelDetailPlanHeaderContentCell.swift */,
-                370B839F2C149E66009430B9 /* TravelDetailPlanContentCell.swift */,
-                37E19F422C18680A0084F899 /* TravelDetailPlanFooterCell.swift */,
-                370B839D2C149AE8009430B9 /* TravelDetailPlanViewController.swift */,
-            );
-            path = TravelDetailPlan;
-            sourceTree = "<group>";
-        };
+			isa = PBXGroup;
+			children = (
+				370B839B2C149AC7009430B9 /* TravelDetailPlanView.swift */,
+				37E36D862C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift */,
+				37DDF5C92C18B54400842DA4 /* TravelDetailPlanHeaderContentCell.swift */,
+				370B839F2C149E66009430B9 /* TravelDetailPlanContentCell.swift */,
+				37E19F422C18680A0084F899 /* TravelDetailPlanFooterCell.swift */,
+				370B839D2C149AE8009430B9 /* TravelDetailPlanViewController.swift */,
+			);
+			path = TravelDetailPlan;
+			sourceTree = "<group>";
+		};
 		4D0E3CE82C12E8CC0089D6C1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,6 +727,7 @@
 				378CEC382C0D690800DF1C3F /* DiscoveryViewController.swift in Sources */,
 				37E19F432C18680A0084F899 /* TravelDetailPlanFooterCell.swift in Sources */,
 				4D0E3CD52C0F36110089D6C1 /* TravelSelectView.swift in Sources */,
+				37C08C862C1EF56500F5E308 /* UserDefaultsManager.swift in Sources */,
 				4D0E3CD72C0F36280089D6C1 /* TravelSelectViewController.swift in Sources */,
 				1AD537962C12E5E300A70D5E /* TravelPlanViewController.swift in Sources */,
 				F1B301FE2C10B42400D26B75 /* TravelAddCalenderView.swift in Sources */,
@@ -708,6 +758,7 @@
 				37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */,
 				4D0E3CF52C195A9A0089D6C1 /* TimeSelectPopoverView.swift in Sources */,
 				4D0E3CF32C18A4E30089D6C1 /* DaySelectPopoverView.swift in Sources */,
+				37C08C842C1EF55400F5E308 /* RealmManager.swift in Sources */,
 				37CB880F2C0D7979002798BE /* UIButton+Extension.swift in Sources */,
 				37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */,
 				F1B302002C10B43F00D26B75 /* TravelAddCalenderViewController.swift in Sources */,
@@ -728,6 +779,7 @@
 				37E36D872C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift in Sources */,
 				F1B302132C1457A400D26B75 /* TravelRescheduleView.swift in Sources */,
 				F1B302072C13331800D26B75 /* TravelRescheduleViewController.swift in Sources */,
+				37C08C822C1EF54A00F5E308 /* NetworkManager.swift in Sources */,
 				F19368222C1ACDA8000AC7B2 /* LocationView.swift in Sources */,
 				F1A2BC292C186B2B00D41614 /* TravelAddLocationViewController.swift in Sources */,
 				378CEC242C0D64AB00DF1C3F /* BaseViewController.swift in Sources */,
