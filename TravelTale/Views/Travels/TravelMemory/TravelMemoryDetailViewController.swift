@@ -27,6 +27,10 @@ final class TravelMemoryDetailViewController: BaseViewController {
         view = travelMemoryDetailView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
     
     // MARK: - methods
     init(travelData: Travel) {

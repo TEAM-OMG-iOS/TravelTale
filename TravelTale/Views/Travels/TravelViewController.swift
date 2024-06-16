@@ -40,8 +40,6 @@ final class TravelViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        tabBarController?.tabBar.isHidden = true
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
