@@ -30,6 +30,8 @@
 		370B83A02C149E66009430B9 /* TravelDetailPlanContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B839F2C149E66009430B9 /* TravelDetailPlanContentCell.swift */; };
 		3740FE542C12EE020024E08F /* TravelDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740FE532C12EE020024E08F /* TravelDetailView.swift */; };
 		3740FE562C12EE140024E08F /* TravelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740FE552C12EE140024E08F /* TravelDetailViewController.swift */; };
+		374DDDD22C1F0CBA0040A5F1 /* SidoResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DDDD12C1F0CBA0040A5F1 /* SidoResponseDTO+Mapping.swift */; };
+		374DDDD52C1F2CBD0040A5F1 /* Sido.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DDDD42C1F2CBD0040A5F1 /* Sido.swift */; };
 		378CEBEC2C0D563C00DF1C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */; };
 		378CEBEE2C0D563C00DF1C3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */; };
 		378CEBF52C0D563D00DF1C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 378CEBF42C0D563D00DF1C3F /* Assets.xcassets */; };
@@ -132,6 +134,8 @@
 		370B839F2C149E66009430B9 /* TravelDetailPlanContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanContentCell.swift; sourceTree = "<group>"; };
 		3740FE532C12EE020024E08F /* TravelDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailView.swift; sourceTree = "<group>"; };
 		3740FE552C12EE140024E08F /* TravelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailViewController.swift; sourceTree = "<group>"; };
+		374DDDD12C1F0CBA0040A5F1 /* SidoResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SidoResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		374DDDD42C1F2CBD0040A5F1 /* Sido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sido.swift; sourceTree = "<group>"; };
 		378CEBE82C0D563C00DF1C3F /* TravelTale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelTale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -249,6 +253,22 @@
 			path = TravelDetail;
 			sourceTree = "<group>";
 		};
+		374DDDD02C1F0C340040A5F1 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				374DDDD12C1F0CBA0040A5F1 /* SidoResponseDTO+Mapping.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		374DDDD32C1F2C980040A5F1 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				374DDDD42C1F2CBD0040A5F1 /* Sido.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		378CEBDF2C0D563C00DF1C3F = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +292,7 @@
 				378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */,
 				378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */,
 				378CEC192C0D632000DF1C3F /* Common */,
+				374DDDD32C1F2C980040A5F1 /* Entities */,
 				37C08C7C2C1EF4FD00F5E308 /* Models */,
 				378CEC1A2C0D633700DF1C3F /* Views */,
 				378CEBF42C0D563D00DF1C3F /* Assets.xcassets */,
@@ -494,6 +515,7 @@
 			isa = PBXGroup;
 			children = (
 				37C08C812C1EF54A00F5E308 /* NetworkManager.swift */,
+				374DDDD02C1F0C340040A5F1 /* DataMapping */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -753,6 +775,7 @@
 				370B83A02C149E66009430B9 /* TravelDetailPlanContentCell.swift in Sources */,
 				3740FE562C12EE140024E08F /* TravelDetailViewController.swift in Sources */,
 				2E36056D2C1AA70F007DFBC1 /* RegionData.swift in Sources */,
+				374DDDD52C1F2CBD0040A5F1 /* Sido.swift in Sources */,
 				378CEC322C0D68C600DF1C3F /* DiscoveryView.swift in Sources */,
 				378CEC3A2C0D691900DF1C3F /* MyPageViewController.swift in Sources */,
 				37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */,
@@ -780,6 +803,7 @@
 				F1B302132C1457A400D26B75 /* TravelRescheduleView.swift in Sources */,
 				F1B302072C13331800D26B75 /* TravelRescheduleViewController.swift in Sources */,
 				37C08C822C1EF54A00F5E308 /* NetworkManager.swift in Sources */,
+				374DDDD22C1F0CBA0040A5F1 /* SidoResponseDTO+Mapping.swift in Sources */,
 				F19368222C1ACDA8000AC7B2 /* LocationView.swift in Sources */,
 				F1A2BC292C186B2B00D41614 /* TravelAddLocationViewController.swift in Sources */,
 				378CEC242C0D64AB00DF1C3F /* BaseViewController.swift in Sources */,
