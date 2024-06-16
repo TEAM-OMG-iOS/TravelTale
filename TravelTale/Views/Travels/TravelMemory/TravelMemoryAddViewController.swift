@@ -17,9 +17,11 @@ final class TravelMemoryAddViewController: BaseViewController {
             setNoMemoryTravels()
         }
     }
+    
     private var noMemoryTravels: [Travel] = []
     
     private var selectedIndexPath: IndexPath?
+    
     
     // MARK: - life cycles
     override func loadView() {
