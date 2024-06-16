@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PlaceEditionViewController: BaseViewController {
+final class PlaceEditionViewController: BaseViewController {
     
     // MARK: - properties
     @IBOutlet weak var placeContents: UILabel!
