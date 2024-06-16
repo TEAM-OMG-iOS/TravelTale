@@ -32,6 +32,7 @@ final class TravelRescheduleViewController: BaseViewController {
         travelRescheduleView.datePickButton.addTarget(self, action: #selector(tappedDatePickButton), for: .touchUpInside)
         travelRescheduleView.resetDateButton.addTarget(self, action: #selector(tappedResetDate), for: .touchUpInside)
         travelRescheduleView.textField.addTarget(self, action: #selector(changedButtonColor), for: .editingChanged)
+        travelRescheduleView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
         travelRescheduleView.backButton.action = #selector(tappedCancelButton)
         travelRescheduleView.backButton.target = self
     }
@@ -85,6 +86,11 @@ final class TravelRescheduleViewController: BaseViewController {
     }
     
     @objc func tappedCancelButton() {
-        self.navigationController?.popViewController(animated: false)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func tappedOkButton() {
+        self.navigationController?.popViewController(animated: true)
+        // TODO: 데이터 저장 상태로 이동하는 기능
     }
 }
