@@ -72,7 +72,7 @@ final class TravelViewController: BaseViewController {
     private func showOnlyView(viewToShow: UIView) {
         let views = [travelPlanVC.view,
                      travelMemoryVC.view]
-        views.forEach { $0?.isHidden = $0 != viewToShow}
+        views.forEach { $0?.isHidden = $0 != viewToShow }
     }
     
     
