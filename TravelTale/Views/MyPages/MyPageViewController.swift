@@ -7,23 +7,43 @@
 
 import UIKit
 
-class MyPageViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+final class MyPageViewController: BaseViewController {
+    
+    // MARK: - properties
+    private let myPageView = MyPageView()
+    
+    // MARK: - life cycles
+    override func loadView() {
+        view = myPageView
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
-    */
-
+    
+    // MARK: - methods
+    override func configureStyle() {
+        configureNavigationBar()
+    }
+    
+    override func configureAddTarget() {
+        myPageView.totalButton.addTarget(self, action: #selector(tappedTotalButton), for: .touchUpInside)
+        
+        [myPageView.toristSpotBookMarkButton,
+         myPageView.accommodationBookMarkButton,
+         myPageView.entertainmentBookMarkButton,
+         myPageView.restaurantBookMarkButton].forEach { $0.addTarget(self, action: #selector(tappedCategoryButton), for: .touchUpInside) }
+    }
+    
+    private func configureNavigationBar() {
+        navigationItem.leftBarButtonItem = myPageView.myPageBarItem
+    }
+    
+    @objc private func tappedTotalButton() {
+        // TODO : 카테고리 버튼 Navi로 띄우기
+    }
+    
+    @objc private func tappedCategoryButton() {
+        // TODO : 카테고리 버튼 Navi로 띄우기
+    }
 }
