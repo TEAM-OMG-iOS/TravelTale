@@ -67,7 +67,7 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
         travelMemoryDetailEditView.bind(travel: travelData)
     }
     
-    func configureNavigationBarItems() {
+    private func configureNavigationBarItems() {
         navigationItem.title = "추억 남기기"
         navigationItem.leftBarButtonItem = travelMemoryDetailEditView.exitButton
       }

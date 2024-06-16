@@ -69,7 +69,7 @@ final class TravelMemoryDetailViewController: BaseViewController {
         getMemoryImages(travel: travelData)
     }
     
-    func configureNavigationBarItems() {
+    private func configureNavigationBarItems() {
         navigationItem.leftBarButtonItem = travelMemoryDetailView.backButton
         navigationItem.rightBarButtonItem = travelMemoryDetailView.editButton
       }
