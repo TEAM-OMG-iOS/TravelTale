@@ -19,6 +19,7 @@ protocol CalendarBaseView: BaseView {
 }
 
 // MARK: - DayRangeIndicatorView
+// 선택된 날짜 범위 커스텀 뷰
 final class DayRangeIndicatorView: BaseView {
     
     private let indicatorColor: UIColor
@@ -65,6 +66,7 @@ final class DayRangeIndicatorView: BaseView {
 }
 
 //MARK: - DayLabel
+// 일 UI커스텀
 struct DayLabel: CalendarItemViewRepresentable {
     
     struct InvariantViewProperties: Hashable {
@@ -98,6 +100,7 @@ struct DayLabel: CalendarItemViewRepresentable {
 }
 
 //MARK: - MonthLabel
+// 월 UI커스텀
 struct MonthLabel: CalendarItemViewRepresentable {
     
     struct InvariantViewProperties: Hashable {
@@ -132,6 +135,7 @@ struct MonthLabel: CalendarItemViewRepresentable {
 }
 
 //MARK: - MonthDayLabel
+// 요일 UI커스텀
 struct MonthDayLabel: CalendarItemViewRepresentable {
     
     struct InvariantViewProperties: Hashable {
@@ -162,6 +166,7 @@ struct MonthDayLabel: CalendarItemViewRepresentable {
 
 // MARK: - enum
 // MARK: - DayOfWeek
+// 요일 UI 커스텀(한국어로)
 enum DayOfWeek: Int {
     case sun = 0
     case mon
@@ -185,6 +190,7 @@ enum DayOfWeek: Int {
 }
 
 // MARK: - DayRangeSelectionHelper
+// 날짜 선택 범위 핸들러 기능
 enum DayRangeSelectionHelper {
     
     static func updateDayRange(
@@ -254,17 +260,8 @@ enum DayRangeSelectionHelper {
 }
 
 // MARK: - extension
-// MARK: - NSLayoutConstraint
-extension NSLayoutConstraint {
-    
-    fileprivate func prioritize(at priority: UILayoutPriority) -> NSLayoutConstraint {
-        self.priority = priority
-        return self
-    }
-    
-}
-
 // MARK: - DayRangeIndicatorView
+// 선택된 날짜 범위 커스텀
 extension DayRangeIndicatorView: CalendarItemViewRepresentable {
     
     struct InvariantViewProperties: Hashable {
@@ -288,6 +285,7 @@ extension DayRangeIndicatorView: CalendarItemViewRepresentable {
 }
 
 // MARK: - CalendarBaseView
+// 캘린더 뷰를 커스텀
 extension CalendarBaseView {
     func makeContent() -> CalendarViewContent {
         let startDate = calendar.date(byAdding: .month, value: 0, to: Date())!
