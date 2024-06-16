@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PlaceAdditionViewController: BaseViewController {
+final class PlaceAdditionViewController: BaseViewController {
     
     // MARK: - properties
     @IBOutlet weak var placeContents: UILabel!
