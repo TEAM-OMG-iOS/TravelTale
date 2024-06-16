@@ -10,7 +10,7 @@ import UIKit
 final class CategoryTableViewCell: BaseTableViewCell {
     
     // MARK: - properties
-    static let identifier = "CategoryTableViewCell"
+    static let identifier = String(describing: CategoryTableViewCell.self)
     
     private let containerView = UIView().then {
         $0.configureView(color: .white, clipsToBounds: true, cornerRadius: 15)
