@@ -94,7 +94,6 @@ final class TravelMemoryDetailEditView: BaseView {
     }
     
     private let layout = UICollectionViewFlowLayout().then {
-        let spacing = 8
         $0.scrollDirection = .horizontal
         $0.minimumLineSpacing = 8
         $0.itemSize = .init(width: 80, height: 80)
