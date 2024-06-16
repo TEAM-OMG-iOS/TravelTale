@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import HorizonCalendar
 
 final class TravelRenewCalendarViewController: BaseViewController {
@@ -34,7 +35,7 @@ final class TravelRenewCalendarViewController: BaseViewController {
         travelRenewCalendarView.okButton.addTarget(self, action: #selector(tappedSetAlert), for: .touchUpInside)
     }
     
-    private func setAlert() {
+    private func configureAlert() {
         let alert = UIAlertController(title: "경고", message: """
     수정된 일정만큼 일부 삭제될 수 있습니다.
     그대로 진행하시겠습니까?
@@ -58,6 +59,6 @@ final class TravelRenewCalendarViewController: BaseViewController {
     }
     
     @objc func tappedSetAlert() {
-        setAlert()
+        configureAlert()
     }
 }
