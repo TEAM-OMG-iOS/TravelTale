@@ -21,6 +21,7 @@
 		1AD537A22C13A9F200A70D5E /* SpaceFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */; };
 		2E0671BC2C1DEC14001CDB2E /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0671BB2C1DEC14001CDB2E /* CategoryTableViewCell.swift */; };
 		2E0671BF2C1DF3D3001CDB2E /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0671BE2C1DF3D3001CDB2E /* CategoryView.swift */; };
+		2E0671C12C1DFBC9001CDB2E /* PlaceData(temporary).swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0671C02C1DFBC9001CDB2E /* PlaceData(temporary).swift */; };
 		2E3525402C1756EF00D82D34 /* DiscoveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */; };
 		2E36056B2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */; };
 		2E36056D2C1AA70F007DFBC1 /* RegionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E36056C2C1AA70F007DFBC1 /* RegionData.swift */; };
@@ -126,6 +127,7 @@
 		1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceFooterView.swift; sourceTree = "<group>"; };
 		2E0671BB2C1DEC14001CDB2E /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		2E0671BE2C1DF3D3001CDB2E /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		2E0671C02C1DFBC9001CDB2E /* PlaceData(temporary).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaceData(temporary).swift"; sourceTree = "<group>"; };
 		2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryCell.swift; sourceTree = "<group>"; };
 		2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionModalViewController.swift; sourceTree = "<group>"; };
 		2E36056C2C1AA70F007DFBC1 /* RegionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionData.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				1AD5378C2C10613900A70D5E /* Class */,
 				1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */,
 				2E36056C2C1AA70F007DFBC1 /* RegionData.swift */,
+				2E0671C02C1DFBC9001CDB2E /* PlaceData(temporary).swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -737,6 +740,7 @@
 				F193681C2C194D73000AC7B2 /* TravelRenewCalendarViewController.swift in Sources */,
 				4D66945A2C1AE42C0095CC42 /* TimeSelectPopoverViewController.swift in Sources */,
 				378CEBEE2C0D563C00DF1C3F /* SceneDelegate.swift in Sources */,
+				2E0671C12C1DFBC9001CDB2E /* PlaceData(temporary).swift in Sources */,
 				370B83A02C149E66009430B9 /* TravelDetailPlanContentCell.swift in Sources */,
 				3740FE562C12EE140024E08F /* TravelDetailViewController.swift in Sources */,
 				2E36056D2C1AA70F007DFBC1 /* RegionData.swift in Sources */,

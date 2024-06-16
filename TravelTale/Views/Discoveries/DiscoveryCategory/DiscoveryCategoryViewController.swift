@@ -22,7 +22,7 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
         $0.backgroundColor = .gray70
     }
     
-    private let bottomBorder = UIView().then {
+    let bottomBorder = UIView().then {
         $0.backgroundColor = .gray70
     }
     
@@ -37,6 +37,16 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
         configureConstraints()
         configureAddTarget()
         configureNavigationBar()
+        
+        DispatchQueue.main.async {
+            self.moveToViewController(at: self.selectedIndexPath)
+            self.reloadPagerTabStripView()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     // MARK: - methods
@@ -52,10 +62,6 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
         buttonBarView.isScrollEnabled = false
         
         configureButtonBar()
-        
-        DispatchQueue.main.async {
-            self.collectionView(self.buttonBarView, didSelectItemAt: IndexPath(row: self.selectedIndexPath, section: 0))
-        }
     }
     
     private func configureHierarchy() {
@@ -79,6 +85,11 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
             $0.horizontalEdges.bottom.equalTo(buttonBarView)
             $0.height.equalTo(1)
         }
+        
+        containerView.snp.makeConstraints {
+            $0.top.equalTo(buttonBarView.snp.bottom)
+            $0.horizontalEdges.bottom.equalToSuperview()
+        }
     }
     
     private func configureAddTarget() {
@@ -94,15 +105,15 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
         settings.style.buttonBarBackgroundColor = .white
         settings.style.buttonBarItemBackgroundColor = .white
         settings.style.buttonBarItemFont = .oaGothic(size: 15, weight: .medium)
-        settings.style.buttonBarItemLeftRightMargin = 20
+        settings.style.buttonBarItemLeftRightMargin = 12
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         
-        changeCurrentIndexProgressive = { [unowned self] (oldCell: ButtonBarViewCell?,
-                                                          newCell: ButtonBarViewCell?,
-                                                          progressPercentage: CGFloat,
-                                                          changeCurrentIndex: Bool,
-                                                          animated: Bool) -> Void in
+        changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?,
+                                           newCell: ButtonBarViewCell?,
+                                           progressPercentage: CGFloat,
+                                           changeCurrentIndex: Bool,
+                                           animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
             oldCell?.label.textColor = .gray70
             newCell?.label.textColor = .black
@@ -114,6 +125,7 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
         let restaurantVC = RestaurantViewController()
         let accommodationVC = AccommodationViewController()
         let entertainmentVC = EntertainmentViewController()
+        
         return [touristSpotVC, restaurantVC, accommodationVC, entertainmentVC]
     }
     

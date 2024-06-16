@@ -22,6 +22,11 @@ final class DiscoveryViewController: BaseViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     // MARK: - methods
     override func configureStyle() {
         configureNavigationBar()
@@ -75,6 +80,7 @@ final class DiscoveryViewController: BaseViewController {
         let categoryArray = ["관광지", "음식점", "숙박", "놀거리"]
         
         guard let categoryText = sender.titleLabel?.text  else { return }
+        
         discoveryCategoryVC.navigationItem.title = categoryText
         discoveryCategoryVC.selectedIndexPath = categoryArray.firstIndex(of: categoryText) ?? 0
         

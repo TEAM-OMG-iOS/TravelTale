@@ -15,6 +15,8 @@ final class CategoryView: BaseView {
     // MARK: - methods
     override func configureUI() {
         super.configureUI()
+        
+        tableView.separatorStyle = .none
     }
     
     override func configureHierarchy() {
@@ -23,8 +25,7 @@ final class CategoryView: BaseView {
     
     override func configureConstraints() {
         tableView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
-            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
     }
 }
