@@ -38,7 +38,7 @@ class TravelAddCalenderViewController: BaseViewController {
     
     override func configureAddTarget() {
         travelAddCalenderView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
-        travelAddCalenderView.okButton.addTarget(self, action: #selector(popToRootView), for: .touchUpInside)
+        travelAddCalenderView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
         travelAddCalenderView.backButton.action = #selector(popToRootView)
         travelAddCalenderView.backButton.target = self
     }
@@ -50,6 +50,11 @@ class TravelAddCalenderViewController: BaseViewController {
     
     @objc func tappedCancelButton() {
         self.navigationController?.popViewController(animated: false)
+    }
+    
+    @objc func tappedOkButton() {
+        self.navigationController?.popToRootViewController(animated: true)
+        // TODO: 데이터 저장 상태로 RootView로 이동
     }
     
     @objc func popToRootView() {
