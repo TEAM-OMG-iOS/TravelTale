@@ -94,12 +94,12 @@ final class TravelMemoryAddViewController: BaseViewController {
         travelMemoryAddView.confirmButton.addTarget(self, action: #selector(tappedConfirmButton), for: .touchUpInside)
     }
     
-    func configureNavigationBarItems() {
+    private func configureNavigationBarItems() {
         navigationItem.title = "추억 남기기"
         navigationItem.leftBarButtonItem = travelMemoryAddView.exitButton
     }
     
-    func setNoMemoryTravels() {
+    private func setNoMemoryTravels() {
         for travel in travels {
             let isMemoryNoteEmpty = travel.memoryNote == nil
             let isMemoryImagesEmpty = travel.memoryImageDatas.isEmpty
