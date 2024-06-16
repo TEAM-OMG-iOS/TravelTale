@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "tourist_spot_circle.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
