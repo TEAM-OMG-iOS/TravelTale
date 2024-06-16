@@ -61,6 +61,10 @@ final class DiscoveryRegionViewController: BaseViewController {
     @objc private func tappedCityButton() {
         let discoveryRegionModalVC = DiscoveryRegionModalViewController()
         
+        guard let sheet = discoveryRegionModalVC.sheetPresentationController else { return }
+        sheet.detents = [.medium()]
+        sheet.prefersGrabberVisible = true
+        
         discoveryRegionModalVC.bind(isCity: true)
         discoveryRegionModalVC.completion = { [weak self] text in
             guard let self = self else { return }
@@ -73,6 +77,10 @@ final class DiscoveryRegionViewController: BaseViewController {
     
     @objc private func tappedDistrictButton() {
         let discoveryRegionModalVC = DiscoveryRegionModalViewController()
+        
+        guard let sheet = discoveryRegionModalVC.sheetPresentationController else { return }
+        sheet.detents = [.medium()]
+        sheet.prefersGrabberVisible = true
         
         discoveryRegionModalVC.bind(isCity: false, city: selectedCity)
         discoveryRegionModalVC.completion = { [weak self] text in

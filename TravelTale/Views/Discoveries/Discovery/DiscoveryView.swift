@@ -10,7 +10,7 @@ import UIKit
 final class DiscoveryView: BaseView {
     
     // MARK: - properties
-    let regionLabelButton = UIButton().then {
+    var regionLabelButton = UIButton().then {
         $0.configureButton(font: .pretendard(size: 18, weight: .bold), text: "서울특별시 강남구")
     }
     
