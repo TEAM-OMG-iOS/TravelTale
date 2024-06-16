@@ -37,7 +37,7 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     override func configureAddTarget() {
         travelAddTitleView.textField.addTarget(self, action: #selector(changedButtonColor), for: .editingChanged)
         travelAddTitleView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
-        travelAddTitleView.backButton.action = #selector(tappedToRootView)
+        travelAddTitleView.backButton.action = #selector(popToRootView)
         travelAddTitleView.backButton.target = self
     }
     
@@ -51,7 +51,7 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
         self.navigationController?.pushViewController(nextVC, animated: false)
     }
     
-    @objc func tappedToRootView() {
+    @objc func popToRootView() {
         self.navigationController?.popToRootViewController(animated: true)
     }
     

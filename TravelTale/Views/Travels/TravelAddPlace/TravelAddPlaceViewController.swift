@@ -36,7 +36,7 @@ final class TravelAddPlaceViewController: BaseViewController {
         travelAddPlaceView.placePickButton.addTarget(self, action: #selector(tappedInputBox), for: .touchUpInside)
         travelAddPlaceView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
         travelAddPlaceView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
-        travelAddPlaceView.backButton.action = #selector(tappedToRootView)
+        travelAddPlaceView.backButton.action = #selector(popToRootView)
         travelAddPlaceView.backButton.target = self
     }
     
@@ -66,7 +66,7 @@ final class TravelAddPlaceViewController: BaseViewController {
         self.navigationController?.popViewController(animated: false)
     }
     
-    @objc func tappedToRootView() {
+    @objc func popToRootView() {
         self.navigationController?.popToRootViewController(animated: true)
     }
 }
