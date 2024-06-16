@@ -36,6 +36,10 @@
 		374DDDDA2C1F3D060040A5F1 /* SigunguResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DDDD92C1F3D060040A5F1 /* SigunguResponseDTO+Mapping.swift */; };
 		374DDDDC2C1F43B50040A5F1 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DDDDB2C1F43B50040A5F1 /* Place.swift */; };
 		374DDDDE2C1F43CB0040A5F1 /* PlaceResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DDDDD2C1F43CB0040A5F1 /* PlaceResponseDTO+Mapping.swift */; };
+		374DDDE02C1F4E650040A5F1 /* PlaceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DDDDF2C1F4E650040A5F1 /* PlaceDetail.swift */; };
+		374DDDE22C1F4E730040A5F1 /* PlaceDetailResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DDDE12C1F4E730040A5F1 /* PlaceDetailResponseDTO+Mapping.swift */; };
+		374DDDE42C1F68FD0040A5F1 /* PlaceSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DDDE32C1F68FD0040A5F1 /* PlaceSearch.swift */; };
+		374DDDE62C1F69100040A5F1 /* PlaceSearchResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DDDE52C1F69100040A5F1 /* PlaceSearchResponseDTO+Mapping.swift */; };
 		378CEBEC2C0D563C00DF1C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */; };
 		378CEBEE2C0D563C00DF1C3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */; };
 		378CEBF52C0D563D00DF1C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 378CEBF42C0D563D00DF1C3F /* Assets.xcassets */; };
@@ -144,6 +148,10 @@
 		374DDDD92C1F3D060040A5F1 /* SigunguResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SigunguResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		374DDDDB2C1F43B50040A5F1 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		374DDDDD2C1F43CB0040A5F1 /* PlaceResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaceResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		374DDDDF2C1F4E650040A5F1 /* PlaceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetail.swift; sourceTree = "<group>"; };
+		374DDDE12C1F4E730040A5F1 /* PlaceDetailResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaceDetailResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		374DDDE32C1F68FD0040A5F1 /* PlaceSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearch.swift; sourceTree = "<group>"; };
+		374DDDE52C1F69100040A5F1 /* PlaceSearchResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaceSearchResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		378CEBE82C0D563C00DF1C3F /* TravelTale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelTale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -267,6 +275,8 @@
 				374DDDD12C1F0CBA0040A5F1 /* SidoResponseDTO+Mapping.swift */,
 				374DDDD92C1F3D060040A5F1 /* SigunguResponseDTO+Mapping.swift */,
 				374DDDDD2C1F43CB0040A5F1 /* PlaceResponseDTO+Mapping.swift */,
+				374DDDE12C1F4E730040A5F1 /* PlaceDetailResponseDTO+Mapping.swift */,
+				374DDDE52C1F69100040A5F1 /* PlaceSearchResponseDTO+Mapping.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -277,6 +287,8 @@
 				374DDDD42C1F2CBD0040A5F1 /* Sido.swift */,
 				374DDDD72C1F3CEB0040A5F1 /* Sigungu.swift */,
 				374DDDDB2C1F43B50040A5F1 /* Place.swift */,
+				374DDDDF2C1F4E650040A5F1 /* PlaceDetail.swift */,
+				374DDDE32C1F68FD0040A5F1 /* PlaceSearch.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -753,6 +765,7 @@
 				2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */,
 				1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */,
 				378CEC3D2C0D6B0B00DF1C3F /* TabBarViewController.swift in Sources */,
+				374DDDE22C1F4E730040A5F1 /* PlaceDetailResponseDTO+Mapping.swift in Sources */,
 				37CB88162C0DB648002798BE /* GrayBackgroundView.swift in Sources */,
 				2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */,
 				378CEC262C0D64FB00DF1C3F /* BaseTableViewCell.swift in Sources */,
@@ -768,6 +781,7 @@
 				378CEBEC2C0D563C00DF1C3F /* AppDelegate.swift in Sources */,
 				370B839C2C149AC7009430B9 /* TravelDetailPlanView.swift in Sources */,
 				378CEC362C0D68F900DF1C3F /* TravelViewController.swift in Sources */,
+				374DDDE42C1F68FD0040A5F1 /* PlaceSearch.swift in Sources */,
 				F193681A2C194D50000AC7B2 /* TravelRenewCalendarView.swift in Sources */,
 				1AD537902C12CF4900A70D5E /* TravelPlanView.swift in Sources */,
 				378CEC302C0D68A200DF1C3F /* TravelView.swift in Sources */,
@@ -789,6 +803,7 @@
 				3740FE562C12EE140024E08F /* TravelDetailViewController.swift in Sources */,
 				2E36056D2C1AA70F007DFBC1 /* RegionData.swift in Sources */,
 				374DDDD52C1F2CBD0040A5F1 /* Sido.swift in Sources */,
+				374DDDE62C1F69100040A5F1 /* PlaceSearchResponseDTO+Mapping.swift in Sources */,
 				378CEC322C0D68C600DF1C3F /* DiscoveryView.swift in Sources */,
 				378CEC3A2C0D691900DF1C3F /* MyPageViewController.swift in Sources */,
 				37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */,
@@ -796,6 +811,7 @@
 				4D0E3CF32C18A4E30089D6C1 /* DaySelectPopoverView.swift in Sources */,
 				37C08C842C1EF55400F5E308 /* RealmManager.swift in Sources */,
 				37CB880F2C0D7979002798BE /* UIButton+Extension.swift in Sources */,
+				374DDDE02C1F4E650040A5F1 /* PlaceDetail.swift in Sources */,
 				37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */,
 				F1B302002C10B43F00D26B75 /* TravelAddCalenderViewController.swift in Sources */,
 				37CB88072C0D7632002798BE /* PlaceDetailView.swift in Sources */,
