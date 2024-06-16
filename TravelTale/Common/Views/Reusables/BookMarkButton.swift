@@ -12,6 +12,7 @@ final class BookMarkButton: UIButton {
     // MARK: - properties
     private let backgroundView = UIView().then {
         $0.configureView(color: .white, clipsToBounds: true, cornerRadius: 15)
+        $0.isUserInteractionEnabled = false
     }
     
     private let bookMarkImageView = UIImageView()
@@ -70,5 +71,9 @@ final class BookMarkButton: UIButton {
             $0.trailing.bottom.equalToSuperview().inset(16)
             $0.verticalEdges.equalTo(bookMarkLabel)
         }
+    }
+    
+    func getButtonName() -> String {
+        return text ?? ""
     }
 }

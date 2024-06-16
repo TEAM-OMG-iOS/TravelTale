@@ -1,5 +1,5 @@
 //
-//  MyPageBookMarkViewController.swift
+//  BookMarkViewController.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/16/24.
@@ -9,7 +9,7 @@ import UIKit
 
 import XLPagerTabStrip
 
-final class MyPageBookMarkViewController: ButtonBarPagerTabStripViewController {
+final class BookMarkViewController: ButtonBarPagerTabStripViewController {
     
     // MARK: - properties
     private let backButton = UIBarButtonItem().then {
@@ -37,11 +37,6 @@ final class MyPageBookMarkViewController: ButtonBarPagerTabStripViewController {
         configureConstraints()
         configureAddTarget()
         configureNavigationBar()
-        
-        DispatchQueue.main.async {
-            self.moveToViewController(at: self.selectedIndexPath)
-            self.reloadPagerTabStripView()
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +57,11 @@ final class MyPageBookMarkViewController: ButtonBarPagerTabStripViewController {
         buttonBarView.isScrollEnabled = false
         
         configureButtonBar()
+        
+        DispatchQueue.main.async {
+            self.moveToViewController(at: self.selectedIndexPath)
+            self.reloadPagerTabStripView()
+        }
     }
     
     private func configureHierarchy() {
@@ -106,7 +106,7 @@ final class MyPageBookMarkViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarBackgroundColor = .white
         settings.style.buttonBarItemBackgroundColor = .white
         settings.style.buttonBarItemFont = .oaGothic(size: 15, weight: .medium)
-        settings.style.buttonBarItemLeftRightMargin = 12
+        settings.style.buttonBarItemLeftRightMargin = 4
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         
@@ -122,12 +122,13 @@ final class MyPageBookMarkViewController: ButtonBarPagerTabStripViewController {
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let touristSpotVC = TouristSpotViewController()
-        let restaurantVC = RestaurantViewController()
-        let accommodationVC = AccommodationViewController()
-        let entertainmentVC = EntertainmentViewController()
+        let totalVC = BookMarkTotalViewController()
+        let touristSpotVC = BookMarkTouristSpotViewController()
+        let restaurantVC = BookMarkRestaurantViewController()
+        let accommodationVC = BookMarkAccommodationViewController()
+        let entertainmentVC = BookMarkEntertainmentViewController()
         
-        return [touristSpotVC, restaurantVC, accommodationVC, entertainmentVC]
+        return [totalVC, touristSpotVC, restaurantVC, accommodationVC, entertainmentVC]
     }
     
     @objc private func tappedBackButton() {

@@ -33,7 +33,12 @@
 		2EC6357D2C1CED6D006C1ADB /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6357C2C1CED6D006C1ADB /* RestaurantViewController.swift */; };
 		2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */; };
 		2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */; };
-		2EF0E3AD2C1F1E7700654025 /* MyPageBookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3AC2C1F1E7700654025 /* MyPageBookMarkViewController.swift */; };
+		2EF0E3AD2C1F1E7700654025 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */; };
+		2EF0E3B02C1F1FD800654025 /* BookMarkTouristSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3AF2C1F1FD800654025 /* BookMarkTouristSpotViewController.swift */; };
+		2EF0E3B22C1F200200654025 /* BookMarkRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3B12C1F200200654025 /* BookMarkRestaurantViewController.swift */; };
+		2EF0E3B42C1F201E00654025 /* BookMarkEntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3B32C1F201E00654025 /* BookMarkEntertainmentViewController.swift */; };
+		2EF0E3B62C1F203200654025 /* BookMarkAccommodationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3B52C1F203200654025 /* BookMarkAccommodationViewController.swift */; };
+		2EF0E3B82C1F20EA00654025 /* BookMarkTotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3B72C1F20EA00654025 /* BookMarkTotalViewController.swift */; };
 		370B839C2C149AC7009430B9 /* TravelDetailPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B839B2C149AC7009430B9 /* TravelDetailPlanView.swift */; };
 		370B839E2C149AE8009430B9 /* TravelDetailPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B839D2C149AE8009430B9 /* TravelDetailPlanViewController.swift */; };
 		370B83A02C149E66009430B9 /* TravelDetailPlanContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B839F2C149E66009430B9 /* TravelDetailPlanContentCell.swift */; };
@@ -141,7 +146,12 @@
 		2EC6357C2C1CED6D006C1ADB /* RestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
 		2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionView.swift; sourceTree = "<group>"; };
 		2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionViewController.swift; sourceTree = "<group>"; };
-		2EF0E3AC2C1F1E7700654025 /* MyPageBookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageBookMarkViewController.swift; sourceTree = "<group>"; };
+		2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
+		2EF0E3AF2C1F1FD800654025 /* BookMarkTouristSpotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTouristSpotViewController.swift; sourceTree = "<group>"; };
+		2EF0E3B12C1F200200654025 /* BookMarkRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkRestaurantViewController.swift; sourceTree = "<group>"; };
+		2EF0E3B32C1F201E00654025 /* BookMarkEntertainmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkEntertainmentViewController.swift; sourceTree = "<group>"; };
+		2EF0E3B52C1F203200654025 /* BookMarkAccommodationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkAccommodationViewController.swift; sourceTree = "<group>"; };
+		2EF0E3B72C1F20EA00654025 /* BookMarkTotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTotalViewController.swift; sourceTree = "<group>"; };
 		370B839B2C149AC7009430B9 /* TravelDetailPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanView.swift; sourceTree = "<group>"; };
 		370B839D2C149AE8009430B9 /* TravelDetailPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanViewController.swift; sourceTree = "<group>"; };
 		370B839F2C149E66009430B9 /* TravelDetailPlanContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanContentCell.swift; sourceTree = "<group>"; };
@@ -273,12 +283,17 @@
 			path = DiscoveryCategory;
 			sourceTree = "<group>";
 		};
-		2EF0E3AE2C1F1E7C00654025 /* MyPageBookMark */ = {
+		2EF0E3AE2C1F1E7C00654025 /* BookMark */ = {
 			isa = PBXGroup;
 			children = (
-				2EF0E3AC2C1F1E7700654025 /* MyPageBookMarkViewController.swift */,
+				2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */,
+				2EF0E3B72C1F20EA00654025 /* BookMarkTotalViewController.swift */,
+				2EF0E3AF2C1F1FD800654025 /* BookMarkTouristSpotViewController.swift */,
+				2EF0E3B12C1F200200654025 /* BookMarkRestaurantViewController.swift */,
+				2EF0E3B52C1F203200654025 /* BookMarkAccommodationViewController.swift */,
+				2EF0E3B32C1F201E00654025 /* BookMarkEntertainmentViewController.swift */,
 			);
-			path = MyPageBookMark;
+			path = BookMark;
 			sourceTree = "<group>";
 		};
 		3740FE522C12EDD50024E08F /* TravelDetail */ = {
@@ -399,7 +414,7 @@
 			children = (
 				378CEC2E2C0D688F00DF1C3F /* MyPage */,
 				378CEC392C0D691900DF1C3F /* MyPageViewController.swift */,
-				2EF0E3AE2C1F1E7C00654025 /* MyPageBookMark */,
+				2EF0E3AE2C1F1E7C00654025 /* BookMark */,
 			);
 			path = MyPages;
 			sourceTree = "<group>";
@@ -718,7 +733,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EF0E3AD2C1F1E7700654025 /* MyPageBookMarkViewController.swift in Sources */,
+				2EF0E3AD2C1F1E7700654025 /* BookMarkViewController.swift in Sources */,
 				2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */,
 				1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */,
 				378CEC3D2C0D6B0B00DF1C3F /* TabBarViewController.swift in Sources */,
@@ -743,6 +758,7 @@
 				378CEC302C0D68A200DF1C3F /* TravelView.swift in Sources */,
 				4D66945B2C1AE42C0095CC42 /* DaySelectPopoverViewController.swift in Sources */,
 				37CB880D2C0D796C002798BE /* UILabel+Extension.swift in Sources */,
+				2EF0E3B02C1F1FD800654025 /* BookMarkTouristSpotViewController.swift in Sources */,
 				1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */,
 				F19368202C1ACB88000AC7B2 /* LocationTableViewCell.swift in Sources */,
 				1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */,
@@ -750,6 +766,7 @@
 				2EC635792C1CEC03006C1ADB /* EntertainmentViewController.swift in Sources */,
 				1AD5379E2C1367AB00A70D5E /* TravelSegment.swift in Sources */,
 				370B839E2C149AE8009430B9 /* TravelDetailPlanViewController.swift in Sources */,
+				2EF0E3B82C1F20EA00654025 /* BookMarkTotalViewController.swift in Sources */,
 				1AD5378E2C10838A00A70D5E /* Travel(temporary).swift in Sources */,
 				1AD537942C12DCC600A70D5E /* LightGreenButton.swift in Sources */,
 				F193681C2C194D73000AC7B2 /* TravelRenewCalendarViewController.swift in Sources */,
@@ -759,7 +776,9 @@
 				370B83A02C149E66009430B9 /* TravelDetailPlanContentCell.swift in Sources */,
 				3740FE562C12EE140024E08F /* TravelDetailViewController.swift in Sources */,
 				2E36056D2C1AA70F007DFBC1 /* RegionData.swift in Sources */,
+				2EF0E3B62C1F203200654025 /* BookMarkAccommodationViewController.swift in Sources */,
 				378CEC322C0D68C600DF1C3F /* DiscoveryView.swift in Sources */,
+				2EF0E3B22C1F200200654025 /* BookMarkRestaurantViewController.swift in Sources */,
 				378CEC3A2C0D691900DF1C3F /* MyPageViewController.swift in Sources */,
 				37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */,
 				4D0E3CF52C195A9A0089D6C1 /* TimeSelectPopoverView.swift in Sources */,
@@ -779,6 +798,7 @@
 				1AD537A22C13A9F200A70D5E /* SpaceFooterView.swift in Sources */,
 				2E52F2F32C1B7BAB00E7D6D5 /* BookMarkButton.swift in Sources */,
 				2EC635772C1CEB7D006C1ADB /* AccommodationViewController.swift in Sources */,
+				2EF0E3B42C1F201E00654025 /* BookMarkEntertainmentViewController.swift in Sources */,
 				378CEC202C0D649000DF1C3F /* UIFont+Extension.swift in Sources */,
 				F1B301F72C10501000D26B75 /* TravelAddPlaceView.swift in Sources */,
 				4D0E3CDB2C10391A0089D6C1 /* MemoAddViewController.swift in Sources */,
