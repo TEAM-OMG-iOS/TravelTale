@@ -37,8 +37,8 @@ class TravelAddCalenderViewController: BaseViewController {
     
     override func configureAddTarget() {
         travelAddCalenderView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
-        travelAddCalenderView.okButton.addTarget(self, action: #selector(tappedToRootView), for: .touchUpInside)
-        travelAddCalenderView.backButton.action = #selector(tappedToRootView)
+        travelAddCalenderView.okButton.addTarget(self, action: #selector(popToRootView), for: .touchUpInside)
+        travelAddCalenderView.backButton.action = #selector(popToRootView)
         travelAddCalenderView.backButton.target = self
     }
     
@@ -51,7 +51,7 @@ class TravelAddCalenderViewController: BaseViewController {
         self.navigationController?.popViewController(animated: false)
     }
     
-    @objc func tappedToRootView() {
+    @objc func popToRootView() {
         self.navigationController?.popToRootViewController(animated: true)
     }
 }
