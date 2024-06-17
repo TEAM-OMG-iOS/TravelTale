@@ -114,7 +114,7 @@ final class TravelAddPlaceView: BaseView {
     
     func startLoadingAnimation() {
         UIView.animate(withDuration: 2.0, delay: 0, animations: {
-            self.loadingBar.transform = CGAffineTransform(scaleX: 3, y: 1)
+            self.loadingBar.transform = CGAffineTransform(scaleX: 3, y: 1.5)
         })
     }
 }
