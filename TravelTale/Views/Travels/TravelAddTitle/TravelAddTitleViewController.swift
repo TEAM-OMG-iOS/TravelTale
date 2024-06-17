@@ -17,6 +17,11 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
         view = travelAddTitleView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         travelAddTitleView.startLoadingAnimation()
     }

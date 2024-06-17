@@ -32,9 +32,6 @@ final class TravelPlanViewController: BaseViewController {
         addTemporaryData()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
     
     // MARK: - methods
     // TODO: 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
@@ -110,7 +107,8 @@ final class TravelPlanViewController: BaseViewController {
     
     // MARK: - objc method
     @objc func tappedAddButton() {
-        print("tappedAddButton")
+        let TravelAddTitleVC = TravelAddTitleViewController()
+        self.navigationController?.pushViewController(TravelAddTitleVC, animated: true)
     }
 }
 
