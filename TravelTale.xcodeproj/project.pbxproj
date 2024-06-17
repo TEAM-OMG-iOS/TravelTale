@@ -76,6 +76,11 @@
 		378CEC532C0D721200DF1C3F /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 378CEC4A2C0D721200DF1C3F /* Pretendard-Regular.otf */; };
 		378CEC592C0D732600DF1C3F /* OAGothic-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 378CEC572C0D732600DF1C3F /* OAGothic-ExtraBold.otf */; };
 		378CEC5A2C0D732600DF1C3F /* OAGothic-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 378CEC582C0D732600DF1C3F /* OAGothic-Medium.otf */; };
+		37961A892C208242003A994F /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A882C208242003A994F /* Address.swift */; };
+		37961A8B2C2082A6003A994F /* Travel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A8A2C2082A6003A994F /* Travel.swift */; };
+		37961A8D2C2082E6003A994F /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A8C2C2082E6003A994F /* Record.swift */; };
+		37961A8F2C20831C003A994F /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A8E2C20831C003A994F /* Memory.swift */; };
+		37961A912C20834C003A994F /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A902C20834C003A994F /* Bookmark.swift */; };
 		37C08C822C1EF54A00F5E308 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C08C812C1EF54A00F5E308 /* NetworkManager.swift */; };
 		37C08C842C1EF55400F5E308 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C08C832C1EF55400F5E308 /* RealmManager.swift */; };
 		37C08C862C1EF56500F5E308 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C08C852C1EF56500F5E308 /* UserDefaultsManager.swift */; };
@@ -183,6 +188,11 @@
 		378CEC4A2C0D721200DF1C3F /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		378CEC572C0D732600DF1C3F /* OAGothic-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OAGothic-ExtraBold.otf"; sourceTree = "<group>"; };
 		378CEC582C0D732600DF1C3F /* OAGothic-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OAGothic-Medium.otf"; sourceTree = "<group>"; };
+		37961A882C208242003A994F /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		37961A8A2C2082A6003A994F /* Travel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Travel.swift; sourceTree = "<group>"; };
+		37961A8C2C2082E6003A994F /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		37961A8E2C20831C003A994F /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
+		37961A902C20834C003A994F /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		37C08C812C1EF54A00F5E308 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		37C08C832C1EF55400F5E308 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		37C08C852C1EF56500F5E308 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
@@ -289,6 +299,11 @@
 				374DDDDB2C1F43B50040A5F1 /* Place.swift */,
 				374DDDDF2C1F4E650040A5F1 /* PlaceDetail.swift */,
 				374DDDE32C1F68FD0040A5F1 /* PlaceSearch.swift */,
+				37961A882C208242003A994F /* Address.swift */,
+				37961A8A2C2082A6003A994F /* Travel.swift */,
+				37961A8C2C2082E6003A994F /* Record.swift */,
+				37961A8E2C20831C003A994F /* Memory.swift */,
+				37961A902C20834C003A994F /* Bookmark.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -768,6 +783,7 @@
 				374DDDE22C1F4E730040A5F1 /* PlaceDetailResponseDTO+Mapping.swift in Sources */,
 				37CB88162C0DB648002798BE /* GrayBackgroundView.swift in Sources */,
 				2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */,
+				37961A8D2C2082E6003A994F /* Record.swift in Sources */,
 				378CEC262C0D64FB00DF1C3F /* BaseTableViewCell.swift in Sources */,
 				378CEC282C0D651E00DF1C3F /* BaseCollectionViewCell.swift in Sources */,
 				4D0E3CE32C1076570089D6C1 /* PlaceAddViewController.swift in Sources */,
@@ -788,12 +804,15 @@
 				4D66945B2C1AE42C0095CC42 /* DaySelectPopoverViewController.swift in Sources */,
 				37CB880D2C0D796C002798BE /* UILabel+Extension.swift in Sources */,
 				1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */,
+				37961A892C208242003A994F /* Address.swift in Sources */,
 				F19368202C1ACB88000AC7B2 /* LocationTableViewCell.swift in Sources */,
 				374DDDDA2C1F3D060040A5F1 /* SigunguResponseDTO+Mapping.swift in Sources */,
 				1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */,
+				37961A8B2C2082A6003A994F /* Travel.swift in Sources */,
 				378CEC342C0D68DE00DF1C3F /* MyPageView.swift in Sources */,
 				1AD5379E2C1367AB00A70D5E /* TravelSegment.swift in Sources */,
 				370B839E2C149AE8009430B9 /* TravelDetailPlanViewController.swift in Sources */,
+				37961A912C20834C003A994F /* Bookmark.swift in Sources */,
 				1AD5378E2C10838A00A70D5E /* Travel(temporary).swift in Sources */,
 				1AD537942C12DCC600A70D5E /* LightGreenButton.swift in Sources */,
 				F193681C2C194D73000AC7B2 /* TravelRenewCalendarViewController.swift in Sources */,
@@ -811,6 +830,7 @@
 				4D0E3CF32C18A4E30089D6C1 /* DaySelectPopoverView.swift in Sources */,
 				37C08C842C1EF55400F5E308 /* RealmManager.swift in Sources */,
 				37CB880F2C0D7979002798BE /* UIButton+Extension.swift in Sources */,
+				37961A8F2C20831C003A994F /* Memory.swift in Sources */,
 				374DDDE02C1F4E650040A5F1 /* PlaceDetail.swift in Sources */,
 				37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */,
 				F1B302002C10B43F00D26B75 /* TravelAddCalenderViewController.swift in Sources */,
