@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct Sigungu {
+    let code: String?
+    let name: String?
+}
+
+struct Sigungus {
+    let sigungus: [Sigungu]?
+}

@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct Sido {
+    let code: String?
+    let name: String?
+}
+
+struct Sidos {
+    let sidos: [Sido]?
+}

@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+struct Place {
+    let addr1: String?
+    let addr2: String?
+    let contentId: String?
+    let firstImage: String?
+    let title: String?
+    let cpyrhtDivCd: String?
+}
+
+struct Places {
+    let places: [Place]?
+}

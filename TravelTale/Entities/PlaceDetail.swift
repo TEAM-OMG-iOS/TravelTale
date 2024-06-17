@@ -6,3 +6,21 @@
 //
 
 import Foundation
+
+struct PlaceDetail {
+    let title: String?
+    let tel: String?
+    let homepage: String?
+    let firstImage: String?
+    let firstImage2: String?
+    let cpyrhtDivCd: String?
+    let addr1: String?
+    let addr2: String?
+    let mapx: String?
+    let mapy: String?
+    let overview: String?
+}
+
+struct PlaceDetails {
+    let placeDetails: [PlaceDetail]?
+}
