@@ -8,6 +8,8 @@
 import Foundation
 
 struct PlaceDetail {
+    let contentId: String?
+    let contentTypeId: String?
     let title: String?
     let tel: String?
     let homepage: String?

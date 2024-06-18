@@ -86,7 +86,9 @@ extension PlaceDetailResponseDTO.PlaceDetailsDTO {
 
 extension PlaceDetailResponseDTO.PlaceDetailDTO {
     func toDomain() -> PlaceDetail {
-        return .init(title: title,
+        return .init(contentId: contentId,
+                     contentTypeId: contentTypeId,
+                     title: title,
                      tel: tel,
                      homepage: homepage,
                      firstImage: firstImage,
