@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AC9B3DB2C21718D00059246 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC9B3DA2C21718D00059246 /* CustomTabBar.swift */; };
 		1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */; };
 		1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537882C105D0300A70D5E /* TravelViewModel.swift */; };
 		1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378A2C10612F00A70D5E /* Observable.swift */; };
@@ -107,6 +108,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1AC9B3DA2C21718D00059246 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTableViewCell.swift; sourceTree = "<group>"; };
 		1AD537882C105D0300A70D5E /* TravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewModel.swift; sourceTree = "<group>"; };
 		1AD5378A2C10612F00A70D5E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				378CEC3C2C0D6B0B00DF1C3F /* TabBarViewController.swift */,
+				1AC9B3DA2C21718D00059246 /* CustomTabBar.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -732,6 +735,7 @@
 				37E36D872C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift in Sources */,
 				F1B302132C1457A400D26B75 /* TravelRescheduleView.swift in Sources */,
 				F1B302072C13331800D26B75 /* TravelRescheduleViewController.swift in Sources */,
+				1AC9B3DB2C21718D00059246 /* CustomTabBar.swift in Sources */,
 				F19368222C1ACDA8000AC7B2 /* LocationView.swift in Sources */,
 				F1A2BC292C186B2B00D41614 /* TravelAddLocationViewController.swift in Sources */,
 				378CEC242C0D64AB00DF1C3F /* BaseViewController.swift in Sources */,
