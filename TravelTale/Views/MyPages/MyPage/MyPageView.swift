@@ -68,6 +68,8 @@ final class MyPageView: BaseView {
         $0.configureLabel(font: .pretendard(size: 18, weight: .bold), text: "서비스 약관")
     }
     
+    let tableView = UITableView()
+    
     // MARK: - methods
     override func configureHierarchy() {
         containverView.addSubview(myPageLabel)
@@ -81,6 +83,7 @@ final class MyPageView: BaseView {
         buttonBottomStackView.addArrangedSubview(accommodationBookMarkButton)
         buttonBottomStackView.addArrangedSubview(entertainmentBookMarkButton)
         addSubview(serviceLabel)
+        addSubview(tableView)
     }
     
     override func configureConstraints() {
@@ -117,6 +120,11 @@ final class MyPageView: BaseView {
         serviceLabel.snp.makeConstraints {
             $0.top.equalTo(bookMarkBackgroundView.snp.bottom).offset(24)
             $0.horizontalEdges.equalToSuperview().inset(24)
+        }
+        
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(serviceLabel.snp.bottom).offset(12)
+            $0.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
 }

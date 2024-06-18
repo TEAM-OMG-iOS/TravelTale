@@ -11,6 +11,8 @@ final class MyPageViewController: BaseViewController {
     
     // MARK: - properties
     private let myPageView = MyPageView()
+
+    private let serviceArray = ["개인정보 처리방침", "오픈소스 라이선스"]
     
     // MARK: - life cycles
     override func loadView() {
@@ -38,6 +40,11 @@ final class MyPageViewController: BaseViewController {
          myPageView.accommodationBookMarkButton,
          myPageView.entertainmentBookMarkButton,
          myPageView.restaurantBookMarkButton].forEach { $0.addTarget(self, action: #selector(tappedCategoryButton(_:)), for: .touchUpInside) }
+        
+        myPageView.tableView.delegate = self
+        myPageView.tableView.dataSource = self
+        
+        myPageView.tableView.register(MyPageServiceTableViewCell.self, forCellReuseIdentifier: MyPageServiceTableViewCell.identifier)
     }
     
     private func configureNavigationBar() {
@@ -62,4 +69,25 @@ final class MyPageViewController: BaseViewController {
         
         self.navigationController?.pushViewController(bookMarkVC, animated: true)
     }
+}
+
+// MARK: - extensions
+extension MyPageViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return serviceArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPageServiceTableViewCell.identifier, for: indexPath) as? MyPageServiceTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.bind(text: serviceArray[indexPath.row])
+        
+        return cell
+    }
+}
+
+extension MyPageViewController: UITableViewDelegate {
+    // MARK: - 테이블 뷰 셀 선택시 페이지 이동 추후 구현
 }
