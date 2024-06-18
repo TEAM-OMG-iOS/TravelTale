@@ -75,7 +75,7 @@
 		378CEC532C0D721200DF1C3F /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 378CEC4A2C0D721200DF1C3F /* Pretendard-Regular.otf */; };
 		378CEC592C0D732600DF1C3F /* OAGothic-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 378CEC572C0D732600DF1C3F /* OAGothic-ExtraBold.otf */; };
 		378CEC5A2C0D732600DF1C3F /* OAGothic-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 378CEC582C0D732600DF1C3F /* OAGothic-Medium.otf */; };
-		37961A892C208242003A994F /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A882C208242003A994F /* Address.swift */; };
+		37961A892C208242003A994F /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A882C208242003A994F /* Region.swift */; };
 		37961A8B2C2082A6003A994F /* Travel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A8A2C2082A6003A994F /* Travel.swift */; };
 		37961A8D2C2082E6003A994F /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A8C2C2082E6003A994F /* Record.swift */; };
 		37961A912C20834C003A994F /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A902C20834C003A994F /* Bookmark.swift */; };
@@ -185,7 +185,7 @@
 		378CEC4A2C0D721200DF1C3F /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		378CEC572C0D732600DF1C3F /* OAGothic-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OAGothic-ExtraBold.otf"; sourceTree = "<group>"; };
 		378CEC582C0D732600DF1C3F /* OAGothic-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OAGothic-Medium.otf"; sourceTree = "<group>"; };
-		37961A882C208242003A994F /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		37961A882C208242003A994F /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		37961A8A2C2082A6003A994F /* Travel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Travel.swift; sourceTree = "<group>"; };
 		37961A8C2C2082E6003A994F /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		37961A902C20834C003A994F /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
@@ -295,7 +295,7 @@
 				374DDDDB2C1F43B50040A5F1 /* Place.swift */,
 				374DDDDF2C1F4E650040A5F1 /* PlaceDetail.swift */,
 				374DDDE32C1F68FD0040A5F1 /* PlaceSearch.swift */,
-				37961A882C208242003A994F /* Address.swift */,
+				37961A882C208242003A994F /* Region.swift */,
 				37961A8A2C2082A6003A994F /* Travel.swift */,
 				37961A8C2C2082E6003A994F /* Record.swift */,
 				37961A902C20834C003A994F /* Bookmark.swift */,
@@ -798,7 +798,7 @@
 				4D66945B2C1AE42C0095CC42 /* DaySelectPopoverViewController.swift in Sources */,
 				37CB880D2C0D796C002798BE /* UILabel+Extension.swift in Sources */,
 				1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */,
-				37961A892C208242003A994F /* Address.swift in Sources */,
+				37961A892C208242003A994F /* Region.swift in Sources */,
 				F19368202C1ACB88000AC7B2 /* LocationTableViewCell.swift in Sources */,
 				374DDDDA2C1F3D060040A5F1 /* SigunguResponseDTO+Mapping.swift in Sources */,
 				1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */,
