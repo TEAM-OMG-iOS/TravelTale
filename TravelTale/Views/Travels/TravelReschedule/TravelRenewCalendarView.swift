@@ -106,20 +106,6 @@ final class TravelRenewCalendarView: BaseView, CalendarBaseView {
             self.setDateLabel()
             calendarView.setContent(makeContent())
         }
-        
-        calendarView.multiDaySelectionDragHandler = { [weak self, calendar] day, state in
-            guard let self else { return }
-            
-            DayRangeSelectionHelper.updateDayRange(
-                afterDragSelectionOf: day,
-                existingDayRange: &selectedDayRange,
-                initialDayRange: &selectedDayRangeAtStartOfDrag,
-                state: state,
-                calendar: calendar)
-            
-            self.setDateLabel()
-            calendarView.setContent(makeContent())
-        }
     }
     
     private func setDateLabel() {
