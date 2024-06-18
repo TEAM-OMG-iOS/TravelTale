@@ -46,7 +46,7 @@ final class TravelAddPlaceViewController: BaseViewController {
     }
     
     @objc func tappedInputBox() {
-        let locationList = TravelAddLocationViewController()
+        let locationList = TravelAddPlaceModalViewController()
         locationList.completion = { [weak self] text in
             guard let self = self else { return }
             
@@ -58,7 +58,7 @@ final class TravelAddPlaceViewController: BaseViewController {
     }
     
     @objc func tappedOkButton() {
-        let nextVC = TravelAddCalenderViewController()
+        let nextVC = TravelAddCalendarViewController()
         self.navigationController?.pushViewController(nextVC, animated: false)
     }
     

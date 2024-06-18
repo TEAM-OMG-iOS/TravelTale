@@ -35,7 +35,7 @@ final class TravelAddPlaceModalViewController: BaseViewController {
         locationView.tableView.delegate = self
         
         locationView.tableView.register(LocationTableViewCell.self,
-                                                 forCellReuseIdentifier: LocationTableViewCell.identifier)
+                                        forCellReuseIdentifier: LocationTableViewCell.identifier)
     }
 }
 
