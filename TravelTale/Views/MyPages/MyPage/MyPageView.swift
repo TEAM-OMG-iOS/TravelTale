@@ -64,10 +64,14 @@ final class MyPageView: BaseView {
         $0.bookMarkImage = .entertainmentCircle
     }
     
+    private let serviceLabel = UILabel().then {
+        $0.configureLabel(font: .pretendard(size: 18, weight: .bold), text: "서비스 약관")
+    }
+    
     // MARK: - methods
     override func configureHierarchy() {
         containverView.addSubview(myPageLabel)
-        self.addSubview(bookMarkBackgroundView)
+        addSubview(bookMarkBackgroundView)
         bookMarkBackgroundView.addSubview(bookMarkLabel)
         bookMarkBackgroundView.addSubview(totalButton)
         bookMarkBackgroundView.addSubview(buttonTopStackView)
@@ -76,6 +80,7 @@ final class MyPageView: BaseView {
         buttonTopStackView.addArrangedSubview(restaurantBookMarkButton)
         buttonBottomStackView.addArrangedSubview(accommodationBookMarkButton)
         buttonBottomStackView.addArrangedSubview(entertainmentBookMarkButton)
+        addSubview(serviceLabel)
     }
     
     override func configureConstraints() {
@@ -107,6 +112,11 @@ final class MyPageView: BaseView {
             $0.top.equalTo(buttonTopStackView.snp.bottom).offset(12)
             $0.horizontalEdges.equalToSuperview().inset(24)
             $0.bottom.equalToSuperview().inset(24)
+        }
+        
+        serviceLabel.snp.makeConstraints {
+            $0.top.equalTo(bookMarkBackgroundView.snp.bottom).offset(24)
+            $0.horizontalEdges.equalToSuperview().inset(24)
         }
     }
 }
