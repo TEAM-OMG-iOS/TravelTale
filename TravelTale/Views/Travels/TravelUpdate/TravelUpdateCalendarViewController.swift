@@ -1,5 +1,5 @@
 //
-//  TravelRenewCalendarViewController.swift
+//  TravelUpdateCalendarViewController.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/12/24.
@@ -9,15 +9,15 @@ import UIKit
 
 import HorizonCalendar
 
-final class TravelRenewCalendarViewController: BaseViewController {
+final class TravelUpdateCalendarViewController: BaseViewController {
     
     // MARK: - properties
-    let travelRenewCalendarView = TravelRenewCalendarView(monthsLayout: .vertical)
-    private let travelRescheduleView = TravelRescheduleView()
+    let travelUpdateCalendarView = TravelUpdateCalendarView(monthsLayout: .vertical)
+    private let travelRescheduleView = TravelUpdateView()
     
     // MARK: - lifecycle
     override func loadView() {
-        view = travelRenewCalendarView
+        view = travelUpdateCalendarView
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -27,12 +27,12 @@ final class TravelRenewCalendarViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        travelRenewCalendarView.okButton.isEnabled = false
+        travelUpdateCalendarView.okButton.isEnabled = false
     }
     
     // MARK: - methods
     override func configureAddTarget() {
-        travelRenewCalendarView.okButton.addTarget(self, action: #selector(tappedSetAlert), for: .touchUpInside)
+        travelUpdateCalendarView.okButton.addTarget(self, action: #selector(tappedSetAlert), for: .touchUpInside)
     }
     
     private func configureAlert() {

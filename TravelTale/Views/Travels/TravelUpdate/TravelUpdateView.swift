@@ -1,5 +1,5 @@
 //
-//  TravelRescheduleView.swift
+//  TravelUpdateView.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/8/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TravelRescheduleView: BaseView {
+final class TravelUpdateView: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {
