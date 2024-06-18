@@ -12,7 +12,7 @@ final class TabBarViewController: UITabBarController {
     // MARK: - life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configureViewControllers()
         configureTabBarUI()
         configureMiddleButton()
