@@ -1,5 +1,5 @@
 //
-//  TravelAddCalenderViewController.swift
+//  TravelAddCalendarViewController.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/5/24.
@@ -9,26 +9,26 @@ import UIKit
 
 import HorizonCalendar
 
-class TravelAddCalenderViewController: BaseViewController {
+final class TravelAddCalendarViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelAddCalenderView = TravelAddCalenderView(monthsLayout: .vertical)
+    private let travelAddCalendarView = TravelAddCalendarView(monthsLayout: .vertical)
     
     // MARK: - lifecycle
     override func loadView() {
-        view = travelAddCalenderView
+        view = travelAddCalendarView
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        travelAddCalenderView.startLoadingAnimation()
+        travelAddCalendarView.startLoadingAnimation()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        travelAddCalenderView.okButton.isEnabled = false
+        travelAddCalendarView.okButton.isEnabled = false
     }
     
     // MARK: - methods
@@ -37,15 +37,15 @@ class TravelAddCalenderViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        travelAddCalenderView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
-        travelAddCalenderView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
-        travelAddCalenderView.backButton.action = #selector(popToRootView)
-        travelAddCalenderView.backButton.target = self
+        travelAddCalendarView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
+        travelAddCalendarView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
+        travelAddCalendarView.backButton.action = #selector(popToRootView)
+        travelAddCalendarView.backButton.target = self
     }
     
     private func configureNavigationBarItems() {
         navigationItem.title = "새 여행 추가"
-        navigationItem.leftBarButtonItem = travelAddCalenderView.backButton
+        navigationItem.leftBarButtonItem = travelAddCalendarView.backButton
     }
     
     @objc func tappedCancelButton() {
