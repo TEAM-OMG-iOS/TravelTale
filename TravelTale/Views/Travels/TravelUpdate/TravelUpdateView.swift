@@ -16,6 +16,12 @@ final class TravelUpdateView: BaseView {
         $0.tintColor = .gray90
     }
     
+    let deleteButton = UIBarButtonItem().then {
+        $0.style = .done
+        $0.title = "삭제"
+        $0.tintColor = .gray90
+    }
+    
     private let travelTitleLabel = UILabel().then {
         $0.configureLabel(color: .black,
                           font: .pretendard(size: 18, weight: .semibold),

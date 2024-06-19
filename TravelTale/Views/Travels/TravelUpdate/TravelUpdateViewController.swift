@@ -24,6 +24,7 @@ final class TravelUpdateViewController: BaseViewController {
     // MARK: - methods
     override func configureStyle() {
         configureNavigationBarItems()
+        configureDeleteItem()
     }
     
     override func configureAddTarget() {
@@ -35,6 +36,8 @@ final class TravelUpdateViewController: BaseViewController {
         travelUpdateView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
         travelUpdateView.backButton.action = #selector(tappedCancelButton)
         travelUpdateView.backButton.target = self
+        travelUpdateView.deleteButton.action = #selector(tappedDeleteButton)
+        travelUpdateView.deleteButton.target = self
     }
     
     private func updateInputBox(with text: String) {
@@ -44,6 +47,34 @@ final class TravelUpdateViewController: BaseViewController {
     private func configureNavigationBarItems() {
         navigationItem.title = "일정 변경"
         navigationItem.leftBarButtonItem = travelUpdateView.backButton
+    }
+    
+    private func configureDeleteItem() {
+        navigationItem.rightBarButtonItem = travelUpdateView.deleteButton
+    }
+
+    private func presentAlert() {
+        let alert = UIAlertController(title: "경고", message: """
+    계획된 모든 일정이 삭제됩니다.
+    그대로 진행하시겠습니까?
+    """, preferredStyle: UIAlertController.Style.alert)
+        
+        let cancel = UIAlertAction(title: "취소", style: .destructive)
+        
+        let ok = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            // TODO: 해당 셀(여행 계획) 삭제
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func tappedDeleteButton() {
+        presentAlert()
     }
     
     @objc func tappedPlacePickButton() {
