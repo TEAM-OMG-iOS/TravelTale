@@ -88,6 +88,7 @@ final class PlaceDetailViewController: BaseViewController {
         if let address = placeDetailView.copyAddress() {
             UIPasteboard.general.string = address
         }
+        configureToast(text: "주소")
     }
     
     @objc private func tappedAddButton() {
@@ -99,6 +100,30 @@ final class PlaceDetailViewController: BaseViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         placeDetailView.mapView.showsUserLocation = true
+    }
+    
+    private func configureToast(text: String) {
+        
+        let toastView = CustomPopUpView()
+        
+        toastView.bind(text: text)
+        view.addSubview(toastView)
+        
+        toastView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(24)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(44)
+        }
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
+            toastView.alpha = 1.0
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.5, delay: 1.5, options: .curveEaseOut, animations: {
+                toastView.alpha = 0.0
+            }, completion: { _ in
+                toastView.removeFromSuperview()
+            })
+        })
     }
 }
 
