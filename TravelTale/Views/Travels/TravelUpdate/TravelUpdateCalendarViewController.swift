@@ -33,7 +33,7 @@ final class TravelUpdateCalendarViewController: BaseViewController {
         travelUpdateCalendarView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
     }
     
-    private func setAlert() {
+    private func presentAlert() {
         let alert = UIAlertController(title: "경고", message: """
     수정된 일정만큼 일부 삭제될 수 있습니다.
     그대로 진행하시겠습니까?
@@ -57,6 +57,6 @@ final class TravelUpdateCalendarViewController: BaseViewController {
     }
     
     @objc func tappedOkButton() {
-        setAlert()
+        presentAlert()
     }
 }
