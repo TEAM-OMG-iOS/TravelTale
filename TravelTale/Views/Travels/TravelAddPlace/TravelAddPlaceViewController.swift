@@ -36,7 +36,7 @@ final class TravelAddPlaceViewController: BaseViewController {
         travelAddPlaceView.placePickButton.addTarget(self, action: #selector(tappedInputBox), for: .touchUpInside)
         travelAddPlaceView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
         travelAddPlaceView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
-        travelAddPlaceView.backButton.action = #selector(popToRootView)
+        travelAddPlaceView.backButton.action = #selector(tappedBackButton)
         travelAddPlaceView.backButton.target = self
     }
     
@@ -50,11 +50,10 @@ final class TravelAddPlaceViewController: BaseViewController {
         locationList.completion = { [weak self] text in
             guard let self = self else { return }
             
-            travelAddPlaceView.placePickButton.setTitle(text, for: .normal)
-            travelAddPlaceView.placePickButton.setTitleColor(.black, for: .normal)
+            travelAddPlaceView.updatePlacePickButton(text: text)
         }
         
-        self.present(locationList, animated: true, completion: nil)
+        self.present(locationList, animated: true)
     }
     
     @objc func tappedOkButton() {
@@ -66,7 +65,7 @@ final class TravelAddPlaceViewController: BaseViewController {
         self.navigationController?.popViewController(animated: false)
     }
     
-    @objc func popToRootView() {
+    @objc func tappedBackButton() {
         self.navigationController?.popToRootViewController(animated: true)
     }
 }

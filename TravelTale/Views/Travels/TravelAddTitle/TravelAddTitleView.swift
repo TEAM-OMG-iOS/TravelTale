@@ -31,6 +31,7 @@ final class TravelAddTitleView: BaseView {
     }
     
     let okButton = UIButton().then {
+        $0.isEnabled = false
         $0.configureButton(fontColor: .white,
                            font: .pretendard(size: 18, weight: .bold),
                            text: "장소 선택하러 가기")
@@ -53,8 +54,6 @@ final class TravelAddTitleView: BaseView {
     // MARK: - methods
     override func configureUI() {
         super.configureUI()
-        
-        okButton.isEnabled = false
     }
     
     override func configureHierarchy() {
