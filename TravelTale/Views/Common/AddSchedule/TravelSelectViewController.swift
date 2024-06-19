@@ -100,7 +100,7 @@ extension TravelSelectViewController: UITableViewDataSource {
         let travel = travelViewModel.upcomingTravels[indexPath.row]
         let period = travelViewModel.returnPeriodString(startDate: travel.startDate, endDate: travel.endDate)
         
-        cell.bind(travel: travel, period: period)
+//        cell.bind(travel: travel, period: period)
         return cell
     }
 }

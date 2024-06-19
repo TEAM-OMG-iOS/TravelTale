@@ -91,7 +91,7 @@ extension TravelMemoryViewController: UITableViewDataSource {
             endDate: travel.endDate
         )
         
-        cell.bind(travel: travel, period: period)
+//        cell.bind(travel: travel, period: period)
         cell.selectionStyle = .none
         
         return cell
