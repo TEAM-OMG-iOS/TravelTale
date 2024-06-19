@@ -10,7 +10,7 @@ import UIKit
 final class DiscoveryCell: BaseCollectionViewCell {
     
     // MARK: - properties
-    static let identifier = "DiscoveryCell"
+    static let identifier = String(describing: DiscoveryCell.self)
     
     private let placeContainerView = UIView().then {
         $0.backgroundColor = .white

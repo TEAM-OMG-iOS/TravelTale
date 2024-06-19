@@ -20,12 +20,26 @@
 		1AD5379E2C1367AB00A70D5E /* TravelSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5379D2C1367AB00A70D5E /* TravelSegment.swift */; };
 		1AD537A02C13999600A70D5E /* TravelSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5379F2C13999600A70D5E /* TravelSectionHeaderView.swift */; };
 		1AD537A22C13A9F200A70D5E /* SpaceFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */; };
+		2E0671BC2C1DEC14001CDB2E /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0671BB2C1DEC14001CDB2E /* CategoryTableViewCell.swift */; };
+		2E0671BF2C1DF3D3001CDB2E /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0671BE2C1DF3D3001CDB2E /* CategoryView.swift */; };
 		2E3525402C1756EF00D82D34 /* DiscoveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */; };
 		2E36056B2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */; };
 		2E36056D2C1AA70F007DFBC1 /* RegionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E36056C2C1AA70F007DFBC1 /* RegionData.swift */; };
 		2E52F2F32C1B7BAB00E7D6D5 /* BookMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52F2F22C1B7BAB00E7D6D5 /* BookMarkButton.swift */; };
+		2EC635752C1CD0FF006C1ADB /* DiscoveryCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC635742C1CD0FF006C1ADB /* DiscoveryCategoryViewController.swift */; };
+		2EC635772C1CEB7D006C1ADB /* AccommodationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC635762C1CEB7D006C1ADB /* AccommodationViewController.swift */; };
+		2EC635792C1CEC03006C1ADB /* EntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC635782C1CEC03006C1ADB /* EntertainmentViewController.swift */; };
+		2EC6357B2C1CED3C006C1ADB /* TouristSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6357A2C1CED3C006C1ADB /* TouristSpotViewController.swift */; };
+		2EC6357D2C1CED6D006C1ADB /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6357C2C1CED6D006C1ADB /* RestaurantViewController.swift */; };
+		2ECECE7F2C211AEA003F7748 /* MyPageServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE7E2C211AEA003F7748 /* MyPageServiceTableViewCell.swift */; };
 		2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */; };
 		2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */; };
+		2EF0E3AD2C1F1E7700654025 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */; };
+		2EF0E3B02C1F1FD800654025 /* BookMarkTouristSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3AF2C1F1FD800654025 /* BookMarkTouristSpotViewController.swift */; };
+		2EF0E3B22C1F200200654025 /* BookMarkRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3B12C1F200200654025 /* BookMarkRestaurantViewController.swift */; };
+		2EF0E3B42C1F201E00654025 /* BookMarkEntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3B32C1F201E00654025 /* BookMarkEntertainmentViewController.swift */; };
+		2EF0E3B62C1F203200654025 /* BookMarkAccommodationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3B52C1F203200654025 /* BookMarkAccommodationViewController.swift */; };
+		2EF0E3B82C1F20EA00654025 /* BookMarkTotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3B72C1F20EA00654025 /* BookMarkTotalViewController.swift */; };
 		370B839C2C149AC7009430B9 /* TravelDetailPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B839B2C149AC7009430B9 /* TravelDetailPlanView.swift */; };
 		370B839E2C149AE8009430B9 /* TravelDetailPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B839D2C149AE8009430B9 /* TravelDetailPlanViewController.swift */; };
 		370B83A02C149E66009430B9 /* TravelDetailPlanContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B839F2C149E66009430B9 /* TravelDetailPlanContentCell.swift */; };
@@ -126,12 +140,26 @@
 		1AD5379D2C1367AB00A70D5E /* TravelSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSegment.swift; sourceTree = "<group>"; };
 		1AD5379F2C13999600A70D5E /* TravelSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSectionHeaderView.swift; sourceTree = "<group>"; };
 		1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceFooterView.swift; sourceTree = "<group>"; };
+		2E0671BB2C1DEC14001CDB2E /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		2E0671BE2C1DF3D3001CDB2E /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryCell.swift; sourceTree = "<group>"; };
 		2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionModalViewController.swift; sourceTree = "<group>"; };
 		2E36056C2C1AA70F007DFBC1 /* RegionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionData.swift; sourceTree = "<group>"; };
 		2E52F2F22C1B7BAB00E7D6D5 /* BookMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkButton.swift; sourceTree = "<group>"; };
+		2EC635742C1CD0FF006C1ADB /* DiscoveryCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryCategoryViewController.swift; sourceTree = "<group>"; };
+		2EC635762C1CEB7D006C1ADB /* AccommodationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationViewController.swift; sourceTree = "<group>"; };
+		2EC635782C1CEC03006C1ADB /* EntertainmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentViewController.swift; sourceTree = "<group>"; };
+		2EC6357A2C1CED3C006C1ADB /* TouristSpotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristSpotViewController.swift; sourceTree = "<group>"; };
+		2EC6357C2C1CED6D006C1ADB /* RestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
+		2ECECE7E2C211AEA003F7748 /* MyPageServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageServiceTableViewCell.swift; sourceTree = "<group>"; };
 		2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionView.swift; sourceTree = "<group>"; };
 		2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionViewController.swift; sourceTree = "<group>"; };
+		2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
+		2EF0E3AF2C1F1FD800654025 /* BookMarkTouristSpotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTouristSpotViewController.swift; sourceTree = "<group>"; };
+		2EF0E3B12C1F200200654025 /* BookMarkRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkRestaurantViewController.swift; sourceTree = "<group>"; };
+		2EF0E3B32C1F201E00654025 /* BookMarkEntertainmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkEntertainmentViewController.swift; sourceTree = "<group>"; };
+		2EF0E3B52C1F203200654025 /* BookMarkAccommodationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkAccommodationViewController.swift; sourceTree = "<group>"; };
+		2EF0E3B72C1F20EA00654025 /* BookMarkTotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkTotalViewController.swift; sourceTree = "<group>"; };
 		370B839B2C149AC7009430B9 /* TravelDetailPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanView.swift; sourceTree = "<group>"; };
 		370B839D2C149AE8009430B9 /* TravelDetailPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanViewController.swift; sourceTree = "<group>"; };
 		370B839F2C149E66009430B9 /* TravelDetailPlanContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanContentCell.swift; sourceTree = "<group>"; };
@@ -240,12 +268,46 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
+		2E0671BD2C1DF35D001CDB2E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				2E0671BB2C1DEC14001CDB2E /* CategoryTableViewCell.swift */,
+				2E0671BE2C1DF3D3001CDB2E /* CategoryView.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		2E36056F2C1AF38A007DFBC1 /* DiscoveryRegionModal */ = {
 			isa = PBXGroup;
 			children = (
 				2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */,
 			);
 			path = DiscoveryRegionModal;
+			sourceTree = "<group>";
+		};
+		2EC6356D2C1CAD1B006C1ADB /* DiscoveryCategory */ = {
+			isa = PBXGroup;
+			children = (
+				2EC635742C1CD0FF006C1ADB /* DiscoveryCategoryViewController.swift */,
+				2EC6357A2C1CED3C006C1ADB /* TouristSpotViewController.swift */,
+				2EC6357C2C1CED6D006C1ADB /* RestaurantViewController.swift */,
+				2EC635762C1CEB7D006C1ADB /* AccommodationViewController.swift */,
+				2EC635782C1CEC03006C1ADB /* EntertainmentViewController.swift */,
+			);
+			path = DiscoveryCategory;
+			sourceTree = "<group>";
+		};
+		2EF0E3AE2C1F1E7C00654025 /* BookMark */ = {
+			isa = PBXGroup;
+			children = (
+				2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */,
+				2EF0E3B72C1F20EA00654025 /* BookMarkTotalViewController.swift */,
+				2EF0E3AF2C1F1FD800654025 /* BookMarkTouristSpotViewController.swift */,
+				2EF0E3B12C1F200200654025 /* BookMarkRestaurantViewController.swift */,
+				2EF0E3B52C1F203200654025 /* BookMarkAccommodationViewController.swift */,
+				2EF0E3B32C1F201E00654025 /* BookMarkEntertainmentViewController.swift */,
+			);
+			path = BookMark;
 			sourceTree = "<group>";
 		};
 		3740FE522C12EDD50024E08F /* TravelDetail */ = {
@@ -367,6 +429,7 @@
 			children = (
 				378CEC2E2C0D688F00DF1C3F /* MyPage */,
 				378CEC392C0D691900DF1C3F /* MyPageViewController.swift */,
+				2EF0E3AE2C1F1E7C00654025 /* BookMark */,
 			);
 			path = MyPages;
 			sourceTree = "<group>";
@@ -378,6 +441,7 @@
 				378CEC372C0D690800DF1C3F /* DiscoveryViewController.swift */,
 				2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */,
 				2E36056F2C1AF38A007DFBC1 /* DiscoveryRegionModal */,
+				2EC6356D2C1CAD1B006C1ADB /* DiscoveryCategory */,
 			);
 			path = Discoveries;
 			sourceTree = "<group>";
@@ -408,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				378CEC332C0D68DE00DF1C3F /* MyPageView.swift */,
+				2ECECE7E2C211AEA003F7748 /* MyPageServiceTableViewCell.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -499,6 +564,7 @@
 			children = (
 				F19368232C1AD9F4000AC7B2 /* Location */,
 				4D0E3CF12C1722C60089D6C1 /* AddSchedule */,
+				2E0671BD2C1DF35D001CDB2E /* Category */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -696,6 +762,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EF0E3AD2C1F1E7700654025 /* BookMarkViewController.swift in Sources */,
 				2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */,
 				4D27194C2C1A0295004DDC38 /* PlaceEditionViewController.swift in Sources */,
 				1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */,
@@ -707,6 +774,8 @@
 				378CEC262C0D64FB00DF1C3F /* BaseTableViewCell.swift in Sources */,
 				378CEC282C0D651E00DF1C3F /* BaseCollectionViewCell.swift in Sources */,
 				4D0E3CE32C1076570089D6C1 /* PlaceAdditionViewController.swift in Sources */,
+				2E0671BC2C1DEC14001CDB2E /* CategoryTableViewCell.swift in Sources */,
+				2EC6357D2C1CED6D006C1ADB /* RestaurantViewController.swift in Sources */,
 				378CEC382C0D690800DF1C3F /* DiscoveryViewController.swift in Sources */,
 				37E19F432C18680A0084F899 /* TravelDetailPlanFooterCell.swift in Sources */,
 				4D0E3CD52C0F36110089D6C1 /* TravelSelectView.swift in Sources */,
@@ -722,13 +791,16 @@
 				378CEC302C0D68A200DF1C3F /* TravelView.swift in Sources */,
 				37CB880D2C0D796C002798BE /* UILabel+Extension.swift in Sources */,
 				F19368412C21F797000AC7B2 /* CalendarBaseView.swift in Sources */,
+				2EF0E3B02C1F1FD800654025 /* BookMarkTouristSpotViewController.swift in Sources */,
 				1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */,
 				F19368202C1ACB88000AC7B2 /* LocationTableViewCell.swift in Sources */,
 				1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */,
 				4DA5FBFD2C1EFAE400233A68 /* DaySelectPopoverViewController.swift in Sources */,
 				378CEC342C0D68DE00DF1C3F /* MyPageView.swift in Sources */,
+				2EC635792C1CEC03006C1ADB /* EntertainmentViewController.swift in Sources */,
 				1AD5379E2C1367AB00A70D5E /* TravelSegment.swift in Sources */,
 				370B839E2C149AE8009430B9 /* TravelDetailPlanViewController.swift in Sources */,
+				2EF0E3B82C1F20EA00654025 /* BookMarkTotalViewController.swift in Sources */,
 				1AD5378E2C10838A00A70D5E /* Travel(temporary).swift in Sources */,
 				1AD537942C12DCC600A70D5E /* LightGreenButton.swift in Sources */,
 				F193681C2C194D73000AC7B2 /* TravelUpdateCalendarViewController.swift in Sources */,
@@ -736,12 +808,15 @@
 				370B83A02C149E66009430B9 /* TravelDetailPlanContentCell.swift in Sources */,
 				3740FE562C12EE140024E08F /* TravelDetailViewController.swift in Sources */,
 				2E36056D2C1AA70F007DFBC1 /* RegionData.swift in Sources */,
+				2EF0E3B62C1F203200654025 /* BookMarkAccommodationViewController.swift in Sources */,
 				1AC9B3DF2C219E4700059246 /* CALayer+Extension.swift in Sources */,
 				378CEC322C0D68C600DF1C3F /* DiscoveryView.swift in Sources */,
+				2EF0E3B22C1F200200654025 /* BookMarkRestaurantViewController.swift in Sources */,
 				378CEC3A2C0D691900DF1C3F /* MyPageViewController.swift in Sources */,
 				37CB881A2C0DB677002798BE /* GreenButton.swift in Sources */,
 				4D0E3CF52C195A9A0089D6C1 /* TimeSelectPopoverView.swift in Sources */,
 				4D0E3CF32C18A4E30089D6C1 /* DaySelectPopoverView.swift in Sources */,
+				2E0671BF2C1DF3D3001CDB2E /* CategoryView.swift in Sources */,
 				37CB880F2C0D7979002798BE /* UIButton+Extension.swift in Sources */,
 				37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */,
 				F1B302002C10B43F00D26B75 /* TravelAddCalendarViewController.swift in Sources */,
@@ -750,10 +825,14 @@
 				378CEC222C0D649D00DF1C3F /* BaseView.swift in Sources */,
 				1AD537982C1362A900A70D5E /* TravelMemoryView.swift in Sources */,
 				2E3525402C1756EF00D82D34 /* DiscoveryCell.swift in Sources */,
+				2ECECE7F2C211AEA003F7748 /* MyPageServiceTableViewCell.swift in Sources */,
 				2E36056B2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift in Sources */,
 				1AD537A02C13999600A70D5E /* TravelSectionHeaderView.swift in Sources */,
+				2EC6357B2C1CED3C006C1ADB /* TouristSpotViewController.swift in Sources */,
 				1AD537A22C13A9F200A70D5E /* SpaceFooterView.swift in Sources */,
 				2E52F2F32C1B7BAB00E7D6D5 /* BookMarkButton.swift in Sources */,
+				2EC635772C1CEB7D006C1ADB /* AccommodationViewController.swift in Sources */,
+				2EF0E3B42C1F201E00654025 /* BookMarkEntertainmentViewController.swift in Sources */,
 				378CEC202C0D649000DF1C3F /* UIFont+Extension.swift in Sources */,
 				F193683B2C21F60E000AC7B2 /* CalendarMonthView.swift in Sources */,
 				F193683F2C21F690000AC7B2 /* CalendarDayRangeIndicatorView.swift in Sources */,
@@ -761,6 +840,7 @@
 				4D0E3CDB2C10391A0089D6C1 /* MemoAddViewController.swift in Sources */,
 				4D0E3CE52C11EA930089D6C1 /* ScheduleCreateView.swift in Sources */,
 				37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */,
+				2EC635752C1CD0FF006C1ADB /* DiscoveryCategoryViewController.swift in Sources */,
 				37E36D872C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift in Sources */,
 				F1B302132C1457A400D26B75 /* TravelUpdateView.swift in Sources */,
 				F1B302072C13331800D26B75 /* TravelUpdateViewController.swift in Sources */,
