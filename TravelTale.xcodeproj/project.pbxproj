@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A713BE02C22B9A20045DECD /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A713BDF2C22B9A20045DECD /* String+Extension.swift */; };
 		1AC9B3DF2C219E4700059246 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */; };
 		1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */; };
-		1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537882C105D0300A70D5E /* TravelViewModel.swift */; };
 		1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378A2C10612F00A70D5E /* Observable.swift */; };
 		1AD5378E2C10838A00A70D5E /* Travel(temporary).swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */; };
 		1AD537902C12CF4900A70D5E /* TravelPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378F2C12CF4900A70D5E /* TravelPlanView.swift */; };
@@ -17,7 +17,6 @@
 		1AD537962C12E5E300A70D5E /* TravelPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537952C12E5E300A70D5E /* TravelPlanViewController.swift */; };
 		1AD537982C1362A900A70D5E /* TravelMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537972C1362A800A70D5E /* TravelMemoryView.swift */; };
 		1AD5379A2C1362F500A70D5E /* TravelMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537992C1362F500A70D5E /* TravelMemoryViewController.swift */; };
-		1AD5379E2C1367AB00A70D5E /* TravelSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5379D2C1367AB00A70D5E /* TravelSegment.swift */; };
 		1AD537A02C13999600A70D5E /* TravelSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5379F2C13999600A70D5E /* TravelSectionHeaderView.swift */; };
 		1AD537A22C13A9F200A70D5E /* SpaceFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */; };
 		2E0671BC2C1DEC14001CDB2E /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0671BB2C1DEC14001CDB2E /* CategoryTableViewCell.swift */; };
@@ -127,9 +126,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A713BDF2C22B9A20045DECD /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTableViewCell.swift; sourceTree = "<group>"; };
-		1AD537882C105D0300A70D5E /* TravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewModel.swift; sourceTree = "<group>"; };
 		1AD5378A2C10612F00A70D5E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Travel(temporary).swift"; sourceTree = "<group>"; };
 		1AD5378F2C12CF4900A70D5E /* TravelPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanView.swift; sourceTree = "<group>"; };
@@ -137,7 +136,6 @@
 		1AD537952C12E5E300A70D5E /* TravelPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanViewController.swift; sourceTree = "<group>"; };
 		1AD537972C1362A800A70D5E /* TravelMemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryView.swift; sourceTree = "<group>"; };
 		1AD537992C1362F500A70D5E /* TravelMemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryViewController.swift; sourceTree = "<group>"; };
-		1AD5379D2C1367AB00A70D5E /* TravelSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSegment.swift; sourceTree = "<group>"; };
 		1AD5379F2C13999600A70D5E /* TravelSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSectionHeaderView.swift; sourceTree = "<group>"; };
 		1AD537A12C13A9F200A70D5E /* SpaceFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceFooterView.swift; sourceTree = "<group>"; };
 		2E0671BB2C1DEC14001CDB2E /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -385,6 +383,7 @@
 				37CB880C2C0D796C002798BE /* UILabel+Extension.swift */,
 				37CB880E2C0D7979002798BE /* UIButton+Extension.swift */,
 				1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */,
+				1A713BDF2C22B9A20045DECD /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -408,8 +407,6 @@
 				378CEC2C2C0D685300DF1C3F /* Travel */,
 				3740FE522C12EDD50024E08F /* TravelDetail */,
 				37E19F442C18837F0084F899 /* TravelDetailPlan */,
-				1AD537882C105D0300A70D5E /* TravelViewModel.swift */,
-				1AD5379D2C1367AB00A70D5E /* TravelSegment.swift */,
 				378CEC352C0D68F900DF1C3F /* TravelViewController.swift */,
 				4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */,
 				1AD537952C12E5E300A70D5E /* TravelPlanViewController.swift */,
@@ -792,13 +789,11 @@
 				37CB880D2C0D796C002798BE /* UILabel+Extension.swift in Sources */,
 				F19368412C21F797000AC7B2 /* CalendarBaseView.swift in Sources */,
 				2EF0E3B02C1F1FD800654025 /* BookMarkTouristSpotViewController.swift in Sources */,
-				1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */,
 				F19368202C1ACB88000AC7B2 /* LocationTableViewCell.swift in Sources */,
 				1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */,
 				4DA5FBFD2C1EFAE400233A68 /* DaySelectPopoverViewController.swift in Sources */,
 				378CEC342C0D68DE00DF1C3F /* MyPageView.swift in Sources */,
 				2EC635792C1CEC03006C1ADB /* EntertainmentViewController.swift in Sources */,
-				1AD5379E2C1367AB00A70D5E /* TravelSegment.swift in Sources */,
 				370B839E2C149AE8009430B9 /* TravelDetailPlanViewController.swift in Sources */,
 				2EF0E3B82C1F20EA00654025 /* BookMarkTotalViewController.swift in Sources */,
 				1AD5378E2C10838A00A70D5E /* Travel(temporary).swift in Sources */,
@@ -838,6 +833,7 @@
 				F193683F2C21F690000AC7B2 /* CalendarDayRangeIndicatorView.swift in Sources */,
 				F1B301F72C10501000D26B75 /* TravelAddPlaceView.swift in Sources */,
 				4D0E3CDB2C10391A0089D6C1 /* MemoAddViewController.swift in Sources */,
+				1A713BE02C22B9A20045DECD /* String+Extension.swift in Sources */,
 				4D0E3CE52C11EA930089D6C1 /* ScheduleCreateView.swift in Sources */,
 				37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */,
 				2EC635752C1CD0FF006C1ADB /* DiscoveryCategoryViewController.swift in Sources */,

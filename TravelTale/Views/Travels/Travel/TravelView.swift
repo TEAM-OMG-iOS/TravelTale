@@ -29,7 +29,6 @@ final class TravelView: BaseView {
     
     private let convertableView = UIView()
     
-    
     // MARK: - methods
     override func configureUI() {
         super.configureUI()
@@ -57,7 +56,7 @@ final class TravelView: BaseView {
     }
     
     override func configureConstraints() {
-        let horizontalInset = 20
+        let horizontalInset = 24
         
         buttonStackView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide.snp.top).offset(10)
@@ -85,28 +84,28 @@ final class TravelView: BaseView {
         }
     }
     
-    func changeButtonUI(tapped button: travelSegment) {
+    func changeButtonUI(tapped button: UIButton) {
         switch button {
-        case .plan:
+        case memoryButton:
             planButton.configureButton(
-                fontColor: .blueBlack100,
+                fontColor: .gray80,
                 font: .oaGothic(size: 24, weight: .heavy),
                 text: "Plan"
             )
             memoryButton.configureButton(
-                fontColor: .gray80,
+                fontColor: .blueBlack100,
                 font: .oaGothic(size: 24, weight: .heavy),
                 text: "Memory"
             )
             
-        case .memory:
+        default: // planButton
             planButton.configureButton(
-                fontColor: .gray80,
+                fontColor: .blueBlack100,
                 font: .oaGothic(size: 24, weight: .heavy),
                 text: "Plan"
             )
             memoryButton.configureButton(
-                fontColor: .blueBlack100,
+                fontColor: .gray80,
                 font: .oaGothic(size: 24, weight: .heavy),
                 text: "Memory"
             )

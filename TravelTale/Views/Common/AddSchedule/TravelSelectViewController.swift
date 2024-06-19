@@ -12,7 +12,15 @@ final class TravelSelectViewController: BaseViewController {
     // MARK: - properties
     private let travelSelectView = TravelSelectView()
     
-    private let travelViewModel = TravelViewModel()
+    private var travels: [Travel] = [] {
+        didSet {
+            splitTravels()
+            travelSelectView.tableView.reloadData()
+        }
+    }
+    
+    private var upcomingTravels: [Travel] = []
+    private var pastTravels: [Travel] = []
     
     private var preSelectedIndexPath: IndexPath?
     
@@ -23,7 +31,6 @@ final class TravelSelectViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTemporaryData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,20 +59,28 @@ final class TravelSelectViewController: BaseViewController {
         navigationItem.leftBarButtonItem = travelSelectView.backButton
     }
     
-    // TODO: 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
-    private func addTemporaryData() {
-        travelViewModel.upcomingTravels.append(contentsOf: [
-            Travel(image: nil, title: "200일 여행 with 남자친구", startDate: Date(), endDate: Date(), province: "대구"),
-            Travel(image: nil,title: "24년의 가족 여행", startDate: Date(), endDate: Date(), province: nil)
-        ])
-    }
+    // TODO: travelData 추가 함수
     
     @objc private func tappedButton() {
         guard let selectedIndexPath = travelSelectView.tableView.indexPathForSelectedRow else { return }
-        let selectedData = travelViewModel.upcomingTravels[selectedIndexPath.row]
+        let selectedData = upcomingTravels[selectedIndexPath.row]
         let nextVC = ScheduleCreateViewController()
         nextVC.selectedData = selectedData
         navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    private func splitTravels() {
+        let today = Date()
+        upcomingTravels.removeAll()
+        pastTravels.removeAll()
+        
+        for travel in travels {
+            if travel.endDate >= today {
+                upcomingTravels.append(travel)
+            } else {
+                pastTravels.append(travel)
+            }
+        }
     }
 }
 
@@ -91,16 +106,15 @@ extension TravelSelectViewController: UITableViewDelegate {
 
 extension TravelSelectViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return travelViewModel.upcomingTravels.count
+        return upcomingTravels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
         
-        let travel = travelViewModel.upcomingTravels[indexPath.row]
-        let period = travelViewModel.returnPeriodString(startDate: travel.startDate, endDate: travel.endDate)
+        let travel = upcomingTravels[indexPath.row]
+//        cell.bind(travel: travel)
         
-        cell.bind(travel: travel, period: period)
         return cell
     }
 }
