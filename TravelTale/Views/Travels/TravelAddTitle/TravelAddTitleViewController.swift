@@ -17,6 +17,12 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
         view = travelAddTitleView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         travelAddTitleView.startLoadingAnimation()
     }
@@ -35,9 +41,9 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     }
     
     override func configureAddTarget() {
-        travelAddTitleView.textField.addTarget(self, action: #selector(changedButtonColor), for: .editingChanged)
+        travelAddTitleView.textField.addTarget(self, action: #selector(editiedTextField), for: .editingChanged)
         travelAddTitleView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
-        travelAddTitleView.backButton.action = #selector(tappedToRootView)
+        travelAddTitleView.backButton.action = #selector(tappedBackButton)
         travelAddTitleView.backButton.target = self
     }
     
@@ -51,11 +57,11 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
         self.navigationController?.pushViewController(nextVC, animated: false)
     }
     
-    @objc func tappedToRootView() {
+    @objc func tappedBackButton() {
         self.navigationController?.popToRootViewController(animated: true)
     }
     
-    @objc func changedButtonColor() {
+    @objc func editiedTextField() {
         travelAddTitleView.buttonColorChanged()
     }
 }

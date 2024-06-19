@@ -36,7 +36,7 @@ final class TravelAddPlaceViewController: BaseViewController {
         travelAddPlaceView.placePickButton.addTarget(self, action: #selector(tappedInputBox), for: .touchUpInside)
         travelAddPlaceView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
         travelAddPlaceView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
-        travelAddPlaceView.backButton.action = #selector(tappedToRootView)
+        travelAddPlaceView.backButton.action = #selector(tappedBackButton)
         travelAddPlaceView.backButton.target = self
     }
     
@@ -46,21 +46,18 @@ final class TravelAddPlaceViewController: BaseViewController {
     }
     
     @objc func tappedInputBox() {
-        let locationList = TravelAddLocationViewController()
-        guard let sheet = locationList.sheetPresentationController else { return }
-        sheet.detents = [.medium()]
-        sheet.prefersGrabberVisible = true
+        let locationList = TravelAddPlaceModalViewController()
         locationList.completion = { [weak self] text in
             guard let self = self else { return }
             
-            travelAddPlaceView.placePickButton.setTitle(text, for: .normal)
+            travelAddPlaceView.updatePlacePickButton(text: text)
         }
         
-        self.present(locationList, animated: true, completion: nil)
+        self.present(locationList, animated: true)
     }
     
     @objc func tappedOkButton() {
-        let nextVC = TravelAddCalenderViewController()
+        let nextVC = TravelAddCalendarViewController()
         self.navigationController?.pushViewController(nextVC, animated: false)
     }
     
@@ -68,7 +65,7 @@ final class TravelAddPlaceViewController: BaseViewController {
         self.navigationController?.popViewController(animated: false)
     }
     
-    @objc func tappedToRootView() {
+    @objc func tappedBackButton() {
         self.navigationController?.popToRootViewController(animated: true)
     }
 }
