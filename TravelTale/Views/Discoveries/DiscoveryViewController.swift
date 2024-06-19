@@ -109,10 +109,7 @@ extension DiscoveryViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        // Todo : 데이터에서 가져온 값 넣어야 함.
-        cell.bind(placeImage: nil,
-                  place: "석촌호수 공원 안녕하세요 여기는 저희 집 입니다.ㅎㅎㅎㅎㅎㅎㅎㅎ",
-                  placeAddress: "테헤란로 412 우주 끝까지 달려나가자~~~~!!!!!!!!!!!!!!!")
+        // TODO: - 데이터 바인딩
         
         return cell
     }

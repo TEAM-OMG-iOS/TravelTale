@@ -14,9 +14,6 @@ class BookMarkTouristSpotViewController: BaseViewController {
     // MARK: - properties
     private let categoryView = CategoryView()
     
-    // 임시 데이터
-    private let placeData: [PlaceData] = [PlaceData.init(), PlaceData.init(), PlaceData.init()]
-    
     // MARK: - life cycles
     override func loadView() {
         view = categoryView
@@ -40,14 +37,14 @@ extension BookMarkTouristSpotViewController: IndicatorInfoProvider {
 
 extension BookMarkTouristSpotViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return placeData.count
+        // TODO: - 데이터 바인딩
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as! CategoryTableViewCell
         
-        let data = placeData[indexPath.row]
-        cell.bind(placeImage: data.placeImage, place: data.place, placeAddress: data.placeAddress)
+        // TODO: - 데이터 바인딩
         cell.selectionStyle = .none
         
         return cell
