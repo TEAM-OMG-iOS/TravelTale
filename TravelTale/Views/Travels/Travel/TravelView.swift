@@ -29,7 +29,6 @@ final class TravelView: BaseView {
     
     private let convertableView = UIView()
     
-    
     // MARK: - methods
     override func configureUI() {
         super.configureUI()

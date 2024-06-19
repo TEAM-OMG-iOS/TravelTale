@@ -18,7 +18,6 @@ final class TravelViewController: BaseViewController {
     
     lazy var currentTappedButton: UIButton = travelView.planButton
     
-    
     // MARK: - life cycles
     override func loadView() {
         addChildViews()
@@ -42,7 +41,6 @@ final class TravelViewController: BaseViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
     
     // MARK: - methods
     override func configureAddTarget() {
@@ -73,8 +71,6 @@ final class TravelViewController: BaseViewController {
         views.forEach { $0?.isHidden = $0 != viewToShow }
     }
     
-    
-    // MARK: - objc functions
     @objc func tappedButton(_ sender: UIButton) {
         switch sender {
         case travelView.memoryButton:

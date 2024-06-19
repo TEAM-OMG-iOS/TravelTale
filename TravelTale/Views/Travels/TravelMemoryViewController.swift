@@ -24,7 +24,6 @@ final class TravelMemoryViewController: BaseViewController {
         addTemporaryData()
     }
     
-    
     // MARK: - methods
     // TODO: 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
     private func addTemporaryData() {
@@ -67,13 +66,10 @@ final class TravelMemoryViewController: BaseViewController {
         }
     }
     
-    
-    // MARK: - objc method
     @objc func tappedAddButton() {
         print("tappedAddButton")
     }
 }
-
 
 // MARK: - Extensions
 extension TravelMemoryViewController: UITableViewDataSource {
