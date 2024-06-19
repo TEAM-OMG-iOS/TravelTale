@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import RealmSwift
+
+class Bookmark: Object {
+    @Persisted(primaryKey: true) var contentId: String
+    @Persisted var contentTypeId: String?
+    @Persisted var image: Data?
+    @Persisted var title: String?
+    @Persisted var address: String?
+}

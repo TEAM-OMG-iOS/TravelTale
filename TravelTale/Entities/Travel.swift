@@ -6,3 +6,15 @@
 //
 
 import Foundation
+import RealmSwift
+
+class Travel: Object {
+    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted var title: String
+    @Persisted var area: String
+    @Persisted var startDate: Date
+    @Persisted var endDate: Date
+    @Persisted var record = List<Record>()
+    @Persisted var memory: String?
+    @Persisted var photos = List<Data>()
+}
