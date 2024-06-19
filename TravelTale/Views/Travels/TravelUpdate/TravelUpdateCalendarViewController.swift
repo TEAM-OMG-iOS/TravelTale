@@ -13,7 +13,7 @@ final class TravelUpdateCalendarViewController: BaseViewController {
     
     // MARK: - properties
     let travelUpdateCalendarView = TravelUpdateCalendarView(monthsLayout: .vertical)
-    private let travelRescheduleView = TravelUpdateView()
+    private let travelUpdateView = TravelUpdateView()
     
     // MARK: - lifecycle
     override func loadView() {
