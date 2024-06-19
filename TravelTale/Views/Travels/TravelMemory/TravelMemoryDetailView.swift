@@ -10,17 +10,20 @@ import UIKit
 final class TravelMemoryDetailView: BaseView {
     
     // MARK: - properties
-    let backButton = UIBarButtonItem().then {
+    let backBarButton = UIBarButtonItem().then {
         $0.style = .done
         $0.image = UIImage(systemName: "chevron.left")
         $0.tintColor = .gray90
       }
     
-    let editButton = UIBarButtonItem().then {
-        $0.style = .done
-        $0.image = UIImage(systemName: "pencil.line")
+    let editButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "pencil.line"),
+                    for: .normal)
         $0.tintColor = .gray90
+        $0.showsMenuAsPrimaryAction = true
     }
+    
+    lazy var editBarButton = UIBarButtonItem(customView: editButton)
     
     private let travelInfoStackView = UIStackView().then {
         $0.axis = .horizontal
