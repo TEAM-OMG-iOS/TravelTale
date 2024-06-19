@@ -30,8 +30,8 @@ final class TravelUpdateViewController: BaseViewController {
         travelUpdateView.placePickImageButton.addTarget(self, action: #selector(tappedPlacePickButton), for: .touchUpInside)
         travelUpdateView.dayRangeButton.addTarget(self, action: #selector(tappedDatePickButton), for: .touchUpInside)
         travelUpdateView.datePickButton.addTarget(self, action: #selector(tappedDatePickButton), for: .touchUpInside)
-        travelUpdateView.resetDateButton.addTarget(self, action: #selector(tappedResetDate), for: .touchUpInside)
-        travelUpdateView.textField.addTarget(self, action: #selector(changedButtonColor), for: .editingChanged)
+        travelUpdateView.resetDateButton.addTarget(self, action: #selector(tappedResetDateButton), for: .touchUpInside)
+        travelUpdateView.textField.addTarget(self, action: #selector(editiedTextField), for: .editingChanged)
         travelUpdateView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
         travelUpdateView.backButton.action = #selector(tappedCancelButton)
         travelUpdateView.backButton.target = self
@@ -51,11 +51,10 @@ final class TravelUpdateViewController: BaseViewController {
         locationList.completion = { [weak self] text in
             guard let self = self else { return }
             
-            travelUpdateView.placePickLabel.text = text
-            travelUpdateView.placePickLabel.textColor = .black
+            travelUpdateView.updatePlaceLabel(text: text)
         }
         
-        self.present(locationList, animated: true, completion: nil)
+        self.present(locationList, animated: true)
     }
     
     @objc func tappedDatePickButton() {
@@ -63,25 +62,24 @@ final class TravelUpdateViewController: BaseViewController {
         calendar.travelUpdateCalendarView.dateCompletion = { [weak self] date in
             guard let self = self else { return }
             
-            travelUpdateView.dayRangeButton.setTitle(date, for: .normal)
+            travelUpdateView.updateDayRangeButton(text: date)
         }
         
         calendar.travelUpdateCalendarView.completion = { [weak self] text in
             guard let self = self else { return }
             
-            travelUpdateView.datePickButton.setTitle(text, for: .normal)
+            travelUpdateView.updateDatePickButton(text: text)
         }
         
-        self.present(calendar, animated: true, completion: nil)
+        self.present(calendar, animated: true)
     }
     
-    @objc func changedButtonColor() {
+    @objc func editiedTextField() {
         travelUpdateView.buttonColorChanged()
     }
     
-    @objc func tappedResetDate() {
-        travelUpdateView.dayRangeButton.setTitle("2024.05.08 - 2024.05.11", for: .normal)
-        travelUpdateView.datePickButton.setTitle("3박 4일", for: .normal)
+    @objc func tappedResetDateButton() {
+        travelUpdateView.resetDate()
         travelUpdateView.buttonColorChanged()
     }
     

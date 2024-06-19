@@ -26,16 +26,14 @@ final class TravelUpdateCalendarViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        travelUpdateCalendarView.okButton.isEnabled = false
     }
     
     // MARK: - methods
     override func configureAddTarget() {
-        travelUpdateCalendarView.okButton.addTarget(self, action: #selector(tappedSetAlert), for: .touchUpInside)
+        travelUpdateCalendarView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
     }
     
-    private func configureAlert() {
+    private func setAlert() {
         let alert = UIAlertController(title: "경고", message: """
     수정된 일정만큼 일부 삭제될 수 있습니다.
     그대로 진행하시겠습니까?
@@ -44,12 +42,12 @@ final class TravelUpdateCalendarViewController: BaseViewController {
         let cancel = UIAlertAction(title: "취소", style: .destructive) { [weak self] _ in
             guard let self = self else { return }
             //TODO: 기존 날짜로 초기화되는 기능 추가
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true)
         }
         
         let ok = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
             guard let self = self else { return }
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true)
         }
         
         alert.addAction(cancel)
@@ -58,7 +56,7 @@ final class TravelUpdateCalendarViewController: BaseViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    @objc func tappedSetAlert() {
-        configureAlert()
+    @objc func tappedOkButton() {
+        setAlert()
     }
 }

@@ -72,7 +72,7 @@ final class TravelUpdateView: BaseView {
     
     let datePickButton = UIButton().then {
         $0.configureView(color: .gray5, clipsToBounds: true, cornerRadius: 24)
-        $0.titleLabel?.font = UIFont.pretendard(size: 16, weight: .medium)
+        $0.titleLabel?.font = .pretendard(size: 16, weight: .medium)
         $0.setTitle("3박 4일", for: .normal)
         $0.setTitleColor(.black, for: .normal)
         $0.contentHorizontalAlignment = .left
@@ -190,9 +190,27 @@ final class TravelUpdateView: BaseView {
             okButton.backgroundColor = .green100
         }
     }
+    
+    func updatePlaceLabel(text: String) {
+        placePickLabel.text = text
+        placePickLabel.textColor = .black
+    }
+    
+    func updateDayRangeButton(text: String) {
+        dayRangeButton.configureButton(fontColor: .gray90, font: .pretendard(size: 16, weight: .medium), text: text)
+    }
+    
+    func updateDatePickButton(text: String) {
+        datePickButton.configureButton(font: .pretendard(size: 16, weight: .medium), text: text)
+    }
+    
+    func resetDate() {
+        dayRangeButton.configureButton(fontColor: .gray90, font: .pretendard(size: 16, weight: .medium), text: "2024.05.08 - 2024.05.11")
+        datePickButton.configureButton(font: .pretendard(size: 16, weight: .medium), text: "3박 4일")
+    }
 }
 
-//MARK: - extention UIButton
+// MARK: - extention UIButton
 extension UIButton {
     func buttonConfiguration() {
         var configuration = UIButton.Configuration.plain()

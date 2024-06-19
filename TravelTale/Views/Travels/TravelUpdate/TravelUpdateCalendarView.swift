@@ -42,6 +42,7 @@ final class TravelUpdateCalendarView: BaseView, CalendarBaseView {
     }
     
     let okButton = UIButton().then {
+        $0.isEnabled = false
         $0.setTitle("날짜를 선택해주세요", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .pretendard(size: 18, weight: .bold)
@@ -74,7 +75,6 @@ final class TravelUpdateCalendarView: BaseView, CalendarBaseView {
     }
     
     override func configureConstraints() {
-        
         inputTitleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(56)
             $0.horizontalEdges.equalToSuperview().inset(24)

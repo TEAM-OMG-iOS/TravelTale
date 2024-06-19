@@ -117,4 +117,8 @@ final class TravelAddPlaceView: BaseView {
             self.loadingBar.transform = CGAffineTransform(scaleX: 3, y: 1.5)
         })
     }
+    
+    func updatePlacePickButton(text: String) {
+        placePickButton.configureButton(fontColor: .black, font: .pretendard(size: 16, weight: .medium), text: text)
+    }
 }
