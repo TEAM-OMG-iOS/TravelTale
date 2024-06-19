@@ -35,48 +35,11 @@ final class TravelMemoryAddViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
-        addTemporaryData()
     }
     
     
     // MARK: - methods
-    // TODO: 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
-    private func addTemporaryData() {
-        travels.append(contentsOf: [
-            Travel(
-                image: nil,
-                title: "200일 여행 with 남자친구",
-                startDate: createDate(year: 2024, month: 9, day: 19) ?? Date(),
-                endDate: createDate(year: 2024, month: 9, day: 21) ?? Date(),
-                province: "대구",
-                memoryNote: nil),
-            Travel(
-                image: nil,
-                title: "24년의 가족 여행",
-                startDate: createDate(year: 2024, month: 4, day: 1) ?? Date(),
-                endDate: createDate(year: 2024, month: 4, day: 5) ?? Date(),
-                province: nil,
-                memoryNote: "yayyyy~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-                memoryImageDatas: [UIImage(named: "splash")?.jpegData(compressionQuality: 0.5), UIImage(named: "my_travel")?.jpegData(compressionQuality: 1)]),
-            Travel(
-                image: nil,
-                title: "25년의 가족 여행",
-                startDate: createDate(year: 2025, month: 4, day: 1) ?? Date(),
-                endDate: createDate(year: 2025, month: 4, day: 5) ?? Date(),
-                province: nil,
-                memoryNote: nil)
-        ])
-    }
-    
-    // TODO: date 데이터 만드는 함수 (추후 삭제 예정)
-    private func createDate(year: Int, month: Int, day: Int) -> Date? {
-        var dateComponents = DateComponents()
-        dateComponents.year = year
-        dateComponents.month = month
-        dateComponents.day = day
-        
-        return Calendar.current.date(from: dateComponents)
-    }
+    // TODO: travels 추가 함수
     
     override func configureStyle() {
         configureNavigationBarItems()

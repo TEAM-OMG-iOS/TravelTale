@@ -64,7 +64,7 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
     }
     
     override func bind() { 
-        travelMemoryDetailEditView.bind(travel: travelData)
+//        travelMemoryDetailEditView.bind(travel: travelData)
     }
     
     private func configureNavigationBarItems() {

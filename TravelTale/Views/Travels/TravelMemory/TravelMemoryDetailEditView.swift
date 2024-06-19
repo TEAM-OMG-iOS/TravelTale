@@ -224,19 +224,19 @@ final class TravelMemoryDetailEditView: BaseView {
         }
     }
     
-    func bind(travel: Travel) {
-        provinceLabel.text = travel.province ?? "미정"
-        periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
-        travelTitleLabel.text = travel.title
-        recordTextView.text = travel.memoryNote
-        updatePhotoCount(count: travel.memoryImageDatas.count)
-        
-        if isTextViewEmpty() {
-            setTextViewPlaceHolder()
-        } else {
-            recordTextView.textColor = UIColor.black
-        }
-    }
+//    func bind(travel: Travel) {
+//        provinceLabel.text = travel.province ?? "미정"
+//        periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
+//        travelTitleLabel.text = travel.title
+//        recordTextView.text = travel.memoryNote
+//        updatePhotoCount(count: travel.memoryImageDatas.count)
+//        
+//        if isTextViewEmpty() {
+//            setTextViewPlaceHolder()
+//        } else {
+//            recordTextView.textColor = UIColor.black
+//        }
+//    }
     
     func updatePhotoCount(count: Int) {
         if count == 0 {
