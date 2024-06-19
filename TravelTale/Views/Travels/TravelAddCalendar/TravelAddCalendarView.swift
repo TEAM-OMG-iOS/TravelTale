@@ -63,6 +63,7 @@ final class TravelAddCalendarView: BaseView, CalendarBaseView {
     }
     
     let okButton = UIButton().then {
+        $0.isEnabled = false
         $0.tintColor = .white
         $0.titleLabel?.font = .pretendard(size: 18, weight: .bold)
         $0.setTitle("날짜 선택하러 가기", for: .normal)

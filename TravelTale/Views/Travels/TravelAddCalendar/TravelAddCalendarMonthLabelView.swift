@@ -11,7 +11,6 @@ import HorizonCalendar
 
 // 월 UI커스텀
 struct MonthLabel: CalendarItemViewRepresentable {
-    
     struct InvariantViewProperties: Hashable {
         let font: UIFont
         let textColor: UIColor
@@ -32,7 +31,6 @@ struct MonthLabel: CalendarItemViewRepresentable {
         
         label.font = invariantViewProperties.font
         label.textColor = invariantViewProperties.textColor
-        
         label.textAlignment = .left
         
         return label

@@ -11,7 +11,6 @@ import HorizonCalendar
 
 // 선택된 날짜 범위 커스텀 뷰
 final class TravelAddCalendarDayRangeIndicatorView: BaseView {
-    
     private let indicatorColor: UIColor
     
     init(indicatorColor: UIColor) {
@@ -57,7 +56,6 @@ final class TravelAddCalendarDayRangeIndicatorView: BaseView {
 
 // MARK: - extension
 extension TravelAddCalendarDayRangeIndicatorView: CalendarItemViewRepresentable {
-    
     struct InvariantViewProperties: Hashable {
         let indicatorColor = UIColor.green10
     }
@@ -68,8 +66,7 @@ extension TravelAddCalendarDayRangeIndicatorView: CalendarItemViewRepresentable 
     
     static func makeView(
         withInvariantViewProperties invariantViewProperties: InvariantViewProperties)
-    -> TravelAddCalendarDayRangeIndicatorView
-    {
+    -> TravelAddCalendarDayRangeIndicatorView {
         TravelAddCalendarDayRangeIndicatorView(indicatorColor: invariantViewProperties.indicatorColor)
     }
     
@@ -81,15 +78,12 @@ extension TravelAddCalendarDayRangeIndicatorView: CalendarItemViewRepresentable 
 // MARK: - enum
 // 날짜 선택 범위 핸들러 기능
 enum DayRangeSelectionHelper {
-    
     static func updateDayRange(
         afterTapSelectionOf day: DayComponents,
-        existingDayRange: inout DayComponentsRange?)
-    {
+        existingDayRange: inout DayComponentsRange?) {
         if let currentDayRange = existingDayRange,
            currentDayRange.lowerBound == currentDayRange.upperBound,
-            day > currentDayRange.lowerBound
-        {
+           day > currentDayRange.lowerBound {
             existingDayRange = currentDayRange.lowerBound...day
         } else {
             existingDayRange = day...day

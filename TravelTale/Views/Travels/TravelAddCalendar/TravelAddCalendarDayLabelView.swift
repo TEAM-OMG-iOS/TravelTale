@@ -11,7 +11,6 @@ import HorizonCalendar
 
 // 일 UI커스텀
 struct DayLabel: CalendarItemViewRepresentable {
-    
     struct InvariantViewProperties: Hashable {
         let font: UIFont
         var textColor: UIColor

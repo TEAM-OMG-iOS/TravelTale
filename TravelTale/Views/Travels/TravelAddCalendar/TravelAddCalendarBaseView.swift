@@ -11,7 +11,6 @@ import HorizonCalendar
 
 // MARK: - protocol
 protocol CalendarBaseView: BaseView {
-    
     var calendar: Calendar { get }
     var monthsLayout: MonthsLayout { get }
     var dayDateFormatter: DateFormatter { get }

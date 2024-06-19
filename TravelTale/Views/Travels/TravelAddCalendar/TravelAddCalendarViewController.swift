@@ -27,8 +27,6 @@ final class TravelAddCalendarViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        travelAddCalendarView.okButton.isEnabled = false
     }
     
     // MARK: - methods
@@ -39,7 +37,7 @@ final class TravelAddCalendarViewController: BaseViewController {
     override func configureAddTarget() {
         travelAddCalendarView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
         travelAddCalendarView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
-        travelAddCalendarView.backButton.action = #selector(popToRootView)
+        travelAddCalendarView.backButton.action = #selector(tappedBackButton)
         travelAddCalendarView.backButton.target = self
     }
     
@@ -57,7 +55,7 @@ final class TravelAddCalendarViewController: BaseViewController {
         // TODO: 데이터 저장 상태로 RootView로 이동
     }
     
-    @objc func popToRootView() {
+    @objc func tappedBackButton() {
         self.navigationController?.popToRootViewController(animated: true)
     }
 }
