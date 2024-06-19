@@ -10,7 +10,6 @@
 		1A713BE02C22B9A20045DECD /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A713BDF2C22B9A20045DECD /* String+Extension.swift */; };
 		1AC9B3DF2C219E4700059246 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */; };
 		1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */; };
-		1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537882C105D0300A70D5E /* TravelViewModel.swift */; };
 		1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378A2C10612F00A70D5E /* Observable.swift */; };
 		1AD5378E2C10838A00A70D5E /* Travel(temporary).swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */; };
 		1AD537902C12CF4900A70D5E /* TravelPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378F2C12CF4900A70D5E /* TravelPlanView.swift */; };
@@ -111,7 +110,6 @@
 		1A713BDF2C22B9A20045DECD /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTableViewCell.swift; sourceTree = "<group>"; };
-		1AD537882C105D0300A70D5E /* TravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewModel.swift; sourceTree = "<group>"; };
 		1AD5378A2C10612F00A70D5E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Travel(temporary).swift"; sourceTree = "<group>"; };
 		1AD5378F2C12CF4900A70D5E /* TravelPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanView.swift; sourceTree = "<group>"; };
@@ -337,7 +335,6 @@
 				378CEC2C2C0D685300DF1C3F /* Travel */,
 				3740FE522C12EDD50024E08F /* TravelDetail */,
 				37E19F442C18837F0084F899 /* TravelDetailPlan */,
-				1AD537882C105D0300A70D5E /* TravelViewModel.swift */,
 				378CEC352C0D68F900DF1C3F /* TravelViewController.swift */,
 				4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */,
 				1AD537952C12E5E300A70D5E /* TravelPlanViewController.swift */,
@@ -696,7 +693,6 @@
 				1AD537902C12CF4900A70D5E /* TravelPlanView.swift in Sources */,
 				378CEC302C0D68A200DF1C3F /* TravelView.swift in Sources */,
 				37CB880D2C0D796C002798BE /* UILabel+Extension.swift in Sources */,
-				1AD537892C105D0300A70D5E /* TravelViewModel.swift in Sources */,
 				F19368202C1ACB88000AC7B2 /* LocationTableViewCell.swift in Sources */,
 				1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */,
 				4DA5FBFD2C1EFAE400233A68 /* DaySelectPopoverViewController.swift in Sources */,
