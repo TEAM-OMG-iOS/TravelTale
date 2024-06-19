@@ -12,6 +12,7 @@ final class PlaceDetailViewController: BaseViewController {
     
     // MARK: - properties
     private let placeDetailView = PlaceDetailView()
+    private var isBookMarked: Bool = false
     
     // MARK: - life cycles
     override func loadView() {
@@ -20,6 +21,13 @@ final class PlaceDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        placeDetailView.bind(placeName: "설빙 석촌호수 동호점",
+                             placeCategory: "관광지",
+                             placePhoneNumber: "053-565-7665",
+                             placeWebSite: "www.naver.com",
+                             placeDescription: "안녕하세요. 코코종입니다. 안녕하세요. 코코몽입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다.",
+                             placeAddress: "서울 송파구 석촌호수로 278",
+                             isBookMarked: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,11 +59,17 @@ final class PlaceDetailViewController: BaseViewController {
     }
     
     @objc private func tappedBackButton() {
-        print("tappedBackButton")
+        navigationController?.popViewController(animated: true)
     }
     
     @objc private func tappedBookMarkButton() {
-        print("tappedBookMarkButton")
+        if isBookMarked {
+            placeDetailView.configureBookMarkButton(isBookMarked: false)
+            isBookMarked = false
+        }else {
+            placeDetailView.configureBookMarkButton(isBookMarked: true)
+            isBookMarked = true
+        }
     }
     
     @objc private func tappedCopyButton() {
@@ -64,10 +78,6 @@ final class PlaceDetailViewController: BaseViewController {
     
     @objc private func tappedAddButton() {
         print("tappedAddButton")
-    }
-    
-    func configurePageControl() {
-        placeDetailView.pageController.backgroundStyle = .automatic
     }
 }
 

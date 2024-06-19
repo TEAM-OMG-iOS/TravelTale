@@ -244,8 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				2ECECE812C2150AD003F7748 /* PlaceDetailView.swift */,
-				2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */,
 				2ECECE852C219C4E003F7748 /* PlaceDetailImageCollectionViewCell.swift */,
+				2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */,
 			);
 			path = Place;
 			sourceTree = "<group>";

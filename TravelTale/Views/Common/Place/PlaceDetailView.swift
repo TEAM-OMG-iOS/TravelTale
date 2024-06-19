@@ -11,7 +11,8 @@ import UIKit
 final class PlaceDetailView: BaseView {
     
     // MARK: - properties
-    let collectionViewHeight: CGFloat = 300
+    let collectionViewHeight: CGFloat = 350
+    let buttonHeight: CGFloat = 48
     
     let scrollView = UIScrollView().then {
         $0.backgroundColor = .white
@@ -40,27 +41,16 @@ final class PlaceDetailView: BaseView {
         $0.collectionViewLayout = layout
     }
     
-    let pageController = UIPageControl().then {
-        $0.currentPageIndicatorTintColor = .green100
-        $0.backgroundStyle = .automatic
-    }
-    
     private let placeName = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 18, weight: .bold), text: "설빙 석촌 호수점")
-    }
-    
-    let bookMarkButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "bookmark"), for: .normal)
-        $0.tintColor = .green100
+        $0.configureLabel(font: .pretendard(size: 18, weight: .bold))
     }
     
     private let categoryImage = UIImageView().then {
-        $0.image = UIImage(systemName: "fork.knife")
         $0.tintColor = .gray80
     }
     
     private let categoryName = UILabel().then {
-        $0.configureLabel(color: .gray80, font: .pretendard(size: 12, weight: .semibold), text: "음식점")
+        $0.configureLabel(color: .gray80, font: .pretendard(size: 12, weight: .semibold))
     }
     
     private let line = UIView().then {
@@ -68,72 +58,123 @@ final class PlaceDetailView: BaseView {
     }
     
     private let phoneNumberImage = UIImageView().then {
-        $0.image = UIImage(systemName: "phone")
         $0.tintColor = .black
+        $0.image = UIImage(systemName: "phone")
     }
     
     private let phoneNumberTextView = UITextView().then {
-        $0.text = "+82 010-5145-7665"
-        $0.font = .pretendard(size: 14, weight: .medium)
-        $0.dataDetectorTypes = .phoneNumber
-        $0.isEditable = false
         $0.textColor = .blue
+        $0.isEditable = false
         $0.textAlignment = .left
         $0.isScrollEnabled = false
-        $0.isEditable = false
+        $0.dataDetectorTypes = .phoneNumber
+        $0.font = .pretendard(size: 14, weight: .medium)
+    }
+    
+    private let phoneNumberStackView = UIStackView().then {
+        $0.spacing = 12
+        $0.isHidden = true
+        $0.axis = .horizontal
+        $0.alignment = .center
+        $0.distribution = .fill
     }
     
     private let websiteImage = UIImageView().then {
-        $0.image = UIImage(systemName: "globe")
         $0.tintColor = .black
+        $0.image = UIImage(systemName: "globe")
     }
     
     private let websiteTextView = UITextView().then {
-        $0.text = "www.naver.com"
-        $0.font = .pretendard(size: 14, weight: .medium)
-        $0.dataDetectorTypes = .link
-        $0.isEditable = false
         $0.textColor = .blue
+        $0.isEditable = false
         $0.textAlignment = .left
         $0.isScrollEnabled = false
-        $0.isEditable = false
+        $0.dataDetectorTypes = .link
+        $0.font = .pretendard(size: 14, weight: .medium)
+    }
+    
+    private let websiteStackView = UIStackView().then {
+        $0.spacing = 12
+        $0.isHidden = true
+        $0.axis = .horizontal
+        $0.alignment = .center
+        $0.distribution = .fill
     }
     
     private let descriptionImage = UIImageView().then {
-        $0.image = UIImage(systemName: "book.pages")
         $0.tintColor = .black
+        $0.image = UIImage(systemName: "book.pages")
     }
     
     private let descriptionLabel = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 14, weight: .medium),
-                          text: "안녕하세요 여기는 설빙 석촌호수 동호점입니다. 안녕하세요 여기는 설빙 석촌호수 동호점입니다. 안녕하세요 여기는 설빙 석촌호수 동호점입니다. 안녕하세요 여기는 설빙 석촌호수 동호점입니다.",
                           numberOfLines: 0)
+    }
+    
+    private let descriptionStackView = UIStackView().then {
+        $0.spacing = 16
+        $0.isHidden = true
+        $0.alignment = .top
+        $0.axis = .horizontal
+        $0.distribution = .fill
     }
 
     private let mapImage = UIImageView().then {
-        $0.image = UIImage(systemName: "map")
         $0.tintColor = .black
+        $0.image = UIImage(systemName: "map")
     }
     
     private let mapLabel = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 14, weight: .medium),
-                          text: "서울 송파구 석촌 호수로 278",
                           numberOfLines: 0)
     }
     
     let copyAddressButton = UIButton().then {
+        $0.tintColor = .gray70
         $0.setImage(UIImage(systemName: "square.on.square.intersection.dashed"),
                     for: .normal)
-        $0.tintColor = .gray70
+    }
+    
+    private let mapStackView = UIStackView().then {
+        $0.spacing = 16
+        $0.isHidden = true
+        $0.axis = .horizontal
+        $0.alignment = .top
+        $0.distribution = .fill
     }
     
     private let mapView = MKMapView()
     
+    private let detailStackView = UIStackView().then {
+        $0.spacing = 12
+        $0.axis = .vertical
+        $0.alignment = .fill
+        $0.distribution = .equalSpacing
+    }
+    
+    let buttonBackground = UIView().then {
+        $0.configureView(color: .white)
+        
+        let topBorder = CALayer()
+        topBorder.backgroundColor = UIColor.gray20.cgColor
+        topBorder.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 1)
+        $0.layer.addSublayer(topBorder)
+    }
+    
+    let bookMarkButton = UIButton().then {
+        $0.tintColor = .gray80
+        $0.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
+    }
+    
+    let buttonLine = UIView().then {
+        $0.configureView(color: .gray20)
+    }
+    
     let addButton = UIButton().then {
         $0.configureButton(fontColor: .white,
-                           font: .pretendard(size: 20, weight: .bold),
+                           font: .pretendard(size: 18, weight: .bold),
                            text: "일정에 추가하기")
-        $0.configureView(color: .green100, clipsToBounds: true, cornerRadius: 20)
+        $0.configureView(color: .green100, clipsToBounds: true, cornerRadius: 15)
     }
     
     // MARK: - methods
@@ -141,24 +182,30 @@ final class PlaceDetailView: BaseView {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(imageCollectionView)
-        contentView.addSubview(pageController)
         contentView.addSubview(placeName)
-        contentView.addSubview(bookMarkButton)
         contentView.addSubview(categoryImage)
         contentView.addSubview(categoryName)
         contentView.addSubview(line)
-        contentView.addSubview(phoneNumberImage)
-        contentView.addSubview(phoneNumberTextView)
-        contentView.addSubview(websiteImage)
-        contentView.addSubview(websiteTextView)
-        contentView.addSubview(descriptionImage)
-        contentView.addSubview(descriptionLabel)
-        contentView.addSubview(mapImage)
-        contentView.addSubview(mapLabel)
-        contentView.addSubview(copyAddressButton)
+        phoneNumberStackView.addArrangedSubview(phoneNumberImage)
+        phoneNumberStackView.addArrangedSubview(phoneNumberTextView)
+        websiteStackView.addArrangedSubview(websiteImage)
+        websiteStackView.addArrangedSubview(websiteTextView)
+        descriptionStackView.addArrangedSubview(descriptionImage)
+        descriptionStackView.addArrangedSubview(descriptionLabel)
+        mapStackView.addArrangedSubview(mapImage)
+        mapStackView.addArrangedSubview(mapLabel)
+        mapStackView.addArrangedSubview(copyAddressButton)
         contentView.addSubview(mapView)
+        detailStackView.addArrangedSubview(phoneNumberStackView)
+        detailStackView.addArrangedSubview(websiteStackView)
+        detailStackView.addArrangedSubview(descriptionStackView)
+        detailStackView.addArrangedSubview(mapStackView)
+        contentView.addSubview(detailStackView)
         contentView.addSubview(backButton)
-        addSubview(addButton)
+        addSubview(buttonBackground)
+        buttonBackground.addSubview(bookMarkButton)
+        buttonBackground.addSubview(buttonLine)
+        buttonBackground.addSubview(addButton)
     }
     
     override func configureConstraints() {
@@ -186,20 +233,9 @@ final class PlaceDetailView: BaseView {
             $0.height.equalTo(collectionViewHeight)
         }
         
-        pageController.snp.makeConstraints {
-            $0.bottom.equalTo(imageCollectionView).offset(-12)
-            $0.centerX.equalToSuperview()
-        }
-        
         placeName.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(24)
-            $0.top.equalTo(imageCollectionView.snp.bottom).offset(12)
-        }
-        
-        bookMarkButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(24)
-            $0.centerY.equalTo(placeName)
-            $0.size.equalTo(18)
+            $0.top.equalTo(imageCollectionView.snp.bottom).offset(16)
         }
         
         categoryImage.snp.makeConstraints {
@@ -216,72 +252,139 @@ final class PlaceDetailView: BaseView {
         line.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(2)
-            $0.top.equalTo(categoryName.snp.bottom).offset(12)
+            $0.top.equalTo(categoryName.snp.bottom).offset(16)
         }
         
         phoneNumberImage.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(24)
-            $0.centerY.equalTo(phoneNumberTextView)
             $0.size.equalTo(18)
-        }
-        
-        phoneNumberTextView.snp.makeConstraints {
-            $0.leading.equalTo(phoneNumberImage.snp.trailing).offset(12)
-            $0.top.equalTo(line.snp.bottom).offset(12)
-            $0.trailing.equalToSuperview().inset(24)
         }
         
         websiteImage.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(24)
-            $0.centerY.equalTo(websiteTextView)
             $0.size.equalTo(18)
-        }
-        
-        websiteTextView.snp.makeConstraints {
-            $0.leading.equalTo(websiteImage.snp.trailing).offset(12)
-            $0.top.equalTo(phoneNumberTextView.snp.bottom).offset(12)
-            $0.trailing.equalToSuperview().inset(24)
         }
         
         descriptionImage.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(24)
-            $0.top.equalTo(websiteTextView.snp.bottom).offset(16)
             $0.size.equalTo(18)
-        }
-        
-        descriptionLabel.snp.makeConstraints {
-            $0.leading.equalTo(websiteImage.snp.trailing).offset(16)
-            $0.top.equalTo(websiteTextView.snp.bottom).offset(16)
-            $0.trailing.equalToSuperview().inset(24)
         }
         
         mapImage.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(24)
-            $0.top.equalTo(descriptionLabel.snp.bottom).offset(16)
             $0.size.equalTo(18)
         }
         
-        mapLabel.snp.makeConstraints {
-            $0.leading.equalTo(mapImage.snp.trailing).offset(16)
-            $0.top.equalTo(mapImage)
-            $0.trailing.equalTo(copyAddressButton.snp.leading).offset(-12)
-        }
-        
         copyAddressButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(24)
-            $0.bottom.equalTo(mapLabel)
             $0.size.equalTo(16)
         }
         
+        detailStackView.snp.makeConstraints {
+            $0.top.equalTo(line.snp.bottom).offset(12)
+            $0.horizontalEdges.equalToSuperview().inset(24)
+        }
+        
         mapView.snp.makeConstraints {
-            $0.top.equalTo(copyAddressButton.snp.bottom)
+            $0.top.equalTo(mapStackView.snp.bottom).inset(12)
             $0.horizontalEdges.bottom.equalToSuperview().inset(24)
         }
         
+        buttonBackground.snp.makeConstraints {
+            $0.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(72)
+        }
+        
+        bookMarkButton.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(24)
+            $0.centerY.equalTo(buttonBackground)
+            $0.width.equalTo(23)
+            $0.height.equalTo(26)
+        }
+        
+        buttonLine.snp.makeConstraints {
+            $0.height.equalTo(buttonHeight)
+            $0.leading.equalTo(bookMarkButton.snp.trailing).offset(24)
+            $0.width.equalTo(1)
+            $0.centerY.equalTo(buttonBackground)
+        }
+        
         addButton.snp.makeConstraints {
-            $0.height.equalTo(52)
-            $0.horizontalEdges.equalToSuperview().inset(24)
-            $0.bottom.equalTo( safeAreaLayoutGuide )
+            $0.centerY.equalTo(buttonBackground)
+            $0.height.equalTo(buttonHeight)
+            $0.leading.equalTo(buttonLine.snp.trailing).offset(24)
+            $0.trailing.equalToSuperview().inset(24)
+        }
+    }
+    
+    func bind(placeName: String,
+              placeCategory: String,
+              placePhoneNumber: String?,
+              placeWebSite: String?,
+              placeDescription: String?,
+              placeAddress: String?,
+              isBookMarked: Bool) {
+        self.placeName.text = placeName
+        
+        configureCategory(category: placeCategory)
+        
+        if let placePhoneNumber = placePhoneNumber {
+            configurePhoneNumber(phoneNumber: placePhoneNumber)
+        }
+        if let placeWebSite = placeWebSite {
+            configureWebsite(website: placeWebSite)
+        }
+        if let placeDescription = placeDescription {
+            configureDescription(description: placeDescription)
+        }
+        if let placeAddress = placeAddress {
+            configureMap(address: placeAddress)
+        }
+        configureBookMarkButton(isBookMarked: isBookMarked)
+    }
+    
+    private func configureCategory(category: String) {
+        switch category {
+        case "관광지" :
+            categoryImage.image = UIImage(systemName: "building.columns")
+            categoryName.text = category
+        case "음식점" :
+            categoryImage.image = UIImage(systemName: "fork.knife")
+            categoryName.text = category
+        case "숙박" :
+            categoryImage.image = UIImage(systemName: "tent.fill")
+            categoryName.text = category
+        case "놀거리" :
+            categoryImage.image = UIImage(systemName: "balloon.2.fill")
+            categoryName.text = category
+        default:
+            categoryImage.image = nil
+            categoryName.text = nil
+        }
+    }
+    
+    private func configurePhoneNumber(phoneNumber: String) {
+        phoneNumberStackView.isHidden = false
+        phoneNumberTextView.text = phoneNumber
+    }
+    
+    private func configureWebsite(website: String) {
+        websiteStackView.isHidden = false
+        websiteTextView.text = website
+    }
+    
+    private func configureDescription(description: String) {
+        descriptionStackView.isHidden = false
+        descriptionLabel.text = description
+    }
+    
+    private func configureMap(address: String) {
+        mapStackView.isHidden = false
+        mapLabel.text = address
+    }
+    
+    func configureBookMarkButton(isBookMarked: Bool) {
+        if isBookMarked {
+            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            bookMarkButton.tintColor = .green100
+        }else {
+            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
+            bookMarkButton.tintColor = .gray80
         }
     }
 }

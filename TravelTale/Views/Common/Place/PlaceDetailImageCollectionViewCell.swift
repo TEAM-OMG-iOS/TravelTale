@@ -13,7 +13,7 @@ final class PlaceDetailImageCollectionViewCell: BaseCollectionViewCell {
     let identifier = String(describing: PlaceDetailImageCollectionViewCell.self)
     
     private let detailImage = UIImageView().then {
-        $0.contentMode = .scaleToFill
+        $0.contentMode = .scaleAspectFit
     }
     
     // MARK: - methods
