@@ -24,7 +24,7 @@ final class TravelAddPlaceView: BaseView {
     }
     
     let placePickButton = UIButton().then {
-        $0.configureView(color: .gray10, cornerRadius: 24)
+        $0.configureView(color: .gray5, cornerRadius: 24)
         $0.titleLabel?.font = .pretendard(size: 16, weight: .medium)
         $0.setTitle("미정", for: .normal)
         $0.setTitleColor(.gray90, for: .normal)
@@ -114,7 +114,11 @@ final class TravelAddPlaceView: BaseView {
     
     func startLoadingAnimation() {
         UIView.animate(withDuration: 2.0, delay: 0, animations: {
-            self.loadingBar.transform = CGAffineTransform(scaleX: 3, y: 1)
+            self.loadingBar.transform = CGAffineTransform(scaleX: 3, y: 1.5)
         })
+    }
+    
+    func updatePlacePickButton(text: String) {
+        placePickButton.configureButton(fontColor: .black, font: .pretendard(size: 16, weight: .medium), text: text)
     }
 }
