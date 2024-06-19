@@ -12,6 +12,8 @@ final class PlaceDetailViewController: BaseViewController {
     
     // MARK: - properties
     private let placeDetailView = PlaceDetailView()
+    private let locationManager = CLLocationManager()
+    
     private var isBookMarked: Bool = false
     
     // MARK: - life cycles
@@ -30,6 +32,8 @@ final class PlaceDetailViewController: BaseViewController {
                              placeDescription: "안녕하세요. 코코종입니다. 안녕하세요. 코코몽입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다.",
                              placeAddress: "서울 송파구 석촌호수로 278",
                              isBookMarked: true)
+        
+        placeDetailView.configureMapView(latitude: 37.50238307905, longtitude: 127.0445569933)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,12 +49,18 @@ final class PlaceDetailViewController: BaseViewController {
     }
     
     // MARK: - methods
+    override func configureStyle() {
+        configureMapView()
+    }
+    
     override func configureDelegate() {
         placeDetailView.imageCollectionView.dataSource = self
         placeDetailView.imageCollectionView.delegate = self
         
         placeDetailView.imageCollectionView.register(PlaceDetailImageCollectionViewCell.self, 
                                                      forCellWithReuseIdentifier: PlaceDetailImageCollectionViewCell().identifier)
+        
+        placeDetailView.mapView.delegate = self
     }
     
     override func configureAddTarget() {
@@ -75,11 +85,20 @@ final class PlaceDetailViewController: BaseViewController {
     }
     
     @objc private func tappedCopyButton() {
-        print("tappedCopyButton")
+        if let address = placeDetailView.copyAddress() {
+            UIPasteboard.general.string = address
+        }
     }
     
     @objc private func tappedAddButton() {
         print("tappedAddButton")
+    }
+    
+    private func configureMapView() {
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        placeDetailView.mapView.showsUserLocation = true
     }
 }
 
@@ -104,5 +123,33 @@ extension PlaceDetailViewController: UICollectionViewDataSource {
         cell.bind(image: .myTravel)
         
         return cell
+    }
+}
+
+extension PlaceDetailViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: any MKAnnotation) -> MKAnnotationView? {
+        let identifier = "CustomAnnotationView"
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        let annotationImage = UIImage.annotation
+        
+        let size = CGSize(width: 80, height: 100)
+        UIGraphicsBeginImageContext(size)
+        annotationImage.draw(in: CGRect(origin: .zero, size: size))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        annotationView?.image = resizedImage
+        
+        return annotationView
     }
 }

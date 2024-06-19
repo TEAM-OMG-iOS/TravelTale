@@ -16,7 +16,8 @@ final class PlaceDetailView: BaseView {
     
     let scrollView = UIScrollView().then {
         $0.backgroundColor = .white
-        $0.showsVerticalScrollIndicator = false
+        $0.alwaysBounceVertical = false
+        $0.isDirectionalLockEnabled = true
     }
     
     private let contentView = UIView()
@@ -143,7 +144,7 @@ final class PlaceDetailView: BaseView {
         $0.distribution = .fill
     }
     
-    private let mapView = MKMapView().then {
+    let mapView = MKMapView().then {
         $0.configureView(clipsToBounds: true, cornerRadius: 15)
         $0.layer.borderColor = UIColor.gray20.cgColor
         $0.layer.borderWidth = 1
@@ -215,9 +216,8 @@ final class PlaceDetailView: BaseView {
     override func configureConstraints() {
         
         scrollView.snp.makeConstraints {
-            $0.top.equalTo(self)
-            $0.horizontalEdges.equalToSuperview()
-            $0.bottom.equalTo(addButton.snp.top)
+            $0.horizontalEdges.top.equalToSuperview()
+            $0.bottom.equalTo(buttonBackground.snp.top)
         }
         
         contentView.snp.makeConstraints {
@@ -232,7 +232,7 @@ final class PlaceDetailView: BaseView {
         }
         
         imageCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self)
+            $0.top.equalToSuperview()
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(collectionViewHeight)
         }
@@ -285,8 +285,9 @@ final class PlaceDetailView: BaseView {
         }
         
         mapView.snp.makeConstraints {
-            $0.top.equalTo(mapStackView.snp.bottom).inset(12)
+            $0.top.equalTo(mapStackView.snp.bottom).offset(12)
             $0.horizontalEdges.bottom.equalToSuperview().inset(24)
+            $0.height.equalTo(220)
         }
         
         buttonBackground.snp.makeConstraints {
@@ -387,5 +388,19 @@ final class PlaceDetailView: BaseView {
         
         bookMarkButton.setBackgroundImage(UIImage(systemName: imageName), for: .normal)
         bookMarkButton.tintColor = tintColor
+    }
+    
+    func configureMapView(latitude: Double, longtitude: Double) {
+        let centerLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
+        let region = MKCoordinateRegion(center: centerLocation, latitudinalMeters: 100, longitudinalMeters: 100)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = centerLocation
+        
+        mapView.addAnnotation(annotation)
+        mapView.setRegion(region, animated: true)
+    }
+    
+    func copyAddress() -> String? {
+        return mapLabel.text
     }
 }
