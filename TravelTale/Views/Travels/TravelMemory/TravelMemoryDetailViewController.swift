@@ -61,10 +61,9 @@ final class TravelMemoryDetailViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        travelMemoryDetailView.backButton.target = self
-        travelMemoryDetailView.backButton.action = #selector(tappedBackButton)
-        travelMemoryDetailView.editButton.target = self
-        travelMemoryDetailView.editButton.action = #selector(tappedEditButton)
+        travelMemoryDetailView.backBarButton.target = self
+        travelMemoryDetailView.backBarButton.action = #selector(tappedBackButton)
+        configurePopupButton()
     }
     
     override func bind() {
@@ -74,9 +73,22 @@ final class TravelMemoryDetailViewController: BaseViewController {
     }
     
     private func configureNavigationBarItems() {
-        navigationItem.leftBarButtonItem = travelMemoryDetailView.backButton
-        navigationItem.rightBarButtonItem = travelMemoryDetailView.editButton
+        navigationItem.leftBarButtonItem = travelMemoryDetailView.backBarButton
+        navigationItem.rightBarButtonItem = travelMemoryDetailView.editBarButton
       }
+    
+    private func configurePopupButton() {
+        travelMemoryDetailView.editButton.menu = UIMenu(
+            children: [
+                UIAction(title: "편집", state: .off, handler: { _ in
+                    print("편집")
+                    self.tappedEditButton() }),
+                UIAction(title: "삭제", attributes: .destructive,state: .off, handler: { _ in
+                    print("삭제")
+                })
+            ]
+        )
+    }
     
     private func getMemoryImages(travel: Travel) {
         let imageDatas = self.travelData.memoryImageDatas
@@ -89,15 +101,15 @@ final class TravelMemoryDetailViewController: BaseViewController {
         }
     }
     
-    // MARK: - objc functions
-    @objc func tappedBackButton() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @objc func tappedEditButton() {
+    private func tappedEditButton() {
         print("tappedEditButton")
         let travelMemoryDetailEditViewController = TravelMemoryDetailEditViewController(travelData: travelData)
         self.navigationController?.pushViewController(travelMemoryDetailEditViewController, animated: true)
+    }
+    
+    // MARK: - objc functions
+    @objc func tappedBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
