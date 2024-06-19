@@ -23,7 +23,7 @@ final class PlaceDetailView: BaseView {
     
     let backButton = UIButton().then {
         $0.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        $0.tintColor = .white
+        $0.tintColor = .gray90
     }
     
     lazy var imageCollectionView = UICollectionView(frame: .zero,
@@ -143,7 +143,11 @@ final class PlaceDetailView: BaseView {
         $0.distribution = .fill
     }
     
-    private let mapView = MKMapView()
+    private let mapView = MKMapView().then {
+        $0.configureView(clipsToBounds: true, cornerRadius: 15)
+        $0.layer.borderColor = UIColor.gray20.cgColor
+        $0.layer.borderWidth = 1
+    }
     
     private let detailStackView = UIStackView().then {
         $0.spacing = 12
@@ -320,71 +324,68 @@ final class PlaceDetailView: BaseView {
               placeAddress: String?,
               isBookMarked: Bool) {
         self.placeName.text = placeName
-        
         configureCategory(category: placeCategory)
         
-        if let placePhoneNumber = placePhoneNumber {
-            configurePhoneNumber(phoneNumber: placePhoneNumber)
-        }
-        if let placeWebSite = placeWebSite {
-            configureWebsite(website: placeWebSite)
-        }
-        if let placeDescription = placeDescription {
-            configureDescription(description: placeDescription)
-        }
-        if let placeAddress = placeAddress {
-            configureMap(address: placeAddress)
-        }
+        configureIfPresent(placePhoneNumber, using: configurePhoneNumber)
+        configureIfPresent(placeWebSite, using: configureWebsite)
+        configureIfPresent(placeDescription, using: configureDescription)
+        configureIfPresent(placeAddress, using: configureMap)
+        
         configureBookMarkButton(isBookMarked: isBookMarked)
     }
     
     private func configureCategory(category: String) {
-        switch category {
-        case "관광지" :
-            categoryImage.image = UIImage(systemName: "building.columns")
-            categoryName.text = category
-        case "음식점" :
-            categoryImage.image = UIImage(systemName: "fork.knife")
-            categoryName.text = category
-        case "숙박" :
-            categoryImage.image = UIImage(systemName: "tent.fill")
-            categoryName.text = category
-        case "놀거리" :
-            categoryImage.image = UIImage(systemName: "balloon.2.fill")
-            categoryName.text = category
-        default:
-            categoryImage.image = nil
-            categoryName.text = nil
+        let categoryConfig: (image: String, text: String) = {
+            switch category {
+            case "관광지":
+                return ("building.columns", category)
+            case "음식점":
+                return ("fork.knife", category)
+            case "숙박":
+                return ("tent.fill", category)
+            case "놀거리":
+                return ("balloon.2.fill", category)
+            default:
+                return ("star.fill", "카테고리 없음")
+            }
+        }()
+        categoryImage.image = UIImage(systemName: categoryConfig.image)
+        categoryName.text = categoryConfig.text
+    }
+    
+    private func configureIfPresent(_ value: String?, using configure: (String) -> Void) {
+        if let value = value {
+            configure(value)
         }
     }
     
     private func configurePhoneNumber(phoneNumber: String) {
-        phoneNumberStackView.isHidden = false
-        phoneNumberTextView.text = phoneNumber
+        configureStackView(stackView: phoneNumberStackView, textView: phoneNumberTextView, text: phoneNumber)
     }
-    
+
     private func configureWebsite(website: String) {
-        websiteStackView.isHidden = false
-        websiteTextView.text = website
+        configureStackView(stackView: websiteStackView, textView: websiteTextView, text: website)
     }
-    
+
     private func configureDescription(description: String) {
-        descriptionStackView.isHidden = false
-        descriptionLabel.text = description
+        configureStackView(stackView: descriptionStackView, label: descriptionLabel, text: description)
     }
-    
+
     private func configureMap(address: String) {
-        mapStackView.isHidden = false
-        mapLabel.text = address
+        configureStackView(stackView: mapStackView, label: mapLabel, text: address)
+    }
+
+    private func configureStackView(stackView: UIStackView, textView: UITextView? = nil, label: UILabel? = nil, text: String) {
+        stackView.isHidden = false
+        textView?.text = text
+        label?.text = text
     }
     
     func configureBookMarkButton(isBookMarked: Bool) {
-        if isBookMarked {
-            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-            bookMarkButton.tintColor = .green100
-        }else {
-            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
-            bookMarkButton.tintColor = .gray80
-        }
+        let imageName = isBookMarked ? "bookmark.fill" : "bookmark"
+        let tintColor: UIColor = isBookMarked ? .green100 : .gray80
+        
+        bookMarkButton.setBackgroundImage(UIImage(systemName: imageName), for: .normal)
+        bookMarkButton.tintColor = tintColor
     }
 }

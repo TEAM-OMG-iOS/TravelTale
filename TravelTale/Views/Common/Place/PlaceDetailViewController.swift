@@ -21,6 +21,8 @@ final class PlaceDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // TODO: - 데이터 바인딩
         placeDetailView.bind(placeName: "설빙 석촌호수 동호점",
                              placeCategory: "관광지",
                              placePhoneNumber: "053-565-7665",
@@ -99,7 +101,7 @@ extension PlaceDetailViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailImageCollectionViewCell().identifier,
                                                       for: indexPath) as! PlaceDetailImageCollectionViewCell
         
-        cell.bind(image: .splashScale)
+        cell.bind(image: .myTravel)
         
         return cell
     }
