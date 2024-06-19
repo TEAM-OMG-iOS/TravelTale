@@ -22,6 +22,11 @@ final class DiscoveryViewController: BaseViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     // MARK: - methods
     override func configureStyle() {
         configureNavigationBar()
@@ -71,9 +76,15 @@ final class DiscoveryViewController: BaseViewController {
     }
     
     @objc private func tappedCategoryButton(_ sender: UIButton) {
-        // guard let category = sender.titleLabel else { return }
+        let discoveryCategoryVC = DiscoveryCategoryViewController()
+        let categoryArray = ["관광지", "음식점", "숙박", "놀거리"]
         
-        // todo : category 화면 navi로 띄우기
+        guard let categoryText = sender.titleLabel?.text  else { return }
+        
+        discoveryCategoryVC.navigationItem.title = categoryText
+        discoveryCategoryVC.selectedIndexPath = categoryArray.firstIndex(of: categoryText) ?? 0
+        
+        self.navigationController?.pushViewController(discoveryCategoryVC, animated: true)
     }
 }
 
@@ -100,10 +111,7 @@ extension DiscoveryViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        // Todo : 데이터에서 가져온 값 넣어야 함.
-        cell.bind(placeImage: nil,
-                  place: "석촌호수 공원 안녕하세요 여기는 저희 집 입니다.ㅎㅎㅎㅎㅎㅎㅎㅎ",
-                  placeAddress: "테헤란로 412 우주 끝까지 달려나가자~~~~!!!!!!!!!!!!!!!")
+        // TODO: - 데이터 바인딩
         
         return cell
     }

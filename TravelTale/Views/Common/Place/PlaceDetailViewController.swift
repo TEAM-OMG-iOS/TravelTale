@@ -99,7 +99,7 @@ extension PlaceDetailViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailImageCollectionViewCell().identifier,
                                                       for: indexPath) as! PlaceDetailImageCollectionViewCell
         
-        cell.bind(image: .splash)
+        cell.bind(image: .splashScale)
         
         return cell
     }

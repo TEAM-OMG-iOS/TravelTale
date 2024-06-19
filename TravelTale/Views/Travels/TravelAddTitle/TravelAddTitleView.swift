@@ -23,14 +23,15 @@ final class TravelAddTitleView: BaseView {
     }
     
     let textField = UITextField().then {
-        $0.configureView(color: .gray10, cornerRadius: 24)
+        $0.configureView(color: .gray5, cornerRadius: 24)
         $0.placeholder = "남자친구와 100일 여행"
-        $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+        $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
         $0.leftViewMode = .always
         $0.font = .pretendard(size: 16, weight: .medium)
     }
     
     let okButton = UIButton().then {
+        $0.isEnabled = false
         $0.configureButton(fontColor: .white,
                            font: .pretendard(size: 18, weight: .bold),
                            text: "장소 선택하러 가기")
@@ -53,8 +54,6 @@ final class TravelAddTitleView: BaseView {
     // MARK: - methods
     override func configureUI() {
         super.configureUI()
-        
-        okButton.isEnabled = false
     }
     
     override func configureHierarchy() {
