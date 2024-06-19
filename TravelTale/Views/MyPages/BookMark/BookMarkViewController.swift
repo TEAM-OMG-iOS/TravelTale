@@ -105,7 +105,7 @@ final class BookMarkViewController: ButtonBarPagerTabStripViewController {
     private func configureButtonBar() {
         settings.style.buttonBarBackgroundColor = .white
         settings.style.buttonBarItemBackgroundColor = .white
-        settings.style.buttonBarItemFont = .oaGothic(size: 15, weight: .medium)
+        settings.style.buttonBarItemFont = .pretendard(size: 16, weight: .semibold)
         settings.style.buttonBarItemLeftRightMargin = 4
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemsShouldFillAvailableWidth = true

@@ -43,7 +43,8 @@ final class MyPageServiceTableViewCell: BaseTableViewCell {
         
         chevronImage.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(36)
-            $0.size.equalTo(16)
+            $0.height.equalTo(16)
+            $0.width.equalTo(8)
             $0.centerY.equalToSuperview()
         }
     }
