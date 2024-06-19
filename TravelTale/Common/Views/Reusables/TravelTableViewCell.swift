@@ -141,6 +141,4 @@ final class TravelTableViewCell: BaseTableViewCell {
     func hideThumbnail() {
         thumbnailImageView.isHidden = true
     }
-    
-    
 }
