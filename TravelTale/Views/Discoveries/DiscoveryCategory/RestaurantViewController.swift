@@ -9,7 +9,7 @@ import UIKit
 
 import XLPagerTabStrip
 
-class RestaurantViewController: BaseViewController {
+final class RestaurantViewController: BaseViewController {
     
     // MARK: - properties
     private let categoryView = CategoryView()

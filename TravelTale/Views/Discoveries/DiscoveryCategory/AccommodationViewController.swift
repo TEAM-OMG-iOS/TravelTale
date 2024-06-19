@@ -9,7 +9,7 @@ import UIKit
 
 import XLPagerTabStrip
 
-class AccommodationViewController: BaseViewController {
+final class AccommodationViewController: BaseViewController {
     
     // MARK: - properties
     private let categoryView = CategoryView()
