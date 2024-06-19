@@ -41,9 +41,8 @@ final class LocationTableViewCell: BaseTableViewCell {
     
     override func configureConstraints() {
         locationLabel.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview()
+            $0.verticalEdges.equalToSuperview().inset(16)
             $0.horizontalEdges.equalToSuperview().inset(12)
-            $0.height.equalTo(48)
         }
     }
     

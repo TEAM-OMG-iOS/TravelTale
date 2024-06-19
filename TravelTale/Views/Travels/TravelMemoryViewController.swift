@@ -25,34 +25,12 @@ final class TravelMemoryViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTemporaryData()
+//        addTemporaryData()
     }
     
     
     // MARK: - methods
-    // TODO: 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
-    private func addTemporaryData() {
-        travels.append(contentsOf: [
-            Travel(
-                image: nil,
-                title: "24년의 가족 여행",
-                startDate: createDate(year: 2024, month: 4, day: 1) ?? Date(),
-                endDate: createDate(year: 2024, month: 4, day: 5) ?? Date(),
-                province: nil,
-                memoryNote: "yayyyy~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-                memoryImageDatas: [UIImage(named: "splash")?.jpegData(compressionQuality: 0.5), UIImage(named: "my_travel")?.jpegData(compressionQuality: 1)])
-        ])
-    }
-    
-    // TODO: date 데이터 만드는 함수 (추후 삭제 예정)
-    private func createDate(year: Int, month: Int, day: Int) -> Date? {
-        var dateComponents = DateComponents()
-        dateComponents.year = year
-        dateComponents.month = month
-        dateComponents.day = day
-        
-        return Calendar.current.date(from: dateComponents)
-    }
+    // TODO: travels 데이터 추가 함수
     
     override func configureStyle() {
         travelMemoryView.tableView.separatorStyle = .none
@@ -85,7 +63,7 @@ extension TravelMemoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
         
-        cell.bind(travel: travels[indexPath.row])
+//        cell.bind(travel: travels[indexPath.row])
         cell.selectionStyle = .none
         
         return cell

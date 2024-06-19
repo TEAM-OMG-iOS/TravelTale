@@ -13,7 +13,6 @@ final class TravelMemoryView: BaseView {
     let addButtonView = LightGreenButton()
     let tableView = UITableView()
     
-    
     // MARK: - methods
     override func configureUI() {
         super.configureUI()

@@ -17,7 +17,6 @@ final class TravelSectionHeaderView: UITableViewHeaderFooterView {
         $0.configureLabel(color: .black, font: .pretendard(size: 18, weight: .bold))
     }
     
-    
     // MARK: - methods
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
