@@ -36,6 +36,7 @@
 		2ECECE862C219C4E003F7748 /* PlaceDetailImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE852C219C4E003F7748 /* PlaceDetailImageCollectionViewCell.swift */; };
 		2ECECE8E2C237928003F7748 /* CustomPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE8D2C237928003F7748 /* CustomPopUpView.swift */; };
 		2ECECE942C238100003F7748 /* CustomCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE932C238100003F7748 /* CustomCallView.swift */; };
+		2ECECE972C238507003F7748 /* CustomCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE962C238507003F7748 /* CustomCallViewController.swift */; };
 		2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */; };
 		2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */; };
 		2EF0E3AD2C1F1E7700654025 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */; };
@@ -159,6 +160,7 @@
 		2ECECE852C219C4E003F7748 /* PlaceDetailImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		2ECECE8D2C237928003F7748 /* CustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpView.swift; sourceTree = "<group>"; };
 		2ECECE932C238100003F7748 /* CustomCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCallView.swift; sourceTree = "<group>"; };
+		2ECECE962C238507003F7748 /* CustomCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCallViewController.swift; sourceTree = "<group>"; };
 		2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionView.swift; sourceTree = "<group>"; };
 		2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionViewController.swift; sourceTree = "<group>"; };
 		2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
@@ -309,8 +311,18 @@
 				2ECECE812C2150AD003F7748 /* PlaceDetailView.swift */,
 				2ECECE852C219C4E003F7748 /* PlaceDetailImageCollectionViewCell.swift */,
 				2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */,
+				2ECECE952C2384E8003F7748 /* CallPopUp */,
 			);
 			path = Place;
+			sourceTree = "<group>";
+		};
+		2ECECE952C2384E8003F7748 /* CallPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				2ECECE932C238100003F7748 /* CustomCallView.swift */,
+				2ECECE962C238507003F7748 /* CustomCallViewController.swift */,
+			);
+			path = CallPopUp;
 			sourceTree = "<group>";
 		};
 		2EF0E3AE2C1F1E7C00654025 /* BookMark */ = {
@@ -523,7 +535,6 @@
 				4DA5FBFA2C1EFAE400233A68 /* TimeSelectPopoverViewController.swift */,
 				2E52F2F22C1B7BAB00E7D6D5 /* BookMarkButton.swift */,
 				2ECECE8D2C237928003F7748 /* CustomPopUpView.swift */,
-				2ECECE932C238100003F7748 /* CustomCallView.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -855,6 +866,7 @@
 				F193683F2C21F690000AC7B2 /* CalendarDayRangeIndicatorView.swift in Sources */,
 				F1B301F72C10501000D26B75 /* TravelAddPlaceView.swift in Sources */,
 				4D0E3CDB2C10391A0089D6C1 /* MemoAddViewController.swift in Sources */,
+				2ECECE972C238507003F7748 /* CustomCallViewController.swift in Sources */,
 				1A713BE02C22B9A20045DECD /* String+Extension.swift in Sources */,
 				4D0E3CE52C11EA930089D6C1 /* ScheduleCreateView.swift in Sources */,
 				37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */,
