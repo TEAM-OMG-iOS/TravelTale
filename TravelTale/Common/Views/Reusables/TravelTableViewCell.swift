@@ -18,9 +18,19 @@ final class TravelTableViewCell: BaseTableViewCell {
         $0.layer.borderColor = UIColor.gray20.cgColor
     }
     
+    private let stackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.spacing = 12
+    }
+    
     private let thumbnailImageView = UIImageView().then {
         $0.configureView(color: .gray70, cornerRadius: 16)
         $0.contentMode = .scaleAspectFill
+        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+    }
+    
+    private let detailView = UIView().then {
+        $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
     
     private let borderLine = UIView().then {
@@ -45,19 +55,18 @@ final class TravelTableViewCell: BaseTableViewCell {
     }
     
     // MARK: - methods
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        updateCellColor(selected)
-    }
-    
     override func configureHierarchy() {
         contentView.addSubview(containerView)
         
+        containerView.addSubview(stackView)
+        
         [thumbnailImageView,
-         borderLine,
+         detailView].forEach { stackView.addArrangedSubview($0) }
+        
+        [borderLine,
          periodLabel,
          provinceCapsuleView,
-         titleLabel].forEach { containerView.addSubview($0) }
+         titleLabel].forEach { detailView.addSubview($0) }
         
         provinceCapsuleView.addSubview(provinceNameLabel)
     }
@@ -68,21 +77,22 @@ final class TravelTableViewCell: BaseTableViewCell {
             $0.horizontalEdges.equalToSuperview()
         }
         
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(16)
+        }
+        
         thumbnailImageView.snp.makeConstraints {
             $0.size.equalTo(64)
-            $0.leading.verticalEdges.equalToSuperview().inset(16)
+        }
+        
+        detailView.snp.makeConstraints {
+            $0.height.equalTo(64)
         }
         
         borderLine.snp.makeConstraints {
             $0.height.equalTo(1)
-            $0.leading.equalTo(thumbnailImageView.snp.trailing).offset(12)
-            $0.trailing.equalToSuperview().inset(16)
+            $0.horizontalEdges.equalToSuperview()
             $0.centerY.equalToSuperview()
-        }
-        
-        periodLabel.snp.makeConstraints {
-            $0.centerY.equalTo(provinceCapsuleView)
-            $0.leading.equalTo(borderLine)
         }
         
         provinceCapsuleView.snp.makeConstraints {
@@ -96,6 +106,11 @@ final class TravelTableViewCell: BaseTableViewCell {
             $0.center.equalToSuperview()
         }
         
+        periodLabel.snp.makeConstraints {
+            $0.centerY.equalTo(provinceCapsuleView)
+            $0.leading.equalTo(borderLine)
+        }
+        
         titleLabel.snp.makeConstraints {
             $0.height.equalTo(22)
             $0.top.equalTo(borderLine.snp.bottom).offset(8)
@@ -103,17 +118,26 @@ final class TravelTableViewCell: BaseTableViewCell {
         }
     }
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        updateCellColor(selected)
+    }
+    
+    private func updateCellColor(_ selected: Bool) {
+        containerView.backgroundColor = selected ? .gray20 : .clear
+    }
+    
     func bind(travel: Travel) {
         if let image = travel.image {
             thumbnailImageView.image = UIImage(data: image)
         }
         titleLabel.text = travel.title
-        periodLabel.text = String(startDate: travel.startDate, 
+        periodLabel.text = String(startDate: travel.startDate,
                                   endDate: travel.endDate)
         provinceNameLabel.text = travel.province ?? "미정"
     }
     
-    private func updateCellColor(_ selected: Bool) {
-        containerView.backgroundColor = selected ? .gray20 : .clear
+    func hideThumbnail() {
+        thumbnailImageView.isHidden = true
     }
 }

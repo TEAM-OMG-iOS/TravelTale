@@ -120,6 +120,7 @@ extension TravelSelectViewController: UITableViewDataSource {
         
         let travel = upcomingTravels[indexPath.row]
         cell.bind(travel: travel)
+        
         return cell
     }
 }
