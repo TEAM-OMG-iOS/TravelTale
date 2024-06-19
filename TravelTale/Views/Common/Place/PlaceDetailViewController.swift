@@ -12,28 +12,12 @@ final class PlaceDetailViewController: BaseViewController {
     
     // MARK: - properties
     private let placeDetailView = PlaceDetailView()
-    private let locationManager = CLLocationManager()
     
     private var isBookMarked: Bool = false
     
     // MARK: - life cycles
     override func loadView() {
         view = placeDetailView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // TODO: - 데이터 바인딩
-        placeDetailView.bind(placeName: "설빙 석촌호수 동호점",
-                             placeCategory: "관광지",
-                             placePhoneNumber: "053-565-7665",
-                             placeWebSite: "www.naver.com",
-                             placeDescription: "안녕하세요. 코코종입니다. 안녕하세요. 코코몽입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다. 안녕하세요. 코코종입니다.",
-                             placeAddress: "서울 송파구 석촌호수로 278",
-                             isBookMarked: true)
-        
-        placeDetailView.configureMapView(latitude: 37.50238307905, longtitude: 127.0445569933)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,10 +33,6 @@ final class PlaceDetailViewController: BaseViewController {
     }
     
     // MARK: - methods
-    override func configureStyle() {
-        configureMapView()
-    }
-    
     override func configureDelegate() {
         placeDetailView.imageCollectionView.dataSource = self
         placeDetailView.imageCollectionView.delegate = self
@@ -65,13 +45,38 @@ final class PlaceDetailViewController: BaseViewController {
     
     override func configureAddTarget() {
         placeDetailView.backButton.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
-        placeDetailView.bookMarkButton.addTarget(self, action: #selector(tappedBookMarkButton), for: .touchUpInside)
+        placeDetailView.phoneNumberButton.addTarget(self, action: #selector(tappedPhoneNumberButton), for: .touchUpInside)
+        placeDetailView.websiteButton.addTarget(self, action: #selector(tappedWebsiteButton), for: .touchUpInside)
         placeDetailView.copyAddressButton.addTarget(self, action: #selector(tappedCopyButton), for: .touchUpInside)
+        placeDetailView.bookMarkButton.addTarget(self, action: #selector(tappedBookMarkButton), for: .touchUpInside)
         placeDetailView.addButton.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
     }
     
     @objc private func tappedBackButton() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func tappedPhoneNumberButton() {
+        let phoneOptionsAlertVC = PhoneOptionsAlertViewController()
+        
+        // TODO: - 전화번호 정보 바인딩
+        phoneOptionsAlertVC.setPhoneNumber(phoneNumber: "010-5145-7665")
+        phoneOptionsAlertVC.modalPresentationStyle = .overFullScreen
+        present(phoneOptionsAlertVC, animated: false)
+    }
+    
+    @objc private func tappedWebsiteButton() {
+        // TODO: - 홈페이지 정보 바인딩
+        if let url = URL(string: "https://www.naver.com") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
+    @objc private func tappedCopyButton() {
+        if let address = placeDetailView.copyAddress() {
+            UIPasteboard.general.string = address
+        }
+        configureToast(text: "주소")
     }
     
     @objc private func tappedBookMarkButton() {
@@ -84,36 +89,15 @@ final class PlaceDetailViewController: BaseViewController {
         }
     }
     
-    @objc private func tappedCopyButton() {
-        if let address = placeDetailView.copyAddress() {
-            UIPasteboard.general.string = address
-        }
-        configureToast(text: "주소")
-    }
-    
     @objc private func tappedAddButton() {
-        print("tappedAddButton")
-    }
-    
-    private func configureMapView() {
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        placeDetailView.mapView.showsUserLocation = true
+        // TODO: - 일정에 추가하기 페이지로 이동
     }
     
     private func configureToast(text: String) {
-        
         let toastView = CustomPopUpView()
         
         toastView.bind(text: text)
-        view.addSubview(toastView)
-        
-        toastView.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(24)
-            $0.horizontalEdges.equalToSuperview().inset(16)
-            $0.height.equalTo(44)
-        }
+        configureToastConstraints(toastView: toastView)
         
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
             toastView.alpha = 1.0
@@ -124,6 +108,16 @@ final class PlaceDetailViewController: BaseViewController {
                 toastView.removeFromSuperview()
             })
         })
+    }
+    
+    private func configureToastConstraints(toastView: UIView) {
+        view.addSubview(toastView)
+        
+        toastView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(24)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(44)
+        }
     }
 }
 
@@ -138,6 +132,7 @@ extension PlaceDetailViewController: UICollectionViewDelegate {
 
 extension PlaceDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // TODO: - 장소 사진 바인딩
         return 2
     }
     
@@ -145,6 +140,7 @@ extension PlaceDetailViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailImageCollectionViewCell().identifier,
                                                       for: indexPath) as! PlaceDetailImageCollectionViewCell
         
+        // TODO: - 장소 사진 바인딩
         cell.bind(image: .myTravel)
         
         return cell

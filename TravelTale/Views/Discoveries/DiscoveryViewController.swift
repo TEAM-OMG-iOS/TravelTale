@@ -94,6 +94,8 @@ extension DiscoveryViewController: UICollectionViewDelegate {
                         didSelectItemAt indexPath: IndexPath) {
         let placeDetailVC = PlaceDetailViewController()
         
+        // TODO: - 데이터 바인딩
+        
         self.navigationController?.pushViewController(placeDetailVC, animated: true)
     }
 }

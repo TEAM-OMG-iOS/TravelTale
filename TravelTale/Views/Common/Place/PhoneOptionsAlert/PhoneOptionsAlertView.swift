@@ -1,5 +1,5 @@
 //
-//  CustomCallView.swift
+//  PhoneOptionsAlertView.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/20/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomCallView: BaseView {
+final class PhoneOptionsAlertView: BaseView {
     
     // MARK: - properties
     private let backgroundView = UIView().then {
@@ -24,16 +24,18 @@ final class CustomCallView: BaseView {
         $0.configureLabel(color: .black, font: .pretendard(size: 16, weight: .bold))
     }
     
-    private let callLabel = UILabel().then {
-        $0.configureLabel(color: .black, font: .pretendard(size: 14, weight: .medium), text: "전화 걸기")
+    let callButton = UIButton().then {
+        $0.configureButton(fontColor: .black, font: .pretendard(size: 14, weight: .medium), text: "전화 걸기")
+        $0.contentHorizontalAlignment = .left
     }
     
     private let firstLine = UIView().then {
         $0.configureView(color: .gray10)
     }
     
-    private let pastePhoneNumberLabel = UILabel().then {
-        $0.configureLabel(color: .black, font: .pretendard(size: 14, weight: .medium), text: "전화번호 복사하기")
+    let copyPhoneNumberButton = UIButton().then {
+        $0.configureButton(fontColor: .black, font: .pretendard(size: 14, weight: .medium), text: "전화번호 복사하기")
+        $0.contentHorizontalAlignment = .left
     }
     
     private let secondLine = UIView().then {
@@ -45,13 +47,17 @@ final class CustomCallView: BaseView {
     }
     
     // MARK: - methods
+    override func configureUI() {
+        self.backgroundColor = .clear
+    }
+    
     override func configureHierarchy() {
         addSubview(backgroundView)
-        backgroundView.addSubview(contentView)
+        addSubview(contentView)
         contentView.addSubview(phoneNumberLabel)
-        contentView.addSubview(callLabel)
+        contentView.addSubview(callButton)
         contentView.addSubview(firstLine)
-        contentView.addSubview(pastePhoneNumberLabel)
+        contentView.addSubview(copyPhoneNumberButton)
         contentView.addSubview(secondLine)
         contentView.addSubview(cancelButton)
     }
@@ -68,36 +74,36 @@ final class CustomCallView: BaseView {
         }
         
         phoneNumberLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(16)
+            $0.top.equalToSuperview().inset(20)
             $0.horizontalEdges.equalToSuperview().inset(24)
         }
         
-        callLabel.snp.makeConstraints {
+        callButton.snp.makeConstraints {
             $0.top.equalTo(phoneNumberLabel.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(24)
         }
         
         firstLine.snp.makeConstraints {
-            $0.top.equalTo(callLabel.snp.bottom).offset(12)
+            $0.top.equalTo(callButton.snp.bottom).offset(8)
             $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(1)
         }
         
-        pastePhoneNumberLabel.snp.makeConstraints {
-            $0.top.equalTo(firstLine.snp.bottom).offset(12)
+        copyPhoneNumberButton.snp.makeConstraints {
+            $0.top.equalTo(firstLine.snp.bottom).offset(8)
             $0.horizontalEdges.equalToSuperview().inset(24)
         }
         
         secondLine.snp.makeConstraints {
-            $0.top.equalTo(pastePhoneNumberLabel.snp.bottom).offset(12)
+            $0.top.equalTo(copyPhoneNumberButton.snp.bottom).offset(8)
             $0.horizontalEdges.equalToSuperview().inset(24)
             $0.height.equalTo(1)
         }
         
         cancelButton.snp.makeConstraints {
-            $0.top.equalTo(secondLine.snp.bottom).offset(20)
+            $0.top.equalTo(secondLine.snp.bottom).offset(8)
             $0.trailing.equalToSuperview().inset(24)
-            $0.bottom.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(20)
         }
     }
     

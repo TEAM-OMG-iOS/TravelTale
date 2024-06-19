@@ -11,10 +11,10 @@ import UIKit
 final class PlaceDetailView: BaseView {
     
     // MARK: - properties
-    let collectionViewHeight: CGFloat = 350
-    let buttonHeight: CGFloat = 48
+    private let collectionViewHeight: CGFloat = 350
+    private let buttonHeight: CGFloat = 48
     
-    let scrollView = UIScrollView().then {
+    private let scrollView = UIScrollView().then {
         $0.backgroundColor = .white
         $0.alwaysBounceVertical = false
         $0.isDirectionalLockEnabled = true
@@ -63,17 +63,12 @@ final class PlaceDetailView: BaseView {
         $0.image = UIImage(systemName: "phone")
     }
     
-    private let phoneNumberTextView = UITextView().then {
-        $0.textColor = .blue
-        $0.isEditable = false
-        $0.textAlignment = .left
-        $0.isScrollEnabled = false
-        $0.dataDetectorTypes = .phoneNumber
-        $0.font = .pretendard(size: 14, weight: .medium)
+    let phoneNumberButton = UIButton().then {
+        $0.contentHorizontalAlignment = .left
     }
     
     private let phoneNumberStackView = UIStackView().then {
-        $0.spacing = 12
+        $0.spacing = 16
         $0.isHidden = true
         $0.axis = .horizontal
         $0.alignment = .center
@@ -85,17 +80,12 @@ final class PlaceDetailView: BaseView {
         $0.image = UIImage(systemName: "globe")
     }
     
-    private let websiteTextView = UITextView().then {
-        $0.textColor = .blue
-        $0.isEditable = false
-        $0.textAlignment = .left
-        $0.isScrollEnabled = false
-        $0.dataDetectorTypes = .link
-        $0.font = .pretendard(size: 14, weight: .medium)
+    let websiteButton = UIButton().then {
+        $0.contentHorizontalAlignment = .left
     }
     
     private let websiteStackView = UIStackView().then {
-        $0.spacing = 12
+        $0.spacing = 16
         $0.isHidden = true
         $0.axis = .horizontal
         $0.alignment = .center
@@ -157,7 +147,7 @@ final class PlaceDetailView: BaseView {
         $0.distribution = .equalSpacing
     }
     
-    let buttonBackground = UIView().then {
+    private let buttonBackground = UIView().then {
         $0.configureView(color: .white)
         
         let topBorder = CALayer()
@@ -171,7 +161,7 @@ final class PlaceDetailView: BaseView {
         $0.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
     }
     
-    let buttonLine = UIView().then {
+    private let buttonLine = UIView().then {
         $0.configureView(color: .gray20)
     }
     
@@ -186,27 +176,34 @@ final class PlaceDetailView: BaseView {
     override func configureHierarchy() {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
+        
         contentView.addSubview(imageCollectionView)
+        contentView.addSubview(backButton)
         contentView.addSubview(placeName)
         contentView.addSubview(categoryImage)
         contentView.addSubview(categoryName)
         contentView.addSubview(line)
+        
         phoneNumberStackView.addArrangedSubview(phoneNumberImage)
-        phoneNumberStackView.addArrangedSubview(phoneNumberTextView)
+        phoneNumberStackView.addArrangedSubview(phoneNumberButton)
+        detailStackView.addArrangedSubview(phoneNumberStackView)
+        
         websiteStackView.addArrangedSubview(websiteImage)
-        websiteStackView.addArrangedSubview(websiteTextView)
+        websiteStackView.addArrangedSubview(websiteButton)
+        detailStackView.addArrangedSubview(websiteStackView)
+        
         descriptionStackView.addArrangedSubview(descriptionImage)
         descriptionStackView.addArrangedSubview(descriptionLabel)
+        detailStackView.addArrangedSubview(descriptionStackView)
+        
         mapStackView.addArrangedSubview(mapImage)
         mapStackView.addArrangedSubview(mapLabel)
         mapStackView.addArrangedSubview(copyAddressButton)
-        contentView.addSubview(mapView)
-        detailStackView.addArrangedSubview(phoneNumberStackView)
-        detailStackView.addArrangedSubview(websiteStackView)
-        detailStackView.addArrangedSubview(descriptionStackView)
         detailStackView.addArrangedSubview(mapStackView)
+        
         contentView.addSubview(detailStackView)
-        contentView.addSubview(backButton)
+        contentView.addSubview(mapView)
+        
         addSubview(buttonBackground)
         buttonBackground.addSubview(bookMarkButton)
         buttonBackground.addSubview(buttonLine)
@@ -361,11 +358,11 @@ final class PlaceDetailView: BaseView {
     }
     
     private func configurePhoneNumber(phoneNumber: String) {
-        configureStackView(stackView: phoneNumberStackView, textView: phoneNumberTextView, text: phoneNumber)
+        configureStackView(stackView: phoneNumberStackView, button: phoneNumberButton, text: phoneNumber)
     }
 
     private func configureWebsite(website: String) {
-        configureStackView(stackView: websiteStackView, textView: websiteTextView, text: website)
+        configureStackView(stackView: websiteStackView, button: websiteButton, text: website)
     }
 
     private func configureDescription(description: String) {
@@ -376,9 +373,15 @@ final class PlaceDetailView: BaseView {
         configureStackView(stackView: mapStackView, label: mapLabel, text: address)
     }
 
-    private func configureStackView(stackView: UIStackView, textView: UITextView? = nil, label: UILabel? = nil, text: String) {
+    private func configureStackView(stackView: UIStackView, button: UIButton? = nil, label: UILabel? = nil, text: String) {
         stackView.isHidden = false
-        textView?.text = text
+        
+        let attributedString = NSAttributedString(string: text,
+                                                  attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue,
+                                                               .font: UIFont.pretendard(size: 14, weight: .medium),
+                                                               .foregroundColor: UIColor.blue])
+        button?.setAttributedTitle(attributedString, for: .normal)
+        
         label?.text = text
     }
     
