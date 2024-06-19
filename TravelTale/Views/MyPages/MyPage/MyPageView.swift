@@ -27,7 +27,7 @@ final class MyPageView: BaseView {
     }
     
     let totalButton = UIButton().then {
-        $0.configureButton(fontColor: .black, font: .pretendard(size: 14, weight: .regular), text: "전체보기")
+        $0.configureButton(font: .pretendard(size: 14, weight: .regular), text: "전체보기")
     }
     
     private let buttonTopStackView = UIStackView().then {

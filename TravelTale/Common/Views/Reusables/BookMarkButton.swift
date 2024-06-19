@@ -18,7 +18,7 @@ final class BookMarkButton: UIButton {
     private let bookMarkImageView = UIImageView()
     
     private let bookMarkLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 18, weight: .regular))
+        $0.configureLabel(font: .pretendard(size: 15, weight: .bold))
     }
     
     private let chevronImageView = UIImageView().then {
@@ -63,7 +63,7 @@ final class BookMarkButton: UIButton {
         }
         
         bookMarkLabel.snp.makeConstraints{
-            $0.top.equalTo(bookMarkImageView.snp.bottom).offset(40)
+            $0.top.equalTo(bookMarkImageView.snp.bottom).offset(32)
             $0.leading.bottom.equalToSuperview().inset(16)
         }
         
