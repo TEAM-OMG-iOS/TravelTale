@@ -34,6 +34,7 @@
 		2ECECE822C2150AD003F7748 /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE812C2150AD003F7748 /* PlaceDetailView.swift */; };
 		2ECECE842C2150BB003F7748 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */; };
 		2ECECE862C219C4E003F7748 /* PlaceDetailImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE852C219C4E003F7748 /* PlaceDetailImageCollectionViewCell.swift */; };
+		2ECECE8E2C237928003F7748 /* customPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE8D2C237928003F7748 /* customPopUpView.swift */; };
 		2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */; };
 		2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */; };
 		2EF0E3AD2C1F1E7700654025 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */; };
@@ -155,6 +156,7 @@
 		2ECECE812C2150AD003F7748 /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
 		2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 		2ECECE852C219C4E003F7748 /* PlaceDetailImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		2ECECE8D2C237928003F7748 /* customPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customPopUpView.swift; sourceTree = "<group>"; };
 		2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionView.swift; sourceTree = "<group>"; };
 		2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionViewController.swift; sourceTree = "<group>"; };
 		2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
@@ -518,6 +520,7 @@
 				4DA5FBFB2C1EFAE400233A68 /* DaySelectPopoverViewController.swift */,
 				4DA5FBFA2C1EFAE400233A68 /* TimeSelectPopoverViewController.swift */,
 				2E52F2F22C1B7BAB00E7D6D5 /* BookMarkButton.swift */,
+				2ECECE8D2C237928003F7748 /* customPopUpView.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -789,6 +792,7 @@
 				2E0671BC2C1DEC14001CDB2E /* CategoryTableViewCell.swift in Sources */,
 				2EC6357D2C1CED6D006C1ADB /* RestaurantViewController.swift in Sources */,
 				378CEC382C0D690800DF1C3F /* DiscoveryViewController.swift in Sources */,
+				2ECECE8E2C237928003F7748 /* customPopUpView.swift in Sources */,
 				37E19F432C18680A0084F899 /* TravelDetailPlanFooterCell.swift in Sources */,
 				4D0E3CD52C0F36110089D6C1 /* TravelSelectView.swift in Sources */,
 				4D0E3CD72C0F36280089D6C1 /* TravelSelectViewController.swift in Sources */,
