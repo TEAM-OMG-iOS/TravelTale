@@ -21,13 +21,6 @@ final class MyPageServiceTableViewCell: BaseTableViewCell {
         $0.tintColor = .gray90
     }
     
-    // MARK: - life cycles
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        label.text = nil
-    }
-    
     // MARK: - methods
     override func configureHierarchy() {
         addSubview(label)

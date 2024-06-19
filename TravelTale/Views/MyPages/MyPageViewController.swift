@@ -60,11 +60,9 @@ final class MyPageViewController: BaseViewController {
     }
     
     @objc private func tappedCategoryButton(_ sender: BookMarkButton) {
-        print("tappedCategoryButton")
         let bookMarkVC = BookMarkViewController()
         let categoryArray = ["전체", "관광지", "음식점", "숙박", "놀거리"]
         
-        print(sender.getButtonName())
         bookMarkVC.selectedIndexPath = categoryArray.firstIndex(of: sender.getButtonName()) ?? 1
         
         self.navigationController?.pushViewController(bookMarkVC, animated: true)
