@@ -1,5 +1,5 @@
 //
-//  TravelAddLocationViewController.swift
+//  TravelAddPlaceModalViewController.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/11/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class TravelAddLocationViewController: BaseViewController {
+final class TravelAddPlaceModalViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelAddLocationView = LocationView()
+    private let locationView = LocationView()
     
     private let locations: [String] = ["서울특별시", "인천광역시", "부산광역시",
                                        "대전광역시", "대구광역시", "울산광역시",
@@ -22,7 +22,7 @@ final class TravelAddLocationViewController: BaseViewController {
     
     // MARK: - life cycles
     override func loadView() {
-        view = travelAddLocationView
+        view = locationView
     }
     
     override func viewDidLoad() {
@@ -31,16 +31,16 @@ final class TravelAddLocationViewController: BaseViewController {
     
     // MARK: - methods
     override func configureDelegate() {
-        travelAddLocationView.tableView.dataSource = self
-        travelAddLocationView.tableView.delegate = self
+        locationView.tableView.dataSource = self
+        locationView.tableView.delegate = self
         
-        travelAddLocationView.tableView.register(LocationTableViewCell.self,
-                                                 forCellReuseIdentifier: LocationTableViewCell.identifier)
+        locationView.tableView.register(LocationTableViewCell.self,
+                                        forCellReuseIdentifier: LocationTableViewCell.identifier)
     }
 }
 
 // MARK: - extensions
-extension TravelAddLocationViewController: UITableViewDataSource {
+extension TravelAddPlaceModalViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
@@ -49,14 +49,14 @@ extension TravelAddLocationViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.identifier, for: indexPath) as? LocationTableViewCell else { return UITableViewCell() }
         
         cell.bind(text: locations[indexPath.row])
-        travelAddLocationView.bind(text: "대표 여행 장소를 선택해주세요")
+        locationView.bind(text: "대표 여행 장소를 선택해주세요")
         
         
         return cell
     }
 }
 
-extension TravelAddLocationViewController: UITableViewDelegate {
+extension TravelAddPlaceModalViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? LocationTableViewCell else { return }
         cell.setSelected(true, animated: true)

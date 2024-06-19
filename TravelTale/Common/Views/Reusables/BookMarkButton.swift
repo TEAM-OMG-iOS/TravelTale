@@ -12,12 +12,13 @@ final class BookMarkButton: UIButton {
     // MARK: - properties
     private let backgroundView = UIView().then {
         $0.configureView(color: .white, clipsToBounds: true, cornerRadius: 15)
+        $0.isUserInteractionEnabled = false
     }
     
     private let bookMarkImageView = UIImageView()
     
     private let bookMarkLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 18, weight: .regular))
+        $0.configureLabel(font: .pretendard(size: 15, weight: .bold))
     }
     
     private let chevronImageView = UIImageView().then {
@@ -62,7 +63,7 @@ final class BookMarkButton: UIButton {
         }
         
         bookMarkLabel.snp.makeConstraints{
-            $0.top.equalTo(bookMarkImageView.snp.bottom).offset(40)
+            $0.top.equalTo(bookMarkImageView.snp.bottom).offset(32)
             $0.leading.bottom.equalToSuperview().inset(16)
         }
         
@@ -70,5 +71,9 @@ final class BookMarkButton: UIButton {
             $0.trailing.bottom.equalToSuperview().inset(16)
             $0.verticalEdges.equalTo(bookMarkLabel)
         }
+    }
+    
+    func getButtonName() -> String {
+        return text ?? ""
     }
 }
