@@ -12,10 +12,9 @@ final class TravelPlanViewController: BaseViewController {
     // MARK: - properties
     private let travelPlanView = TravelPlanView()
     
-    // TODO: [String] -> [Travel]로 수정 필요
-    private var travels: [String] = [] {
+    private var travels: [Travel] = [] {
         didSet {
-//            splitTravels()
+            splitTravels()
             travelPlanView.tableView.reloadData()
         }
     }
@@ -54,19 +53,19 @@ final class TravelPlanViewController: BaseViewController {
         travelPlanView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
     }
     
-//    private func splitTravels() {
-//        let today = Date()
-//        upcomingTravels.removeAll()
-//        pastTravels.removeAll()
-//        
-//        for travel in travels {
-//            if travel.endDate >= today {
-//                upcomingTravels.append(travel)
-//            } else {
-//                pastTravels.append(travel)
-//            }
-//        }
-//    }
+    private func splitTravels() {
+        let today = Date()
+        upcomingTravels.removeAll()
+        pastTravels.removeAll()
+        
+        for travel in travels {
+            if travel.endDate >= today {
+                upcomingTravels.append(travel)
+            } else {
+                pastTravels.append(travel)
+            }
+        }
+    }
     
     // MARK: - objc method
     @objc func tappedAddButton() {

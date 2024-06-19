@@ -31,7 +31,6 @@ final class TravelSelectViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTemporaryData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,13 +59,7 @@ final class TravelSelectViewController: BaseViewController {
         navigationItem.leftBarButtonItem = travelSelectView.backButton
     }
     
-    // TODO: 임시 travel 데이터 넣는 함수 (추후 삭제 예정)
-    private func addTemporaryData() {
-        travels.append(contentsOf: [
-            Travel(image: nil, title: "200일 여행 with 남자친구", startDate: Date(), endDate: Date(), province: "대구"),
-            Travel(image: nil,title: "24년의 가족 여행", startDate: Date(), endDate: Date(), province: nil)
-        ])
-    }
+    // TODO: travelData 추가 함수
     
     @objc private func tappedButton() {
         guard let selectedIndexPath = travelSelectView.tableView.indexPathForSelectedRow else { return }
