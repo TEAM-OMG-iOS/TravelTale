@@ -85,7 +85,8 @@ final class TravelPlanViewController: BaseViewController {
     
     // MARK: - objc method
     @objc func tappedAddButton() {
-        print("tappedAddButton")
+        let TravelAddTitleVC = TravelAddTitleViewController()
+        self.navigationController?.pushViewController(TravelAddTitleVC, animated: true)
     }
 }
 
@@ -129,6 +130,17 @@ extension TravelPlanViewController: UITableViewDataSource {
 }
 
 extension TravelPlanViewController: UITableViewDelegate {
+    // cell 선택 시
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         let nextVC = TravelDetailViewController()
+         navigationController?.pushViewController(nextVC, animated: true)
+         
+         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+             tableView.deselectRow(at: indexPath, animated: true)
+         }
+     }
+     
+     // Header, Footer
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TravelSectionHeaderView.identifier) as? TravelSectionHeaderView else { return UIView() }
         
