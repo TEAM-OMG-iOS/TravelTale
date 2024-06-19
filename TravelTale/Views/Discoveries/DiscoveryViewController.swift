@@ -81,7 +81,9 @@ final class DiscoveryViewController: BaseViewController {
 extension DiscoveryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        // todo : 디테일 VC로 이동
+        let placeDetailVC = PlaceDetailViewController()
+        
+        self.navigationController?.pushViewController(placeDetailVC, animated: true)
     }
 }
 
