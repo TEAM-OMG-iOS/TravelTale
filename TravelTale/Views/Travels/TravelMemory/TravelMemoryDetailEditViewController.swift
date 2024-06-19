@@ -89,7 +89,25 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
     }
     
     @objc func tappedFormerButton() {
-        self.navigationController?.popViewController(animated: true)
+        let alert = UIAlertController(
+            title: "경고",
+            message: """
+    이전으로 돌아가면 작성 내용이 저장되지 않습니다.
+    정말 돌아가시겠습니까?
+    """,
+            preferredStyle: UIAlertController.Style.alert)
+        
+        let cancel = UIAlertAction(title: "취소", style: .destructive)
+        
+        let ok = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     @objc func tappedConfirmButton() {
