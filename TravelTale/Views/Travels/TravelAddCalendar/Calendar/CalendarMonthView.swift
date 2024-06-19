@@ -1,5 +1,5 @@
 //
-//  TravelAddCalendarMonthLabelView.swift
+//  CalendarMonthView.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/19/24.
@@ -10,7 +10,7 @@ import UIKit
 import HorizonCalendar
 
 // 월 UI커스텀
-struct MonthLabel: CalendarItemViewRepresentable {
+struct CalendarMonthView: CalendarItemViewRepresentable {
     struct InvariantViewProperties: Hashable {
         let font: UIFont
         let textColor: UIColor

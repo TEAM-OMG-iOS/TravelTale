@@ -1,5 +1,5 @@
 //
-//  TravelAddCalendarBaseView.swift
+//  CalendarBaseView.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/19/24.
@@ -76,7 +76,7 @@ extension CalendarBaseView {
         }
         
         .monthHeaderItemProvider { month in
-            MonthLabel.calendarItemModel(
+            CalendarMonthView.calendarItemModel(
                 invariantViewProperties: .init(
                     font: .pretendard(size: 16, weight: .bold),
                     textColor: .blueBlack100),
@@ -85,7 +85,7 @@ extension CalendarBaseView {
         
         .dayOfWeekItemProvider{ month, weekdayIndex in
             let dayOfWeek = DayOfWeek(rawValue: weekdayIndex) ?? .sun
-            return MonthDayLabel.calendarItemModel(
+            return CalendarMonthDayView.calendarItemModel(
                 invariantViewProperties: .init(
                     font: .pretendard(size: 15, weight: .medium),
                     textColor: .gray70),
@@ -95,7 +95,7 @@ extension CalendarBaseView {
         
         .dayRangeItemProvider(for: dateRanges) { dayRangeLayoutContext in
             let framesOfDaysToHighlight = dayRangeLayoutContext.daysAndFrames.map { $0.frame }
-            return TravelAddCalendarDayRangeIndicatorView.calendarItemModel(
+            return CalendarDayRangeIndicatorView.calendarItemModel(
                 invariantViewProperties: .init(),
                 content: .init(framesOfDaysToHighlight: framesOfDaysToHighlight)
             )
