@@ -149,8 +149,8 @@ extension MyPageViewController: UITableViewDelegate {
                 let termPrivateVC = TermPrivacyPolicyViewController()
                 navigationController?.pushViewController(termPrivateVC, animated: true)
             }else {
-                let termPrivateVC = TermPrivacyPolicyViewController()
-                navigationController?.pushViewController(termPrivateVC, animated: true)
+                let termOpenSourceVC = TermOpenSourceViewController()
+                navigationController?.pushViewController(termOpenSourceVC, animated: true)
             }
         case 1:
             if indexPath.row == 0 {
