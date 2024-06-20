@@ -37,6 +37,7 @@
 		2ECECE8E2C237928003F7748 /* CustomPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE8D2C237928003F7748 /* CustomPopUpView.swift */; };
 		2ECECE942C238100003F7748 /* PhoneOptionsAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE932C238100003F7748 /* PhoneOptionsAlertView.swift */; };
 		2ECECE972C238507003F7748 /* PhoneOptionsAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE962C238507003F7748 /* PhoneOptionsAlertViewController.swift */; };
+		2ECECE9A2C2405C1003F7748 /* TermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE992C2405C0003F7748 /* TermView.swift */; };
 		2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */; };
 		2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */; };
 		2EF0E3AD2C1F1E7700654025 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */; };
@@ -159,8 +160,9 @@
 		2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 		2ECECE852C219C4E003F7748 /* PlaceDetailImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		2ECECE8D2C237928003F7748 /* CustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpView.swift; sourceTree = "<group>"; };
-		2ECECE962C238507003F7748 /* PhoneOptionsAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneOptionsAlertViewController.swift; sourceTree = "<group>"; };
 		2ECECE932C238100003F7748 /* PhoneOptionsAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneOptionsAlertView.swift; sourceTree = "<group>"; };
+		2ECECE962C238507003F7748 /* PhoneOptionsAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneOptionsAlertViewController.swift; sourceTree = "<group>"; };
+		2ECECE992C2405C0003F7748 /* TermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermView.swift; sourceTree = "<group>"; };
 		2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionView.swift; sourceTree = "<group>"; };
 		2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionViewController.swift; sourceTree = "<group>"; };
 		2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
@@ -325,6 +327,14 @@
 			path = PhoneOptionsAlert;
 			sourceTree = "<group>";
 		};
+		2ECECE982C240317003F7748 /* Terms */ = {
+			isa = PBXGroup;
+			children = (
+				2ECECE992C2405C0003F7748 /* TermView.swift */,
+			);
+			path = Terms;
+			sourceTree = "<group>";
+		};
 		2EF0E3AE2C1F1E7C00654025 /* BookMark */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,6 +464,7 @@
 		378CEC2A2C0D660400DF1C3F /* MyPages */ = {
 			isa = PBXGroup;
 			children = (
+				2ECECE982C240317003F7748 /* Terms */,
 				378CEC2E2C0D688F00DF1C3F /* MyPage */,
 				378CEC392C0D691900DF1C3F /* MyPageViewController.swift */,
 				2EF0E3AE2C1F1E7C00654025 /* BookMark */,
@@ -873,6 +884,7 @@
 				2EC635752C1CD0FF006C1ADB /* DiscoveryCategoryViewController.swift in Sources */,
 				37E36D872C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift in Sources */,
 				F1B302132C1457A400D26B75 /* TravelUpdateView.swift in Sources */,
+				2ECECE9A2C2405C1003F7748 /* TermView.swift in Sources */,
 				F1B302072C13331800D26B75 /* TravelUpdateViewController.swift in Sources */,
 				F19368222C1ACDA8000AC7B2 /* LocationView.swift in Sources */,
 				F1A2BC292C186B2B00D41614 /* TravelAddPlaceModalViewController.swift in Sources */,
