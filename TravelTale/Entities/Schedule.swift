@@ -1,5 +1,5 @@
 //
-//  Record.swift
+//  Schedule.swift
 //  TravelTale
 //
 //  Created by 김정호 on 6/17/24.
@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class Record: Object {
+class Schedule: Object {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var day: String?
     @Persisted var title: String?

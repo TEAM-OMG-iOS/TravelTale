@@ -125,103 +125,103 @@ final class RealmManager {
         }
     }
     
-    func createRecord(day: String, date: Date, travel: Travel, placeDetail: PlaceDetail, memo: String? = nil) {
+    func createSchedule(day: String, date: Date, travel: Travel, placeDetail: PlaceDetail, memo: String? = nil) {
         do {
             try realm.write {
-                let record = Record()
-                record.day = day
-                record.title = placeDetail.title ?? "제목 없음"
-                record.date = date
-                record.internalMemo = memo
-                record.mapX = placeDetail.mapx
-                record.mapY = placeDetail.mapy
+                let schedule = Schedule()
+                schedule.day = day
+                schedule.title = placeDetail.title ?? "제목 없음"
+                schedule.date = date
+                schedule.internalMemo = memo
+                schedule.mapX = placeDetail.mapx
+                schedule.mapY = placeDetail.mapy
                 
                 if let addr1 = placeDetail.addr1 {
                     if let addr2 = placeDetail.addr2 {
-                        record.address = addr1 + addr2
+                        schedule.address = addr1 + addr2
                     } else {
-                        record.address = addr1
+                        schedule.address = addr1
                     }
                 }
                 
-                travel.record.append(record)
+                travel.schedules.append(schedule)
             }
         } catch {
-            print("createRecord 실패")
+            print("createSchedule 실패")
         }
     }
     
-    func updateRecord(record: Record, placeDetail: PlaceDetail? = nil, day: String? = nil, date: Date? = nil, internalMemo: String? = nil) {
+    func updateSchedule(schedule: Schedule, placeDetail: PlaceDetail? = nil, day: String? = nil, date: Date? = nil, internalMemo: String? = nil) {
         do {
             try realm.write {
                 if let placeDetail {
-                    if record.title != placeDetail.title {
-                        record.title = placeDetail.title
-                        record.mapX = placeDetail.mapx
-                        record.mapY = placeDetail.mapy
+                    if schedule.title != placeDetail.title {
+                        schedule.title = placeDetail.title
+                        schedule.mapX = placeDetail.mapx
+                        schedule.mapY = placeDetail.mapy
                         
                         if let addr1 = placeDetail.addr1 {
                             if let addr2 = placeDetail.addr2 {
-                                record.address = addr1 + addr2
+                                schedule.address = addr1 + addr2
                             } else {
-                                record.address = addr1
+                                schedule.address = addr1
                             }
                         }
                     }
                 }
                 
-                if record.day != day {
-                    record.day = day
-                    record.date = date
+                if schedule.day != day {
+                    schedule.day = day
+                    schedule.date = date
                 }
                 
-                if record.date != date {
-                    record.date = date
+                if schedule.date != date {
+                    schedule.date = date
                 }
                 
-                if record.internalMemo != internalMemo {
-                    record.internalMemo = internalMemo
+                if schedule.internalMemo != internalMemo {
+                    schedule.internalMemo = internalMemo
                 }
             }
         } catch {
-            print("updateRecord 실패")
+            print("updateSchedule 실패")
         }
     }
     
-    func deleteRecord(travel: Travel, record: Record) {
+    func deleteSchedule(travel: Travel, schedule: Schedule) {
         do {
             try realm.write {
-                if let index = travel.record.firstIndex(of: record) {
-                    travel.record.remove(at: index)
+                if let index = travel.schedules.firstIndex(of: schedule) {
+                    travel.schedules.remove(at: index)
                 }
                 
-                realm.delete(record)
+                realm.delete(schedule)
             }
         } catch {
-            print("deleteRecord 실패")
+            print("deleteSchedule 실패")
         }
     }
     
     func createMemo(day: String, travel: Travel, memo: String) {
         do {
             try realm.write {
-                let record = Record()
-                record.day = day
-                record.date = Date()
-                record.externalMemo = memo
+                let schedule = Schedule()
+                schedule.day = day
+                schedule.date = Date()
+                schedule.externalMemo = memo
                 
-                travel.record.append(record)
+                travel.schedules.append(schedule)
             }
         } catch {
             print("createMemo 실패")
         }
     }
     
-    func updateMemo(record: Record, newMemo: String) {
+    func updateMemo(schedule: Schedule, newMemo: String) {
         do {
             try realm.write {
-                if record.externalMemo != newMemo {
-                    record.externalMemo = newMemo
+                if schedule.externalMemo != newMemo {
+                    schedule.externalMemo = newMemo
                 }
             }
         } catch {
@@ -229,14 +229,14 @@ final class RealmManager {
         }
     }
     
-    func deleteMemo(travel: Travel, record: Record) {
+    func deleteMemo(travel: Travel, schedule: Schedule) {
         do {
             try realm.write {
-                if let index = travel.record.firstIndex(of: record) {
-                    travel.record.remove(at: index)
+                if let index = travel.schedules.firstIndex(of: schedule) {
+                    travel.schedules.remove(at: index)
                 }
                 
-                realm.delete(record)
+                realm.delete(schedule)
             }
         } catch {
             print("deleteMemo 실패")

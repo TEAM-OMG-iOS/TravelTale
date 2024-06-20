@@ -14,7 +14,7 @@ class Travel: Object {
     @Persisted var area: String
     @Persisted var startDate: Date
     @Persisted var endDate: Date
-    @Persisted var record = List<Record>()
+    @Persisted var schedules = List<Schedule>()
     @Persisted var memory: String?
     @Persisted var photos = List<Data>()
 }

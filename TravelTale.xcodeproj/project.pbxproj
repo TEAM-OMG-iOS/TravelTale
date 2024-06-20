@@ -91,7 +91,7 @@
 		378CEC5A2C0D732600DF1C3F /* OAGothic-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 378CEC582C0D732600DF1C3F /* OAGothic-Medium.otf */; };
 		37961A892C208242003A994F /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A882C208242003A994F /* Region.swift */; };
 		37961A8B2C2082A6003A994F /* Travel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A8A2C2082A6003A994F /* Travel.swift */; };
-		37961A8D2C2082E6003A994F /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A8C2C2082E6003A994F /* Record.swift */; };
+		37961A8D2C2082E6003A994F /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A8C2C2082E6003A994F /* Schedule.swift */; };
 		37961A912C20834C003A994F /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A902C20834C003A994F /* Bookmark.swift */; };
 		37C08C822C1EF54A00F5E308 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C08C812C1EF54A00F5E308 /* NetworkManager.swift */; };
 		37C08C842C1EF55400F5E308 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C08C832C1EF55400F5E308 /* RealmManager.swift */; };
@@ -221,7 +221,7 @@
 		378CEC582C0D732600DF1C3F /* OAGothic-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OAGothic-Medium.otf"; sourceTree = "<group>"; };
 		37961A882C208242003A994F /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		37961A8A2C2082A6003A994F /* Travel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Travel.swift; sourceTree = "<group>"; };
-		37961A8C2C2082E6003A994F /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		37961A8C2C2082E6003A994F /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		37961A902C20834C003A994F /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		37C08C812C1EF54A00F5E308 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		37C08C832C1EF55400F5E308 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
@@ -371,7 +371,7 @@
 				374DDDE32C1F68FD0040A5F1 /* PlaceSearch.swift */,
 				37961A882C208242003A994F /* Region.swift */,
 				37961A8A2C2082A6003A994F /* Travel.swift */,
-				37961A8C2C2082E6003A994F /* Record.swift */,
+				37961A8C2C2082E6003A994F /* Schedule.swift */,
 				37961A902C20834C003A994F /* Bookmark.swift */,
 			);
 			path = Entities;
@@ -871,7 +871,7 @@
 				374DDDE22C1F4E730040A5F1 /* PlaceDetailResponseDTO+Mapping.swift in Sources */,
 				37CB88162C0DB648002798BE /* GrayBackgroundView.swift in Sources */,
 				2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */,
-				37961A8D2C2082E6003A994F /* Record.swift in Sources */,
+				37961A8D2C2082E6003A994F /* Schedule.swift in Sources */,
 				F19368392C21F5C1000AC7B2 /* CalendarDayView.swift in Sources */,
 				F193683D2C21F646000AC7B2 /* CalendarMonthDayView.swift in Sources */,
 				378CEC262C0D64FB00DF1C3F /* BaseTableViewCell.swift in Sources */,
@@ -891,7 +891,7 @@
 				370B839C2C149AC7009430B9 /* TravelDetailPlanView.swift in Sources */,
 				378CEC362C0D68F900DF1C3F /* TravelViewController.swift in Sources */,
 				374DDDE42C1F68FD0040A5F1 /* PlaceSearch.swift in Sources */,
-				F193681A2C194D50000AC7B2 /* TravelRenewCalendarView.swift in Sources */,
+				F193681A2C194D50000AC7B2 /* TravelUpdateCalendarView.swift in Sources */,
 				F193681A2C194D50000AC7B2 /* TravelUpdateCalendarView.swift in Sources */,
 				1AD537902C12CF4900A70D5E /* TravelPlanView.swift in Sources */,
 				378CEC302C0D68A200DF1C3F /* TravelView.swift in Sources */,
