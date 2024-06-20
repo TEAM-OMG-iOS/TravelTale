@@ -86,7 +86,7 @@ final class TravelSelectViewController: BaseViewController {
 
 extension TravelSelectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return }
+        guard let _ = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return }
         
         if let selectedIndexPath =
             preSelectedIndexPath {
@@ -112,7 +112,7 @@ extension TravelSelectViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
         
-        let travel = upcomingTravels[indexPath.row]
+        let _ = upcomingTravels[indexPath.row]
 //        cell.bind(travel: travel)
         
         return cell
