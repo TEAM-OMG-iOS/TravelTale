@@ -34,6 +34,7 @@ final class TravelPlanViewController: BaseViewController {
     
     // MARK: - methods
     // TODO: travels 데이터 추가
+    
     override func configureStyle() {
         travelPlanView.tableView.separatorStyle = .none
         travelPlanView.tableView.sectionHeaderTopPadding = 0
@@ -67,13 +68,11 @@ final class TravelPlanViewController: BaseViewController {
         }
     }
     
-    // MARK: - objc method
     @objc func tappedAddButton() {
         let TravelAddTitleVC = TravelAddTitleViewController()
         self.navigationController?.pushViewController(TravelAddTitleVC, animated: true)
     }
 }
-
 
 // MARK: - Extensions
 extension TravelPlanViewController: UITableViewDataSource {

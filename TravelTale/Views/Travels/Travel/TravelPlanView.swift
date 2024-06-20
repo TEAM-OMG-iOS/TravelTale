@@ -26,7 +26,7 @@ final class TravelPlanView: BaseView {
     
     override func configureConstraints() {
         
-        let horizontalInset = 20
+        let horizontalInset = 24
         
         addButtonView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(26)

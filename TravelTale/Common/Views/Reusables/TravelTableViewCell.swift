@@ -54,7 +54,6 @@ final class TravelTableViewCell: BaseTableViewCell {
         $0.configureLabel(color: .black, font: .pretendard(size: 18, weight: .medium))
     }
     
-    
     // MARK: - methods
     override func configureHierarchy() {
         contentView.addSubview(containerView)
