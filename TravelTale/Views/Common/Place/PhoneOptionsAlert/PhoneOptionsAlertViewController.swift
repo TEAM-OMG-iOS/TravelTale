@@ -14,7 +14,7 @@ final class PhoneOptionsAlertViewController: BaseViewController {
     
     private var phoneNumber: String = "" {
         didSet {
-            phoneOptionsAlert.bind(phoneNumber: phoneNumber)
+            phoneOptionsAlert.setPhoneNumber(phoneNumber: phoneNumber)
         }
     }
     
@@ -57,7 +57,7 @@ final class PhoneOptionsAlertViewController: BaseViewController {
         let toastView = CustomPopUpView()
         
         toastView.backgroundColor = .clear
-        toastView.bind(text: text)
+        toastView.setText(text: text)
         
         configureToastConstraints(toastView: toastView)
         

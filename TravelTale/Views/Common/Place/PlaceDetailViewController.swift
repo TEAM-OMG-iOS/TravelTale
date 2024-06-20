@@ -38,7 +38,7 @@ final class PlaceDetailViewController: BaseViewController {
         placeDetailView.imageCollectionView.delegate = self
         
         placeDetailView.imageCollectionView.register(PlaceDetailImageCollectionViewCell.self, 
-                                                     forCellWithReuseIdentifier: PlaceDetailImageCollectionViewCell().identifier)
+                                                     forCellWithReuseIdentifier: PlaceDetailImageCollectionViewCell.identifier)
         
         placeDetailView.mapView.delegate = self
     }
@@ -96,7 +96,7 @@ final class PlaceDetailViewController: BaseViewController {
     private func configureToast(text: String) {
         let toastView = CustomPopUpView()
         
-        toastView.bind(text: text)
+        toastView.setText(text: text)
         configureToastConstraints(toastView: toastView)
         
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
@@ -137,11 +137,9 @@ extension PlaceDetailViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailImageCollectionViewCell().identifier,
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailImageCollectionViewCell.identifier,
                                                       for: indexPath) as! PlaceDetailImageCollectionViewCell
-        
         // TODO: - 장소 사진 바인딩
-        
         return cell
     }
 }

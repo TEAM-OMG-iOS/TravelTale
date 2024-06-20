@@ -37,7 +37,7 @@ final class CustomPopUpView: BaseView {
         }
     }
     
-    func bind(text: String) {
+    func setText(text: String) {
         label.text = "\(text)가 복사되었습니다."
     }
 }

@@ -68,8 +68,7 @@ final class PhoneOptionsAlertView: BaseView {
         }
         
         contentView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.centerX.equalToSuperview()
+            $0.center.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(60)
         }
         
@@ -107,7 +106,7 @@ final class PhoneOptionsAlertView: BaseView {
         }
     }
     
-    func bind(phoneNumber: String) {
+    func setPhoneNumber(phoneNumber: String) {
         phoneNumberLabel.text = phoneNumber
     }
 }
