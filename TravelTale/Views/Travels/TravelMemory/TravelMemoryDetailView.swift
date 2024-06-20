@@ -97,9 +97,9 @@ final class TravelMemoryDetailView: BaseView {
         }
     }
     
-    func bind(travel: Travel) {
-        provinceLabel.text = travel.province ?? "미정"
-        periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
-        travelTitleLabel.text = travel.title
-    }
+//    func bind(travel: Travel) {
+//        provinceLabel.text = travel.province ?? "미정"
+//        periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
+//        travelTitleLabel.text = travel.title
+//    }
 }

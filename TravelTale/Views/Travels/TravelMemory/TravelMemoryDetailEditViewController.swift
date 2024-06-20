@@ -17,7 +17,7 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 travelMemoryDetailEditView.collectionView.reloadData()
-                travelMemoryDetailEditView.updatePhotoCount(count: travelData.memoryImageDatas.count)
+//                travelMemoryDetailEditView.updatePhotoCount(count: travelData.memoryImageDatas.count)
             }
         }
     }
@@ -44,7 +44,7 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
     }
     
     override func configureDelegate() {
-        travelMemoryDetailEditView.collectionView.dataSource = self
+//        travelMemoryDetailEditView.collectionView.dataSource = self
         travelMemoryDetailEditView.collectionView
             .register(TravelMemoryEditPhotoCollectionViewCell.self,
                       forCellWithReuseIdentifier: TravelMemoryEditPhotoCollectionViewCell.identifier)
@@ -118,34 +118,34 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
 
 
 // MARK: - extensions
-extension TravelMemoryDetailEditViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return travelData.memoryImageDatas.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: TravelMemoryEditPhotoCollectionViewCell.identifier,
-            for: indexPath)
-                as? TravelMemoryEditPhotoCollectionViewCell
-        else {
-            return UICollectionViewCell()
-        }
-        
-        if let imageData = self.travelData.memoryImageDatas[indexPath.row] {
-            DispatchQueue.main.async {
-                cell.bind(image: UIImage(data: imageData) ?? UIImage())
-            }
-        }
-        
-        if indexPath.row == 0 {
-            cell.showPrimaryPhotoLabel()
-        }
-        
-        return cell
-    }
-}
+//extension TravelMemoryDetailEditViewController: UICollectionViewDataSource {
+//    
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return travelData.memoryImageDatas.count
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell = collectionView.dequeueReusableCell(
+//            withReuseIdentifier: TravelMemoryEditPhotoCollectionViewCell.identifier,
+//            for: indexPath)
+//                as? TravelMemoryEditPhotoCollectionViewCell
+//        else {
+//            return UICollectionViewCell()
+//        }
+//        
+//        if let imageData = self.travelData.memoryImageDatas[indexPath.row] {
+//            DispatchQueue.main.async {
+//                cell.bind(image: UIImage(data: imageData) ?? UIImage())
+//            }
+//        }
+//        
+//        if indexPath.row == 0 {
+//            cell.showPrimaryPhotoLabel()
+//        }
+//        
+//        return cell
+//    }
+//}
 
 extension TravelMemoryDetailEditViewController: UITextViewDelegate {
     
@@ -167,7 +167,7 @@ extension TravelMemoryDetailEditViewController: PHPickerViewControllerDelegate {
         picker.dismiss(animated: true)
         
         // TODO: memory 생성 상황에서는 removeAll o, 수정 상황에서는 x
-        travelData.memoryImageDatas.removeAll()
+//        travelData.memoryImageDatas.removeAll()
         
         for result in results {
             let itemProvider = result.itemProvider
@@ -176,7 +176,7 @@ extension TravelMemoryDetailEditViewController: PHPickerViewControllerDelegate {
                 itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
                     if let image = image as? UIImage {
                         if let imageData = image.jpegData(compressionQuality: 1.0) {
-                            self.travelData.memoryImageDatas.append(imageData)
+//                            self.travelData.memoryImageDatas.append(imageData)
                         }
                     } else {
                         print("[loadObject error]: \(String(describing: error))")

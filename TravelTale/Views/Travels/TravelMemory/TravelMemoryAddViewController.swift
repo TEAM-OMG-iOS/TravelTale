@@ -14,7 +14,7 @@ final class TravelMemoryAddViewController: BaseViewController {
     
     private var travels: [Travel] = [] {
         didSet {
-            setNoMemoryTravels()
+//            setNoMemoryTravels()
         }
     }
     
@@ -65,16 +65,16 @@ final class TravelMemoryAddViewController: BaseViewController {
         navigationItem.leftBarButtonItem = travelMemoryAddView.exitButton
     }
     
-    private func setNoMemoryTravels() {
-        for travel in travels {
-            let isMemoryNoteEmpty = travel.memoryNote == nil
-            let isMemoryImagesEmpty = travel.memoryImageDatas.isEmpty
-            
-            if isMemoryNoteEmpty && isMemoryImagesEmpty {
-                noMemoryTravels.append(travel)
-            }
-        }
-    }
+//    private func setNoMemoryTravels() {
+//        for travel in travels {
+//            let isMemoryNoteEmpty = travel.memoryNote == nil
+//            let isMemoryImagesEmpty = travel.memoryImageDatas.isEmpty
+//            
+//            if isMemoryNoteEmpty && isMemoryImagesEmpty {
+//                noMemoryTravels.append(travel)
+//            }
+//        }
+//    }
     
     // MARK: - objc functions
     @objc func tappedExitButton() {
@@ -102,7 +102,7 @@ extension TravelMemoryAddViewController: UITableViewDataSource {
         
         let travel = noMemoryTravels[indexPath.row]
         
-        cell.bind(travel: travel)
+//        cell.bind(travel: travel)
         cell.selectionStyle = .none
         
         return cell

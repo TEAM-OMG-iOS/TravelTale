@@ -127,15 +127,15 @@ final class TravelTableViewCell: BaseTableViewCell {
         containerView.backgroundColor = selected ? .gray20 : .clear
     }
     
-    func bind(travel: Travel) {
-        if let image = travel.image {
-            thumbnailImageView.image = UIImage(data: image)
-        }
-        titleLabel.text = travel.title
-        periodLabel.text = String(startDate: travel.startDate,
-                                  endDate: travel.endDate)
-        provinceNameLabel.text = travel.province ?? "미정"
-    }
+//    func bind(travel: Travel) {
+//        if let image = travel.image {
+//            thumbnailImageView.image = UIImage(data: image)
+//        }
+//        titleLabel.text = travel.title
+//        periodLabel.text = String(startDate: travel.startDate,
+//                                  endDate: travel.endDate)
+//        provinceNameLabel.text = travel.province ?? "미정"
+//    }
     
     func hideThumbnail() {
         thumbnailImageView.isHidden = true

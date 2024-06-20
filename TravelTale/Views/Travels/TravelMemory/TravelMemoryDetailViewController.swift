@@ -67,9 +67,9 @@ final class TravelMemoryDetailViewController: BaseViewController {
     }
     
     override func bind() {
-        travelMemoryDetailView.bind(travel: travelData)
-        travelMemoryDetailHeaderView.bind(memoryNote: travelData.memoryNote ?? "")
-        getMemoryImages(travel: travelData)
+//        travelMemoryDetailView.bind(travel: travelData)
+//        travelMemoryDetailHeaderView.bind(memoryNote: travelData.memoryNote ?? "")
+//        getMemoryImages(travel: travelData)
     }
     
     private func configureNavigationBarItems() {
@@ -90,16 +90,16 @@ final class TravelMemoryDetailViewController: BaseViewController {
         )
     }
     
-    private func getMemoryImages(travel: Travel) {
-        let imageDatas = self.travelData.memoryImageDatas
-        for imageData in imageDatas {
-            if let imageData = imageData {
-                if let image = UIImage(data: imageData) {
-                    memoryImages.append(image)
-                }
-            }
-        }
-    }
+//    private func getMemoryImages(travel: Travel) {
+//        let imageDatas = self.travelData.memoryImageDatas
+//        for imageData in imageDatas {
+//            if let imageData = imageData {
+//                if let image = UIImage(data: imageData) {
+//                    memoryImages.append(image)
+//                }
+//            }
+//        }
+//    }
     
     private func tappedEditButton() {
         print("tappedEditButton")
@@ -107,7 +107,6 @@ final class TravelMemoryDetailViewController: BaseViewController {
         self.navigationController?.pushViewController(travelMemoryDetailEditViewController, animated: true)
     }
     
-    // MARK: - objc functions
     @objc func tappedBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -144,7 +143,7 @@ extension TravelMemoryDetailViewController: UITableViewDelegate {
             withIdentifier: TravelMemoryDetailHeaderView.identifier) as? TravelMemoryDetailHeaderView
         else { return UIView() }
         
-        headerView.bind(memoryNote: travelData.memoryNote ?? "")
+//        headerView.bind(memoryNote: travelData.memoryNote ?? "")
         return headerView
     }
 }
