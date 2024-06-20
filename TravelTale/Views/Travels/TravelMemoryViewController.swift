@@ -17,7 +17,6 @@ final class TravelMemoryViewController: BaseViewController {
         }
     }
     
-    
     // MARK: - life cycles
     override func loadView() {
         view = travelMemoryView
@@ -28,9 +27,9 @@ final class TravelMemoryViewController: BaseViewController {
 //        addTemporaryData()
     }
     
-    
     // MARK: - methods
     // TODO: travels 데이터 추가 함수
+    
     override func configureStyle() {
         travelMemoryView.tableView.separatorStyle = .none
     }
@@ -45,14 +44,13 @@ final class TravelMemoryViewController: BaseViewController {
         travelMemoryView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
     }
     
-    
-    // MARK: - objc method
     @objc func tappedAddButton() {
-        // TODO: TravelMemoryAddVC push
+        let travelMemoryAddVC = TravelMemoryAddViewController()
+        self.navigationController?.pushViewController(travelMemoryAddVC, animated: true)
     }
 }
 
-// MARK: - Extensions
+// MARK: - extensions
 extension TravelMemoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return travels.count
@@ -70,12 +68,11 @@ extension TravelMemoryViewController: UITableViewDataSource {
 
 extension TravelMemoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: TravelMemoryDetailVC push
-//        let nextVC = TravelMemoryDetailViewController(travelData: travels[indexPath.row])
-//        navigationController?.pushViewController(nextVC, animated: true)
-//        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-//            tableView.deselectRow(at: indexPath, animated: true)
-//        }
+        let nextVC = TravelMemoryDetailViewController(travelData: travels[indexPath.row])
+        navigationController?.pushViewController(nextVC, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
 }

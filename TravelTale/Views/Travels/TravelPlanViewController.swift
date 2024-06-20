@@ -34,6 +34,7 @@ final class TravelPlanViewController: BaseViewController {
     
     // MARK: - methods
     // TODO: travels 데이터 추가
+    
     override func configureStyle() {
         travelPlanView.tableView.separatorStyle = .none
         travelPlanView.tableView.sectionHeaderTopPadding = 0
@@ -67,13 +68,11 @@ final class TravelPlanViewController: BaseViewController {
         }
     }
     
-    // MARK: - objc method
     @objc func tappedAddButton() {
         let TravelAddTitleVC = TravelAddTitleViewController()
         self.navigationController?.pushViewController(TravelAddTitleVC, animated: true)
     }
 }
-
 
 // MARK: - Extensions
 extension TravelPlanViewController: UITableViewDataSource {
@@ -94,12 +93,7 @@ extension TravelPlanViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
         
-        let travel: Travel
-        if indexPath.section == 0 {
-            travel = upcomingTravels[indexPath.row]
-        } else {
-            travel = pastTravels[indexPath.row]
-        }
+        let _ = (indexPath.section == 0) ? upcomingTravels[indexPath.row] : pastTravels[indexPath.row]
         
 //        cell.bind(travel: travel)
         cell.selectionStyle = .none
