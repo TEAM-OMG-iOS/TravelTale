@@ -12,7 +12,6 @@ final class TravelViewController: BaseViewController {
     // MARK: - properties
     private let travelView = TravelView()
     
-    //  childVC
     private let travelPlanVC = TravelPlanViewController()
     private let travelMemoryVC = TravelMemoryViewController()
     
@@ -78,7 +77,7 @@ final class TravelViewController: BaseViewController {
             travelView.changeButtonUI(tapped: sender)
             currentTappedButton = travelView.memoryButton
             
-        default: // planButton
+        default:
             showOnlyView(viewToShow: travelPlanVC.view)
             travelView.changeButtonUI(tapped: sender)
             currentTappedButton = travelView.planButton

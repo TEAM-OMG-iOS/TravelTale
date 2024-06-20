@@ -33,12 +33,23 @@
 		2E36056B2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift */; };
 		2E36056D2C1AA70F007DFBC1 /* RegionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E36056C2C1AA70F007DFBC1 /* RegionData.swift */; };
 		2E52F2F32C1B7BAB00E7D6D5 /* BookMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52F2F22C1B7BAB00E7D6D5 /* BookMarkButton.swift */; };
+		2EBBDD482C245FD4006534A9 /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE812C2150AD003F7748 /* PlaceDetailView.swift */; };
 		2EC635752C1CD0FF006C1ADB /* DiscoveryCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC635742C1CD0FF006C1ADB /* DiscoveryCategoryViewController.swift */; };
 		2EC635772C1CEB7D006C1ADB /* AccommodationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC635762C1CEB7D006C1ADB /* AccommodationViewController.swift */; };
 		2EC635792C1CEC03006C1ADB /* EntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC635782C1CEC03006C1ADB /* EntertainmentViewController.swift */; };
 		2EC6357B2C1CED3C006C1ADB /* TouristSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6357A2C1CED3C006C1ADB /* TouristSpotViewController.swift */; };
 		2EC6357D2C1CED6D006C1ADB /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6357C2C1CED6D006C1ADB /* RestaurantViewController.swift */; };
 		2ECECE7F2C211AEA003F7748 /* MyPageServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE7E2C211AEA003F7748 /* MyPageServiceTableViewCell.swift */; };
+		2ECECE842C2150BB003F7748 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */; };
+		2ECECE862C219C4E003F7748 /* PlaceDetailImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE852C219C4E003F7748 /* PlaceDetailImageCollectionViewCell.swift */; };
+		2ECECE8E2C237928003F7748 /* CustomPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE8D2C237928003F7748 /* CustomPopUpView.swift */; };
+		2ECECE942C238100003F7748 /* PhoneOptionsAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE932C238100003F7748 /* PhoneOptionsAlertView.swift */; };
+		2ECECE972C238507003F7748 /* PhoneOptionsAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE962C238507003F7748 /* PhoneOptionsAlertViewController.swift */; };
+		2ECECE9A2C2405C1003F7748 /* TermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE992C2405C0003F7748 /* TermView.swift */; };
+		2ECECE9C2C2409E2003F7748 /* TermPrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE9B2C2409E2003F7748 /* TermPrivacyPolicyViewController.swift */; };
+		2ECECE9E2C24118D003F7748 /* TermOpenSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE9D2C24118D003F7748 /* TermOpenSourceViewController.swift */; };
+		2ECECEA02C24130F003F7748 /* OpenSourceLicense.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2ECECE9F2C24130F003F7748 /* OpenSourceLicense.rtf */; };
+		2ECECEA22C241477003F7748 /* TermPrivacyPolicy.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2ECECEA12C241477003F7748 /* TermPrivacyPolicy.rtf */; };
 		2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */; };
 		2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */; };
 		2EF0E3AD2C1F1E7700654025 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */; };
@@ -105,7 +116,6 @@
 		37C08C822C1EF54A00F5E308 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C08C812C1EF54A00F5E308 /* NetworkManager.swift */; };
 		37C08C842C1EF55400F5E308 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C08C832C1EF55400F5E308 /* RealmManager.swift */; };
 		37C08C862C1EF56500F5E308 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C08C852C1EF56500F5E308 /* UserDefaultsManager.swift */; };
-		37CB88072C0D7632002798BE /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88062C0D7632002798BE /* PlaceDetailView.swift */; };
 		37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB88082C0D78C9002798BE /* UIView+Extension.swift */; };
 		37CB880D2C0D796C002798BE /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB880C2C0D796C002798BE /* UILabel+Extension.swift */; };
 		37CB880F2C0D7979002798BE /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB880E2C0D7979002798BE /* UIButton+Extension.swift */; };
@@ -183,6 +193,17 @@
 		2EC6357A2C1CED3C006C1ADB /* TouristSpotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristSpotViewController.swift; sourceTree = "<group>"; };
 		2EC6357C2C1CED6D006C1ADB /* RestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
 		2ECECE7E2C211AEA003F7748 /* MyPageServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageServiceTableViewCell.swift; sourceTree = "<group>"; };
+		2ECECE812C2150AD003F7748 /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
+		2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
+		2ECECE852C219C4E003F7748 /* PlaceDetailImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		2ECECE8D2C237928003F7748 /* CustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpView.swift; sourceTree = "<group>"; };
+		2ECECE932C238100003F7748 /* PhoneOptionsAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneOptionsAlertView.swift; sourceTree = "<group>"; };
+		2ECECE962C238507003F7748 /* PhoneOptionsAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneOptionsAlertViewController.swift; sourceTree = "<group>"; };
+		2ECECE992C2405C0003F7748 /* TermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermView.swift; sourceTree = "<group>"; };
+		2ECECE9B2C2409E2003F7748 /* TermPrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermPrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		2ECECE9D2C24118D003F7748 /* TermOpenSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermOpenSourceViewController.swift; sourceTree = "<group>"; };
+		2ECECE9F2C24130F003F7748 /* OpenSourceLicense.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = OpenSourceLicense.rtf; sourceTree = "<group>"; };
+		2ECECEA12C241477003F7748 /* TermPrivacyPolicy.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = TermPrivacyPolicy.rtf; sourceTree = "<group>"; };
 		2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionView.swift; sourceTree = "<group>"; };
 		2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionViewController.swift; sourceTree = "<group>"; };
 		2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
@@ -349,6 +370,14 @@
 			path = DiscoveryRegionModal;
 			sourceTree = "<group>";
 		};
+		2E6AF32C2C245925008795A9 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				37CB88062C0D7632002798BE /* PlaceDetailView.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		2EC6356D2C1CAD1B006C1ADB /* DiscoveryCategory */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +388,36 @@
 				2EC635782C1CEC03006C1ADB /* EntertainmentViewController.swift */,
 			);
 			path = DiscoveryCategory;
+			sourceTree = "<group>";
+		};
+		2ECECE802C21509D003F7748 /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				2ECECE812C2150AD003F7748 /* PlaceDetailView.swift */,
+				2ECECE852C219C4E003F7748 /* PlaceDetailImageCollectionViewCell.swift */,
+				2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */,
+				2ECECE952C2384E8003F7748 /* PhoneOptionsAlert */,
+			);
+			path = Place;
+			sourceTree = "<group>";
+		};
+		2ECECE952C2384E8003F7748 /* PhoneOptionsAlert */ = {
+			isa = PBXGroup;
+			children = (
+				2ECECE932C238100003F7748 /* PhoneOptionsAlertView.swift */,
+				2ECECE962C238507003F7748 /* PhoneOptionsAlertViewController.swift */,
+			);
+			path = PhoneOptionsAlert;
+			sourceTree = "<group>";
+		};
+		2ECECE982C240317003F7748 /* Terms */ = {
+			isa = PBXGroup;
+			children = (
+				2ECECE992C2405C0003F7748 /* TermView.swift */,
+				2ECECE9B2C2409E2003F7748 /* TermPrivacyPolicyViewController.swift */,
+				2ECECE9D2C24118D003F7748 /* TermOpenSourceViewController.swift */,
+			);
+			path = Terms;
 			sourceTree = "<group>";
 		};
 		2EF0E3AE2C1F1E7C00654025 /* BookMark */ = {
@@ -417,6 +476,7 @@
 				378CEBFF2C0D576F00DF1C3F /* .gitignore */,
 				378CEBEA2C0D563C00DF1C3F /* TravelTale */,
 				378CEBE92C0D563C00DF1C3F /* Products */,
+				2E6AF32C2C245925008795A9 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -438,6 +498,8 @@
 				37C08C7C2C1EF4FD00F5E308 /* Models */,
 				378CEC1A2C0D633700DF1C3F /* Views */,
 				378CEBF42C0D563D00DF1C3F /* Assets.xcassets */,
+				2ECECE9F2C24130F003F7748 /* OpenSourceLicense.rtf */,
+				2ECECEA12C241477003F7748 /* TermPrivacyPolicy.rtf */,
 				378CEBF62C0D563D00DF1C3F /* LaunchScreen.storyboard */,
 				378CEBF92C0D563D00DF1C3F /* Info.plist */,
 				37CB88142C0DA86F002798BE /* Config.xcconfig */,
@@ -520,6 +582,7 @@
 		378CEC2A2C0D660400DF1C3F /* MyPages */ = {
 			isa = PBXGroup;
 			children = (
+				2ECECE982C240317003F7748 /* Terms */,
 				378CEC2E2C0D688F00DF1C3F /* MyPage */,
 				378CEC392C0D691900DF1C3F /* MyPageViewController.swift */,
 				2EF0E3AE2C1F1E7C00654025 /* BookMark */,
@@ -590,7 +653,6 @@
 		378CEC3F2C0D6C7C00DF1C3F /* Reusables */ = {
 			isa = PBXGroup;
 			children = (
-				37CB88062C0D7632002798BE /* PlaceDetailView.swift */,
 				37CB88152C0DB648002798BE /* GrayBackgroundView.swift */,
 				37CB88172C0DB66D002798BE /* GrayButton.swift */,
 				37CB88192C0DB677002798BE /* GreenButton.swift */,
@@ -601,6 +663,7 @@
 				4DA5FBFB2C1EFAE400233A68 /* DaySelectPopoverViewController.swift */,
 				4DA5FBFA2C1EFAE400233A68 /* TimeSelectPopoverViewController.swift */,
 				2E52F2F22C1B7BAB00E7D6D5 /* BookMarkButton.swift */,
+				2ECECE8D2C237928003F7748 /* CustomPopUpView.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -698,6 +761,7 @@
 		4D0E3CE82C12E8CC0089D6C1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2ECECE802C21509D003F7748 /* Place */,
 				F19368232C1AD9F4000AC7B2 /* Location */,
 				4D0E3CF12C1722C60089D6C1 /* AddSchedule */,
 				2E0671BD2C1DF35D001CDB2E /* Category */,
@@ -874,6 +938,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				378CEC002C0D576F00DF1C3F /* .gitignore in Resources */,
+				2ECECEA22C241477003F7748 /* TermPrivacyPolicy.rtf in Resources */,
 				378CEC502C0D721200DF1C3F /* Pretendard-Bold.otf in Resources */,
 				378CEC4B2C0D721200DF1C3F /* Pretendard-Thin.otf in Resources */,
 				378CEC4E2C0D721200DF1C3F /* Pretendard-ExtraBold.otf in Resources */,
@@ -884,6 +949,7 @@
 				378CEC522C0D721200DF1C3F /* Pretendard-ExtraLight.otf in Resources */,
 				378CEBF82C0D563D00DF1C3F /* Base in Resources */,
 				378CEC4D2C0D721200DF1C3F /* Pretendard-Black.otf in Resources */,
+				2ECECEA02C24130F003F7748 /* OpenSourceLicense.rtf in Resources */,
 				4D0E3CE12C10763C0089D6C1 /* PlaceAddEditView.storyboard in Resources */,
 				378CEC4F2C0D721200DF1C3F /* Pretendard-Light.otf in Resources */,
 				378CEC512C0D721200DF1C3F /* Pretendard-Medium.otf in Resources */,
@@ -898,6 +964,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EBBDD482C245FD4006534A9 /* PlaceDetailView.swift in Sources */,
 				1A95EB5F2C16BA88007D575A /* TravelMemoryAddViewController.swift in Sources */,
 				1AA861792C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift in Sources */,
 				2EF0E3AD2C1F1E7700654025 /* BookMarkViewController.swift in Sources */,
@@ -909,6 +976,7 @@
 				1A95EB5B2C168E78007D575A /* TravelMemoryAddView.swift in Sources */,
 				374DDDE22C1F4E730040A5F1 /* PlaceDetailResponseDTO+Mapping.swift in Sources */,
 				37CB88162C0DB648002798BE /* GrayBackgroundView.swift in Sources */,
+				2ECECE862C219C4E003F7748 /* PlaceDetailImageCollectionViewCell.swift in Sources */,
 				2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */,
 				37961A8D2C2082E6003A994F /* Schedule.swift in Sources */,
 				F19368392C21F5C1000AC7B2 /* CalendarDayView.swift in Sources */,
@@ -919,6 +987,7 @@
 				2E0671BC2C1DEC14001CDB2E /* CategoryTableViewCell.swift in Sources */,
 				2EC6357D2C1CED6D006C1ADB /* RestaurantViewController.swift in Sources */,
 				378CEC382C0D690800DF1C3F /* DiscoveryViewController.swift in Sources */,
+				2ECECE8E2C237928003F7748 /* CustomPopUpView.swift in Sources */,
 				37E19F432C18680A0084F899 /* TravelDetailPlanFooterCell.swift in Sources */,
 				4D0E3CD52C0F36110089D6C1 /* TravelSelectView.swift in Sources */,
 				37C08C862C1EF56500F5E308 /* UserDefaultsManager.swift in Sources */,
@@ -937,6 +1006,7 @@
 				37CB880D2C0D796C002798BE /* UILabel+Extension.swift in Sources */,
 				37961A892C208242003A994F /* Region.swift in Sources */,
 				F19368412C21F797000AC7B2 /* CalendarBaseView.swift in Sources */,
+				2ECECE9E2C24118D003F7748 /* TermOpenSourceViewController.swift in Sources */,
 				2EF0E3B02C1F1FD800654025 /* BookMarkTouristSpotViewController.swift in Sources */,
 				F19368202C1ACB88000AC7B2 /* LocationTableViewCell.swift in Sources */,
 				374DDDDA2C1F3D060040A5F1 /* SigunguResponseDTO+Mapping.swift in Sources */,
@@ -946,6 +1016,7 @@
 				378CEC342C0D68DE00DF1C3F /* MyPageView.swift in Sources */,
 				2EC635792C1CEC03006C1ADB /* EntertainmentViewController.swift in Sources */,
 				370B839E2C149AE8009430B9 /* TravelDetailPlanViewController.swift in Sources */,
+				2ECECE942C238100003F7748 /* PhoneOptionsAlertView.swift in Sources */,
 				37961A912C20834C003A994F /* Bookmark.swift in Sources */,
 				2EF0E3B82C1F20EA00654025 /* BookMarkTotalViewController.swift in Sources */,
 				1AD537942C12DCC600A70D5E /* LightGreenButton.swift in Sources */,
@@ -971,7 +1042,6 @@
 				374DDDE02C1F4E650040A5F1 /* PlaceDetail.swift in Sources */,
 				37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */,
 				F1B302002C10B43F00D26B75 /* TravelAddCalendarViewController.swift in Sources */,
-				37CB88072C0D7632002798BE /* PlaceDetailView.swift in Sources */,
 				1A95EB632C184EC7007D575A /* TravelMemoryDetailEditView.swift in Sources */,
 				37DDF5CA2C18B54400842DA4 /* TravelDetailPlanHeaderContentCell.swift in Sources */,
 				378CEC222C0D649D00DF1C3F /* BaseView.swift in Sources */,
@@ -994,7 +1064,9 @@
 				F1B301F72C10501000D26B75 /* TravelAddPlaceView.swift in Sources */,
 				374DDDDC2C1F43B50040A5F1 /* Place.swift in Sources */,
 				4D0E3CDB2C10391A0089D6C1 /* MemoAddViewController.swift in Sources */,
+				2ECECE972C238507003F7748 /* PhoneOptionsAlertViewController.swift in Sources */,
 				1A713BE02C22B9A20045DECD /* String+Extension.swift in Sources */,
+				2ECECE9C2C2409E2003F7748 /* TermPrivacyPolicyViewController.swift in Sources */,
 				4D0E3CE52C11EA930089D6C1 /* ScheduleCreateView.swift in Sources */,
 				37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */,
 				1AA861772C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift in Sources */,
@@ -1003,6 +1075,7 @@
 				37C08C822C1EF54A00F5E308 /* NetworkManager.swift in Sources */,
 				374DDDD22C1F0CBA0040A5F1 /* SidoResponseDTO+Mapping.swift in Sources */,
 				F1B302132C1457A400D26B75 /* TravelUpdateView.swift in Sources */,
+				2ECECE9A2C2405C1003F7748 /* TermView.swift in Sources */,
 				F1B302072C13331800D26B75 /* TravelUpdateViewController.swift in Sources */,
 				F19368222C1ACDA8000AC7B2 /* LocationView.swift in Sources */,
 				F1A2BC292C186B2B00D41614 /* TravelAddPlaceModalViewController.swift in Sources */,
@@ -1015,6 +1088,7 @@
 				378CEC1E2C0D644D00DF1C3F /* UIColor+Extension.swift in Sources */,
 				3740FE542C12EE020024E08F /* TravelDetailView.swift in Sources */,
 				F1B301F12C10035F00D26B75 /* TravelAddTitleViewController.swift in Sources */,
+				2ECECE842C2150BB003F7748 /* PlaceDetailViewController.swift in Sources */,
 				F1B301F42C1005DA00D26B75 /* TravelAddTitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

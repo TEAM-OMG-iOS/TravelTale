@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 import XLPagerTabStrip
 
 final class BookMarkTouristSpotViewController: BaseViewController {
@@ -51,8 +50,13 @@ extension BookMarkTouristSpotViewController: UITableViewDataSource {
     }
 }
 
-// TODO: - tableView가 선택되었을 때, 상세 페이지로 이동하는 부분 구현
 extension BookMarkTouristSpotViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let placeDetailVC = PlaceDetailViewController()
+        
+        // TODO: - 데이터 바인딩
+        
+        self.navigationController?.pushViewController(placeDetailVC, animated: true)
+    }
 }
 

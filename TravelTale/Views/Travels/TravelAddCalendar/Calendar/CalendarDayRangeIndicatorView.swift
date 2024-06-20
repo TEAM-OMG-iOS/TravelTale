@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 import HorizonCalendar
 
 // 선택된 날짜 범위 커스텀 뷰
@@ -54,7 +53,7 @@ final class CalendarDayRangeIndicatorView: BaseView {
     }
 }
 
-// MARK: - extension
+// MARK: - extensions
 extension CalendarDayRangeIndicatorView: CalendarItemViewRepresentable {
     struct InvariantViewProperties: Hashable {
         let indicatorColor = UIColor.green10

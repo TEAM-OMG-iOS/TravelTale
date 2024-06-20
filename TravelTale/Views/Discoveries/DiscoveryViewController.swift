@@ -88,11 +88,15 @@ final class DiscoveryViewController: BaseViewController {
     }
 }
 
-// MARK: - extension
+// MARK: - extensions
 extension DiscoveryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        // todo : 디테일 VC로 이동
+        let placeDetailVC = PlaceDetailViewController()
+        
+        // TODO: - 데이터 바인딩
+        
+        self.navigationController?.pushViewController(placeDetailVC, animated: true)
     }
 }
 

@@ -10,8 +10,6 @@ import SnapKit
 
 final class GrayButton: UIButton {
 
-    // MARK: - properties
-    
     // MARK: - life cycles
     override init(frame: CGRect) {
         super.init(frame: frame)
