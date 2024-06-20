@@ -55,6 +55,7 @@ final class TravelDetailPlanViewController: BaseViewController {
     }
 }
 
+// MARK: - extensions
 extension TravelDetailPlanViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
