@@ -166,7 +166,7 @@ extension TravelMemoryDetailEditViewController: PHPickerViewControllerDelegate {
             if itemProvider.canLoadObject(ofClass: UIImage.self) {
                 itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
                     if let image = image as? UIImage {
-                        if let imageData = image.jpegData(compressionQuality: 1.0) {
+                        if image.jpegData(compressionQuality: 1.0) != nil {
 //                            self.travelData.memoryImageDatas.append(imageData)
                         }
                     } else {

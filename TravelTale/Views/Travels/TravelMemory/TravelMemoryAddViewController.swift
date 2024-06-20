@@ -98,7 +98,7 @@ extension TravelMemoryAddViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return UITableViewCell() }
         
-        let travel = noMemoryTravels[indexPath.row]
+        _ = noMemoryTravels[indexPath.row]
         
 //        cell.bind(travel: travel)
         cell.hideThumbnail()

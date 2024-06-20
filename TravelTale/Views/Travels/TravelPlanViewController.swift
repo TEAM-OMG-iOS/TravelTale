@@ -93,12 +93,12 @@ extension TravelPlanViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
         
-        let travel: Travel
-        if indexPath.section == 0 {
-            travel = upcomingTravels[indexPath.row]
-        } else {
-            travel = pastTravels[indexPath.row]
-        }
+//        let travel: Travel
+//        if indexPath.section == 0 {
+//            travel = upcomingTravels[indexPath.row]
+//        } else {
+//            travel = pastTravels[indexPath.row]
+//        }
         
 //        cell.bind(travel: travel)
         cell.selectionStyle = .none

@@ -20,7 +20,6 @@
 		1AC9B3DF2C219E4700059246 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */; };
 		1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */; };
 		1AD5378B2C10612F00A70D5E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378A2C10612F00A70D5E /* Observable.swift */; };
-		1AD5378E2C10838A00A70D5E /* Travel(temporary).swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */; };
 		1AD537902C12CF4900A70D5E /* TravelPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378F2C12CF4900A70D5E /* TravelPlanView.swift */; };
 		1AD537942C12DCC600A70D5E /* LightGreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537932C12DCC600A70D5E /* LightGreenButton.swift */; };
 		1AD537962C12E5E300A70D5E /* TravelPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537952C12E5E300A70D5E /* TravelPlanViewController.swift */; };
@@ -148,7 +147,6 @@
 		1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTableViewCell.swift; sourceTree = "<group>"; };
 		1AD5378A2C10612F00A70D5E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Travel(temporary).swift"; sourceTree = "<group>"; };
 		1AD5378F2C12CF4900A70D5E /* TravelPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanView.swift; sourceTree = "<group>"; };
 		1AD537932C12DCC600A70D5E /* LightGreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightGreenButton.swift; sourceTree = "<group>"; };
 		1AD537952C12E5E300A70D5E /* TravelPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanViewController.swift; sourceTree = "<group>"; };
@@ -390,7 +388,6 @@
 				378CEC3E2C0D6C6F00DF1C3F /* Views */,
 				378CEC402C0D707400DF1C3F /* Fonts */,
 				1AD5378C2C10613900A70D5E /* Class */,
-				1AD5378D2C10838A00A70D5E /* Travel(temporary).swift */,
 				2E36056C2C1AA70F007DFBC1 /* RegionData.swift */,
 			);
 			path = Common;
@@ -835,7 +832,6 @@
 				2EC635792C1CEC03006C1ADB /* EntertainmentViewController.swift in Sources */,
 				370B839E2C149AE8009430B9 /* TravelDetailPlanViewController.swift in Sources */,
 				2EF0E3B82C1F20EA00654025 /* BookMarkTotalViewController.swift in Sources */,
-				1AD5378E2C10838A00A70D5E /* Travel(temporary).swift in Sources */,
 				1AD537942C12DCC600A70D5E /* LightGreenButton.swift in Sources */,
 				F193681C2C194D73000AC7B2 /* TravelUpdateCalendarViewController.swift in Sources */,
 				378CEBEE2C0D563C00DF1C3F /* SceneDelegate.swift in Sources */,
