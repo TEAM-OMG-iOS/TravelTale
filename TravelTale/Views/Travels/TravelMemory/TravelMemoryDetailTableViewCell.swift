@@ -9,6 +9,7 @@ import UIKit
 
 final class TravelMemoryDetailTableViewCell: BaseTableViewCell {
     
+    // MARK: - properties
     static let identifier = String(describing: TravelMemoryDetailTableViewCell.self)
     
     private let customImageView = UIImageView().then {
@@ -16,7 +17,8 @@ final class TravelMemoryDetailTableViewCell: BaseTableViewCell {
         $0.contentMode = .scaleAspectFit
     }
     
-    override func configureHierarchy() { 
+    // MARK: - methods
+    override func configureHierarchy() {
         contentView.addSubview(customImageView)
     }
     

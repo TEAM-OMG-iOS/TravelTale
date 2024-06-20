@@ -22,12 +22,10 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
         }
     }
     
-    
     // MARK: - life cycles
     override func loadView() {
         view = travelMemoryDetailEditView
     }
-    
     
     // MARK: - methods
     init(travelData: Travel?) {
@@ -109,7 +107,6 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
         self.navigationController?.popToRootViewController(animated: true)
     }
 }
-
 
 // MARK: - extensions
 //extension TravelMemoryDetailEditViewController: UICollectionViewDataSource {

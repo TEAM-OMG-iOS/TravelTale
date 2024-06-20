@@ -17,7 +17,6 @@ final class TravelMemoryDetailHeaderView: UITableViewHeaderFooterView {
         $0.configureLabel(color: .black, font: .pretendard(size: 14, weight: .medium), numberOfLines: 0)
     }
     
-    
     // MARK: - methods
     
     override init(reuseIdentifier: String?) {

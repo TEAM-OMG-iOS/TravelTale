@@ -21,7 +21,6 @@ final class TravelMemoryDetailViewController: BaseViewController {
         }
     }
     
-    
     // MARK: - life cycles
     override func loadView() {
         view = travelMemoryDetailView
@@ -112,6 +111,7 @@ final class TravelMemoryDetailViewController: BaseViewController {
     }
 }
 
+// MARK: - extensions
 extension TravelMemoryDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

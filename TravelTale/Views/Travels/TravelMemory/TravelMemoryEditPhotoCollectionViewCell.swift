@@ -9,6 +9,7 @@ import UIKit
 
 final class TravelMemoryEditPhotoCollectionViewCell: BaseCollectionViewCell {
     
+    // MARK: - properties
     static let identifier = String(describing: TravelMemoryEditPhotoCollectionViewCell.self)
     
     let imageView = UIImageView().then {
@@ -24,6 +25,7 @@ final class TravelMemoryEditPhotoCollectionViewCell: BaseCollectionViewCell {
                           text: "대표 사진")
     }
     
+    // MARK: - methods
     override func configureUI() {
         contentView.configureView(clipsToBounds: true, cornerRadius: 10)
     }

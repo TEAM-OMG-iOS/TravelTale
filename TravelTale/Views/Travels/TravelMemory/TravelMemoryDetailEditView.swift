@@ -134,7 +134,6 @@ final class TravelMemoryDetailEditView: BaseView {
     }
     
     override func configureConstraints() {
-        let phoneWidth = UIScreen.main.bounds.width
         let horizontalInset = CGFloat(24)
         
         travelInfoStackView.snp.makeConstraints {

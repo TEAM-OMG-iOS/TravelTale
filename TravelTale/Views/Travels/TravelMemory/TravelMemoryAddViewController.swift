@@ -22,7 +22,6 @@ final class TravelMemoryAddViewController: BaseViewController {
     
     private var selectedIndexPath: IndexPath?
     
-    
     // MARK: - life cycles
     override func loadView() {
         view = travelMemoryAddView
@@ -36,7 +35,6 @@ final class TravelMemoryAddViewController: BaseViewController {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
     }
-    
     
     // MARK: - methods
     // TODO: travels 추가 함수
@@ -76,7 +74,6 @@ final class TravelMemoryAddViewController: BaseViewController {
 //        }
 //    }
     
-    // MARK: - objc functions
     @objc func tappedBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -92,6 +89,7 @@ final class TravelMemoryAddViewController: BaseViewController {
     }
 }
 
+// MARK: - extensions
 extension TravelMemoryAddViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return noMemoryTravels.count

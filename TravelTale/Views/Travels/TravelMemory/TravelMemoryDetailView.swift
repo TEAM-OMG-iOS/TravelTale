@@ -54,7 +54,6 @@ final class TravelMemoryDetailView: BaseView {
         $0.backgroundColor = .clear
     }
     
-    
     // MARK: - methods
     override func configureHierarchy() {
         [travelInfoStackView,
