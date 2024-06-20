@@ -54,15 +54,15 @@ final class TravelMemoryAddViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        travelMemoryAddView.exitButton.target = self
-        travelMemoryAddView.exitButton.action = #selector(tappedExitButton)
+        travelMemoryAddView.backButton.target = self
+        travelMemoryAddView.backButton.action = #selector(tappedBackButton)
         
         travelMemoryAddView.confirmButton.addTarget(self, action: #selector(tappedConfirmButton), for: .touchUpInside)
     }
     
     private func configureNavigationBarItems() {
         navigationItem.title = "추억 남기기"
-        navigationItem.leftBarButtonItem = travelMemoryAddView.exitButton
+        navigationItem.leftBarButtonItem = travelMemoryAddView.backButton
     }
     
 //    private func setNoMemoryTravels() {
@@ -77,8 +77,8 @@ final class TravelMemoryAddViewController: BaseViewController {
 //    }
     
     // MARK: - objc functions
-    @objc func tappedExitButton() {
-        self.navigationController?.popToRootViewController(animated: true)
+    @objc func tappedBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func tappedConfirmButton() {

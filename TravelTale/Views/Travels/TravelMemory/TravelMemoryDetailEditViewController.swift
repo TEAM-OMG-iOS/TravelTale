@@ -12,7 +12,7 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
     
     // MARK: - properties
     private let travelMemoryDetailEditView = TravelMemoryDetailEditView()
-    private var travelData: Travel {
+    private var travelData: Travel? {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
@@ -30,7 +30,7 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
     
     
     // MARK: - methods
-    init(travelData: Travel) {
+    init(travelData: Travel?) {
         self.travelData = travelData
         super.init(nibName: nil, bundle: nil)
     }
@@ -53,12 +53,10 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        travelMemoryDetailEditView.exitButton.target = self
-        travelMemoryDetailEditView.exitButton.action = #selector(tappedExitButton)
+        travelMemoryDetailEditView.backButton.target = self
+        travelMemoryDetailEditView.backButton.action = #selector(tappedBackButton)
         
         travelMemoryDetailEditView.photoButton.addTarget(self, action: #selector(tappedPhotoButton), for: .touchUpInside)
-        
-        travelMemoryDetailEditView.formerButton.addTarget(self, action: #selector(tappedFormerButton), for: .touchUpInside)
         
         travelMemoryDetailEditView.confirmButton.addTarget(self, action: #selector(tappedConfirmButton), for: .touchUpInside)
     }
@@ -69,26 +67,12 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
     
     private func configureNavigationBarItems() {
         navigationItem.title = "추억 남기기"
-        navigationItem.leftBarButtonItem = travelMemoryDetailEditView.exitButton
+        navigationItem.leftBarButtonItem = travelMemoryDetailEditView.backButton
       }
     
     
     // MARK: - objc functions
-    @objc func tappedExitButton() {
-        self.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    @objc func tappedPhotoButton() {
-        var config = PHPickerConfiguration()
-        config.selectionLimit = 10
-        config.filter = .images
-        
-        let picker = PHPickerViewController(configuration: config)
-        picker.delegate = self
-        present(picker, animated: true)
-    }
-    
-    @objc func tappedFormerButton() {
+    @objc func tappedBackButton() {
         let alert = UIAlertController(
             title: "경고",
             message: """
@@ -108,6 +92,16 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
         alert.addAction(ok)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func tappedPhotoButton() {
+        var config = PHPickerConfiguration()
+        config.selectionLimit = 10
+        config.filter = .images
+        
+        let picker = PHPickerViewController(configuration: config)
+        picker.delegate = self
+        present(picker, animated: true)
     }
     
     @objc func tappedConfirmButton() {

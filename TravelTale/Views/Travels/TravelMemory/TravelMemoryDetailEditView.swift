@@ -10,11 +10,11 @@ import UIKit
 final class TravelMemoryDetailEditView: BaseView {
     
     // MARK: - properties
-    let exitButton = UIBarButtonItem().then {
-        $0.style = .done
-        $0.image = UIImage(systemName: "xmark")
-        $0.tintColor = .gray90
-    }
+    let backButton = UIBarButtonItem().then {
+       $0.style = .done
+       $0.image = UIImage(systemName: "chevron.left")
+       $0.tintColor = .gray90
+     }
     
     private let travelInfoStackView = UIStackView().then {
         $0.axis = .horizontal
@@ -102,16 +102,6 @@ final class TravelMemoryDetailEditView: BaseView {
     lazy var collectionView = UICollectionView(frame: .zero,
                                                collectionViewLayout: layout)
     
-    private let buttonStackView = UIStackView().then {
-        $0.axis = .horizontal
-        $0.spacing = 15
-    }
-    
-    let formerButton = GrayButton().then {
-        $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "이전")
-        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-    }
-    
     let confirmButton = GreenButton().then {
         $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "기록 완료")
         $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
@@ -125,7 +115,7 @@ final class TravelMemoryDetailEditView: BaseView {
          recordView,
          photoButtonView,
          collectionView,
-         buttonStackView].forEach { self.addSubview($0) }
+         confirmButton].forEach { self.addSubview($0) }
         
         [locationImageView,
         provinceLabel,
@@ -141,9 +131,6 @@ final class TravelMemoryDetailEditView: BaseView {
         
         [photoCountLabel,
          photoTotalLabel].forEach { photoButtonLabelStackView.addArrangedSubview($0) }
-        
-        [formerButton,
-         confirmButton].forEach { buttonStackView.addArrangedSubview($0) }
     }
     
     override func configureConstraints() {
@@ -213,14 +200,9 @@ final class TravelMemoryDetailEditView: BaseView {
             $0.height.equalTo(80)
         }
         
-        buttonStackView.snp.makeConstraints {
+        confirmButton.snp.makeConstraints {
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(20)
             $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
-        }
-        
-        formerButton.snp.makeConstraints {
-            let buttonsWidth = phoneWidth - horizontalInset * 2 - 15
-            $0.width.equalTo(buttonsWidth / 3)
         }
     }
     
