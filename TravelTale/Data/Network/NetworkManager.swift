@@ -23,7 +23,7 @@ final class NetworkManager {
     private init() {}
     
     // key
-    private let apiKey = Bundle.main.infoDictionary?["ENCODING_API_KEY"] as! String
+    private let apiKey = Bundle.main.infoDictionary?["API_KEY"] as! String
     
     // base
     private let baseUrl = "http://apis.data.go.kr/B551011/KorService1/"

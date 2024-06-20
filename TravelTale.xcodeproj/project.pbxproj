@@ -265,7 +265,6 @@
 		37C08C812C1EF54A00F5E308 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		37C08C832C1EF55400F5E308 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		37C08C852C1EF56500F5E308 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
-		37CB88062C0D7632002798BE /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
 		37CB88082C0D78C9002798BE /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		37CB880C2C0D796C002798BE /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		37CB880E2C0D7979002798BE /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -370,14 +369,6 @@
 			path = DiscoveryRegionModal;
 			sourceTree = "<group>";
 		};
-		2E6AF32C2C245925008795A9 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				37CB88062C0D7632002798BE /* PlaceDetailView.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		2EC6356D2C1CAD1B006C1ADB /* DiscoveryCategory */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,7 +467,6 @@
 				378CEBFF2C0D576F00DF1C3F /* .gitignore */,
 				378CEBEA2C0D563C00DF1C3F /* TravelTale */,
 				378CEBE92C0D563C00DF1C3F /* Products */,
-				2E6AF32C2C245925008795A9 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -491,23 +481,16 @@
 		378CEBEA2C0D563C00DF1C3F /* TravelTale */ = {
 			isa = PBXGroup;
 			children = (
-				378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */,
-				378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */,
-				378CEC192C0D632000DF1C3F /* Common */,
+				37E5905F2C2461A000999E66 /* Application */,
+				378CEC1A2C0D633700DF1C3F /* Presentation */,
 				374DDDD32C1F2C980040A5F1 /* Entities */,
-				37C08C7C2C1EF4FD00F5E308 /* Models */,
-				378CEC1A2C0D633700DF1C3F /* Views */,
-				378CEBF42C0D563D00DF1C3F /* Assets.xcassets */,
-				2ECECE9F2C24130F003F7748 /* OpenSourceLicense.rtf */,
-				2ECECEA12C241477003F7748 /* TermPrivacyPolicy.rtf */,
-				378CEBF62C0D563D00DF1C3F /* LaunchScreen.storyboard */,
-				378CEBF92C0D563D00DF1C3F /* Info.plist */,
-				37CB88142C0DA86F002798BE /* Config.xcconfig */,
+				37C08C7C2C1EF4FD00F5E308 /* Data */,
+				37E590602C24629A00999E66 /* Resources */,
 			);
 			path = TravelTale;
 			sourceTree = "<group>";
 		};
-		378CEC192C0D632000DF1C3F /* Common */ = {
+		378CEC192C0D632000DF1C3F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				378CEC1B2C0D639500DF1C3F /* Extensions */,
@@ -516,10 +499,10 @@
 				1AD5378C2C10613900A70D5E /* Class */,
 				2E36056C2C1AA70F007DFBC1 /* RegionData.swift */,
 			);
-			path = Common;
+			path = Utils;
 			sourceTree = "<group>";
 		};
-		378CEC1A2C0D633700DF1C3F /* Views */ = {
+		378CEC1A2C0D633700DF1C3F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				4D0E3CE82C12E8CC0089D6C1 /* Common */,
@@ -527,8 +510,9 @@
 				378CEC2B2C0D66E600DF1C3F /* Discoveries */,
 				378CEC2A2C0D660400DF1C3F /* MyPages */,
 				378CEC3B2C0D6ADA00DF1C3F /* TabBar */,
+				378CEC192C0D632000DF1C3F /* Utils */,
 			);
-			path = Views;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		378CEC1B2C0D639500DF1C3F /* Extensions */ = {
@@ -658,10 +642,6 @@
 				37CB88192C0DB677002798BE /* GreenButton.swift */,
 				1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */,
 				1AD537932C12DCC600A70D5E /* LightGreenButton.swift */,
-				4D0E3CF22C18A4E30089D6C1 /* DaySelectPopoverView.swift */,
-				4D0E3CF42C195A9A0089D6C1 /* TimeSelectPopoverView.swift */,
-				4DA5FBFB2C1EFAE400233A68 /* DaySelectPopoverViewController.swift */,
-				4DA5FBFA2C1EFAE400233A68 /* TimeSelectPopoverViewController.swift */,
 				2E52F2F22C1B7BAB00E7D6D5 /* BookMarkButton.swift */,
 				2ECECE8D2C237928003F7748 /* CustomPopUpView.swift */,
 			);
@@ -702,13 +682,13 @@
 			path = OAGothic;
 			sourceTree = "<group>";
 		};
-		37C08C7C2C1EF4FD00F5E308 /* Models */ = {
+		37C08C7C2C1EF4FD00F5E308 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				37C08C7E2C1EF50E00F5E308 /* Network */,
 				37C08C7D2C1EF50900F5E308 /* PersistentStorages */,
 			);
-			path = Models;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		37C08C7D2C1EF50900F5E308 /* PersistentStorages */ = {
@@ -758,9 +738,43 @@
 			path = TravelDetailPlan;
 			sourceTree = "<group>";
 		};
+		37E5905F2C2461A000999E66 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				378CEBEB2C0D563C00DF1C3F /* AppDelegate.swift */,
+				378CEBED2C0D563C00DF1C3F /* SceneDelegate.swift */,
+				37CB88142C0DA86F002798BE /* Config.xcconfig */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		37E590602C24629A00999E66 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				378CEBF42C0D563D00DF1C3F /* Assets.xcassets */,
+				378CEBF62C0D563D00DF1C3F /* LaunchScreen.storyboard */,
+				378CEBF92C0D563D00DF1C3F /* Info.plist */,
+				2ECECE9F2C24130F003F7748 /* OpenSourceLicense.rtf */,
+				2ECECEA12C241477003F7748 /* TermPrivacyPolicy.rtf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		37E590612C24655800999E66 /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+				4D0E3CF22C18A4E30089D6C1 /* DaySelectPopoverView.swift */,
+				4D0E3CF42C195A9A0089D6C1 /* TimeSelectPopoverView.swift */,
+				4DA5FBFB2C1EFAE400233A68 /* DaySelectPopoverViewController.swift */,
+				4DA5FBFA2C1EFAE400233A68 /* TimeSelectPopoverViewController.swift */,
+			);
+			path = Popover;
+			sourceTree = "<group>";
+		};
 		4D0E3CE82C12E8CC0089D6C1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				37E590612C24655800999E66 /* Popover */,
 				2ECECE802C21509D003F7748 /* Place */,
 				F19368232C1AD9F4000AC7B2 /* Location */,
 				4D0E3CF12C1722C60089D6C1 /* AddSchedule */,
@@ -1237,7 +1251,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TravelTale/Info.plist;
+				INFOPLIST_FILE = TravelTale/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1269,7 +1283,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TravelTale/Info.plist;
+				INFOPLIST_FILE = TravelTale/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
