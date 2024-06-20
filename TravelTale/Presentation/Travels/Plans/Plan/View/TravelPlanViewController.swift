@@ -46,8 +46,8 @@ final class TravelPlanViewController: BaseViewController {
         
         // register
         travelPlanView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
-        travelPlanView.tableView.register(TravelSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: TravelSectionHeaderView.identifier)
-        travelPlanView.tableView.register(SpaceFooterView.self, forHeaderFooterViewReuseIdentifier: SpaceFooterView.identifier)
+        travelPlanView.tableView.register(TravelHeaderView.self, forHeaderFooterViewReuseIdentifier: TravelHeaderView.identifier)
+        travelPlanView.tableView.register(TravelFooterView.self, forHeaderFooterViewReuseIdentifier: TravelFooterView.identifier)
     }
     
     override func configureAddTarget() {
@@ -115,7 +115,7 @@ extension TravelPlanViewController: UITableViewDelegate {
     
     // Header, Footer
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TravelSectionHeaderView.identifier) as? TravelSectionHeaderView else { return UIView() }
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TravelHeaderView.identifier) as? TravelHeaderView else { return UIView() }
         
         if section == 0 {
             headerView.bind(title: "다가오는 여행")
@@ -131,7 +131,7 @@ extension TravelPlanViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return SpaceFooterView()
+        return TravelFooterView()
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

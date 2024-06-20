@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,7 +36,7 @@
                                         <attributedString key="attributedText">
                                             <fragment content="장소">
                                                 <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
+                                                    <font key="NSFont" metaFont="system" size="16"/>
                                                     <font key="NSOriginalFont" size="18" name="HelveticaNeue"/>
                                                 </attributes>
                                             </fragment>
@@ -127,18 +127,18 @@
                                         <attributedString key="attributedText">
                                             <fragment content="시작">
                                                 <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
+                                                    <font key="NSFont" metaFont="system" size="16"/>
                                                     <font key="NSOriginalFont" metaFont="system" size="17"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content=" ">
                                                 <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
+                                                    <font key="NSFont" metaFont="system" size="16"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content="시간">
                                                 <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
+                                                    <font key="NSFont" metaFont="system" size="16"/>
                                                     <font key="NSOriginalFont" metaFont="system" size="17"/>
                                                 </attributes>
                                             </fragment>
@@ -146,12 +146,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9p2-mc-mqr">
-                                        <rect key="frame" x="214.66666666666666" y="14.666666666666686" width="114.33333333333334" height="19"/>
+                                        <rect key="frame" x="214" y="14.666666666666686" width="115" height="19"/>
                                         <attributedString key="attributedText">
                                             <fragment content="시간을">
                                                 <attributes>
                                                     <color key="NSColor" red="0.792156862745098" green="0.792156862745098" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
+                                                    <font key="NSFont" metaFont="system" size="16"/>
                                                     <font key="NSOriginalFont" metaFont="system" size="17"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -159,14 +159,14 @@
                                             <fragment content=" ">
                                                 <attributes>
                                                     <color key="NSColor" red="0.792156862745098" green="0.792156862745098" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
+                                                    <font key="NSFont" metaFont="system" size="16"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content="선택하세요">
                                                 <attributes>
                                                     <color key="NSColor" red="0.792156862745098" green="0.792156862745098" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
+                                                    <font key="NSFont" metaFont="system" size="16"/>
                                                     <font key="NSOriginalFont" metaFont="system" size="17"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -216,7 +216,7 @@
                                             <fragment content="메모를 입력해주세요">
                                                 <attributes>
                                                     <color key="NSColor" red="0.792156862745098" green="0.792156862745098" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
+                                                    <font key="NSFont" metaFont="system" size="16"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -278,7 +278,7 @@
                                         <fragment content="완료">
                                             <attributes>
                                                 <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <font key="NSFont" size="20" name="Pretendard-Bold"/>
+                                                <font key="NSFont" metaFont="system" size="20"/>
                                                 <font key="NSOriginalFont" size="18" name="HelveticaNeue"/>
                                             </attributes>
                                         </fragment>
@@ -359,7 +359,7 @@
                                         <attributedString key="attributedText">
                                             <fragment content="장소">
                                                 <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
+                                                    <font key="NSFont" metaFont="system" size="16"/>
                                                     <font key="NSOriginalFont" size="18" name="HelveticaNeue"/>
                                                 </attributes>
                                             </fragment>
@@ -437,18 +437,18 @@
                                         <attributedString key="attributedText">
                                             <fragment content="시작">
                                                 <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
+                                                    <font key="NSFont" metaFont="system" size="16"/>
                                                     <font key="NSOriginalFont" metaFont="system" size="17"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content=" ">
                                                 <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
+                                                    <font key="NSFont" metaFont="system" size="16"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content="시간">
                                                 <attributes>
-                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
+                                                    <font key="NSFont" metaFont="system" size="16"/>
                                                     <font key="NSOriginalFont" metaFont="system" size="17"/>
                                                 </attributes>
                                             </fragment>
@@ -503,7 +503,7 @@
                                             <fragment content="메모를 입력해주세요">
                                                 <attributes>
                                                     <color key="NSColor" red="0.792156862745098" green="0.792156862745098" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="16" name="Pretendard-Regular"/>
+                                                    <font key="NSFont" metaFont="system" size="16"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -556,7 +556,7 @@
                                                     <attributedString key="attributedTitle">
                                                         <fragment content="삭제">
                                                             <attributes>
-                                                                <font key="NSFont" size="18" name="Pretendard-Medium"/>
+                                                                <font key="NSFont" metaFont="system" size="18"/>
                                                                 <font key="NSOriginalFont" size="12" name="Helvetica"/>
                                                             </attributes>
                                                         </fragment>
@@ -566,7 +566,7 @@
                                                     <attributedString key="attributedTitle">
                                                         <fragment content="삭제">
                                                             <attributes>
-                                                                <font key="NSFont" size="18" name="Pretendard-Medium"/>
+                                                                <font key="NSFont" metaFont="system" size="18"/>
                                                                 <font key="NSOriginalFont" size="12" name="Helvetica"/>
                                                             </attributes>
                                                         </fragment>
@@ -593,7 +593,7 @@
                                         <fragment content="수정">
                                             <attributes>
                                                 <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <font key="NSFont" size="20" name="Pretendard-Bold"/>
+                                                <font key="NSFont" metaFont="system" size="20"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>

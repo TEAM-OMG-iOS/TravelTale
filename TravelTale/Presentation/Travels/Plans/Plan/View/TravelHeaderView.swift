@@ -1,5 +1,5 @@
 //
-//  TravelSectionHeaderView.swift
+//  TravelHeaderView.swift
 //  TravelTale
 //
 //  Created by 유림 on 6/8/24.
@@ -8,10 +8,10 @@
 import Then
 import UIKit
 
-final class TravelSectionHeaderView: UITableViewHeaderFooterView {
+final class TravelHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - properties
-    static let identifier = String(String(describing: TravelSectionHeaderView.self))
+    static let identifier = String(String(describing: TravelHeaderView.self))
     
     private let titleLabel = UILabel().then {
         $0.configureLabel(color: .black, font: .pretendard(size: 18, weight: .bold))

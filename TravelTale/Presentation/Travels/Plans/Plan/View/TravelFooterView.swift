@@ -1,5 +1,5 @@
 //
-//  SpaceFooterView.swift
+//  TravelFooterView.swift
 //  TravelTale
 //
 //  Created by 유림 on 6/8/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class SpaceFooterView: UITableViewHeaderFooterView {
+final class TravelFooterView: UITableViewHeaderFooterView {
     
     // MARK: - methods
-    static let identifier = String(describing: SpaceFooterView.self)
+    static let identifier = String(describing: TravelFooterView.self)
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
