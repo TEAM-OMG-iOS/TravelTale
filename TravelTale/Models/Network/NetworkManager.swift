@@ -8,6 +8,14 @@
 import Alamofire
 import Foundation
 
+enum Category: String {
+    case total = ""
+    case tourist = "12"
+    case restaurant = "39"
+    case accommodation = "32"
+    case entertainment = "15"
+}
+
 final class NetworkManager {
     
     // MARK: - properties
@@ -58,11 +66,11 @@ final class NetworkManager {
         }
     }
     
-    func fetchPlaces(sidoCode: String, sigunguCode: String, completion: @escaping ((Result<Places, Error>) -> Void)) {
-        var parameters: Parameters = ["arrange": "D", "areaCode": sidoCode, "sigunguCode": sigunguCode]
+    func fetchPlaces(sidoCode: String, sigunguCode: String, type: Category, page: Int, completion: @escaping ((Result<Places, Error>) -> Void)) {
+        var parameters: Parameters = ["arrange": "D", "areaCode": sidoCode, "sigunguCode": sigunguCode, "contentTypeId": type.rawValue, "pageNo": page]
         parameters.merge(commonParameters) { (current, _) in current }
         
-        AF.request(baseUrl + areaBasedPath + "?serviceKey=\(apiKey)", parameters: parameters).responseDecodable(of: PlaceResponseDTO.self) { response in
+        AF.request(baseUrl + areaBasedPath + "?serviceKey=\(apiKey)", parameters: parameters, encoding: URLEncoding.queryString).responseDecodable(of: PlaceResponseDTO.self) { response in
             switch response.result {
             case .success(let data):
                 completion(.success(data.response.body.items.toDomain()))
@@ -86,11 +94,11 @@ final class NetworkManager {
         }
     }
     
-    func fetchSearchedPlaces(sidoCode: String, sigunguCode: String, keyword: String, completion: @escaping ((Result<PlaceSearchs, Error>) -> Void)) {
-        var parameters: Parameters = ["arrange": "D", "keyword": keyword, "areaCode": sidoCode, "sigunguCode": sigunguCode]
+    func fetchSearchedPlaces(sidoCode: String, sigunguCode: String, keyword: String, type: Category, page: Int, completion: @escaping ((Result<PlaceSearchs, Error>) -> Void)) {
+        var parameters: Parameters = ["arrange": "D", "keyword": keyword, "areaCode": sidoCode, "sigunguCode": sigunguCode, "contentTypeId": type.rawValue, "pageNo": page]
         parameters.merge(commonParameters) { (current, _) in current }
         
-        AF.request(baseUrl + searchPath + "?serviceKey=\(apiKey)", parameters: parameters).responseDecodable(of: PlaceSearchResponseDTO.self) { response in
+        AF.request(baseUrl + searchPath + "?serviceKey=\(apiKey)", parameters: parameters, encoding: URLEncoding.queryString).responseDecodable(of: PlaceSearchResponseDTO.self) { response in
             switch response.result {
             case .success(let data):
                 completion(.success(data.response.body.items.toDomain()))
