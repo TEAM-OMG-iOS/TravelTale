@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 import HorizonCalendar
 
 final class TravelUpdateCalendarView: BaseView, CalendarBaseView {

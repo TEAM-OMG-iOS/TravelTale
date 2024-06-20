@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 import XLPagerTabStrip
 
 final class BookMarkTotalViewController: BaseViewController {
