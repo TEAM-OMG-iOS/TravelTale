@@ -77,10 +77,12 @@ final class RealmManager {
         }
     }
     
-    func createMemory(travel: Travel, memory: String, photos: [Data]? = nil) {
+    func createMemory(travel: Travel, memory: String? = nil, photos: [Data]? = nil) {
         do {
             try realm.write {
-                travel.memory = memory
+                if let memory {
+                    travel.memory = memory
+                }
                 
                 if let photos {
                     travel.photos.append(objectsIn: photos)
@@ -257,14 +259,20 @@ final class RealmManager {
                         bookmark.address = addr1
                     }
                 }
+                
+                realm.add(bookmark)
             }
         } catch {
             print("createBookmark 실패")
         }
     }
     
-    func fetchBookmarks() -> [Bookmark] {
-        return Array(realm.objects(Bookmark.self))
+    func fetchBookmarks(contentTypeId: Category) -> [Bookmark] {
+        if contentTypeId == .total {
+            return Array(realm.objects(Bookmark.self))
+        } else {
+            return Array(realm.objects(Bookmark.self)).filter { $0.contentTypeId == contentTypeId.rawValue }
+        }
     }
     
     func deleteBookmark(placeDetail: PlaceDetail) {
