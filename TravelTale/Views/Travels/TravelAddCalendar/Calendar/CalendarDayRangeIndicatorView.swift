@@ -53,7 +53,7 @@ final class CalendarDayRangeIndicatorView: BaseView {
     }
 }
 
-// MARK: - extension
+// MARK: - extensions
 extension CalendarDayRangeIndicatorView: CalendarItemViewRepresentable {
     struct InvariantViewProperties: Hashable {
         let indicatorColor = UIColor.green10

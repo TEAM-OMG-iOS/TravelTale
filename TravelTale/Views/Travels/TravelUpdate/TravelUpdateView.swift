@@ -216,7 +216,7 @@ final class TravelUpdateView: BaseView {
     }
 }
 
-// MARK: - extention UIButton
+// MARK: - extentions
 extension UIButton {
     func buttonConfiguration() {
         var configuration = UIButton.Configuration.plain()

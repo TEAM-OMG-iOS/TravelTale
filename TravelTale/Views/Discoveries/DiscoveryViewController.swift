@@ -88,7 +88,7 @@ final class DiscoveryViewController: BaseViewController {
     }
 }
 
-// MARK: - extension
+// MARK: - extensions
 extension DiscoveryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
