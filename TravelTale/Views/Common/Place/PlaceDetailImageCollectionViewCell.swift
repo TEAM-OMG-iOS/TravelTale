@@ -10,7 +10,7 @@ import UIKit
 final class PlaceDetailImageCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - properties
-    let identifier = String(describing: PlaceDetailImageCollectionViewCell.self)
+    static let identifier = String(describing: PlaceDetailImageCollectionViewCell.self)
     
     private let detailImage = UIImageView().then {
         $0.contentMode = .scaleAspectFit
