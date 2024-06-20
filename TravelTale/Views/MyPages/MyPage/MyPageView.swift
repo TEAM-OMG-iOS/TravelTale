@@ -144,7 +144,7 @@ final class MyPageView: BaseView {
         }
         
         tableView.snp.makeConstraints {
-            $0.top.equalTo(bookMarkBackgroundView.snp.bottom)
+            $0.top.equalTo(bookMarkBackgroundView.snp.bottom).offset(20)
             $0.horizontalEdges.bottom.equalToSuperview()
             $0.height.equalTo(tableView.sectionHeaderHeight * 2 + tableView.sectionFooterHeight * 2 + tableView.rowHeight * 4)
         }
