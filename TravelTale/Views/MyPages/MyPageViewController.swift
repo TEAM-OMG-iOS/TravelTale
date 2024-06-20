@@ -13,6 +13,9 @@ final class MyPageViewController: BaseViewController {
     private let myPageView = MyPageView()
 
     private let serviceArray = ["개인정보 처리방침", "오픈소스 라이선스"]
+    private let noticeArray = ["버전","문의하기"]
+    
+    static var version = "1.0.0"
     
     // MARK: - life cycles
     override func loadView() {
@@ -71,8 +74,49 @@ final class MyPageViewController: BaseViewController {
 
 // MARK: - extensions
 extension MyPageViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return serviceArray.count
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView().then {
+            $0.backgroundColor = .white
+        }
+        
+        return footerView
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView().then {
+            $0.backgroundColor = .white
+        }
+        
+        let headerLabel = UILabel().then {
+            $0.configureLabel(font: .pretendard(size: 18, weight: .bold))
+        }
+        
+        headerView.addSubview(headerLabel)
+        
+        headerLabel.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(24)
+            $0.bottom.equalToSuperview().inset(12)
+        }
+        
+        switch section {
+        case 0:
+            headerLabel.text = "서비스 약관"
+        case 1:
+            headerLabel.text = "공지사항"
+        default:
+            headerLabel.text = ""
+        }
+        
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,9 +124,20 @@ extension MyPageViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.bind(text: serviceArray[indexPath.row])
-        
-        return cell
+        switch indexPath.section {
+        case 0:
+            cell.bind(text: serviceArray[indexPath.row])
+            return cell
+        case 1:
+            if indexPath.row == 0 {
+                cell.bind(text: noticeArray[indexPath.row], version: MyPageViewController.version)
+            }else {
+                cell.bind(text: noticeArray[indexPath.row])
+            }
+            return cell
+        default:
+            fatalError("세션 오류")
+        }
     }
 }
 

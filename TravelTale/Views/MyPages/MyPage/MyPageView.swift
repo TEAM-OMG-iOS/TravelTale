@@ -10,6 +10,14 @@ import UIKit
 final class MyPageView: BaseView {
     
     // MARK: - properties
+    private let scrollView = UIScrollView().then {
+        $0.backgroundColor = .white
+        $0.alwaysBounceVertical = false
+        $0.isDirectionalLockEnabled = true
+    }
+    
+    private let contentView = UIView()
+    
     private let myPageLabel = UILabel().then {
         $0.configureLabel(font: .oaGothic(size: 20, weight: .heavy), text: "마이페이지")
     }
@@ -64,37 +72,55 @@ final class MyPageView: BaseView {
         $0.bookMarkImage = .entertainmentCircle
     }
     
-    private let serviceLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 18, weight: .bold), text: "서비스 약관")
+    let tableView = UITableView(frame: .zero, style: .grouped).then {
+        $0.isScrollEnabled = false
+        $0.sectionHeaderHeight = 56
+        $0.sectionFooterHeight = 24
+        $0.rowHeight = 48
     }
-    
-    let tableView = UITableView()
     
     // MARK: - methods
     override func configureHierarchy() {
         containverView.addSubview(myPageLabel)
-        addSubview(bookMarkBackgroundView)
+        
+        addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
+        contentView.addSubview(containverView)
+        contentView.addSubview(bookMarkBackgroundView)
+        
         bookMarkBackgroundView.addSubview(bookMarkLabel)
         bookMarkBackgroundView.addSubview(totalButton)
         bookMarkBackgroundView.addSubview(buttonTopStackView)
         bookMarkBackgroundView.addSubview(buttonBottomStackView)
+        
         buttonTopStackView.addArrangedSubview(toristSpotBookMarkButton)
         buttonTopStackView.addArrangedSubview(restaurantBookMarkButton)
+        
         buttonBottomStackView.addArrangedSubview(accommodationBookMarkButton)
         buttonBottomStackView.addArrangedSubview(entertainmentBookMarkButton)
-        addSubview(serviceLabel)
-        addSubview(tableView)
+        
+        contentView.addSubview(tableView)
     }
     
     override func configureConstraints() {
+        scrollView.snp.makeConstraints {
+            $0.edges.equalTo(safeAreaLayoutGuide)
+        }
+        
+        contentView.snp.makeConstraints {
+            $0.edges.equalTo(scrollView)
+            $0.width.equalTo(scrollView)
+        }
+    
         myPageLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(8)
             $0.verticalEdges.equalToSuperview().inset(12)
         }
         
         bookMarkBackgroundView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(12)
-            $0.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            $0.top.equalToSuperview().offset(12)
+            $0.horizontalEdges.equalToSuperview()
         }
         
         bookMarkLabel.snp.makeConstraints {
@@ -117,14 +143,10 @@ final class MyPageView: BaseView {
             $0.bottom.equalToSuperview().inset(24)
         }
         
-        serviceLabel.snp.makeConstraints {
-            $0.top.equalTo(bookMarkBackgroundView.snp.bottom).offset(24)
-            $0.horizontalEdges.equalToSuperview().inset(24)
-        }
-        
         tableView.snp.makeConstraints {
-            $0.top.equalTo(serviceLabel.snp.bottom).offset(12)
-            $0.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(bookMarkBackgroundView.snp.bottom)
+            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.height.equalTo(tableView.sectionHeaderHeight * 2 + tableView.sectionFooterHeight * 2 + tableView.rowHeight * 4)
         }
     }
 }

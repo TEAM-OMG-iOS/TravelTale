@@ -16,6 +16,11 @@ final class MyPageServiceTableViewCell: BaseTableViewCell {
         $0.configureLabel(font: .pretendard(size: 15, weight: .bold), numberOfLines: 0)
     }
     
+    private let versionLabel = UILabel().then {
+        $0.configureLabel(color: .gray90, font: .pretendard(size: 15, weight: .bold), numberOfLines: 0)
+        $0.isHidden = true
+    }
+    
     private let chevronImage = UIImageView().then {
         $0.image = UIImage(systemName: "chevron.right")
         $0.tintColor = .gray90
@@ -24,6 +29,7 @@ final class MyPageServiceTableViewCell: BaseTableViewCell {
     // MARK: - methods
     override func configureHierarchy() {
         addSubview(label)
+        addSubview(versionLabel)
         addSubview(chevronImage)
     }
     
@@ -34,6 +40,11 @@ final class MyPageServiceTableViewCell: BaseTableViewCell {
             $0.trailing.equalTo(chevronImage.snp.leading).inset(12)
         }
         
+        versionLabel.snp.makeConstraints {
+            $0.trailing.equalTo(chevronImage.snp.leading).offset(-16)
+            $0.centerY.equalToSuperview()
+        }
+        
         chevronImage.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(36)
             $0.height.equalTo(16)
@@ -41,8 +52,10 @@ final class MyPageServiceTableViewCell: BaseTableViewCell {
             $0.centerY.equalToSuperview()
         }
     }
-
-    func bind(text: String) {
+    
+    func bind(text: String, version: String = "") {
         label.text = text
+        versionLabel.text = version
+        versionLabel.isHidden = (version == "") ? true : false
     }
 }
