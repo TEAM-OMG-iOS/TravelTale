@@ -35,10 +35,10 @@ final class DiscoveryRegionModalViewController: BaseViewController {
     
     func bind(isCity: Bool, city: String = "서울특별시") {
         if isCity {
-            regionData = RegionData().getCityData()
+            // To do - 시/도 선택 바인딩
             locationView.bind(text: "시/도 선택")
         } else {
-            regionData = RegionData().getRegionData(cityString: city)
+            // To do - 시/군/구 선택 바인딩
             locationView.bind(text: "시/군/구 선택")
         }
     }
