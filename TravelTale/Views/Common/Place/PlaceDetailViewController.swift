@@ -133,7 +133,7 @@ extension PlaceDetailViewController: UICollectionViewDelegate {
 extension PlaceDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // TODO: - 장소 사진 바인딩
-        return 2
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -141,7 +141,6 @@ extension PlaceDetailViewController: UICollectionViewDataSource {
                                                       for: indexPath) as! PlaceDetailImageCollectionViewCell
         
         // TODO: - 장소 사진 바인딩
-        cell.bind(image: .myTravel)
         
         return cell
     }

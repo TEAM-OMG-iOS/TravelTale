@@ -159,8 +159,8 @@
 		2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 		2ECECE852C219C4E003F7748 /* PlaceDetailImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		2ECECE8D2C237928003F7748 /* CustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpView.swift; sourceTree = "<group>"; };
-		2ECECE932C238100003F7748 /* PhoneOptionsAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneOptionsAlertView.swift; sourceTree = "<group>"; };
 		2ECECE962C238507003F7748 /* PhoneOptionsAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneOptionsAlertViewController.swift; sourceTree = "<group>"; };
+		2ECECE932C238100003F7748 /* PhoneOptionsAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneOptionsAlertView.swift; sourceTree = "<group>"; };
 		2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionView.swift; sourceTree = "<group>"; };
 		2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionViewController.swift; sourceTree = "<group>"; };
 		2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
