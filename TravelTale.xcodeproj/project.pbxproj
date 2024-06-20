@@ -38,7 +38,7 @@
 		2ECECE942C238100003F7748 /* PhoneOptionsAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE932C238100003F7748 /* PhoneOptionsAlertView.swift */; };
 		2ECECE972C238507003F7748 /* PhoneOptionsAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE962C238507003F7748 /* PhoneOptionsAlertViewController.swift */; };
 		2ECECE9A2C2405C1003F7748 /* TermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE992C2405C0003F7748 /* TermView.swift */; };
-		2ECECE9C2C2409E2003F7748 /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE9B2C2409E2003F7748 /* TermViewController.swift */; };
+		2ECECE9C2C2409E2003F7748 /* TermPrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE9B2C2409E2003F7748 /* TermPrivacyPolicyViewController.swift */; };
 		2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */; };
 		2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */; };
 		2EF0E3AD2C1F1E7700654025 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */; };
@@ -164,7 +164,7 @@
 		2ECECE932C238100003F7748 /* PhoneOptionsAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneOptionsAlertView.swift; sourceTree = "<group>"; };
 		2ECECE962C238507003F7748 /* PhoneOptionsAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneOptionsAlertViewController.swift; sourceTree = "<group>"; };
 		2ECECE992C2405C0003F7748 /* TermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermView.swift; sourceTree = "<group>"; };
-		2ECECE9B2C2409E2003F7748 /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
+		2ECECE9B2C2409E2003F7748 /* TermPrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermPrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		2EED24842C17F63E00F3673A /* DiscoveryRegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionView.swift; sourceTree = "<group>"; };
 		2EED24862C1801DA00F3673A /* DiscoveryRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionViewController.swift; sourceTree = "<group>"; };
 		2EF0E3AC2C1F1E7700654025 /* BookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
@@ -333,7 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				2ECECE992C2405C0003F7748 /* TermView.swift */,
-				2ECECE9B2C2409E2003F7748 /* TermViewController.swift */,
+				2ECECE9B2C2409E2003F7748 /* TermPrivacyPolicyViewController.swift */,
 			);
 			path = Terms;
 			sourceTree = "<group>";
@@ -882,7 +882,7 @@
 				4D0E3CDB2C10391A0089D6C1 /* MemoAddViewController.swift in Sources */,
 				2ECECE972C238507003F7748 /* PhoneOptionsAlertViewController.swift in Sources */,
 				1A713BE02C22B9A20045DECD /* String+Extension.swift in Sources */,
-				2ECECE9C2C2409E2003F7748 /* TermViewController.swift in Sources */,
+				2ECECE9C2C2409E2003F7748 /* TermPrivacyPolicyViewController.swift in Sources */,
 				4D0E3CE52C11EA930089D6C1 /* ScheduleCreateView.swift in Sources */,
 				37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */,
 				2EC635752C1CD0FF006C1ADB /* DiscoveryCategoryViewController.swift in Sources */,

@@ -142,5 +142,26 @@ extension MyPageViewController: UITableViewDataSource {
 }
 
 extension MyPageViewController: UITableViewDelegate {
-    // MARK: - 테이블 뷰 셀 선택시 페이지 이동 추후 구현
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            if indexPath.row == 0 {
+                let termPrivateVC = TermPrivacyPolicyViewController()
+                navigationController?.pushViewController(termPrivateVC, animated: true)
+            }else {
+                let termPrivateVC = TermPrivacyPolicyViewController()
+                navigationController?.pushViewController(termPrivateVC, animated: true)
+            }
+        case 1:
+            if indexPath.row == 0 {
+                let termPrivateVC = TermPrivacyPolicyViewController()
+                navigationController?.pushViewController(termPrivateVC, animated: true)
+            }else {
+                let termPrivateVC = TermPrivacyPolicyViewController()
+                navigationController?.pushViewController(termPrivateVC, animated: true)
+            }
+        default:
+            fatalError("세션 오류")
+        }
+    }
 }

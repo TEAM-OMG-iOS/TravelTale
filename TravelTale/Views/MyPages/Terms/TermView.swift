@@ -10,7 +10,13 @@ import UIKit
 final class TermView: BaseView {
     
     // MARK: - properties
-    private let textLabel = UITextView().then {
+    let backButton = UIBarButtonItem().then {
+        $0.style = .done
+        $0.image = UIImage(systemName: "chevron.left")
+        $0.tintColor = .gray90
+    }
+    
+    private let textView = UITextView().then {
         $0.font = .pretendard(size: 14, weight: .medium)
         $0.isEditable = false
         $0.textColor = .black
@@ -18,12 +24,16 @@ final class TermView: BaseView {
     
     // MARK: - methods
     override func configureHierarchy() {
-        addSubview(textLabel)
+        addSubview(textView)
     }
     
     override func configureConstraints() {
-        textLabel.snp.makeConstraints {
+        textView.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(24)
         }
+    }
+    
+    func setText(text: String) {
+        textView.text = text
     }
 }
