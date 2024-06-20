@@ -103,6 +103,7 @@ extension TravelMemoryAddViewController: UITableViewDataSource {
         let travel = noMemoryTravels[indexPath.row]
         
 //        cell.bind(travel: travel)
+        cell.hideThumbnail()
         cell.selectionStyle = .none
         
         return cell
