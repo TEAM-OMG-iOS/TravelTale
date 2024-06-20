@@ -5,15 +5,16 @@
 //  Created by 김정호 on 6/3/24.
 //
 
+import MessageUI
 import UIKit
 
 final class MyPageViewController: BaseViewController {
     
     // MARK: - properties
     private let myPageView = MyPageView()
-
+    
     private let serviceArray = ["개인정보 처리방침", "오픈소스 라이선스"]
-    private let noticeArray = ["버전","문의하기"]
+    private let noticeArray = ["버전", "문의하기"]
     
     static var version = "1.0.0"
     
@@ -70,6 +71,42 @@ final class MyPageViewController: BaseViewController {
         
         self.navigationController?.pushViewController(bookMarkVC, animated: true)
     }
+    
+    func tappedInquiryCell() {
+        if MFMailComposeViewController.canSendMail() {
+            let composeVC = MFMailComposeViewController()
+            composeVC.mailComposeDelegate = self
+            
+            let bodyString = """
+                                이곳에 내용을 작성해 주세요.
+                                
+                                
+                                ================================
+                                Device OS : \(UIDevice.current.systemVersion)
+                                ================================
+                                """
+            
+            composeVC.setToRecipients(["qowlgo00@gmail.com"])
+            composeVC.setSubject("문의 사항")
+            composeVC.setMessageBody(bodyString, isHTML: false)
+            
+            self.present(composeVC, animated: true)
+        } else {
+            let alertController = UIAlertController(title: "메일 계정 활성화 필요",
+                                                    message: "Mail 앱에서 사용자의 Email을 계정을 설정해 주세요.",
+                                                    preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "확인", style: .default) { _ in
+                guard let mailSettingsURL = URL(string: UIApplication.openSettingsURLString + "&&path=MAIL") else { return }
+                
+                if UIApplication.shared.canOpenURL(mailSettingsURL) {
+                    UIApplication.shared.open(mailSettingsURL, options: [:], completionHandler: nil)
+                }
+            }
+            alertController.addAction(alertAction)
+            
+            self.present(alertController, animated: true)
+        }
+    }
 }
 
 // MARK: - extensions
@@ -124,6 +161,8 @@ extension MyPageViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.selectionStyle = .none
+        
         switch indexPath.section {
         case 0:
             cell.bind(text: serviceArray[indexPath.row])
@@ -131,7 +170,7 @@ extension MyPageViewController: UITableViewDataSource {
         case 1:
             if indexPath.row == 0 {
                 cell.bind(text: noticeArray[indexPath.row], version: MyPageViewController.version)
-            }else {
+            } else {
                 cell.bind(text: noticeArray[indexPath.row])
             }
             return cell
@@ -148,20 +187,36 @@ extension MyPageViewController: UITableViewDelegate {
             if indexPath.row == 0 {
                 let termPrivateVC = TermPrivacyPolicyViewController()
                 navigationController?.pushViewController(termPrivateVC, animated: true)
-            }else {
+            } else {
                 let termOpenSourceVC = TermOpenSourceViewController()
                 navigationController?.pushViewController(termOpenSourceVC, animated: true)
             }
         case 1:
-            if indexPath.row == 0 {
-                let termPrivateVC = TermPrivacyPolicyViewController()
-                navigationController?.pushViewController(termPrivateVC, animated: true)
-            }else {
-                let termPrivateVC = TermPrivacyPolicyViewController()
-                navigationController?.pushViewController(termPrivateVC, animated: true)
+            if indexPath.row != 0 {
+                tappedInquiryCell()
             }
         default:
             fatalError("세션 오류")
         }
+    }
+}
+
+extension MyPageViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, 
+                               didFinishWith result: MFMailComposeResult,
+                               error: Error?) {
+        switch result {
+        case .sent:
+            print("메일 보내기 성공")
+        case .cancelled:
+            print("메일 보내기 취소")
+        case .saved:
+            print("메일 임시 저장")
+        case .failed:
+            print("메일 발송 실패")
+        @unknown default: break
+        }
+        
+        self.dismiss(animated: true)
     }
 }

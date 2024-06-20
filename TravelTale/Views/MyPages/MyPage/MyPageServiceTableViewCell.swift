@@ -53,9 +53,16 @@ final class MyPageServiceTableViewCell: BaseTableViewCell {
         }
     }
     
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        self.backgroundColor = highlighted ? .green10 : .white
+    }
+    
     func bind(text: String, version: String = "") {
         label.text = text
         versionLabel.text = version
-        versionLabel.isHidden = (version == "") ? true : false
+        versionLabel.isHidden = (version == "")
+        chevronImage.isHidden = (version != "")
     }
 }
