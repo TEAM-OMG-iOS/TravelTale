@@ -11,6 +11,7 @@ struct SidoResponseDTO: Decodable {
     let response: SidoContentDTO
 }
 
+// MARK: - extensions
 extension SidoResponseDTO {
     struct SidoContentDTO: Decodable {
         let header: SidoHeaderDTO

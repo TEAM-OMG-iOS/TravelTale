@@ -11,6 +11,7 @@ struct PlaceDetailResponseDTO: Decodable {
     let response: PlaceDetailContentDTO
 }
 
+// MARK: - extensions
 extension PlaceDetailResponseDTO {
     struct PlaceDetailContentDTO: Decodable {
         let header: PlaceDetailHeaderDTO

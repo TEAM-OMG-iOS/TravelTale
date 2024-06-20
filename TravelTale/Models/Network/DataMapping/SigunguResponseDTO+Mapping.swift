@@ -11,6 +11,7 @@ struct SigunguResponseDTO: Decodable {
     let response: SigunguContentDTO
 }
 
+// MARK: - extensions
 extension SigunguResponseDTO {
     struct SigunguContentDTO: Decodable {
         let header: SigunguHeaderDTO

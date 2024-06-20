@@ -80,6 +80,7 @@ final class TravelDetailViewController: BaseViewController {
     }
 }
 
+// MARK: - extensions
 extension TravelDetailViewController: FloatingPanelControllerDelegate {
     func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
         travelDetailPlanViewController.panelState = fpc.state
