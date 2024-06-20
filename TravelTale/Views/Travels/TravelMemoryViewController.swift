@@ -17,7 +17,6 @@ final class TravelMemoryViewController: BaseViewController {
         }
     }
     
-    
     // MARK: - life cycles
     override func loadView() {
         view = travelMemoryView
@@ -27,7 +26,6 @@ final class TravelMemoryViewController: BaseViewController {
         super.viewDidLoad()
 //        addTemporaryData()
     }
-    
     
     // MARK: - methods
     // TODO: travels 데이터 추가 함수
@@ -46,15 +44,13 @@ final class TravelMemoryViewController: BaseViewController {
         travelMemoryView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
     }
     
-    
-    // MARK: - objc method
     @objc func tappedAddButton() {
         let travelMemoryAddVC = TravelMemoryAddViewController()
         self.navigationController?.pushViewController(travelMemoryAddVC, animated: true)
     }
 }
 
-// MARK: - Extensions
+// MARK: - extensions
 extension TravelMemoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return travels.count

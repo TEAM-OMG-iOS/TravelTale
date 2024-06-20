@@ -68,13 +68,11 @@ final class TravelPlanViewController: BaseViewController {
         }
     }
     
-    // MARK: - objc method
     @objc func tappedAddButton() {
         let TravelAddTitleVC = TravelAddTitleViewController()
         self.navigationController?.pushViewController(TravelAddTitleVC, animated: true)
     }
 }
-
 
 // MARK: - Extensions
 extension TravelPlanViewController: UITableViewDataSource {
