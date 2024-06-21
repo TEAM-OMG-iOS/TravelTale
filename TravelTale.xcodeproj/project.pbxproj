@@ -139,13 +139,13 @@
 		4D0E3CD72C0F36280089D6C1 /* TravelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */; };
 		4D0E3CDB2C10391A0089D6C1 /* MemoAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */; };
 		4D0E3CDF2C103D430089D6C1 /* MemoAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDE2C103D430089D6C1 /* MemoAddView.swift */; };
-		4D0E3CE12C10763C0089D6C1 /* PlaceAddEditView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */; };
-		4D0E3CE32C1076570089D6C1 /* PlaceAdditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE22C1076570089D6C1 /* PlaceAdditionViewController.swift */; };
+		4D0E3CE12C10763C0089D6C1 /* PlanScheduleAddEditPlaceView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE02C10763C0089D6C1 /* PlanScheduleAddEditPlaceView.storyboard */; };
+		4D0E3CE32C1076570089D6C1 /* PlanScheduleAddPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE22C1076570089D6C1 /* PlanScheduleAddPlaceViewController.swift */; };
 		4D0E3CE52C11EA930089D6C1 /* ScheduleCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */; };
 		4D0E3CE72C1206480089D6C1 /* ScheduleCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */; };
 		4D0E3CF32C18A4E30089D6C1 /* DaySelectPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CF22C18A4E30089D6C1 /* DaySelectPopoverView.swift */; };
 		4D0E3CF52C195A9A0089D6C1 /* TimeSelectPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CF42C195A9A0089D6C1 /* TimeSelectPopoverView.swift */; };
-		4D27194C2C1A0295004DDC38 /* PlaceEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D27194B2C1A0295004DDC38 /* PlaceEditionViewController.swift */; };
+		4D27194C2C1A0295004DDC38 /* PlanScheduleEditPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D27194B2C1A0295004DDC38 /* PlanScheduleEditPlaceViewController.swift */; };
 		4D6694532C1AD9F00095CC42 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4D6694522C1AD9F00095CC42 /* IQKeyboardManagerSwift */; };
 		4DA5FBFC2C1EFAE400233A68 /* TimeSelectPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5FBFA2C1EFAE400233A68 /* TimeSelectPopoverViewController.swift */; };
 		4DA5FBFD2C1EFAE400233A68 /* DaySelectPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5FBFB2C1EFAE400233A68 /* DaySelectPopoverViewController.swift */; };
@@ -297,13 +297,13 @@
 		4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSelectViewController.swift; sourceTree = "<group>"; };
 		4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAddViewController.swift; sourceTree = "<group>"; };
 		4D0E3CDE2C103D430089D6C1 /* MemoAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAddView.swift; sourceTree = "<group>"; };
-		4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlaceAddEditView.storyboard; sourceTree = "<group>"; };
-		4D0E3CE22C1076570089D6C1 /* PlaceAdditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAdditionViewController.swift; sourceTree = "<group>"; };
+		4D0E3CE02C10763C0089D6C1 /* PlanScheduleAddEditPlaceView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlanScheduleAddEditPlaceView.storyboard; sourceTree = "<group>"; };
+		4D0E3CE22C1076570089D6C1 /* PlanScheduleAddPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanScheduleAddPlaceViewController.swift; sourceTree = "<group>"; };
 		4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCreateView.swift; sourceTree = "<group>"; };
 		4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCreateViewController.swift; sourceTree = "<group>"; };
 		4D0E3CF22C18A4E30089D6C1 /* DaySelectPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySelectPopoverView.swift; sourceTree = "<group>"; };
 		4D0E3CF42C195A9A0089D6C1 /* TimeSelectPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectPopoverView.swift; sourceTree = "<group>"; };
-		4D27194B2C1A0295004DDC38 /* PlaceEditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceEditionViewController.swift; sourceTree = "<group>"; };
+		4D27194B2C1A0295004DDC38 /* PlanScheduleEditPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanScheduleEditPlaceViewController.swift; sourceTree = "<group>"; };
 		4DA5FBFA2C1EFAE400233A68 /* TimeSelectPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSelectPopoverViewController.swift; sourceTree = "<group>"; };
 		4DA5FBFB2C1EFAE400233A68 /* DaySelectPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaySelectPopoverViewController.swift; sourceTree = "<group>"; };
 		F19368192C194D50000AC7B2 /* TravelUpdateCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelUpdateCalendarView.swift; sourceTree = "<group>"; };
@@ -1252,9 +1252,9 @@
 		37E5907C2C24714200999E66 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */,
-				4D0E3CE22C1076570089D6C1 /* PlaceAdditionViewController.swift */,
-				4D27194B2C1A0295004DDC38 /* PlaceEditionViewController.swift */,
+				4D0E3CE02C10763C0089D6C1 /* PlanScheduleAddEditPlaceView.storyboard */,
+				4D0E3CE22C1076570089D6C1 /* PlanScheduleAddPlaceViewController.swift */,
+				4D27194B2C1A0295004DDC38 /* PlanScheduleEditPlaceViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1559,7 +1559,7 @@
 				378CEBF82C0D563D00DF1C3F /* Base in Resources */,
 				378CEC4D2C0D721200DF1C3F /* Pretendard-Black.otf in Resources */,
 				2ECECEA02C24130F003F7748 /* OpenSourceLicense.rtf in Resources */,
-				4D0E3CE12C10763C0089D6C1 /* PlaceAddEditView.storyboard in Resources */,
+				4D0E3CE12C10763C0089D6C1 /* PlanScheduleAddEditPlaceView.storyboard in Resources */,
 				378CEC4F2C0D721200DF1C3F /* Pretendard-Light.otf in Resources */,
 				378CEC512C0D721200DF1C3F /* Pretendard-Medium.otf in Resources */,
 				378CEC5A2C0D732600DF1C3F /* OAGothic-Medium.otf in Resources */,
@@ -1580,7 +1580,7 @@
 				2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */,
 				1AA861752C1ACDE5007F69E7 /* TravelMemoryDetailView.swift in Sources */,
 				371387AE2C249833002C6284 /* SearchResultTabTouristViewController.swift in Sources */,
-				4D27194C2C1A0295004DDC38 /* PlaceEditionViewController.swift in Sources */,
+				4D27194C2C1A0295004DDC38 /* PlanScheduleEditPlaceViewController.swift in Sources */,
 				1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */,
 				378CEC3D2C0D6B0B00DF1C3F /* TabBarViewController.swift in Sources */,
 				1A95EB5B2C168E78007D575A /* TravelMemoryAddView.swift in Sources */,
@@ -1595,7 +1595,7 @@
 				378CEC262C0D64FB00DF1C3F /* BaseTableViewCell.swift in Sources */,
 				378CEC282C0D651E00DF1C3F /* BaseCollectionViewCell.swift in Sources */,
 				371387B22C249883002C6284 /* SearchResultTabAccommodationViewController.swift in Sources */,
-				4D0E3CE32C1076570089D6C1 /* PlaceAdditionViewController.swift in Sources */,
+				4D0E3CE32C1076570089D6C1 /* PlanScheduleAddPlaceViewController.swift in Sources */,
 				2E0671BC2C1DEC14001CDB2E /* CategoryTableViewCell.swift in Sources */,
 				2EC6357D2C1CED6D006C1ADB /* RestaurantViewController.swift in Sources */,
 				378CEC382C0D690800DF1C3F /* DiscoveryViewController.swift in Sources */,

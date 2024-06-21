@@ -1,5 +1,5 @@
 //
-//  PlaceEditionViewController.swift
+//  PlanScheduleEditPlaceViewController.swift
 //  TravelTale
 //
 //  Created by Kinam on 6/13/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PlaceEditionViewController: BaseViewController {
+final class PlanScheduleEditPlaceViewController: BaseViewController {
     
     // MARK: - properties
     @IBOutlet weak var placeContents: UILabel!
@@ -114,7 +114,7 @@ final class PlaceEditionViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension PlaceEditionViewController: UIPopoverPresentationControllerDelegate {
+extension PlanScheduleEditPlaceViewController: UIPopoverPresentationControllerDelegate {
     @IBAction func tappedScheduleBtn(_ sender: UIButton) {
         configurePopover(for: dayPopoverVC, sourceButton: scheduleBtn)
         dayPopoverVC.popoverPresentationController?.delegate = self
@@ -128,7 +128,7 @@ extension PlaceEditionViewController: UIPopoverPresentationControllerDelegate {
     }
 }
 
-extension PlaceEditionViewController: UITextViewDelegate {
+extension PlanScheduleEditPlaceViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == "메모를 입력해주세요" {
             textView.text = nil

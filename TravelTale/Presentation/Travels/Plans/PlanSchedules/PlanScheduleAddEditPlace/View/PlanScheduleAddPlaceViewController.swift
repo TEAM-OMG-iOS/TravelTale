@@ -1,5 +1,5 @@
 //
-//  PlaceAdditionViewController.swift
+//  PlanScheduleAddPlaceViewController.swift
 //  TravelTale
 //
 //  Created by Kinam on 6/5/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PlaceAdditionViewController: BaseViewController {
+final class PlanScheduleAddPlaceViewController: BaseViewController {
     
     // MARK: - properties
     @IBOutlet weak var placeContents: UILabel!
@@ -26,6 +26,10 @@ final class PlaceAdditionViewController: BaseViewController {
     var selectedDays: String?
     
     var selectedTime: Date?
+    
+    var travel: Travel? = nil
+    
+    var day: String?
     
     // MARK: - life cycles
     override func viewDidLoad() {
@@ -138,7 +142,7 @@ final class PlaceAdditionViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension PlaceAdditionViewController: UIPopoverPresentationControllerDelegate {
+extension PlanScheduleAddPlaceViewController: UIPopoverPresentationControllerDelegate {
     @IBAction func tappedScheduleBtn(_ sender: UIButton) {
         configurePopover(for: dayPopoverVC, sourceButton: scheduleBtn)
         dayPopoverVC.popoverPresentationController?.delegate = self
@@ -152,7 +156,7 @@ extension PlaceAdditionViewController: UIPopoverPresentationControllerDelegate {
     }
 }
 
-extension PlaceAdditionViewController: UITextViewDelegate {
+extension PlanScheduleAddPlaceViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == "메모를 입력해주세요" {
             textView.text = nil

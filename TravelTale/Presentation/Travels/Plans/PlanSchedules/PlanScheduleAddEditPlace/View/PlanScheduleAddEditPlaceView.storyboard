@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,10 +17,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Place Addition View Controller-->
+        <!--Plan Schedule Add Place View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="PlaceAdditionView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PlaceAdditionViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlaceAdditionView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PlanScheduleAddPlaceViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,7 +97,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mi9-U6-3Sy">
-                                        <rect key="frame" x="290" y="14.666666666666657" width="39" height="19"/>
+                                        <rect key="frame" x="287.66666666666669" y="14.666666666666657" width="41.333333333333314" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -340,10 +340,10 @@
             </objects>
             <point key="canvasLocation" x="937" y="-9"/>
         </scene>
-        <!--Place Edition View Controller-->
+        <!--Plan Schedule Edit Place View Controller-->
         <scene sceneID="zRI-F5-j7J">
             <objects>
-                <viewController storyboardIdentifier="PlaceEditionView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2P1-mE-glx" customClass="PlaceEditionViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlaceEditionView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2P1-mE-glx" customClass="PlanScheduleEditPlaceViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AWy-zy-mGa">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -407,7 +407,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cW6-Is-0vw">
-                                        <rect key="frame" x="290" y="14.666666666666657" width="39" height="19"/>
+                                        <rect key="frame" x="287.66666666666669" y="14.666666666666657" width="41.333333333333314" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -456,7 +456,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오전 9:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFz-fA-VhN">
-                                        <rect key="frame" x="264.33333333333331" y="14.666666666666686" width="64.666666666666686" height="19"/>
+                                        <rect key="frame" x="265.66666666666669" y="14.666666666666686" width="63.333333333333314" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
