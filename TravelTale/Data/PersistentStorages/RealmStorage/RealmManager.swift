@@ -43,6 +43,16 @@ final class RealmManager {
         }
     }
     
+    func fetchTravelsWithEmptyMemoryAndPhotos() -> [Travel] {
+        return realm.objects(Travel.self).filter { $0.memory == nil && $0.photos.isEmpty }.sorted { lhs, rhs in
+            if lhs.startDate != rhs.startDate {
+                return lhs.startDate < rhs.startDate
+            } else {
+                return lhs.endDate < rhs.endDate
+            }
+        }
+    }
+    
     func updateTravel(travel: Travel, title: String, area: String, startDate: Date, endDate: Date) {
         do {
             try realm.write {
