@@ -73,7 +73,7 @@ final class MemorySelectViewController: BaseViewController {
     @objc func tappedConfirmButton() {
         if let selectedIndexPath = selectedIndexPath {
             let selectedTravel = noMemoryTravels[selectedIndexPath.row]
-            let nextVC = TravelMemoryDetailEditViewController(travel: selectedTravel)
+            let nextVC = MemoryAddEditViewController(travel: selectedTravel)
             navigationController?.pushViewController(nextVC, animated: true)
         } else {
             print("selectedIndexPath 없음")

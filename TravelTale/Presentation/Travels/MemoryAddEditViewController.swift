@@ -8,7 +8,7 @@
 import UIKit
 import PhotosUI
 
-final class TravelMemoryDetailEditViewController: BaseViewController {
+final class MemoryAddEditViewController: BaseViewController {
     
     // MARK: - properties
     private let memoryAddEditView = MemoryAddEditView()
@@ -123,7 +123,7 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension TravelMemoryDetailEditViewController: UICollectionViewDataSource {
+extension MemoryAddEditViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return selectedPhotos.count
@@ -149,7 +149,7 @@ extension TravelMemoryDetailEditViewController: UICollectionViewDataSource {
     }
 }
 
-extension TravelMemoryDetailEditViewController: UITextViewDelegate {
+extension MemoryAddEditViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         memoryAddEditView.setBeginText(textView: textView)
@@ -163,7 +163,7 @@ extension TravelMemoryDetailEditViewController: UITextViewDelegate {
     }
 }
 
-extension TravelMemoryDetailEditViewController: PHPickerViewControllerDelegate {
+extension MemoryAddEditViewController: PHPickerViewControllerDelegate {
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)

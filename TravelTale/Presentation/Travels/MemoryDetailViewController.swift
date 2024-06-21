@@ -98,8 +98,8 @@ final class MemoryDetailViewController: BaseViewController {
     }
     
     private func tappedEditButton() {
-        let travelMemoryDetailEditViewController = TravelMemoryDetailEditViewController(travel: travel)
-        self.navigationController?.pushViewController(travelMemoryDetailEditViewController, animated: true)
+        let nextVC = MemoryAddEditViewController(travel: travel)
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @objc func tappedBackButton() {
