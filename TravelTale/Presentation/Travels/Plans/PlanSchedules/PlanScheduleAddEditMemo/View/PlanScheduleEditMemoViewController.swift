@@ -43,8 +43,21 @@ class PlanScheduleEditMemoViewController: BaseViewController {
         navigationItem.leftBarButtonItem = memoView.backButton
     }
     
+    private func configureBackAlert(navigationController: UINavigationController?) {
+        let alert = UIAlertController(title: "뒤로가기", message: "지금까지 작성된 내용이 삭제됩니다. 이전으로 이동하시겠습니까?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let ok = UIAlertAction(title: "확인", style: .default) {_ in
+            navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true)
+    }
+    
     @objc private func tapBackButton() {
-        memoView.configureBackAlert(navigationController: navigationController)
+        configureBackAlert(navigationController: navigationController)
     }
     
     @objc private func tapCompleteButton() {
