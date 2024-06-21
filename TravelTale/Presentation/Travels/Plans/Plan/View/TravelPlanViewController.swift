@@ -94,6 +94,7 @@ extension TravelPlanViewController: UITableViewDataSource {
         let travel = (indexPath.section == 0) ? upcomingTravels[indexPath.row] : pastTravels[indexPath.row]
         
         cell.bind(travel: travel)
+        cell.hideThumbnail()
         cell.selectionStyle = .none
         
         return cell
