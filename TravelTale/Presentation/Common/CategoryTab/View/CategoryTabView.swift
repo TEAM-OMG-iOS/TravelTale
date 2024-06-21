@@ -1,5 +1,5 @@
 //
-//  CategoryView.swift
+//  CategoryTabView.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/16/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CategoryView: BaseView {
+final class CategoryTabView: BaseView {
     
     // MARK: - properties
     let tableView = UITableView()

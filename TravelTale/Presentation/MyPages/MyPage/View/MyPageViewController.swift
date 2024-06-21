@@ -48,7 +48,7 @@ final class MyPageViewController: BaseViewController {
         myPageView.tableView.delegate = self
         myPageView.tableView.dataSource = self
         
-        myPageView.tableView.register(MyPageServiceTableViewCell.self, forCellReuseIdentifier: MyPageServiceTableViewCell.identifier)
+        myPageView.tableView.register(MyPageTableViewCell.self, forCellReuseIdentifier: MyPageTableViewCell.identifier)
     }
     
     private func configureNavigationBar() {
@@ -56,15 +56,15 @@ final class MyPageViewController: BaseViewController {
     }
     
     @objc private func tappedTotalButton() {
-        let bookMarkVC = BookMarkViewController()
+        let bookMarkVC = MyPageCategoryViewController()
         
         bookMarkVC.selectedIndexPath = 0
         
         self.navigationController?.pushViewController(bookMarkVC, animated: true)
     }
     
-    @objc private func tappedCategoryButton(_ sender: BookMarkButton) {
-        let bookMarkVC = BookMarkViewController()
+    @objc private func tappedCategoryButton(_ sender: MyPageBookMarkButton) {
+        let bookMarkVC = MyPageCategoryViewController()
         let categoryArray = ["전체", "관광지", "음식점", "숙박", "놀거리"]
         
         bookMarkVC.selectedIndexPath = categoryArray.firstIndex(of: sender.getButtonName()) ?? 1
@@ -157,7 +157,7 @@ extension MyPageViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPageServiceTableViewCell.identifier, for: indexPath) as? MyPageServiceTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPageTableViewCell.identifier, for: indexPath) as? MyPageTableViewCell else {
             return UITableViewCell()
         }
         
@@ -185,10 +185,10 @@ extension MyPageViewController: UITableViewDelegate {
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 {
-                let termPrivateVC = TermPrivacyPolicyViewController()
+                let termPrivateVC = MyPageTermPrivacyPolicyViewController()
                 navigationController?.pushViewController(termPrivateVC, animated: true)
             } else {
-                let termOpenSourceVC = TermOpenSourceViewController()
+                let termOpenSourceVC = MyPageTermOpenSourceViewController()
                 navigationController?.pushViewController(termOpenSourceVC, animated: true)
             }
         case 1:

@@ -1,5 +1,5 @@
 //
-//  BookMarkRestaurantViewController.swift
+//  MyPageCategoryTabEntertainmentViewController.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/16/24.
@@ -8,10 +8,10 @@
 import UIKit
 import XLPagerTabStrip
 
-final class BookMarkRestaurantViewController: BaseViewController {
+final class MyPageCategoryTabEntertainmentViewController: BaseViewController {
     
     // MARK: - properties
-    private let categoryView = CategoryView()
+    private let categoryView = CategoryTabView()
     
     // MARK: - life cycles
     override func loadView() {
@@ -23,25 +23,25 @@ final class BookMarkRestaurantViewController: BaseViewController {
         categoryView.tableView.dataSource = self
         categoryView.tableView.delegate = self
         
-        categoryView.tableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
+        categoryView.tableView.register(CategoryTabTableViewCell.self, forCellReuseIdentifier: CategoryTabTableViewCell.identifier)
     }
 }
 
 // MARK: - extensions
-extension BookMarkRestaurantViewController: IndicatorInfoProvider {
+extension MyPageCategoryTabEntertainmentViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "음식점")
+        return IndicatorInfo(title: "놀거리")
     }
 }
 
-extension BookMarkRestaurantViewController: UITableViewDataSource {
+extension MyPageCategoryTabEntertainmentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: - 데이터 바인딩
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as! CategoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTabTableViewCell.identifier, for: indexPath) as! CategoryTabTableViewCell
         
         // TODO: - 데이터 바인딩
         cell.selectionStyle = .none
@@ -50,7 +50,7 @@ extension BookMarkRestaurantViewController: UITableViewDataSource {
     }
 }
 
-extension BookMarkRestaurantViewController: UITableViewDelegate {
+extension MyPageCategoryTabEntertainmentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let placeDetailVC = PlaceDetailViewController()
         
@@ -59,3 +59,4 @@ extension BookMarkRestaurantViewController: UITableViewDelegate {
         self.navigationController?.pushViewController(placeDetailVC, animated: true)
     }
 }
+

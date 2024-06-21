@@ -1,5 +1,5 @@
 //
-//  PlaceDetailImageCollectionViewCell.swift
+//  PlaceDetailCollectionViewCell.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/18/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class PlaceDetailImageCollectionViewCell: BaseCollectionViewCell {
+final class PlaceDetailCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - properties
-    static let identifier = String(describing: PlaceDetailImageCollectionViewCell.self)
+    static let identifier = String(describing: PlaceDetailCollectionViewCell.self)
     
     private let detailImage = UIImageView().then {
         $0.contentMode = .scaleAspectFit

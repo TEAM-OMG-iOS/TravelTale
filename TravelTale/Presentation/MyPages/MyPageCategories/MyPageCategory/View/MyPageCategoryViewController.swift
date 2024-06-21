@@ -1,5 +1,5 @@
 //
-//  BookMarkViewController.swift
+//  MyPageCategoryViewController.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/16/24.
@@ -8,7 +8,7 @@
 import UIKit
 import XLPagerTabStrip
 
-final class BookMarkViewController: ButtonBarPagerTabStripViewController {
+final class MyPageCategoryViewController: ButtonBarPagerTabStripViewController {
     
     // MARK: - properties
     private let backButton = UIBarButtonItem().then {
@@ -121,11 +121,11 @@ final class BookMarkViewController: ButtonBarPagerTabStripViewController {
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let totalVC = BookMarkTotalViewController()
-        let touristSpotVC = BookMarkTouristSpotViewController()
-        let restaurantVC = BookMarkRestaurantViewController()
-        let accommodationVC = BookMarkAccommodationViewController()
-        let entertainmentVC = BookMarkEntertainmentViewController()
+        let totalVC = MyPageCategoryTabTotalViewController()
+        let touristSpotVC = MyPageCategoryTabTouristSpotViewController()
+        let restaurantVC = MyPageCategoryTabRestaurantViewController()
+        let accommodationVC = MyPageCategoryTabAccommodationViewController()
+        let entertainmentVC = MyPageCategoryTabEntertainmentViewController()
         
         return [totalVC, touristSpotVC, restaurantVC, accommodationVC, entertainmentVC]
     }

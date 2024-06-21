@@ -37,8 +37,8 @@ final class PlaceDetailViewController: BaseViewController {
         placeDetailView.imageCollectionView.dataSource = self
         placeDetailView.imageCollectionView.delegate = self
         
-        placeDetailView.imageCollectionView.register(PlaceDetailImageCollectionViewCell.self, 
-                                                     forCellWithReuseIdentifier: PlaceDetailImageCollectionViewCell.identifier)
+        placeDetailView.imageCollectionView.register(PlaceDetailCollectionViewCell.self, 
+                                                     forCellWithReuseIdentifier: PlaceDetailCollectionViewCell.identifier)
         
         placeDetailView.mapView.delegate = self
     }
@@ -57,7 +57,7 @@ final class PlaceDetailViewController: BaseViewController {
     }
     
     @objc private func tappedPhoneNumberButton() {
-        let phoneOptionsAlertVC = PhoneOptionsAlertViewController()
+        let phoneOptionsAlertVC = PlaceDetailAlertViewController()
         
         // TODO: - 전화번호 정보 바인딩
         phoneOptionsAlertVC.setPhoneNumber(phoneNumber: "010-5145-7665")
@@ -94,7 +94,7 @@ final class PlaceDetailViewController: BaseViewController {
     }
     
     private func configureToast(text: String) {
-        let toastView = CustomPopUpView()
+        let toastView = PlaceDetailToastView()
         
         toastView.setText(text: text)
         configureToastConstraints(toastView: toastView)
@@ -137,8 +137,8 @@ extension PlaceDetailViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailImageCollectionViewCell.identifier,
-                                                      for: indexPath) as! PlaceDetailImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailCollectionViewCell.identifier,
+                                                      for: indexPath) as! PlaceDetailCollectionViewCell
         // TODO: - 장소 사진 바인딩
         return cell
     }

@@ -10,7 +10,7 @@ import UIKit
 final class DiscoveryRegionModalViewController: BaseViewController {
     
     // MARK: - properties
-    private let locationView = LocationView()
+    private let locationView = RegionView()
     
     private var regionData: [String] = []
     
@@ -30,7 +30,7 @@ final class DiscoveryRegionModalViewController: BaseViewController {
         locationView.tableView.dataSource = self
         locationView.tableView.delegate = self
         
-        locationView.tableView.register(LocationTableViewCell.self, forCellReuseIdentifier: LocationTableViewCell.identifier)
+        locationView.tableView.register(RegionTableViewCell.self, forCellReuseIdentifier: RegionTableViewCell.identifier)
     }
     
     func bind(isCity: Bool, city: String = "서울특별시") {
@@ -59,7 +59,7 @@ extension DiscoveryRegionModalViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.identifier, for: indexPath) as? LocationTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RegionTableViewCell.identifier, for: indexPath) as? RegionTableViewCell else {
             return UITableViewCell()
         }
         

@@ -1,5 +1,5 @@
 //
-//  TermView.swift
+//  MyPageTermView.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/20/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TermView: BaseView {
+final class MyPageTermView: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {

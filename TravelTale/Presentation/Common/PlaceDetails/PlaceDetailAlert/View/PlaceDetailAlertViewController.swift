@@ -1,5 +1,5 @@
 //
-//  PhoneOptionsAlertViewController.swift
+//  PlaceDetailAlertViewController.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/20/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class PhoneOptionsAlertViewController: BaseViewController {
+final class PlaceDetailAlertViewController: BaseViewController {
     
     // MARK: - properties
-    private let phoneOptionsAlert = PhoneOptionsAlertView()
+    private let phoneOptionsAlert = PlaceDetailAlertView()
     
     private var phoneNumber: String = "" {
         didSet {
@@ -54,7 +54,7 @@ final class PhoneOptionsAlertViewController: BaseViewController {
     }
     
     private func configureToast(text: String) {
-        let toastView = CustomPopUpView()
+        let toastView = PlaceDetailToastView()
         
         toastView.backgroundColor = .clear
         toastView.setText(text: text)

@@ -1,17 +1,17 @@
 //
-//  TouristSpotViewController.swift
+//  MyPageCategoryTabTotalViewController.swift
 //  TravelTale
 //
-//  Created by 배지해 on 6/15/24.
+//  Created by 배지해 on 6/16/24.
 //
 
 import UIKit
 import XLPagerTabStrip
 
-final class TouristSpotViewController: BaseViewController {
+final class MyPageCategoryTabTotalViewController: BaseViewController {
     
     // MARK: - properties
-    private let categoryView = CategoryView()
+    private let categoryView = CategoryTabView()
     
     // MARK: - life cycles
     override func loadView() {
@@ -23,25 +23,25 @@ final class TouristSpotViewController: BaseViewController {
         categoryView.tableView.dataSource = self
         categoryView.tableView.delegate = self
         
-        categoryView.tableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
+        categoryView.tableView.register(CategoryTabTableViewCell.self, forCellReuseIdentifier: CategoryTabTableViewCell.identifier)
     }
 }
 
 // MARK: - extensions
-extension TouristSpotViewController: IndicatorInfoProvider {
+extension MyPageCategoryTabTotalViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "관광지")
+        return IndicatorInfo(title: "전체")
     }
 }
 
-extension TouristSpotViewController: UITableViewDataSource {
+extension MyPageCategoryTabTotalViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: - 데이터 바인딩
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as! CategoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTabTableViewCell.identifier, for: indexPath) as! CategoryTabTableViewCell
         
         // TODO: - 데이터 바인딩
         cell.selectionStyle = .none
@@ -50,7 +50,7 @@ extension TouristSpotViewController: UITableViewDataSource {
     }
 }
 
-extension TouristSpotViewController: UITableViewDelegate {
+extension MyPageCategoryTabTotalViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let placeDetailVC = PlaceDetailViewController()
         
@@ -59,3 +59,4 @@ extension TouristSpotViewController: UITableViewDelegate {
         self.navigationController?.pushViewController(placeDetailVC, animated: true)
     }
 }
+

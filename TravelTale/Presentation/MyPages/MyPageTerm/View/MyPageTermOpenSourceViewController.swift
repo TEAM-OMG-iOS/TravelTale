@@ -1,15 +1,15 @@
 //
-//  TermPrivacyPolicyViewController.swift
+//  MyPageTermOpenSourceViewController.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/20/24.
 //
 import UIKit
 
-final class TermPrivacyPolicyViewController: BaseViewController {
+final class MyPageTermOpenSourceViewController: BaseViewController {
     
     // MARK: - properties
-    private let termView = TermView()
+    private let termView = MyPageTermView()
     
     // MARK: - life cycles
     override func loadView() {
@@ -19,7 +19,7 @@ final class TermPrivacyPolicyViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        termView.setText(text: getPrivacyPolicyString())
+        termView.setText(text: getOpenSourceText())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +38,7 @@ final class TermPrivacyPolicyViewController: BaseViewController {
     }
     
     private func configureNavigationBar() {
-        navigationItem.title = "개인정보 처리방침"
+        navigationItem.title = "오픈소스 라이선스"
         navigationItem.leftBarButtonItem = termView.backButton
     }
     
@@ -46,8 +46,8 @@ final class TermPrivacyPolicyViewController: BaseViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    private func getPrivacyPolicyString() -> String {
-        guard let rtfPath = Bundle.main.url(forResource: "TermPrivacyPolicy", withExtension: "rtf"),
+    private func getOpenSourceText() -> String {
+        guard let rtfPath = Bundle.main.url(forResource: "OpenSourceLicense", withExtension: "rtf"),
               let rtfData = try? Data(contentsOf: rtfPath),
               let rtfText = try? NSAttributedString(data: rtfData, options: [:], documentAttributes: nil)
         else {

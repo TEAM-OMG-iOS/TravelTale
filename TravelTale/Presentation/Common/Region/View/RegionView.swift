@@ -1,5 +1,5 @@
 //
-//  AddLocationView.swift
+//  RegionView.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/13/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LocationView: BaseView {
+final class RegionView: BaseView {
     
     // MARK: - properties
     private let guideLabel = UILabel().then {
