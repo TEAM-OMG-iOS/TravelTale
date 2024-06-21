@@ -102,10 +102,7 @@ final class MemoryDetailViewController: BaseViewController {
     }
     
     private func presentDeleteAlert() {
-        let alert = UIAlertController(title: "경고", message: """
-    작성된 추억이 삭제됩니다.
-    그대로 진행하시겠습니까?
-    """, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "경고", message: "정말 삭제하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
         
         let cancel = UIAlertAction(title: "취소", style: .destructive)
         
