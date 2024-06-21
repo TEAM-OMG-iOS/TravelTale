@@ -6,17 +6,12 @@
 //
 
 import UIKit
+import RealmSwift // TODO: 삭제
 
 final class TravelMemoryAddViewController: BaseViewController {
     
     // MARK: - properties
     private let travelMemoryAddView = TravelMemoryAddView()
-    
-    private var travels: [Travel] = [] {
-        didSet {
-//            setNoMemoryTravels()
-        }
-    }
     
     private var noMemoryTravels: [Travel] = []
     
@@ -34,10 +29,18 @@ final class TravelMemoryAddViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+        
+        noMemoryTravels = fetchNoMemoryTravels()
     }
     
     // MARK: - methods
-    // TODO: travels 추가 함수
+    // TODO: RealmManager로 옮기기
+    func fetchNoMemoryTravels() -> [Travel] {
+        let realm = try! Realm()
+        return realm.objects(Travel.self).filter {
+            ($0.memory == nil) && ($0.photos.isEmpty)
+        }
+    }
     
     override func configureStyle() {
         configureNavigationBarItems()
@@ -63,17 +66,6 @@ final class TravelMemoryAddViewController: BaseViewController {
         navigationItem.leftBarButtonItem = travelMemoryAddView.backButton
     }
     
-//    private func setNoMemoryTravels() {
-//        for travel in travels {
-//            let isMemoryNoteEmpty = travel.memoryNote == nil
-//            let isMemoryImagesEmpty = travel.memoryImageDatas.isEmpty
-//            
-//            if isMemoryNoteEmpty && isMemoryImagesEmpty {
-//                noMemoryTravels.append(travel)
-//            }
-//        }
-//    }
-    
     @objc func tappedBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -98,9 +90,9 @@ extension TravelMemoryAddViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return UITableViewCell() }
         
-        _ = noMemoryTravels[indexPath.row]
+        let travel = noMemoryTravels[indexPath.row]
         
-//        cell.bind(travel: travel)
+        cell.bind(travel: travel)
         cell.hideThumbnail()
         cell.selectionStyle = .none
         
