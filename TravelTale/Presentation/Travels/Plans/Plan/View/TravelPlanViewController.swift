@@ -44,7 +44,7 @@ final class TravelPlanViewController: BaseViewController {
         
         // register
         planView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
-        planView.tableView.register(TravelHeaderView.self, forHeaderFooterViewReuseIdentifier: TravelHeaderView.identifier)
+        planView.tableView.register(PlanTableHeaderView.self, forHeaderFooterViewReuseIdentifier: PlanTableHeaderView.identifier)
         planView.tableView.register(TravelFooterView.self, forHeaderFooterViewReuseIdentifier: TravelFooterView.identifier)
     }
     
@@ -114,7 +114,7 @@ extension TravelPlanViewController: UITableViewDelegate {
     
     // Header, Footer
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TravelHeaderView.identifier) as? TravelHeaderView else { return UIView() }
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: PlanTableHeaderView.identifier) as? PlanTableHeaderView else { return UIView() }
         
         if section == 0 {
             headerView.bind(title: "다가오는 여행")

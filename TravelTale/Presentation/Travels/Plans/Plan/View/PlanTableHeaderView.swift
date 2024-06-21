@@ -8,10 +8,10 @@
 import Then
 import UIKit
 
-final class TravelHeaderView: UITableViewHeaderFooterView {
+final class PlanTableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - properties
-    static let identifier = String(String(describing: TravelHeaderView.self))
+    static let identifier = String(String(describing: PlanTableHeaderView.self))
     
     private let titleLabel = UILabel().then {
         $0.configureLabel(color: .black, font: .pretendard(size: 18, weight: .bold))
