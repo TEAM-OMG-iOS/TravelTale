@@ -12,19 +12,19 @@ final class DiscoveryRegionViewController: BaseViewController {
     // MARK: - properties
     private let discoveryRegionView = DiscoveryRegionView()
     
-    private var selectedCity = "" {
+    private var selectedSido: Sido? {
         didSet {
             updateSubmitButtonState()
         }
     }
     
-    private var selectedDistrict = "" {
+    private var selectedSigungu: Sigungu? {
         didSet {
             updateSubmitButtonState()
         }
     }
     
-    var completion: ((String) -> Void)?
+    var completion: ((Sido?, Sigungu?) -> Void)?
     
     // MARK: - life cycles
     override func loadView() {
@@ -53,39 +53,43 @@ final class DiscoveryRegionViewController: BaseViewController {
     override func configureAddTarget() {
         discoveryRegionView.backButton.target = self
         discoveryRegionView.backButton.action = #selector(tappedBackButton)
-        discoveryRegionView.cityButton.addTarget(self, action: #selector(tappedCityButton), for: .touchUpInside)
-        discoveryRegionView.districtButton.addTarget(self, action: #selector(tappedDistrictButton), for: .touchUpInside)
+        discoveryRegionView.sidoButton.addTarget(self, action: #selector(tappedSidoButton), for: .touchUpInside)
+        discoveryRegionView.sigunguButton.addTarget(self, action: #selector(tappedSigunguButton), for: .touchUpInside)
         discoveryRegionView.submitButton.addTarget(self, action: #selector(tappedSubmitButton), for: .touchUpInside)
     }
     
-    @objc private func tappedCityButton() {
-        let discoveryRegionModalVC = DiscoveryRegionModalViewController()
-        
-        discoveryRegionModalVC.bind(isCity: true)
-        discoveryRegionModalVC.completion = { [weak self] text in
+    @objc private func tappedSidoButton() {
+        let discoveryRegionModalSidoVC = DiscoveryRegionModalSidoViewController()
+    
+        discoveryRegionModalSidoVC.configureSidoView()
+        discoveryRegionModalSidoVC.completion = { [weak self] sido in
             guard let self = self else { return }
-            self.selectedCity = text
-            discoveryRegionView.selectCity(cityName: self.selectedCity)
+            
+            self.selectedSigungu = nil
+            self.selectedSido = sido
+            self.discoveryRegionView.selectSido(sidoName: sido.name ?? "")
         }
         
-        self.present(discoveryRegionModalVC, animated: true)
+        self.present(discoveryRegionModalSidoVC, animated: true)
     }
     
-    @objc private func tappedDistrictButton() {
-        let discoveryRegionModalVC = DiscoveryRegionModalViewController()
+    @objc private func tappedSigunguButton() {
+        let discoveryRegionModalSigunguVC = DiscoveryRegionModalSigunguViewController()
         
-        discoveryRegionModalVC.bind(isCity: false, city: selectedCity)
-        discoveryRegionModalVC.completion = { [weak self] text in
+        discoveryRegionModalSigunguVC.setSidoCode(sidoCode: selectedSido?.code ?? "")
+        discoveryRegionModalSigunguVC.configureSigunguView()
+        discoveryRegionModalSigunguVC.completion = { [weak self] sigungu in
             guard let self = self else { return }
-            self.selectedDistrict = text
-            discoveryRegionView.selectDistrict(districtName: self.selectedDistrict)
+            
+            self.selectedSigungu = sigungu
+            self.discoveryRegionView.selectSigungu(sigunguName: sigungu.name ?? "")
         }
         
-        self.present(discoveryRegionModalVC, animated: true)
+        self.present(discoveryRegionModalSigunguVC, animated: true)
     }
     
     @objc private func tappedSubmitButton() {
-        completion?("\(selectedCity) \(selectedDistrict)")
+        completion?(selectedSido ?? nil, selectedSigungu ?? nil)
         navigationController?.popViewController(animated: true)
     }
     
@@ -99,11 +103,16 @@ final class DiscoveryRegionViewController: BaseViewController {
     }
     
     private func updateSubmitButtonState() {
-        discoveryRegionView.updateSubmitButtonState(city: selectedCity, district: selectedDistrict)
+        discoveryRegionView.updateSubmitButtonState(sido: selectedSido?.name ?? nil,
+                                                    sigungu: selectedSigungu?.name ?? nil)
     }
     
     func setRegionLabels(region: String) {
-        let regionArray = region.components(separatedBy: " ")
-        discoveryRegionView.setCityAndDistrictLabels(cityName: regionArray[0], districtName: regionArray[1])
+        if region == DiscoveryView.regionDefaultText {
+            discoveryRegionView.setSidoAndSigunguLabel(sidoText: "시/도를 선택해주세요.", sigunguText: "")
+        }else {
+            let regionArray = region.components(separatedBy: " ")
+            discoveryRegionView.setSidoAndSigunguLabel(sidoText: regionArray[0], sigunguText: regionArray[1])
+        }
     }
 }
