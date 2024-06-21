@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TravelMemoryViewController: BaseViewController {
+final class MemoryViewController: BaseViewController {
     
     // MARK: - properties
     private let memoryView = MemoryView()
@@ -49,7 +49,7 @@ final class TravelMemoryViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension TravelMemoryViewController: UITableViewDataSource {
+extension MemoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return travels.count
     }
@@ -64,7 +64,7 @@ extension TravelMemoryViewController: UITableViewDataSource {
     }
 }
 
-extension TravelMemoryViewController: UITableViewDelegate {
+extension MemoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextVC = TravelMemoryDetailViewController(travel: travels[indexPath.row])
         navigationController?.pushViewController(nextVC, animated: true)
