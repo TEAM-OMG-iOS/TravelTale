@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MemoAddView: BaseView {
+final class PlanScheduleMemoView: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {
