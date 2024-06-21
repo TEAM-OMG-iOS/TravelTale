@@ -16,37 +16,37 @@ final class DiscoveryRegionView: BaseView {
         $0.tintColor = .gray90
     }
     
-    private let cityBackground = GrayBackgroundView()
+    private let sidoBackground = GrayBackgroundView()
     
-    private let cityLabel = UILabel().then {
+    private let sidoLabel = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold),
                           text: "시/도")
     }
     
-    let cityButton = UIButton().then {
+    let sidoButton = UIButton().then {
         $0.setImage(.init(systemName: "chevron.down"), for: .normal)
         $0.tintColor = .gray90
     }
     
-    private let currentCityLabel = UILabel().then {
+    private let currentSidoLabel = UILabel().then {
         $0.configureLabel(color: .gray80,
                           font: .pretendard(size: 16, weight: .regular))
     }
     
-    private let districtBackground = GrayBackgroundView()
+    private let sigunguBackground = GrayBackgroundView()
     
-    private let districtLabel = UILabel().then {
+    private let sigunguLabel = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold),
                           text: "시/군/구")
     }
     
-    let districtButton = UIButton().then {
+    let sigunguButton = UIButton().then {
         $0.setImage(.init(systemName: "chevron.down"), for: .normal)
         $0.tintColor = .gray90
         $0.isEnabled = false
     }
     
-    private let currentDistrictLabel = UILabel().then {
+    private let currentSigunguLabel = UILabel().then {
         $0.configureLabel(color: .gray80,
                           font: .pretendard(size: 16, weight: .regular))
     }
@@ -65,58 +65,58 @@ final class DiscoveryRegionView: BaseView {
     }
     
     override func configureHierarchy() {
-        self.addSubview(cityBackground)
-        self.addSubview(cityLabel)
-        self.addSubview(cityButton)
-        self.addSubview(currentCityLabel)
-        self.addSubview(districtBackground)
-        self.addSubview(districtLabel)
-        self.addSubview(districtButton)
-        self.addSubview(currentDistrictLabel)
+        self.addSubview(sidoBackground)
+        self.addSubview(sidoLabel)
+        self.addSubview(sidoButton)
+        self.addSubview(currentSidoLabel)
+        self.addSubview(sigunguBackground)
+        self.addSubview(sigunguLabel)
+        self.addSubview(sigunguButton)
+        self.addSubview(currentSigunguLabel)
         self.addSubview(submitButton)
     }
     
     override func configureConstraints() {
-        cityBackground.snp.makeConstraints {
+        sidoBackground.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(24)
             $0.top.equalTo(safeAreaLayoutGuide).offset(44)
         }
         
-        cityLabel.snp.makeConstraints {
-            $0.leading.equalTo(cityBackground).offset(16)
-            $0.centerY.equalTo(cityBackground)
+        sidoLabel.snp.makeConstraints {
+            $0.leading.equalTo(sidoBackground).offset(16)
+            $0.centerY.equalTo(sidoBackground)
         }
         
-        cityButton.snp.makeConstraints {
-            $0.trailing.equalTo(cityBackground).offset(-16)
-            $0.verticalEdges.equalTo(cityBackground).inset(12)
-            $0.height.equalTo(cityButton.snp.width)
+        sidoButton.snp.makeConstraints {
+            $0.trailing.equalTo(sidoBackground).offset(-16)
+            $0.verticalEdges.equalTo(sidoBackground).inset(12)
+            $0.height.equalTo(sidoButton.snp.width)
         }
         
-        currentCityLabel.snp.makeConstraints {
-            $0.trailing.equalTo(cityButton.snp.leading).offset(-4)
-            $0.centerY.equalTo(cityBackground)
+        currentSidoLabel.snp.makeConstraints {
+            $0.trailing.equalTo(sidoButton.snp.leading).offset(-4)
+            $0.centerY.equalTo(sidoBackground)
         }
         
-        districtBackground.snp.makeConstraints {
+        sigunguBackground.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(24)
-            $0.top.equalTo(cityBackground.snp.bottom).offset(24)
+            $0.top.equalTo(sidoBackground.snp.bottom).offset(24)
         }
         
-        districtLabel.snp.makeConstraints {
-            $0.leading.equalTo(districtBackground).offset(16)
-            $0.centerY.equalTo(districtBackground)
+        sigunguLabel.snp.makeConstraints {
+            $0.leading.equalTo(sigunguBackground).offset(16)
+            $0.centerY.equalTo(sigunguBackground)
         }
         
-        districtButton.snp.makeConstraints {
-            $0.trailing.equalTo(districtBackground).offset(-16)
-            $0.verticalEdges.equalTo(districtBackground).inset(12)
-            $0.height.equalTo(districtButton.snp.width)
+        sigunguButton.snp.makeConstraints {
+            $0.trailing.equalTo(sigunguBackground).offset(-16)
+            $0.verticalEdges.equalTo(sigunguBackground).inset(12)
+            $0.height.equalTo(sigunguButton.snp.width)
         }
         
-        currentDistrictLabel.snp.makeConstraints {
-            $0.trailing.equalTo(districtButton.snp.leading).offset(-4)
-            $0.centerY.equalTo(districtBackground)
+        currentSigunguLabel.snp.makeConstraints {
+            $0.trailing.equalTo(sigunguButton.snp.leading).offset(-4)
+            $0.centerY.equalTo(sigunguBackground)
         }
         
         submitButton.snp.makeConstraints {
@@ -125,21 +125,20 @@ final class DiscoveryRegionView: BaseView {
         }
     }
     
-    func selectCity(cityName: String) {
-        let isSejongCity = (cityName == "세종특별자치시")
+    func selectSido(sidoName: String) {
+        let isSejongCity = (sidoName == "세종특별자치시")
         
-        updateLabel(label: currentCityLabel, text: cityName)
-        currentDistrictLabel.text = isSejongCity ? "" : "시/구/군을 선택해주세요."
-        currentDistrictLabel.textColor = isSejongCity ? .black : .gray80
-        districtButton.isEnabled = !isSejongCity
+        updateLabel(label: currentSidoLabel, text: sidoName)
+        currentSigunguLabel.text = isSejongCity ? "" : "시/구/군을 선택해주세요."
+        currentSigunguLabel.textColor = isSejongCity ? .black : .gray80
+        sigunguButton.isEnabled = !isSejongCity
         
-        updateSubmitButtonState(city: cityName)
+        updateSubmitButtonState(sido: sidoName, sigungu: nil)
     }
     
-    func selectDistrict(districtName: String) {
-        updateLabel(label: currentDistrictLabel, text: districtName)
-        
-        updateSubmitButtonState(district: districtName)
+    func selectSigungu(sigunguName: String) {
+        updateLabel(label: currentSigunguLabel, text: sigunguName)
+        updateSubmitButtonState(sido: "서울", sigungu: sigunguName)
     }
     
     private func updateLabel(label: UILabel, text: String) {
@@ -151,13 +150,19 @@ final class DiscoveryRegionView: BaseView {
         submitButton.backgroundColor = submitButton.isEnabled ? .green100 : .green10
     }
     
-    func updateSubmitButtonState(city: String = "도시", district: String = "") {
-        submitButton.isEnabled = !city.isEmpty && !district.isEmpty || city == "세종특별자치시"
+    func updateSubmitButtonState(sido: String?, sigungu: String?) {
+        guard let sido = sido else {
+            submitButton.isEnabled = false
+            updateSubmitButtonAppearance()
+            return
+        }
+        
+        submitButton.isEnabled = sido == "세종특별자치시" || sigungu != nil
         updateSubmitButtonAppearance()
     }
     
-    func setCityAndDistrictLabels(cityName: String, districtName: String) {
-        currentCityLabel.text = cityName
-        currentDistrictLabel.text = districtName
+    func setSidoAndSigunguLabel(sidoText: String, sigunguText: String) {
+        currentSidoLabel.text = sidoText
+        currentSigunguLabel.text = sigunguText
     }
 }

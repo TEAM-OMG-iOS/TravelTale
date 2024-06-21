@@ -24,8 +24,8 @@ final class TravelTableViewCell: BaseTableViewCell {
     }
     
     private let thumbnailImageView = UIImageView().then {
-        $0.configureView(color: .gray70, cornerRadius: 16)
-        $0.contentMode = .scaleAspectFill
+        $0.configureView(color: .gray70, clipsToBounds: true, cornerRadius: 16)
+        $0.contentMode = .scaleToFill
         $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
@@ -41,11 +41,11 @@ final class TravelTableViewCell: BaseTableViewCell {
         $0.configureLabel(color: .gray90, font: .oaGothic(size: 10, weight: .medium))
     }
     
-    private let provinceCapsuleView = UIView().then {
+    private let areaCapsuleView = UIView().then {
         $0.configureView(color: .blueBlack100, cornerRadius: 10)
     }
     
-    private let provinceNameLabel = UILabel().then {
+    private let areaNameLabel = UILabel().then {
         $0.configureLabel(color: .white, font: .pretendard(size: 12, weight: .medium))
         $0.textAlignment = .center
     }
@@ -65,10 +65,10 @@ final class TravelTableViewCell: BaseTableViewCell {
         
         [borderLine,
          periodLabel,
-         provinceCapsuleView,
+         areaCapsuleView,
          titleLabel].forEach { detailView.addSubview($0) }
         
-        provinceCapsuleView.addSubview(provinceNameLabel)
+        areaCapsuleView.addSubview(areaNameLabel)
     }
     
     override func configureConstraints() {
@@ -95,19 +95,19 @@ final class TravelTableViewCell: BaseTableViewCell {
             $0.centerY.equalToSuperview()
         }
         
-        provinceCapsuleView.snp.makeConstraints {
+        areaCapsuleView.snp.makeConstraints {
             $0.height.equalTo(22)
             $0.width.equalTo(38)
             $0.bottom.equalTo(borderLine.snp.top).offset(-8)
             $0.trailing.equalTo(borderLine)
         }
         
-        provinceNameLabel.snp.makeConstraints{
+        areaNameLabel.snp.makeConstraints{
             $0.center.equalToSuperview()
         }
         
         periodLabel.snp.makeConstraints {
-            $0.centerY.equalTo(provinceCapsuleView)
+            $0.centerY.equalTo(areaCapsuleView)
             $0.leading.equalTo(borderLine)
         }
         
@@ -127,15 +127,16 @@ final class TravelTableViewCell: BaseTableViewCell {
         containerView.backgroundColor = selected ? .gray20 : .clear
     }
     
-//    func bind(travel: Travel) {
-//        if let image = travel.image {
-//            thumbnailImageView.image = UIImage(data: image)
-//        }
-//        titleLabel.text = travel.title
-//        periodLabel.text = String(startDate: travel.startDate,
-//                                  endDate: travel.endDate)
-//        provinceNameLabel.text = travel.province ?? "미정"
-//    }
+    func bind(travel: Travel) {
+        if !travel.photos.isEmpty {
+            let image = travel.photos[0]
+            thumbnailImageView.image = UIImage(data: image)
+        }
+        titleLabel.text = travel.title
+        periodLabel.text = String(startDate: travel.startDate,
+                                  endDate: travel.endDate)
+        areaNameLabel.text = travel.area ?? "미정"
+    }
     
     func hideThumbnail() {
         thumbnailImageView.isHidden = true
