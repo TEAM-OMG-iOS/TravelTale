@@ -13,7 +13,7 @@ final class TravelMemoryDetailViewController: BaseViewController {
     private let travelMemoryDetailView = TravelMemoryDetailView()
     private let travelMemoryDetailHeaderView = TravelMemoryDetailHeaderView()
     
-    private var travelData: Travel
+    private var travel: Travel
     
     private var memoryImages: [UIImage] = [] {
         didSet {
@@ -32,8 +32,8 @@ final class TravelMemoryDetailViewController: BaseViewController {
     }
     
     // MARK: - methods
-    init(travelData: Travel) {
-        self.travelData = travelData
+    init(travel: Travel) {
+        self.travel = travel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -66,9 +66,9 @@ final class TravelMemoryDetailViewController: BaseViewController {
     }
     
     override func bind() {
-//        travelMemoryDetailView.bind(travel: travelData)
-//        travelMemoryDetailHeaderView.bind(memoryNote: travelData.memoryNote ?? "")
-//        getMemoryImages(travel: travelData)
+        travelMemoryDetailView.bind(travel: travel)
+        travelMemoryDetailHeaderView.bind(memory: travel.memory ?? "")
+        getMemoryImages(travel: travel)
     }
     
     private func configureNavigationBarItems() {
@@ -80,7 +80,6 @@ final class TravelMemoryDetailViewController: BaseViewController {
         travelMemoryDetailView.editButton.menu = UIMenu(
             children: [
                 UIAction(title: "편집", state: .off, handler: { _ in
-                    print("편집")
                     self.tappedEditButton() }),
                 UIAction(title: "삭제", attributes: .destructive,state: .off, handler: { _ in
                     print("삭제")
@@ -89,20 +88,17 @@ final class TravelMemoryDetailViewController: BaseViewController {
         )
     }
     
-//    private func getMemoryImages(travel: Travel) {
-//        let imageDatas = self.travelData.memoryImageDatas
-//        for imageData in imageDatas {
-//            if let imageData = imageData {
-//                if let image = UIImage(data: imageData) {
-//                    memoryImages.append(image)
-//                }
-//            }
-//        }
-//    }
+    private func getMemoryImages(travel: Travel) {
+        let imageDatas = self.travel.photos
+        for imageData in imageDatas {
+            if let image = UIImage(data: imageData) {
+                memoryImages.append(image)
+            }
+        }
+    }
     
     private func tappedEditButton() {
-        print("tappedEditButton")
-        let travelMemoryDetailEditViewController = TravelMemoryDetailEditViewController(travelData: travelData)
+        let travelMemoryDetailEditViewController = TravelMemoryDetailEditViewController(travel: travel)
         self.navigationController?.pushViewController(travelMemoryDetailEditViewController, animated: true)
     }
     
@@ -143,7 +139,7 @@ extension TravelMemoryDetailViewController: UITableViewDelegate {
             withIdentifier: TravelMemoryDetailHeaderView.identifier) as? TravelMemoryDetailHeaderView
         else { return UIView() }
         
-//        headerView.bind(memoryNote: travelData.memoryNote ?? "")
+        headerView.bind(memory: travel.memory ?? "")
         return headerView
     }
 }
