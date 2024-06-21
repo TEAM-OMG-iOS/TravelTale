@@ -27,9 +27,9 @@ final class SearchTableViewCell: BaseTableViewCell {
     
     // MARK: - methods
     override func configureHierarchy() {
-        self.addSubview(clockImageView)
-        self.addSubview(titleLabel)
-        self.addSubview(deleteButton)
+        self.contentView.addSubview(clockImageView)
+        self.contentView.addSubview(titleLabel)
+        self.contentView.addSubview(deleteButton)
     }
     
     override func configureConstraints() {
@@ -49,5 +49,9 @@ final class SearchTableViewCell: BaseTableViewCell {
             $0.trailing.equalToSuperview().offset(-16)
             $0.size.equalTo(14)
         }
+    }
+    
+    func bind(keyword: String) {
+        titleLabel.text = keyword
     }
 }
