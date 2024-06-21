@@ -10,7 +10,13 @@ import UIKit
 final class PlanScheduleAddMemoViewController: BaseViewController {
     
     // MARK: - properties
-    private let memoView = PlanScheduleMemoView()
+    private let memoView = PlanScheduleAddEditMemo()
+    
+    private let realmManager = RealmManager.shared
+    
+    var travel: Travel? = nil
+    
+    var selectedDay: String?
     
     // MARK: - life cycles
     override func loadView() {
@@ -40,12 +46,12 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     }
     
     @objc private func tapBackButton() {
-        navigationController?.popViewController(animated: true)
+        memoView.configureBackAlert(navigationController: navigationController)
     }
     
     @objc private func tapCompleteButton() {
+        realmManager.createMemo(day: selectedDay!, travel: travel!, memo: memoView.memoTV.text)
         navigationController?.popViewController(animated: true)
-        // TODO: 메모 데이터 저장 로직 구현
     }
 }
 
