@@ -13,7 +13,7 @@ final class MemoryAddEditViewController: BaseViewController {
     // MARK: - properties
     private let memoryAddEditView = MemoryAddEditView()
     
-    private var travel: Travel
+    private let travel: Travel
     
     private var selectedPhotos: [Data] = [] {
         didSet {

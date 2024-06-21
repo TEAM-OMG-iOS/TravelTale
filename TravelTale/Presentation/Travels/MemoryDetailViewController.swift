@@ -13,7 +13,7 @@ final class MemoryDetailViewController: BaseViewController {
     private let travelMemoryDetailView = MemoryDetailView()
     private let travelMemoryDetailHeaderView = MemoryDetailTableHeaderView()
     
-    private var travel: Travel
+    private let travel: Travel
     
     private var memoryImages: [UIImage] = [] {
         didSet {
