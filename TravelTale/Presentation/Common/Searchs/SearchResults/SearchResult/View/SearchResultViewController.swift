@@ -34,6 +34,12 @@ final class SearchResultViewController: ButtonBarPagerTabStripViewController {
         $0.backgroundColor = .gray70
     }
     
+    private let totalVC = SearchResultTabTotalViewController()
+    private let touristVC = SearchResultTabTouristViewController()
+    private let restaurantVC = SearchResultTabRestaurantViewController()
+    private let accommodationVC = SearchResultTabAccommodationViewController()
+    private let entertainmentVC = SearchResultTabEntertainmentViewController()
+    
     var searchText: String? {
         didSet {
             searchBar.text = searchText
@@ -148,12 +154,6 @@ final class SearchResultViewController: ButtonBarPagerTabStripViewController {
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let totalVC = SearchResultTabTotalViewController()
-        let touristVC = SearchResultTabTouristViewController()
-        let restaurantVC = SearchResultTabRestaurantViewController()
-        let accommodationVC = SearchResultTabAccommodationViewController()
-        let entertainmentVC = SearchResultTabEntertainmentViewController()
-        
         return [totalVC, touristVC, restaurantVC, accommodationVC, entertainmentVC]
     }
 }
