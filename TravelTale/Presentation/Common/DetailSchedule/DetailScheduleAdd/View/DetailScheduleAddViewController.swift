@@ -10,27 +10,24 @@ import UIKit
 final class DetailScheduleAddViewController: BaseViewController {
     
     // MARK: - properties
-    private let scheduleCreateView = DetailScheduleAddView()
-    
+    private let detailScheduleAddView = DetailScheduleAddView()
     private let dayPopoverVC = PopoverDayViewController()
-    
     private let timePopoverVC = PopoverTimeViewController()
+    private let realmManager = RealmManager.shared
     
-    // TODO: 데이터 모델에 따라 변경될 예정
-    var selectedData: Travel? = nil
-    
+    var selectedTravel: Travel?
+    var selectedPlace: PlaceDetail?
     var selectedDays: String?
-    
     var selectedTime: Date?
     
     // MARK: - life cycles
     override func loadView() {
-        view = scheduleCreateView
+        view = detailScheduleAddView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scheduleCreateView.checkBlackText()
+        detailScheduleAddView.checkBlackText()
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedDays), name: .selectedDaysUpdated, object: nil)
         
@@ -38,7 +35,7 @@ final class DetailScheduleAddViewController: BaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        scheduleCreateView.startLoadingAnimation()
+        detailScheduleAddView.startLoadingAnimation()
     }
     
     // MARK: - methods
@@ -47,30 +44,30 @@ final class DetailScheduleAddViewController: BaseViewController {
     }
     
     override func configureDelegate() {
-        scheduleCreateView.memoTV.delegate = self
+        detailScheduleAddView.memoTV.delegate = self
     }
     
     override func configureAddTarget() {
         //popoverview
-        scheduleCreateView.scheduleBtn.addTarget(self, action: #selector(tappedScheduleBtn), for: .touchUpInside)
-        scheduleCreateView.startTiemBtn.addTarget(self, action: #selector(tappedStartTimeBtn), for: .touchUpInside)
+        detailScheduleAddView.scheduleBtn.addTarget(self, action: #selector(tappedScheduleBtn), for: .touchUpInside)
+        detailScheduleAddView.startTiemBtn.addTarget(self, action: #selector(tappedStartTimeBtn), for: .touchUpInside)
         
         //common btn
-        scheduleCreateView.cancelBtn.tag = 0
-        scheduleCreateView.cancelBtn.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
-        scheduleCreateView.backButton.tag = 1
-        scheduleCreateView.backButton.target = self
-        scheduleCreateView.backButton.action = #selector(handleBackButton)
-        scheduleCreateView.nextBtn.addTarget(self, action: #selector(tappedAddScheduleBtn), for: .touchUpInside)
+        detailScheduleAddView.cancelBtn.tag = 0
+        detailScheduleAddView.cancelBtn.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
+        detailScheduleAddView.backButton.tag = 1
+        detailScheduleAddView.backButton.target = self
+        detailScheduleAddView.backButton.action = #selector(handleBackButton)
+        detailScheduleAddView.nextBtn.addTarget(self, action: #selector(tappedAddScheduleBtn), for: .touchUpInside)
     }
     
     override func bind() {
-        // TODO: - 추후 장소 데이터 바인딩 추가 예정
+        detailScheduleAddView.placeContents.text = selectedPlace?.title
     }
     
     private func configureNavigationBar() {
         navigationItem.title = "내 여행에 추가"
-        navigationItem.leftBarButtonItem = scheduleCreateView.backButton
+        navigationItem.leftBarButtonItem = detailScheduleAddView.backButton
     }
     
     private func dateFormat(date: Date) -> String {
@@ -81,14 +78,14 @@ final class DetailScheduleAddViewController: BaseViewController {
     }
     
     private func bindingDays() {
-        scheduleCreateView.scheduleContents.text = selectedDays
+        detailScheduleAddView.scheduleContents.text = selectedDays
     }
     
     private func bindingTime() {
-        scheduleCreateView.startTimeContents.text = dateFormat(date: selectedTime ?? Date())
+        detailScheduleAddView.startTimeContents.text = dateFormat(date: selectedTime ?? Date())
     }
     
-    func configurePopover(for popoverVC: UIViewController, sourceButton: UIButton) {
+    private func configurePopover(for popoverVC: UIViewController, sourceButton: UIButton) {
         popoverVC.modalPresentationStyle = .popover
         popoverVC.preferredContentSize = CGSize(width: 300, height: 200)
         let popoverPresentationController = popoverVC.popoverPresentationController
@@ -98,36 +95,56 @@ final class DetailScheduleAddViewController: BaseViewController {
         popoverPresentationController?.permittedArrowDirections = .up
     }
     
+    private func configureBackAlert() {
+        let alert = UIAlertController(title: "경고", message: "작성중인 내용이 저장되지 않습니다. 계속 진행하시겠습니까?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let ok = UIAlertAction(title: "확인", style: .default) {_ in
+            let nextVC = PlaceDetailViewController()
+            // TODO: - 이동 시 추가 구현사항 확인하기
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        self.present(alert, animated: true)
+    }
+    
     @objc private func handleBackButton(_ sender: UIButton) {
         switch sender.tag {
         case 0:
             navigationController?.popViewController(animated: true)
         default:
-            navigationController?.popToRootViewController(animated: true)
+            configureBackAlert()
         }
     }
     
-    @objc func updateSelectedDays(_ notification: Notification) {
+    @objc private func updateSelectedDays(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let selectedDays = userInfo["selectedDays"] as? String else { return }
         
         self.selectedDays = selectedDays
         self.bindingDays()
-        self.scheduleCreateView.checkBlackText()
+        self.detailScheduleAddView.checkBlackText()
     }
     
-    @objc func updateSelectedTime(_ notification: Notification) {
+    @objc private func updateSelectedTime(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let selectedTime = userInfo["selectedTime"] as? Date else { return }
         
         self.selectedTime = selectedTime
         self.bindingTime()
-        self.scheduleCreateView.checkBlackText()
+        self.detailScheduleAddView.checkBlackText()
     }
     
-    @objc func tappedAddScheduleBtn() {
+    @objc private func tappedAddScheduleBtn() {
         // TODO: - 페이지 플로우 확인 후 이동, 저장 로직 수정 예정
-        self.navigationController?.popToRootViewController(animated: true)
+        realmManager.createSchedule(day: selectedDays!, date: selectedTime!, travel: selectedTravel!, placeDetail: selectedPlace!)
+        let alert = UIAlertController(title: "일정 추가 완료", message: "일정 추가가 완료되었습니다.", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "확인", style: .cancel)
+        alert.addAction(cancel)
+        
+        self.dismiss(animated: true)
+        self.present(alert, animated: true)
     }
     
     deinit {
@@ -138,13 +155,13 @@ final class DetailScheduleAddViewController: BaseViewController {
 // MARK: - extensions
 extension DetailScheduleAddViewController: UIPopoverPresentationControllerDelegate {
     @objc private func tappedScheduleBtn() {
-        configurePopover(for: dayPopoverVC, sourceButton: scheduleCreateView.scheduleBtn)
+        configurePopover(for: dayPopoverVC, sourceButton: detailScheduleAddView.scheduleBtn)
         dayPopoverVC.popoverPresentationController?.delegate = self
         present(dayPopoverVC, animated: true)
     }
     
     @objc private func tappedStartTimeBtn() {
-        configurePopover(for: timePopoverVC, sourceButton: scheduleCreateView.startTiemBtn)
+        configurePopover(for: timePopoverVC, sourceButton: detailScheduleAddView.startTiemBtn)
         timePopoverVC.popoverPresentationController?.delegate = self
         present(timePopoverVC, animated: true)
     }
@@ -156,9 +173,9 @@ extension DetailScheduleAddViewController: UIPopoverPresentationControllerDelega
 
 extension DetailScheduleAddViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        scheduleCreateView.setBeginText(textView: textView)
+        detailScheduleAddView.setBeginText(textView: textView)
     }
     func textViewDidEndEditing(_ textView: UITextView) {
-        scheduleCreateView.setEndText(textView: textView)
+        detailScheduleAddView.setEndText(textView: textView)
     }
 }
