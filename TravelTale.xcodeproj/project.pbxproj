@@ -22,7 +22,7 @@
 		1AD537902C12CF4900A70D5E /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378F2C12CF4900A70D5E /* PlanView.swift */; };
 		1AD537942C12DCC600A70D5E /* LightGreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537932C12DCC600A70D5E /* LightGreenButton.swift */; };
 		1AD537962C12E5E300A70D5E /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537952C12E5E300A70D5E /* PlanViewController.swift */; };
-		1AD537982C1362A900A70D5E /* TravelMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537972C1362A800A70D5E /* TravelMemoryView.swift */; };
+		1AD537982C1362A900A70D5E /* MemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537972C1362A800A70D5E /* MemoryView.swift */; };
 		1AD5379A2C1362F500A70D5E /* TravelMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537992C1362F500A70D5E /* TravelMemoryViewController.swift */; };
 		1AD537A02C13999600A70D5E /* PlanTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5379F2C13999600A70D5E /* PlanTableHeaderView.swift */; };
 		1AD537A22C13A9F200A70D5E /* TravelFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537A12C13A9F200A70D5E /* TravelFooterView.swift */; };
@@ -185,7 +185,7 @@
 		1AD5378F2C12CF4900A70D5E /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 		1AD537932C12DCC600A70D5E /* LightGreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightGreenButton.swift; sourceTree = "<group>"; };
 		1AD537952C12E5E300A70D5E /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
-		1AD537972C1362A800A70D5E /* TravelMemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryView.swift; sourceTree = "<group>"; };
+		1AD537972C1362A800A70D5E /* MemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryView.swift; sourceTree = "<group>"; };
 		1AD537992C1362F500A70D5E /* TravelMemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryViewController.swift; sourceTree = "<group>"; };
 		1AD5379F2C13999600A70D5E /* PlanTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTableHeaderView.swift; sourceTree = "<group>"; };
 		1AD537A12C13A9F200A70D5E /* TravelFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelFooterView.swift; sourceTree = "<group>"; };
@@ -1125,7 +1125,7 @@
 		37E5906A2C246B6100999E66 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1AD537972C1362A800A70D5E /* TravelMemoryView.swift */,
+				1AD537972C1362A800A70D5E /* MemoryView.swift */,
 				1AD537992C1362F500A70D5E /* TravelMemoryViewController.swift */,
 			);
 			name = View;
@@ -1660,7 +1660,7 @@
 				1A95EB632C184EC7007D575A /* TravelMemoryDetailEditView.swift in Sources */,
 				37DDF5CA2C18B54400842DA4 /* TravelDetailPlanHeaderContentCell.swift in Sources */,
 				378CEC222C0D649D00DF1C3F /* BaseView.swift in Sources */,
-				1AD537982C1362A900A70D5E /* TravelMemoryView.swift in Sources */,
+				1AD537982C1362A900A70D5E /* MemoryView.swift in Sources */,
 				1A95EB652C194AB6007D575A /* TravelMemoryDetailEditViewController.swift in Sources */,
 				2E3525402C1756EF00D82D34 /* DiscoveryCell.swift in Sources */,
 				1AA8617B2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift in Sources */,

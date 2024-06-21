@@ -10,16 +10,16 @@ import UIKit
 final class TravelMemoryViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelMemoryView = TravelMemoryView()
+    private let memoryView = MemoryView()
     private var travels: [Travel] = [] {
         didSet {
-            travelMemoryView.tableView.reloadData()
+            memoryView.tableView.reloadData()
         }
     }
     
     // MARK: - life cycles
     override func loadView() {
-        view = travelMemoryView
+        view = memoryView
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,17 +29,17 @@ final class TravelMemoryViewController: BaseViewController {
     
     // MARK: - methods
     override func configureStyle() {
-        travelMemoryView.tableView.separatorStyle = .none
+        memoryView.tableView.separatorStyle = .none
     }
     
     override func configureDelegate() {
-        travelMemoryView.tableView.dataSource = self
-        travelMemoryView.tableView.delegate = self
-        travelMemoryView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
+        memoryView.tableView.dataSource = self
+        memoryView.tableView.delegate = self
+        memoryView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
     }
     
     override func configureAddTarget() {
-        travelMemoryView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
+        memoryView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
     }
     
     @objc func tappedAddButton() {
