@@ -24,8 +24,8 @@ final class TravelTableViewCell: BaseTableViewCell {
     }
     
     private let thumbnailImageView = UIImageView().then {
-        $0.configureView(color: .gray70, cornerRadius: 16)
-        $0.contentMode = .scaleAspectFill
+        $0.configureView(color: .gray70, clipsToBounds: true, cornerRadius: 16)
+        $0.contentMode = .scaleToFill
         $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
