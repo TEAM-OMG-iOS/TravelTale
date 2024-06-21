@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift // TODO: 삭제
 
-final class TravelMemoryAddViewController: BaseViewController {
+final class MemorySelectViewController: BaseViewController {
     
     // MARK: - properties
     private let memorySelectView = MemorySelectView()
@@ -82,7 +82,7 @@ final class TravelMemoryAddViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension TravelMemoryAddViewController: UITableViewDataSource {
+extension MemorySelectViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return noMemoryTravels.count
     }
@@ -100,7 +100,7 @@ extension TravelMemoryAddViewController: UITableViewDataSource {
     }
 }
 
-extension TravelMemoryAddViewController: UITableViewDelegate {
+extension MemorySelectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return }
         
