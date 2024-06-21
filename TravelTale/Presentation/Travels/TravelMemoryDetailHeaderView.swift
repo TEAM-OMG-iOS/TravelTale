@@ -13,12 +13,11 @@ final class TravelMemoryDetailHeaderView: UITableViewHeaderFooterView {
     // MARK: - properties
     static let identifier = String(String(describing: TravelMemoryDetailHeaderView.self))
     
-    private let memoryNoteLabel = UILabel().then {
+    private let memoryLabel = UILabel().then {
         $0.configureLabel(color: .black, font: .pretendard(size: 14, weight: .medium), numberOfLines: 0)
     }
     
     // MARK: - methods
-    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         configureUI()
@@ -35,18 +34,18 @@ final class TravelMemoryDetailHeaderView: UITableViewHeaderFooterView {
     }
     
     private func configureHierarchy() {
-        contentView.addSubview(memoryNoteLabel)
+        contentView.addSubview(memoryLabel)
     }
     
     private func configureConstraints() {
-        memoryNoteLabel.snp.makeConstraints {
+        memoryLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(20)
             $0.horizontalEdges.equalToSuperview().inset(24)
             $0.bottom.equalToSuperview().inset(12)
         }
     }
     
-    func bind(memoryNote: String) {
-        memoryNoteLabel.text = memoryNote
+    func bind(memory: String) {
+        memoryLabel.text = memory
     }
 }
