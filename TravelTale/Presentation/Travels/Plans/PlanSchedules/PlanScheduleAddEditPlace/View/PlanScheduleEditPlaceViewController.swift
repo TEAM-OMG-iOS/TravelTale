@@ -19,7 +19,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     @IBOutlet weak var naviTitle: UINavigationItem!
     @IBOutlet weak var completedBtn: UIButton!
     
-    private let dayPopoverVC = DaySelectPopoverViewController()
+    private let dayPopoverVC = PopoverDayViewController()
     
     private let timePopoverVC = TimeSelectPopoverViewController()
     

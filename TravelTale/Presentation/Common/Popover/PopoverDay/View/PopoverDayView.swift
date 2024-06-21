@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DaySelectPopoverView: BaseView {
+final class PopoverDayView: BaseView {
     
     // MARK: - properties
     private let daySelectView = UIView().then {

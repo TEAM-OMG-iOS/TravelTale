@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class DaySelectPopoverViewController: BaseViewController {
+final class PopoverDayViewController: BaseViewController {
     
     // MARK: - properties
-    private let daySelectPopoverView = DaySelectPopoverView()
+    private let daySelectPopoverView = PopoverDayView()
     
     var day: String?
     
@@ -73,7 +73,7 @@ final class DaySelectPopoverViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension DaySelectPopoverViewController: UIPickerViewDelegate {
+extension PopoverDayViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return data[row]
     }
@@ -87,7 +87,7 @@ extension DaySelectPopoverViewController: UIPickerViewDelegate {
     }
 }
 
-extension DaySelectPopoverViewController: UIPickerViewDataSource {
+extension PopoverDayViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
