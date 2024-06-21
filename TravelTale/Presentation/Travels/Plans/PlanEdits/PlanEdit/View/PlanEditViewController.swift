@@ -1,5 +1,5 @@
 //
-//  TravelUpdateViewController.swift
+//  PlanEditViewController.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/7/24.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-final class TravelUpdateViewController: BaseViewController {
+final class PlanEditViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelUpdateView = TravelUpdateView()
+    private let planEditView = PlanEditView()
     
     // MARK: - life cycles
     override func loadView() {
-        view = travelUpdateView
+        view = planEditView
     }
     
     override func viewDidLoad() {
@@ -28,29 +28,29 @@ final class TravelUpdateViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        travelUpdateView.placePickImageButton.addTarget(self, action: #selector(tappedPlacePickButton), for: .touchUpInside)
-        travelUpdateView.dayRangeButton.addTarget(self, action: #selector(tappedDatePickButton), for: .touchUpInside)
-        travelUpdateView.datePickButton.addTarget(self, action: #selector(tappedDatePickButton), for: .touchUpInside)
-        travelUpdateView.resetDateButton.addTarget(self, action: #selector(tappedResetDateButton), for: .touchUpInside)
-        travelUpdateView.textField.addTarget(self, action: #selector(editiedTextField), for: .editingChanged)
-        travelUpdateView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
-        travelUpdateView.backButton.action = #selector(tappedCancelButton)
-        travelUpdateView.backButton.target = self
-        travelUpdateView.deleteButton.action = #selector(tappedDeleteButton)
-        travelUpdateView.deleteButton.target = self
+        planEditView.placePickImageButton.addTarget(self, action: #selector(tappedPlacePickButton), for: .touchUpInside)
+        planEditView.dayRangeButton.addTarget(self, action: #selector(tappedDatePickButton), for: .touchUpInside)
+        planEditView.datePickButton.addTarget(self, action: #selector(tappedDatePickButton), for: .touchUpInside)
+        planEditView.resetDateButton.addTarget(self, action: #selector(tappedResetDateButton), for: .touchUpInside)
+        planEditView.textField.addTarget(self, action: #selector(editiedTextField), for: .editingChanged)
+        planEditView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
+        planEditView.backButton.action = #selector(tappedCancelButton)
+        planEditView.backButton.target = self
+        planEditView.deleteButton.action = #selector(tappedDeleteButton)
+        planEditView.deleteButton.target = self
     }
     
     private func updateInputBox(with text: String) {
-        travelUpdateView.placePickImageButton.setTitle(text, for: .normal)
+        planEditView.placePickImageButton.setTitle(text, for: .normal)
     }
     
     private func configureNavigationBarItems() {
         navigationItem.title = "일정 변경"
-        navigationItem.leftBarButtonItem = travelUpdateView.backButton
+        navigationItem.leftBarButtonItem = planEditView.backButton
     }
     
     private func configureDeleteItem() {
-        navigationItem.rightBarButtonItem = travelUpdateView.deleteButton
+        navigationItem.rightBarButtonItem = planEditView.deleteButton
     }
 
     private func presentAlert() {
@@ -78,40 +78,40 @@ final class TravelUpdateViewController: BaseViewController {
     }
     
     @objc func tappedPlacePickButton() {
-        let locationList = TravelAddPlaceModalViewController()
+        let locationList = PlanAddSidoModalViewController()
         locationList.completion = { [weak self] text in
             guard let self = self else { return }
             
-            travelUpdateView.updatePlaceLabel(text: text)
+            planEditView.updatePlaceLabel(text: text)
         }
         
         self.present(locationList, animated: true)
     }
     
     @objc func tappedDatePickButton() {
-        let calendar = TravelUpdateCalendarViewController()
-        calendar.travelUpdateCalendarView.dateCompletion = { [weak self] date in
+        let calendar = PlanEditDateViewController()
+        calendar.planEditDateView.dateCompletion = { [weak self] date in
             guard let self = self else { return }
             
-            travelUpdateView.updateDayRangeButton(text: date)
+            planEditView.updateDayRangeButton(text: date)
         }
         
-        calendar.travelUpdateCalendarView.completion = { [weak self] text in
+        calendar.planEditDateView.completion = { [weak self] text in
             guard let self = self else { return }
             
-            travelUpdateView.updateDatePickButton(text: text)
+            planEditView.updateDatePickButton(text: text)
         }
         
         self.present(calendar, animated: true)
     }
     
     @objc func editiedTextField() {
-        travelUpdateView.buttonColorChanged()
+        planEditView.buttonColorChanged()
     }
     
     @objc func tappedResetDateButton() {
-        travelUpdateView.resetDate()
-        travelUpdateView.buttonColorChanged()
+        planEditView.resetDate()
+        planEditView.buttonColorChanged()
     }
     
     @objc func tappedCancelButton() {

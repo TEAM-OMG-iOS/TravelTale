@@ -1,5 +1,5 @@
 //
-//  TravelAddTitleViewController.swift
+//  PlanAddTitleViewController.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/5/24.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegate {
+final class PlanAddTitleViewController: BaseViewController, UITextFieldDelegate {
     
     // MARK: - properties
-    private let travelAddTitleView = TravelAddTitleView()
+    private let planAddTitleView = PlanAddTitleView()
     
     // MARK: - life cycles
     override func loadView() {
-        view = travelAddTitleView
+        view = planAddTitleView
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -23,7 +23,7 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        travelAddTitleView.startLoadingAnimation()
+        planAddTitleView.startLoadingAnimation()
     }
     
     override func viewDidLoad() {
@@ -36,23 +36,23 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     }
     
     override func configureDelegate() {
-        travelAddTitleView.textField.delegate = self
+        planAddTitleView.textField.delegate = self
     }
     
     override func configureAddTarget() {
-        travelAddTitleView.textField.addTarget(self, action: #selector(editiedTextField), for: .editingChanged)
-        travelAddTitleView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
-        travelAddTitleView.backButton.action = #selector(tappedBackButton)
-        travelAddTitleView.backButton.target = self
+        planAddTitleView.textField.addTarget(self, action: #selector(editiedTextField), for: .editingChanged)
+        planAddTitleView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
+        planAddTitleView.backButton.action = #selector(tappedBackButton)
+        planAddTitleView.backButton.target = self
     }
     
     private func configureNavigationBarItems() {
         navigationItem.title = "새 여행 추가"
-        navigationItem.leftBarButtonItem = travelAddTitleView.backButton
+        navigationItem.leftBarButtonItem = planAddTitleView.backButton
     }
     
     @objc func tappedOkButton() {
-        let nextVC = TravelAddPlaceViewController()
+        let nextVC = PlanAddSidoViewController()
         self.navigationController?.pushViewController(nextVC, animated: false)
     }
     
@@ -61,6 +61,6 @@ final class TravelAddTitleViewController: BaseViewController, UITextFieldDelegat
     }
     
     @objc func editiedTextField() {
-        travelAddTitleView.buttonColorChanged()
+        planAddTitleView.buttonColorChanged()
     }
 }

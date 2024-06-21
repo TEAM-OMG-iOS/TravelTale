@@ -1,5 +1,5 @@
 //
-//  TravelUpdateCalendarViewController.swift
+//  PlanEditDateViewController.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/12/24.
@@ -8,15 +8,15 @@
 import UIKit
 import HorizonCalendar
 
-final class TravelUpdateCalendarViewController: BaseViewController {
+final class PlanEditDateViewController: BaseViewController {
     
     // MARK: - properties
-    let travelUpdateCalendarView = TravelUpdateCalendarView(monthsLayout: .vertical)
-    private let travelUpdateView = TravelUpdateView()
+    let planEditDateView = PlanEditDateView(monthsLayout: .vertical)
+    private let planEditView = PlanEditView()
     
     // MARK: - lifecycle
     override func loadView() {
-        view = travelUpdateCalendarView
+        view = planEditDateView
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -29,7 +29,7 @@ final class TravelUpdateCalendarViewController: BaseViewController {
     
     // MARK: - methods
     override func configureAddTarget() {
-        travelUpdateCalendarView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
+        planEditDateView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
     }
     
     private func presentAlert() {

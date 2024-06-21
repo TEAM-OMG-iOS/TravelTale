@@ -1,5 +1,5 @@
 //
-//  TravelAddPlaceView.swift
+//  PlanAddSidoView.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/5/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TravelAddPlaceView: BaseView {
+final class PlanAddSidoView: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {

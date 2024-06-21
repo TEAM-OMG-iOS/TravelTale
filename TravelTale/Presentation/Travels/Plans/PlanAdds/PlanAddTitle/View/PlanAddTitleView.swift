@@ -1,5 +1,5 @@
 //
-//  TravelAddTitleView.swift
+//  PlanAddTitleView.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/5/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TravelAddTitleView: BaseView {
+final class PlanAddTitleView: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {

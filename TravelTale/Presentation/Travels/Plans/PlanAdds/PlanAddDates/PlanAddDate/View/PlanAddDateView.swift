@@ -1,5 +1,5 @@
 //
-//  TravelAddCalendarView.swift
+//  PlanAddDateView.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/5/24.
@@ -8,7 +8,7 @@
 import UIKit
 import HorizonCalendar
 
-final class TravelAddCalendarView: BaseView, CalendarBaseView {
+final class PlanAddDateView: BaseView, PlanAddDateCalendarBaseView {
     
     // MARK: - properties
     lazy var calendarView = CalendarView(initialContent: makeContent())

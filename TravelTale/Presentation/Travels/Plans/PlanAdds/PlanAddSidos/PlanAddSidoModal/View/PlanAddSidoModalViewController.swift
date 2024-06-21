@@ -1,5 +1,5 @@
 //
-//  TravelAddPlaceModalViewController.swift
+//  PlanAddSidoModalViewController.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/11/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TravelAddPlaceModalViewController: BaseViewController {
+final class PlanAddSidoModalViewController: BaseViewController {
     
     // MARK: - properties
     private let locationView = LocationView()
@@ -40,7 +40,7 @@ final class TravelAddPlaceModalViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension TravelAddPlaceModalViewController: UITableViewDataSource {
+extension PlanAddSidoModalViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
@@ -56,7 +56,7 @@ extension TravelAddPlaceModalViewController: UITableViewDataSource {
     }
 }
 
-extension TravelAddPlaceModalViewController: UITableViewDelegate {
+extension PlanAddSidoModalViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? LocationTableViewCell else { return }
         cell.setSelected(true, animated: true)

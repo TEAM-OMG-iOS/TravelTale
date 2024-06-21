@@ -1,5 +1,5 @@
 //
-//  TravelAddCalendarViewController.swift
+//  PlanAddDateViewController.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/5/24.
@@ -8,20 +8,20 @@
 import UIKit
 import HorizonCalendar
 
-final class TravelAddCalendarViewController: BaseViewController {
+final class PlanAddDateViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelAddCalendarView = TravelAddCalendarView(monthsLayout: .vertical)
+    private let planAddDateView = PlanAddDateView(monthsLayout: .vertical)
     
     // MARK: - lifecycle
     override func loadView() {
-        view = travelAddCalendarView
+        view = planAddDateView
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        travelAddCalendarView.startLoadingAnimation()
+        planAddDateView.startLoadingAnimation()
     }
     
     override func viewDidLoad() {
@@ -34,15 +34,15 @@ final class TravelAddCalendarViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        travelAddCalendarView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
-        travelAddCalendarView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
-        travelAddCalendarView.backButton.action = #selector(tappedBackButton)
-        travelAddCalendarView.backButton.target = self
+        planAddDateView.cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
+        planAddDateView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
+        planAddDateView.backButton.action = #selector(tappedBackButton)
+        planAddDateView.backButton.target = self
     }
     
     private func configureNavigationBarItems() {
         navigationItem.title = "새 여행 추가"
-        navigationItem.leftBarButtonItem = travelAddCalendarView.backButton
+        navigationItem.leftBarButtonItem = planAddDateView.backButton
     }
     
     @objc func tappedCancelButton() {
