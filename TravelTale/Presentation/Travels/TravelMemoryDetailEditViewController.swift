@@ -52,8 +52,8 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
     override func configureDelegate() {
         memoryAddEditView.collectionView.dataSource = self
         memoryAddEditView.collectionView
-            .register(TravelMemoryEditPhotoCollectionViewCell.self,
-                      forCellWithReuseIdentifier: TravelMemoryEditPhotoCollectionViewCell.identifier)
+            .register(MemoryAddEditPhotoCollectionViewCell.self,
+                      forCellWithReuseIdentifier: MemoryAddEditPhotoCollectionViewCell.identifier)
         
         memoryAddEditView.memoryTextView.delegate = self
     }
@@ -131,9 +131,9 @@ extension TravelMemoryDetailEditViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: TravelMemoryEditPhotoCollectionViewCell.identifier,
+            withReuseIdentifier: MemoryAddEditPhotoCollectionViewCell.identifier,
             for: indexPath)
-                as? TravelMemoryEditPhotoCollectionViewCell
+                as? MemoryAddEditPhotoCollectionViewCell
         else {
             return UICollectionViewCell()
         }

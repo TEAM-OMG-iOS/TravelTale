@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class TravelMemoryEditPhotoCollectionViewCell: BaseCollectionViewCell {
+final class MemoryAddEditPhotoCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - properties
-    static let identifier = String(describing: TravelMemoryEditPhotoCollectionViewCell.self)
+    static let identifier = String(describing: MemoryAddEditPhotoCollectionViewCell.self)
     
     let imageView = UIImageView().then {
         $0.contentMode = .scaleAspectFill

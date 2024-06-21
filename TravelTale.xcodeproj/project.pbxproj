@@ -12,7 +12,7 @@
 		1A95EB5F2C16BA88007D575A /* MemorySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95EB5E2C16BA88007D575A /* MemorySelectViewController.swift */; };
 		1A95EB632C184EC7007D575A /* MemoryAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95EB622C184EC7007D575A /* MemoryAddEditView.swift */; };
 		1A95EB652C194AB6007D575A /* TravelMemoryDetailEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95EB642C194AB6007D575A /* TravelMemoryDetailEditViewController.swift */; };
-		1AA861702C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8616F2C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift */; };
+		1AA861702C1A839D007F69E7 /* MemoryAddEditPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8616F2C1A839D007F69E7 /* MemoryAddEditPhotoCollectionViewCell.swift */; };
 		1AA861752C1ACDE5007F69E7 /* MemoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861742C1ACDE5007F69E7 /* MemoryDetailView.swift */; };
 		1AA861772C1B4DD8007F69E7 /* MemoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861762C1B4DD8007F69E7 /* MemoryDetailViewController.swift */; };
 		1AA861792C1B53DB007F69E7 /* MemoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861782C1B53DB007F69E7 /* MemoryDetailTableViewCell.swift */; };
@@ -175,7 +175,7 @@
 		1A95EB5E2C16BA88007D575A /* MemorySelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorySelectViewController.swift; sourceTree = "<group>"; };
 		1A95EB622C184EC7007D575A /* MemoryAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryAddEditView.swift; sourceTree = "<group>"; };
 		1A95EB642C194AB6007D575A /* TravelMemoryDetailEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailEditViewController.swift; sourceTree = "<group>"; };
-		1AA8616F2C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryEditPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		1AA8616F2C1A839D007F69E7 /* MemoryAddEditPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryAddEditPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		1AA861742C1ACDE5007F69E7 /* MemoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailView.swift; sourceTree = "<group>"; };
 		1AA861762C1B4DD8007F69E7 /* MemoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailViewController.swift; sourceTree = "<group>"; };
 		1AA861782C1B53DB007F69E7 /* MemoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -1179,7 +1179,7 @@
 			isa = PBXGroup;
 			children = (
 				1A95EB622C184EC7007D575A /* MemoryAddEditView.swift */,
-				1AA8616F2C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift */,
+				1AA8616F2C1A839D007F69E7 /* MemoryAddEditPhotoCollectionViewCell.swift */,
 				1A95EB642C194AB6007D575A /* TravelMemoryDetailEditViewController.swift */,
 			);
 			name = View;
@@ -1652,7 +1652,7 @@
 				37C08C842C1EF55400F5E308 /* RealmManager.swift in Sources */,
 				2E0671BF2C1DF3D3001CDB2E /* CategoryView.swift in Sources */,
 				37CB880F2C0D7979002798BE /* UIButton+Extension.swift in Sources */,
-				1AA861702C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift in Sources */,
+				1AA861702C1A839D007F69E7 /* MemoryAddEditPhotoCollectionViewCell.swift in Sources */,
 				371387A72C249640002C6284 /* SearchResultTableViewCell.swift in Sources */,
 				374DDDE02C1F4E650040A5F1 /* PlaceDetail.swift in Sources */,
 				37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */,
