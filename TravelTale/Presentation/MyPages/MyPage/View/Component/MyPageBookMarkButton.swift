@@ -1,5 +1,5 @@
 //
-//  BookMarkButton.swift
+//  MyPageBookMarkButton.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/14/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class BookMarkButton: UIButton {
+final class MyPageBookMarkButton: UIButton {
     
     // MARK: - properties
     private let backgroundView = UIView().then {

@@ -37,8 +37,8 @@ final class PlaceDetailViewController: BaseViewController {
         placeDetailView.imageCollectionView.dataSource = self
         placeDetailView.imageCollectionView.delegate = self
         
-        placeDetailView.imageCollectionView.register(PlaceDetailImageCollectionViewCell.self, 
-                                                     forCellWithReuseIdentifier: PlaceDetailImageCollectionViewCell.identifier)
+        placeDetailView.imageCollectionView.register(PlaceDetailCollectionViewCell.self, 
+                                                     forCellWithReuseIdentifier: PlaceDetailCollectionViewCell.identifier)
         
         placeDetailView.mapView.delegate = self
     }
@@ -57,12 +57,12 @@ final class PlaceDetailViewController: BaseViewController {
     }
     
     @objc private func tappedPhoneNumberButton() {
-        let phoneOptionsAlertVC = PhoneOptionsAlertViewController()
+        let PlaceDetailAlertVC = PlaceDetailAlertViewController()
         
         // TODO: - 전화번호 정보 바인딩
-        phoneOptionsAlertVC.setPhoneNumber(phoneNumber: "010-5145-7665")
-        phoneOptionsAlertVC.modalPresentationStyle = .overFullScreen
-        present(phoneOptionsAlertVC, animated: false)
+        PlaceDetailAlertVC.setPhoneNumber(phoneNumber: "010-5145-7665")
+        PlaceDetailAlertVC.modalPresentationStyle = .overFullScreen
+        present(PlaceDetailAlertVC, animated: false)
     }
     
     @objc private func tappedWebsiteButton() {
@@ -94,18 +94,18 @@ final class PlaceDetailViewController: BaseViewController {
     }
     
     private func configureToast(text: String) {
-        let toastView = CustomPopUpView()
+        let placeDetailToastView = PlaceDetailToastView()
         
-        toastView.setText(text: text)
-        configureToastConstraints(toastView: toastView)
+        placeDetailToastView.setText(text: text)
+        configureToastConstraints(toastView: placeDetailToastView)
         
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
-            toastView.alpha = 1.0
+            placeDetailToastView.alpha = 1.0
         }, completion: { _ in
             UIView.animate(withDuration: 0.5, delay: 1.5, options: .curveEaseOut, animations: {
-                toastView.alpha = 0.0
+                placeDetailToastView.alpha = 0.0
             }, completion: { _ in
-                toastView.removeFromSuperview()
+                placeDetailToastView.removeFromSuperview()
             })
         })
     }
@@ -137,8 +137,8 @@ extension PlaceDetailViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailImageCollectionViewCell.identifier,
-                                                      for: indexPath) as! PlaceDetailImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailCollectionViewCell.identifier,
+                                                      for: indexPath) as! PlaceDetailCollectionViewCell
         // TODO: - 장소 사진 바인딩
         return cell
     }

@@ -1,5 +1,5 @@
 //
-//  CategoryTableViewCell.swift
+//  CategoryTabTableViewCell.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/16/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class CategoryTableViewCell: BaseTableViewCell {
+final class CategoryTabTableViewCell: BaseTableViewCell {
     
     // MARK: - properties
-    static let identifier = String(describing: CategoryTableViewCell.self)
+    static let identifier = String(describing: CategoryTabTableViewCell.self)
     
     private let containerView = UIView().then {
         $0.configureView(color: .white, clipsToBounds: true, cornerRadius: 15)
