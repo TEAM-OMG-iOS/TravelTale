@@ -43,8 +43,8 @@ final class MemoryViewController: BaseViewController {
     }
     
     @objc func tappedAddButton() {
-        let memorySelectVC = MemorySelectViewController()
-        self.navigationController?.pushViewController(memorySelectVC, animated: true)
+        let nextVC = MemorySelectViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
