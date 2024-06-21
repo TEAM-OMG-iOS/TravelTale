@@ -12,14 +12,11 @@ final class PlanEditViewController: BaseViewController {
     // MARK: - properties
     private let planEditView = PlanEditView()
     private let planEditDateView = PlanEditDateView(monthsLayout: .vertical)
-    private let travelPlanView = TravelPlanView()
     
     private let realmManager = RealmManager.shared
     
-    private var travels: [Travel] = []
+    private var travel: Travel
     
-    var travel: Travel?
-    var defaultTravel = Travel()
     var editTitle: String?
     var editSido: String?
     var editStartDate: Date?
@@ -29,17 +26,19 @@ final class PlanEditViewController: BaseViewController {
     override func loadView() {
         view = planEditView
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        travels = RealmManager.shared.fetchTravels()
-        print(travels)
-    }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+    }
+    
+    init(travel: Travel) {
+        self.travel = travel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - methods
@@ -81,8 +80,10 @@ final class PlanEditViewController: BaseViewController {
     """, preferredStyle: .alert)
         
         let cancel = UIAlertAction(title: "취소", style: .destructive)
-        let ok = UIAlertAction(title: "확인", style: .default) { _ in
-            self.realmManager.deleteTravel(travel: self.travel!)
+        
+        let ok = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            realmManager.deleteTravel(travel: self.travel)
             self.navigationController?.popToRootViewController(animated: true)
         }
         
@@ -148,8 +149,7 @@ final class PlanEditViewController: BaseViewController {
     
     @objc func tappedOkButton() {
         editTitle = planEditView.textField.text
-        RealmManager.shared.updateTravel(travel: travel ?? defaultTravel, title: editTitle ?? "", area: editSido ?? "미정", startDate: editStartDate ?? Date(), endDate: editEndDate ?? Date())
-        print("\(String(describing: travel)), \(String(describing: editTitle)), \(String(describing: editSido)), \(String(describing: editStartDate)), \(String(describing: editEndDate))")
+        realmManager.updateTravel(travel: self.travel, title: editTitle ?? "", area: editSido ?? "미정", startDate: editStartDate ?? Date(), endDate: editEndDate ?? Date())
         
         self.navigationController?.popViewController(animated: true)
     }
