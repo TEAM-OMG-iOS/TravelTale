@@ -66,7 +66,7 @@ extension MemoryViewController: UITableViewDataSource {
 
 extension MemoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let nextVC = TravelMemoryDetailViewController(travel: travels[indexPath.row])
+        let nextVC = MemoryDetailViewController(travel: travels[indexPath.row])
         navigationController?.pushViewController(nextVC, animated: true)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

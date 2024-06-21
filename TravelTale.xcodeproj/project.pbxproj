@@ -14,7 +14,7 @@
 		1A95EB652C194AB6007D575A /* TravelMemoryDetailEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95EB642C194AB6007D575A /* TravelMemoryDetailEditViewController.swift */; };
 		1AA861702C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8616F2C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift */; };
 		1AA861752C1ACDE5007F69E7 /* MemoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861742C1ACDE5007F69E7 /* MemoryDetailView.swift */; };
-		1AA861772C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861762C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift */; };
+		1AA861772C1B4DD8007F69E7 /* MemoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861762C1B4DD8007F69E7 /* MemoryDetailViewController.swift */; };
 		1AA861792C1B53DB007F69E7 /* MemoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861782C1B53DB007F69E7 /* MemoryDetailTableViewCell.swift */; };
 		1AA8617B2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8617A2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift */; };
 		1AC9B3DF2C219E4700059246 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */; };
@@ -177,7 +177,7 @@
 		1A95EB642C194AB6007D575A /* TravelMemoryDetailEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailEditViewController.swift; sourceTree = "<group>"; };
 		1AA8616F2C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryEditPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		1AA861742C1ACDE5007F69E7 /* MemoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailView.swift; sourceTree = "<group>"; };
-		1AA861762C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailViewController.swift; sourceTree = "<group>"; };
+		1AA861762C1B4DD8007F69E7 /* MemoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailViewController.swift; sourceTree = "<group>"; };
 		1AA861782C1B53DB007F69E7 /* MemoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailTableViewCell.swift; sourceTree = "<group>"; };
 		1AA8617A2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailTableHeaderView.swift; sourceTree = "<group>"; };
 		1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
@@ -1168,9 +1168,9 @@
 			isa = PBXGroup;
 			children = (
 				1AA861742C1ACDE5007F69E7 /* MemoryDetailView.swift */,
-				1AA8617A2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift */,
 				1AA861782C1B53DB007F69E7 /* MemoryDetailTableViewCell.swift */,
-				1AA861762C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift */,
+				1AA8617A2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift */,
+				1AA861762C1B4DD8007F69E7 /* MemoryDetailViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1686,7 +1686,7 @@
 				2ECECE9C2C2409E2003F7748 /* TermPrivacyPolicyViewController.swift in Sources */,
 				4D0E3CE52C11EA930089D6C1 /* ScheduleCreateView.swift in Sources */,
 				37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */,
-				1AA861772C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift in Sources */,
+				1AA861772C1B4DD8007F69E7 /* MemoryDetailViewController.swift in Sources */,
 				2EC635752C1CD0FF006C1ADB /* DiscoveryCategoryViewController.swift in Sources */,
 				37E36D872C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift in Sources */,
 				37C08C822C1EF54A00F5E308 /* NetworkManager.swift in Sources */,

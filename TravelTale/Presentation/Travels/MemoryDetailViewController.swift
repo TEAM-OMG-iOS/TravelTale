@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TravelMemoryDetailViewController: BaseViewController {
+final class MemoryDetailViewController: BaseViewController {
     
     // MARK: - properties
     private let travelMemoryDetailView = MemoryDetailView()
@@ -108,7 +108,7 @@ final class TravelMemoryDetailViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension TravelMemoryDetailViewController: UITableViewDataSource {
+extension MemoryDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memoryImages.count
@@ -124,7 +124,7 @@ extension TravelMemoryDetailViewController: UITableViewDataSource {
     }
 }
 
-extension TravelMemoryDetailViewController: UITableViewDelegate {
+extension MemoryDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let image = memoryImages[indexPath.row]
