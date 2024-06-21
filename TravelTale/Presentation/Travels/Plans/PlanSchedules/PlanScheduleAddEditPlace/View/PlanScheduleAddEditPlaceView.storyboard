@@ -36,8 +36,8 @@
                                         <attributedString key="attributedText">
                                             <fragment content="장소">
                                                 <attributes>
-                                                    <font key="NSFont" metaFont="system" size="16"/>
-                                                    <font key="NSOriginalFont" size="18" name="HelveticaNeue"/>
+                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
+                                                    <font key="NSOriginalFont" metaFont="system" size="16"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
@@ -81,6 +81,18 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NNX-G9-3xK">
                                 <rect key="frame" x="24" y="195" width="345" height="48"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일정" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSk-IK-Dfw">
+                                        <rect key="frame" x="16" y="14.666666666666657" width="28" height="19"/>
+                                        <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시간을 선택하세요" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mi9-U6-3Sy">
+                                        <rect key="frame" x="214.33333333333334" y="14.666666666666657" width="114.66666666666666" height="19"/>
+                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qG2-0c-hca">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="48"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -90,18 +102,6 @@
                                             <action selector="tappedScheduleBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="lLl-DJ-Ali"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일정" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSk-IK-Dfw">
-                                        <rect key="frame" x="16" y="14.666666666666657" width="28" height="19"/>
-                                        <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mi9-U6-3Sy">
-                                        <rect key="frame" x="287.66666666666669" y="14.666666666666657" width="41.333333333333314" height="19"/>
-                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -127,19 +127,19 @@
                                         <attributedString key="attributedText">
                                             <fragment content="시작">
                                                 <attributes>
-                                                    <font key="NSFont" metaFont="system" size="16"/>
-                                                    <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
+                                                    <font key="NSOriginalFont" metaFont="system" size="16"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content=" ">
                                                 <attributes>
-                                                    <font key="NSFont" metaFont="system" size="16"/>
+                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content="시간">
                                                 <attributes>
-                                                    <font key="NSFont" metaFont="system" size="16"/>
-                                                    <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
+                                                    <font key="NSOriginalFont" metaFont="system" size="16"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
@@ -359,8 +359,8 @@
                                         <attributedString key="attributedText">
                                             <fragment content="장소">
                                                 <attributes>
-                                                    <font key="NSFont" metaFont="system" size="16"/>
-                                                    <font key="NSOriginalFont" size="18" name="HelveticaNeue"/>
+                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
+                                                    <font key="NSOriginalFont" metaFont="system" size="16"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
@@ -372,14 +372,28 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v15-bJ-ni4">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="48"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="tappedPlaceBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Cnj-D7-gS6"/>
+                                            <action selector="tappedPlaceBtn:" destination="2P1-mE-glx" eventType="touchUpInside" id="suZ-Rc-xFl"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="v15-bJ-ni4" firstAttribute="leading" secondItem="ger-fl-XEh" secondAttribute="leading" id="5kL-pS-5y8"/>
+                                    <constraint firstAttribute="bottom" secondItem="v15-bJ-ni4" secondAttribute="bottom" id="6WU-qT-VeL"/>
                                     <constraint firstItem="v0c-MB-oJU" firstAttribute="centerY" secondItem="ger-fl-XEh" secondAttribute="centerY" id="EWA-0H-Tok"/>
                                     <constraint firstItem="fEP-pe-Xr0" firstAttribute="leading" secondItem="ger-fl-XEh" secondAttribute="leading" constant="16" id="F9W-sI-P7H"/>
                                     <constraint firstAttribute="height" constant="48" id="HUX-Tb-CJA"/>
                                     <constraint firstAttribute="trailing" secondItem="v0c-MB-oJU" secondAttribute="trailing" constant="16" id="JZF-IW-mlU"/>
                                     <constraint firstItem="fEP-pe-Xr0" firstAttribute="centerY" secondItem="ger-fl-XEh" secondAttribute="centerY" id="f7t-kI-TPd"/>
+                                    <constraint firstItem="v15-bJ-ni4" firstAttribute="top" secondItem="ger-fl-XEh" secondAttribute="top" id="hl6-ij-2m0"/>
+                                    <constraint firstAttribute="trailing" secondItem="v15-bJ-ni4" secondAttribute="trailing" id="yMd-Q9-Mly"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -407,7 +421,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cW6-Is-0vw">
-                                        <rect key="frame" x="287.66666666666669" y="14.666666666666657" width="41.333333333333314" height="19"/>
+                                        <rect key="frame" x="290" y="14.666666666666657" width="39" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -437,26 +451,29 @@
                                         <attributedString key="attributedText">
                                             <fragment content="시작">
                                                 <attributes>
-                                                    <font key="NSFont" metaFont="system" size="16"/>
-                                                    <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                                    <color key="NSColor" red="0.14509803921568626" green="0.14345479010000001" blue="0.14345479010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
+                                                    <font key="NSOriginalFont" metaFont="system" size="16"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content=" ">
                                                 <attributes>
-                                                    <font key="NSFont" metaFont="system" size="16"/>
+                                                    <color key="NSColor" red="0.14509803921568626" green="0.14345479010000001" blue="0.14345479010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content="시간">
                                                 <attributes>
-                                                    <font key="NSFont" metaFont="system" size="16"/>
-                                                    <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                                    <color key="NSColor" red="0.14509803921568626" green="0.14345479010000001" blue="0.14345479010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="16" name="Pretendard-Bold"/>
+                                                    <font key="NSOriginalFont" metaFont="system" size="16"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오전 9:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFz-fA-VhN">
-                                        <rect key="frame" x="265.66666666666669" y="14.666666666666686" width="63.333333333333314" height="19"/>
+                                        <rect key="frame" x="264.33333333333331" y="14.666666666666686" width="64.666666666666686" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
