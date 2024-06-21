@@ -11,6 +11,19 @@ final class PlanEditViewController: BaseViewController {
     
     // MARK: - properties
     private let planEditView = PlanEditView()
+    private let planEditDateView = PlanEditDateView(monthsLayout: .vertical)
+    private let travelPlanView = TravelPlanView()
+    
+    private let realmManager = RealmManager.shared
+    
+    private var travels: [Travel] = []
+    
+    var travel: Travel?
+    var defaultTravel = Travel()
+    var editTitle: String?
+    var editSido: String?
+    var editStartDate: Date?
+    var editEndDate: Date?
     
     // MARK: - life cycles
     override func loadView() {
@@ -19,6 +32,14 @@ final class PlanEditViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        travels = RealmManager.shared.fetchTravels()
+        print(travels)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
     }
     
     // MARK: - methods
@@ -39,7 +60,7 @@ final class PlanEditViewController: BaseViewController {
         planEditView.deleteButton.action = #selector(tappedDeleteButton)
         planEditView.deleteButton.target = self
     }
-    
+
     private func updateInputBox(with text: String) {
         planEditView.placePickImageButton.setTitle(text, for: .normal)
     }
@@ -57,13 +78,11 @@ final class PlanEditViewController: BaseViewController {
         let alert = UIAlertController(title: "경고", message: """
     계획된 모든 일정이 삭제됩니다.
     그대로 진행하시겠습니까?
-    """, preferredStyle: UIAlertController.Style.alert)
+    """, preferredStyle: .alert)
         
         let cancel = UIAlertAction(title: "취소", style: .destructive)
-        
-        let ok = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
-            guard let self = self else { return }
-            // TODO: 해당 셀(여행 계획) 삭제
+        let ok = UIAlertAction(title: "확인", style: .default) { _ in
+            self.realmManager.deleteTravel(travel: self.travel!)
             self.navigationController?.popToRootViewController(animated: true)
         }
         
@@ -83,6 +102,7 @@ final class PlanEditViewController: BaseViewController {
             guard let self = self else { return }
             
             planEditView.updatePlaceLabel(text: text)
+            self.editSido = text
         }
         
         self.present(locationList, animated: true)
@@ -90,10 +110,18 @@ final class PlanEditViewController: BaseViewController {
     
     @objc func tappedDatePickButton() {
         let calendar = PlanEditDateViewController()
-        calendar.planEditDateView.dateCompletion = { [weak self] date in
+        calendar.planEditDateView.dateCompletion = { [weak self] startDate, endDate in
             guard let self = self else { return }
             
-            planEditView.updateDayRangeButton(text: date)
+            self.editStartDate = startDate
+            self.editEndDate = endDate
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy.MM.dd"
+            let startDateString = dateFormatter.string(from: startDate)
+            let endDateString = dateFormatter.string(from: endDate)
+            let dateRangeString = "\(startDateString) - \(endDateString)"
+            self.planEditView.updateDayRangeButton(text: dateRangeString)
         }
         
         calendar.planEditDateView.completion = { [weak self] text in
@@ -119,7 +147,10 @@ final class PlanEditViewController: BaseViewController {
     }
     
     @objc func tappedOkButton() {
+        editTitle = planEditView.textField.text
+        RealmManager.shared.updateTravel(travel: travel ?? defaultTravel, title: editTitle ?? "", area: editSido ?? "미정", startDate: editStartDate ?? Date(), endDate: editEndDate ?? Date())
+        print("\(String(describing: travel)), \(String(describing: editTitle)), \(String(describing: editSido)), \(String(describing: editStartDate)), \(String(describing: editEndDate))")
+        
         self.navigationController?.popViewController(animated: true)
-        // TODO: 데이터 저장 상태로 이동하는 기능
     }
 }

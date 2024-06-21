@@ -21,7 +21,10 @@ final class PlanEditDateView: BaseView, PlanAddDateCalendarBaseView {
     private var selectedDayRangeAtStartOfDrag: DayComponentsRange?
     
     var completion: ((String) -> Void)?
-    var dateCompletion: ((String) -> Void)?
+    var dateCompletion: ((Date, Date) -> Void)?
+    
+    var editStartDate: Date?
+    var editEndDate: Date?
     
     lazy var dayDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -110,7 +113,7 @@ final class PlanEditDateView: BaseView, PlanAddDateCalendarBaseView {
     private func setDateLabel() {
         if let startDate = calendar.date(from: selectedDayRange?.lowerBound.components ?? DateComponents()),
            let endDate = calendar.date(from: selectedDayRange?.upperBound.components ?? DateComponents()) {
-            setStartDate(startDate: startDate, endDate: endDate)
+            dateCompletion?(startDate, endDate)
             
             if startDate == endDate {
                 okButton.isEnabled = true
@@ -127,14 +130,5 @@ final class PlanEditDateView: BaseView, PlanAddDateCalendarBaseView {
                 }
             }
         }
-    }
-    
-    private func setStartDate(startDate: Date, endDate: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd"
-        let startDateString = dateFormatter.string(from: startDate)
-        let endDateString = dateFormatter.string(from: endDate)
-        let dateRangeString = "\(startDateString) - \(endDateString)"
-        dateCompletion?(dateRangeString)
     }
 }
