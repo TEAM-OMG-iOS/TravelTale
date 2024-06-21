@@ -15,7 +15,7 @@
 		1AA861702C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8616F2C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift */; };
 		1AA861752C1ACDE5007F69E7 /* MemoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861742C1ACDE5007F69E7 /* MemoryDetailView.swift */; };
 		1AA861772C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861762C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift */; };
-		1AA861792C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861782C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift */; };
+		1AA861792C1B53DB007F69E7 /* MemoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861782C1B53DB007F69E7 /* MemoryDetailTableViewCell.swift */; };
 		1AA8617B2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8617A2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift */; };
 		1AC9B3DF2C219E4700059246 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */; };
 		1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */; };
@@ -178,7 +178,7 @@
 		1AA8616F2C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryEditPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		1AA861742C1ACDE5007F69E7 /* MemoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailView.swift; sourceTree = "<group>"; };
 		1AA861762C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailViewController.swift; sourceTree = "<group>"; };
-		1AA861782C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailTableViewCell.swift; sourceTree = "<group>"; };
+		1AA861782C1B53DB007F69E7 /* MemoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailTableViewCell.swift; sourceTree = "<group>"; };
 		1AA8617A2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailTableHeaderView.swift; sourceTree = "<group>"; };
 		1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTableViewCell.swift; sourceTree = "<group>"; };
@@ -1169,7 +1169,7 @@
 			children = (
 				1AA861742C1ACDE5007F69E7 /* MemoryDetailView.swift */,
 				1AA8617A2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift */,
-				1AA861782C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift */,
+				1AA861782C1B53DB007F69E7 /* MemoryDetailTableViewCell.swift */,
 				1AA861762C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift */,
 			);
 			name = View;
@@ -1575,7 +1575,7 @@
 			files = (
 				2EBBDD482C245FD4006534A9 /* PlaceDetailView.swift in Sources */,
 				1A95EB5F2C16BA88007D575A /* MemorySelectViewController.swift in Sources */,
-				1AA861792C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift in Sources */,
+				1AA861792C1B53DB007F69E7 /* MemoryDetailTableViewCell.swift in Sources */,
 				2EF0E3AD2C1F1E7700654025 /* BookMarkViewController.swift in Sources */,
 				2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */,
 				1AA861752C1ACDE5007F69E7 /* MemoryDetailView.swift in Sources */,

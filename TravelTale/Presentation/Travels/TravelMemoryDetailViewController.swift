@@ -51,8 +51,8 @@ final class TravelMemoryDetailViewController: BaseViewController {
         travelMemoryDetailView.tableView.delegate = self
         
         travelMemoryDetailView.tableView
-            .register(TravelMemoryDetailTableViewCell.self,
-                      forCellReuseIdentifier: TravelMemoryDetailTableViewCell.identifier)
+            .register(MemoryDetailTableViewCell.self,
+                      forCellReuseIdentifier: MemoryDetailTableViewCell.identifier)
         
         travelMemoryDetailView.tableView.register(
             MemoryDetailTableHeaderView.self,
@@ -115,7 +115,7 @@ extension TravelMemoryDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelMemoryDetailTableViewCell.identifier) as? TravelMemoryDetailTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MemoryDetailTableViewCell.identifier) as? MemoryDetailTableViewCell else { return UITableViewCell() }
         
         cell.bind(image: memoryImages[indexPath.row])
         cell.selectionStyle = .none
