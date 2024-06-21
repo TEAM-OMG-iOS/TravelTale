@@ -1,5 +1,5 @@
 //
-//  TravelAdditionViewController.swift
+//  DetailScheduleSelectViewController.swift
 //  TravelTale
 //
 //  Created by Kinam on 6/4/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class TravelSelectViewController: BaseViewController {
+final class DetailScheduleSelectViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelSelectView = TravelSelectView()
+    private let travelSelectView = DetailScheduleSelectView()
     
     private var travels: [Travel] = [] {
         didSet {
@@ -64,7 +64,7 @@ final class TravelSelectViewController: BaseViewController {
     @objc private func tappedButton() {
         guard let selectedIndexPath = travelSelectView.tableView.indexPathForSelectedRow else { return }
         let selectedData = upcomingTravels[selectedIndexPath.row]
-        let nextVC = ScheduleCreateViewController()
+        let nextVC = DetailScheduleAddViewController()
         nextVC.selectedData = selectedData
         navigationController?.pushViewController(nextVC, animated: true)
     }
@@ -84,7 +84,7 @@ final class TravelSelectViewController: BaseViewController {
     }
 }
 
-extension TravelSelectViewController: UITableViewDelegate {
+extension DetailScheduleSelectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let _ = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return }
         
@@ -104,7 +104,7 @@ extension TravelSelectViewController: UITableViewDelegate {
     }
 }
 
-extension TravelSelectViewController: UITableViewDataSource {
+extension DetailScheduleSelectViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return upcomingTravels.count
     }

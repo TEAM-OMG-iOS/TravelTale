@@ -1,5 +1,5 @@
 //
-//  TravelAddViewController2.swift
+//  DetailScheduleAddViewController.swift
 //  TravelTale
 //
 //  Created by Kinam on 6/6/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class ScheduleCreateViewController: BaseViewController {
+final class DetailScheduleAddViewController: BaseViewController {
     
     // MARK: - properties
-    private let scheduleCreateView = ScheduleCreateView()
+    private let scheduleCreateView = DetailScheduleAddView()
     
     private let dayPopoverVC = PopoverDayViewController()
     
@@ -136,7 +136,7 @@ final class ScheduleCreateViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension ScheduleCreateViewController: UIPopoverPresentationControllerDelegate {
+extension DetailScheduleAddViewController: UIPopoverPresentationControllerDelegate {
     @objc private func tappedScheduleBtn() {
         configurePopover(for: dayPopoverVC, sourceButton: scheduleCreateView.scheduleBtn)
         dayPopoverVC.popoverPresentationController?.delegate = self
@@ -154,7 +154,7 @@ extension ScheduleCreateViewController: UIPopoverPresentationControllerDelegate 
     }
 }
 
-extension ScheduleCreateViewController: UITextViewDelegate {
+extension DetailScheduleAddViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         scheduleCreateView.setBeginText(textView: textView)
     }

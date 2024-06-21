@@ -1,5 +1,5 @@
 //
-//  TravelAdditionView2.swift
+//  DetailScheduleAddView.swift
 //  TravelTale
 //
 //  Created by Kinam on 6/6/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ScheduleCreateView: BaseView {
+final class DetailScheduleAddView: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {
