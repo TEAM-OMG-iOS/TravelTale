@@ -12,8 +12,8 @@ final class TravelViewController: BaseViewController {
     // MARK: - properties
     private let travelView = TravelView()
     
-    private let travelPlanVC = TravelPlanViewController()
-    private let travelMemoryVC = TravelMemoryViewController()
+    private let planVC = PlanViewController()
+    private let memoryVC = MemoryViewController()
     
     lazy var currentTappedButton: UIButton = travelView.planButton
     
@@ -53,8 +53,8 @@ final class TravelViewController: BaseViewController {
     
     private func addChildViews() {
         let childVCs = [
-            travelPlanVC,
-            travelMemoryVC
+            planVC,
+            memoryVC
         ]
         
         childVCs.forEach {
@@ -65,20 +65,20 @@ final class TravelViewController: BaseViewController {
     }
     
     private func showOnlyView(viewToShow: UIView) {
-        let views = [travelPlanVC.view,
-                     travelMemoryVC.view]
+        let views = [planVC.view,
+                     memoryVC.view]
         views.forEach { $0?.isHidden = ($0 != viewToShow) }
     }
     
     @objc func tappedButton(_ sender: UIButton) {
         switch sender {
         case travelView.memoryButton:
-            showOnlyView(viewToShow: travelMemoryVC.view)
+            showOnlyView(viewToShow: memoryVC.view)
             travelView.changeButtonUI(tapped: sender)
             currentTappedButton = travelView.memoryButton
             
         default:
-            showOnlyView(viewToShow: travelPlanVC.view)
+            showOnlyView(viewToShow: planVC.view)
             travelView.changeButtonUI(tapped: sender)
             currentTappedButton = travelView.planButton
         }
