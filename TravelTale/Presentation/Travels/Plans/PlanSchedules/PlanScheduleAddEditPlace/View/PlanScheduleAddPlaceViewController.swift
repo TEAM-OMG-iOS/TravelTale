@@ -21,7 +21,7 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     
     private let dayPopoverVC = PopoverDayViewController()
     
-    private let timePopoverVC = TimeSelectPopoverViewController()
+    private let timePopoverVC = PopoverTimeViewController()
     
     var selectedDays: String?
     

@@ -1,5 +1,5 @@
 //
-//  DaySelectPopoverView.swift
+//  PopoverDayView.swift
 //  TravelTale
 //
 //  Created by Kinam on 6/12/24.

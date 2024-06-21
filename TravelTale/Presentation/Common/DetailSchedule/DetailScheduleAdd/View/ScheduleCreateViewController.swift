@@ -12,9 +12,9 @@ final class ScheduleCreateViewController: BaseViewController {
     // MARK: - properties
     private let scheduleCreateView = ScheduleCreateView()
     
-    private let dayPopoverVC = DaySelectPopoverViewController()
+    private let dayPopoverVC = PopoverDayViewController()
     
-    private let timePopoverVC = TimeSelectPopoverViewController()
+    private let timePopoverVC = PopoverTimeViewController()
     
     // TODO: 데이터 모델에 따라 변경될 예정
     var selectedData: Travel? = nil
