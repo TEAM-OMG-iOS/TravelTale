@@ -13,7 +13,7 @@
 		1A95EB632C184EC7007D575A /* TravelMemoryDetailEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95EB622C184EC7007D575A /* TravelMemoryDetailEditView.swift */; };
 		1A95EB652C194AB6007D575A /* TravelMemoryDetailEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95EB642C194AB6007D575A /* TravelMemoryDetailEditViewController.swift */; };
 		1AA861702C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8616F2C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift */; };
-		1AA861752C1ACDE5007F69E7 /* TravelMemoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861742C1ACDE5007F69E7 /* TravelMemoryDetailView.swift */; };
+		1AA861752C1ACDE5007F69E7 /* MemoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861742C1ACDE5007F69E7 /* MemoryDetailView.swift */; };
 		1AA861772C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861762C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift */; };
 		1AA861792C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861782C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift */; };
 		1AA8617B2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8617A2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift */; };
@@ -176,7 +176,7 @@
 		1A95EB622C184EC7007D575A /* TravelMemoryDetailEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailEditView.swift; sourceTree = "<group>"; };
 		1A95EB642C194AB6007D575A /* TravelMemoryDetailEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailEditViewController.swift; sourceTree = "<group>"; };
 		1AA8616F2C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryEditPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
-		1AA861742C1ACDE5007F69E7 /* TravelMemoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailView.swift; sourceTree = "<group>"; };
+		1AA861742C1ACDE5007F69E7 /* MemoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailView.swift; sourceTree = "<group>"; };
 		1AA861762C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailViewController.swift; sourceTree = "<group>"; };
 		1AA861782C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailTableViewCell.swift; sourceTree = "<group>"; };
 		1AA8617A2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailHeaderView.swift; sourceTree = "<group>"; };
@@ -1167,7 +1167,7 @@
 		37E5906F2C246C6B00999E66 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1AA861742C1ACDE5007F69E7 /* TravelMemoryDetailView.swift */,
+				1AA861742C1ACDE5007F69E7 /* MemoryDetailView.swift */,
 				1AA8617A2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift */,
 				1AA861782C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift */,
 				1AA861762C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift */,
@@ -1578,7 +1578,7 @@
 				1AA861792C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift in Sources */,
 				2EF0E3AD2C1F1E7700654025 /* BookMarkViewController.swift in Sources */,
 				2EED24852C17F63E00F3673A /* DiscoveryRegionView.swift in Sources */,
-				1AA861752C1ACDE5007F69E7 /* TravelMemoryDetailView.swift in Sources */,
+				1AA861752C1ACDE5007F69E7 /* MemoryDetailView.swift in Sources */,
 				371387AE2C249833002C6284 /* SearchResultTabTouristViewController.swift in Sources */,
 				4D27194C2C1A0295004DDC38 /* PlaceEditionViewController.swift in Sources */,
 				1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */,

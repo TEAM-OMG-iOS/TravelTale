@@ -10,7 +10,7 @@ import UIKit
 final class TravelMemoryDetailViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelMemoryDetailView = TravelMemoryDetailView()
+    private let travelMemoryDetailView = MemoryDetailView()
     private let travelMemoryDetailHeaderView = TravelMemoryDetailHeaderView()
     
     private var travel: Travel
