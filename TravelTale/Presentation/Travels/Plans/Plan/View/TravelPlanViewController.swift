@@ -32,7 +32,6 @@ final class TravelPlanViewController: BaseViewController {
         travels = RealmManager.shared.fetchTravels()
     }
     
-    
     // MARK: - methods
     override func configureStyle() {
         travelPlanView.tableView.separatorStyle = .none
@@ -92,9 +91,9 @@ extension TravelPlanViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
         
-        let _ = (indexPath.section == 0) ? upcomingTravels[indexPath.row] : pastTravels[indexPath.row]
+        let travel = (indexPath.section == 0) ? upcomingTravels[indexPath.row] : pastTravels[indexPath.row]
         
-//        cell.bind(travel: travel)
+        cell.bind(travel: travel)
         cell.selectionStyle = .none
         
         return cell

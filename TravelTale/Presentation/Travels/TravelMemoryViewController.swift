@@ -57,7 +57,7 @@ extension TravelMemoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
         
-//        cell.bind(travel: travels[indexPath.row])
+        cell.bind(travel: travels[indexPath.row])
         cell.selectionStyle = .none
         
         return cell
