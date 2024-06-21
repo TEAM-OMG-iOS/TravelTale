@@ -45,7 +45,7 @@ final class PlanViewController: BaseViewController {
         // register
         planView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
         planView.tableView.register(PlanTableHeaderView.self, forHeaderFooterViewReuseIdentifier: PlanTableHeaderView.identifier)
-        planView.tableView.register(TravelFooterView.self, forHeaderFooterViewReuseIdentifier: TravelFooterView.identifier)
+        planView.tableView.register(PlanTableFooterView.self, forHeaderFooterViewReuseIdentifier: PlanTableFooterView.identifier)
     }
     
     override func configureAddTarget() {
@@ -130,7 +130,7 @@ extension PlanViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return TravelFooterView()
+        return PlanTableFooterView()
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
