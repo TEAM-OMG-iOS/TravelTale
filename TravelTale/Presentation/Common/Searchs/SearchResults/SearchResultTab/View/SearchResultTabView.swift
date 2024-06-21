@@ -7,14 +7,19 @@
 
 import UIKit
 
-class SearchResultTabView: BaseView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+final class SearchResultTabView: BaseView {
+    
+    // MARK: - properties
+    let tableView = UITableView()
+    
+    // MARK: - methods
+    override func configureHierarchy() {
+        self.addSubview(tableView)
     }
-    */
-
+    
+    override func configureConstraints() {
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
 }
