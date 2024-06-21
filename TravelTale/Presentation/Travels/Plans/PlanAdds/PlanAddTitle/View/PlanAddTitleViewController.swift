@@ -11,6 +11,7 @@ final class PlanAddTitleViewController: BaseViewController, UITextFieldDelegate 
     
     // MARK: - properties
     private let planAddTitleView = PlanAddTitleView()
+    var planTitle: String?
     
     // MARK: - life cycles
     override func loadView() {
@@ -52,7 +53,10 @@ final class PlanAddTitleViewController: BaseViewController, UITextFieldDelegate 
     }
     
     @objc func tappedOkButton() {
+        planTitle = planAddTitleView.textField.text
         let nextVC = PlanAddSidoViewController()
+        nextVC.planTitle = planTitle
+        print(planTitle)
         self.navigationController?.pushViewController(nextVC, animated: false)
     }
     

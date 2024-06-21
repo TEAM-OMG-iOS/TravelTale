@@ -11,6 +11,9 @@ final class PlanAddSidoViewController: BaseViewController {
     
     // MARK: - properties
     private let planAddSidoView = PlanAddSidoView()
+    var planTitle: String?
+    var planSido: String?
+    
     
     // MARK: - life cycles
     override func loadView() {
@@ -51,6 +54,7 @@ final class PlanAddSidoViewController: BaseViewController {
             guard let self = self else { return }
             
             planAddSidoView.updatePlacePickButton(text: text)
+            self.planSido = text
         }
         
         self.present(locationList, animated: true)
@@ -58,6 +62,9 @@ final class PlanAddSidoViewController: BaseViewController {
     
     @objc func tappedOkButton() {
         let nextVC = PlanAddDateViewController()
+        nextVC.planTitle = planTitle
+        nextVC.planSido = planSido
+        print(planSido ?? "미정")
         self.navigationController?.pushViewController(nextVC, animated: false)
     }
     
