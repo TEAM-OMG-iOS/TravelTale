@@ -138,7 +138,7 @@
 		4D0E3CD52C0F36110089D6C1 /* TravelSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */; };
 		4D0E3CD72C0F36280089D6C1 /* TravelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */; };
 		4D0E3CDB2C10391A0089D6C1 /* PlanScheduleAddMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDA2C10391A0089D6C1 /* PlanScheduleAddMemoViewController.swift */; };
-		4D0E3CDF2C103D430089D6C1 /* PlanScheduleMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDE2C103D430089D6C1 /* PlanScheduleMemoView.swift */; };
+		4D0E3CDF2C103D430089D6C1 /* PlanScheduleAddEditMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDE2C103D430089D6C1 /* PlanScheduleAddEditMemo.swift */; };
 		4D0E3CE12C10763C0089D6C1 /* PlaceAddEditView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */; };
 		4D0E3CE32C1076570089D6C1 /* PlaceAdditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE22C1076570089D6C1 /* PlaceAdditionViewController.swift */; };
 		4D0E3CE52C11EA930089D6C1 /* ScheduleCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */; };
@@ -297,7 +297,7 @@
 		4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSelectView.swift; sourceTree = "<group>"; };
 		4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSelectViewController.swift; sourceTree = "<group>"; };
 		4D0E3CDA2C10391A0089D6C1 /* PlanScheduleAddMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanScheduleAddMemoViewController.swift; sourceTree = "<group>"; };
-		4D0E3CDE2C103D430089D6C1 /* PlanScheduleMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanScheduleMemoView.swift; sourceTree = "<group>"; };
+		4D0E3CDE2C103D430089D6C1 /* PlanScheduleAddEditMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanScheduleAddEditMemo.swift; sourceTree = "<group>"; };
 		4D0E3CE02C10763C0089D6C1 /* PlaceAddEditView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlaceAddEditView.storyboard; sourceTree = "<group>"; };
 		4D0E3CE22C1076570089D6C1 /* PlaceAdditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAdditionViewController.swift; sourceTree = "<group>"; };
 		4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCreateView.swift; sourceTree = "<group>"; };
@@ -1264,7 +1264,7 @@
 		37E5907D2C24716800999E66 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4D0E3CDE2C103D430089D6C1 /* PlanScheduleMemoView.swift */,
+				4D0E3CDE2C103D430089D6C1 /* PlanScheduleAddEditMemo.swift */,
 				4D0E3CDA2C10391A0089D6C1 /* PlanScheduleAddMemoViewController.swift */,
 				4DA3451D2C25160600912704 /* PlanScheduleEditMemoViewController.swift */,
 			);
@@ -1701,7 +1701,7 @@
 				F19368222C1ACDA8000AC7B2 /* LocationView.swift in Sources */,
 				F1A2BC292C186B2B00D41614 /* TravelAddPlaceModalViewController.swift in Sources */,
 				378CEC242C0D64AB00DF1C3F /* BaseViewController.swift in Sources */,
-				4D0E3CDF2C103D430089D6C1 /* PlanScheduleMemoView.swift in Sources */,
+				4D0E3CDF2C103D430089D6C1 /* PlanScheduleAddEditMemo.swift in Sources */,
 				4D0E3CE72C1206480089D6C1 /* ScheduleCreateViewController.swift in Sources */,
 				1AD5379A2C1362F500A70D5E /* TravelMemoryViewController.swift in Sources */,
 				374DDDD82C1F3CEB0040A5F1 /* Sigungu.swift in Sources */,

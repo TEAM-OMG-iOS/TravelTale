@@ -1,5 +1,5 @@
 //
-//  MemoAdditionView.swift
+//  PlanScheduleAddEditMemo.swift
 //  TravelTale
 //
 //  Created by Kinam on 6/5/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PlanScheduleMemoView: BaseView {
+final class PlanScheduleAddEditMemo: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {
@@ -104,5 +104,16 @@ final class PlanScheduleMemoView: BaseView {
             textView.text = "메세지를 입력하세요"
             textView.textColor = UIColor.lightGray
         }
+    }
+    
+    func configureBackAlert(navigationController: UINavigationController?) {
+        let alert = UIAlertController(title: "뒤로가기", message: "지금까지 작성된 내용이 삭제됩니다. 이전으로 이동하시겠습니까?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let ok = UIAlertAction(title: "확인", style: .default) {_ in 
+            navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
     }
 }
