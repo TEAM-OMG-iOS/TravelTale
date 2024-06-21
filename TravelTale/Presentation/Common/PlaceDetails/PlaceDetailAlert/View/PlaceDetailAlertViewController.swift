@@ -10,28 +10,28 @@ import UIKit
 final class PlaceDetailAlertViewController: BaseViewController {
     
     // MARK: - properties
-    private let phoneOptionsAlert = PlaceDetailAlertView()
+    private let placeDetailAlertView = PlaceDetailAlertView()
     
     private var phoneNumber: String = "" {
         didSet {
-            phoneOptionsAlert.setPhoneNumber(phoneNumber: phoneNumber)
+            placeDetailAlertView.setPhoneNumber(phoneNumber: phoneNumber)
         }
     }
     
     // MARK: - life cycles
     override func loadView() {
-        view = phoneOptionsAlert
+        view = placeDetailAlertView
     }
     
     // MARK: - methods
     override func configureAddTarget() {
-        phoneOptionsAlert.callButton.addTarget(self,
+        placeDetailAlertView.callButton.addTarget(self,
                                                action: #selector(tappedCallButton),
                                                for: .touchUpInside)
-        phoneOptionsAlert.copyPhoneNumberButton.addTarget(self,
+        placeDetailAlertView.copyPhoneNumberButton.addTarget(self,
                                                           action: #selector(tappedPhoneNumberCopyButton),
                                                           for: .touchUpInside)
-        phoneOptionsAlert.cancelButton.addTarget(self, 
+        placeDetailAlertView.cancelButton.addTarget(self, 
                                                  action: #selector(tappedCancelButton),
                                                  for: .touchUpInside)
     }

@@ -9,17 +9,17 @@ import UIKit
 final class MyPageTermPrivacyPolicyViewController: BaseViewController {
     
     // MARK: - properties
-    private let termView = MyPageTermView()
+    private let myPageTermView = MyPageTermView()
     
     // MARK: - life cycles
     override func loadView() {
-        view = termView
+        view = myPageTermView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        termView.setText(text: getPrivacyPolicyString())
+        myPageTermView.setText(text: getPrivacyPolicyString())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,13 +33,13 @@ final class MyPageTermPrivacyPolicyViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        termView.backButton.target = self
-        termView.backButton.action = #selector(tappedBackButton)
+        myPageTermView.backButton.target = self
+        myPageTermView.backButton.action = #selector(tappedBackButton)
     }
     
     private func configureNavigationBar() {
         navigationItem.title = "개인정보 처리방침"
-        navigationItem.leftBarButtonItem = termView.backButton
+        navigationItem.leftBarButtonItem = myPageTermView.backButton
     }
     
     @objc private func tappedBackButton() {

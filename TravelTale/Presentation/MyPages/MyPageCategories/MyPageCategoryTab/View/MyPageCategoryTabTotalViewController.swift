@@ -11,19 +11,19 @@ import XLPagerTabStrip
 final class MyPageCategoryTabTotalViewController: BaseViewController {
     
     // MARK: - properties
-    private let categoryView = CategoryTabView()
+    private let categoryTabView = CategoryTabView()
     
     // MARK: - life cycles
     override func loadView() {
-        view = categoryView
+        view = categoryTabView
     }
     
     // MARK: - methods
     override func configureDelegate() {
-        categoryView.tableView.dataSource = self
-        categoryView.tableView.delegate = self
+        categoryTabView.tableView.dataSource = self
+        categoryTabView.tableView.delegate = self
         
-        categoryView.tableView.register(CategoryTabTableViewCell.self, forCellReuseIdentifier: CategoryTabTableViewCell.identifier)
+        categoryTabView.tableView.register(CategoryTabTableViewCell.self, forCellReuseIdentifier: CategoryTabTableViewCell.identifier)
     }
 }
 

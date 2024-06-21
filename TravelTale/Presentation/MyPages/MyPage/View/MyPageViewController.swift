@@ -56,20 +56,20 @@ final class MyPageViewController: BaseViewController {
     }
     
     @objc private func tappedTotalButton() {
-        let bookMarkVC = MyPageCategoryViewController()
+        let myPageCategoryVC = MyPageCategoryViewController()
         
-        bookMarkVC.selectedIndexPath = 0
+        myPageCategoryVC.selectedIndexPath = 0
         
-        self.navigationController?.pushViewController(bookMarkVC, animated: true)
+        self.navigationController?.pushViewController(myPageCategoryVC, animated: true)
     }
     
     @objc private func tappedCategoryButton(_ sender: MyPageBookMarkButton) {
-        let bookMarkVC = MyPageCategoryViewController()
+        let myPageCategoryVC = MyPageCategoryViewController()
         let categoryArray = ["전체", "관광지", "음식점", "숙박", "놀거리"]
         
-        bookMarkVC.selectedIndexPath = categoryArray.firstIndex(of: sender.getButtonName()) ?? 1
+        myPageCategoryVC.selectedIndexPath = categoryArray.firstIndex(of: sender.getButtonName()) ?? 1
         
-        self.navigationController?.pushViewController(bookMarkVC, animated: true)
+        self.navigationController?.pushViewController(myPageCategoryVC, animated: true)
     }
     
     func tappedInquiryCell() {
@@ -185,8 +185,8 @@ extension MyPageViewController: UITableViewDelegate {
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 {
-                let termPrivateVC = MyPageTermPrivacyPolicyViewController()
-                navigationController?.pushViewController(termPrivateVC, animated: true)
+                let termPrivatePolicyVC = MyPageTermPrivacyPolicyViewController()
+                navigationController?.pushViewController(termPrivatePolicyVC, animated: true)
             } else {
                 let termOpenSourceVC = MyPageTermOpenSourceViewController()
                 navigationController?.pushViewController(termOpenSourceVC, animated: true)

@@ -57,12 +57,12 @@ final class PlaceDetailViewController: BaseViewController {
     }
     
     @objc private func tappedPhoneNumberButton() {
-        let phoneOptionsAlertVC = PlaceDetailAlertViewController()
+        let PlaceDetailAlertVC = PlaceDetailAlertViewController()
         
         // TODO: - 전화번호 정보 바인딩
-        phoneOptionsAlertVC.setPhoneNumber(phoneNumber: "010-5145-7665")
-        phoneOptionsAlertVC.modalPresentationStyle = .overFullScreen
-        present(phoneOptionsAlertVC, animated: false)
+        PlaceDetailAlertVC.setPhoneNumber(phoneNumber: "010-5145-7665")
+        PlaceDetailAlertVC.modalPresentationStyle = .overFullScreen
+        present(PlaceDetailAlertVC, animated: false)
     }
     
     @objc private func tappedWebsiteButton() {
@@ -94,18 +94,18 @@ final class PlaceDetailViewController: BaseViewController {
     }
     
     private func configureToast(text: String) {
-        let toastView = PlaceDetailToastView()
+        let placeDetailToastView = PlaceDetailToastView()
         
-        toastView.setText(text: text)
-        configureToastConstraints(toastView: toastView)
+        placeDetailToastView.setText(text: text)
+        configureToastConstraints(toastView: placeDetailToastView)
         
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
-            toastView.alpha = 1.0
+            placeDetailToastView.alpha = 1.0
         }, completion: { _ in
             UIView.animate(withDuration: 0.5, delay: 1.5, options: .curveEaseOut, animations: {
-                toastView.alpha = 0.0
+                placeDetailToastView.alpha = 0.0
             }, completion: { _ in
-                toastView.removeFromSuperview()
+                placeDetailToastView.removeFromSuperview()
             })
         })
     }
