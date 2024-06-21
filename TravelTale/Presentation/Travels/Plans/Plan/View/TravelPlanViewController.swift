@@ -27,14 +27,13 @@ final class TravelPlanViewController: BaseViewController {
         view = travelPlanView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        travels = RealmManager.shared.fetchTravels()
     }
     
     
     // MARK: - methods
-    // TODO: travels 데이터 추가
-    
     override func configureStyle() {
         travelPlanView.tableView.separatorStyle = .none
         travelPlanView.tableView.sectionHeaderTopPadding = 0
