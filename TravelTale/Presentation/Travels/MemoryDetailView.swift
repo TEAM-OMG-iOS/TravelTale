@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TravelMemoryDetailView: BaseView {
+final class MemoryDetailView: BaseView {
     
     // MARK: - properties
     let backBarButton = UIBarButtonItem().then {
@@ -29,7 +29,7 @@ final class TravelMemoryDetailView: BaseView {
         $0.axis = .horizontal
     }
     
-    private let provinceLabel = UILabel().then {
+    private let areaLabel = UILabel().then {
         $0.configureView(color: .blueBlack100, clipsToBounds: true, cornerRadius: 10)
         $0.configureLabel(alignment: .center,
                           color: .white,
@@ -62,7 +62,7 @@ final class TravelMemoryDetailView: BaseView {
          tableView].forEach { self.addSubview($0) }
         
         [periodLabel,
-         provinceLabel].forEach { travelInfoStackView.addArrangedSubview($0) }
+         areaLabel].forEach { travelInfoStackView.addArrangedSubview($0) }
     }
     
     override func configureConstraints() {
@@ -73,7 +73,7 @@ final class TravelMemoryDetailView: BaseView {
             $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
         }
         
-        provinceLabel.snp.makeConstraints {
+        areaLabel.snp.makeConstraints {
             $0.height.equalTo(22)
             $0.width.equalTo(38)
         }
@@ -96,9 +96,9 @@ final class TravelMemoryDetailView: BaseView {
         }
     }
     
-//    func bind(travel: Travel) {
-//        provinceLabel.text = travel.province ?? "미정"
-//        periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
-//        travelTitleLabel.text = travel.title
-//    }
+    func bind(travel: Travel) {
+        areaLabel.text = travel.area ?? "미정"
+        periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
+        travelTitleLabel.text = travel.title
+    }
 }

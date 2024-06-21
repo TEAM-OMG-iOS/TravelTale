@@ -7,51 +7,49 @@
 
 import UIKit
 
-final class TravelMemoryViewController: BaseViewController {
+final class MemoryViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelMemoryView = TravelMemoryView()
+    private let memoryView = MemoryView()
     private var travels: [Travel] = [] {
         didSet {
-            travelMemoryView.tableView.reloadData()
+            memoryView.tableView.reloadData()
         }
     }
     
     // MARK: - life cycles
     override func loadView() {
-        view = travelMemoryView
+        view = memoryView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        addTemporaryData()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        travels = RealmManager.shared.fetchMemories()
     }
     
     // MARK: - methods
-    // TODO: travels 데이터 추가 함수
-    
     override func configureStyle() {
-        travelMemoryView.tableView.separatorStyle = .none
+        memoryView.tableView.separatorStyle = .none
     }
     
     override func configureDelegate() {
-        travelMemoryView.tableView.dataSource = self
-        travelMemoryView.tableView.delegate = self
-        travelMemoryView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
+        memoryView.tableView.dataSource = self
+        memoryView.tableView.delegate = self
+        memoryView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
     }
     
     override func configureAddTarget() {
-        travelMemoryView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
+        memoryView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
     }
     
     @objc func tappedAddButton() {
-        let travelMemoryAddVC = TravelMemoryAddViewController()
-        self.navigationController?.pushViewController(travelMemoryAddVC, animated: true)
+        let nextVC = MemorySelectViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
 // MARK: - extensions
-extension TravelMemoryViewController: UITableViewDataSource {
+extension MemoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return travels.count
     }
@@ -59,16 +57,16 @@ extension TravelMemoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
         
-//        cell.bind(travel: travels[indexPath.row])
+        cell.bind(travel: travels[indexPath.row])
         cell.selectionStyle = .none
         
         return cell
     }
 }
 
-extension TravelMemoryViewController: UITableViewDelegate {
+extension MemoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let nextVC = TravelMemoryDetailViewController(travelData: travels[indexPath.row])
+        let nextVC = MemoryDetailViewController(travel: travels[indexPath.row])
         navigationController?.pushViewController(nextVC, animated: true)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

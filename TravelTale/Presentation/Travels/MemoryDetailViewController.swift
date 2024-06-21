@@ -7,13 +7,13 @@
 
 import UIKit
 
-final class TravelMemoryDetailViewController: BaseViewController {
+final class MemoryDetailViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelMemoryDetailView = TravelMemoryDetailView()
-    private let travelMemoryDetailHeaderView = TravelMemoryDetailHeaderView()
+    private let travelMemoryDetailView = MemoryDetailView()
+    private let travelMemoryDetailHeaderView = MemoryDetailTableHeaderView()
     
-    private var travelData: Travel
+    private let travel: Travel
     
     private var memoryImages: [UIImage] = [] {
         didSet {
@@ -32,8 +32,8 @@ final class TravelMemoryDetailViewController: BaseViewController {
     }
     
     // MARK: - methods
-    init(travelData: Travel) {
-        self.travelData = travelData
+    init(travel: Travel) {
+        self.travel = travel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -51,12 +51,12 @@ final class TravelMemoryDetailViewController: BaseViewController {
         travelMemoryDetailView.tableView.delegate = self
         
         travelMemoryDetailView.tableView
-            .register(TravelMemoryDetailTableViewCell.self,
-                      forCellReuseIdentifier: TravelMemoryDetailTableViewCell.identifier)
+            .register(MemoryDetailTableViewCell.self,
+                      forCellReuseIdentifier: MemoryDetailTableViewCell.identifier)
         
         travelMemoryDetailView.tableView.register(
-            TravelMemoryDetailHeaderView.self,
-            forHeaderFooterViewReuseIdentifier: TravelMemoryDetailHeaderView.identifier)
+            MemoryDetailTableHeaderView.self,
+            forHeaderFooterViewReuseIdentifier: MemoryDetailTableHeaderView.identifier)
     }
     
     override func configureAddTarget() {
@@ -66,9 +66,9 @@ final class TravelMemoryDetailViewController: BaseViewController {
     }
     
     override func bind() {
-//        travelMemoryDetailView.bind(travel: travelData)
-//        travelMemoryDetailHeaderView.bind(memoryNote: travelData.memoryNote ?? "")
-//        getMemoryImages(travel: travelData)
+        travelMemoryDetailView.bind(travel: travel)
+        travelMemoryDetailHeaderView.bind(memory: travel.memory ?? "")
+        getMemoryImages(travel: travel)
     }
     
     private func configureNavigationBarItems() {
@@ -80,30 +80,42 @@ final class TravelMemoryDetailViewController: BaseViewController {
         travelMemoryDetailView.editButton.menu = UIMenu(
             children: [
                 UIAction(title: "편집", state: .off, handler: { _ in
-                    print("편집")
                     self.tappedEditButton() }),
                 UIAction(title: "삭제", attributes: .destructive,state: .off, handler: { _ in
-                    print("삭제")
-                })
+                    self.presentDeleteAlert() })
             ]
         )
     }
     
-//    private func getMemoryImages(travel: Travel) {
-//        let imageDatas = self.travelData.memoryImageDatas
-//        for imageData in imageDatas {
-//            if let imageData = imageData {
-//                if let image = UIImage(data: imageData) {
-//                    memoryImages.append(image)
-//                }
-//            }
-//        }
-//    }
+    private func getMemoryImages(travel: Travel) {
+        let imageDatas = self.travel.photos
+        for imageData in imageDatas {
+            if let image = UIImage(data: imageData) {
+                memoryImages.append(image)
+            }
+        }
+    }
     
     private func tappedEditButton() {
-        print("tappedEditButton")
-        let travelMemoryDetailEditViewController = TravelMemoryDetailEditViewController(travelData: travelData)
-        self.navigationController?.pushViewController(travelMemoryDetailEditViewController, animated: true)
+        let nextVC = MemoryAddEditViewController(travel: travel)
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    private func presentDeleteAlert() {
+        let alert = UIAlertController(title: "경고", message: "정말 삭제하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
+        
+        let cancel = UIAlertAction(title: "취소", style: .destructive)
+        
+        let ok = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            RealmManager.shared.deleteMemory(travel: self.travel)
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     @objc func tappedBackButton() {
@@ -112,14 +124,14 @@ final class TravelMemoryDetailViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension TravelMemoryDetailViewController: UITableViewDataSource {
+extension MemoryDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memoryImages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelMemoryDetailTableViewCell.identifier) as? TravelMemoryDetailTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MemoryDetailTableViewCell.identifier) as? MemoryDetailTableViewCell else { return UITableViewCell() }
         
         cell.bind(image: memoryImages[indexPath.row])
         cell.selectionStyle = .none
@@ -128,7 +140,7 @@ extension TravelMemoryDetailViewController: UITableViewDataSource {
     }
 }
 
-extension TravelMemoryDetailViewController: UITableViewDelegate {
+extension MemoryDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let image = memoryImages[indexPath.row]
@@ -140,10 +152,10 @@ extension TravelMemoryDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(
-            withIdentifier: TravelMemoryDetailHeaderView.identifier) as? TravelMemoryDetailHeaderView
+            withIdentifier: MemoryDetailTableHeaderView.identifier) as? MemoryDetailTableHeaderView
         else { return UIView() }
         
-//        headerView.bind(memoryNote: travelData.memoryNote ?? "")
+        headerView.bind(memory: travel.memory ?? "")
         return headerView
     }
 }
