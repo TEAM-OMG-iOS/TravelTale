@@ -11,7 +11,7 @@ import PhotosUI
 final class TravelMemoryDetailEditViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelMemoryDetailEditView = TravelMemoryDetailEditView()
+    private let memoryAddEditView = MemoryAddEditView()
     
     private var travel: Travel
     
@@ -19,15 +19,15 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                travelMemoryDetailEditView.collectionView.reloadData()
-                travelMemoryDetailEditView.updatePhotoCount(count: selectedPhotos.count)
+                memoryAddEditView.collectionView.reloadData()
+                memoryAddEditView.updatePhotoCount(count: selectedPhotos.count)
             }
         }
     }
     
     // MARK: - life cycles
     override func loadView() {
-        view = travelMemoryDetailEditView
+        view = memoryAddEditView
     }
     
     override func viewDidLoad() {
@@ -50,30 +50,30 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
     }
     
     override func configureDelegate() {
-        travelMemoryDetailEditView.collectionView.dataSource = self
-        travelMemoryDetailEditView.collectionView
+        memoryAddEditView.collectionView.dataSource = self
+        memoryAddEditView.collectionView
             .register(TravelMemoryEditPhotoCollectionViewCell.self,
                       forCellWithReuseIdentifier: TravelMemoryEditPhotoCollectionViewCell.identifier)
         
-        travelMemoryDetailEditView.memoryTextView.delegate = self
+        memoryAddEditView.memoryTextView.delegate = self
     }
     
     override func configureAddTarget() {
-        travelMemoryDetailEditView.backButton.target = self
-        travelMemoryDetailEditView.backButton.action = #selector(tappedBackButton)
+        memoryAddEditView.backButton.target = self
+        memoryAddEditView.backButton.action = #selector(tappedBackButton)
         
-        travelMemoryDetailEditView.photoButton.addTarget(self, action: #selector(tappedPhotoButton), for: .touchUpInside)
+        memoryAddEditView.photoButton.addTarget(self, action: #selector(tappedPhotoButton), for: .touchUpInside)
         
-        travelMemoryDetailEditView.confirmButton.addTarget(self, action: #selector(tappedConfirmButton), for: .touchUpInside)
+        memoryAddEditView.confirmButton.addTarget(self, action: #selector(tappedConfirmButton), for: .touchUpInside)
     }
     
     override func bind() { 
-        travelMemoryDetailEditView.bind(travel: travel)
+        memoryAddEditView.bind(travel: travel)
     }
     
     private func configureNavigationBarItems() {
         navigationItem.title = "추억 남기기"
-        navigationItem.leftBarButtonItem = travelMemoryDetailEditView.backButton
+        navigationItem.leftBarButtonItem = memoryAddEditView.backButton
       }
     
     private func setSelectedPhotos() {
@@ -115,7 +115,7 @@ final class TravelMemoryDetailEditViewController: BaseViewController {
     
     @objc func tappedConfirmButton() {
         self.navigationController?.popToRootViewController(animated: true)
-        let memory = travelMemoryDetailEditView.memoryTextView.text
+        let memory = memoryAddEditView.memoryTextView.text
         RealmManager.shared.updateMemory(travel: travel,
                                          memory: memory,
                                          photos: selectedPhotos)
@@ -152,14 +152,14 @@ extension TravelMemoryDetailEditViewController: UICollectionViewDataSource {
 extension TravelMemoryDetailEditViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        travelMemoryDetailEditView.setBeginText(textView: textView)
+        memoryAddEditView.setBeginText(textView: textView)
     }
     func textViewDidEndEditing(_ textView: UITextView) {
-        travelMemoryDetailEditView.setEndText(textView: textView)
+        memoryAddEditView.setEndText(textView: textView)
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        travelMemoryDetailEditView.checkTextViewContent()
+        memoryAddEditView.checkTextViewContent()
     }
 }
 
