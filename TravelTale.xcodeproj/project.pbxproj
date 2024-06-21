@@ -134,6 +134,7 @@
 		37DDF5CA2C18B54400842DA4 /* TravelDetailPlanHeaderContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DDF5C92C18B54400842DA4 /* TravelDetailPlanHeaderContentCell.swift */; };
 		37E19F432C18680A0084F899 /* TravelDetailPlanFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E19F422C18680A0084F899 /* TravelDetailPlanFooterCell.swift */; };
 		37E36D872C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E36D862C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift */; };
+		37FB88112C258A2A00BDA873 /* SearchResultTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB88102C258A2A00BDA873 /* SearchResultTabView.swift */; };
 		4D0E3CD52C0F36110089D6C1 /* TravelSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */; };
 		4D0E3CD72C0F36280089D6C1 /* TravelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */; };
 		4D0E3CDB2C10391A0089D6C1 /* MemoAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */; };
@@ -291,6 +292,7 @@
 		37DDF5C92C18B54400842DA4 /* TravelDetailPlanHeaderContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanHeaderContentCell.swift; sourceTree = "<group>"; };
 		37E19F422C18680A0084F899 /* TravelDetailPlanFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanFooterCell.swift; sourceTree = "<group>"; };
 		37E36D862C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanHeaderCell.swift; sourceTree = "<group>"; };
+		37FB88102C258A2A00BDA873 /* SearchResultTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTabView.swift; sourceTree = "<group>"; };
 		4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSelectView.swift; sourceTree = "<group>"; };
 		4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSelectViewController.swift; sourceTree = "<group>"; };
 		4D0E3CDA2C10391A0089D6C1 /* MemoAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAddViewController.swift; sourceTree = "<group>"; };
@@ -747,6 +749,7 @@
 		371387AA2C24979B002C6284 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				37FB88102C258A2A00BDA873 /* SearchResultTabView.swift */,
 				371387AB2C249803002C6284 /* SearchResultTabTotalViewController.swift */,
 				371387AD2C249833002C6284 /* SearchResultTabTouristViewController.swift */,
 				371387AF2C24986E002C6284 /* SearchResultTabRestaurantViewController.swift */,
@@ -1699,6 +1702,7 @@
 				374DDDD82C1F3CEB0040A5F1 /* Sigungu.swift in Sources */,
 				F1B301F92C10501C00D26B75 /* TravelAddPlaceViewController.swift in Sources */,
 				3713879F2C2495CE002C6284 /* SearchViewController.swift in Sources */,
+				37FB88112C258A2A00BDA873 /* SearchResultTabView.swift in Sources */,
 				378CEC1E2C0D644D00DF1C3F /* UIColor+Extension.swift in Sources */,
 				3740FE542C12EE020024E08F /* TravelDetailView.swift in Sources */,
 				F1B301F12C10035F00D26B75 /* TravelAddTitleViewController.swift in Sources */,
