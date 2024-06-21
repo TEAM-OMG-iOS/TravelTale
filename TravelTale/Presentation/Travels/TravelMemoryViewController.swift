@@ -22,14 +22,12 @@ final class TravelMemoryViewController: BaseViewController {
         view = travelMemoryView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        addTemporaryData()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        travels = RealmManager.shared.fetchMemories()
     }
     
     // MARK: - methods
-    // TODO: travels 데이터 추가 함수
-    
     override func configureStyle() {
         travelMemoryView.tableView.separatorStyle = .none
     }
