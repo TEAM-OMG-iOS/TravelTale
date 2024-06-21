@@ -10,7 +10,7 @@ import UIKit
 final class TravelAddPlaceModalViewController: BaseViewController {
     
     // MARK: - properties
-    private let locationView = LocationView()
+    private let locationView = RegionView()
     
     private let locations: [String] = ["서울특별시", "인천광역시", "부산광역시",
                                        "대전광역시", "대구광역시", "울산광역시",
@@ -34,8 +34,8 @@ final class TravelAddPlaceModalViewController: BaseViewController {
         locationView.tableView.dataSource = self
         locationView.tableView.delegate = self
         
-        locationView.tableView.register(LocationTableViewCell.self,
-                                        forCellReuseIdentifier: LocationTableViewCell.identifier)
+        locationView.tableView.register(RegionTableViewCell.self,
+                                        forCellReuseIdentifier: RegionTableViewCell.identifier)
     }
 }
 
@@ -46,7 +46,7 @@ extension TravelAddPlaceModalViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.identifier, for: indexPath) as? LocationTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RegionTableViewCell.identifier, for: indexPath) as? RegionTableViewCell else { return UITableViewCell() }
         
         cell.bind(text: locations[indexPath.row])
         locationView.bind(text: "대표 여행 장소를 선택해주세요")
@@ -58,7 +58,7 @@ extension TravelAddPlaceModalViewController: UITableViewDataSource {
 
 extension TravelAddPlaceModalViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? LocationTableViewCell else { return }
+        guard let cell = tableView.cellForRow(at: indexPath) as? RegionTableViewCell else { return }
         cell.setSelected(true, animated: true)
         
         completion?(locations[indexPath.row])
@@ -67,7 +67,7 @@ extension TravelAddPlaceModalViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? LocationTableViewCell else { return }
+        guard let cell = tableView.cellForRow(at: indexPath) as? RegionTableViewCell else { return }
         cell.setSelected(false, animated: false)
     }
 }
