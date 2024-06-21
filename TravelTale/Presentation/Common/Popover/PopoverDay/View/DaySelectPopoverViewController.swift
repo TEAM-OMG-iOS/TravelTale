@@ -12,8 +12,15 @@ final class DaySelectPopoverViewController: BaseViewController {
     // MARK: - properties
     private let daySelectPopoverView = DaySelectPopoverView()
     
-    // TODO: - 데이터 변경 시 수정 예정
-    private let days: [String] = ["Day 1", "Day 2", "Day 3", "Day 4"]
+    var day: String?
+    
+    var travel: Travel?
+    
+    var data: [String] = [] {
+        didSet {
+            data = configureData(day: day!, travel: travel!)
+        }
+    }
     
     var selectedDays: String?
     
@@ -36,7 +43,24 @@ final class DaySelectPopoverViewController: BaseViewController {
         daySelectPopoverView.leftBtn.addTarget(self, action: #selector(tappedcancelBtn), for: .touchUpInside)
         daySelectPopoverView.rightBtn.addTarget(self, action: #selector(tappedOkBtn), for: .touchUpInside)
     }
-
+    
+    private func configureData(day: String, travel: Travel) -> [String] {
+        guard let daysCount = Int(day) else {
+            return []
+        }
+        var results = [String]()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy년 mm월 dd일"
+        
+        for i in 0..<daysCount {
+            if let newDate = Calendar.current.date(byAdding: .day, value: i, to: travel.startDate) {
+                let dateString = formatter.string(from: newDate)
+                results.append("Day \(i + 1) | \(dateString)")
+            }
+        }
+        return results
+    }
+    
     @objc private func tappedcancelBtn() {
         self.dismiss(animated: true)
     }
@@ -51,11 +75,11 @@ final class DaySelectPopoverViewController: BaseViewController {
 // MARK: - extensions
 extension DaySelectPopoverViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return days[row]
+        return data[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedDays = days[row]
+        selectedDays = data[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
@@ -69,7 +93,7 @@ extension DaySelectPopoverViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return days.count
+        return data.count
     }
 }
 
