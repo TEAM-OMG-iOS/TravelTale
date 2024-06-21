@@ -1,5 +1,5 @@
 //
-//  PhoneOptionsAlertView.swift
+//  PlaceDetailAlertView.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/20/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PhoneOptionsAlertView: BaseView {
+final class PlaceDetailAlertView: BaseView {
     
     // MARK: - properties
     private let backgroundView = UIView().then {

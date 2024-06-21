@@ -1,5 +1,5 @@
 //
-//  CustomPopUpView.swift
+//  PlaceDetailToastView.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/20/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomPopUpView: BaseView {
+final class PlaceDetailToastView: BaseView {
     
     // MARK: - properties
     private let backgroundView = UIView().then {

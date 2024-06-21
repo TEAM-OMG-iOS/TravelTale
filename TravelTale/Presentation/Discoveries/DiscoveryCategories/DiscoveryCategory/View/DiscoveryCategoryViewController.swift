@@ -120,10 +120,10 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let touristSpotVC = TouristSpotViewController()
-        let restaurantVC = RestaurantViewController()
-        let accommodationVC = AccommodationViewController()
-        let entertainmentVC = EntertainmentViewController()
+        let touristSpotVC = DiscoveryCategoryTabTouristSpotViewController()
+        let restaurantVC = DiscoveryCategoryTabRestaurantViewController()
+        let accommodationVC = DiscoveryCategoryTabAccommodationViewController()
+        let entertainmentVC = DiscoveryCategoryTabEntertainmentViewController()
         
         return [touristSpotVC, restaurantVC, accommodationVC, entertainmentVC]
     }

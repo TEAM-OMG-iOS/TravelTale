@@ -1,5 +1,5 @@
 //
-//  MyPageServiceTableViewCell.swift
+//  MyPageTableViewCell.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/18/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class MyPageServiceTableViewCell: BaseTableViewCell {
+final class MyPageTableViewCell: BaseTableViewCell {
     
     // MARK: - properties
-    static let identifier = String(describing: MyPageServiceTableViewCell.self)
+    static let identifier = String(describing: MyPageTableViewCell.self)
     
     private let label = UILabel().then {
         $0.configureLabel(font: .pretendard(size: 15, weight: .bold), numberOfLines: 0)

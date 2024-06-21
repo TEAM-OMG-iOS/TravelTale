@@ -1,5 +1,5 @@
 //
-//  BookMarkEntertainmentViewController.swift
+//  MyPageCategoryTabAccommodationViewController.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/16/24.
@@ -8,40 +8,40 @@
 import UIKit
 import XLPagerTabStrip
 
-final class BookMarkEntertainmentViewController: BaseViewController {
+final class MyPageCategoryTabAccommodationViewController: BaseViewController {
     
     // MARK: - properties
-    private let categoryView = CategoryView()
+    private let categoryTabView = CategoryTabView()
     
     // MARK: - life cycles
     override func loadView() {
-        view = categoryView
+        view = categoryTabView
     }
     
     // MARK: - methods
     override func configureDelegate() {
-        categoryView.tableView.dataSource = self
-        categoryView.tableView.delegate = self
+        categoryTabView.tableView.dataSource = self
+        categoryTabView.tableView.delegate = self
         
-        categoryView.tableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
+        categoryTabView.tableView.register(CategoryTabTableViewCell.self, forCellReuseIdentifier: CategoryTabTableViewCell.identifier)
     }
 }
 
 // MARK: - extensions
-extension BookMarkEntertainmentViewController: IndicatorInfoProvider {
+extension MyPageCategoryTabAccommodationViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "놀거리")
+        return IndicatorInfo(title: "숙박")
     }
 }
 
-extension BookMarkEntertainmentViewController: UITableViewDataSource {
+extension MyPageCategoryTabAccommodationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: - 데이터 바인딩
-        return 1
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as! CategoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTabTableViewCell.identifier, for: indexPath) as! CategoryTabTableViewCell
         
         // TODO: - 데이터 바인딩
         cell.selectionStyle = .none
@@ -50,7 +50,7 @@ extension BookMarkEntertainmentViewController: UITableViewDataSource {
     }
 }
 
-extension BookMarkEntertainmentViewController: UITableViewDelegate {
+extension MyPageCategoryTabAccommodationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let placeDetailVC = PlaceDetailViewController()
         
@@ -59,4 +59,3 @@ extension BookMarkEntertainmentViewController: UITableViewDelegate {
         self.navigationController?.pushViewController(placeDetailVC, animated: true)
     }
 }
-

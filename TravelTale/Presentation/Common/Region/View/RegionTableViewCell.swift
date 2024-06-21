@@ -1,5 +1,5 @@
 //
-//  LocationTableViewCell.swift
+//  RegionTableViewCell.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/13/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class LocationTableViewCell: BaseTableViewCell {
+final class RegionTableViewCell: BaseTableViewCell {
     
     // MARK: - properties
-    static let identifier = String(describing: LocationTableViewCell.self)
+    static let identifier = String(describing: RegionTableViewCell.self)
     
     private let locationLabel = UILabel().then {
         $0.configureLabel(alignment: .left,

@@ -1,5 +1,5 @@
 //
-//  RestaurantViewController.swift
+//  DiscoveryCategoryTabRestaurantViewController.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/15/24.
@@ -8,40 +8,40 @@
 import UIKit
 import XLPagerTabStrip
 
-final class RestaurantViewController: BaseViewController {
+final class DiscoveryCategoryTabRestaurantViewController: BaseViewController {
     
     // MARK: - properties
-    private let categoryView = CategoryView()
+    private let categoryTabView = CategoryTabView()
     
     // MARK: - life cycles
     override func loadView() {
-        view = categoryView
+        view = categoryTabView
     }
     
     // MARK: - methods
     override func configureDelegate() {
-        categoryView.tableView.dataSource = self
-        categoryView.tableView.delegate = self
+        categoryTabView.tableView.dataSource = self
+        categoryTabView.tableView.delegate = self
         
-        categoryView.tableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
+        categoryTabView.tableView.register(CategoryTabTableViewCell.self, forCellReuseIdentifier: CategoryTabTableViewCell.identifier)
     }
 }
 
 // MARK: - extensions
-extension RestaurantViewController: IndicatorInfoProvider {
+extension DiscoveryCategoryTabRestaurantViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "음식점")
     }
 }
 
-extension RestaurantViewController: UITableViewDataSource {
+extension DiscoveryCategoryTabRestaurantViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: - 데이터 바인딩
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as! CategoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTabTableViewCell.identifier, for: indexPath) as! CategoryTabTableViewCell
         
         // TODO: - 데이터 바인딩
         cell.selectionStyle = .none
@@ -50,7 +50,7 @@ extension RestaurantViewController: UITableViewDataSource {
     }
 }
 
-extension RestaurantViewController: UITableViewDelegate {
+extension DiscoveryCategoryTabRestaurantViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let placeDetailVC = PlaceDetailViewController()
         
