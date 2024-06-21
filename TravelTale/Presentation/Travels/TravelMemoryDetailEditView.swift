@@ -27,7 +27,7 @@ final class TravelMemoryDetailEditView: BaseView {
         $0.contentMode = .scaleAspectFit
     }
     
-    private let provinceLabel = UILabel().then {
+    private let areaLabel = UILabel().then {
         $0.configureLabel(color: .gray100, font: .oaGothic(size: 10, weight: .medium))
     }
     
@@ -55,14 +55,14 @@ final class TravelMemoryDetailEditView: BaseView {
         $0.configureLabel(font: .pretendard(size: 18, weight: .bold), text: "기록")
     }
     
-    let recordTextView = UITextView().then {
+    let memoryTextView = UITextView().then {
         $0.configureView(color: .clear)
         $0.font = .pretendard(size: 16, weight: .regular)
         $0.text = "기록하고 싶은 내용을 작성해주세요."
         $0.textColor = .lightGray
         
-        $0.textContainerInset = .zero // default: (8, 0, 8, 0)
-        $0.textContainer.lineFragmentPadding = 0 // default : 5.0
+        $0.textContainerInset = .zero
+        $0.textContainer.lineFragmentPadding = 0
     }
     
     private let photoButtonView = UIView().then {
@@ -118,12 +118,12 @@ final class TravelMemoryDetailEditView: BaseView {
          confirmButton].forEach { self.addSubview($0) }
         
         [locationImageView,
-        provinceLabel,
+        areaLabel,
         separatorLabel,
          periodLabel].forEach { travelInfoStackView.addArrangedSubview($0) }
         
         [recordTitleLabel,
-         recordTextView].forEach { recordView.addSubview($0) }
+         memoryTextView].forEach { recordView.addSubview($0) }
         
         [photoButtonImageView,
          photoButtonLabelStackView,
@@ -166,7 +166,7 @@ final class TravelMemoryDetailEditView: BaseView {
             $0.top.horizontalEdges.equalToSuperview().offset(16)
         }
         
-        recordTextView.snp.makeConstraints {
+        memoryTextView.snp.makeConstraints {
             $0.top.equalTo(recordTitleLabel.snp.bottom).offset(8)
             $0.bottom.horizontalEdges.equalToSuperview().inset(16)
         }
@@ -205,19 +205,19 @@ final class TravelMemoryDetailEditView: BaseView {
         }
     }
     
-//    func bind(travel: Travel) {
-//        provinceLabel.text = travel.province ?? "미정"
-//        periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
-//        travelTitleLabel.text = travel.title
-//        recordTextView.text = travel.memoryNote
-//        updatePhotoCount(count: travel.memoryImageDatas.count)
-//        
-//        if isTextViewEmpty() {
-//            setTextViewPlaceHolder()
-//        } else {
-//            recordTextView.textColor = UIColor.black
-//        }
-//    }
+    func bind(travel: Travel) {
+        areaLabel.text = travel.area ?? "미정"
+        periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
+        travelTitleLabel.text = travel.title
+        memoryTextView.text = travel.memory
+        updatePhotoCount(count: travel.photos.count)
+        
+        if isTextViewEmpty() {
+            setTextViewPlaceHolder()
+        } else {
+            memoryTextView.textColor = UIColor.black
+        }
+    }
     
     func updatePhotoCount(count: Int) {
         if count == 0 {
@@ -228,25 +228,25 @@ final class TravelMemoryDetailEditView: BaseView {
     }
     
     func isTextViewEmpty() -> Bool {
-        let text = recordTextView.text ?? ""
+        let text = memoryTextView.text ?? ""
         let isPlaceholder = text == "기록하고 싶은 내용을 작성해주세요."
         return text.isEmpty || isPlaceholder ? true : false
     }
     
     func setTextViewPlaceHolder() {
-        recordTextView.text = "기록하고 싶은 내용을 작성해주세요."
-        recordTextView.textColor = UIColor.gray80
+        memoryTextView.text = "기록하고 싶은 내용을 작성해주세요."
+        memoryTextView.textColor = UIColor.gray80
     }
     
     func checkTextViewContent() {
         if isTextViewEmpty() {
             confirmButton.isEnabled = false
             confirmButton.backgroundColor = .green10
-            recordTextView.textColor = UIColor.gray80
+            memoryTextView.textColor = UIColor.gray80
         } else {
             confirmButton.isEnabled = true
             confirmButton.backgroundColor = .green100
-            recordTextView.textColor = UIColor.black
+            memoryTextView.textColor = UIColor.black
         }
     }
     
