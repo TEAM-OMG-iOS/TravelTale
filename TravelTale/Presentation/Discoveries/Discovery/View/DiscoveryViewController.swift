@@ -59,13 +59,12 @@ final class DiscoveryViewController: BaseViewController {
     @objc private func tappedRegionButton() {
         let discoveryRegionVC = DiscoveryRegionViewController()
         
-        if let region = discoveryView.regionLabelButton.titleLabel?.text {
-            discoveryRegionVC.setRegionLabels(region: region)
-        }
+        guard let region = discoveryView.regionLabelButton.titleLabel?.text else { return }
+        discoveryRegionVC.setRegionLabels(region: region)
         
-        discoveryRegionVC.completion = { [weak self] text in
+        discoveryRegionVC.completion = { [weak self] (sido, sigungu) in
             guard let self = self else { return }
-            discoveryView.bind(region: text)
+            discoveryView.setRegionLable(sido: sido, sigungu: sigungu)
         }
         
         self.navigationController?.pushViewController(discoveryRegionVC, animated: true)

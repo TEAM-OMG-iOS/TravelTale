@@ -52,22 +52,22 @@ final class MyPageView: BaseView {
         $0.alignment = .fill
     }
     
-    let toristSpotBookMarkButton = BookMarkButton().then {
+    let toristSpotBookMarkButton = MyPageBookMarkButton().then {
         $0.text = "관광지"
         $0.bookMarkImage = .touristSpotCircle
     }
     
-    let restaurantBookMarkButton = BookMarkButton().then {
+    let restaurantBookMarkButton = MyPageBookMarkButton().then {
         $0.text = "음식점"
         $0.bookMarkImage = .restaurantCircle
     }
     
-    let accommodationBookMarkButton = BookMarkButton().then {
+    let accommodationBookMarkButton = MyPageBookMarkButton().then {
         $0.text = "숙박"
         $0.bookMarkImage = .accommodationCircle
     }
     
-    let entertainmentBookMarkButton = BookMarkButton().then {
+    let entertainmentBookMarkButton = MyPageBookMarkButton().then {
         $0.text = "놀거리"
         $0.bookMarkImage = .entertainmentCircle
     }

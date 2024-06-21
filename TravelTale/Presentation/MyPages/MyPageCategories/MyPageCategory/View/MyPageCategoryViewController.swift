@@ -1,14 +1,14 @@
 //
-//  DiscoveryCategoryViewController.swift
+//  MyPageCategoryViewController.swift
 //  TravelTale
 //
-//  Created by 배지해 on 6/15/24.
+//  Created by 배지해 on 6/16/24.
 //
 
 import UIKit
 import XLPagerTabStrip
 
-final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewController {
+final class MyPageCategoryViewController: ButtonBarPagerTabStripViewController {
     
     // MARK: - properties
     private let backButton = UIBarButtonItem().then {
@@ -36,11 +36,6 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
         configureConstraints()
         configureAddTarget()
         configureNavigationBar()
-        
-        DispatchQueue.main.async {
-            self.moveToViewController(at: self.selectedIndexPath)
-            self.reloadPagerTabStripView()
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +56,11 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
         buttonBarView.isScrollEnabled = false
         
         configureButtonBar()
+        
+        DispatchQueue.main.async {
+            self.moveToViewController(at: self.selectedIndexPath)
+            self.reloadPagerTabStripView()
+        }
     }
     
     private func configureHierarchy() {
@@ -98,13 +98,14 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
     
     private func configureNavigationBar() {
         navigationItem.leftBarButtonItem = backButton
+        navigationItem.title = "북마크"
     }
     
     private func configureButtonBar() {
         settings.style.buttonBarBackgroundColor = .white
         settings.style.buttonBarItemBackgroundColor = .white
         settings.style.buttonBarItemFont = .pretendard(size: 16, weight: .semibold)
-        settings.style.buttonBarItemLeftRightMargin = 12
+        settings.style.buttonBarItemLeftRightMargin = 4
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         
@@ -120,30 +121,16 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let touristSpotVC = DiscoveryCategoryTabTouristSpotViewController()
-        let restaurantVC = DiscoveryCategoryTabRestaurantViewController()
-        let accommodationVC = DiscoveryCategoryTabAccommodationViewController()
-        let entertainmentVC = DiscoveryCategoryTabEntertainmentViewController()
+        let totalVC = MyPageCategoryTabTotalViewController()
+        let touristSpotVC = MyPageCategoryTabTouristSpotViewController()
+        let restaurantVC = MyPageCategoryTabRestaurantViewController()
+        let accommodationVC = MyPageCategoryTabAccommodationViewController()
+        let entertainmentVC = MyPageCategoryTabEntertainmentViewController()
         
-        return [touristSpotVC, restaurantVC, accommodationVC, entertainmentVC]
+        return [totalVC, touristSpotVC, restaurantVC, accommodationVC, entertainmentVC]
     }
     
     @objc private func tappedBackButton() {
         navigationController?.popViewController(animated: true)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        super.collectionView(collectionView, didSelectItemAt: indexPath)
-        
-        switch indexPath.row {
-        case 0 :
-            navigationItem.title = "관광지"
-        case 1 :
-            navigationItem.title = "음식점"
-        case 2 :
-            navigationItem.title = "숙박"
-        default:
-            navigationItem.title = "놀거리"
-        }
     }
 }
