@@ -10,12 +10,12 @@ import UIKit
 final class TravelPlanViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelPlanView = TravelPlanView()
+    private let planView = PlanView()
     
     private var travels: [Travel] = [] {
         didSet {
             splitTravels()
-            travelPlanView.tableView.reloadData()
+            planView.tableView.reloadData()
         }
     }
     
@@ -24,7 +24,7 @@ final class TravelPlanViewController: BaseViewController {
     
     // MARK: - life cycles
     override func loadView() {
-        view = travelPlanView
+        view = planView
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,22 +34,22 @@ final class TravelPlanViewController: BaseViewController {
     
     // MARK: - methods
     override func configureStyle() {
-        travelPlanView.tableView.separatorStyle = .none
-        travelPlanView.tableView.sectionHeaderTopPadding = 0
+        planView.tableView.separatorStyle = .none
+        planView.tableView.sectionHeaderTopPadding = 0
     }
     
     override func configureDelegate() {
-        travelPlanView.tableView.dataSource = self
-        travelPlanView.tableView.delegate = self
+        planView.tableView.dataSource = self
+        planView.tableView.delegate = self
         
         // register
-        travelPlanView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
-        travelPlanView.tableView.register(TravelHeaderView.self, forHeaderFooterViewReuseIdentifier: TravelHeaderView.identifier)
-        travelPlanView.tableView.register(TravelFooterView.self, forHeaderFooterViewReuseIdentifier: TravelFooterView.identifier)
+        planView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
+        planView.tableView.register(TravelHeaderView.self, forHeaderFooterViewReuseIdentifier: TravelHeaderView.identifier)
+        planView.tableView.register(TravelFooterView.self, forHeaderFooterViewReuseIdentifier: TravelFooterView.identifier)
     }
     
     override func configureAddTarget() {
-        travelPlanView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
+        planView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
     }
     
     private func splitTravels() {
