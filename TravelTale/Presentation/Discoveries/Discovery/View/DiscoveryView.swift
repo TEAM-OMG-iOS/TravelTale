@@ -10,8 +10,10 @@ import UIKit
 final class DiscoveryView: BaseView {
     
     // MARK: - properties
+    static let regionDefaultText = "지역을 설정해주세요"
+    
     let regionLabelButton = UIButton().then {
-        $0.configureButton(font: .pretendard(size: 18, weight: .bold), text: "서울특별시 강남구")
+        $0.configureButton(font: .pretendard(size: 18, weight: .bold), text: regionDefaultText)
     }
     
     let regionButton = UIButton().then {
@@ -113,7 +115,8 @@ final class DiscoveryView: BaseView {
         return configuration
     }
     
-    func bind(region: String) {
-        regionLabelButton.configureButton(font: .pretendard(size: 18, weight: .bold), text: region)
+    func setRegionLable(sido: Sido?, sigungu: Sigungu?) {
+        let regionString = "\(sido?.name ?? "") \(sigungu?.name ?? "")"
+        regionLabelButton.configureButton(font: .pretendard(size: 18, weight: .bold), text: regionString)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  PhoneOptionsAlertViewController.swift
+//  PlaceDetailAlertViewController.swift
 //  TravelTale
 //
 //  Created by 배지해 on 6/20/24.
@@ -7,31 +7,31 @@
 
 import UIKit
 
-final class PhoneOptionsAlertViewController: BaseViewController {
+final class PlaceDetailAlertViewController: BaseViewController {
     
     // MARK: - properties
-    private let phoneOptionsAlert = PhoneOptionsAlertView()
+    private let placeDetailAlertView = PlaceDetailAlertView()
     
     private var phoneNumber: String = "" {
         didSet {
-            phoneOptionsAlert.setPhoneNumber(phoneNumber: phoneNumber)
+            placeDetailAlertView.setPhoneNumber(phoneNumber: phoneNumber)
         }
     }
     
     // MARK: - life cycles
     override func loadView() {
-        view = phoneOptionsAlert
+        view = placeDetailAlertView
     }
     
     // MARK: - methods
     override func configureAddTarget() {
-        phoneOptionsAlert.callButton.addTarget(self,
+        placeDetailAlertView.callButton.addTarget(self,
                                                action: #selector(tappedCallButton),
                                                for: .touchUpInside)
-        phoneOptionsAlert.copyPhoneNumberButton.addTarget(self,
+        placeDetailAlertView.copyPhoneNumberButton.addTarget(self,
                                                           action: #selector(tappedPhoneNumberCopyButton),
                                                           for: .touchUpInside)
-        phoneOptionsAlert.cancelButton.addTarget(self, 
+        placeDetailAlertView.cancelButton.addTarget(self, 
                                                  action: #selector(tappedCancelButton),
                                                  for: .touchUpInside)
     }
@@ -54,7 +54,7 @@ final class PhoneOptionsAlertViewController: BaseViewController {
     }
     
     private func configureToast(text: String) {
-        let toastView = CustomPopUpView()
+        let toastView = PlaceDetailToastView()
         
         toastView.backgroundColor = .clear
         toastView.setText(text: text)
