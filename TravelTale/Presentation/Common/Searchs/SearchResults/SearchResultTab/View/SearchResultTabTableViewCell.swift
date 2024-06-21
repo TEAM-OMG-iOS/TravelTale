@@ -1,5 +1,5 @@
 //
-//  SearchResultTableViewCell.swift
+//  SearchResultTabTableViewCell.swift
 //  TravelTale
 //
 //  Created by 김정호 on 6/21/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchResultTableViewCell: BaseTableViewCell {
+final class SearchResultTabTableViewCell: BaseTableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

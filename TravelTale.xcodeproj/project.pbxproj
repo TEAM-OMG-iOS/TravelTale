@@ -63,7 +63,7 @@
 		3713879F2C2495CE002C6284 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3713879E2C2495CE002C6284 /* SearchViewController.swift */; };
 		371387A12C2495F4002C6284 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387A02C2495F4002C6284 /* SearchTableViewCell.swift */; };
 		371387A52C249632002C6284 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387A42C249632002C6284 /* SearchResultViewController.swift */; };
-		371387A72C249640002C6284 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387A62C249640002C6284 /* SearchResultTableViewCell.swift */; };
+		371387A72C249640002C6284 /* SearchResultTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387A62C249640002C6284 /* SearchResultTabTableViewCell.swift */; };
 		371387AC2C249803002C6284 /* SearchResultTabTotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387AB2C249803002C6284 /* SearchResultTabTotalViewController.swift */; };
 		371387AE2C249833002C6284 /* SearchResultTabTouristViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387AD2C249833002C6284 /* SearchResultTabTouristViewController.swift */; };
 		371387B02C24986E002C6284 /* SearchResultTabRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387AF2C24986E002C6284 /* SearchResultTabRestaurantViewController.swift */; };
@@ -226,7 +226,7 @@
 		3713879E2C2495CE002C6284 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		371387A02C2495F4002C6284 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		371387A42C249632002C6284 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
-		371387A62C249640002C6284 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		371387A62C249640002C6284 /* SearchResultTabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTabTableViewCell.swift; sourceTree = "<group>"; };
 		371387AB2C249803002C6284 /* SearchResultTabTotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTabTotalViewController.swift; sourceTree = "<group>"; };
 		371387AD2C249833002C6284 /* SearchResultTabTouristViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTabTouristViewController.swift; sourceTree = "<group>"; };
 		371387AF2C24986E002C6284 /* SearchResultTabRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTabRestaurantViewController.swift; sourceTree = "<group>"; };
@@ -740,7 +740,6 @@
 		371387A92C249780002C6284 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				371387A62C249640002C6284 /* SearchResultTableViewCell.swift */,
 				371387A42C249632002C6284 /* SearchResultViewController.swift */,
 			);
 			path = View;
@@ -750,6 +749,7 @@
 			isa = PBXGroup;
 			children = (
 				37FB88102C258A2A00BDA873 /* SearchResultTabView.swift */,
+				371387A62C249640002C6284 /* SearchResultTabTableViewCell.swift */,
 				371387AB2C249803002C6284 /* SearchResultTabTotalViewController.swift */,
 				371387AD2C249833002C6284 /* SearchResultTabTouristViewController.swift */,
 				371387AF2C24986E002C6284 /* SearchResultTabRestaurantViewController.swift */,
@@ -1653,7 +1653,7 @@
 				2E0671BF2C1DF3D3001CDB2E /* CategoryView.swift in Sources */,
 				37CB880F2C0D7979002798BE /* UIButton+Extension.swift in Sources */,
 				1AA861702C1A839D007F69E7 /* TravelMemoryEditPhotoCollectionViewCell.swift in Sources */,
-				371387A72C249640002C6284 /* SearchResultTableViewCell.swift in Sources */,
+				371387A72C249640002C6284 /* SearchResultTabTableViewCell.swift in Sources */,
 				374DDDE02C1F4E650040A5F1 /* PlaceDetail.swift in Sources */,
 				37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */,
 				F1B302002C10B43F00D26B75 /* TravelAddCalendarViewController.swift in Sources */,
