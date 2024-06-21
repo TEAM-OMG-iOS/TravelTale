@@ -52,7 +52,11 @@ final class TravelMemoryEditPhotoCollectionViewCell: BaseCollectionViewCell {
         imageView.image = image
     }
     
-    func showPrimaryPhotoLabel() {
-        primaryPhotoLabel.isHidden = false
+    func showPrimaryPhotoLabel(index: Int) {
+        if index == 0 {
+            primaryPhotoLabel.isHidden = false
+        } else {
+            primaryPhotoLabel.isHidden = true
+        }
     }
 }
