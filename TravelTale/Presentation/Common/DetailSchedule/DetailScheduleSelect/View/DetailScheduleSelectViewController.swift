@@ -10,23 +10,15 @@ import UIKit
 final class DetailScheduleSelectViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelSelectView = DetailScheduleSelectView()
-    
-    private var travels: [Travel] = [] {
-        didSet {
-            splitTravels()
-            travelSelectView.tableView.reloadData()
-        }
-    }
-    
-    private var upcomingTravels: [Travel] = []
-    private var pastTravels: [Travel] = []
-    
+    private let detailScheduleSelectView = DetailScheduleSelectView()
     private var preSelectedIndexPath: IndexPath?
+    private let travels = RealmManager.shared.fetchTravels()
+    
+    var placeDetail: PlaceDetail?
     
     // MARK: - life cycles
     override func loadView() {
-        view = travelSelectView
+        view = detailScheduleSelectView
     }
     
     override func viewDidLoad() {
@@ -34,7 +26,7 @@ final class DetailScheduleSelectViewController: BaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        travelSelectView.startLoadingAnimation()
+        detailScheduleSelectView.startLoadingAnimation()
     }
     
     // MARK: - methods
@@ -43,76 +35,73 @@ final class DetailScheduleSelectViewController: BaseViewController {
     }
     
     override func configureDelegate() {
-        travelSelectView.tableView.delegate = self
-        travelSelectView.tableView.dataSource = self
+        detailScheduleSelectView.tableView.delegate = self
+        detailScheduleSelectView.tableView.dataSource = self
         
-        //register
-        travelSelectView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
+        detailScheduleSelectView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
     }
     
     override func configureAddTarget() {
-        travelSelectView.nextBtn.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
+        detailScheduleSelectView.nextBtn.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
+        detailScheduleSelectView.backButton.target = self
+        detailScheduleSelectView.backButton.action = #selector(configureBackAlert)
     }
     
     private func configureNavigationBar() {
         navigationItem.title = "내 여행에 추가"
-        navigationItem.leftBarButtonItem = travelSelectView.backButton
+        navigationItem.leftBarButtonItem = detailScheduleSelectView.backButton
     }
     
-    // TODO: travelData 추가 함수
+    @objc private func configureBackAlert() {
+        let alert = UIAlertController(title: "경고", message: "작성중인 내용이 저장되지 않습니다. 계속 진행하시겠습니까?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let ok = UIAlertAction(title: "확인", style: .default) {_ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true)
+    }
     
     @objc private func tappedButton() {
-        guard let selectedIndexPath = travelSelectView.tableView.indexPathForSelectedRow else { return }
-        let selectedData = upcomingTravels[selectedIndexPath.row]
+        guard let selectedIndexPath = detailScheduleSelectView.tableView.indexPathForSelectedRow else { return }
+        let selectedData = travels[selectedIndexPath.row]
         let nextVC = DetailScheduleAddViewController()
-        nextVC.selectedData = selectedData
+        nextVC.selectedTravel = selectedData
+        nextVC.selectedPlace = placeDetail
         navigationController?.pushViewController(nextVC, animated: true)
-    }
-    
-    private func splitTravels() {
-        let today = Date()
-        upcomingTravels.removeAll()
-        pastTravels.removeAll()
-        
-        for travel in travels {
-            if travel.endDate >= today {
-                upcomingTravels.append(travel)
-            } else {
-                pastTravels.append(travel)
-            }
-        }
     }
 }
 
 extension DetailScheduleSelectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let _ = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return }
         
         if let selectedIndexPath =
             preSelectedIndexPath {
             if selectedIndexPath == indexPath {
-                travelSelectView.tableView.deselectRow(at: indexPath, animated: true)
+                detailScheduleSelectView.tableView.deselectRow(at: indexPath, animated: true)
                 preSelectedIndexPath = nil
-                travelSelectView.updateButtonState() // TODO: 셀 수정 PR 머지 이후 삭제
-//                cell.setSelected(false, animated: true) // 셀 수정 PR 머지 이후 주석 해제
+                cell.setSelected(false, animated: true)
             }
         } else {
             preSelectedIndexPath = indexPath
-            travelSelectView.updateButtonState() // TODO: 셀 수정 PR 머지 이후 삭제
-//            cell.setSelected(true, animated: true) // 셀 수정 PR 머지 이후 주석 해제
+            cell.setSelected(true, animated: true)
         }
     }
 }
 
 extension DetailScheduleSelectViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return upcomingTravels.count
+        return travels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
         
-        let _ = upcomingTravels[indexPath.row]
+        let travel = travels[indexPath.row]
 //        cell.bind(travel: travel)
         return cell
     }
