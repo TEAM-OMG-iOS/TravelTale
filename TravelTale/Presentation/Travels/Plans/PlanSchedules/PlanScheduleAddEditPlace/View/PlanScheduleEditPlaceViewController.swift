@@ -20,12 +20,15 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     @IBOutlet weak var completedBtn: UIButton!
     
     private let dayPopoverVC = PopoverDayViewController()
-    
     private let timePopoverVC = PopoverTimeViewController()
+    private let realmManager = RealmManager.shared
     
+    var selectedPlace: PlaceDetail? = nil
     var selectedDays: String?
-    
     var selectedTime: Date?
+    var travel: Travel? = nil
+    var schedule: Schedule? = nil
+    var day: String?
     
     // MARK: - life cycles
     override func viewDidLoad() {
@@ -42,7 +45,9 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     }
     
     override func bind() {
-        // TODO: - 일정 데이터 추가 시 수정 예정
+        placeContents.text = schedule?.title
+        scheduleContents.text = configureInitialScheduleContents(day: day!, date: (self.schedule?.date!)!)
+        startTimeContents.text = configureInitialStartTimeContents(date: (self.schedule?.date!)!)
     }
     
     private func dateFormat(date: Date) -> String {
@@ -76,6 +81,46 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         return UIModalPresentationStyle.none
     }
     
+    private func configureBackAlert() {
+        let alert = UIAlertController(title: "경고", message: "작성중인 내용이 저장되지 않습니다. 계속 진행하시겠습니까?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let ok = UIAlertAction(title: "확인", style: .default) {_ in
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func configureDeleteAlert() {
+        let alert = UIAlertController(title: "경고", message: "현재 장소를 삭제합니다. 계속 진행하시겠습니까?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let ok = UIAlertAction(title: "확인", style: .default) {_ in
+            self.realmManager.deleteSchedule(travel: self.travel!, schedule: self.schedule!)
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func configureInitialScheduleContents(day: String, date: Date) -> String {
+        guard let daysCount = Int(day) else {
+            return ""
+        }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy년 MM월 dd일"
+        
+        if let targetDate = Calendar.current.date(byAdding: .day, value: daysCount - 1, to: date) {
+            let dateString = formatter.string(from: targetDate)
+            return "Day \(daysCount) | \(dateString)"
+        } else {
+            return ""
+        }
+    }
+    
+    private func configureInitialStartTimeContents(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "a hh:mm"
+        let dateString = formatter.string(from: date)
+        return dateString
+    }
+    
     @objc func updateSelectedDays(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let selectedDays = userInfo["selectedDays"] as? String else { return }
@@ -92,20 +137,21 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         self.bindingTime()
     }
     
+    @IBAction func tappedPlaceBtn(_ sender: UIButton) {
+        // TODO: - 장소 이동페이지로 이동
+    }
+    
     @IBAction func tappedCompletedBtn(_ sender: UIButton) {
-        print("tappedCompletedBtn")
+        realmManager.updateSchedule(schedule: schedule!, placeDetail: selectedPlace, day: selectedDays, date: selectedTime, internalMemo: memoTV.text)
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func tappedExitBtn(_ sender: UIButton) {
-        print("tappedExitBtn")
-        navigationController?.popViewController(animated: true)
+        configureBackAlert()
     }
     
     @IBAction func tappedDeleteBtn(_ sender: UIButton) {
-        // TODO: - 데이터 삭제 로직 구현 예정
-        print("tappedDeleteBtn")
-        navigationController?.popViewController(animated: true)
+        configureDeleteAlert()
     }
     
     deinit {
