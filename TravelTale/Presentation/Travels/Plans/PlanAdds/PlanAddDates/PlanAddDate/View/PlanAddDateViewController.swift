@@ -12,6 +12,7 @@ final class PlanAddDateViewController: BaseViewController {
     
     // MARK: - properties
     private let planAddDateView = PlanAddDateView(monthsLayout: .vertical)
+    
     var planTitle: String?
     var planSido: String?
     
@@ -53,7 +54,6 @@ final class PlanAddDateViewController: BaseViewController {
     
     @objc func tappedOkButton() {
         RealmManager.shared.createTravel(title: planTitle ?? "제목을 입력주세요", area: planSido ?? "미정", startDate: planAddDateView.startDate ?? Date(), endDate: planAddDateView.endDate ?? Date())
-        print("\(String(describing: planTitle)), \(String(describing: planSido)), 시작 날짜: \(String(describing: planAddDateView.startDate)), 마지막 날짜\(String(describing: planAddDateView.endDate))")
         self.navigationController?.popToRootViewController(animated: true)
     }
     

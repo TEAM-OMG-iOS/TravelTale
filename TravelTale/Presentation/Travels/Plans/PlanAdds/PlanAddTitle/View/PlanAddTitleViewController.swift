@@ -56,7 +56,6 @@ final class PlanAddTitleViewController: BaseViewController, UITextFieldDelegate 
         planTitle = planAddTitleView.textField.text
         let nextVC = PlanAddSidoViewController()
         nextVC.planTitle = planTitle
-        print(planTitle)
         self.navigationController?.pushViewController(nextVC, animated: false)
     }
     

@@ -11,6 +11,7 @@ final class PlanAddSidoViewController: BaseViewController {
     
     // MARK: - properties
     private let planAddSidoView = PlanAddSidoView()
+    
     var planTitle: String?
     var planSido: String?
     
@@ -64,7 +65,6 @@ final class PlanAddSidoViewController: BaseViewController {
         let nextVC = PlanAddDateViewController()
         nextVC.planTitle = planTitle
         nextVC.planSido = planSido
-        print(planSido ?? "미정")
         self.navigationController?.pushViewController(nextVC, animated: false)
     }
     
