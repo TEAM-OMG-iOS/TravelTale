@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TravelMemoryAddView: BaseView {
+final class MemorySelectView: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {

@@ -11,7 +11,7 @@ import RealmSwift // TODO: 삭제
 final class TravelMemoryAddViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelMemoryAddView = TravelMemoryAddView()
+    private let memorySelectView = MemorySelectView()
     
     private var noMemoryTravels: [Travel] = []
     
@@ -19,7 +19,7 @@ final class TravelMemoryAddViewController: BaseViewController {
     
     // MARK: - life cycles
     override func loadView() {
-        view = travelMemoryAddView
+        view = memorySelectView
     }
     
     override func viewDidLoad() {
@@ -44,26 +44,26 @@ final class TravelMemoryAddViewController: BaseViewController {
     
     override func configureStyle() {
         configureNavigationBarItems()
-        travelMemoryAddView.tableView.separatorStyle = .none
+        memorySelectView.tableView.separatorStyle = .none
     }
     
     override func configureDelegate() {
-        travelMemoryAddView.tableView.dataSource = self
-        travelMemoryAddView.tableView.delegate = self
+        memorySelectView.tableView.dataSource = self
+        memorySelectView.tableView.delegate = self
         
-        travelMemoryAddView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
+        memorySelectView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
     }
     
     override func configureAddTarget() {
-        travelMemoryAddView.backButton.target = self
-        travelMemoryAddView.backButton.action = #selector(tappedBackButton)
+        memorySelectView.backButton.target = self
+        memorySelectView.backButton.action = #selector(tappedBackButton)
         
-        travelMemoryAddView.confirmButton.addTarget(self, action: #selector(tappedConfirmButton), for: .touchUpInside)
+        memorySelectView.confirmButton.addTarget(self, action: #selector(tappedConfirmButton), for: .touchUpInside)
     }
     
     private func configureNavigationBarItems() {
         navigationItem.title = "추억 남기기"
-        navigationItem.leftBarButtonItem = travelMemoryAddView.backButton
+        navigationItem.leftBarButtonItem = memorySelectView.backButton
     }
     
     @objc func tappedBackButton() {
@@ -107,16 +107,16 @@ extension TravelMemoryAddViewController: UITableViewDelegate {
         if let selectedIndexPath = selectedIndexPath {
             // 셀 선택을 해제하는 경우
             if selectedIndexPath == indexPath {
-                travelMemoryAddView.tableView.deselectRow(at: indexPath, animated: true)
+                memorySelectView.tableView.deselectRow(at: indexPath, animated: true)
                 self.selectedIndexPath = nil
                 cell.setSelected(false, animated: true)
-                travelMemoryAddView.setConfirmButtonStatus(isEnabled: false)
+                memorySelectView.setConfirmButtonStatus(isEnabled: false)
             }
         } else {
             // 셀을 선택하는 경우
             self.selectedIndexPath = indexPath
             cell.setSelected(true, animated: true)
-            travelMemoryAddView.setConfirmButtonStatus(isEnabled: true)
+            memorySelectView.setConfirmButtonStatus(isEnabled: true)
         }
     }
 }
