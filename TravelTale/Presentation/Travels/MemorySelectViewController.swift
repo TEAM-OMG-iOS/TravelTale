@@ -6,17 +6,12 @@
 //
 
 import UIKit
+import RealmSwift // TODO: 삭제
 
-final class TravelMemoryAddViewController: BaseViewController {
+final class MemorySelectViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelMemoryAddView = TravelMemoryAddView()
-    
-    private var travels: [Travel] = [] {
-        didSet {
-//            setNoMemoryTravels()
-        }
-    }
+    private let memorySelectView = MemorySelectView()
     
     private var noMemoryTravels: [Travel] = []
     
@@ -24,7 +19,7 @@ final class TravelMemoryAddViewController: BaseViewController {
     
     // MARK: - life cycles
     override func loadView() {
-        view = travelMemoryAddView
+        view = memorySelectView
     }
     
     override func viewDidLoad() {
@@ -34,45 +29,42 @@ final class TravelMemoryAddViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+        
+        noMemoryTravels = fetchNoMemoryTravels()
     }
     
     // MARK: - methods
-    // TODO: travels 추가 함수
+    // TODO: RealmManager로 옮기기
+    func fetchNoMemoryTravels() -> [Travel] {
+        let realm = try! Realm()
+        return realm.objects(Travel.self).filter {
+            ($0.memory == nil) && ($0.photos.isEmpty)
+        }
+    }
     
     override func configureStyle() {
         configureNavigationBarItems()
-        travelMemoryAddView.tableView.separatorStyle = .none
+        memorySelectView.tableView.separatorStyle = .none
     }
     
     override func configureDelegate() {
-        travelMemoryAddView.tableView.dataSource = self
-        travelMemoryAddView.tableView.delegate = self
+        memorySelectView.tableView.dataSource = self
+        memorySelectView.tableView.delegate = self
         
-        travelMemoryAddView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
+        memorySelectView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
     }
     
     override func configureAddTarget() {
-        travelMemoryAddView.backButton.target = self
-        travelMemoryAddView.backButton.action = #selector(tappedBackButton)
+        memorySelectView.backButton.target = self
+        memorySelectView.backButton.action = #selector(tappedBackButton)
         
-        travelMemoryAddView.confirmButton.addTarget(self, action: #selector(tappedConfirmButton), for: .touchUpInside)
+        memorySelectView.confirmButton.addTarget(self, action: #selector(tappedConfirmButton), for: .touchUpInside)
     }
     
     private func configureNavigationBarItems() {
         navigationItem.title = "추억 남기기"
-        navigationItem.leftBarButtonItem = travelMemoryAddView.backButton
+        navigationItem.leftBarButtonItem = memorySelectView.backButton
     }
-    
-//    private func setNoMemoryTravels() {
-//        for travel in travels {
-//            let isMemoryNoteEmpty = travel.memoryNote == nil
-//            let isMemoryImagesEmpty = travel.memoryImageDatas.isEmpty
-//            
-//            if isMemoryNoteEmpty && isMemoryImagesEmpty {
-//                noMemoryTravels.append(travel)
-//            }
-//        }
-//    }
     
     @objc func tappedBackButton() {
         self.navigationController?.popViewController(animated: true)
@@ -81,7 +73,7 @@ final class TravelMemoryAddViewController: BaseViewController {
     @objc func tappedConfirmButton() {
         if let selectedIndexPath = selectedIndexPath {
             let selectedTravel = noMemoryTravels[selectedIndexPath.row]
-            let nextVC = TravelMemoryDetailEditViewController(travelData: selectedTravel)
+            let nextVC = MemoryAddEditViewController(travel: selectedTravel)
             navigationController?.pushViewController(nextVC, animated: true)
         } else {
             print("selectedIndexPath 없음")
@@ -90,7 +82,7 @@ final class TravelMemoryAddViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension TravelMemoryAddViewController: UITableViewDataSource {
+extension MemorySelectViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return noMemoryTravels.count
     }
@@ -98,9 +90,9 @@ extension TravelMemoryAddViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return UITableViewCell() }
         
-        _ = noMemoryTravels[indexPath.row]
+        let travel = noMemoryTravels[indexPath.row]
         
-//        cell.bind(travel: travel)
+        cell.bind(travel: travel)
         cell.hideThumbnail()
         cell.selectionStyle = .none
         
@@ -108,23 +100,23 @@ extension TravelMemoryAddViewController: UITableViewDataSource {
     }
 }
 
-extension TravelMemoryAddViewController: UITableViewDelegate {
+extension MemorySelectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier) as? TravelTableViewCell else { return }
         
         if let selectedIndexPath = selectedIndexPath {
             // 셀 선택을 해제하는 경우
             if selectedIndexPath == indexPath {
-                travelMemoryAddView.tableView.deselectRow(at: indexPath, animated: true)
+                memorySelectView.tableView.deselectRow(at: indexPath, animated: true)
                 self.selectedIndexPath = nil
                 cell.setSelected(false, animated: true)
-                travelMemoryAddView.setConfirmButtonStatus(isEnabled: false)
+                memorySelectView.setConfirmButtonStatus(isEnabled: false)
             }
         } else {
             // 셀을 선택하는 경우
             self.selectedIndexPath = indexPath
             cell.setSelected(true, animated: true)
-            travelMemoryAddView.setConfirmButtonStatus(isEnabled: true)
+            memorySelectView.setConfirmButtonStatus(isEnabled: true)
         }
     }
 }

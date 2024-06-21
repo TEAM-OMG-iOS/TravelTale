@@ -7,15 +7,15 @@
 
 import UIKit
 
-final class TravelPlanViewController: BaseViewController {
+final class PlanViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelPlanView = TravelPlanView()
+    private let planView = PlanView()
     
     private var travels: [Travel] = [] {
         didSet {
             splitTravels()
-            travelPlanView.tableView.reloadData()
+            planView.tableView.reloadData()
         }
     }
     
@@ -24,34 +24,32 @@ final class TravelPlanViewController: BaseViewController {
     
     // MARK: - life cycles
     override func loadView() {
-        view = travelPlanView
+        view = planView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        travels = RealmManager.shared.fetchTravels()
     }
-    
     
     // MARK: - methods
-    // TODO: travels 데이터 추가
-    
     override func configureStyle() {
-        travelPlanView.tableView.separatorStyle = .none
-        travelPlanView.tableView.sectionHeaderTopPadding = 0
+        planView.tableView.separatorStyle = .none
+        planView.tableView.sectionHeaderTopPadding = 0
     }
     
     override func configureDelegate() {
-        travelPlanView.tableView.dataSource = self
-        travelPlanView.tableView.delegate = self
+        planView.tableView.dataSource = self
+        planView.tableView.delegate = self
         
         // register
-        travelPlanView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
-        travelPlanView.tableView.register(TravelHeaderView.self, forHeaderFooterViewReuseIdentifier: TravelHeaderView.identifier)
-        travelPlanView.tableView.register(TravelFooterView.self, forHeaderFooterViewReuseIdentifier: TravelFooterView.identifier)
+        planView.tableView.register(TravelTableViewCell.self, forCellReuseIdentifier: TravelTableViewCell.identifier)
+        planView.tableView.register(PlanTableHeaderView.self, forHeaderFooterViewReuseIdentifier: PlanTableHeaderView.identifier)
+        planView.tableView.register(PlanTableFooterView.self, forHeaderFooterViewReuseIdentifier: PlanTableFooterView.identifier)
     }
     
     override func configureAddTarget() {
-        travelPlanView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
+        planView.addButtonView.button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
     }
     
     private func splitTravels() {
@@ -69,13 +67,13 @@ final class TravelPlanViewController: BaseViewController {
     }
     
     @objc func tappedAddButton() {
-        let PlanAddTitleVC = PlanAddTitleViewController()
-        self.navigationController?.pushViewController(PlanAddTitleVC, animated: true)
+        let nextVC = PlanAddTitleViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
 // MARK: - Extensions
-extension TravelPlanViewController: UITableViewDataSource {
+extension PlanViewController: UITableViewDataSource {
     // section
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -93,16 +91,17 @@ extension TravelPlanViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
         
-        let _ = (indexPath.section == 0) ? upcomingTravels[indexPath.row] : pastTravels[indexPath.row]
+        let travel = (indexPath.section == 0) ? upcomingTravels[indexPath.row] : pastTravels[indexPath.row]
         
-//        cell.bind(travel: travel)
+        cell.bind(travel: travel)
+        cell.hideThumbnail()
         cell.selectionStyle = .none
         
         return cell
     }
 }
 
-extension TravelPlanViewController: UITableViewDelegate {
+extension PlanViewController: UITableViewDelegate {
     // cell 선택 시
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextVC = TravelDetailViewController()
@@ -115,7 +114,7 @@ extension TravelPlanViewController: UITableViewDelegate {
     
     // Header, Footer
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TravelHeaderView.identifier) as? TravelHeaderView else { return UIView() }
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: PlanTableHeaderView.identifier) as? PlanTableHeaderView else { return UIView() }
         
         if section == 0 {
             headerView.bind(title: "다가오는 여행")
@@ -131,7 +130,7 @@ extension TravelPlanViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return TravelFooterView()
+        return PlanTableFooterView()
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

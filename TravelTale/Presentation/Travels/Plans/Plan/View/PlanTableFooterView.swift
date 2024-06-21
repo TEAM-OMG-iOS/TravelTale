@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class TravelFooterView: UITableViewHeaderFooterView {
+final class PlanTableFooterView: UITableViewHeaderFooterView {
     
     // MARK: - methods
-    static let identifier = String(describing: TravelFooterView.self)
+    static let identifier = String(describing: PlanTableFooterView.self)
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)

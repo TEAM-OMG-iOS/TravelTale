@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class TravelMemoryDetailTableViewCell: BaseTableViewCell {
+final class MemoryDetailTableViewCell: BaseTableViewCell {
     
     // MARK: - properties
-    static let identifier = String(describing: TravelMemoryDetailTableViewCell.self)
+    static let identifier = String(describing: MemoryDetailTableViewCell.self)
     
     private let customImageView = UIImageView().then {
         $0.configureView(clipsToBounds: true, cornerRadius: 10)
