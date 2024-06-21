@@ -20,15 +20,13 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     @IBOutlet weak var completedBtn: UIButton!
     
     private let dayPopoverVC = PopoverDayViewController()
-    
     private let timePopoverVC = PopoverTimeViewController()
+    private let realmManager = RealmManager.shared
     
     var selectedDays: String?
-    
     var selectedTime: Date?
-    
     var travel: Travel? = nil
-    
+    var placeDetail: PlaceDetail? = nil
     var day: String?
     
     // MARK: - life cycles
@@ -46,16 +44,16 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     }
     
     override func bind() {
-        // TODO: - 일정 데이터 추가 시 수정 예정
+        scheduleContents.text = configureInitialSchedule(day: day!, travel: travel!)
     }
     
     private func checkBlackText() {
-        var scheduleIsBlack = false
+        var placeIsBlack = false
         var startTimeIsBlack = false
         
         if placeContents.text != "어디로" {
             placeContents.textColor = .black
-            scheduleIsBlack = true
+            placeIsBlack = true
         } else {
             placeContents.textColor = .gray80
         }
@@ -67,7 +65,7 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
             startTimeContents.textColor = .gray80
         }
         
-        if scheduleIsBlack && startTimeIsBlack {
+        if placeIsBlack && startTimeIsBlack {
             completedBtn.isEnabled = true
             completedBtn.backgroundColor = .green100
         } else {
@@ -107,6 +105,30 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
         return UIModalPresentationStyle.none
     }
     
+    private func configureBackAlert() {
+        let alert = UIAlertController(title: "경고", message: "작성중인 내용이 저장되지 않습니다. 계속 진행하시겠습니까?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let ok = UIAlertAction(title: "확인", style: .default) {_ in
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func configureInitialSchedule(day: String, travel: Travel) -> String {
+        guard let daysCount = Int(day) else {
+            return ""
+        }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy년 MM월 dd일"
+        
+        if let targetDate = Calendar.current.date(byAdding: .day, value: daysCount - 1, to: travel.startDate) {
+            let dateString = formatter.string(from: targetDate)
+            return "Day \(daysCount) | \(dateString)"
+        } else {
+            return ""
+        }
+    }
+    
     @objc func updateSelectedDays(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let selectedDays = userInfo["selectedDays"] as? String else { return }
@@ -127,17 +149,15 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     
     @IBAction func tappedPlaceBtn(_ sender: UIButton) {
         // TODO: - 장소 검색 화면으로 이동 구현 예정
-        print("tappedPlaceBtn")
     }
     
     @IBAction func tappedCompletedBtn(_ sender: UIButton) {
-        print("tappedCompletedBtn")
+        realmManager.createSchedule(day: day!, date: selectedTime!, travel: travel!, placeDetail: placeDetail!, memo: memoTV.text)
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func tappedExitBtn(_ sender: UIButton) {
-        print("tappedExitBtn")
-        navigationController?.popViewController(animated: true)
+        configureBackAlert()
     }
 }
 
@@ -146,6 +166,8 @@ extension PlanScheduleAddPlaceViewController: UIPopoverPresentationControllerDel
     @IBAction func tappedScheduleBtn(_ sender: UIButton) {
         configurePopover(for: dayPopoverVC, sourceButton: scheduleBtn)
         dayPopoverVC.popoverPresentationController?.delegate = self
+        dayPopoverVC.day = day
+        dayPopoverVC.travel = travel
         present(dayPopoverVC, animated: true)
     }
     

@@ -12,16 +12,14 @@ final class PopoverDayViewController: BaseViewController {
     // MARK: - properties
     private let daySelectPopoverView = PopoverDayView()
     
-    var day: String?
-    
-    var travel: Travel?
-    
-    var data: [String] = [] {
+    var day: String? {
         didSet {
             data = configureData(day: day!, travel: travel!)
         }
     }
     
+    var travel: Travel?
+    var data: [String] = []
     var selectedDays: String?
     
     // MARK: - life cycles
@@ -50,7 +48,7 @@ final class PopoverDayViewController: BaseViewController {
         }
         var results = [String]()
         let formatter = DateFormatter()
-        formatter.dateFormat = "yy년 mm월 dd일"
+        formatter.dateFormat = "yy년 MM월 dd일"
         
         for i in 0..<daysCount {
             if let newDate = Calendar.current.date(byAdding: .day, value: i, to: travel.startDate) {
