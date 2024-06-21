@@ -11,7 +11,7 @@ final class TravelMemoryDetailViewController: BaseViewController {
     
     // MARK: - properties
     private let travelMemoryDetailView = MemoryDetailView()
-    private let travelMemoryDetailHeaderView = TravelMemoryDetailHeaderView()
+    private let travelMemoryDetailHeaderView = MemoryDetailTableHeaderView()
     
     private var travel: Travel
     
@@ -55,8 +55,8 @@ final class TravelMemoryDetailViewController: BaseViewController {
                       forCellReuseIdentifier: TravelMemoryDetailTableViewCell.identifier)
         
         travelMemoryDetailView.tableView.register(
-            TravelMemoryDetailHeaderView.self,
-            forHeaderFooterViewReuseIdentifier: TravelMemoryDetailHeaderView.identifier)
+            MemoryDetailTableHeaderView.self,
+            forHeaderFooterViewReuseIdentifier: MemoryDetailTableHeaderView.identifier)
     }
     
     override func configureAddTarget() {
@@ -136,7 +136,7 @@ extension TravelMemoryDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(
-            withIdentifier: TravelMemoryDetailHeaderView.identifier) as? TravelMemoryDetailHeaderView
+            withIdentifier: MemoryDetailTableHeaderView.identifier) as? MemoryDetailTableHeaderView
         else { return UIView() }
         
         headerView.bind(memory: travel.memory ?? "")

@@ -8,10 +8,10 @@
 import Then
 import UIKit
 
-final class TravelMemoryDetailHeaderView: UITableViewHeaderFooterView {
+final class MemoryDetailTableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - properties
-    static let identifier = String(String(describing: TravelMemoryDetailHeaderView.self))
+    static let identifier = String(String(describing: MemoryDetailTableHeaderView.self))
     
     private let memoryLabel = UILabel().then {
         $0.configureLabel(color: .black, font: .pretendard(size: 14, weight: .medium), numberOfLines: 0)

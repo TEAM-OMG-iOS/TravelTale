@@ -16,7 +16,7 @@
 		1AA861752C1ACDE5007F69E7 /* MemoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861742C1ACDE5007F69E7 /* MemoryDetailView.swift */; };
 		1AA861772C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861762C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift */; };
 		1AA861792C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861782C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift */; };
-		1AA8617B2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8617A2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift */; };
+		1AA8617B2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8617A2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift */; };
 		1AC9B3DF2C219E4700059246 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */; };
 		1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */; };
 		1AD537902C12CF4900A70D5E /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378F2C12CF4900A70D5E /* PlanView.swift */; };
@@ -179,7 +179,7 @@
 		1AA861742C1ACDE5007F69E7 /* MemoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailView.swift; sourceTree = "<group>"; };
 		1AA861762C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailViewController.swift; sourceTree = "<group>"; };
 		1AA861782C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailTableViewCell.swift; sourceTree = "<group>"; };
-		1AA8617A2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMemoryDetailHeaderView.swift; sourceTree = "<group>"; };
+		1AA8617A2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailTableHeaderView.swift; sourceTree = "<group>"; };
 		1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTableViewCell.swift; sourceTree = "<group>"; };
 		1AD5378F2C12CF4900A70D5E /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
@@ -1168,7 +1168,7 @@
 			isa = PBXGroup;
 			children = (
 				1AA861742C1ACDE5007F69E7 /* MemoryDetailView.swift */,
-				1AA8617A2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift */,
+				1AA8617A2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift */,
 				1AA861782C1B53DB007F69E7 /* TravelMemoryDetailTableViewCell.swift */,
 				1AA861762C1B4DD8007F69E7 /* TravelMemoryDetailViewController.swift */,
 			);
@@ -1663,7 +1663,7 @@
 				1AD537982C1362A900A70D5E /* MemoryView.swift in Sources */,
 				1A95EB652C194AB6007D575A /* TravelMemoryDetailEditViewController.swift in Sources */,
 				2E3525402C1756EF00D82D34 /* DiscoveryCell.swift in Sources */,
-				1AA8617B2C1B7445007F69E7 /* TravelMemoryDetailHeaderView.swift in Sources */,
+				1AA8617B2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift in Sources */,
 				374DDDDE2C1F43CB0040A5F1 /* PlaceResponseDTO+Mapping.swift in Sources */,
 				2ECECE7F2C211AEA003F7748 /* MyPageServiceTableViewCell.swift in Sources */,
 				2E36056B2C19D4CD007DFBC1 /* DiscoveryRegionModalViewController.swift in Sources */,
