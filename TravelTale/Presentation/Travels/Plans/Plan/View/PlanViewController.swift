@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TravelPlanViewController: BaseViewController {
+final class PlanViewController: BaseViewController {
     
     // MARK: - properties
     private let planView = PlanView()
@@ -73,7 +73,7 @@ final class TravelPlanViewController: BaseViewController {
 }
 
 // MARK: - Extensions
-extension TravelPlanViewController: UITableViewDataSource {
+extension PlanViewController: UITableViewDataSource {
     // section
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -101,7 +101,7 @@ extension TravelPlanViewController: UITableViewDataSource {
     }
 }
 
-extension TravelPlanViewController: UITableViewDelegate {
+extension PlanViewController: UITableViewDelegate {
     // cell 선택 시
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextVC = TravelDetailViewController()
