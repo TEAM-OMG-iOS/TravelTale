@@ -82,8 +82,7 @@ final class MemoryDetailViewController: BaseViewController {
                 UIAction(title: "편집", state: .off, handler: { _ in
                     self.tappedEditButton() }),
                 UIAction(title: "삭제", attributes: .destructive,state: .off, handler: { _ in
-                    print("삭제")
-                })
+                    self.presentDeleteAlert() })
             ]
         )
     }
@@ -100,6 +99,26 @@ final class MemoryDetailViewController: BaseViewController {
     private func tappedEditButton() {
         let nextVC = MemoryAddEditViewController(travel: travel)
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    private func presentDeleteAlert() {
+        let alert = UIAlertController(title: "경고", message: """
+    작성된 추억이 삭제됩니다.
+    그대로 진행하시겠습니까?
+    """, preferredStyle: UIAlertController.Style.alert)
+        
+        let cancel = UIAlertAction(title: "취소", style: .destructive)
+        
+        let ok = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            RealmManager.shared.deleteMemory(travel: self.travel)
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     @objc func tappedBackButton() {
