@@ -69,8 +69,8 @@ final class TravelPlanViewController: BaseViewController {
     }
     
     @objc func tappedAddButton() {
-        let TravelAddTitleVC = TravelAddTitleViewController()
-        self.navigationController?.pushViewController(TravelAddTitleVC, animated: true)
+        let PlanAddTitleVC = PlanAddTitleViewController()
+        self.navigationController?.pushViewController(PlanAddTitleVC, animated: true)
     }
 }
 
