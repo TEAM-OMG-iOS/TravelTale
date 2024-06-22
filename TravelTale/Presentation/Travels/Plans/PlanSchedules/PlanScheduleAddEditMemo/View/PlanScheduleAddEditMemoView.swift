@@ -1,5 +1,5 @@
 //
-//  PlanScheduleAddEditMemo.swift
+//  PlanScheduleAddEditMemoView.swift
 //  TravelTale
 //
 //  Created by Kinam on 6/5/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PlanScheduleAddEditMemo: BaseView {
+final class PlanScheduleAddEditMemoView: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {
