@@ -11,7 +11,6 @@ final class PlanEditViewController: BaseViewController {
     
     // MARK: - properties
     private let planEditView = PlanEditView()
-    private let planEditDateView = PlanEditDateView(monthsLayout: .vertical)
     
     private let realmManager = RealmManager.shared
     
@@ -26,7 +25,7 @@ final class PlanEditViewController: BaseViewController {
     override func loadView() {
         view = planEditView
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
@@ -65,13 +64,13 @@ final class PlanEditViewController: BaseViewController {
         planEditView.textField.text = travel!.title
         planEditView.placePickLabel.text = travel!.area
         planEditView.placePickLabel.textColor = .black
-        
         resetDate()
     }
     
     private func resetDate() {
         let dateRangeString = DateFormatter().dateRangeString(from: travel!.startDate, to: travel!.endDate)
         let daysString = Calendar.current.dateComponents([.day], from: travel!.startDate, to: travel!.endDate).day ?? 0
+        
         planEditView.dayRangeButton.configureButton(fontColor: .gray90, font: .pretendard(size: 16, weight: .medium), text: dateRangeString)
         planEditView.datePickButton.configureButton(font: .pretendard(size: 16, weight: .medium), text: "\(daysString)박 \(daysString + 1)일")
     }
@@ -80,7 +79,7 @@ final class PlanEditViewController: BaseViewController {
         editTitle = planEditView.textField.text
         realmManager.updateTravel(travel: self.travel!, title: (editTitle ?? travel?.title)!, area: (editSido ?? travel?.area)!, startDate: (editStartDate ?? travel?.startDate)!, endDate: (editEndDate ?? travel?.endDate)!)
     }
-
+    
     private func updateInputBox(with text: String) {
         planEditView.placePickImageButton.setTitle(text, for: .normal)
     }
@@ -93,25 +92,27 @@ final class PlanEditViewController: BaseViewController {
     private func configureDeleteItem() {
         navigationItem.rightBarButtonItem = planEditView.deleteButton
     }
-
+    
     private func presentDeleteAlert() {
-            let alert = UIAlertController(title: "경고", message: """
+        let alert = UIAlertController(title: "경고", message: """
     계획된 모든 일정이 삭제됩니다.
     그대로 진행하시겠습니까?
     """, preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "취소", style: .destructive)
+        
+        let ok = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            guard let self = self else { return }
             
-            let cancel = UIAlertAction(title: "취소", style: .destructive)
+            realmManager.deleteTravel(travel: self.travel!)
             
-            let ok = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
-                guard let self = self else { return }
-                realmManager.deleteTravel(travel: self.travel!)
-                self.navigationController?.popToRootViewController(animated: true)
-            }
-            
-            alert.addAction(cancel)
-            alert.addAction(ok)
-            
-            present(alert, animated: true, completion: nil)
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     private func presentDateAlert() {
@@ -126,12 +127,15 @@ final class PlanEditViewController: BaseViewController {
             
             let cancel = UIAlertAction(title: "취소", style: .destructive) { [weak self] _ in
                 guard let self = self else { return }
+                
                 resetDate()
+                
                 self.dismiss(animated: true)
             }
             
             let ok = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
                 guard let self = self else { return }
+                
                 updateTravel()
                 
                 self.navigationController?.popViewController(animated: true)
@@ -141,7 +145,6 @@ final class PlanEditViewController: BaseViewController {
             alert.addAction(ok)
             
             present(alert, animated: true, completion: nil)
-            
         } else {
             updateTravel()
             
@@ -203,7 +206,7 @@ final class PlanEditViewController: BaseViewController {
     
     @objc func tappedOkButton() {
         guard let _ = editStartDate,
-                let _ = editEndDate else {
+              let _ = editEndDate else {
             updateTravel()
             
             self.navigationController?.popViewController(animated: true)

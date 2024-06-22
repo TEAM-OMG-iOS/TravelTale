@@ -12,11 +12,8 @@ final class PlanEditDateViewController: BaseViewController {
     
     // MARK: - properties
     let planEditDateView = PlanEditDateView(monthsLayout: .vertical)
-    private let planEditView = PlanEditView()
     
     private let realmManager = RealmManager.shared
-    
-    private var travel: Travel?
     
     // MARK: - lifecycl
     override func loadView() {
@@ -35,7 +32,7 @@ final class PlanEditDateViewController: BaseViewController {
     override func configureAddTarget() {
         planEditDateView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
     }
-
+    
     @objc func tappedOkButton() {
         self.dismiss(animated: true)
     }
