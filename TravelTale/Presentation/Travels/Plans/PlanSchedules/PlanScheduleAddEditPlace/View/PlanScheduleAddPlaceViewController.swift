@@ -116,7 +116,10 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     }
     
     private func configureBackAlert() {
-        let alert = UIAlertController(title: "경고", message: "작성중인 내용이 저장되지 않습니다. 계속 진행하시겠습니까?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "경고", message: """
+이전으로 돌아가면 작성 내용이 저장되지 않습니다.
+계속 진행하시겠습니까?
+""", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) {_ in
             self.navigationController?.popViewController(animated: true)
