@@ -32,7 +32,9 @@ final class PlanEditView: BaseView {
         $0.configureView(color: .gray5, cornerRadius: 24)
         $0.placeholder = "남자친구와 100일 여행"
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
+        $0.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
         $0.leftViewMode = .always
+        $0.rightViewMode = .always
         $0.font = UIFont.pretendard(size: 16, weight: .medium)
     }
     
@@ -45,9 +47,7 @@ final class PlanEditView: BaseView {
         $0.configureLabel(color: .lightGray, font: .pretendard(size: 14, weight: .light), text: "태그에 표시됩니다")
     }
     
-    private let placePickBackView = UIView().then {
-        $0.configureView(color: .gray5, clipsToBounds: true, cornerRadius: 20)
-    }
+    private let placePickBackView = GrayBackgroundView()
     
     let placePickLabel = UILabel().then {
         $0.text = "서울특별시"
