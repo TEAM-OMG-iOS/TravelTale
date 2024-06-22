@@ -14,8 +14,13 @@ final class DetailScheduleAddViewController: BaseViewController {
     private let dayPopoverVC = PopoverDayViewController()
     private let timePopoverVC = PopoverTimeViewController()
     private let realmManager = RealmManager.shared
+    private var day: String?
     
-    var selectedTravel: Travel?
+    var selectedTravel: Travel? {
+        didSet {
+            day = dayDifference(from: selectedTravel!.startDate, to: selectedTravel!.endDate)
+        }
+    }
     var selectedPlace: PlaceDetail?
     var selectedDays: String?
     var selectedTime: Date?
@@ -96,17 +101,31 @@ final class DetailScheduleAddViewController: BaseViewController {
     }
     
     private func configureBackAlert() {
-        let alert = UIAlertController(title: "경고", message: "작성중인 내용이 저장되지 않습니다. 계속 진행하시겠습니까?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "경고", message: """
+이전으로 돌아가면 작성 내용이 저장되지 않습니다.
+계속 진행하시겠습니까?
+""", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) {_ in
             let nextVC = PlaceDetailViewController()
-            // TODO: - 이동 시 추가 구현사항 확인하기
+            // TODO: - 데이터 전달
             self.navigationController?.pushViewController(nextVC, animated: true)
         }
         
         alert.addAction(cancel)
         alert.addAction(ok)
         self.present(alert, animated: true)
+    }
+    
+    private func dayDifference(from startDate: Date, to endDate: Date) -> String {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: startDate, to: endDate)
+        
+        if let dayDifference = components.day {
+            return String(dayDifference)
+        } else {
+            return "0"
+        }
     }
     
     @objc private func handleBackButton(_ sender: UIButton) {
@@ -137,13 +156,14 @@ final class DetailScheduleAddViewController: BaseViewController {
     }
     
     @objc private func tappedAddScheduleBtn() {
-        // TODO: - 페이지 플로우 확인 후 이동, 저장 로직 수정 예정
         realmManager.createSchedule(day: selectedDays!, date: selectedTime!, travel: selectedTravel!, placeDetail: selectedPlace!)
         let alert = UIAlertController(title: "일정 추가 완료", message: "일정 추가가 완료되었습니다.", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "확인", style: .cancel)
         alert.addAction(cancel)
+        let nextVC = PlaceDetailViewController()
+        // TODO: - 데이터 전달
         
-        self.dismiss(animated: true)
+        self.navigationController?.pushViewController(nextVC, animated: true)
         self.present(alert, animated: true)
     }
     
@@ -157,6 +177,8 @@ extension DetailScheduleAddViewController: UIPopoverPresentationControllerDelega
     @objc private func tappedScheduleBtn() {
         configurePopover(for: dayPopoverVC, sourceButton: detailScheduleAddView.scheduleBtn)
         dayPopoverVC.popoverPresentationController?.delegate = self
+        dayPopoverVC.day = day
+        dayPopoverVC.travel = selectedTravel
         present(dayPopoverVC, animated: true)
     }
     
