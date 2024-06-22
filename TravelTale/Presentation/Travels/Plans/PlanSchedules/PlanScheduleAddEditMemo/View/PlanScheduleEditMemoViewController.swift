@@ -27,6 +27,7 @@ class PlanScheduleEditMemoViewController: BaseViewController {
     
     init(schedule: Schedule) {
         self.schedule = schedule
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
