@@ -11,7 +11,13 @@ final class DiscoveryViewController: BaseViewController {
     
     // MARK: - properties
     private let discoveryView = DiscoveryView()
+    
+    private let networkManager = NetworkManager.shared
+    
     private let minimumLineSpacing: CGFloat = 16
+    private var regionCode: (String, String) = ("", "")
+    
+    private var placeDatas: [Place] = [Place(addr1: nil, addr2: nil, contentId: nil, firstImage: nil, title: nil, cpyrhtDivCd: nil)]
     
     // MARK: - life cycles
     override func loadView() {
@@ -20,10 +26,13 @@ final class DiscoveryViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchPlaceDatas()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.tabBarController?.tabBar.isHidden = false
     }
     
@@ -64,6 +73,7 @@ final class DiscoveryViewController: BaseViewController {
         
         discoveryRegionVC.completion = { [weak self] (sido, sigungu) in
             guard let self = self else { return }
+            regionCode = (sido?.code ?? "", sigungu?.code ?? "")
             discoveryView.setRegionLable(sido: sido, sigungu: sigungu)
         }
         
@@ -85,12 +95,26 @@ final class DiscoveryViewController: BaseViewController {
         
         self.navigationController?.pushViewController(discoveryCategoryVC, animated: true)
     }
+    
+    func fetchPlaceDatas() {
+        networkManager.fetchPlaces(sidoCode: self.regionCode.0, sigunguCode: self.regionCode.1, type: .total, page: 1) { [weak self] result in
+            switch result {
+            case .success(let places):
+                self?.placeDatas = places.places ?? []
+                
+                DispatchQueue.main.async {
+                    self?.discoveryView.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 // MARK: - extensions
 extension DiscoveryViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView,
-                        didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let placeDetailVC = PlaceDetailViewController()
         
         // TODO: - 데이터 바인딩
@@ -100,20 +124,17 @@ extension DiscoveryViewController: UICollectionViewDelegate {
 }
 
 extension DiscoveryViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        return 4
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return placeDatas.count
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoveryCell.identifier,
-                                                            for: indexPath) as? DiscoveryCell else {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoveryCell.identifier, for: indexPath) as? DiscoveryCell else {
             return UICollectionViewCell()
         }
         
-        // TODO: - 데이터 바인딩
-        
+        cell.bind(place: placeDatas[indexPath.row])
+                        
         return cell
     }
 }

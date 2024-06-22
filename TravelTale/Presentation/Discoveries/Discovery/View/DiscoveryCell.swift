@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class DiscoveryCell: BaseCollectionViewCell {
     
@@ -67,11 +68,17 @@ final class DiscoveryCell: BaseCollectionViewCell {
         }
     }
     
-    func bind(placeImage: UIImage?, place: String, placeAddress: String) {
-        if let image = placeImage {
-            placeImageView.image = image
+    func bind(place: Place) {
+        if let imageString = place.firstImage, let image = URL(string: imageString) {
+            placeImageView.kf.setImage(with: image)
         }
-        placeLabel.text = place
-        placeAddressLabel.text = placeAddress
+        
+        if let place = place.title {
+            placeLabel.text = place
+        }
+        
+        if let address = place.addr1 {
+            placeAddressLabel.text = address
+        }
     }
 }
