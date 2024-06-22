@@ -89,7 +89,7 @@ final class PlanEditView: BaseView {
         $0.configureButton(fontColor: .white,
                            font: .pretendard(size: 18, weight: .bold),
                            text: "완료")
-        $0.configureView(color: .green10,
+        $0.configureView(color: .green100,
                          cornerRadius: 24)
     }
     
@@ -187,8 +187,7 @@ final class PlanEditView: BaseView {
     }
     
     func buttonColorChanged() {
-        if textField.text?.isEmpty != false &&
-            (placePickLabel.text == "서울특별시" || dayRangeButton.title(for: .normal) == "2024.05.08 - 2024.05.11") {
+        if textField.text?.isEmpty != false {
             okButton.isEnabled = false
             okButton.backgroundColor = .green10
         } else {
@@ -197,8 +196,8 @@ final class PlanEditView: BaseView {
         }
     }
     
-    func updatePlaceLabel(text: String) {
-        placePickLabel.text = text
+    func updatePlaceLabel(text: Sido) {
+        placePickLabel.text = text.name ?? "미정"
         placePickLabel.textColor = .black
     }
     
@@ -208,11 +207,6 @@ final class PlanEditView: BaseView {
     
     func updateDatePickButton(text: String) {
         datePickButton.configureButton(font: .pretendard(size: 16, weight: .medium), text: text)
-    }
-    
-    func resetDate() {
-        dayRangeButton.configureButton(fontColor: .gray90, font: .pretendard(size: 16, weight: .medium), text: "2024.05.08 - 2024.05.11")
-        datePickButton.configureButton(font: .pretendard(size: 16, weight: .medium), text: "3박 4일")
     }
 }
 
