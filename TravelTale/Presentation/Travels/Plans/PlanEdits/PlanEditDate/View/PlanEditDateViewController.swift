@@ -14,7 +14,11 @@ final class PlanEditDateViewController: BaseViewController {
     let planEditDateView = PlanEditDateView(monthsLayout: .vertical)
     private let planEditView = PlanEditView()
     
-    // MARK: - lifecycle
+    private let realmManager = RealmManager.shared
+    
+    private var travel: Travel?
+    
+    // MARK: - lifecycl
     override func loadView() {
         view = planEditDateView
     }
@@ -31,31 +35,8 @@ final class PlanEditDateViewController: BaseViewController {
     override func configureAddTarget() {
         planEditDateView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
     }
-    
-    private func presentAlert() {
-        let alert = UIAlertController(title: "경고", message: """
-    수정된 일정만큼 일부 삭제될 수 있습니다.
-    그대로 진행하시겠습니까?
-    """, preferredStyle: UIAlertController.Style.alert)
-        
-        let cancel = UIAlertAction(title: "취소", style: .destructive) { [weak self] _ in
-            guard let self = self else { return }
-            //TODO: 기존 날짜로 초기화되는 기능 추가
-            self.dismiss(animated: true)
-        }
-        
-        let ok = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
-            guard let self = self else { return }
-            self.dismiss(animated: true)
-        }
-        
-        alert.addAction(cancel)
-        alert.addAction(ok)
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
+
     @objc func tappedOkButton() {
-        presentAlert()
+        self.dismiss(animated: true)
     }
 }
