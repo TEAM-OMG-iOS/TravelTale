@@ -191,22 +191,22 @@ final class PlanAddDateView: BaseView, PlanAddDateCalendarBaseView {
     private func setDateLabel() {
         if let startDate = calendar.date(from: selectedDayRange?.lowerBound.components ?? DateComponents()),
            let endDate = calendar.date(from: selectedDayRange?.upperBound.components ?? DateComponents()) {
-            self.startDate = startDate
-            self.endDate = endDate
-            setStartDate(startDate: startDate, endDate: endDate)
-            
-            if startDate == endDate {
-                okButton.isEnabled = true
-                okButton.backgroundColor = .green100
-                okButton.setTitle("당일치기", for: .normal)
-            } else {
-                
-                if let days = calendar.dateComponents([.day], from: startDate, to: endDate).day {
-                    let n = days + 1
-                    okButton.setTitle("\(n-1)박 \(n)일", for: .normal)
-                }
-            }
-        }
+               self.startDate = startDate
+               self.endDate = endDate
+               setStartDate(startDate: startDate, endDate: endDate)
+               
+               if startDate == endDate {
+                   okButton.isEnabled = true
+                   okButton.backgroundColor = .green100
+                   okButton.setTitle("당일치기", for: .normal)
+               } else {
+                   
+                   if let days = calendar.dateComponents([.day], from: startDate, to: endDate).day {
+                       let n = days + 1
+                       okButton.setTitle("\(n-1)박 \(n)일", for: .normal)
+                   }
+               }
+           }
     }
     
     private func setStartDate(startDate: Date, endDate: Date) {

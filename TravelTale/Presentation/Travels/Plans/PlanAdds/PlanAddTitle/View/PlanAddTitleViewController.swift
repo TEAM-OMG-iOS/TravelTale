@@ -11,6 +11,7 @@ final class PlanAddTitleViewController: BaseViewController, UITextFieldDelegate 
     
     // MARK: - properties
     private let planAddTitleView = PlanAddTitleView()
+    
     var planTitle: String?
     
     // MARK: - life cycles

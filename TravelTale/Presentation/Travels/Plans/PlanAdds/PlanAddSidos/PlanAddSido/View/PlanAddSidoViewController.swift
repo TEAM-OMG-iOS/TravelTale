@@ -15,7 +15,6 @@ final class PlanAddSidoViewController: BaseViewController {
     var planTitle: String?
     var planSido: String?
     
-    
     // MARK: - life cycles
     override func loadView() {
         view = planAddSidoView
@@ -32,7 +31,7 @@ final class PlanAddSidoViewController: BaseViewController {
     }
     
     // MARK: - methods
-    override func configureStyle() { 
+    override func configureStyle() {
         configureNavigationBarItems()
     }
     

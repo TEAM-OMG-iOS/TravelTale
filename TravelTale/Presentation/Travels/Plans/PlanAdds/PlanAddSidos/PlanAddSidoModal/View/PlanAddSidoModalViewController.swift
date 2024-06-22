@@ -15,7 +15,7 @@ final class PlanAddSidoModalViewController: BaseViewController {
     private let networkManager = NetworkManager.shared
     
     private var sidoData: [Sido] = []
-   
+    
     var completion: ((Sido) -> Void)?
     
     // MARK: - life cycles
@@ -33,7 +33,7 @@ final class PlanAddSidoModalViewController: BaseViewController {
         regionView.tableView.delegate = self
         
         regionView.tableView.register(RegionTableViewCell.self,
-                                        forCellReuseIdentifier: RegionTableViewCell.identifier)
+                                      forCellReuseIdentifier: RegionTableViewCell.identifier)
     }
     
     func configureSidoView() {
