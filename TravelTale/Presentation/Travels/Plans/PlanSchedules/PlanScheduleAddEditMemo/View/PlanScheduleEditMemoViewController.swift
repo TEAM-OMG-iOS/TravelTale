@@ -10,11 +10,9 @@ import UIKit
 class PlanScheduleEditMemoViewController: BaseViewController {
     
     // MARK: - properties
-    private let memoView = PlanScheduleAddEditMemo()
-    
+    private let memoView = PlanScheduleAddEditMemoView()
     private let realmManager = RealmManager.shared
-    
-    var schedule: Schedule? = nil
+    private var schedule: Schedule
     
     // MARK: - life cycles
     override func loadView() {
@@ -25,6 +23,14 @@ class PlanScheduleEditMemoViewController: BaseViewController {
         super.viewDidLoad()
         configureAddTarget()
         configureNavigationBar()
+    }
+    
+    init(schedule: Schedule) {
+        self.schedule = schedule
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - methods
@@ -44,7 +50,10 @@ class PlanScheduleEditMemoViewController: BaseViewController {
     }
     
     private func configureBackAlert(navigationController: UINavigationController?) {
-        let alert = UIAlertController(title: "뒤로가기", message: "지금까지 작성된 내용이 삭제됩니다. 이전으로 이동하시겠습니까?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "뒤로가기", message: """
+이전으로 돌아가면 작성 내용이 저장되지 않습니다.
+정말 돌아가시겠습니까?
+""", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) {_ in
             navigationController?.popViewController(animated: true)
@@ -61,7 +70,7 @@ class PlanScheduleEditMemoViewController: BaseViewController {
     }
     
     @objc private func tapCompleteButton() {
-        realmManager.updateMemo(schedule: schedule!, newMemo: memoView.memoTV.text)
+        realmManager.updateMemo(schedule: schedule, newMemo: memoView.memoTV.text)
         navigationController?.popViewController(animated: true)
     }
 }
