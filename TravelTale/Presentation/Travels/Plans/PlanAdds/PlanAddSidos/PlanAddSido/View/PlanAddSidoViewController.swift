@@ -51,11 +51,12 @@ final class PlanAddSidoViewController: BaseViewController {
     
     @objc func tappedInputBox() {
         let locationList = PlanAddSidoModalViewController()
-        locationList.completion = { [weak self] text in
+        locationList.configureSidoView()
+        locationList.completion = { [weak self] sido in
             guard let self = self else { return }
             
-            planAddSidoView.updatePlacePickButton(text: text)
-            self.planSido = text
+            planAddSidoView.updatePlacePickButton(text: sido)
+            self.planSido = sido.name
         }
         
         self.present(locationList, animated: true)

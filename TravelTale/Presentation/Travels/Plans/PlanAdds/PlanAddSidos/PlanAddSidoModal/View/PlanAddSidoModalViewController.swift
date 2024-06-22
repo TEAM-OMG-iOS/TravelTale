@@ -10,19 +10,17 @@ import UIKit
 final class PlanAddSidoModalViewController: BaseViewController {
     
     // MARK: - properties
-    private let locationView = RegionView()
+    private let regionView = RegionView()
     
-    private let locations: [String] = ["서울특별시", "인천광역시", "부산광역시",
-                                       "대전광역시", "대구광역시", "울산광역시",
-                                       "광주광역시", "제주특별자치도", "세종특별자치시",
-                                       "경기도", "강원도", "충청북도", "충청남도",
-                                       "경상북도", "경상남도", "전라북도", "전라남도"]
+    private let networkManager = NetworkManager.shared
     
-    var completion: ((String) -> Void)?
+    private var sidoData: [Sido] = []
+   
+    var completion: ((Sido) -> Void)?
     
     // MARK: - life cycles
     override func loadView() {
-        view = locationView
+        view = regionView
     }
     
     override func viewDidLoad() {
@@ -31,26 +29,42 @@ final class PlanAddSidoModalViewController: BaseViewController {
     
     // MARK: - methods
     override func configureDelegate() {
-        locationView.tableView.dataSource = self
-        locationView.tableView.delegate = self
+        regionView.tableView.dataSource = self
+        regionView.tableView.delegate = self
         
-        locationView.tableView.register(RegionTableViewCell.self,
+        regionView.tableView.register(RegionTableViewCell.self,
                                         forCellReuseIdentifier: RegionTableViewCell.identifier)
+    }
+    
+    func configureSidoView() {
+        regionView.bind(text: "대표 여행 장소를 선택해주세요")
+        requestSido()
+    }
+    
+    func requestSido() {
+        networkManager.fetchSidos { result in
+            switch result {
+            case .success(let sidos):
+                guard let sidoData = sidos.sidos else { return }
+                self.sidoData = sidoData
+                self.regionView.tableView.reloadData()
+            case .failure(let error):
+                print("error: \(error)")
+            }
+        }
     }
 }
 
 // MARK: - extensions
 extension PlanAddSidoModalViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locations.count
+        return sidoData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RegionTableViewCell.identifier, for: indexPath) as? RegionTableViewCell else { return UITableViewCell() }
         
-        cell.bind(text: locations[indexPath.row])
-        locationView.bind(text: "대표 여행 장소를 선택해주세요")
-        
+        cell.bind(text: sidoData[indexPath.row].name ?? "")
         
         return cell
     }
@@ -61,7 +75,7 @@ extension PlanAddSidoModalViewController: UITableViewDelegate {
         guard let cell = tableView.cellForRow(at: indexPath) as? RegionTableViewCell else { return }
         cell.setSelected(true, animated: true)
         
-        completion?(locations[indexPath.row])
+        completion?(sidoData[indexPath.row])
         
         self.dismiss(animated: true, completion: nil)
     }
