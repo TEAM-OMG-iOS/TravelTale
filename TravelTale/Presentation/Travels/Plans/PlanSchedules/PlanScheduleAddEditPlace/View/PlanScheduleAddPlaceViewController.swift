@@ -22,12 +22,11 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     private let dayPopoverVC = PopoverDayViewController()
     private let timePopoverVC = PopoverTimeViewController()
     private let realmManager = RealmManager.shared
-    
-    var selectedDays: String?
-    var selectedTime: Date?
-    var travel: Travel? = nil
-    var placeDetail: PlaceDetail? = nil
-    var day: String?
+    private var selectedDays: String?
+    private var selectedTime: Date?
+    private var travel: Travel
+    private var placeDetail: PlaceDetail
+    private var day: String
     
     // MARK: - life cycles
     override func viewDidLoad() {
@@ -38,13 +37,24 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedTime), name: .selectedTimeUpdated, object: nil)
     }
     
+    init(travel: Travel, placeDetail: PlaceDetail, day: String) {
+        self.travel = travel
+        self.placeDetail = placeDetail
+        self.day = day
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - methods
     override func configureDelegate() {
         memoTV.delegate = self
     }
     
     override func bind() {
-        scheduleContents.text = configureInitialSchedule(day: day!, travel: travel!)
+        scheduleContents.text = configureInitialSchedule(day: day, travel: travel)
     }
     
     private func checkBlackText() {
@@ -106,7 +116,10 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     }
     
     private func configureBackAlert() {
-        let alert = UIAlertController(title: "경고", message: "작성중인 내용이 저장되지 않습니다. 계속 진행하시겠습니까?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "경고", message: """
+이전으로 돌아가면 작성 내용이 저장되지 않습니다.
+계속 진행하시겠습니까?
+""", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) {_ in
             self.navigationController?.popViewController(animated: true)
@@ -148,11 +161,13 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     }
     
     @IBAction func tappedPlaceBtn(_ sender: UIButton) {
-        // TODO: - 장소 검색 화면으로 이동 구현 예정
+        let nextVC = SearchResultViewController()
+        // TODO: - 데이터 넣어주기
+        navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @IBAction func tappedCompletedBtn(_ sender: UIButton) {
-        realmManager.createSchedule(day: day!, date: selectedTime!, travel: travel!, placeDetail: placeDetail!, memo: memoTV.text)
+        realmManager.createSchedule(day: day, date: selectedTime!, travel: travel, placeDetail: placeDetail, memo: memoTV.text)
         navigationController?.popViewController(animated: true)
     }
     
