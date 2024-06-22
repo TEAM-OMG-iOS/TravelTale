@@ -42,7 +42,7 @@ final class DetailScheduleSelectViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        detailScheduleSelectView.nextBtn.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
+        detailScheduleSelectView.nextBtn.addTarget(self, action: #selector(tappedNextButton), for: .touchUpInside)
         detailScheduleSelectView.backButton.target = self
         detailScheduleSelectView.backButton.action = #selector(configureBackAlert)
     }
@@ -53,7 +53,10 @@ final class DetailScheduleSelectViewController: BaseViewController {
     }
     
     @objc private func configureBackAlert() {
-        let alert = UIAlertController(title: "경고", message: "작성중인 내용이 저장되지 않습니다. 계속 진행하시겠습니까?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "경고", message: """
+이전으로 돌아가면 작성 내용이 저장되지 않습니다.
+계속 진행하시겠습니까?
+""", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) {_ in
             self.navigationController?.popViewController(animated: true)
@@ -65,7 +68,7 @@ final class DetailScheduleSelectViewController: BaseViewController {
         self.present(alert, animated: true)
     }
     
-    @objc private func tappedButton() {
+    @objc private func tappedNextButton() {
         guard let selectedIndexPath = detailScheduleSelectView.tableView.indexPathForSelectedRow else { return }
         let selectedData = travels[selectedIndexPath.row]
         let nextVC = DetailScheduleAddViewController()
