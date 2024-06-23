@@ -185,6 +185,20 @@ extension MemoryAddEditViewController: PHPickerViewControllerDelegate {
                     }
                 }
             }
+            let registeredTypeIdentifiers = result.itemProvider.registeredTypeIdentifiers
+            for (i, value) in registeredTypeIdentifiers.enumerated() {
+                print("id:", i, value)
+            }
+            let assetIdentifier = result.assetIdentifier
+            print("assetIdentifier: \(assetIdentifier)")
+            
+            /*
+             id: 0 public.jpeg
+             id: 1 public.heic
+             id: 2 com.apple.private.photos.thumbnail.standard
+             id: 3 com.apple.private.photos.thumbnail.low
+             assetIdentifier: nil
+             */
         }
     }
 }
