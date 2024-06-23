@@ -218,12 +218,7 @@ final class MemoryAddEditView: BaseView {
         travelTitleLabel.text = travel.title
         memoryTextView.text = travel.memory
         updatePhotoCount(count: travel.photos.count)
-        
-        if isTextViewEmpty() {
-            setTextViewPlaceHolder()
-        } else {
-            memoryTextView.textColor = UIColor.black
-        }
+        isTextViewEmpty() ? setTextViewPlaceHolder() : (memoryTextView.textColor = UIColor.black)
     }
     
     func updatePhotoCount(count: Int) {
