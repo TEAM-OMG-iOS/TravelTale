@@ -159,7 +159,7 @@ extension MemoryAddEditViewController: UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        memoryAddEditView.configureConfirmUI()
+        memoryAddEditView.configureConfirmButton()
     }
 }
 

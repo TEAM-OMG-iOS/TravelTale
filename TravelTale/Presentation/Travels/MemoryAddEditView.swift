@@ -112,7 +112,7 @@ final class MemoryAddEditView: BaseView {
     // MARK: - methods
     override func configureUI() {
         super.configureUI()
-        configureConfirmUI()
+        configureConfirmButton()
     }
     
     override func configureHierarchy() {
@@ -245,15 +245,13 @@ final class MemoryAddEditView: BaseView {
         memoryTextView.textColor = UIColor.gray80
     }
     
-    func configureConfirmUI() {
+    func configureConfirmButton() {
         if isTextViewEmpty() {
             confirmButton.isEnabled = false
             confirmButton.backgroundColor = .green10
         } else {
-            setBeginText(textView: memoryTextView)
             confirmButton.isEnabled = true
             confirmButton.backgroundColor = .green100
-            memoryTextView.textColor = UIColor.black
         }
     }
     
