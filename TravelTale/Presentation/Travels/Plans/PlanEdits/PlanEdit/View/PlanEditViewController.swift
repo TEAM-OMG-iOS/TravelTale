@@ -73,6 +73,12 @@ final class PlanEditViewController: BaseViewController {
         
         planEditView.dayRangeButton.configureButton(fontColor: .gray90, font: .pretendard(size: 16, weight: .medium), text: dateRangeString)
         planEditView.datePickButton.configureButton(font: .pretendard(size: 16, weight: .medium), text: "\(daysString)박 \(daysString + 1)일")
+        
+        editTitle = planEditView.textField.text
+        editStartDate = travel!.startDate
+        editEndDate = travel!.endDate
+        
+        realmManager.updateTravel(travel: self.travel!, title: (editTitle ?? travel?.title)!, area: (editSido ?? travel?.area)!, startDate: travel!.startDate, endDate: travel!.endDate)
     }
     
     private func updateTravel() {
@@ -205,14 +211,6 @@ final class PlanEditViewController: BaseViewController {
     }
     
     @objc func tappedOkButton() {
-        guard let _ = editStartDate,
-              let _ = editEndDate else {
-            updateTravel()
-            
-            self.navigationController?.popViewController(animated: true)
-            return
-        }
-        
         presentDateAlert()
     }
 }
