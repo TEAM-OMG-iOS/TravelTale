@@ -213,7 +213,7 @@ final class MemoryAddEditView: BaseView {
     }
     
     func bind(travel: Travel) {
-        areaLabel.text = travel.area ?? "미정"
+        areaLabel.text = travel.area
         periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
         travelTitleLabel.text = travel.title
         memoryTextView.text = travel.memory
