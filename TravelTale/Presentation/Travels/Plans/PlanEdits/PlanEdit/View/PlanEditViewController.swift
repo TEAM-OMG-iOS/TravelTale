@@ -14,7 +14,7 @@ final class PlanEditViewController: BaseViewController {
     
     private let realmManager = RealmManager.shared
     
-    var travel: Travel?
+    private let travel: Travel
     
     var editTitle: String?
     var editSido: String?
@@ -61,29 +61,29 @@ final class PlanEditViewController: BaseViewController {
     }
     
     private func beforeChangeUI() {
-        planEditView.textField.text = travel!.title
-        planEditView.placePickLabel.text = travel!.area
+        planEditView.textField.text = travel.title
+        planEditView.placePickLabel.text = travel.area
         planEditView.placePickLabel.textColor = .black
         resetDate()
     }
     
     private func resetDate() {
-        let dateRangeString = DateFormatter().dateRangeString(from: travel!.startDate, to: travel!.endDate)
-        let daysString = Calendar.current.dateComponents([.day], from: travel!.startDate, to: travel!.endDate).day ?? 0
+        let dateRangeString = DateFormatter().dateRangeString(from: travel.startDate, to: travel.endDate )
+        let daysString = Calendar.current.dateComponents([.day], from: travel.startDate, to: travel.endDate ).day ?? 0
         
         planEditView.dayRangeButton.configureButton(fontColor: .gray90, font: .pretendard(size: 16, weight: .medium), text: dateRangeString)
         planEditView.datePickButton.configureButton(font: .pretendard(size: 16, weight: .medium), text: "\(daysString)박 \(daysString + 1)일")
         
         editTitle = planEditView.textField.text
-        editStartDate = travel!.startDate
-        editEndDate = travel!.endDate
+        editStartDate = travel.startDate
+        editEndDate = travel.endDate
         
-        realmManager.updateTravel(travel: self.travel!, title: (editTitle ?? travel?.title)!, area: (editSido ?? travel?.area)!, startDate: travel!.startDate, endDate: travel!.endDate)
+        realmManager.updateTravel(travel: self.travel, title: editTitle ?? travel.title, area: editSido ?? travel.area, startDate: travel.startDate, endDate: travel.endDate)
     }
     
     private func updateTravel() {
         editTitle = planEditView.textField.text
-        realmManager.updateTravel(travel: self.travel!, title: (editTitle ?? travel?.title)!, area: (editSido ?? travel?.area)!, startDate: (editStartDate ?? travel?.startDate)!, endDate: (editEndDate ?? travel?.endDate)!)
+        realmManager.updateTravel(travel: self.travel, title: editTitle ?? travel.title, area: editSido ?? travel.area, startDate: editStartDate ?? travel.startDate, endDate: editEndDate ?? travel.endDate)
     }
     
     private func updateInputBox(with text: String) {
@@ -110,7 +110,7 @@ final class PlanEditViewController: BaseViewController {
         let ok = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
             guard let self = self else { return }
             
-            realmManager.deleteTravel(travel: self.travel!)
+            realmManager.deleteTravel(travel: self.travel)
             
             self.navigationController?.popToRootViewController(animated: true)
         }
@@ -122,7 +122,7 @@ final class PlanEditViewController: BaseViewController {
     }
     
     private func presentDateAlert() {
-        let travelRange = Calendar.current.dateComponents([.day], from: travel!.startDate, to: travel!.endDate).day ?? 0
+        let travelRange = Calendar.current.dateComponents([.day], from: travel.startDate, to: travel.endDate ).day ?? 0
         let editRange = Calendar.current.dateComponents([.day], from: editStartDate ?? Date(), to: editEndDate ?? Date()).day ?? 0
         
         if travelRange > editRange {
