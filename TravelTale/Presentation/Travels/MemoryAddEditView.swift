@@ -55,10 +55,12 @@ final class MemoryAddEditView: BaseView {
         $0.configureLabel(font: .pretendard(size: 18, weight: .bold), text: "기록")
     }
     
-    let memoryTextView = UITextView().then {
+    private let placeHolder = "기록하고 싶은 내용을 작성해주세요."
+    
+    lazy var memoryTextView = UITextView().then {
         $0.configureView(color: .clear)
         $0.font = .pretendard(size: 16, weight: .regular)
-        $0.text = "기록하고 싶은 내용을 작성해주세요."
+        $0.text = placeHolder
         $0.textColor = .lightGray
         
         $0.textContainerInset = .zero
@@ -108,6 +110,11 @@ final class MemoryAddEditView: BaseView {
     }
     
     // MARK: - methods
+    override func configureUI() {
+        super.configureUI()
+        configureConfirmUI()
+    }
+    
     override func configureHierarchy() {
         [travelInfoStackView,
          travelTitleLabel,
@@ -229,21 +236,21 @@ final class MemoryAddEditView: BaseView {
     
     func isTextViewEmpty() -> Bool {
         let text = memoryTextView.text ?? ""
-        let isPlaceholder = text == "기록하고 싶은 내용을 작성해주세요."
+        let isPlaceholder = text == placeHolder
         return text.isEmpty || isPlaceholder ? true : false
     }
     
     func setTextViewPlaceHolder() {
-        memoryTextView.text = "기록하고 싶은 내용을 작성해주세요."
+        memoryTextView.text = placeHolder
         memoryTextView.textColor = UIColor.gray80
     }
     
-    func checkTextViewContent() {
+    func configureConfirmUI() {
         if isTextViewEmpty() {
             confirmButton.isEnabled = false
             confirmButton.backgroundColor = .green10
-            memoryTextView.textColor = UIColor.gray80
         } else {
+            setBeginText(textView: memoryTextView)
             confirmButton.isEnabled = true
             confirmButton.backgroundColor = .green100
             memoryTextView.textColor = UIColor.black
