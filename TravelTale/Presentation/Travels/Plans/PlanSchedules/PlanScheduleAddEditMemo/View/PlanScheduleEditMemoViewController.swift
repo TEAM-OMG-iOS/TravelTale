@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PlanScheduleEditMemoViewController: BaseViewController {
+final class PlanScheduleEditMemoViewController: BaseViewController {
     
     // MARK: - properties
     private let memoView = PlanScheduleAddEditMemoView()
