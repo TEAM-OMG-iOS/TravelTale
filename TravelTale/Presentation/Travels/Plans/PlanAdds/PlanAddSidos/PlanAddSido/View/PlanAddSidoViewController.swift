@@ -25,11 +25,7 @@ final class PlanAddSidoViewController: BaseViewController {
         
         planAddSidoView.startLoadingAnimation()
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+
     // MARK: - methods
     override func configureStyle() {
         configureNavigationBarItems()

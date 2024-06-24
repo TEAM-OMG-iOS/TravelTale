@@ -22,11 +22,7 @@ final class PlanAddSidoModalViewController: BaseViewController {
     override func loadView() {
         view = regionView
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+     
     // MARK: - methods
     override func configureDelegate() {
         regionView.tableView.dataSource = self

@@ -26,11 +26,7 @@ final class PlanAddDateViewController: BaseViewController {
         
         planAddDateView.startLoadingAnimation()
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+
     // MARK: - methods
     override func configureStyle() {
         configureNavigationBarItems()

@@ -28,10 +28,6 @@ final class PlanAddTitleViewController: BaseViewController, UITextFieldDelegate 
         planAddTitleView.startLoadingAnimation()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     // MARK: - methods
     override func configureStyle() {
         configureNavigationBarItems()
