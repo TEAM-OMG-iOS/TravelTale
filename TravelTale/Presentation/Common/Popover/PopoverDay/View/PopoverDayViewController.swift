@@ -11,15 +11,9 @@ final class PopoverDayViewController: BaseViewController {
     
     // MARK: - properties
     private let daySelectPopoverView = PopoverDayView()
+    private var travel: Travel
     
-    var day: String? {
-        didSet {
-            data = configureData(day: day!, travel: travel!)
-        }
-    }
-    
-    var travel: Travel?
-    var data: [String] = []
+    private var data: [String]
     var selectedDays: String?
     
     // MARK: - life cycles
@@ -27,8 +21,14 @@ final class PopoverDayViewController: BaseViewController {
         view = daySelectPopoverView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    init(data: [String], travel: Travel) {
+        self.data = data
+        self.travel = travel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - methods
@@ -40,23 +40,6 @@ final class PopoverDayViewController: BaseViewController {
     override func configureAddTarget() {
         daySelectPopoverView.leftBtn.addTarget(self, action: #selector(tappedcancelBtn), for: .touchUpInside)
         daySelectPopoverView.rightBtn.addTarget(self, action: #selector(tappedOkBtn), for: .touchUpInside)
-    }
-    
-    private func configureData(day: String, travel: Travel) -> [String] {
-        guard let daysCount = Int(day) else {
-            return []
-        }
-        var results = [String]()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yy년 MM월 dd일"
-        
-        for i in 0..<daysCount {
-            if let newDate = Calendar.current.date(byAdding: .day, value: i, to: travel.startDate) {
-                let dateString = formatter.string(from: newDate)
-                results.append("Day \(i + 1) | \(dateString)")
-            }
-        }
-        return results
     }
     
     @objc private func tappedcancelBtn() {
