@@ -29,11 +29,12 @@ class PlanScheduleEditMemoViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
-      }
-      override func viewWillDisappear(_ animated: Bool) {
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
-      }
+    }
     
     // MARK: - methods
     override func configureDelegate() {
@@ -79,6 +80,7 @@ extension PlanScheduleEditMemoViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         memoView.setBeginText(textView: textView)
     }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         memoView.setEndText(textView: textView)
     }
