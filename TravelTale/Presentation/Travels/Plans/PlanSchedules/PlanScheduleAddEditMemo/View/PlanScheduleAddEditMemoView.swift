@@ -29,6 +29,7 @@ final class PlanScheduleAddEditMemoView: BaseView {
         $0.textAlignment = .natural
         $0.text = "메세지를 입력하세요"
         $0.textColor = .lightGray
+        $0.font = .pretendard(size: 18, weight: .regular)
     }
     
     let completeBtn = GreenButton().then {
