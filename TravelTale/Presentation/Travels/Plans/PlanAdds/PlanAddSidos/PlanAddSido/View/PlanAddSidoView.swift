@@ -119,6 +119,8 @@ final class PlanAddSidoView: BaseView {
     }
     
     func updatePlacePickButton(text: Sido) {
-        placePickButton.configureButton(fontColor: .black, font: .pretendard(size: 16, weight: .medium), text: text.name ?? "미정")
+        placePickButton.configureButton(fontColor: .black, 
+                                        font: .pretendard(size: 16, weight: .medium),
+                                        text: text.name ?? "미정")
     }
 }
