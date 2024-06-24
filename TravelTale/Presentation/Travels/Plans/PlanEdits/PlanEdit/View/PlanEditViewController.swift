@@ -68,8 +68,8 @@ final class PlanEditViewController: BaseViewController {
     }
     
     private func resetDate() {
-        let dateRangeString = DateFormatter().dateRangeString(startDate: travel.startDate,
-                                                              endDate: travel.endDate )
+        let dateRangeString = String(startDate: travel.startDate,
+                                     endDate: travel.endDate )
         let daysString = Calendar.current.dateComponents([.day], from: travel.startDate,
                                                          to: travel.endDate ).day ?? 0
         
@@ -199,7 +199,7 @@ final class PlanEditViewController: BaseViewController {
             self.editStartDate = startDate
             self.editEndDate = endDate
             
-            let dateRangeString = DateFormatter().dateRangeString(startDate: startDate, endDate: endDate)
+            let dateRangeString = String(startDate: startDate, endDate: endDate)
             self.planEditView.updateDayRangeButton(text: dateRangeString)
         }
         
@@ -227,20 +227,5 @@ final class PlanEditViewController: BaseViewController {
     
     @objc private func tappedOkButton() {
         presentDateAlert()
-    }
-}
-
-// MARK: - extentions
-extension DateFormatter {
-    func dateFormatter() -> DateFormatter {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd"
-        return dateFormatter
-    }
-    
-    func dateRangeString(startDate: Date, endDate: Date) -> String {
-        let startDateString = dateFormatter().string(from: startDate)
-        let endDateString = dateFormatter().string(from: endDate)
-        return startDate == endDate ? startDateString : "\(startDateString) - \(endDateString)"
     }
 }
