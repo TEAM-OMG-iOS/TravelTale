@@ -20,14 +20,6 @@ final class PlanEditDateViewController: BaseViewController {
         view = planEditDateView
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     // MARK: - methods
     override func configureAddTarget() {
         planEditDateView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
