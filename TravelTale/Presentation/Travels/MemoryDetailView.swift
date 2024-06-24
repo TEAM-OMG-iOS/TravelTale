@@ -14,7 +14,7 @@ final class MemoryDetailView: BaseView {
         $0.style = .done
         $0.image = UIImage(systemName: "chevron.left")
         $0.tintColor = .gray90
-      }
+    }
     
     let editButton = UIButton().then {
         $0.setImage(UIImage(systemName: "pencil.line"),
@@ -27,17 +27,27 @@ final class MemoryDetailView: BaseView {
     
     private let travelInfoStackView = UIStackView().then {
         $0.axis = .horizontal
-    }
-    
-    private let areaLabel = UILabel().then {
-        $0.configureView(color: .blueBlack100, clipsToBounds: true, cornerRadius: 10)
-        $0.configureLabel(alignment: .center,
-                          color: .white,
-                          font: .pretendard(size: 12, weight: .medium))
-        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        $0.spacing = 4
     }
     
     private let periodLabel = UILabel().then {
+        $0.configureLabel(color: .gray100, font: .oaGothic(size: 10, weight: .medium))
+        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+    }
+    
+    private let separatorLabel = UILabel().then {
+        $0.configureLabel(color: .gray100, font: .oaGothic(size: 10, weight: .medium), text: "|")
+        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+    }
+    
+    private let locationImageView = UIImageView().then {
+        $0.image = .planDetailsLocation
+        $0.tintColor = .gray100
+        $0.contentMode = .scaleAspectFit
+        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+    }
+    
+    private let areaLabel = UILabel().then {
         $0.configureLabel(color: .gray100, font: .oaGothic(size: 10, weight: .medium))
         $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
@@ -62,6 +72,8 @@ final class MemoryDetailView: BaseView {
          tableView].forEach { self.addSubview($0) }
         
         [periodLabel,
+         separatorLabel,
+         locationImageView,
          areaLabel].forEach { travelInfoStackView.addArrangedSubview($0) }
     }
     
@@ -73,9 +85,8 @@ final class MemoryDetailView: BaseView {
             $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
         }
         
-        areaLabel.snp.makeConstraints {
-            $0.height.equalTo(22)
-            $0.width.equalTo(38)
+        locationImageView.snp.makeConstraints {
+            $0.size.equalTo(12)
         }
         
         travelTitleLabel.snp.makeConstraints {

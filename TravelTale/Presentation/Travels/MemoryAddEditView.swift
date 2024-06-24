@@ -11,10 +11,10 @@ final class MemoryAddEditView: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {
-       $0.style = .done
-       $0.image = UIImage(systemName: "chevron.left")
-       $0.tintColor = .gray90
-     }
+        $0.style = .done
+        $0.image = UIImage(systemName: "chevron.left")
+        $0.tintColor = .gray90
+    }
     
     private let travelInfoStackView = UIStackView().then {
         $0.axis = .horizontal
@@ -22,21 +22,25 @@ final class MemoryAddEditView: BaseView {
     }
     
     private let locationImageView = UIImageView().then {
-        $0.image = UIImage(systemName: "pin")
+        $0.image = .planDetailsLocation
         $0.tintColor = .gray100
         $0.contentMode = .scaleAspectFit
+        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
     private let areaLabel = UILabel().then {
         $0.configureLabel(color: .gray100, font: .oaGothic(size: 10, weight: .medium))
+        $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
     
     private let separatorLabel = UILabel().then {
         $0.configureLabel(color: .gray100, font: .oaGothic(size: 10, weight: .medium), text: "|")
+        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
     private let periodLabel = UILabel().then {
         $0.configureLabel(color: .gray100, font: .oaGothic(size: 10, weight: .medium))
+        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
     private let travelTitleLabel = UILabel().then {
@@ -108,7 +112,6 @@ final class MemoryAddEditView: BaseView {
     
     let confirmButton = GreenButton().then {
         $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "기록 완료")
-        $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
     
     // MARK: - methods
@@ -126,10 +129,10 @@ final class MemoryAddEditView: BaseView {
          collectionView,
          confirmButton].forEach { self.addSubview($0) }
         
-        [locationImageView,
-        areaLabel,
-        separatorLabel,
-         periodLabel].forEach { travelInfoStackView.addArrangedSubview($0) }
+        [periodLabel,
+         separatorLabel,
+         locationImageView,
+         areaLabel].forEach { travelInfoStackView.addArrangedSubview($0) }
         
         [recordTitleLabel,
          memoryTextView].forEach { recordView.addSubview($0) }
