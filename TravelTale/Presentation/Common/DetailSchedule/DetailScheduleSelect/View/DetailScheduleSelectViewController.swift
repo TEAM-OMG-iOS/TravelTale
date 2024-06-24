@@ -18,9 +18,18 @@ final class DetailScheduleSelectViewController: BaseViewController {
 """
     
     private var preSelectedIndexPath: IndexPath?
-    var placeDetail: PlaceDetail?
+    var placeDetail: PlaceDetail
     
     // MARK: - life cycles
+    init(placeDetail: PlaceDetail) {
+        self.placeDetail = placeDetail
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         view = detailScheduleSelectView
     }
@@ -62,10 +71,21 @@ final class DetailScheduleSelectViewController: BaseViewController {
         navigationItem.leftBarButtonItem = detailScheduleSelectView.backButton
     }
     
+    private func dayDifference(from startDate: Date, to endDate: Date) -> String {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: startDate, to: endDate)
+        
+        if let dayDifference = components.day {
+            return dayDifference == 0 ? "1" : String(dayDifference)
+        } else {
+            return "1"
+        }
+    }
+    
     @objc private func configureBackAlert() {
         let alert = UIAlertController(title: "경고", message: alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
-        let ok = UIAlertAction(title: "확인", style: .default) {_ in
+        let ok = UIAlertAction(title: "확인", style: .destructive) {_ in
             self.navigationController?.popViewController(animated: true)
         }
         
@@ -78,9 +98,8 @@ final class DetailScheduleSelectViewController: BaseViewController {
     @objc private func tappedNextButton() {
         guard let selectedIndexPath = detailScheduleSelectView.tableView.indexPathForSelectedRow else { return }
         let selectedData = travels[selectedIndexPath.row]
-        let nextVC = DetailScheduleAddViewController()
-        nextVC.selectedTravel = selectedData
-        nextVC.selectedPlace = placeDetail
+        let nextVC = DetailScheduleAddViewController(day: dayDifference(from: selectedData.startDate, to: selectedData.endDate), selectedTravel: selectedData, selectedPlace: placeDetail)
+        print(dayDifference(from: selectedData.startDate, to: selectedData.endDate))
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }
@@ -94,10 +113,12 @@ extension DetailScheduleSelectViewController: UITableViewDelegate {
             if selectedIndexPath == indexPath {
                 detailScheduleSelectView.tableView.deselectRow(at: indexPath, animated: true)
                 preSelectedIndexPath = nil
+                detailScheduleSelectView.updateButtonState()
                 cell.setSelected(false, animated: true)
             }
         } else {
             preSelectedIndexPath = indexPath
+            detailScheduleSelectView.updateButtonState()
             cell.setSelected(true, animated: true)
         }
     }

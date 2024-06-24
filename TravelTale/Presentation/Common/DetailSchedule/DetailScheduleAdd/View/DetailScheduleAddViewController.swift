@@ -11,21 +11,28 @@ final class DetailScheduleAddViewController: BaseViewController {
     
     // MARK: - properties
     private let detailScheduleAddView = DetailScheduleAddView()
-    private let dayPopoverVC = PopoverDayViewController()
+    private lazy var dayPopoverVC = PopoverDayViewController(data: configureData(day: day, travel: selectedTravel), travel: selectedTravel, day: day)
     private let timePopoverVC = PopoverTimeViewController()
     private let realmManager = RealmManager.shared
     
-    private var day: String?
-    var selectedTravel: Travel? {
-        didSet {
-            day = dayDifference(from: selectedTravel!.startDate, to: selectedTravel!.endDate)
-        }
-    }
-    var selectedPlace: PlaceDetail?
+    var day: String
+    var selectedTravel: Travel
+    var selectedPlace: PlaceDetail
     var selectedDays: String?
     var selectedTime: Date?
     
     // MARK: - life cycles
+    init(day: String, selectedTravel: Travel, selectedPlace: PlaceDetail) {
+        self.day = day
+        self.selectedTravel = selectedTravel
+        self.selectedPlace = selectedPlace
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         view = detailScheduleAddView
     }
@@ -77,7 +84,7 @@ final class DetailScheduleAddViewController: BaseViewController {
     }
     
     override func bind() {
-        detailScheduleAddView.placeContents.text = selectedPlace?.title
+        detailScheduleAddView.placeContents.text = selectedPlace.title
     }
     
     private func configureNavigationBar() {
@@ -127,15 +134,21 @@ final class DetailScheduleAddViewController: BaseViewController {
         self.present(alert, animated: true)
     }
     
-    private func dayDifference(from startDate: Date, to endDate: Date) -> String {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: startDate, to: endDate)
-        
-        if let dayDifference = components.day {
-            return String(dayDifference)
-        } else {
-            return "0"
+    private func configureData(day: String, travel: Travel) -> [String] {
+        guard let daysCount = Int(day) else {
+            return []
         }
+        var results = [String]()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy년 MM월 dd일"
+        
+        for i in 0..<daysCount {
+            if let newDate = Calendar.current.date(byAdding: .day, value: i, to: travel.startDate) {
+                let dateString = formatter.string(from: newDate)
+                results.append("Day \(i + 1) | \(dateString)")
+            }
+        }
+        return results
     }
     
     @objc private func handleBackButton(_ sender: UIButton) {
@@ -166,7 +179,7 @@ final class DetailScheduleAddViewController: BaseViewController {
     }
     
     @objc private func tappedAddScheduleBtn() {
-        realmManager.createSchedule(day: selectedDays!, date: selectedTime!, travel: selectedTravel!, placeDetail: selectedPlace!)
+        realmManager.createSchedule(day: selectedDays!, date: selectedTime!, travel: selectedTravel, placeDetail: selectedPlace)
         let alert = UIAlertController(title: "일정 추가 완료", message: "일정 추가가 완료되었습니다.", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "확인", style: .cancel)
         alert.addAction(cancel)
@@ -187,8 +200,6 @@ extension DetailScheduleAddViewController: UIPopoverPresentationControllerDelega
     @objc private func tappedScheduleBtn() {
         configurePopover(for: dayPopoverVC, sourceButton: detailScheduleAddView.scheduleBtn)
         dayPopoverVC.popoverPresentationController?.delegate = self
-        dayPopoverVC.day = day
-        dayPopoverVC.travel = selectedTravel
         present(dayPopoverVC, animated: true)
     }
     
@@ -207,6 +218,7 @@ extension DetailScheduleAddViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         detailScheduleAddView.setBeginText(textView: textView)
     }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         detailScheduleAddView.setEndText(textView: textView)
     }
