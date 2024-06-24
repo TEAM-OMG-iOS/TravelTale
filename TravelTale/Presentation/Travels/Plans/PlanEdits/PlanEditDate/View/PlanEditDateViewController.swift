@@ -25,7 +25,7 @@ final class PlanEditDateViewController: BaseViewController {
         planEditDateView.okButton.addTarget(self, action: #selector(tappedOkButton), for: .touchUpInside)
     }
     
-    @objc func tappedOkButton() {
+    @objc private func tappedOkButton() {
         self.dismiss(animated: true)
     }
 }

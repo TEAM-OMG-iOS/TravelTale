@@ -173,11 +173,11 @@ final class PlanEditViewController: BaseViewController {
         }
     }
     
-    @objc func tappedDeleteButton() {
+    @objc private func tappedDeleteButton() {
         presentDeleteAlert()
     }
     
-    @objc func tappedPlacePickButton() {
+    @objc private func tappedPlacePickButton() {
         let locationList = PlanAddSidoModalViewController()
         
         locationList.configureSidoView()
@@ -191,7 +191,7 @@ final class PlanEditViewController: BaseViewController {
         self.present(locationList, animated: true)
     }
     
-    @objc func tappedDatePickButton() {
+    @objc private func tappedDatePickButton() {
         let calendar = PlanEditDateViewController()
         calendar.planEditDateView.dateCompletion = { [weak self] startDate, endDate in
             guard let self = self else { return }
@@ -212,20 +212,20 @@ final class PlanEditViewController: BaseViewController {
         self.present(calendar, animated: true)
     }
     
-    @objc func editiedTextField() {
+    @objc private func editiedTextField() {
         planEditView.buttonColorChanged()
     }
     
-    @objc func tappedResetDateButton() {
+    @objc private func tappedResetDateButton() {
         resetDate()
         planEditView.buttonColorChanged()
     }
     
-    @objc func tappedCancelButton() {
+    @objc private func tappedCancelButton() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc func tappedOkButton() {
+    @objc private func tappedOkButton() {
         presentDateAlert()
     }
 }
