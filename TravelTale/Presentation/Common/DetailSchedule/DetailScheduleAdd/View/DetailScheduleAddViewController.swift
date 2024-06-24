@@ -14,8 +14,8 @@ final class DetailScheduleAddViewController: BaseViewController {
     private let dayPopoverVC = PopoverDayViewController()
     private let timePopoverVC = PopoverTimeViewController()
     private let realmManager = RealmManager.shared
-    private var day: String?
     
+    private var day: String?
     var selectedTravel: Travel? {
         didSet {
             day = dayDifference(from: selectedTravel!.startDate, to: selectedTravel!.endDate)
@@ -41,6 +41,16 @@ final class DetailScheduleAddViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         detailScheduleAddView.startLoadingAnimation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - methods

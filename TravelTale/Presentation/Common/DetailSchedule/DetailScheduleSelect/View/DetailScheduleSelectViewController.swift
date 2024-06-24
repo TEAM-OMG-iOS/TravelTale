@@ -11,9 +11,13 @@ final class DetailScheduleSelectViewController: BaseViewController {
     
     // MARK: - properties
     private let detailScheduleSelectView = DetailScheduleSelectView()
-    private var preSelectedIndexPath: IndexPath?
     private let travels = RealmManager.shared.fetchTravels()
+    private let alertMessage = """
+이전으로 돌아가면 작성 내용이 저장되지 않습니다.
+정말 돌아가시겠습니까?
+"""
     
+    private var preSelectedIndexPath: IndexPath?
     var placeDetail: PlaceDetail?
     
     // MARK: - life cycles
@@ -21,12 +25,18 @@ final class DetailScheduleSelectViewController: BaseViewController {
         view = detailScheduleSelectView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         detailScheduleSelectView.startLoadingAnimation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - methods
@@ -53,10 +63,7 @@ final class DetailScheduleSelectViewController: BaseViewController {
     }
     
     @objc private func configureBackAlert() {
-        let alert = UIAlertController(title: "경고", message: """
-이전으로 돌아가면 작성 내용이 저장되지 않습니다.
-계속 진행하시겠습니까?
-""", preferredStyle: .alert)
+        let alert = UIAlertController(title: "경고", message: alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) {_ in
             self.navigationController?.popViewController(animated: true)
@@ -105,7 +112,7 @@ extension DetailScheduleSelectViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
         
         let travel = travels[indexPath.row]
-//        cell.bind(travel: travel)
+        cell.bind(travel: travel)
         return cell
     }
 }
