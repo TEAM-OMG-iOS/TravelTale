@@ -11,6 +11,6 @@ import RealmSwift
 class Region: Object {
     @Persisted var sido: String
     @Persisted var sidoCode: String
-    @Persisted var sigungu: String
-    @Persisted var sigunguCode: String
+    @Persisted var sigungu: String?
+    @Persisted var sigunguCode: String?
 }

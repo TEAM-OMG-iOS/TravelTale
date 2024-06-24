@@ -17,6 +17,44 @@ final class RealmManager {
     private let realm: Realm
     
     // MARK: - methods
+    func createRegion(sido: Sido, sigungu: Sigungu? = nil) {
+        if let region = fetchRegion() {
+            do {
+                try realm.write {
+                    realm.delete(region)
+                }
+            } catch {
+                print("region 리셋 실패")
+            }
+        }
+        
+        let region = Region()
+        
+        if let name = sido.name, let code = sido.code {
+            region.sido = name
+            region.sidoCode = code
+            
+            if let sigungu {
+                if let sigunguName = sigungu.name, let sigunguCode = sigungu.code {
+                    region.sigungu = sigunguName
+                    region.sigunguCode = sigunguCode
+                }
+            }
+            
+            do {
+                try realm.write {
+                    realm.add(region)
+                }
+            } catch {
+                print("createRegion 실패")
+            }
+        }
+    }
+    
+    func fetchRegion() -> Region? {
+        return realm.objects(Region.self).first
+    }
+    
     func createTravel(title: String, area: String, startDate: Date, endDate: Date) {
         let travel = Travel()
         travel.title = title
@@ -35,6 +73,16 @@ final class RealmManager {
     
     func fetchTravels() -> [Travel] {
         return realm.objects(Travel.self).sorted { lhs, rhs in
+            if lhs.startDate != rhs.startDate {
+                return lhs.startDate < rhs.startDate
+            } else {
+                return lhs.endDate < rhs.endDate
+            }
+        }
+    }
+    
+    func fetchTravelsWithEmptyMemoryAndPhotos() -> [Travel] {
+        return realm.objects(Travel.self).filter { $0.memory == nil }.sorted { lhs, rhs in
             if lhs.startDate != rhs.startDate {
                 return lhs.startDate < rhs.startDate
             } else {
@@ -77,10 +125,10 @@ final class RealmManager {
         }
     }
     
-    func createMemory(travel: Travel, memory: String? = nil, photos: [Data]? = nil) {
+    func createMemory(travel: Travel, memory: String, photos: [Data]? = nil) {
         do {
             try realm.write {
-                if let memory {
+                if !memory.isEmpty {
                     travel.memory = memory
                 }
                 
@@ -100,7 +148,7 @@ final class RealmManager {
     func updateMemory(travel: Travel, memory: String? = nil, photos: [Data]? = nil) {
         do {
             try realm.write {
-                if let memory {
+                if let memory, !memory.isEmpty {
                     travel.memory = memory
                 }
                 
