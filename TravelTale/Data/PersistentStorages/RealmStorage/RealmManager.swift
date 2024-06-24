@@ -44,7 +44,7 @@ final class RealmManager {
     }
     
     func fetchTravelsWithEmptyMemoryAndPhotos() -> [Travel] {
-        return realm.objects(Travel.self).filter { $0.memory == nil && $0.photos.isEmpty }.sorted { lhs, rhs in
+        return realm.objects(Travel.self).filter { $0.memory == nil }.sorted { lhs, rhs in
             if lhs.startDate != rhs.startDate {
                 return lhs.startDate < rhs.startDate
             } else {
@@ -87,10 +87,10 @@ final class RealmManager {
         }
     }
     
-    func createMemory(travel: Travel, memory: String? = nil, photos: [Data]? = nil) {
+    func createMemory(travel: Travel, memory: String, photos: [Data]? = nil) {
         do {
             try realm.write {
-                if let memory {
+                if !memory.isEmpty {
                     travel.memory = memory
                 }
                 
@@ -110,7 +110,7 @@ final class RealmManager {
     func updateMemory(travel: Travel, memory: String? = nil, photos: [Data]? = nil) {
         do {
             try realm.write {
-                if let memory {
+                if let memory, !memory.isEmpty {
                     travel.memory = memory
                 }
                 
