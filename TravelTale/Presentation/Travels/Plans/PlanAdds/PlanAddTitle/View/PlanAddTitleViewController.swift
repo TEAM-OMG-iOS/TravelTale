@@ -49,18 +49,18 @@ final class PlanAddTitleViewController: BaseViewController, UITextFieldDelegate 
         navigationItem.leftBarButtonItem = planAddTitleView.backButton
     }
     
-    @objc func tappedOkButton() {
+    @objc private func tappedOkButton() {
         planTitle = planAddTitleView.textField.text
         let nextVC = PlanAddSidoViewController()
         nextVC.planTitle = planTitle
         self.navigationController?.pushViewController(nextVC, animated: false)
     }
     
-    @objc func tappedBackButton() {
+    @objc private func tappedBackButton() {
         self.navigationController?.popToRootViewController(animated: true)
     }
     
-    @objc func editiedTextField() {
+    @objc private func editiedTextField() {
         planAddTitleView.buttonColorChanged()
     }
 }

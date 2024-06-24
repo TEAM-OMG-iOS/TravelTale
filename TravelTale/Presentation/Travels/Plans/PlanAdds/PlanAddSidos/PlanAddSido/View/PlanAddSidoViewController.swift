@@ -44,7 +44,7 @@ final class PlanAddSidoViewController: BaseViewController {
         navigationItem.leftBarButtonItem = planAddSidoView.backButton
     }
     
-    @objc func tappedInputBox() {
+    @objc private func tappedInputBox() {
         let locationList = PlanAddSidoModalViewController()
         locationList.configureSidoView()
         locationList.completion = { [weak self] sido in
@@ -57,18 +57,18 @@ final class PlanAddSidoViewController: BaseViewController {
         self.present(locationList, animated: true)
     }
     
-    @objc func tappedOkButton() {
+    @objc private func tappedOkButton() {
         let nextVC = PlanAddDateViewController()
         nextVC.planTitle = planTitle
         nextVC.planSido = planSido
         self.navigationController?.pushViewController(nextVC, animated: false)
     }
     
-    @objc func tappedCancelButton() {
+    @objc private func tappedCancelButton() {
         self.navigationController?.popViewController(animated: false)
     }
     
-    @objc func tappedBackButton() {
+    @objc private func tappedBackButton() {
         self.navigationController?.popToRootViewController(animated: true)
     }
 }

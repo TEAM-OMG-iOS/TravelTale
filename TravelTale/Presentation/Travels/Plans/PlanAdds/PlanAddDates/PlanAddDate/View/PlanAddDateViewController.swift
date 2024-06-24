@@ -44,16 +44,16 @@ final class PlanAddDateViewController: BaseViewController {
         navigationItem.leftBarButtonItem = planAddDateView.backButton
     }
     
-    @objc func tappedCancelButton() {
+    @objc private func tappedCancelButton() {
         self.navigationController?.popViewController(animated: false)
     }
     
-    @objc func tappedOkButton() {
+    @objc private func tappedOkButton() {
         RealmManager.shared.createTravel(title: planTitle ?? "제목을 입력주세요", area: planSido ?? "미정", startDate: planAddDateView.startDate ?? Date(), endDate: planAddDateView.endDate ?? Date())
         self.navigationController?.popToRootViewController(animated: true)
     }
     
-    @objc func tappedBackButton() {
+    @objc private func tappedBackButton() {
         self.navigationController?.popToRootViewController(animated: true)
     }
 }
