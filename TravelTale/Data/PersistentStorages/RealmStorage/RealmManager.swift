@@ -17,6 +17,44 @@ final class RealmManager {
     private let realm: Realm
     
     // MARK: - methods
+    func createRegion(sido: Sido, sigungu: Sigungu? = nil) {
+        if let region = fetchRegion() {
+            do {
+                try realm.write {
+                    realm.delete(region)
+                }
+            } catch {
+                print("region 리셋 실패")
+            }
+        }
+        
+        let region = Region()
+        
+        if let name = sido.name, let code = sido.code {
+            region.sido = name
+            region.sidoCode = code
+            
+            if let sigungu {
+                if let sigunguName = sigungu.name, let sigunguCode = sigungu.code {
+                    region.sigungu = sigunguName
+                    region.sigunguCode = sigunguCode
+                }
+            }
+            
+            do {
+                try realm.write {
+                    realm.add(region)
+                }
+            } catch {
+                print("createRegion 실패")
+            }
+        }
+    }
+    
+    func fetchRegion() -> Region? {
+        return realm.objects(Region.self).first
+    }
+    
     func createTravel(title: String, area: String, startDate: Date, endDate: Date) {
         let travel = Travel()
         travel.title = title
