@@ -75,6 +75,7 @@ final class DiscoveryViewController: BaseViewController {
             guard let self = self else { return }
             regionCode = (sido?.code ?? "", sigungu?.code ?? "")
             discoveryView.setRegionLable(sido: sido, sigungu: sigungu)
+            fetchPlaceDatas()
         }
         
         self.navigationController?.pushViewController(discoveryRegionVC, animated: true)
@@ -97,6 +98,7 @@ final class DiscoveryViewController: BaseViewController {
     }
     
     func fetchPlaceDatas() {
+        print(regionCode)
         networkManager.fetchPlaces(sidoCode: self.regionCode.0, sigunguCode: self.regionCode.1, type: .total, page: 1) { [weak self] result in
             switch result {
             case .success(let places):
@@ -117,7 +119,21 @@ extension DiscoveryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let placeDetailVC = PlaceDetailViewController()
         
-        // TODO: - 데이터 바인딩
+        guard let id = placeDatas[indexPath.row].contentId else { return }
+        
+        networkManager.fetchPlaceDetail(contentId: id) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let placeDetail):
+                placeDetailVC.placeDetailData = placeDetail.placeDetails
+                
+                DispatchQueue.main.async {
+                    placeDetailVC.loadView()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
         
         self.navigationController?.pushViewController(placeDetailVC, animated: true)
     }
@@ -125,7 +141,7 @@ extension DiscoveryViewController: UICollectionViewDelegate {
 
 extension DiscoveryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return placeDatas.count
+        return min(4, placeDatas.count)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class PlaceDetailCollectionViewCell: BaseCollectionViewCell {
     
@@ -27,7 +28,9 @@ final class PlaceDetailCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    func bind(image: UIImage) {
-        detailImage.image = image
+    func bind(image: String) {
+        if let image = URL(string: image) {
+            detailImage.kf.setImage(with: image)
+        }
     }
 }

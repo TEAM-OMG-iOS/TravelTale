@@ -15,9 +15,39 @@ final class PlaceDetailViewController: BaseViewController {
     
     private var isBookMarked: Bool = false
     
+    private var placeImage: [String] = []
+    
+    var placeDetailData: [PlaceDetail]? {
+        didSet {
+            guard let placeDetail = placeDetailData?[0] else { return }
+            
+            if let image = placeDetail.firstImage {
+                placeImage.append(image)
+            }
+            
+            if let image2 = placeDetail.firstImage2 {
+                placeImage.append(image2)
+            }
+            
+            placeDetailView.imageCollectionView.reloadData()
+            print("didSet: \(placeImage)")
+            
+            if let url = extractURL(from: placeDetailData?[0].homepage) {
+                placeDetailView.bind(placeDetail: placeDetail, url: url, isBookMarked: isBookMarked)
+            } else {
+                placeDetailView.bind(placeDetail: placeDetail, url: nil, isBookMarked: isBookMarked)
+            }
+        }
+    }
+    
     // MARK: - life cycles
     override func loadView() {
         view = placeDetailView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,14 +90,17 @@ final class PlaceDetailViewController: BaseViewController {
         let PlaceDetailAlertVC = PlaceDetailAlertViewController()
         
         // TODO: - 전화번호 정보 바인딩
-        PlaceDetailAlertVC.setPhoneNumber(phoneNumber: "010-5145-7665")
+        if let phoneNumber = placeDetailData?[0].tel {
+            PlaceDetailAlertVC.setPhoneNumber(phoneNumber: phoneNumber)
+        }
+        
         PlaceDetailAlertVC.modalPresentationStyle = .overFullScreen
         present(PlaceDetailAlertVC, animated: false)
     }
     
     @objc private func tappedWebsiteButton() {
         // TODO: - 홈페이지 정보 바인딩
-        if let url = URL(string: "https://www.naver.com") {
+        if let homepage = extractURL(from: placeDetailData?[0].homepage), let url = URL(string: homepage){
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
@@ -119,6 +152,24 @@ final class PlaceDetailViewController: BaseViewController {
             $0.height.equalTo(44)
         }
     }
+    
+    private func extractURL(from htmlString: String?) -> String? {
+        guard let htmlString = htmlString else { return nil }
+        
+        do {
+            let regex = try NSRegularExpression(pattern: "<a href=\"([^\"]*)\"", options: [])
+            let nsString = htmlString as NSString
+            let results = regex.matches(in: htmlString, options: [], range: NSMakeRange(0, nsString.length))
+            if let match = results.first {
+                let url = nsString.substring(with: match.range(at: 1))
+                return url
+            }
+        } catch let error {
+            print("Error : \(error.localizedDescription)")
+        }
+        
+        return nil
+    }
 }
 
 // MARK: - extensions
@@ -133,13 +184,20 @@ extension PlaceDetailViewController: UICollectionViewDelegate {
 extension PlaceDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // TODO: - 장소 사진 바인딩
-        return 0
+        print("numberOfItems: \(placeImage)")
+        
+        return placeImage.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailCollectionViewCell.identifier,
                                                       for: indexPath) as! PlaceDetailCollectionViewCell
         // TODO: - 장소 사진 바인딩
+        
+        print("cell: \(placeImage)")
+        
+        cell.bind(image: placeImage[indexPath.row])
+        
         return cell
     }
 }
@@ -154,6 +212,7 @@ extension PlaceDetailViewController: MKMapViewDelegate {
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView?.canShowCallout = true
+            
         } else {
             annotationView?.annotation = annotation
         }
@@ -163,9 +222,9 @@ extension PlaceDetailViewController: MKMapViewDelegate {
         let size = CGSize(width: 80, height: 100)
         UIGraphicsBeginImageContext(size)
         annotationImage.draw(in: CGRect(origin: .zero, size: size))
+        
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
         annotationView?.image = resizedImage
         
         return annotationView
