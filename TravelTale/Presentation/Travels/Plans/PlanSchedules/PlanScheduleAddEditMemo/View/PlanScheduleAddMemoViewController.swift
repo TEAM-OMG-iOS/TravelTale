@@ -53,10 +53,7 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     }
     
     private func configureBackAlert(navigationController: UINavigationController?) {
-        let alert = UIAlertController(title: "경고", message: """
-이전으로 돌아가면 작성 내용이 저장되지 않습니다.
-정말 돌아가시겠습니까?
-""", preferredStyle: .alert)
+        let alert = UIAlertController(title: "경고", message: memoView.alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) {_ in
             navigationController?.popViewController(animated: true)
