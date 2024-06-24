@@ -14,7 +14,7 @@ final class PlanScheduleAddEditMemoView: BaseView {
         $0.style = .done
         $0.image = UIImage(systemName: "chevron.left")
         $0.tintColor = .gray90
-      }
+    }
     
     private let memoView = UIView().then {
         $0.configureView(color: .gray10, cornerRadius: 20)
@@ -29,11 +29,17 @@ final class PlanScheduleAddEditMemoView: BaseView {
         $0.textAlignment = .natural
         $0.text = "메세지를 입력하세요"
         $0.textColor = .lightGray
+        $0.font = .pretendard(size: 18, weight: .regular)
     }
     
     let completeBtn = GreenButton().then {
         $0.configureButton(fontColor: .white, font: .pretendard(size: 20, weight: .bold), text: "완료")
     }
+    
+    let alertMessage = """
+이전으로 돌아가면 작성 내용이 저장되지 않습니다.
+정말 돌아가시겠습니까?
+"""
     
     // MARK: - methods
     override func configureUI() {

@@ -12,7 +12,8 @@ class PlanScheduleEditMemoViewController: BaseViewController {
     // MARK: - properties
     private let memoView = PlanScheduleAddEditMemoView()
     private let realmManager = RealmManager.shared
-    private var schedule: Schedule
+    
+    var schedule: Schedule? = nil
     
     // MARK: - life cycles
     override func loadView() {
@@ -25,14 +26,14 @@ class PlanScheduleEditMemoViewController: BaseViewController {
         configureNavigationBar()
     }
     
-    init(schedule: Schedule) {
-        self.schedule = schedule
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+      }
+      override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+      }
     
     // MARK: - methods
     override func configureDelegate() {
@@ -51,10 +52,7 @@ class PlanScheduleEditMemoViewController: BaseViewController {
     }
     
     private func configureBackAlert(navigationController: UINavigationController?) {
-        let alert = UIAlertController(title: "뒤로가기", message: """
-이전으로 돌아가면 작성 내용이 저장되지 않습니다.
-정말 돌아가시겠습니까?
-""", preferredStyle: .alert)
+        let alert = UIAlertController(title: "경고", message: memoView.alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) {_ in
             navigationController?.popViewController(animated: true)
@@ -71,7 +69,7 @@ class PlanScheduleEditMemoViewController: BaseViewController {
     }
     
     @objc private func tapCompleteButton() {
-        realmManager.updateMemo(schedule: schedule, newMemo: memoView.memoTV.text)
+        realmManager.updateMemo(schedule: schedule!, newMemo: memoView.memoTV.text)
         navigationController?.popViewController(animated: true)
     }
 }
