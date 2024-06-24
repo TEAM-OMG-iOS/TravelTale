@@ -67,14 +67,14 @@ final class MemoryAddEditViewController: BaseViewController {
         memoryAddEditView.confirmButton.addTarget(self, action: #selector(tappedConfirmButton), for: .touchUpInside)
     }
     
-    override func bind() { 
+    override func bind() {
         memoryAddEditView.bind(travel: travel)
     }
     
     private func configureNavigationBarItems() {
         navigationItem.title = "추억 남기기"
         navigationItem.leftBarButtonItem = memoryAddEditView.backButton
-      }
+    }
     
     private func setSelectedPhotos() {
         selectedPhotos = travel.photos.map { $0 }
@@ -154,12 +154,13 @@ extension MemoryAddEditViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         memoryAddEditView.setBeginText(textView: textView)
     }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         memoryAddEditView.setEndText(textView: textView)
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        memoryAddEditView.checkTextViewContent()
+        memoryAddEditView.configureConfirmButton()
     }
 }
 
