@@ -44,7 +44,7 @@ final class PlanEditView: BaseView {
     }
     
     private let pickGuideLabel = UILabel().then {
-        $0.configureLabel(color: .lightGray, 
+        $0.configureLabel(color: .lightGray,
                           font: .pretendard(size: 14, weight: .light),
                           text: "태그에 표시됩니다")
     }
@@ -204,13 +204,13 @@ final class PlanEditView: BaseView {
     }
     
     func updateDayRangeButton(text: String) {
-        dayRangeButton.configureButton(fontColor: .gray90, 
+        dayRangeButton.configureButton(fontColor: .gray90,
                                        font: .pretendard(size: 16, weight: .medium),
                                        text: text)
     }
     
     func updateDatePickButton(text: String) {
-        datePickButton.configureButton(font: .pretendard(size: 16, weight: .medium), 
+        datePickButton.configureButton(font: .pretendard(size: 16, weight: .medium),
                                        text: text)
     }
 }
