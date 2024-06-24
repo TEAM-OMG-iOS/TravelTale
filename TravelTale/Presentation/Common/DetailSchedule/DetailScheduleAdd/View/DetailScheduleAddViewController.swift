@@ -11,13 +11,19 @@ final class DetailScheduleAddViewController: BaseViewController {
     
     // MARK: - properties
     private let detailScheduleAddView = DetailScheduleAddView()
-    private lazy var dayPopoverVC = PopoverDayViewController(data: configureData(day: day, travel: selectedTravel), travel: selectedTravel, day: day)
     private let timePopoverVC = PopoverTimeViewController()
     private let realmManager = RealmManager.shared
+    private let alertMessage = """
+이전으로 돌아가면 작성 내용이 저장되지 않습니다.
+계속 진행하시겠습니까?
+"""
     
-    var day: String
-    var selectedTravel: Travel
-    var selectedPlace: PlaceDetail
+    private lazy var dayPopoverVC = PopoverDayViewController(data: configureData(day: day, travel: selectedTravel), travel: selectedTravel)
+    
+    private var day: String
+    private var selectedTravel: Travel
+    private var selectedPlace: PlaceDetail
+    
     var selectedDays: String?
     var selectedTime: Date?
     
@@ -118,12 +124,9 @@ final class DetailScheduleAddViewController: BaseViewController {
     }
     
     private func configureBackAlert() {
-        let alert = UIAlertController(title: "경고", message: """
-이전으로 돌아가면 작성 내용이 저장되지 않습니다.
-계속 진행하시겠습니까?
-""", preferredStyle: .alert)
+        let alert = UIAlertController(title: "경고", message: alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
-        let ok = UIAlertAction(title: "확인", style: .default) {_ in
+        let ok = UIAlertAction(title: "확인", style: .destructive) {_ in
             let nextVC = PlaceDetailViewController()
             // TODO: - 데이터 전달
             self.navigationController?.pushViewController(nextVC, animated: true)

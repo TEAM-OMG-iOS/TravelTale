@@ -18,6 +18,7 @@ final class DetailScheduleSelectViewController: BaseViewController {
 """
     
     private var preSelectedIndexPath: IndexPath?
+    
     var placeDetail: PlaceDetail
     
     // MARK: - life cycles
@@ -99,7 +100,6 @@ final class DetailScheduleSelectViewController: BaseViewController {
         guard let selectedIndexPath = detailScheduleSelectView.tableView.indexPathForSelectedRow else { return }
         let selectedData = travels[selectedIndexPath.row]
         let nextVC = DetailScheduleAddViewController(day: dayDifference(from: selectedData.startDate, to: selectedData.endDate), selectedTravel: selectedData, selectedPlace: placeDetail)
-        print(dayDifference(from: selectedData.startDate, to: selectedData.endDate))
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }

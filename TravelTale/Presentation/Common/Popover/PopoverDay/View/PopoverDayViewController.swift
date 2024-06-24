@@ -11,16 +11,13 @@ final class PopoverDayViewController: BaseViewController {
     
     // MARK: - properties
     private let daySelectPopoverView = PopoverDayView()
-    private var travel: Travel
     
+    private var travel: Travel
     private var data: [String]
+    
     var selectedDays: String?
     
     // MARK: - life cycles
-    override func loadView() {
-        view = daySelectPopoverView
-    }
-    
     init(data: [String], travel: Travel) {
         self.data = data
         self.travel = travel
@@ -29,6 +26,10 @@ final class PopoverDayViewController: BaseViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func loadView() {
+        view = daySelectPopoverView
     }
     
     // MARK: - methods
