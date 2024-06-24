@@ -16,7 +16,9 @@ final class MemorySelectView: BaseView {
        $0.tintColor = .gray90
      }
     
-    let tableView = UITableView()
+    let tableView = UITableView().then {
+        $0.backgroundColor = .white
+    }
     
     let confirmButton = GreenButton().then {
         $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "선택 완료")
