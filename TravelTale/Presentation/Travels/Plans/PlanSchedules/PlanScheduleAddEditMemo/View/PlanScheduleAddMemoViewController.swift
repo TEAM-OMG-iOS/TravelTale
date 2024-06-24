@@ -12,8 +12,9 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     // MARK: - properties
     private let memoView = PlanScheduleAddEditMemoView()
     private let realmManager = RealmManager.shared
-    private var travel: Travel
     private var selectedDay: String?
+    
+    var travel: Travel? = nil
     
     // MARK: - life cycles
     override func loadView() {
@@ -26,14 +27,14 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
         configureNavigationBar()
     }
     
-    init(travel: Travel) {
-        self.travel = travel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+      }
+      override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+      }
     
     // MARK: - methods
     override func configureDelegate() {
@@ -52,7 +53,7 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     }
     
     private func configureBackAlert(navigationController: UINavigationController?) {
-        let alert = UIAlertController(title: "뒤로가기", message: """
+        let alert = UIAlertController(title: "경고", message: """
 이전으로 돌아가면 작성 내용이 저장되지 않습니다.
 정말 돌아가시겠습니까?
 """, preferredStyle: .alert)
@@ -72,7 +73,7 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     }
     
     @objc private func tapCompleteButton() {
-        realmManager.createMemo(day: selectedDay!, travel: travel, memo: memoView.memoTV.text)
+        realmManager.createMemo(day: selectedDay!, travel: travel!, memo: memoView.memoTV.text)
         navigationController?.popViewController(animated: true)
     }
 }
