@@ -51,7 +51,7 @@ final class MemoryDetailView: BaseView {
     }
     
     let tableView = UITableView(frame: CGRect.zero, style: .grouped).then {
-        $0.backgroundColor = .clear
+        $0.backgroundColor = .white
     }
     
     // MARK: - methods
