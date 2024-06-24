@@ -11,10 +11,10 @@ final class MemoryAddEditView: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {
-       $0.style = .done
-       $0.image = UIImage(systemName: "chevron.left")
-       $0.tintColor = .gray90
-     }
+        $0.style = .done
+        $0.image = UIImage(systemName: "chevron.left")
+        $0.tintColor = .gray90
+    }
     
     private let travelInfoStackView = UIStackView().then {
         $0.axis = .horizontal
@@ -22,21 +22,25 @@ final class MemoryAddEditView: BaseView {
     }
     
     private let locationImageView = UIImageView().then {
-        $0.image = UIImage(systemName: "pin")
+        $0.image = .planDetailsLocation
         $0.tintColor = .gray100
         $0.contentMode = .scaleAspectFit
+        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
     private let areaLabel = UILabel().then {
         $0.configureLabel(color: .gray100, font: .oaGothic(size: 10, weight: .medium))
+        $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
     
     private let separatorLabel = UILabel().then {
         $0.configureLabel(color: .gray100, font: .oaGothic(size: 10, weight: .medium), text: "|")
+        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
     private let periodLabel = UILabel().then {
         $0.configureLabel(color: .gray100, font: .oaGothic(size: 10, weight: .medium))
+        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
     private let travelTitleLabel = UILabel().then {
@@ -55,10 +59,12 @@ final class MemoryAddEditView: BaseView {
         $0.configureLabel(font: .pretendard(size: 18, weight: .bold), text: "기록")
     }
     
-    let memoryTextView = UITextView().then {
+    private let placeHolder = "기록하고 싶은 내용을 작성해주세요."
+    
+    lazy var memoryTextView = UITextView().then {
         $0.configureView(color: .clear)
         $0.font = .pretendard(size: 16, weight: .regular)
-        $0.text = "기록하고 싶은 내용을 작성해주세요."
+        $0.text = placeHolder
         $0.textColor = .lightGray
         
         $0.textContainerInset = .zero
@@ -106,10 +112,14 @@ final class MemoryAddEditView: BaseView {
     
     let confirmButton = GreenButton().then {
         $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "기록 완료")
-        $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
     
     // MARK: - methods
+    override func configureUI() {
+        super.configureUI()
+        configureConfirmButton()
+    }
+    
     override func configureHierarchy() {
         [travelInfoStackView,
          travelTitleLabel,
@@ -119,10 +129,10 @@ final class MemoryAddEditView: BaseView {
          collectionView,
          confirmButton].forEach { self.addSubview($0) }
         
-        [locationImageView,
-        areaLabel,
-        separatorLabel,
-         periodLabel].forEach { travelInfoStackView.addArrangedSubview($0) }
+        [periodLabel,
+         separatorLabel,
+         locationImageView,
+         areaLabel].forEach { travelInfoStackView.addArrangedSubview($0) }
         
         [recordTitleLabel,
          memoryTextView].forEach { recordView.addSubview($0) }
@@ -208,17 +218,12 @@ final class MemoryAddEditView: BaseView {
     }
     
     func bind(travel: Travel) {
-        areaLabel.text = travel.area ?? "미정"
+        areaLabel.text = travel.area
         periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
         travelTitleLabel.text = travel.title
         memoryTextView.text = travel.memory
         updatePhotoCount(count: travel.photos.count)
-        
-        if isTextViewEmpty() {
-            setTextViewPlaceHolder()
-        } else {
-            memoryTextView.textColor = UIColor.black
-        }
+        isTextViewEmpty() ? setTextViewPlaceHolder() : (memoryTextView.textColor = UIColor.black)
     }
     
     func updatePhotoCount(count: Int) {
@@ -231,24 +236,22 @@ final class MemoryAddEditView: BaseView {
     
     func isTextViewEmpty() -> Bool {
         let text = memoryTextView.text ?? ""
-        let isPlaceholder = text == "기록하고 싶은 내용을 작성해주세요."
+        let isPlaceholder = text == placeHolder
         return text.isEmpty || isPlaceholder ? true : false
     }
     
     func setTextViewPlaceHolder() {
-        memoryTextView.text = "기록하고 싶은 내용을 작성해주세요."
+        memoryTextView.text = placeHolder
         memoryTextView.textColor = UIColor.gray80
     }
     
-    func checkTextViewContent() {
+    func configureConfirmButton() {
         if isTextViewEmpty() {
             confirmButton.isEnabled = false
             confirmButton.backgroundColor = .green10
-            memoryTextView.textColor = UIColor.gray80
         } else {
             confirmButton.isEnabled = true
             confirmButton.backgroundColor = .green100
-            memoryTextView.textColor = UIColor.black
         }
     }
     
