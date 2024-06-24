@@ -25,6 +25,13 @@ final class SearchTableViewCell: BaseTableViewCell {
         $0.tintColor = .black.withAlphaComponent(0.5)
     }
     
+    // MARK: - life cycles
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        titleLabel.text = nil
+    }
+    
     // MARK: - methods
     override func configureHierarchy() {
         self.contentView.addSubview(clockImageView)
