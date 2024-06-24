@@ -30,7 +30,7 @@ final class PlaceDetailView: BaseView {
     lazy var imageCollectionView = UICollectionView(frame: .zero,
                                                collectionViewLayout: UICollectionViewLayout()).then {
         $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        $0.isPagingEnabled = true#imageLiteral(resourceName: "simulator_screenshot_CC4455F6-1F9C-4AAB-822D-98D6B1BD5AEF.png")
+        $0.isPagingEnabled = true
         
         let layout = UICollectionViewFlowLayout()
         
