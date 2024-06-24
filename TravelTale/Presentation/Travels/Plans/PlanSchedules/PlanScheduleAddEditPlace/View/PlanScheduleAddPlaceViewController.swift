@@ -19,22 +19,32 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     @IBOutlet weak var naviTitle: UINavigationItem!
     @IBOutlet weak var completedBtn: UIButton!
     
-    private let dayPopoverVC = PopoverDayViewController()
     private let timePopoverVC = PopoverTimeViewController()
     private let realmManager = RealmManager.shared
     private let alertMessage = """
 이전으로 돌아가면 작성 내용이 저장되지 않습니다.
 정말 돌아가시겠습니까?
 """
+    private lazy var dayPopoverVC = PopoverDayViewController(data: configureData(day: day, travel: travel), travel: travel)
     
     private var selectedDays: String?
     private var selectedTime: Date?
-    
-    var travel: Travel?
-    var placeDetail: PlaceDetail?
-    var day: String?
+    private var travel: Travel
+    private var placeDetail: PlaceDetail
+    private var day: String
     
     // MARK: - life cycles
+    init(travel: Travel, placeDetail: PlaceDetail, day: String) {
+        self.travel = travel
+        self.placeDetail = placeDetail
+        self.day = day
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,7 +69,7 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     }
     
     override func bind() {
-        scheduleContents.text = configureInitialSchedule(day: day!, travel: travel!)
+        scheduleContents.text = configureInitialSchedule(day: day, travel: travel)
     }
     
     private func checkBlackText() {
@@ -149,6 +159,23 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
         }
     }
     
+    private func configureData(day: String, travel: Travel) -> [String] {
+        guard let daysCount = Int(day) else {
+            return []
+        }
+        var results = [String]()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy년 MM월 dd일"
+        
+        for i in 0..<daysCount {
+            if let newDate = Calendar.current.date(byAdding: .day, value: i, to: travel.startDate) {
+                let dateString = formatter.string(from: newDate)
+                results.append("Day \(i + 1) | \(dateString)")
+            }
+        }
+        return results
+    }
+    
     @objc func updateSelectedDays(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let selectedDays = userInfo["selectedDays"] as? String else { return }
@@ -174,7 +201,7 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     }
     
     @IBAction func tappedCompletedBtn(_ sender: UIButton) {
-        realmManager.createSchedule(day: day!, date: selectedTime!, travel: travel!, placeDetail: placeDetail!, memo: memoTV.text)
+        realmManager.createSchedule(day: day, date: selectedTime!, travel: travel, placeDetail: placeDetail, memo: memoTV.text)
         navigationController?.popViewController(animated: true)
     }
     
@@ -188,8 +215,6 @@ extension PlanScheduleAddPlaceViewController: UIPopoverPresentationControllerDel
     @IBAction func tappedScheduleBtn(_ sender: UIButton) {
         configurePopover(for: dayPopoverVC, sourceButton: scheduleBtn)
         dayPopoverVC.popoverPresentationController?.delegate = self
-        dayPopoverVC.day = day
-        dayPopoverVC.travel = travel
         present(dayPopoverVC, animated: true)
     }
     

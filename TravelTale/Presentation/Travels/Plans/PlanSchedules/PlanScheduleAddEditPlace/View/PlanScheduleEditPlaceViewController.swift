@@ -19,7 +19,6 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     @IBOutlet weak var naviTitle: UINavigationItem!
     @IBOutlet weak var completedBtn: UIButton!
     
-    private let dayPopoverVC = PopoverDayViewController()
     private let timePopoverVC = PopoverTimeViewController()
     private let realmManager = RealmManager.shared
     private let alertMessage = """
@@ -27,15 +26,28 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
 정말 돌아가시겠습니까?
 """
     
+    private lazy var dayPopoverVC = PopoverDayViewController(data: configureData(day: day, travel: travel), travel: travel)
+    
     private var selectedDays: String?
     private var selectedTime: Date?
-    
-    var travel: Travel?
-    var selectedPlace: PlaceDetail?
-    var schedule: Schedule?
-    var day: String?
+    private var travel: Travel
+    private var selectedPlace: PlaceDetail
+    private var schedule: Schedule
+    private var day: String
     
     // MARK: - life cycles
+    init(travel: Travel, selectedPlace: PlaceDetail, schedule: Schedule, day: String) {
+        self.travel = travel
+        self.selectedPlace = selectedPlace
+        self.schedule = schedule
+        self.day = day
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,9 +72,9 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     }
     
     override func bind() {
-        placeContents.text = schedule!.title
-        scheduleContents.text = configureInitialScheduleContents(day: day!, date: (self.schedule!.date!))
-        startTimeContents.text = configureInitialStartTimeContents(date: (self.schedule!.date!))
+        placeContents.text = schedule.title
+        scheduleContents.text = configureInitialScheduleContents(day: day, date: (self.schedule.date!))
+        startTimeContents.text = configureInitialStartTimeContents(date: (self.schedule.date!))
     }
     
     private func dateFormat(date: Date) -> String {
@@ -116,7 +128,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
 """, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) {_ in
-            self.realmManager.deleteSchedule(travel: self.travel!, schedule: self.schedule!)
+            self.realmManager.deleteSchedule(travel: self.travel, schedule: self.schedule)
             self.navigationController?.popViewController(animated: true)
         }
         
@@ -149,6 +161,23 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         return dateString
     }
     
+    private func configureData(day: String, travel: Travel) -> [String] {
+        guard let daysCount = Int(day) else {
+            return []
+        }
+        var results = [String]()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy년 MM월 dd일"
+        
+        for i in 0..<daysCount {
+            if let newDate = Calendar.current.date(byAdding: .day, value: i, to: travel.startDate) {
+                let dateString = formatter.string(from: newDate)
+                results.append("Day \(i + 1) | \(dateString)")
+            }
+        }
+        return results
+    }
+    
     @objc func updateSelectedDays(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let selectedDays = userInfo["selectedDays"] as? String else { return }
@@ -172,7 +201,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     }
     
     @IBAction func tappedCompletedBtn(_ sender: UIButton) {
-        realmManager.updateSchedule(schedule: schedule!, placeDetail: selectedPlace, day: selectedDays, date: selectedTime, internalMemo: memoTV.text)
+        realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDays, date: selectedTime, internalMemo: memoTV.text)
         navigationController?.popViewController(animated: true)
     }
     
