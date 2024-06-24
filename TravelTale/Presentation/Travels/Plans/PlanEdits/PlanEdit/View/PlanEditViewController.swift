@@ -136,7 +136,7 @@ final class PlanEditViewController: BaseViewController {
     
     private func presentDateAlert() {
         let travelRange = Calendar.current.dateComponents([.day], from: travel.startDate,
-                                                          to: travel.endDate ).day ?? 0
+                                                          to: travel.endDate).day ?? 0
         let editRange = Calendar.current.dateComponents([.day], from: editStartDate ?? Date(),
                                                         to: editEndDate ?? Date()).day ?? 0
         
@@ -241,6 +241,6 @@ extension DateFormatter {
     func dateRangeString(startDate: Date, endDate: Date) -> String {
         let startDateString = dateFormatter().string(from: startDate)
         let endDateString = dateFormatter().string(from: endDate)
-        return "\(startDateString) - \(endDateString)"
+        return startDate == endDate ? startDateString : "\(startDateString) - \(endDateString)"
     }
 }
