@@ -12,8 +12,8 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     // MARK: - properties
     private let memoView = PlanScheduleAddEditMemoView()
     private let realmManager = RealmManager.shared
-    private var selectedDay: String?
     
+    var day: String?
     var travel: Travel? = nil
     
     // MARK: - life cycles
