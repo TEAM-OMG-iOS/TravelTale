@@ -41,11 +41,15 @@ final class SearchResultViewController: ButtonBarPagerTabStripViewController {
     private let accommodationVC = SearchResultTabAccommodationViewController()
     private let entertainmentVC = SearchResultTabEntertainmentViewController()
     
+    private let userDefaultsManager = UserDefaultsManager.shared
+    
     var searchText: String? {
         didSet {
             searchBar.text = searchText
         }
     }
+    
+    var completion: (() -> ())?
     
     // MARK: - life cycles
     override func viewDidLoad() {
@@ -151,6 +155,7 @@ final class SearchResultViewController: ButtonBarPagerTabStripViewController {
     }
     
     @objc private func tappedBackBarButtonItem() {
+        completion!()
         navigationController?.popViewController(animated: true)
     }
     
@@ -162,6 +167,8 @@ final class SearchResultViewController: ButtonBarPagerTabStripViewController {
 // MARK: - extensions
 extension SearchResultViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // To Do - 데이터 바인딩
+        if let text = searchBar.text {
+            let _ = userDefaultsManager.createKeyword(keyword: text)
+        }
     }
 }

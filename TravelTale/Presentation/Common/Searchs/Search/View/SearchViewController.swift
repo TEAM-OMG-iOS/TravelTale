@@ -29,7 +29,6 @@ final class SearchViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = true
-        searchView.tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -89,8 +88,14 @@ final class SearchViewController: BaseViewController {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let searchResultVC = SearchResultViewController()
+        
         searchResultVC.searchText = searchBar.text
-        searchBar.resignFirstResponder()
+        searchResultVC.completion = { [weak self] in
+            guard let self = self else { return }
+            
+            keywords = userDefaultsManager.fetchKeywords()
+            searchView.tableView.reloadData()
+        }
         
         if let text = searchBar.text {
             keywords = userDefaultsManager.createKeyword(keyword: text)
@@ -102,7 +107,14 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let searchResultVC = SearchResultViewController()
+        
         searchResultVC.searchText = keywords[indexPath.row]
+        searchResultVC.completion = { [weak self] in
+            guard let self = self else { return }
+            
+            keywords = userDefaultsManager.fetchKeywords()
+            searchView.tableView.reloadData()
+        }
         
         keywords = userDefaultsManager.createKeyword(keyword: keywords[indexPath.row])
         
