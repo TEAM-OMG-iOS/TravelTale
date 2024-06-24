@@ -102,7 +102,9 @@ final class MemoryAddEditView: BaseView {
     }
     
     lazy var collectionView = UICollectionView(frame: .zero,
-                                               collectionViewLayout: layout)
+                                               collectionViewLayout: layout).then {
+        $0.backgroundColor = .white
+    }
     
     let confirmButton = GreenButton().then {
         $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "기록 완료")
