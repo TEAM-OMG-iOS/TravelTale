@@ -11,10 +11,10 @@ final class MemoryAddEditView: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {
-       $0.style = .done
-       $0.image = UIImage(systemName: "chevron.left")
-       $0.tintColor = .gray90
-     }
+        $0.style = .done
+        $0.image = UIImage(systemName: "chevron.left")
+        $0.tintColor = .gray90
+    }
     
     private let travelInfoStackView = UIStackView().then {
         $0.axis = .horizontal
@@ -130,9 +130,9 @@ final class MemoryAddEditView: BaseView {
          confirmButton].forEach { self.addSubview($0) }
         
         [periodLabel,
-        separatorLabel,
+         separatorLabel,
          locationImageView,
-        areaLabel].forEach { travelInfoStackView.addArrangedSubview($0) }
+         areaLabel].forEach { travelInfoStackView.addArrangedSubview($0) }
         
         [recordTitleLabel,
          memoryTextView].forEach { recordView.addSubview($0) }
