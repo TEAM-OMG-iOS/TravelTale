@@ -21,7 +21,7 @@ final class PlanScheduleAddEditMemoView: BaseView {
     }
     
     private let memoTitle = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 18, weight: .bold), text: "메모")
+        $0.configureLabel(font: .pretendard(size: 16, weight: .bold), text: "메모")
     }
     
     let memoTV = UITextView().then {
@@ -29,7 +29,7 @@ final class PlanScheduleAddEditMemoView: BaseView {
         $0.textAlignment = .natural
         $0.text = "메세지를 입력하세요"
         $0.textColor = .lightGray
-        $0.font = .pretendard(size: 18, weight: .regular)
+        $0.font = .pretendard(size: 16, weight: .regular)
     }
     
     let completeBtn = GreenButton().then {
