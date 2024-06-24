@@ -138,19 +138,19 @@
 		37E36D872C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E36D862C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift */; };
 		4D0E3CD52C0F36110089D6C1 /* TravelSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */; };
 		4D0E3CD72C0F36280089D6C1 /* TravelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */; };
-		4D0E3CE12C10763C0089D6C1 /* PlanScheduleAddEditPlaceView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE02C10763C0089D6C1 /* PlanScheduleAddEditPlaceView.storyboard */; };
-		4D0E3CE32C1076570089D6C1 /* PlanScheduleAddPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE22C1076570089D6C1 /* PlanScheduleAddPlaceViewController.swift */; };
 		4D0E3CDB2C10391A0089D6C1 /* PlanScheduleAddMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDA2C10391A0089D6C1 /* PlanScheduleAddMemoViewController.swift */; };
 		4D0E3CDF2C103D430089D6C1 /* PlanScheduleAddEditMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDE2C103D430089D6C1 /* PlanScheduleAddEditMemoView.swift */; };
-		4D0E3CE52C11EA930089D6C1 /* ScheduleCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */; };
-		4D0E3CE72C1206480089D6C1 /* ScheduleCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */; };
+		4D0E3CE12C10763C0089D6C1 /* PlanScheduleAddEditPlaceView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE02C10763C0089D6C1 /* PlanScheduleAddEditPlaceView.storyboard */; };
+		4D0E3CE32C1076570089D6C1 /* PlanScheduleAddPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE22C1076570089D6C1 /* PlanScheduleAddPlaceViewController.swift */; };
+		4D0E3CE52C11EA930089D6C1 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		4D0E3CE72C1206480089D6C1 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		4D0E3CF32C18A4E30089D6C1 /* PopoverDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CF22C18A4E30089D6C1 /* PopoverDayView.swift */; };
 		4D0E3CF52C195A9A0089D6C1 /* PopoverTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CF42C195A9A0089D6C1 /* PopoverTimeView.swift */; };
 		4D27194C2C1A0295004DDC38 /* PlanScheduleEditPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D27194B2C1A0295004DDC38 /* PlanScheduleEditPlaceViewController.swift */; };
 		4D6694532C1AD9F00095CC42 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4D6694522C1AD9F00095CC42 /* IQKeyboardManagerSwift */; };
+		4DA3451E2C25160600912704 /* PlanScheduleEditMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA3451D2C25160600912704 /* PlanScheduleEditMemoViewController.swift */; };
 		4DA5FBFC2C1EFAE400233A68 /* PopoverTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5FBFA2C1EFAE400233A68 /* PopoverTimeViewController.swift */; };
 		4DA5FBFD2C1EFAE400233A68 /* PopoverDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5FBFB2C1EFAE400233A68 /* PopoverDayViewController.swift */; };
-		4DA3451E2C25160600912704 /* PlanScheduleEditMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA3451D2C25160600912704 /* PlanScheduleEditMemoViewController.swift */; };
 		F193681A2C194D50000AC7B2 /* TravelUpdateCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19368192C194D50000AC7B2 /* TravelUpdateCalendarView.swift */; };
 		F193681C2C194D73000AC7B2 /* TravelUpdateCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193681B2C194D73000AC7B2 /* TravelUpdateCalendarViewController.swift */; };
 		F19368202C1ACB88000AC7B2 /* RegionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193681F2C1ACB88000AC7B2 /* RegionTableViewCell.swift */; };
@@ -298,16 +298,16 @@
 		37E36D862C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanHeaderCell.swift; sourceTree = "<group>"; };
 		4D0E3CD42C0F36110089D6C1 /* TravelSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSelectView.swift; sourceTree = "<group>"; };
 		4D0E3CD62C0F36280089D6C1 /* TravelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSelectViewController.swift; sourceTree = "<group>"; };
+		4D0E3CDA2C10391A0089D6C1 /* PlanScheduleAddMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanScheduleAddMemoViewController.swift; sourceTree = "<group>"; };
+		4D0E3CDE2C103D430089D6C1 /* PlanScheduleAddEditMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanScheduleAddEditMemoView.swift; sourceTree = "<group>"; };
 		4D0E3CE02C10763C0089D6C1 /* PlanScheduleAddEditPlaceView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlanScheduleAddEditPlaceView.storyboard; sourceTree = "<group>"; };
 		4D0E3CE22C1076570089D6C1 /* PlanScheduleAddPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanScheduleAddPlaceViewController.swift; sourceTree = "<group>"; };
 		4D0E3CF22C18A4E30089D6C1 /* PopoverDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverDayView.swift; sourceTree = "<group>"; };
 		4D0E3CF42C195A9A0089D6C1 /* PopoverTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverTimeView.swift; sourceTree = "<group>"; };
 		4D27194B2C1A0295004DDC38 /* PlanScheduleEditPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanScheduleEditPlaceViewController.swift; sourceTree = "<group>"; };
+		4DA3451D2C25160600912704 /* PlanScheduleEditMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanScheduleEditMemoViewController.swift; sourceTree = "<group>"; };
 		4DA5FBFA2C1EFAE400233A68 /* PopoverTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverTimeViewController.swift; sourceTree = "<group>"; };
 		4DA5FBFB2C1EFAE400233A68 /* PopoverDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverDayViewController.swift; sourceTree = "<group>"; };
-		4D0E3CDA2C10391A0089D6C1 /* PlanScheduleAddMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanScheduleAddMemoViewController.swift; sourceTree = "<group>"; };
-		4D0E3CDE2C103D430089D6C1 /* PlanScheduleAddEditMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanScheduleAddEditMemoView.swift; sourceTree = "<group>"; };
-		4DA3451D2C25160600912704 /* PlanScheduleEditMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanScheduleEditMemoViewController.swift; sourceTree = "<group>"; };
 		F19368192C194D50000AC7B2 /* TravelUpdateCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelUpdateCalendarView.swift; sourceTree = "<group>"; };
 		F193681B2C194D73000AC7B2 /* TravelUpdateCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelUpdateCalendarViewController.swift; sourceTree = "<group>"; };
 		F193681F2C1ACB88000AC7B2 /* RegionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionTableViewCell.swift; sourceTree = "<group>"; };
@@ -682,8 +682,6 @@
 		371387952C24930D002C6284 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4D0E3CE42C11EA930089D6C1 /* ScheduleCreateView.swift */,
-				4D0E3CE62C1206480089D6C1 /* ScheduleCreateViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1509,7 +1507,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					378CEBE72C0D563C00DF1C3F = {
 						CreatedOnToolsVersion = 15.3;
@@ -1619,7 +1617,6 @@
 				378CEC362C0D68F900DF1C3F /* TravelViewController.swift in Sources */,
 				374DDDE42C1F68FD0040A5F1 /* PlaceSearch.swift in Sources */,
 				F193681A2C194D50000AC7B2 /* TravelUpdateCalendarView.swift in Sources */,
-				F193681A2C194D50000AC7B2 /* TravelUpdateCalendarView.swift in Sources */,
 				1AD537902C12CF4900A70D5E /* PlanView.swift in Sources */,
 				378CEC302C0D68A200DF1C3F /* TravelView.swift in Sources */,
 				37CB880D2C0D796C002798BE /* UILabel+Extension.swift in Sources */,
@@ -1690,7 +1687,7 @@
 				2ECECE972C238507003F7748 /* PlaceDetailAlertViewController.swift in Sources */,
 				1A713BE02C22B9A20045DECD /* String+Extension.swift in Sources */,
 				2ECECE9C2C2409E2003F7748 /* MyPageTermPrivacyPolicyViewController.swift in Sources */,
-				4D0E3CE52C11EA930089D6C1 /* ScheduleCreateView.swift in Sources */,
+				4D0E3CE52C11EA930089D6C1 /* (null) in Sources */,
 				37CB88182C0DB66D002798BE /* GrayButton.swift in Sources */,
 				1AA861772C1B4DD8007F69E7 /* MemoryDetailViewController.swift in Sources */,
 				2EC635752C1CD0FF006C1ADB /* DiscoveryCategoryViewController.swift in Sources */,
@@ -1704,7 +1701,7 @@
 				F1A2BC292C186B2B00D41614 /* TravelAddPlaceModalViewController.swift in Sources */,
 				378CEC242C0D64AB00DF1C3F /* BaseViewController.swift in Sources */,
 				4D0E3CDF2C103D430089D6C1 /* PlanScheduleAddEditMemoView.swift in Sources */,
-				4D0E3CE72C1206480089D6C1 /* ScheduleCreateViewController.swift in Sources */,
+				4D0E3CE72C1206480089D6C1 /* (null) in Sources */,
 				1AD5379A2C1362F500A70D5E /* MemoryViewController.swift in Sources */,
 				374DDDD82C1F3CEB0040A5F1 /* Sigungu.swift in Sources */,
 				F1B301F92C10501C00D26B75 /* TravelAddPlaceViewController.swift in Sources */,
