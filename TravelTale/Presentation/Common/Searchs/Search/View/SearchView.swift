@@ -24,6 +24,7 @@ final class SearchView: BaseView {
         $0.searchBarStyle = .minimal
         $0.setImage(.search.resize(width: 28, height: 28), for: .search, state: .normal)
         $0.setImage(UIImage(systemName: "xmark.circle.fill")?.withTintColor(.gray70).resize(width: 20, height: 20), for: .clear, state: .normal)
+        $0.placeholder = "검색어를 입력하세요."
     }
     
     private let recentSearchLabel = UILabel().then {
