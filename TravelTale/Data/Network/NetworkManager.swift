@@ -107,4 +107,18 @@ final class NetworkManager {
             }
         }
     }
+    
+    func fetchSearchedPlaces(keyword: String, type: Category, page: Int, completion: @escaping ((Result<PlaceSearchs, Error>) -> Void)) {
+        var parameters: Parameters = ["arrange": "D", "keyword": keyword, "contentTypeId": type.rawValue, "pageNo": page]
+        parameters.merge(commonParameters) { (current, _) in current }
+        
+        AF.request(baseUrl + searchPath + "?serviceKey=\(apiKey)", parameters: parameters, encoding: URLEncoding.queryString).responseDecodable(of: PlaceSearchResponseDTO.self) { response in
+            switch response.result {
+            case .success(let data):
+                completion(.success(data.response.body.items.toDomain()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }
