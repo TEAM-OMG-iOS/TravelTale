@@ -12,8 +12,9 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     // MARK: - properties
     private let memoView = PlanScheduleAddEditMemoView()
     private let realmManager = RealmManager.shared
-    private var travel: Travel
-    private var selectedDay: String?
+    
+    var day: String?
+    var travel: Travel? = nil
     
     // MARK: - life cycles
     override func loadView() {
@@ -26,13 +27,14 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
         configureNavigationBar()
     }
     
-    init(travel: Travel) {
-        self.travel = travel
-        super.init(nibName: nil, bundle: nil)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - methods
@@ -52,10 +54,7 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     }
     
     private func configureBackAlert(navigationController: UINavigationController?) {
-        let alert = UIAlertController(title: "뒤로가기", message: """
-이전으로 돌아가면 작성 내용이 저장되지 않습니다.
-정말 돌아가시겠습니까?
-""", preferredStyle: .alert)
+        let alert = UIAlertController(title: "경고", message: memoView.alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) {_ in
             navigationController?.popViewController(animated: true)
@@ -72,7 +71,7 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     }
     
     @objc private func tapCompleteButton() {
-        realmManager.createMemo(day: selectedDay!, travel: travel, memo: memoView.memoTV.text)
+        realmManager.createMemo(day: day!, travel: travel!, memo: memoView.memoTV.text)
         navigationController?.popViewController(animated: true)
     }
 }
@@ -82,6 +81,7 @@ extension PlanScheduleAddMemoViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         memoView.setBeginText(textView: textView)
     }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         memoView.setEndText(textView: textView)
     }

@@ -22,13 +22,18 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     private let dayPopoverVC = PopoverDayViewController()
     private let timePopoverVC = PopoverTimeViewController()
     private let realmManager = RealmManager.shared
+    private let alertMessage = """
+이전으로 돌아가면 작성 내용이 저장되지 않습니다.
+정말 돌아가시겠습니까?
+"""
     
-    var selectedPlace: PlaceDetail
-    var selectedDays: String?
-    var selectedTime: Date?
-    var travel: Travel
-    var schedule: Schedule
-    var day: String
+    private var selectedDays: String?
+    private var selectedTime: Date?
+    
+    var travel: Travel?
+    var selectedPlace: PlaceDetail?
+    var schedule: Schedule?
+    var day: String?
     
     // MARK: - life cycles
     override func viewDidLoad() {
@@ -39,16 +44,14 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedTime), name: .selectedTimeUpdated, object: nil)
     }
     
-    init(selectedPlace: PlaceDetail, travel: Travel, schedule: Schedule, day: String) {
-        self.selectedPlace = selectedPlace
-        self.travel = travel
-        self.schedule = schedule
-        self.day = day
-        super.init(nibName: nil, bundle: nil)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - methods
@@ -57,9 +60,9 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     }
     
     override func bind() {
-        placeContents.text = schedule.title
-        scheduleContents.text = configureInitialScheduleContents(day: day, date: (self.schedule.date!))
-        startTimeContents.text = configureInitialStartTimeContents(date: (self.schedule.date!))
+        placeContents.text = schedule!.title
+        scheduleContents.text = configureInitialScheduleContents(day: day!, date: (self.schedule!.date!))
+        startTimeContents.text = configureInitialStartTimeContents(date: (self.schedule!.date!))
     }
     
     private func dateFormat(date: Date) -> String {
@@ -94,14 +97,16 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     }
     
     private func configureBackAlert() {
-        let alert = UIAlertController(title: "경고", message: """
-이전으로 돌아가면 작성 내용이 저장되지 않습니다.
-계속 진행하시겠습니까?
-""", preferredStyle: .alert)
+        let alert = UIAlertController(title: "경고", message: alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) {_ in
             self.navigationController?.popViewController(animated: true)
         }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true)
     }
     
     private func configureDeleteAlert() {
@@ -111,9 +116,14 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
 """, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) {_ in
-            self.realmManager.deleteSchedule(travel: self.travel, schedule: self.schedule)
+            self.realmManager.deleteSchedule(travel: self.travel!, schedule: self.schedule!)
             self.navigationController?.popViewController(animated: true)
         }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true)
     }
     
     private func configureInitialScheduleContents(day: String, date: Date) -> String {
@@ -162,7 +172,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     }
     
     @IBAction func tappedCompletedBtn(_ sender: UIButton) {
-        realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDays, date: selectedTime, internalMemo: memoTV.text)
+        realmManager.updateSchedule(schedule: schedule!, placeDetail: selectedPlace, day: selectedDays, date: selectedTime, internalMemo: memoTV.text)
         navigationController?.popViewController(animated: true)
     }
     
