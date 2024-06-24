@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A713BE02C22B9A20045DECD /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A713BDF2C22B9A20045DECD /* String+Extension.swift */; };
+		1A713BFD2C2885F40045DECD /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 378CEC0E2C0D59E200DF1C3F /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		1A95EB5B2C168E78007D575A /* MemorySelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95EB5A2C168E78007D575A /* MemorySelectView.swift */; };
 		1A95EB5F2C16BA88007D575A /* MemorySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95EB5E2C16BA88007D575A /* MemorySelectViewController.swift */; };
 		1A95EB632C184EC7007D575A /* MemoryAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95EB622C184EC7007D575A /* MemoryAddEditView.swift */; };
@@ -169,6 +170,20 @@
 		F19368202C1ACB88000AC7B2 /* RegionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193681F2C1ACB88000AC7B2 /* RegionTableViewCell.swift */; };
 		F19368222C1ACDA8000AC7B2 /* RegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19368212C1ACDA8000AC7B2 /* RegionView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1A713BFE2C2885F40045DECD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1A713BFD2C2885F40045DECD /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1A713BDF2C22B9A20045DECD /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -1479,6 +1494,7 @@
 				378CEBE42C0D563C00DF1C3F /* Sources */,
 				378CEBE52C0D563C00DF1C3F /* Frameworks */,
 				378CEBE62C0D563C00DF1C3F /* Resources */,
+				1A713BFE2C2885F40045DECD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1858,6 +1874,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FB44T8T3FL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TravelTale/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1890,6 +1907,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FB44T8T3FL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TravelTale/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

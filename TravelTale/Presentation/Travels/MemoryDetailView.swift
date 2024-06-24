@@ -51,7 +51,7 @@ final class MemoryDetailView: BaseView {
     }
     
     let tableView = UITableView(frame: CGRect.zero, style: .grouped).then {
-        $0.backgroundColor = .clear
+        $0.backgroundColor = .white
     }
     
     // MARK: - methods
@@ -97,7 +97,7 @@ final class MemoryDetailView: BaseView {
     }
     
     func bind(travel: Travel) {
-        areaLabel.text = travel.area ?? "미정"
+        areaLabel.text = travel.area
         periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
         travelTitleLabel.text = travel.title
     }
