@@ -68,22 +68,35 @@ final class PlanEditViewController: BaseViewController {
     }
     
     private func resetDate() {
-        let dateRangeString = DateFormatter().dateRangeString(from: travel.startDate, to: travel.endDate )
-        let daysString = Calendar.current.dateComponents([.day], from: travel.startDate, to: travel.endDate ).day ?? 0
+        let dateRangeString = DateFormatter().dateRangeString(startDate: travel.startDate, 
+                                                              endDate: travel.endDate )
+        let daysString = Calendar.current.dateComponents([.day], from: travel.startDate, 
+                                                         to: travel.endDate ).day ?? 0
         
-        planEditView.dayRangeButton.configureButton(fontColor: .gray90, font: .pretendard(size: 16, weight: .medium), text: dateRangeString)
-        planEditView.datePickButton.configureButton(font: .pretendard(size: 16, weight: .medium), text: "\(daysString)박 \(daysString + 1)일")
+        planEditView.dayRangeButton.configureButton(fontColor: .gray90, 
+                                                    font: .pretendard(size: 16, weight: .medium),
+                                                    text: dateRangeString)
+        planEditView.datePickButton.configureButton(font: .pretendard(size: 16, weight: .medium), 
+                                                    text: "\(daysString)박 \(daysString + 1)일")
         
         editTitle = planEditView.textField.text
         editStartDate = travel.startDate
         editEndDate = travel.endDate
         
-        realmManager.updateTravel(travel: self.travel, title: editTitle ?? travel.title, area: editSido ?? travel.area, startDate: travel.startDate, endDate: travel.endDate)
+        realmManager.updateTravel(travel: self.travel, 
+                                  title: editTitle ?? travel.title,
+                                  area: editSido ?? travel.area,
+                                  startDate: travel.startDate,
+                                  endDate: travel.endDate)
     }
     
     private func updateTravel() {
         editTitle = planEditView.textField.text
-        realmManager.updateTravel(travel: self.travel, title: editTitle ?? travel.title, area: editSido ?? travel.area, startDate: editStartDate ?? travel.startDate, endDate: editEndDate ?? travel.endDate)
+        realmManager.updateTravel(travel: self.travel, 
+                                  title: editTitle ?? travel.title,
+                                  area: editSido ?? travel.area,
+                                  startDate: editStartDate ?? travel.startDate,
+                                  endDate: editEndDate ?? travel.endDate)
     }
     
     private func updateInputBox(with text: String) {
@@ -122,8 +135,10 @@ final class PlanEditViewController: BaseViewController {
     }
     
     private func presentDateAlert() {
-        let travelRange = Calendar.current.dateComponents([.day], from: travel.startDate, to: travel.endDate ).day ?? 0
-        let editRange = Calendar.current.dateComponents([.day], from: editStartDate ?? Date(), to: editEndDate ?? Date()).day ?? 0
+        let travelRange = Calendar.current.dateComponents([.day], from: travel.startDate, 
+                                                          to: travel.endDate ).day ?? 0
+        let editRange = Calendar.current.dateComponents([.day], from: editStartDate ?? Date(), 
+                                                        to: editEndDate ?? Date()).day ?? 0
         
         if travelRange > editRange {
             let alert = UIAlertController(title: "경고", message: """
@@ -184,7 +199,7 @@ final class PlanEditViewController: BaseViewController {
             self.editStartDate = startDate
             self.editEndDate = endDate
             
-            let dateRangeString = DateFormatter().dateRangeString(from: startDate, to: endDate)
+            let dateRangeString = DateFormatter().dateRangeString(startDate: startDate, endDate: endDate)
             self.planEditView.updateDayRangeButton(text: dateRangeString)
         }
         
@@ -217,16 +232,15 @@ final class PlanEditViewController: BaseViewController {
 
 // MARK: - extentions
 extension DateFormatter {
-    func customDateFormatter() -> DateFormatter {
+    func dateFormatter() -> DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
         return dateFormatter
     }
     
-    func dateRangeString(from startDate: Date, to endDate: Date) -> String {
-        let dateFormatter = DateFormatter().customDateFormatter()
-        let startDateString = dateFormatter.string(from: startDate)
-        let endDateString = dateFormatter.string(from: endDate)
+    func dateRangeString(startDate: Date, endDate: Date) -> String {
+        let startDateString = dateFormatter().string(from: startDate)
+        let endDateString = dateFormatter().string(from: endDate)
         return "\(startDateString) - \(endDateString)"
     }
 }
