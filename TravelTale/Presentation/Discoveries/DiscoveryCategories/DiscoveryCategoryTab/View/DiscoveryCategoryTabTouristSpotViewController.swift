@@ -120,6 +120,10 @@ extension DiscoveryCategoryTabTouristSpotViewController: UITableViewDelegate {
             }
         }
         
+        placeDetailVC.completion = {
+            self.categoryTabView.tableView.reloadData()
+        }
+        
         self.navigationController?.pushViewController(placeDetailVC, animated: true)
     }
 }

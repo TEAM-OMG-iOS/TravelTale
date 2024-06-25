@@ -79,6 +79,11 @@ extension MyPageCategoryTabTouristSpotViewController: UITableViewDelegate {
             }
         }
         
+        placeDetailVC.completion = {
+            self.fetchCategoryTab()
+            self.categoryTabView.tableView.reloadData()
+        }
+        
         self.navigationController?.pushViewController(placeDetailVC, animated: true)
     }
 }
