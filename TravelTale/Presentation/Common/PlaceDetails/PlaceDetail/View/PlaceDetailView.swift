@@ -11,7 +11,7 @@ import UIKit
 final class PlaceDetailView: BaseView {
     
     // MARK: - properties
-    private let collectionViewHeight: CGFloat = 350
+    private let collectionViewHeight: CGFloat = 300
     private let buttonHeight: CGFloat = 48
     
     private let scrollView = UIScrollView().then {
@@ -23,8 +23,8 @@ final class PlaceDetailView: BaseView {
     private let contentView = UIView()
     
     let backButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         $0.tintColor = .gray90
+        $0.setImage(UIImage(systemName: "chevron.left"), for: .normal)
     }
     
     lazy var imageCollectionView = UICollectionView(frame: .zero,
@@ -34,9 +34,9 @@ final class PlaceDetailView: BaseView {
         
         let layout = UICollectionViewFlowLayout()
         
-        layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
+        layout.scrollDirection = .horizontal
         layout.itemSize = .init(width: UIScreen.main.bounds.size.width, height: collectionViewHeight)
         
         $0.collectionViewLayout = layout
@@ -227,7 +227,7 @@ final class PlaceDetailView: BaseView {
         
         backButton.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(24)
-            $0.top.equalTo(safeAreaLayoutGuide).inset(8)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(12)
             $0.size.equalTo(24)
         }
         
