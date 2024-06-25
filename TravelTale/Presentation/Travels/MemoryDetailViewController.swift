@@ -74,7 +74,7 @@ final class MemoryDetailViewController: BaseViewController {
     private func configureNavigationBarItems() {
         navigationItem.leftBarButtonItem = travelMemoryDetailView.backBarButton
         navigationItem.rightBarButtonItem = travelMemoryDetailView.editBarButton
-      }
+    }
     
     private func configurePopupButton() {
         travelMemoryDetailView.editButton.menu = UIMenu(
