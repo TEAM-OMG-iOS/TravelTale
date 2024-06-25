@@ -39,6 +39,7 @@ final class TabBarViewController: UITabBarController {
             items[2].image = UIImage(systemName: "person")
         }
         
+        tabBar.isTranslucent = false
         tabBar.backgroundColor = .white
         tabBar.tintColor = .green100
         tabBar.unselectedItemTintColor = .gray80
