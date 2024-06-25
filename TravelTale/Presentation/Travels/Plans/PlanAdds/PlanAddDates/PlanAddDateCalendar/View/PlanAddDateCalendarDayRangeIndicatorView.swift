@@ -1,5 +1,5 @@
 //
-//  CalendarDayRangeIndicatorView.swift
+//  PlanAddDateCalendarDayRangeIndicatorView.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/19/24.
@@ -9,7 +9,7 @@ import UIKit
 import HorizonCalendar
 
 // 선택된 날짜 범위 커스텀 뷰
-final class CalendarDayRangeIndicatorView: BaseView {
+final class PlanAddDateCalendarDayRangeIndicatorView: BaseView {
     private let indicatorColor: UIColor
     
     init(indicatorColor: UIColor) {
@@ -54,7 +54,7 @@ final class CalendarDayRangeIndicatorView: BaseView {
 }
 
 // MARK: - extensions
-extension CalendarDayRangeIndicatorView: CalendarItemViewRepresentable {
+extension PlanAddDateCalendarDayRangeIndicatorView: CalendarItemViewRepresentable {
     struct InvariantViewProperties: Hashable {
         let indicatorColor = UIColor.green10
     }
@@ -65,11 +65,11 @@ extension CalendarDayRangeIndicatorView: CalendarItemViewRepresentable {
     
     static func makeView(
         withInvariantViewProperties invariantViewProperties: InvariantViewProperties)
-    -> CalendarDayRangeIndicatorView {
-        CalendarDayRangeIndicatorView(indicatorColor: invariantViewProperties.indicatorColor)
+    -> PlanAddDateCalendarDayRangeIndicatorView {
+        PlanAddDateCalendarDayRangeIndicatorView(indicatorColor: invariantViewProperties.indicatorColor)
     }
     
-    static func setContent(_ content: Content, on view: CalendarDayRangeIndicatorView) {
+    static func setContent(_ content: Content, on view: PlanAddDateCalendarDayRangeIndicatorView) {
         view.framesOfDaysToHighlight = content.framesOfDaysToHighlight
     }
 }

@@ -1,5 +1,5 @@
 //
-//  TravelUpdateCalendarView.swift
+//  PlanEditDateView.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/12/24.
@@ -8,7 +8,7 @@
 import UIKit
 import HorizonCalendar
 
-final class TravelUpdateCalendarView: BaseView, CalendarBaseView {
+final class PlanEditDateView: BaseView, PlanAddDateCalendarBaseView {
     
     // MARK: - properties
     lazy var calendarView = CalendarView(initialContent: makeContent())
@@ -21,7 +21,10 @@ final class TravelUpdateCalendarView: BaseView, CalendarBaseView {
     private var selectedDayRangeAtStartOfDrag: DayComponentsRange?
     
     var completion: ((String) -> Void)?
-    var dateCompletion: ((String) -> Void)?
+    var dateCompletion: ((Date, Date) -> Void)?
+    
+    var editStartDate: Date?
+    var editEndDate: Date?
     
     lazy var dayDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -110,7 +113,7 @@ final class TravelUpdateCalendarView: BaseView, CalendarBaseView {
     private func setDateLabel() {
         if let startDate = calendar.date(from: selectedDayRange?.lowerBound.components ?? DateComponents()),
            let endDate = calendar.date(from: selectedDayRange?.upperBound.components ?? DateComponents()) {
-            setStartDate(startDate: startDate, endDate: endDate)
+            dateCompletion?(startDate, endDate)
             
             if startDate == endDate {
                 okButton.isEnabled = true
@@ -127,14 +130,5 @@ final class TravelUpdateCalendarView: BaseView, CalendarBaseView {
                 }
             }
         }
-    }
-    
-    private func setStartDate(startDate: Date, endDate: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd"
-        let startDateString = dateFormatter.string(from: startDate)
-        let endDateString = dateFormatter.string(from: endDate)
-        let dateRangeString = "\(startDateString) - \(endDateString)"
-        dateCompletion?(dateRangeString)
     }
 }
