@@ -37,8 +37,8 @@ final class PlanScheduleAddEditMemoView: BaseView {
     }
     
     let alertMessage = """
-이전으로 돌아가면 작성 내용이 저장되지 않습니다.
-정말 돌아가시겠습니까?
+작성중인 내용이 저장되지 않습니다.
+이전으로 돌아가시겠습니까?
 """
     
     // MARK: - methods
