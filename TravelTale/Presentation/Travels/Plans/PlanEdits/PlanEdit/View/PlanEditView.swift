@@ -1,5 +1,5 @@
 //
-//  TravelUpdateView.swift
+//  PlanEditView.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/8/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TravelUpdateView: BaseView {
+final class PlanEditView: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {
@@ -32,7 +32,9 @@ final class TravelUpdateView: BaseView {
         $0.configureView(color: .gray5, cornerRadius: 24)
         $0.placeholder = "남자친구와 100일 여행"
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
+        $0.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
         $0.leftViewMode = .always
+        $0.rightViewMode = .always
         $0.font = UIFont.pretendard(size: 16, weight: .medium)
     }
     
@@ -42,12 +44,12 @@ final class TravelUpdateView: BaseView {
     }
     
     private let pickGuideLabel = UILabel().then {
-        $0.configureLabel(color: .lightGray, font: .pretendard(size: 14, weight: .light), text: "태그에 표시됩니다")
+        $0.configureLabel(color: .lightGray,
+                          font: .pretendard(size: 14, weight: .light),
+                          text: "태그에 표시됩니다")
     }
     
-    private let placePickBackView = UIView().then {
-        $0.configureView(color: .gray5, clipsToBounds: true, cornerRadius: 20)
-    }
+    private let placePickBackView = GrayBackgroundView()
     
     let placePickLabel = UILabel().then {
         $0.text = "서울특별시"
@@ -89,7 +91,7 @@ final class TravelUpdateView: BaseView {
         $0.configureButton(fontColor: .white,
                            font: .pretendard(size: 18, weight: .bold),
                            text: "완료")
-        $0.configureView(color: .green10,
+        $0.configureView(color: .green100,
                          cornerRadius: 24)
     }
     
@@ -187,8 +189,7 @@ final class TravelUpdateView: BaseView {
     }
     
     func buttonColorChanged() {
-        if textField.text?.isEmpty != false &&
-            (placePickLabel.text == "서울특별시" || dayRangeButton.title(for: .normal) == "2024.05.08 - 2024.05.11") {
+        if textField.text?.isEmpty != false {
             okButton.isEnabled = false
             okButton.backgroundColor = .green10
         } else {
@@ -197,22 +198,20 @@ final class TravelUpdateView: BaseView {
         }
     }
     
-    func updatePlaceLabel(text: String) {
-        placePickLabel.text = text
+    func updatePlaceLabel(text: Sido) {
+        placePickLabel.text = text.name ?? "미정"
         placePickLabel.textColor = .black
     }
     
     func updateDayRangeButton(text: String) {
-        dayRangeButton.configureButton(fontColor: .gray90, font: .pretendard(size: 16, weight: .medium), text: text)
+        dayRangeButton.configureButton(fontColor: .gray90,
+                                       font: .pretendard(size: 16, weight: .medium),
+                                       text: text)
     }
     
     func updateDatePickButton(text: String) {
-        datePickButton.configureButton(font: .pretendard(size: 16, weight: .medium), text: text)
-    }
-    
-    func resetDate() {
-        dayRangeButton.configureButton(fontColor: .gray90, font: .pretendard(size: 16, weight: .medium), text: "2024.05.08 - 2024.05.11")
-        datePickButton.configureButton(font: .pretendard(size: 16, weight: .medium), text: "3박 4일")
+        datePickButton.configureButton(font: .pretendard(size: 16, weight: .medium),
+                                       text: text)
     }
 }
 
