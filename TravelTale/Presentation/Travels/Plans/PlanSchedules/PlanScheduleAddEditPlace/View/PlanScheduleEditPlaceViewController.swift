@@ -21,6 +21,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     
     private let timePopoverVC = PopoverTimeViewController()
     private let realmManager = RealmManager.shared
+    private let userDefaults = UserDefaultsManager()
     private let alertMessage = """
 이전으로 돌아가면 작성 내용이 저장되지 않습니다.
 정말 돌아가시겠습니까?
@@ -54,6 +55,8 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedDays), name: .selectedDaysUpdated, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedTime), name: .selectedTimeUpdated, object: nil)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(updatePlaceContents), name: .placeSelected, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,14 +85,6 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "a hh:mm"
         return formatter.string(from: date)
-    }
-    
-    private func bindingDays() {
-        scheduleContents.text = selectedDays
-    }
-    
-    private func bindingTime() {
-        startTimeContents.text = dateFormat(date: selectedTime ?? Date())
     }
     
     private func configurePopover(for popoverVC: UIViewController, sourceButton: UIButton) {
@@ -183,7 +178,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
               let selectedDays = userInfo["selectedDays"] as? String else { return }
         
         self.selectedDays = selectedDays
-        self.bindingDays()
+        scheduleContents.text = self.selectedDays
     }
     
     @objc func updateSelectedTime(_ notification: Notification) {
@@ -191,12 +186,20 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
               let selectedTime = userInfo["selectedTime"] as? Date else { return }
         
         self.selectedTime = selectedTime
-        self.bindingTime()
+        startTimeContents.text = dateFormat(date: self.selectedTime ?? Date())
+    }
+    
+    @objc func updatePlaceContents(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let selectedPlace = userInfo["dataDetail"] as? PlaceDetail else { return }
+        
+        self.selectedPlace = selectedPlace
+        self.placeContents.text = self.selectedPlace.title
     }
     
     @IBAction func tappedPlaceBtn(_ sender: UIButton) {
         let nextVC = SearchResultViewController()
-        // TODO: - 데이터 넣어주기
+        userDefaults.setTabType(type: .travel)
         navigationController?.pushViewController(nextVC, animated: true)
     }
     
