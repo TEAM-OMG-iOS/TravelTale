@@ -19,6 +19,8 @@ final class PlaceDetailViewController: BaseViewController {
     
     private var placeImage: String = ""
     
+    var completion: (() -> Void)?
+    
     var placeDetailData: [PlaceDetail]? {
         didSet {
             guard let placeDetail = placeDetailData?[0] else { return }
@@ -107,7 +109,7 @@ final class PlaceDetailViewController: BaseViewController {
         if let address = placeDetailView.copyAddress() {
             UIPasteboard.general.string = address
         }
-        configureToast(text: "주소")
+        configureToast(text: "주소가 복사되었습니다.")
     }
     
     @objc private func tappedBookMarkButton() {
@@ -118,6 +120,8 @@ final class PlaceDetailViewController: BaseViewController {
             isBookMarked = false
             
             realmManager.deleteBookmark(placeDetail: placeDetailData)
+            
+            configureToast(text: "북마크에서 삭제되었습니다.")
         } else {
             placeDetailView.configureBookMarkButton(isBookMarked: true)
             isBookMarked = true
@@ -126,7 +130,7 @@ final class PlaceDetailViewController: BaseViewController {
                 Task {
                     do {
                         let request = URLRequest(url: image)
-                        let (data, response) = try await URLSession.shared.data(for: request)
+                        let (data, _) = try await URLSession.shared.data(for: request)
                         realmManager.createBookmark(placeDetail: placeDetailData, imageData: data)
                     } catch {
                         print(error.localizedDescription)
@@ -135,7 +139,11 @@ final class PlaceDetailViewController: BaseViewController {
             } else {
                 realmManager.createBookmark(placeDetail: placeDetailData, imageData: nil)
             }
+            
+            configureToast(text: "북마크에 추가되었습니다.")
         }
+        
+        completion?()
     }
     
     @objc private func tappedAddButton() {
