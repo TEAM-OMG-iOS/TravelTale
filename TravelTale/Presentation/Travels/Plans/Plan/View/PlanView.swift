@@ -16,21 +16,8 @@ final class PlanView: BaseView {
         $0.backgroundColor = .white
     }
     
-    let notFoundStackView = UIStackView().then {
-        $0.configureView(color: .white)
-        $0.axis = .vertical
-        $0.spacing = 30
-    }
-    
-    let notFoundImageView = UIImageView().then {
-        $0.image = UIImage(named: "not_found_train")
-        $0.contentMode = .scaleAspectFit
-    }
-    
-    let notFoundLabel = UILabel().then {
-        $0.configureLabel(color: .gray70,
-                          font: .pretendard(size: 18, weight: .medium),
-                          text: "기록된 계획이 없습니다.")
+    let notFoundView = NotFoundView().then {
+        $0.setLabel(text: "기록된 계획이 없습니다.")
     }
     
     // MARK: - methods
@@ -42,10 +29,7 @@ final class PlanView: BaseView {
     override func configureHierarchy() {
         [addButtonView,
          tableView,
-         notFoundStackView].forEach { self.addSubview($0) }
-        
-        [notFoundImageView,
-         notFoundLabel].forEach{ notFoundStackView.addArrangedSubview($0) }
+         notFoundView].forEach { self.addSubview($0) }
     }
     
     override func configureConstraints() {
@@ -62,23 +46,16 @@ final class PlanView: BaseView {
             $0.bottom.equalToSuperview()
         }
         
-        notFoundStackView.snp.makeConstraints {
-            $0.center.equalToSuperview()
-        }
-        
-        notFoundImageView.snp.makeConstraints {
-            $0.width.equalTo(192)
-            $0.height.equalTo(98)
+        notFoundView.snp.makeConstraints {
+            $0.edges.equalTo(tableView)
         }
     }
     
-    func isNotFound(_ isNotFound: Bool) {
+    func showNotFoundView(_ isNotFound: Bool) {
         if isNotFound {
-            tableView.isHidden = true
-            notFoundStackView.isHidden = false
+            notFoundView.isHidden = false
         } else {
-            tableView.isHidden = false
-            notFoundStackView.isHidden = true
+            notFoundView.isHidden = true
         }
     }
 }
