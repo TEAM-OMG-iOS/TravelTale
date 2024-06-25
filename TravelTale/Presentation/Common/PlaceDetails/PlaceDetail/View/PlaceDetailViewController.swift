@@ -217,11 +217,7 @@ extension PlaceDetailViewController: UICollectionViewDelegate {
 
 extension PlaceDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if placeImage == "" {
-            return 0
-        }else {
-            return 1
-        }
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
