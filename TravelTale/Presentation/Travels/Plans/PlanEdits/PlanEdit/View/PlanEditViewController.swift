@@ -69,7 +69,7 @@ final class PlanEditViewController: BaseViewController {
     
     private func resetDate() {
         let dateRangeString = String(startDate: travel.startDate,
-                                     endDate: travel.endDate )
+                                     endDate: travel.endDate)
         let daysString = Calendar.current.dateComponents([.day], from: travel.startDate,
                                                          to: travel.endDate ).day ?? 0
         
@@ -131,7 +131,7 @@ final class PlanEditViewController: BaseViewController {
         alert.addAction(cancel)
         alert.addAction(ok)
         
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
     
     private func presentDateAlert() {
@@ -144,7 +144,7 @@ final class PlanEditViewController: BaseViewController {
             let alert = UIAlertController(title: "경고", message: """
     수정된 일정만큼 일부 삭제될 수 있습니다.
     그대로 진행하시겠습니까?
-    """, preferredStyle: UIAlertController.Style.alert)
+    """, preferredStyle: .alert)
             
             let cancel = UIAlertAction(title: "취소", style: .destructive) { [weak self] _ in
                 guard let self = self else { return }
@@ -165,7 +165,7 @@ final class PlanEditViewController: BaseViewController {
             alert.addAction(cancel)
             alert.addAction(ok)
             
-            present(alert, animated: true, completion: nil)
+            present(alert, animated: true)
         } else {
             updateTravel()
             
