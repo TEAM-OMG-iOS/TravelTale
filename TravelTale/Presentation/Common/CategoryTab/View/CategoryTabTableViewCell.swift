@@ -11,6 +11,8 @@ import Kingfisher
 final class CategoryTabTableViewCell: BaseTableViewCell {
     
     // MARK: - properties
+    private let realmManager = RealmManager.shared
+    
     static let identifier = String(describing: CategoryTabTableViewCell.self)
     
     private let containerView = UIView().then {
@@ -87,6 +89,14 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
         
         let placeString = [place.addr1, place.addr2].compactMap { $0 }.joined(separator: " ")
         placeAddressLabel.text = placeString.isEmpty ? "주소 없음" : placeString
+        
+        guard let id = place.contentId else { return }
+        
+        if realmManager.fetchBookmarks(contentTypeId: .total).filter({ $0.contentId == id }).count > 0 {
+            bookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        } else {
+            bookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        }
     }
     
     func bind(bookMark: Bookmark) {
@@ -103,5 +113,7 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
         if let placeString = bookMark.address {
             placeAddressLabel.text = placeString
         }
+        
+        bookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
     }
 }
