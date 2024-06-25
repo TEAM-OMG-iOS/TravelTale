@@ -29,7 +29,7 @@
 		1AD537A22C13A9F200A70D5E /* PlanTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537A12C13A9F200A70D5E /* PlanTableFooterView.swift */; };
 		2E0671BC2C1DEC14001CDB2E /* CategoryTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0671BB2C1DEC14001CDB2E /* CategoryTabTableViewCell.swift */; };
 		2E0671BF2C1DF3D3001CDB2E /* CategoryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0671BE2C1DF3D3001CDB2E /* CategoryTabView.swift */; };
-		2E3525402C1756EF00D82D34 /* DiscoveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */; };
+		2E3525402C1756EF00D82D34 /* DiscoveryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E35253F2C1756EF00D82D34 /* DiscoveryCollectionViewCell.swift */; };
 		2E36056B2C19D4CD007DFBC1 /* DiscoveryRegionModalSidoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalSidoViewController.swift */; };
 		2E3B7F772C25614C007D0880 /* DiscoveryRegionModalSigunguViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3B7F762C25614C007D0880 /* DiscoveryRegionModalSigunguViewController.swift */; };
 		2E52F2F32C1B7BAB00E7D6D5 /* MyPageBookMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52F2F22C1B7BAB00E7D6D5 /* MyPageBookMarkButton.swift */; };
@@ -207,7 +207,7 @@
 		1AD537A12C13A9F200A70D5E /* PlanTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTableFooterView.swift; sourceTree = "<group>"; };
 		2E0671BB2C1DEC14001CDB2E /* CategoryTabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTabTableViewCell.swift; sourceTree = "<group>"; };
 		2E0671BE2C1DF3D3001CDB2E /* CategoryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTabView.swift; sourceTree = "<group>"; };
-		2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryCell.swift; sourceTree = "<group>"; };
+		2E35253F2C1756EF00D82D34 /* DiscoveryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryCollectionViewCell.swift; sourceTree = "<group>"; };
 		2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalSidoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionModalSidoViewController.swift; sourceTree = "<group>"; };
 		2E3B7F762C25614C007D0880 /* DiscoveryRegionModalSigunguViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionModalSigunguViewController.swift; sourceTree = "<group>"; };
 		2E52F2F22C1B7BAB00E7D6D5 /* MyPageBookMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageBookMarkButton.swift; sourceTree = "<group>"; };
@@ -1448,7 +1448,7 @@
 			isa = PBXGroup;
 			children = (
 				378CEC312C0D68C600DF1C3F /* DiscoveryView.swift */,
-				2E35253F2C1756EF00D82D34 /* DiscoveryCell.swift */,
+				2E35253F2C1756EF00D82D34 /* DiscoveryCollectionViewCell.swift */,
 				378CEC372C0D690800DF1C3F /* DiscoveryViewController.swift */,
 			);
 			path = View;
@@ -1682,7 +1682,7 @@
 				378CEC222C0D649D00DF1C3F /* BaseView.swift in Sources */,
 				1AD537982C1362A900A70D5E /* MemoryView.swift in Sources */,
 				1A95EB652C194AB6007D575A /* MemoryAddEditViewController.swift in Sources */,
-				2E3525402C1756EF00D82D34 /* DiscoveryCell.swift in Sources */,
+				2E3525402C1756EF00D82D34 /* DiscoveryCollectionViewCell.swift in Sources */,
 				1AA8617B2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift in Sources */,
 				374DDDDE2C1F43CB0040A5F1 /* PlaceResponseDTO+Mapping.swift in Sources */,
 				1AD537A02C13999600A70D5E /* PlanTableHeaderView.swift in Sources */,

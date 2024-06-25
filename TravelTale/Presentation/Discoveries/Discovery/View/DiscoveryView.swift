@@ -40,19 +40,23 @@ final class DiscoveryView: BaseView {
     }
     
     lazy var touristSpotButton = UIButton().then {
-        $0.configuration = configureButton(titleString: "관광지", image: .touristSpot)
+        $0.tag = 0
+        $0.setImage(.touristSpot, for: .normal)
     }
     
     lazy var restaurantButton = UIButton().then {
-        $0.configuration = configureButton(titleString: "음식점", image: .restaurant)
+        $0.tag = 1
+        $0.setImage(.restaurant, for: .normal)
     }
     
     lazy var accommodationButton = UIButton().then {
-        $0.configuration = configureButton(titleString: "숙박", image: .accommodation)
+        $0.tag = 2
+        $0.setImage(.accommodation, for: .normal)
     }
     
     lazy var entertainmentButton = UIButton().then {
-        $0.configuration = configureButton(titleString: "놀거리", image: .entertainment)
+        $0.tag = 3
+        $0.setImage(.entertainment, for: .normal)
     }
     
     private let recentlyAddedLabel = UILabel().then {
@@ -81,7 +85,7 @@ final class DiscoveryView: BaseView {
         categoryStackView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(24)
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(32)
-            $0.height.equalToSuperview().multipliedBy(0.06572769953)
+            $0.height.equalTo(64)
         }
         
         recentlyAddedLabel.snp.makeConstraints {
@@ -94,27 +98,6 @@ final class DiscoveryView: BaseView {
             $0.top.equalTo(recentlyAddedLabel.snp.bottom).offset(12)
             $0.height.equalTo(476)
         }
-    }
-    
-    private func configureButton(titleString: String,
-                                 titleFont: UIFont = .pretendard(size: 15, weight: .regular),
-                                 image: UIImage,
-                                 imagePlacement: NSDirectionalRectEdge = .top,
-                                 imagePadding: CGFloat = 4,
-                                 imageSize: CGFloat = 35) -> UIButton.Configuration {
-        var configuration = UIButton.Configuration.plain()
-        
-        var title = AttributedString.init(titleString)
-        title.font = titleFont
-        
-        configuration.attributedTitle = title
-        configuration.baseForegroundColor = .black
-        configuration.image = image
-        configuration.imagePlacement = imagePlacement
-        configuration.imagePadding = imagePadding
-        configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: imageSize)
-        
-        return configuration
     }
     
     func setRegionLabel() {

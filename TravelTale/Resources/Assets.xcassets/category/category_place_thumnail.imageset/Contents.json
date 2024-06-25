@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "category_place_thumnail.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

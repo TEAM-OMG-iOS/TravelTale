@@ -25,12 +25,7 @@ final class PlaceDetailViewController: BaseViewController {
                 placeImage.append(image)
             }
             
-            if let image2 = placeDetail.firstImage2 {
-                placeImage.append(image2)
-            }
-            
             placeDetailView.imageCollectionView.reloadData()
-            print("didSet: \(placeImage)")
             
             if let url = extractURL(from: placeDetailData?[0].homepage) {
                 placeDetailView.bind(placeDetail: placeDetail, url: url, isBookMarked: isBookMarked)
@@ -89,7 +84,6 @@ final class PlaceDetailViewController: BaseViewController {
     @objc private func tappedPhoneNumberButton() {
         let PlaceDetailAlertVC = PlaceDetailAlertViewController()
         
-        // TODO: - 전화번호 정보 바인딩
         if let phoneNumber = placeDetailData?[0].tel {
             PlaceDetailAlertVC.setPhoneNumber(phoneNumber: phoneNumber)
         }
@@ -99,7 +93,6 @@ final class PlaceDetailViewController: BaseViewController {
     }
     
     @objc private func tappedWebsiteButton() {
-        // TODO: - 홈페이지 정보 바인딩
         if let homepage = extractURL(from: placeDetailData?[0].homepage), let url = URL(string: homepage){
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
@@ -183,18 +176,12 @@ extension PlaceDetailViewController: UICollectionViewDelegate {
 
 extension PlaceDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // TODO: - 장소 사진 바인딩
-        print("numberOfItems: \(placeImage)")
-        
         return placeImage.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailCollectionViewCell.identifier,
                                                       for: indexPath) as! PlaceDetailCollectionViewCell
-        // TODO: - 장소 사진 바인딩
-        
-        print("cell: \(placeImage)")
         
         cell.bind(image: placeImage[indexPath.row])
         

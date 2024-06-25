@@ -21,6 +21,7 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
     
     private let placeImageView = UIImageView().then {
         $0.configureView(clipsToBounds: true, cornerRadius: 15)
+        $0.image = .categoryPlaceThumnail
     }
     
     private let placeLabel = UILabel().then {
@@ -77,18 +78,14 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
     
     func bind(place: Place) {
         if let firstImage = place.firstImage, let imageURL = URL(string: firstImage) {
-            placeImageView.kf.setImage(with: imageURL, placeholder: UIImage.splashScale)
-        } else {
-            placeImageView.image = UIImage.splashScale
+            placeImageView.kf.setImage(with: imageURL, placeholder: UIImage.categoryPlaceThumnail)
         }
         
-        placeLabel.text = place.title ?? "제목 없음"
+        if let title = place.title {
+            placeLabel.text = place.title
+        }
         
         let placeString = [place.addr1, place.addr2].compactMap { $0 }.joined(separator: " ")
         placeAddressLabel.text = placeString.isEmpty ? "주소 없음" : placeString
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        containerView.backgroundColor = selected ? .green20 : .white
     }
 }

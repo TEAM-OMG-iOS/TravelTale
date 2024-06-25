@@ -46,7 +46,7 @@ final class DiscoveryViewController: BaseViewController {
     override func configureDelegate() {
         discoveryView.collectionView.delegate = self
         discoveryView.collectionView.dataSource = self
-        discoveryView.collectionView.register(DiscoveryCell.self, forCellWithReuseIdentifier: DiscoveryCell.identifier)
+        discoveryView.collectionView.register(DiscoveryCollectionViewCell.self, forCellWithReuseIdentifier: DiscoveryCollectionViewCell.identifier)
     }
     
     override func configureAddTarget() {
@@ -86,10 +86,8 @@ final class DiscoveryViewController: BaseViewController {
         let discoveryCategoryVC = DiscoveryCategoryViewController()
         let categoryArray = ["관광지", "음식점", "숙박", "놀거리"]
         
-        guard let categoryText = sender.titleLabel?.text  else { return }
-        
-        discoveryCategoryVC.navigationItem.title = categoryText
-        discoveryCategoryVC.selectedIndexPath = categoryArray.firstIndex(of: categoryText) ?? 0
+        discoveryCategoryVC.navigationItem.title = categoryArray[sender.tag]
+        discoveryCategoryVC.selectedIndexPath = sender.tag
         
         self.navigationController?.pushViewController(discoveryCategoryVC, animated: true)
     }
@@ -148,7 +146,7 @@ extension DiscoveryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoveryCell.identifier, for: indexPath) as? DiscoveryCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoveryCollectionViewCell.identifier, for: indexPath) as? DiscoveryCollectionViewCell else {
             return UICollectionViewCell()
         }
         

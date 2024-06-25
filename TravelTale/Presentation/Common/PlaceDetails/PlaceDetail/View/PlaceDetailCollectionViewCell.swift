@@ -15,6 +15,7 @@ final class PlaceDetailCollectionViewCell: BaseCollectionViewCell {
     
     private let detailImage = UIImageView().then {
         $0.contentMode = .scaleAspectFit
+        $0.image = .detailPlaceThumnail
     }
     
     // MARK: - methods

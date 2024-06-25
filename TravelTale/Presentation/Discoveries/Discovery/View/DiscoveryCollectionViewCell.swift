@@ -8,10 +8,10 @@
 import UIKit
 import Kingfisher
 
-final class DiscoveryCell: BaseCollectionViewCell {
+final class DiscoveryCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - properties
-    static let identifier = String(describing: DiscoveryCell.self)
+    static let identifier = String(describing: DiscoveryCollectionViewCell.self)
     
     private let placeContainerView = UIView().then {
         $0.backgroundColor = .white
@@ -20,6 +20,7 @@ final class DiscoveryCell: BaseCollectionViewCell {
     private let placeImageView = UIImageView().then {
         $0.configureView(color: .gray20, clipsToBounds: true, cornerRadius: 15)
         $0.tintColor = .white
+        $0.image = .discoveryPlaceThumnail
     }
     
     private let placeLabel = UILabel().then {
@@ -70,7 +71,7 @@ final class DiscoveryCell: BaseCollectionViewCell {
     
     func bind(place: Place) {
         if let imageString = place.firstImage, let image = URL(string: imageString) {
-            placeImageView.kf.setImage(with: image)
+            placeImageView.kf.setImage(with: image, placeholder: UIImage.discoveryPlaceThumnail)
         }
         
         if let place = place.title {
