@@ -70,6 +70,8 @@ final class DiscoveryViewController: BaseViewController {
     @objc private func tappedRegionButton() {
         let discoveryRegionVC = DiscoveryRegionViewController()
         
+        discoveryRegionVC.setRegionLabels()
+        
         discoveryRegionVC.completion = {
             self.discoveryView.setRegionLabel()
             self.fetchPlaceDatas()

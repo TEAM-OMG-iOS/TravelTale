@@ -115,12 +115,11 @@ final class DiscoveryRegionViewController: BaseViewController {
                                                     sigungu: selectedSigungu?.name ?? nil)
     }
     
-    func setRegionLabels(region: String) {
-        if region == DiscoveryView.regionDefaultText {
-            discoveryRegionView.setSidoAndSigunguLabel(sidoText: "시/도를 선택해주세요.", sigunguText: "")
+    func setRegionLabels() {
+        if let region = realmManager.fetchRegion() {
+            discoveryRegionView.setSidoAndSigunguLabel(sidoText: region.sido, sigunguText: region.sigungu ?? "")
         } else {
-            let regionArray = region.components(separatedBy: " ")
-            discoveryRegionView.setSidoAndSigunguLabel(sidoText: regionArray[0], sigunguText: regionArray[1])
+            discoveryRegionView.setSidoAndSigunguLabel(sidoText: "시/도를 선택해주세요.", sigunguText: "")
         }
     }
 }
