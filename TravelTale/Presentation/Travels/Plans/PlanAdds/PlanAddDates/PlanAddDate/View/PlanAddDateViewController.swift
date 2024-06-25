@@ -61,7 +61,7 @@ final class PlanAddDateViewController: BaseViewController {
         alert.addAction(cancel)
         alert.addAction(ok)
         
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
     
     @objc private func tappedCancelButton() {
