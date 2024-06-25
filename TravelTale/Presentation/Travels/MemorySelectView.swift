@@ -20,6 +20,13 @@ final class MemorySelectView: BaseView {
         $0.backgroundColor = .white
     }
     
+    let notFoundView = NotFoundView().then {
+        $0.setLabel(text: """
+여행이 비어있습니다.
+메인에서 여행을 생성해주세요.
+""")
+    }
+    
     let confirmButton = GreenButton().then {
         $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .bold), text: "선택 완료")
     }
@@ -32,6 +39,7 @@ final class MemorySelectView: BaseView {
     
     override func configureHierarchy() {
         [tableView,
+         notFoundView,
          confirmButton].forEach { self.addSubview($0) }
     }
     
@@ -45,6 +53,18 @@ final class MemorySelectView: BaseView {
             $0.top.equalTo(tableView.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(24)
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
+        }
+        
+        notFoundView.snp.makeConstraints {
+            $0.edges.equalTo(tableView)
+        }
+    }
+    
+    func showNotFoundView(_ isNotFound: Bool) {
+        if isNotFound {
+            notFoundView.isHidden = false
+        } else {
+            notFoundView.isHidden = true
         }
     }
     
