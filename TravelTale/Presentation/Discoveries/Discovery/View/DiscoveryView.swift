@@ -35,8 +35,14 @@ final class DiscoveryView: BaseView {
         $0.image = .search.withRenderingMode(.alwaysOriginal)
     }
     
+    private let separatorLine = UIView().then {
+        $0.configureView(color: .gray5)
+    }
+    
     private let categoryStackView = UIStackView().then {
-        $0.distribution = .fillEqually
+        $0.distribution = .fillProportionally
+        $0.alignment = .center
+        $0.spacing = 16
     }
     
     lazy var touristSpotButton = UIButton().then {
@@ -44,15 +50,21 @@ final class DiscoveryView: BaseView {
         $0.setImage(.touristSpot, for: .normal)
     }
     
+    private let line1 = UIImageView(image: .line)
+    
     lazy var restaurantButton = UIButton().then {
         $0.tag = 1
         $0.setImage(.restaurant, for: .normal)
     }
     
+    private let line2 = UIImageView(image: .line)
+    
     lazy var accommodationButton = UIButton().then {
         $0.tag = 2
         $0.setImage(.accommodation, for: .normal)
     }
+    
+    private let line3 = UIImageView(image: .line)
     
     lazy var entertainmentButton = UIButton().then {
         $0.tag = 3
@@ -72,25 +84,35 @@ final class DiscoveryView: BaseView {
     override func configureHierarchy() {
         regionStackView.addArrangedSubview(regionLabelButton)
         regionStackView.addArrangedSubview(regionButton)
+        self.addSubview(separatorLine)
         self.addSubview(categoryStackView)
         categoryStackView.addArrangedSubview(touristSpotButton)
+        categoryStackView.addArrangedSubview(line1)
         categoryStackView.addArrangedSubview(restaurantButton)
+        categoryStackView.addArrangedSubview(line2)
         categoryStackView.addArrangedSubview(accommodationButton)
+        categoryStackView.addArrangedSubview(line3)
         categoryStackView.addArrangedSubview(entertainmentButton)
         self.addSubview(recentlyAddedLabel)
         self.addSubview(collectionView)
     }
     
     override func configureConstraints() {
+        separatorLine.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(8)
+            $0.height.equalTo(6)
+        }
+        
         categoryStackView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(24)
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(32)
+            $0.top.equalTo(separatorLine.snp.bottom).offset(24)
             $0.height.equalTo(64)
         }
         
         recentlyAddedLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(24)
-            $0.top.equalTo(categoryStackView.snp.bottom).offset(48)
+            $0.top.equalTo(categoryStackView.snp.bottom).offset(32)
         }
         
         collectionView.snp.makeConstraints {

@@ -20,7 +20,6 @@ final class DiscoveryCollectionViewCell: BaseCollectionViewCell {
     private let placeImageView = UIImageView().then {
         $0.configureView(color: .gray20, clipsToBounds: true, cornerRadius: 15)
         $0.tintColor = .white
-        $0.image = .discoveryPlaceThumnail
     }
     
     private let placeLabel = UILabel().then {
@@ -28,7 +27,7 @@ final class DiscoveryCollectionViewCell: BaseCollectionViewCell {
     }
     
     private let placeAddressLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 10, weight: .regular), numberOfLines: 2)
+        $0.configureLabel(color: .gray120, font: .pretendard(size: 10, weight: .regular), numberOfLines: 2)
     }
     
     // MARK: - life cycles
@@ -72,6 +71,8 @@ final class DiscoveryCollectionViewCell: BaseCollectionViewCell {
     func bind(place: Place) {
         if let imageString = place.firstImage, let image = URL(string: imageString) {
             placeImageView.kf.setImage(with: image, placeholder: UIImage.discoveryPlaceThumnail)
+        } else {
+            placeImageView.image = .discoveryPlaceThumnail
         }
         
         if let place = place.title {

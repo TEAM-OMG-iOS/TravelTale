@@ -98,7 +98,8 @@ final class PlaceDetailView: BaseView {
     }
     
     private let descriptionLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 14, weight: .medium),
+        $0.configureLabel(color: .gray120, 
+                          font: .pretendard(size: 14, weight: .medium),
                           numberOfLines: 0)
     }
     
@@ -116,7 +117,8 @@ final class PlaceDetailView: BaseView {
     }
     
     private let mapLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 14, weight: .medium),
+        $0.configureLabel(color: .gray120,
+                          font: .pretendard(size: 14, weight: .medium),
                           numberOfLines: 0)
     }
     
@@ -230,8 +232,7 @@ final class PlaceDetailView: BaseView {
         }
         
         imageCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview()
+            $0.horizontalEdges.top.equalToSuperview()
             $0.height.equalTo(collectionViewHeight)
         }
         

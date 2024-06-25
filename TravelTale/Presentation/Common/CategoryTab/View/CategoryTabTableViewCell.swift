@@ -29,7 +29,7 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
     }
     
     private let placeAddressLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 10, weight: .regular), numberOfLines: 0)
+        $0.configureLabel(color: .gray120, font: .pretendard(size: 10, weight: .regular), numberOfLines: 0)
     }
     
     private let bookmarkButton = UIButton().then {
