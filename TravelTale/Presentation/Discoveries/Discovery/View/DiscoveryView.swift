@@ -19,8 +19,8 @@ final class DiscoveryView: BaseView {
     }
     
     let regionButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         $0.tintColor = .black
+        $0.setImage(UIImage(systemName: "chevron.down"), for: .normal)
     }
     
     private let regionStackView = UIStackView().then {
@@ -40,9 +40,9 @@ final class DiscoveryView: BaseView {
     }
     
     private let categoryStackView = UIStackView().then {
-        $0.distribution = .fillProportionally
-        $0.alignment = .center
         $0.spacing = 16
+        $0.alignment = .center
+        $0.distribution = .fillProportionally
     }
     
     lazy var touristSpotButton = UIButton().then {
