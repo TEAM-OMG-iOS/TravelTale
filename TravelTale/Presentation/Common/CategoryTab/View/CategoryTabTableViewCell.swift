@@ -88,4 +88,20 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
         let placeString = [place.addr1, place.addr2].compactMap { $0 }.joined(separator: " ")
         placeAddressLabel.text = placeString.isEmpty ? "주소 없음" : placeString
     }
+    
+    func bind(bookMark: Bookmark) {
+        if let imageData = bookMark.image, let image = UIImage(data: imageData) {
+            placeImageView.image = image
+        }else {
+            placeImageView.image = .discoveryPlaceThumnail
+        }
+        
+        if let title = bookMark.title {
+            placeLabel.text = title
+        }
+        
+        if let placeString = bookMark.address {
+            placeAddressLabel.text = placeString
+        }
+    }
 }

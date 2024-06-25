@@ -13,9 +13,20 @@ final class MyPageCategoryTabEntertainmentViewController: BaseViewController {
     // MARK: - properties
     private let categoryTabView = CategoryTabView()
     
+    private let realmManager = RealmManager.shared
+    private let networkManager = NetworkManager.shared
+    
+    private var bookmarkData: [Bookmark] = []
+    
     // MARK: - life cycles
     override func loadView() {
         view = categoryTabView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        fetchCategoryTab()
     }
     
     // MARK: - methods
@@ -24,6 +35,10 @@ final class MyPageCategoryTabEntertainmentViewController: BaseViewController {
         categoryTabView.tableView.delegate = self
         
         categoryTabView.tableView.register(CategoryTabTableViewCell.self, forCellReuseIdentifier: CategoryTabTableViewCell.identifier)
+    }
+    
+    private func fetchCategoryTab() {
+        bookmarkData = realmManager.fetchBookmarks(contentTypeId: .entertainment)
     }
 }
 
@@ -37,13 +52,14 @@ extension MyPageCategoryTabEntertainmentViewController: IndicatorInfoProvider {
 extension MyPageCategoryTabEntertainmentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: - 데이터 바인딩
-        return 1
+        return bookmarkData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTabTableViewCell.identifier, for: indexPath) as! CategoryTabTableViewCell
         
-        // TODO: - 데이터 바인딩
+        cell.bind(bookMark: bookmarkData[indexPath.row])
+        
         cell.selectionStyle = .none
         
         return cell
@@ -54,7 +70,15 @@ extension MyPageCategoryTabEntertainmentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let placeDetailVC = PlaceDetailViewController()
         
-        // TODO: - 데이터 바인딩
+        networkManager.fetchPlaceDetail(contentId: bookmarkData[indexPath.row].contentId) { result in
+            switch result {
+            case .success(let placeDetails):
+                placeDetailVC.placeDetailData = placeDetails.placeDetails ?? []
+                placeDetailVC.loadView()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
         
         self.navigationController?.pushViewController(placeDetailVC, animated: true)
     }

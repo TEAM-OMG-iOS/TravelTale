@@ -118,7 +118,7 @@ final class DiscoveryRegionViewController: BaseViewController {
     func setRegionLabels(region: String) {
         if region == DiscoveryView.regionDefaultText {
             discoveryRegionView.setSidoAndSigunguLabel(sidoText: "시/도를 선택해주세요.", sigunguText: "")
-        }else {
+        } else {
             let regionArray = region.components(separatedBy: " ")
             discoveryRegionView.setSidoAndSigunguLabel(sidoText: regionArray[0], sigunguText: regionArray[1])
         }

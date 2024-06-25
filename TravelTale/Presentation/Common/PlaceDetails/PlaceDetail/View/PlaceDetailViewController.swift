@@ -13,19 +13,23 @@ final class PlaceDetailViewController: BaseViewController {
     // MARK: - properties
     private let placeDetailView = PlaceDetailView()
     
+    private let realmManager = RealmManager.shared
+    
     private var isBookMarked: Bool = false
     
-    private var placeImage: [String] = []
+    private var placeImage: String = ""
     
     var placeDetailData: [PlaceDetail]? {
         didSet {
             guard let placeDetail = placeDetailData?[0] else { return }
             
             if let image = placeDetail.firstImage {
-                placeImage.append(image)
+                placeImage = image
             }
             
             placeDetailView.imageCollectionView.reloadData()
+            
+            setBookmarkData()
             
             if let url = extractURL(from: placeDetailData?[0].homepage) {
                 placeDetailView.bind(placeDetail: placeDetail, url: url, isBookMarked: isBookMarked)
@@ -38,6 +42,12 @@ final class PlaceDetailViewController: BaseViewController {
     // MARK: - life cycles
     override func loadView() {
         view = placeDetailView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setBookmarkData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,17 +111,45 @@ final class PlaceDetailViewController: BaseViewController {
     }
     
     @objc private func tappedBookMarkButton() {
+        guard let placeDetailData = placeDetailData?[0] else { return }
+        
         if isBookMarked {
             placeDetailView.configureBookMarkButton(isBookMarked: false)
             isBookMarked = false
-        }else {
+            
+            realmManager.deleteBookmark(placeDetail: placeDetailData)
+        } else {
             placeDetailView.configureBookMarkButton(isBookMarked: true)
             isBookMarked = true
+            
+            if let image = URL(string: placeImage) {
+                Task {
+                    do {
+                        let request = URLRequest(url: image)
+                        let (data, response) = try await URLSession.shared.data(for: request)
+                        realmManager.createBookmark(placeDetail: placeDetailData, imageData: data)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            } else {
+                realmManager.createBookmark(placeDetail: placeDetailData, imageData: nil)
+            }
         }
     }
     
     @objc private func tappedAddButton() {
         // TODO: - 일정에 추가하기 페이지로 이동
+    }
+    
+    private func setBookmarkData() {
+        guard let placeDatailData = placeDetailData?[0] else { return }
+        
+        if realmManager.fetchBookmarks(contentTypeId: .total).filter({ $0.contentId == placeDatailData.contentId }).count > 0 {
+            isBookMarked = true
+        } else {
+            isBookMarked = false
+        }
     }
     
     private func configureToast(text: String) {
@@ -171,14 +209,18 @@ extension PlaceDetailViewController: UICollectionViewDelegate {
 
 extension PlaceDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return placeImage.count
+        if placeImage == "" {
+            return 0
+        }else {
+            return 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailCollectionViewCell.identifier,
                                                       for: indexPath) as! PlaceDetailCollectionViewCell
         
-        cell.bind(image: placeImage[indexPath.row])
+        cell.bind(image: placeImage)
         
         return cell
     }
