@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum TabType: String {
+    case travel = "travel"
+    case discovery = "discovery"
+}
+
 final class UserDefaultsManager {
     
     // MARK: - properties
@@ -14,6 +19,7 @@ final class UserDefaultsManager {
     private init() {}
     
     private let keywordKey = "keyword"
+    private let tabTypeKey = "tabType"
     
     // MARK: - methods
     func createKeyword(keyword: String) -> [String] {
@@ -54,5 +60,14 @@ final class UserDefaultsManager {
         UserDefaults.standard.removeObject(forKey: keywordKey)
         
         return fetchKeywords()
+    }
+    
+    func setTabType(type: TabType) {
+        UserDefaults.standard.set(type.rawValue, forKey: tabTypeKey)
+    }
+    
+    func fetchTabType() -> TabType {
+        let rawValue = UserDefaults.standard.string(forKey: tabTypeKey) ?? TabType.discovery.rawValue
+        return TabType(rawValue: rawValue) ?? TabType.discovery
     }
 }
