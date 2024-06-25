@@ -1,5 +1,5 @@
 //
-//  TravelAddCalendarView.swift
+//  PlanAddDateView.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/5/24.
@@ -8,7 +8,7 @@
 import UIKit
 import HorizonCalendar
 
-final class TravelAddCalendarView: BaseView, CalendarBaseView {
+final class PlanAddDateView: BaseView, PlanAddDateCalendarBaseView {
     
     // MARK: - properties
     lazy var calendarView = CalendarView(initialContent: makeContent())
@@ -19,6 +19,9 @@ final class TravelAddCalendarView: BaseView, CalendarBaseView {
     private var selectedDate: Date?
     var selectedDayRange: DayComponentsRange?
     private var selectedDayRangeAtStartOfDrag: DayComponentsRange?
+    
+    var startDate: Date?
+    var endDate: Date?
     
     lazy var dayDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -188,6 +191,8 @@ final class TravelAddCalendarView: BaseView, CalendarBaseView {
     private func setDateLabel() {
         if let startDate = calendar.date(from: selectedDayRange?.lowerBound.components ?? DateComponents()),
            let endDate = calendar.date(from: selectedDayRange?.upperBound.components ?? DateComponents()) {
+            self.startDate = startDate
+            self.endDate = endDate
             setStartDate(startDate: startDate, endDate: endDate)
             
             if startDate == endDate {

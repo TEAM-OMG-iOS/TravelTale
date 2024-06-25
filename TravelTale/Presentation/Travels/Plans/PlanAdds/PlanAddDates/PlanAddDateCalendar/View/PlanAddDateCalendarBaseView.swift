@@ -1,5 +1,5 @@
 //
-//  CalendarBaseView.swift
+//  PlanAddDateCalendarBaseView.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/19/24.
@@ -9,7 +9,7 @@ import UIKit
 import HorizonCalendar
 
 // MARK: - protocol
-protocol CalendarBaseView: BaseView {
+protocol PlanAddDateCalendarBaseView: BaseView {
     var calendar: Calendar { get }
     var monthsLayout: MonthsLayout { get }
     var dayDateFormatter: DateFormatter { get }
@@ -19,7 +19,7 @@ protocol CalendarBaseView: BaseView {
 
 // MARK: - CalendarBaseView
 // 캘린더 뷰를 커스텀
-extension CalendarBaseView {
+extension PlanAddDateCalendarBaseView {
     func makeContent() -> CalendarViewContent {
         let startDate = calendar.date(byAdding: .month, value: 0, to: Date())!
         let endDate = calendar.date(byAdding: .year, value: 3, to: Date())!
@@ -75,7 +75,7 @@ extension CalendarBaseView {
         }
         
         .monthHeaderItemProvider { month in
-            CalendarMonthView.calendarItemModel(
+            PlanAddDateCalendarMonthView.calendarItemModel(
                 invariantViewProperties: .init(
                     font: .pretendard(size: 16, weight: .bold),
                     textColor: .blueBlack100),
@@ -84,7 +84,7 @@ extension CalendarBaseView {
         
         .dayOfWeekItemProvider{ month, weekdayIndex in
             let dayOfWeek = DayOfWeek(rawValue: weekdayIndex) ?? .sun
-            return CalendarMonthDayView.calendarItemModel(
+            return PlanAddDateCalendarMonthDayView.calendarItemModel(
                 invariantViewProperties: .init(
                     font: .pretendard(size: 15, weight: .medium),
                     textColor: .gray70),
@@ -94,7 +94,7 @@ extension CalendarBaseView {
         
         .dayRangeItemProvider(for: dateRanges) { dayRangeLayoutContext in
             let framesOfDaysToHighlight = dayRangeLayoutContext.daysAndFrames.map { $0.frame }
-            return CalendarDayRangeIndicatorView.calendarItemModel(
+            return PlanAddDateCalendarDayRangeIndicatorView.calendarItemModel(
                 invariantViewProperties: .init(),
                 content: .init(framesOfDaysToHighlight: framesOfDaysToHighlight)
             )

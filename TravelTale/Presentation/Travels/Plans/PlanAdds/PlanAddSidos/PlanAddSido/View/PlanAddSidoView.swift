@@ -1,5 +1,5 @@
 //
-//  TravelAddPlaceView.swift
+//  PlanAddSidoView.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/5/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TravelAddPlaceView: BaseView {
+final class PlanAddSidoView: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {
@@ -57,10 +57,6 @@ final class TravelAddPlaceView: BaseView {
     }
     
     // MARK: - methods
-    override func configureUI() {
-        super.configureUI()
-    }
-    
     override func configureHierarchy() {
         [inputTitleLabel,
          placePickButton,
@@ -118,7 +114,9 @@ final class TravelAddPlaceView: BaseView {
         })
     }
     
-    func updatePlacePickButton(text: String) {
-        placePickButton.configureButton(fontColor: .black, font: .pretendard(size: 16, weight: .medium), text: text)
+    func updatePlacePickButton(text: Sido) {
+        placePickButton.configureButton(fontColor: .black, 
+                                        font: .pretendard(size: 16, weight: .medium),
+                                        text: text.name ?? "미정")
     }
 }
