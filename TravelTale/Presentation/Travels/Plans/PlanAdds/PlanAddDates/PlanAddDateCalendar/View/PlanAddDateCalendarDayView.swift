@@ -1,5 +1,5 @@
 //
-//  CalendarMonthView.swift
+//  PlanAddDateCalendarDayView.swift
 //  TravelTale
 //
 //  Created by SAMSUNG on 6/19/24.
@@ -8,21 +8,16 @@
 import UIKit
 import HorizonCalendar
 
-// 월 UI커스텀
-struct CalendarMonthView: CalendarItemViewRepresentable {
+// 일 UI커스텀
+struct PlanAddDateCalendarDayView: CalendarItemViewRepresentable {
     struct InvariantViewProperties: Hashable {
         let font: UIFont
-        let textColor: UIColor
+        var textColor: UIColor
+        var backgroundColor: UIColor
     }
     
     struct Content: Equatable {
-        let month: MonthComponents
-        let year: Int
-        
-        init(month: MonthComponents) {
-            self.month = month
-            self.year = month.year
-        }
+        let day: DayComponents
     }
     
     static func makeView(withInvariantViewProperties invariantViewProperties: InvariantViewProperties) -> UILabel {
@@ -30,12 +25,17 @@ struct CalendarMonthView: CalendarItemViewRepresentable {
         
         label.font = invariantViewProperties.font
         label.textColor = invariantViewProperties.textColor
-        label.textAlignment = .left
+        label.backgroundColor = invariantViewProperties.backgroundColor
+        
+        label.textAlignment = .center
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 6
         
         return label
     }
     
     static func setContent(_ content: Content, on view: UILabel) {
-        view.text = "\(content.year)년 \(content.month.month)월"
+        view.text = "\(content.day.day)"
+        
     }
 }
