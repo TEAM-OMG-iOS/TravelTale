@@ -9,7 +9,7 @@ import UIKit
 
 class NotFoundView: BaseView {
     
-    // MARK: properties
+    // MARK: - properties
     let notFoundStackView = UIStackView().then {
         $0.configureView(color: .white)
         $0.axis = .vertical
@@ -28,7 +28,7 @@ class NotFoundView: BaseView {
                           numberOfLines: 0)
     }
     
-    // MARK: methods
+    // MARK: - methods
     override func configureHierarchy() {
         self.addSubview(notFoundStackView)
         
