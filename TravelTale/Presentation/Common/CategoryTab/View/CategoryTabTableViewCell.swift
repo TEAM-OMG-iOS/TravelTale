@@ -16,14 +16,15 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
     static let identifier = String(describing: CategoryTabTableViewCell.self)
     
     private let containerView = UIView().then {
-        $0.configureView(color: .white, clipsToBounds: true, cornerRadius: 15)
-        $0.layer.borderColor = UIColor.gray20.cgColor
         $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.gray20.cgColor
+        $0.configureView(color: .white, clipsToBounds: true, cornerRadius: 15)
     }
     
     private let placeImageView = UIImageView().then {
-        $0.configureView(clipsToBounds: true, cornerRadius: 15)
         $0.image = .categoryPlaceThumnail
+        $0.contentMode = .scaleAspectFill
+        $0.configureView(clipsToBounds: true, cornerRadius: 15)
     }
     
     private let placeLabel = UILabel().then {
@@ -35,8 +36,8 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
     }
     
     private let bookmarkButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "bookmark"), for: .normal)
         $0.tintColor = .green100
+        $0.setImage(UIImage(systemName: "bookmark"), for: .normal)
     }
     
     // MARK: - methods
@@ -81,6 +82,8 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
     func bind(place: Place) {
         if let firstImage = place.firstImage, let imageURL = URL(string: firstImage) {
             placeImageView.kf.setImage(with: imageURL, placeholder: UIImage.categoryPlaceThumnail)
+        }else {
+            placeImageView.image = .categoryPlaceThumnail
         }
         
         if let title = place.title {
@@ -103,7 +106,7 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
         if let imageData = bookMark.image, let image = UIImage(data: imageData) {
             placeImageView.image = image
         }else {
-            placeImageView.image = .discoveryPlaceThumnail
+            placeImageView.image = .categoryPlaceThumnail
         }
         
         if let title = bookMark.title {
