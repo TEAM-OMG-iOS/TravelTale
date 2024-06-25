@@ -125,9 +125,7 @@ extension DiscoveryViewController: UICollectionViewDelegate {
         
         guard let id = placeDatas[indexPath.row].contentId else { return }
         
-        networkManager.fetchPlaceDetail(contentId: id) { [weak self] result in
-            guard let self = self else { return }
-            
+        networkManager.fetchPlaceDetail(contentId: id) { result in
             switch result {
             case .success(let placeDetail):
                 placeDetailVC.placeDetailData = placeDetail.placeDetails

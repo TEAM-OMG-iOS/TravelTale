@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class CategoryTabTableViewCell: BaseTableViewCell {
     
@@ -37,7 +38,7 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
     
     // MARK: - methods
     override func configureHierarchy() {
-        addSubview(containerView)
+        contentView.addSubview(containerView)
         containerView.addSubview(placeImageView)
         containerView.addSubview(placeLabel)
         containerView.addSubview(placeAddressLabel)
@@ -74,10 +75,17 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
         }
     }
     
-    func bind(placeImage: UIImage, place: String, placeAddress: String) {
-        placeImageView.image = placeImage
-        placeLabel.text = place
-        placeAddressLabel.text = placeAddress
+    func bind(place: Place) {
+        if let firstImage = place.firstImage, let imageURL = URL(string: firstImage) {
+            placeImageView.kf.setImage(with: imageURL, placeholder: UIImage.splashScale)
+        } else {
+            placeImageView.image = UIImage.splashScale
+        }
+        
+        placeLabel.text = place.title ?? "제목 없음"
+        
+        let placeString = [place.addr1, place.addr2].compactMap { $0 }.joined(separator: " ")
+        placeAddressLabel.text = placeString.isEmpty ? "주소 없음" : placeString
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

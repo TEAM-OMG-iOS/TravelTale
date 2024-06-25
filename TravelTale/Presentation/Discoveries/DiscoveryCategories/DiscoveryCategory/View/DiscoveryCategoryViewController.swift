@@ -77,7 +77,7 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
         buttonBarView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(12)
             $0.horizontalEdges.equalToSuperview().inset(24)
-            $0.height.equalTo(40)
+            $0.height.equalTo(40).priority(999)
         }
         
         topBorder.snp.makeConstraints {
