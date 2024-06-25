@@ -21,6 +21,7 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     
     private let timePopoverVC = PopoverTimeViewController()
     private let realmManager = RealmManager.shared
+    private let userDefaults = UserDefaultsManager()
     private let alertMessage = """
 이전으로 돌아가면 작성 내용이 저장되지 않습니다.
 정말 돌아가시겠습니까?
@@ -30,13 +31,13 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     private var selectedDays: String?
     private var selectedTime: Date?
     private var travel: Travel
-    private var placeDetail: PlaceDetail
     private var day: String
     
+    var placeDetail: PlaceDetail?
+    
     // MARK: - life cycles
-    init(travel: Travel, placeDetail: PlaceDetail, day: String) {
+    init(travel: Travel, day: String) {
         self.travel = travel
-        self.placeDetail = placeDetail
         self.day = day
         super.init(nibName: nil, bundle: nil)
     }
@@ -51,6 +52,8 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedDays), name: .selectedDaysUpdated, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedTime), name: .selectedTimeUpdated, object: nil)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(updatePlaceContents), name: .placeSelected, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,14 +107,6 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "a hh:mm"
         return formatter.string(from: date)
-    }
-    
-    private func bindingDays() {
-        scheduleContents.text = selectedDays
-    }
-    
-    private func bindingTime() {
-        startTimeContents.text = dateFormat(date: selectedTime ?? Date())
     }
     
     private func configurePopover(for popoverVC: UIViewController, sourceButton: UIButton) {
@@ -181,7 +176,7 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
               let selectedDays = userInfo["selectedDays"] as? String else { return }
         
         self.selectedDays = selectedDays
-        self.bindingDays()
+        scheduleContents.text = self.selectedDays
         self.checkBlackText()
     }
     
@@ -190,18 +185,26 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
               let selectedTime = userInfo["selectedTime"] as? Date else { return }
         
         self.selectedTime = selectedTime
-        self.bindingTime()
+        startTimeContents.text = dateFormat(date: self.selectedTime ?? Date())
         self.checkBlackText()
+    }
+    
+    @objc func updatePlaceContents(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let selectedPlace = userInfo["dataDetail"] as? PlaceDetail else { return }
+        
+        self.placeDetail = selectedPlace
+        self.placeContents.text = self.placeDetail?.title
     }
     
     @IBAction func tappedPlaceBtn(_ sender: UIButton) {
         let nextVC = SearchResultViewController()
-        // TODO: - 데이터 넣어주기
+        userDefaults.setTabType(type: .travel)
         navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @IBAction func tappedCompletedBtn(_ sender: UIButton) {
-        realmManager.createSchedule(day: day, date: selectedTime!, travel: travel, placeDetail: placeDetail, memo: memoTV.text)
+        realmManager.createSchedule(day: day, date: selectedTime!, travel: travel, placeDetail: placeDetail!, memo: memoTV.text)
         navigationController?.popViewController(animated: true)
     }
     
