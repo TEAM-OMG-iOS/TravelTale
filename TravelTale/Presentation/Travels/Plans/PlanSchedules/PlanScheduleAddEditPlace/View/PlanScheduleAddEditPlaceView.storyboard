@@ -20,7 +20,7 @@
         <!--Plan Schedule Add Place View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="PlaceAdditionView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PlanScheduleAddPlaceViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlanScheduleAddPlaceView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PlanScheduleAddPlaceViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -343,7 +343,7 @@
         <!--Plan Schedule Edit Place View Controller-->
         <scene sceneID="zRI-F5-j7J">
             <objects>
-                <viewController storyboardIdentifier="PlaceEditionView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2P1-mE-glx" customClass="PlanScheduleEditPlaceViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlanScheduleEditPlaceView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2P1-mE-glx" customClass="PlanScheduleEditPlaceViewController" customModule="TravelTale" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AWy-zy-mGa">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
