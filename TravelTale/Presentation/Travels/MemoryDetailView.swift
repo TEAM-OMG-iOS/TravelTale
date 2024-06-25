@@ -7,14 +7,14 @@
 
 import UIKit
 
-final class TravelMemoryDetailView: BaseView {
+final class MemoryDetailView: BaseView {
     
     // MARK: - properties
     let backBarButton = UIBarButtonItem().then {
         $0.style = .done
         $0.image = UIImage(systemName: "chevron.left")
         $0.tintColor = .gray90
-      }
+    }
     
     let editButton = UIButton().then {
         $0.setImage(UIImage(systemName: "pencil.line"),
@@ -27,17 +27,27 @@ final class TravelMemoryDetailView: BaseView {
     
     private let travelInfoStackView = UIStackView().then {
         $0.axis = .horizontal
-    }
-    
-    private let provinceLabel = UILabel().then {
-        $0.configureView(color: .blueBlack100, clipsToBounds: true, cornerRadius: 10)
-        $0.configureLabel(alignment: .center,
-                          color: .white,
-                          font: .pretendard(size: 12, weight: .medium))
-        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        $0.spacing = 4
     }
     
     private let periodLabel = UILabel().then {
+        $0.configureLabel(color: .gray100, font: .oaGothic(size: 10, weight: .medium))
+        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+    }
+    
+    private let separatorLabel = UILabel().then {
+        $0.configureLabel(color: .gray100, font: .oaGothic(size: 10, weight: .medium), text: "|")
+        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+    }
+    
+    private let locationImageView = UIImageView().then {
+        $0.image = .planDetailsLocation
+        $0.tintColor = .gray100
+        $0.contentMode = .scaleAspectFit
+        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+    }
+    
+    private let areaLabel = UILabel().then {
         $0.configureLabel(color: .gray100, font: .oaGothic(size: 10, weight: .medium))
         $0.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
@@ -51,7 +61,7 @@ final class TravelMemoryDetailView: BaseView {
     }
     
     let tableView = UITableView(frame: CGRect.zero, style: .grouped).then {
-        $0.backgroundColor = .clear
+        $0.backgroundColor = .white
     }
     
     // MARK: - methods
@@ -62,7 +72,9 @@ final class TravelMemoryDetailView: BaseView {
          tableView].forEach { self.addSubview($0) }
         
         [periodLabel,
-         provinceLabel].forEach { travelInfoStackView.addArrangedSubview($0) }
+         separatorLabel,
+         locationImageView,
+         areaLabel].forEach { travelInfoStackView.addArrangedSubview($0) }
     }
     
     override func configureConstraints() {
@@ -73,9 +85,8 @@ final class TravelMemoryDetailView: BaseView {
             $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
         }
         
-        provinceLabel.snp.makeConstraints {
-            $0.height.equalTo(22)
-            $0.width.equalTo(38)
+        locationImageView.snp.makeConstraints {
+            $0.size.equalTo(12)
         }
         
         travelTitleLabel.snp.makeConstraints {
@@ -96,9 +107,9 @@ final class TravelMemoryDetailView: BaseView {
         }
     }
     
-//    func bind(travel: Travel) {
-//        provinceLabel.text = travel.province ?? "미정"
-//        periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
-//        travelTitleLabel.text = travel.title
-//    }
+    func bind(travel: Travel) {
+        areaLabel.text = travel.area
+        periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate)
+        travelTitleLabel.text = travel.title
+    }
 }

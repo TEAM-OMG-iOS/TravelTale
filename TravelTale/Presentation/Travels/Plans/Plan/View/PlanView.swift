@@ -7,11 +7,13 @@
 
 import UIKit
 
-final class TravelPlanView: BaseView {
+final class PlanView: BaseView {
     
     // MARK: - properties
     let addButtonView = LightGreenButton()
-    let tableView = UITableView()
+    let tableView = UITableView(frame: CGRect.zero, style: .grouped).then {
+        $0.backgroundColor = .white
+    }
     
     // MARK: - methods
     override func configureUI() {

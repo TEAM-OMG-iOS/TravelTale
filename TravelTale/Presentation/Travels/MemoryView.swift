@@ -7,11 +7,13 @@
 
 import UIKit
 
-final class TravelMemoryView: BaseView {
+final class MemoryView: BaseView {
     
     // MARK: - properties
     let addButtonView = LightGreenButton()
-    let tableView = UITableView()
+    let tableView = UITableView().then {
+        $0.backgroundColor = .white
+    }
     
     // MARK: - methods
     override func configureUI() {
