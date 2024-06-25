@@ -14,8 +14,9 @@ final class DiscoveryViewController: BaseViewController {
     
     private let networkManager = NetworkManager.shared
     
+    private let realmManager = RealmManager.shared
+    
     private let minimumLineSpacing: CGFloat = 16
-    private var regionCode: (String, String) = ("", "")
     
     private var placeDatas: [Place] = [Place(addr1: nil, addr2: nil, contentId: nil, firstImage: nil, title: nil, cpyrhtDivCd: nil)]
     
@@ -39,6 +40,7 @@ final class DiscoveryViewController: BaseViewController {
     // MARK: - methods
     override func configureStyle() {
         configureNavigationBar()
+        discoveryView.setRegionLabel()
     }
     
     override func configureDelegate() {
@@ -68,14 +70,9 @@ final class DiscoveryViewController: BaseViewController {
     @objc private func tappedRegionButton() {
         let discoveryRegionVC = DiscoveryRegionViewController()
         
-        guard let region = discoveryView.regionLabelButton.titleLabel?.text else { return }
-        discoveryRegionVC.setRegionLabels(region: region)
-        
-        discoveryRegionVC.completion = { [weak self] (sido, sigungu) in
-            guard let self = self else { return }
-            regionCode = (sido?.code ?? "", sigungu?.code ?? "")
-            discoveryView.setRegionLable(sido: sido, sigungu: sigungu)
-            fetchPlaceDatas()
+        discoveryRegionVC.completion = {
+            self.discoveryView.setRegionLabel()
+            self.fetchPlaceDatas()
         }
         
         self.navigationController?.pushViewController(discoveryRegionVC, animated: true)
@@ -98,8 +95,15 @@ final class DiscoveryViewController: BaseViewController {
     }
     
     func fetchPlaceDatas() {
-        print(regionCode)
-        networkManager.fetchPlaces(sidoCode: self.regionCode.0, sigunguCode: self.regionCode.1, type: .total, page: 1) { [weak self] result in
+        
+        var sidoCode = "", sigunguCode = ""
+        
+        if let region = realmManager.fetchRegion() {
+            sidoCode = region.sidoCode
+            sigunguCode = region.sigunguCode ?? ""
+        }
+        
+        networkManager.fetchPlaces(sidoCode: sidoCode, sigunguCode: sigunguCode, type: .total, page: 1) { [weak self] result in
             switch result {
             case .success(let places):
                 self?.placeDatas = places.places ?? []
@@ -123,6 +127,7 @@ extension DiscoveryViewController: UICollectionViewDelegate {
         
         networkManager.fetchPlaceDetail(contentId: id) { [weak self] result in
             guard let self = self else { return }
+            
             switch result {
             case .success(let placeDetail):
                 placeDetailVC.placeDetailData = placeDetail.placeDetails
@@ -150,7 +155,7 @@ extension DiscoveryViewController: UICollectionViewDataSource {
         }
         
         cell.bind(place: placeDatas[indexPath.row])
-                        
+        
         return cell
     }
 }

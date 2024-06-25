@@ -10,6 +10,8 @@ import UIKit
 final class DiscoveryView: BaseView {
     
     // MARK: - properties
+    private let realmManager = RealmManager.shared
+    
     static let regionDefaultText = "지역을 설정해주세요"
     
     let regionLabelButton = UIButton().then {
@@ -115,8 +117,10 @@ final class DiscoveryView: BaseView {
         return configuration
     }
     
-    func setRegionLable(sido: Sido?, sigungu: Sigungu?) {
-        let regionString = "\(sido?.name ?? "") \(sigungu?.name ?? "")"
+    func setRegionLabel() {
+        guard let region = realmManager.fetchRegion() else { return }
+        
+        let regionString = "\(region.sido) \(region.sigungu ?? "")"
         regionLabelButton.configureButton(font: .pretendard(size: 18, weight: .bold), text: regionString)
     }
 }
