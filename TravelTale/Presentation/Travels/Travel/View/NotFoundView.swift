@@ -22,8 +22,10 @@ class NotFoundView: BaseView {
     }
     
     let notFoundLabel = UILabel().then {
-        $0.configureLabel(color: .gray70,
-                          font: .pretendard(size: 18, weight: .medium))
+        $0.configureLabel(alignment: .center,
+                          color: .gray70,
+                          font: .pretendard(size: 18, weight: .medium),
+                          numberOfLines: 0)
     }
     
     // MARK: methods
@@ -37,12 +39,15 @@ class NotFoundView: BaseView {
     override func configureConstraints() {
         notFoundStackView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(self.snp.centerY)
+            $0.bottom.equalTo(self.snp.centerY).offset(10)
         }
         
         notFoundImageView.snp.makeConstraints {
-            $0.width.equalTo(192)
             $0.height.equalTo(98)
+        }
+        
+        notFoundLabel.snp.makeConstraints {
+            $0.width.equalTo(250)
         }
     }
     
