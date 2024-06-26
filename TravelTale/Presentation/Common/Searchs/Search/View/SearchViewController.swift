@@ -90,12 +90,15 @@ extension SearchViewController: UISearchBarDelegate {
         let searchResultVC = SearchResultViewController()
         
         searchResultVC.searchText = searchBar.text
-        searchResultVC.completion = { [weak self] in
+        searchResultVC.completion = { [weak self] searchText in
             guard let self = self else { return }
             
+            searchView.searchBar.text = searchText
             keywords = userDefaultsManager.fetchKeywords()
             searchView.tableView.reloadData()
         }
+        
+        searchView.searchBar.text = searchBar.text
         
         if let text = searchBar.text {
             keywords = userDefaultsManager.createKeyword(keyword: text)
@@ -109,15 +112,17 @@ extension SearchViewController: UITableViewDelegate {
         let searchResultVC = SearchResultViewController()
         
         searchResultVC.searchText = keywords[indexPath.row]
-        searchResultVC.completion = { [weak self] in
+        searchResultVC.completion = { [weak self] searchText in
             guard let self = self else { return }
             
+            searchView.searchBar.text = searchText
             keywords = userDefaultsManager.fetchKeywords()
             searchView.tableView.reloadData()
         }
         
-        keywords = userDefaultsManager.createKeyword(keyword: keywords[indexPath.row])
+        searchView.searchBar.text = keywords[indexPath.row]
         
+        keywords = userDefaultsManager.createKeyword(keyword: keywords[indexPath.row])
         navigationController?.pushViewController(searchResultVC, animated: true)
     }
 }

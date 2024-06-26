@@ -43,9 +43,13 @@ final class SearchResultViewController: ButtonBarPagerTabStripViewController {
     
     private let userDefaultsManager = UserDefaultsManager.shared
     
-    var searchText: String?
+    var searchText: String? {
+        didSet {
+            searchBar.text = searchText
+        }
+    }
     
-    var completion: (() -> ())?
+    var completion: ((String) -> ())?
     
     // MARK: - life cycles
     override func viewDidLoad() {
@@ -151,7 +155,7 @@ final class SearchResultViewController: ButtonBarPagerTabStripViewController {
     }
     
     @objc private func tappedBackBarButtonItem() {
-        completion!()
+        completion!(searchBar.text ?? "")
         navigationController?.popViewController(animated: true)
     }
     
