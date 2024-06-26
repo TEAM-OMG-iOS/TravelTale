@@ -35,19 +35,15 @@ final class SearchResultViewController: ButtonBarPagerTabStripViewController {
         $0.backgroundColor = .gray70
     }
     
-    private let totalVC = SearchResultTabTotalViewController()
-    private let touristVC = SearchResultTabTouristViewController()
-    private let restaurantVC = SearchResultTabRestaurantViewController()
-    private let accommodationVC = SearchResultTabAccommodationViewController()
-    private let entertainmentVC = SearchResultTabEntertainmentViewController()
+    private lazy var totalVC = SearchResultTabTotalViewController(searchText: searchText ?? "")
+    private lazy var touristVC = SearchResultTabTouristViewController(searchText: searchText ?? "")
+    private lazy var restaurantVC = SearchResultTabRestaurantViewController(searchText: searchText ?? "")
+    private lazy var accommodationVC = SearchResultTabAccommodationViewController(searchText: searchText ?? "")
+    private lazy var entertainmentVC = SearchResultTabEntertainmentViewController(searchText: searchText ?? "")
     
     private let userDefaultsManager = UserDefaultsManager.shared
     
-    var searchText: String? {
-        didSet {
-            searchBar.text = searchText
-        }
-    }
+    var searchText: String?
     
     var completion: (() -> ())?
     
@@ -167,8 +163,12 @@ final class SearchResultViewController: ButtonBarPagerTabStripViewController {
 // MARK: - extensions
 extension SearchResultViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let text = searchBar.text {
-            let _ = userDefaultsManager.createKeyword(keyword: text)
+        if let searchBarText = searchBar.text, let createKeyword = userDefaultsManager.createKeyword(keyword: searchBarText).first {
+            totalVC.bindRefetchedPlaces(searchText: createKeyword)
+            touristVC.bindRefetchedPlaces(searchText: createKeyword)
+            restaurantVC.bindRefetchedPlaces(searchText: createKeyword)
+            accommodationVC.bindRefetchedPlaces(searchText: createKeyword)
+            entertainmentVC.bindRefetchedPlaces(searchText: createKeyword)
         }
     }
 }
