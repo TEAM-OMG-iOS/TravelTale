@@ -1,6 +1,7 @@
 # 📖 Travel Tale
 
-![Readme Mockup](https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/8164db86-2a88-4db8-becb-8b825eff11eb)
+![readme-mockup](https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/792f417d-bb2e-4afb-afe3-51f7b504ab6d)
+
 
 - 배포 URL : 
 - API : Encoding 키를 config 파일에 입력해수제요.
