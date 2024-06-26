@@ -13,9 +13,20 @@ final class MyPageCategoryTabRestaurantViewController: BaseViewController {
     // MARK: - properties
     private let categoryTabView = CategoryTabView()
     
+    private let realmManager = RealmManager.shared
+    private let networkManager = NetworkManager.shared
+    
+    private var bookmarkData: [Bookmark] = []
+    
     // MARK: - life cycles
     override func loadView() {
         view = categoryTabView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        fetchCategoryTab()
     }
     
     // MARK: - methods
@@ -24,6 +35,10 @@ final class MyPageCategoryTabRestaurantViewController: BaseViewController {
         categoryTabView.tableView.delegate = self
         
         categoryTabView.tableView.register(CategoryTabTableViewCell.self, forCellReuseIdentifier: CategoryTabTableViewCell.identifier)
+    }
+    
+    private func fetchCategoryTab() {
+        bookmarkData = realmManager.fetchBookmarks(contentTypeId: .restaurant)
     }
 }
 
@@ -36,14 +51,14 @@ extension MyPageCategoryTabRestaurantViewController: IndicatorInfoProvider {
 
 extension MyPageCategoryTabRestaurantViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: - 데이터 바인딩
-        return 0
+        return bookmarkData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTabTableViewCell.identifier, for: indexPath) as! CategoryTabTableViewCell
         
-        // TODO: - 데이터 바인딩
+        cell.bind(bookMark: bookmarkData[indexPath.row])
+        
         cell.selectionStyle = .none
         
         return cell
@@ -52,9 +67,14 @@ extension MyPageCategoryTabRestaurantViewController: UITableViewDataSource {
 
 extension MyPageCategoryTabRestaurantViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let placeDetailVC = PlaceDetailViewController()
+        let placeDetailVC = PlaceDetailDiscoveryViewController()
         
-        // TODO: - 데이터 바인딩
+        placeDetailVC.placeId = bookmarkData[indexPath.row].contentId
+        
+        placeDetailVC.completion = {
+            self.fetchCategoryTab()
+            self.categoryTabView.tableView.reloadData()
+        }
         
         self.navigationController?.pushViewController(placeDetailVC, animated: true)
     }

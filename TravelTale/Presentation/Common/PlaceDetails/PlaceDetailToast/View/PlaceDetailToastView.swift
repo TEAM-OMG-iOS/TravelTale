@@ -38,6 +38,6 @@ final class PlaceDetailToastView: BaseView {
     }
     
     func setText(text: String) {
-        label.text = "\(text)가 복사되었습니다."
+        label.text = text
     }
 }

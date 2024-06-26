@@ -27,6 +27,12 @@ final class MyPageCategoryViewController: ButtonBarPagerTabStripViewController {
     
     var selectedIndexPath = 0
     
+    private let totalVC = MyPageCategoryTabTotalViewController()
+    private let touristSpotVC = MyPageCategoryTabTouristSpotViewController()
+    private let restaurantVC = MyPageCategoryTabRestaurantViewController()
+    private let accommodationVC = MyPageCategoryTabAccommodationViewController()
+    private let entertainmentVC = MyPageCategoryTabEntertainmentViewController()
+    
     // MARK: - life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,12 +127,6 @@ final class MyPageCategoryViewController: ButtonBarPagerTabStripViewController {
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let totalVC = MyPageCategoryTabTotalViewController()
-        let touristSpotVC = MyPageCategoryTabTouristSpotViewController()
-        let restaurantVC = MyPageCategoryTabRestaurantViewController()
-        let accommodationVC = MyPageCategoryTabAccommodationViewController()
-        let entertainmentVC = MyPageCategoryTabEntertainmentViewController()
-        
         return [totalVC, touristSpotVC, restaurantVC, accommodationVC, entertainmentVC]
     }
     
