@@ -141,11 +141,11 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
     }
     
     @objc private func tappedAddButton() {
-        let travelSelectVC = TravelSelectViewController()
+        //let travelSelectVC = DetailScheduleSelectViewController()
         
         // TODO: - 내 여행에 추가하기에 placeDetail 정보 넘겨야함.
         
-        navigationController?.pushViewController(travelSelectVC, animated: true)
+        //navigationController?.pushViewController(travelSelectVC, animated: true)
     }
     
     private func fetchPlaceDetailData(id: String) {
