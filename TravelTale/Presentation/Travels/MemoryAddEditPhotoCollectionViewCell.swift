@@ -30,7 +30,7 @@ final class MemoryAddEditPhotoCollectionViewCell: BaseCollectionViewCell {
         contentView.configureView(clipsToBounds: true, cornerRadius: 10)
     }
     
-    override func configureHierarchy() { 
+    override func configureHierarchy() {
         [imageView,
          primaryPhotoLabel].forEach {
             contentView.addSubview($0)

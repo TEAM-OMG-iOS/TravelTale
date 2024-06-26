@@ -13,17 +13,18 @@ final class MemorySelectViewController: BaseViewController {
     // MARK: - properties
     private let memorySelectView = MemorySelectView()
     
-    private var noMemoryTravels: [Travel] = []
+    private var noMemoryTravels: [Travel] = [] {
+        didSet {
+            memorySelectView.showNotFoundView(noMemoryTravels.isEmpty)
+            memorySelectView.tableView.reloadData()
+        }
+    }
     
     private var selectedIndexPath: IndexPath?
     
     // MARK: - life cycles
     override func loadView() {
         view = memorySelectView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
