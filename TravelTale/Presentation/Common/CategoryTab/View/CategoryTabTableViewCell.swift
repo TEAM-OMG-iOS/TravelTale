@@ -91,7 +91,7 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
     func bind(place: Place) {
         if let firstImage = place.firstImage, let imageURL = URL(string: firstImage) {
             placeImageView.kf.setImage(with: imageURL)
-        }else {
+        } else {
             placeImageView.image = .categoryPlaceThumnail
         }
         
@@ -113,7 +113,7 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
     func bind(bookMark: Bookmark) {
         if let imageData = bookMark.image, let image = UIImage(data: imageData) {
             placeImageView.image = image
-        }else {
+        } else {
             placeImageView.image = .categoryPlaceThumnail
         }
         
