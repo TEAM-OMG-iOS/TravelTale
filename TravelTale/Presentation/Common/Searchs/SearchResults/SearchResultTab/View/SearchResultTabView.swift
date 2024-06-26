@@ -36,6 +36,9 @@ final class SearchResultTabView: BaseView {
         if hasPlaces {
             tableView.isHidden = false
             notFoundView.isHidden = true
+        } else {
+            tableView.isHidden = true
+            notFoundView.isHidden = false
         }
     }
 }
