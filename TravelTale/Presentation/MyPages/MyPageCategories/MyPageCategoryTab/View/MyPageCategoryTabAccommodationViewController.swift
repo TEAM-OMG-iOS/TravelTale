@@ -69,15 +69,7 @@ extension MyPageCategoryTabAccommodationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let placeDetailVC = PlaceDetailDiscoveryViewController()
         
-        networkManager.fetchPlaceDetail(contentId: bookmarkData[indexPath.row].contentId) { result in
-            switch result {
-            case .success(let placeDetails):
-                placeDetailVC.placeDetailData = placeDetails.placeDetails ?? []
-                placeDetailVC.loadView()
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        placeDetailVC.placeId = bookmarkData[indexPath.row].contentId
         
         placeDetailVC.completion = {
             self.fetchCategoryTab()

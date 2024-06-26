@@ -128,18 +128,7 @@ extension DiscoveryViewController: UICollectionViewDelegate {
         
         guard let id = placeDatas[indexPath.row].contentId else { return }
         
-        networkManager.fetchPlaceDetail(contentId: id) { result in
-            switch result {
-            case .success(let placeDetail):
-                placeDetailDiscoveryVC.placeDetailData = placeDetail.placeDetails
-                
-                DispatchQueue.main.async {
-                    placeDetailDiscoveryVC.loadView()
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        placeDetailDiscoveryVC.placeId = id
         
         self.navigationController?.pushViewController(placeDetailDiscoveryVC, animated: true)
     }

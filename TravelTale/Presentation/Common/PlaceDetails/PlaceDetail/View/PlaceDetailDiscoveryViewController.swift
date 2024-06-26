@@ -13,19 +13,28 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
     // MARK: - properties
     private let placeDetailView = PlaceDetailView()
     
+    private let networkManager = NetworkManager.shared
     private let realmManager = RealmManager.shared
     
     private var isBookMarked: Bool = false
     
     var completion: (() -> Void)?
     
-    var placeDetailData: [PlaceDetail]? {
+    var placeId: String? {
         didSet {
-            guard let placeDetail = placeDetailData?[0] else { return }
+            guard let id = placeId else { return }
+            
+            fetchPlaceDetailData(id: id)
+        }
+    }
+    
+    private var placeDetailData: PlaceDetail? {
+        didSet {
+            guard let placeDetail = placeDetailData else { return }
             
             setBookmarkData()
             
-            if let url = extractURL(from: placeDetailData?[0].homepage) {
+            if let url = extractURL(from: placeDetail.homepage) {
                 placeDetailView.bind(placeDetail: placeDetail, url: url, isBookMarked: isBookMarked)
             } else {
                 placeDetailView.bind(placeDetail: placeDetail, url: nil, isBookMarked: isBookMarked)
@@ -78,7 +87,7 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
     @objc private func tappedPhoneNumberButton() {
         let PlaceDetailAlertVC = PlaceDetailAlertViewController()
         
-        if let phoneNumber = placeDetailData?[0].tel {
+        if let phoneNumber = placeDetailData?.tel {
             PlaceDetailAlertVC.setPhoneNumber(phoneNumber: phoneNumber)
         }
         
@@ -87,7 +96,7 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
     }
     
     @objc private func tappedWebsiteButton() {
-        if let homepage = extractURL(from: placeDetailData?[0].homepage), let url = URL(string: homepage){
+        if let homepage = extractURL(from: placeDetailData?.homepage), let url = URL(string: homepage){
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
@@ -100,7 +109,7 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
     }
     
     @objc private func tappedBookMarkButton() {
-        guard let placeDetailData = placeDetailData?[0] else { return }
+        guard let placeDetailData = placeDetailData else { return }
         
         if isBookMarked {
             placeDetailView.configureBookMarkButton(isBookMarked: false)
@@ -141,8 +150,23 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
         navigationController?.pushViewController(travelSelectVC, animated: true)
     }
     
+    private func fetchPlaceDetailData(id: String) {
+        networkManager.fetchPlaceDetail(contentId: id) { result in
+            switch result {
+            case .success(let placeDetail):
+                self.placeDetailData = placeDetail.placeDetails?[0]
+                
+                DispatchQueue.main.async {
+                    self.loadView()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     private func setBookmarkData() {
-        guard let placeDatailData = placeDetailData?[0] else { return }
+        guard let placeDatailData = placeDetailData else { return }
         
         if realmManager.fetchBookmarks(contentTypeId: .total).filter({ $0.contentId == placeDatailData.contentId }).count > 0 {
             isBookMarked = true

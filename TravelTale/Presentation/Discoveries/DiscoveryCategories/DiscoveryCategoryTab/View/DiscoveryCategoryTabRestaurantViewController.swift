@@ -107,18 +107,7 @@ extension DiscoveryCategoryTabRestaurantViewController: UITableViewDelegate {
         
         guard let id = placeData[indexPath.row].contentId else { return }
         
-        networkManager.fetchPlaceDetail(contentId: id) { result in
-            switch result {
-            case .success(let placeDetail):
-                placeDetailVC.placeDetailData = placeDetail.placeDetails
-                
-                DispatchQueue.main.async {
-                    placeDetailVC.loadView()
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        placeDetailVC.placeId = id
         
         placeDetailVC.completion = {
             self.categoryTabView.tableView.reloadData()
