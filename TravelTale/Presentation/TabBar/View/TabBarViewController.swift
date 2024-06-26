@@ -42,11 +42,11 @@ final class TabBarViewController: UITabBarController {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
-        self.tabBar.standardAppearance = appearance
         
-        tabBar.backgroundColor = .white
+        tabBar.standardAppearance = appearance
         tabBar.tintColor = .green100
         tabBar.unselectedItemTintColor = .gray80
+        
         configureBorderLine()
         configureMiddleButton()
     }
