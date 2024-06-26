@@ -39,10 +39,14 @@ final class TabBarViewController: UITabBarController {
             items[2].image = UIImage(systemName: "person")
         }
         
-        tabBar.isTranslucent = false
-        tabBar.backgroundColor = .white
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        
+        tabBar.standardAppearance = appearance
         tabBar.tintColor = .green100
         tabBar.unselectedItemTintColor = .gray80
+        
         configureBorderLine()
         configureMiddleButton()
     }
