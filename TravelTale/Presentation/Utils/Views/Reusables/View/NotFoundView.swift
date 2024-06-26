@@ -7,21 +7,21 @@
 
 import UIKit
 
-class NotFoundView: BaseView {
+final class NotFoundView: BaseView {
     
     // MARK: - properties
-    let stackView = UIStackView().then {
+    private let stackView = UIStackView().then {
         $0.configureView(color: .white)
         $0.axis = .vertical
         $0.spacing = 30
     }
     
-    let imageView = UIImageView().then {
+    private let imageView = UIImageView().then {
         $0.image = UIImage(named: "not_found_train")
         $0.contentMode = .scaleAspectFit
     }
     
-    let label = UILabel().then {
+    private let label = UILabel().then {
         $0.configureLabel(alignment: .center,
                           color: .gray70,
                           font: .pretendard(size: 18, weight: .medium),
