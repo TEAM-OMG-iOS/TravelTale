@@ -1,5 +1,5 @@
 //
-//  TravelDetailViewController.swift
+//  PlanDetailViewController.swift
 //  TravelTale
 //
 //  Created by 김정호 on 6/7/24.
@@ -8,17 +8,17 @@
 import UIKit
 import FloatingPanel
 
-final class TravelDetailViewController: BaseViewController {
+final class PlanDetailViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelDetailView = TravelDetailView()
+    private let planDetailView = PlanDetailView()
     
     private let floatingPanelController = FloatingPanelController()
     private let travelDetailPlanViewController = TravelDetailPlanViewController()
     
     // MARK: - life cycles
     override func loadView() {
-        view = travelDetailView
+        view = planDetailView
     }
     
     override func viewDidLoad() {
@@ -44,11 +44,11 @@ final class TravelDetailViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        travelDetailView.backButton.target = self
-        travelDetailView.backButton.action = #selector(tappedBackButton)
+        planDetailView.backButton.target = self
+        planDetailView.backButton.action = #selector(tappedBackButton)
         
-        travelDetailView.settingButton.target = self
-        travelDetailView.settingButton.action = #selector(tappedSettingButton)
+        planDetailView.settingButton.target = self
+        planDetailView.settingButton.action = #selector(tappedSettingButton)
     }
     
     override func configureDelegate() {
@@ -56,8 +56,8 @@ final class TravelDetailViewController: BaseViewController {
     }
     
     private func configureNavigation() {
-        navigationItem.leftBarButtonItem = travelDetailView.backButton
-        navigationItem.rightBarButtonItem = travelDetailView.settingButton
+        navigationItem.leftBarButtonItem = planDetailView.backButton
+        navigationItem.rightBarButtonItem = planDetailView.settingButton
     }
     
     private func configureFloatingPanel() {
@@ -81,7 +81,7 @@ final class TravelDetailViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension TravelDetailViewController: FloatingPanelControllerDelegate {
+extension PlanDetailViewController: FloatingPanelControllerDelegate {
     func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
         travelDetailPlanViewController.panelState = fpc.state
         travelDetailPlanViewController.travelDetailPlanView.tableView.reloadData()
