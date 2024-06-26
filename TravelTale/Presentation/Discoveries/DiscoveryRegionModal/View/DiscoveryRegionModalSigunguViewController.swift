@@ -45,7 +45,7 @@ final class DiscoveryRegionModalSigunguViewController: BaseViewController {
         self.sidoCode = sidoCode
     }
     
-    func requestSigungus() {
+    private func requestSigungus() {
         networkManager.fetchSigungus(sidoCode: sidoCode) { result in
             switch result {
             case .success(let sigungus):
@@ -53,13 +53,9 @@ final class DiscoveryRegionModalSigunguViewController: BaseViewController {
                 self.sigunguData = sigunguData
                 self.regionView.tableView.reloadData()
             case .failure(let error):
-                self.handleError(error)
+                print(error.localizedDescription)
             }
         }
-    }
-    
-    func handleError(_ error: Error) {
-        print("error: \(error)")
     }
 }
 
