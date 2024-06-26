@@ -124,9 +124,17 @@ extension SearchResultTabTotalViewController: IndicatorInfoProvider {
 
 extension SearchResultTabTotalViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let placeDetailViewController = PlaceDetailViewController()
-        
-        navigationController?.pushViewController(placeDetailViewController, animated: true)
+        if tabType == .travel {
+            let placeDetailTravelVC = PlaceDetailTravelViewController()
+            placeDetailTravelVC.placeId = places[indexPath.row].contentId
+            
+            navigationController?.pushViewController(placeDetailTravelVC, animated: true)
+        } else {
+            let placeDetailDiscoveryVC = PlaceDetailDiscoveryViewController()
+            placeDetailDiscoveryVC.placeId = places[indexPath.row].contentId
+            
+            navigationController?.pushViewController(placeDetailDiscoveryVC, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
