@@ -119,8 +119,7 @@ extension DiscoveryCategoryTabTouristSpotViewController: UITableViewDelegate {
 
 extension DiscoveryCategoryTabTouristSpotViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        let shouldFetchMore = indexPaths.contains { $0.row >= placeData.count - 1 }
-        if shouldFetchMore {
+        if indexPaths.contains { $0.row >= placeData.count - 1 } {
             fetchPlaceData()
         }
     }

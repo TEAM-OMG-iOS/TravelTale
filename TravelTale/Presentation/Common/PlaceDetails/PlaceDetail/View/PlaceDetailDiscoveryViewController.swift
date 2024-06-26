@@ -16,7 +16,7 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
     private let networkManager = NetworkManager.shared
     private let realmManager = RealmManager.shared
     
-    private var isBookMarked: Bool = false
+    private var isBookmarked: Bool = false
     
     var completion: (() -> Void)?
     
@@ -35,9 +35,9 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
             setBookmarkData()
             
             if let url = extractURL(from: placeDetailData.homepage) {
-                placeDetailView.bind(placeDetail: placeDetailData, url: url, isBookMarked: isBookMarked)
+                placeDetailView.bind(placeDetail: placeDetailData, url: url, isBookMarked: isBookmarked)
             } else {
-                placeDetailView.bind(placeDetail: placeDetailData, url: nil, isBookMarked: isBookMarked)
+                placeDetailView.bind(placeDetail: placeDetailData, url: nil, isBookMarked: isBookmarked)
             }
         }
     }
@@ -109,16 +109,16 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
     @objc private func tappedBookMarkButton() {
         guard let placeDetailData = placeDetailData else { return }
         
-        if isBookMarked {
+        if isBookmarked {
             placeDetailView.configureBookMarkButton(isBookMarked: false)
-            isBookMarked = false
+            isBookmarked = false
             
             realmManager.deleteBookmark(placeDetail: placeDetailData)
             
             configureToast(text: "북마크에서 삭제되었습니다.")
         } else {
             placeDetailView.configureBookMarkButton(isBookMarked: true)
-            isBookMarked = true
+            isBookmarked = true
             
             if let image = placeDetailData.firstImage, let image = URL(string: image) {
                 Task {
@@ -166,11 +166,7 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
     private func setBookmarkData() {
         guard let placeDatailData = placeDetailData else { return }
         
-        if realmManager.fetchBookmarks(contentTypeId: .total).filter({ $0.contentId == placeDatailData.contentId }).count > 0 {
-            isBookMarked = true
-        } else {
-            isBookMarked = false
-        }
+        isBookmarked = (realmManager.fetchBookmarks(contentTypeId: .total).filter({ $0.contentId == placeDatailData.contentId }).count > 0)
     }
     
     private func configureToast(text: String) {

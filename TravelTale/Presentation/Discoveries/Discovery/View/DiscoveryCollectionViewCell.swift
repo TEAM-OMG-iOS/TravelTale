@@ -71,7 +71,7 @@ final class DiscoveryCollectionViewCell: BaseCollectionViewCell {
     
     func bind(place: Place) {
         if let imageString = place.firstImage, let image = URL(string: imageString) {
-            placeImageView.kf.setImage(with: image, placeholder: UIImage.discoveryPlaceThumnail)
+            placeImageView.kf.setImage(with: image)
         } else {
             placeImageView.image = .discoveryPlaceThumnail
         }

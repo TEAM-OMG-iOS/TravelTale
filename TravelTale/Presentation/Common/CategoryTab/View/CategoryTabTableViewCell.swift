@@ -40,6 +40,15 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
         $0.setImage(UIImage(systemName: "bookmark"), for: .normal)
     }
     
+    // MARK: - life cycles
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        placeImageView.image = nil
+        placeLabel.text = nil
+        placeAddressLabel.text = nil
+    }
+    
     // MARK: - methods
     override func configureHierarchy() {
         contentView.addSubview(containerView)
@@ -81,7 +90,7 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
     
     func bind(place: Place) {
         if let firstImage = place.firstImage, let imageURL = URL(string: firstImage) {
-            placeImageView.kf.setImage(with: imageURL, placeholder: UIImage.categoryPlaceThumnail)
+            placeImageView.kf.setImage(with: imageURL)
         }else {
             placeImageView.image = .categoryPlaceThumnail
         }
@@ -90,8 +99,7 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
             placeLabel.text = place.title
         }
         
-        let placeString = [place.addr1, place.addr2].compactMap { $0 }.joined(separator: " ")
-        placeAddressLabel.text = placeString.isEmpty ? "주소 없음" : placeString
+        placeAddressLabel.text = [place.addr1, place.addr2].compactMap({ $0 }).joined(separator: " ")
         
         guard let id = place.contentId else { return }
         

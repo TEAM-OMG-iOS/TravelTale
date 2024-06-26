@@ -162,9 +162,6 @@ final class PlaceDetailView: BaseView {
     }
     
     let addButton = UIButton().then {
-        $0.configureButton(fontColor: .white,
-                           font: .pretendard(size: 18, weight: .bold),
-                           text: "일정에 추가하기")
         $0.configureView(color: .green100, clipsToBounds: true, cornerRadius: 15)
     }
     
@@ -415,6 +412,7 @@ final class PlaceDetailView: BaseView {
         let centerLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let region = MKCoordinateRegion(center: centerLocation, latitudinalMeters: 400, longitudinalMeters: 400)
         let annotation = MKPointAnnotation()
+        
         annotation.coordinate = centerLocation
         
         mapView.addAnnotation(annotation)

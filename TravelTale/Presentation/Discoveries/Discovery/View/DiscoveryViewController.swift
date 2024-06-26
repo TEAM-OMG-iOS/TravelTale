@@ -13,9 +13,7 @@ final class DiscoveryViewController: BaseViewController {
     private let discoveryView = DiscoveryView()
     
     private let networkManager = NetworkManager.shared
-    
     private let realmManager = RealmManager.shared
-    
 //    private let userDefaultsManager = userDefaultsManager.shared
     
     private let minimumLineSpacing: CGFloat = 16
@@ -97,8 +95,7 @@ final class DiscoveryViewController: BaseViewController {
         self.navigationController?.pushViewController(discoveryCategoryVC, animated: true)
     }
     
-    func fetchPlaceDatas() {
-        
+    private func fetchPlaceDatas() {
         var sidoCode = "", sigunguCode = ""
         
         if let region = realmManager.fetchRegion() {
