@@ -71,8 +71,8 @@
 		371387B02C24986E002C6284 /* SearchResultTabRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387AF2C24986E002C6284 /* SearchResultTabRestaurantViewController.swift */; };
 		371387B22C249883002C6284 /* SearchResultTabAccommodationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387B12C249883002C6284 /* SearchResultTabAccommodationViewController.swift */; };
 		371387B42C2498C2002C6284 /* SearchResultTabEntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387B32C2498C2002C6284 /* SearchResultTabEntertainmentViewController.swift */; };
-		3740FE542C12EE020024E08F /* TravelDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740FE532C12EE020024E08F /* TravelDetailView.swift */; };
-		3740FE562C12EE140024E08F /* TravelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740FE552C12EE140024E08F /* TravelDetailViewController.swift */; };
+		3740FE542C12EE020024E08F /* PlanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740FE532C12EE020024E08F /* PlanDetailView.swift */; };
+		3740FE562C12EE140024E08F /* PlanDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740FE552C12EE140024E08F /* PlanDetailViewController.swift */; };
 		374DDDD22C1F0CBA0040A5F1 /* SidoResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DDDD12C1F0CBA0040A5F1 /* SidoResponseDTO+Mapping.swift */; };
 		374DDDD52C1F2CBD0040A5F1 /* Sido.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DDDD42C1F2CBD0040A5F1 /* Sido.swift */; };
 		374DDDD82C1F3CEB0040A5F1 /* Sigungu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DDDD72C1F3CEB0040A5F1 /* Sigungu.swift */; };
@@ -251,8 +251,8 @@
 		371387AF2C24986E002C6284 /* SearchResultTabRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTabRestaurantViewController.swift; sourceTree = "<group>"; };
 		371387B12C249883002C6284 /* SearchResultTabAccommodationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTabAccommodationViewController.swift; sourceTree = "<group>"; };
 		371387B32C2498C2002C6284 /* SearchResultTabEntertainmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTabEntertainmentViewController.swift; sourceTree = "<group>"; };
-		3740FE532C12EE020024E08F /* TravelDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailView.swift; sourceTree = "<group>"; };
-		3740FE552C12EE140024E08F /* TravelDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailViewController.swift; sourceTree = "<group>"; };
+		3740FE532C12EE020024E08F /* PlanDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailView.swift; sourceTree = "<group>"; };
+		3740FE552C12EE140024E08F /* PlanDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailViewController.swift; sourceTree = "<group>"; };
 		374DDDD12C1F0CBA0040A5F1 /* SidoResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SidoResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		374DDDD42C1F2CBD0040A5F1 /* Sido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sido.swift; sourceTree = "<group>"; };
 		374DDDD72C1F3CEB0040A5F1 /* Sigungu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sigungu.swift; sourceTree = "<group>"; };
@@ -880,7 +880,6 @@
 				37CB880C2C0D796C002798BE /* UILabel+Extension.swift */,
 				37CB880E2C0D7979002798BE /* UIButton+Extension.swift */,
 				37FB88122C25A24400BDA873 /* UIImage+Extension.swift */,
-				1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */,
 				1A713BDF2C22B9A20045DECD /* String+Extension.swift */,
 			);
 			path = Extensions;
@@ -1220,8 +1219,8 @@
 		37E590722C246CEE00999E66 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3740FE532C12EE020024E08F /* TravelDetailView.swift */,
-				3740FE552C12EE140024E08F /* TravelDetailViewController.swift */,
+				3740FE532C12EE020024E08F /* PlanDetailView.swift */,
+				3740FE552C12EE140024E08F /* PlanDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1664,7 +1663,7 @@
 				F193681C2C194D73000AC7B2 /* PlanEditDateViewController.swift in Sources */,
 				378CEBEE2C0D563C00DF1C3F /* SceneDelegate.swift in Sources */,
 				370B83A02C149E66009430B9 /* TravelDetailPlanContentCell.swift in Sources */,
-				3740FE562C12EE140024E08F /* TravelDetailViewController.swift in Sources */,
+				3740FE562C12EE140024E08F /* PlanDetailViewController.swift in Sources */,
 				374DDDD52C1F2CBD0040A5F1 /* Sido.swift in Sources */,
 				374DDDE62C1F69100040A5F1 /* PlaceSearchResponseDTO+Mapping.swift in Sources */,
 				2EF0E3B62C1F203200654025 /* MyPageCategoryTabAccommodationViewController.swift in Sources */,
@@ -1701,12 +1700,11 @@
 				2EC635772C1CEB7D006C1ADB /* DiscoveryCategoryTabAccommodationViewController.swift in Sources */,
 				2EF0E3B42C1F201E00654025 /* MyPageCategoryTabEntertainmentViewController.swift in Sources */,
 				378CEC202C0D649000DF1C3F /* UIFont+Extension.swift in Sources */,
-				F193683B2C21F60E000AC7B2 /* CalendarMonthView.swift in Sources */,
-				F193683F2C21F690000AC7B2 /* CalendarDayRangeIndicatorView.swift in Sources */,
-				F1B301F72C10501000D26B75 /* TravelAddPlaceView.swift in Sources */,
 				F193683B2C21F60E000AC7B2 /* PlanAddDateCalendarMonthView.swift in Sources */,
 				F193683F2C21F690000AC7B2 /* PlanAddDateCalendarDayRangeIndicatorView.swift in Sources */,
-				371387A32C249622002C6284 /* SearchResultView.swift in Sources */,
+				F1B301F72C10501000D26B75 /* PlanAddSidoView.swift in Sources */,
+				F193683B2C21F60E000AC7B2 /* PlanAddDateCalendarMonthView.swift in Sources */,
+				F193683F2C21F690000AC7B2 /* PlanAddDateCalendarDayRangeIndicatorView.swift in Sources */,
 				F1B301F72C10501000D26B75 /* PlanAddSidoView.swift in Sources */,
 				371387B02C24986E002C6284 /* SearchResultTabRestaurantViewController.swift in Sources */,
 				374DDDDC2C1F43B50040A5F1 /* Place.swift in Sources */,
@@ -1737,7 +1735,7 @@
 				37FB88112C258A2A00BDA873 /* SearchResultTabView.swift in Sources */,
 				378CEC1E2C0D644D00DF1C3F /* UIColor+Extension.swift in Sources */,
 				37FB88132C25A24400BDA873 /* UIImage+Extension.swift in Sources */,
-				3740FE542C12EE020024E08F /* TravelDetailView.swift in Sources */,
+				3740FE542C12EE020024E08F /* PlanDetailView.swift in Sources */,
 				F1B301F12C10035F00D26B75 /* PlanAddTitleViewController.swift in Sources */,
 				2ECECE842C2150BB003F7748 /* PlaceDetailDiscoveryViewController.swift in Sources */,
 				F1B301F42C1005DA00D26B75 /* PlanAddTitleView.swift in Sources */,
