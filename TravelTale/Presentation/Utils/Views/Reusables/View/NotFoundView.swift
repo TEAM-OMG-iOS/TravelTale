@@ -39,7 +39,7 @@ class NotFoundView: BaseView {
     override func configureConstraints() {
         stackView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.centerY.equalTo(self.snp.centerY).offset(-30)
+            $0.centerY.equalTo(self.snp.centerY).offset(-20)
         }
         
         imageView.snp.makeConstraints {

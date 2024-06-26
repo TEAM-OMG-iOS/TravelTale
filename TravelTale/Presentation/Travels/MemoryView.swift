@@ -17,7 +17,10 @@ final class MemoryView: BaseView {
     }
     
     let notFoundView = NotFoundView().then {
-        $0.setLabel(text: "기록된 추억이 없습니다.")
+        $0.setLabel(text: """
+기록된 추억이 없습니다.
+'새 여행 추가' 버튼을 눌러주세요.
+""")
     }
     
     // MARK: - methods
@@ -47,7 +50,9 @@ final class MemoryView: BaseView {
         }
         
         notFoundView.snp.makeConstraints {
-            $0.edges.equalTo(tableView)
+            $0.top.equalTo(tableView)
+            $0.horizontalEdges.equalTo(tableView)
+            $0.bottom.equalTo(tableView).offset(-80)
         }
     }
     
