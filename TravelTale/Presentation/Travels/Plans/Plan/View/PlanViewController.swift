@@ -15,6 +15,7 @@ final class PlanViewController: BaseViewController {
     private var travels: [Travel] = [] {
         didSet {
             splitTravels()
+            planView.showNotFoundView(travels.isEmpty)
             planView.tableView.reloadData()
         }
     }
