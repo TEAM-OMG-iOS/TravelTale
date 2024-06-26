@@ -1,5 +1,5 @@
 //
-//  TravelDetailPlanFooterCell.swift
+//  PlanScheduleFooterCell.swift
 //  TravelTale
 //
 //  Created by 김정호 on 6/11/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class TravelDetailPlanFooterCell: BaseTableViewCell {
+final class PlanScheduleFooterCell: BaseTableViewCell {
     
     // MARK: - properties
-    static let identifier = String(describing: TravelDetailPlanFooterCell.self)
+    static let identifier = String(describing: PlanScheduleFooterCell.self)
     
     private let verticalLineView = UIView().then {
         $0.configureView(color: .black)

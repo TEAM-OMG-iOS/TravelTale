@@ -1,5 +1,5 @@
 //
-//  TravelDetailPlanHeaderContentCell.swift
+//  PlanScheduleHeaderContentCell.swift
 //  TravelTale
 //
 //  Created by 김정호 on 6/12/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class TravelDetailPlanHeaderContentCell: BaseCollectionViewCell {
+final class PlanScheduleHeaderContentCell: BaseCollectionViewCell {
     
     // MARK: - properties
-    static let identifier = String(describing: TravelDetailPlanHeaderContentCell.self)
+    static let identifier = String(describing: PlanScheduleHeaderContentCell.self)
     
     private let dayLabel = UILabel().then {
         $0.configureLabel(alignment: .center, color: .green100, font: .oaGothic(size: 15, weight: .heavy))

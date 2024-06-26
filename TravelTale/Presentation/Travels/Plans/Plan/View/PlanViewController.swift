@@ -105,7 +105,7 @@ extension PlanViewController: UITableViewDataSource {
 extension PlanViewController: UITableViewDelegate {
     // cell 선택 시
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let nextVC = TravelDetailViewController()
+        let nextVC = PlanDetailViewController()
         navigationController?.pushViewController(nextVC, animated: true)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

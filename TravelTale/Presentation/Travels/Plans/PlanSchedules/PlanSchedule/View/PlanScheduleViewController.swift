@@ -1,5 +1,5 @@
 //
-//  TravelDetailPlanViewController.swift
+//  PlanScheduleViewController.swift
 //  TravelTale
 //
 //  Created by 김정호 on 6/8/24.
@@ -8,10 +8,10 @@
 import UIKit
 import FloatingPanel
 
-final class TravelDetailPlanViewController: BaseViewController {
+final class PlanScheduleViewController: BaseViewController {
     
     // MARK: - properties
-    let travelDetailPlanView = TravelDetailPlanView()
+    let planScheduleView = PlanScheduleView()
     
     var panelState: FloatingPanelState = .tip
     
@@ -19,7 +19,7 @@ final class TravelDetailPlanViewController: BaseViewController {
     
     // MARK: - life cycles
     override func loadView() {
-        view = travelDetailPlanView
+        view = planScheduleView
     }
     
     override func viewDidLoad() {
@@ -28,18 +28,18 @@ final class TravelDetailPlanViewController: BaseViewController {
     
     // MARK: - methods
     override func configureStyle() {
-        travelDetailPlanView.tableView.separatorStyle = .none
+        planScheduleView.tableView.separatorStyle = .none
     }
     
     override func configureDelegate() {
-        travelDetailPlanView.tableView.dataSource = self
+        planScheduleView.tableView.dataSource = self
         
-        travelDetailPlanView.tableView.register(TravelDetailPlanHeaderCell.self,
-                                                forCellReuseIdentifier: TravelDetailPlanHeaderCell.identifier)
-        travelDetailPlanView.tableView.register(TravelDetailPlanContentCell.self,
-                                                forCellReuseIdentifier: TravelDetailPlanContentCell.identifier)
-        travelDetailPlanView.tableView.register(TravelDetailPlanFooterCell.self,
-                                                forCellReuseIdentifier: TravelDetailPlanFooterCell.identifier)
+        planScheduleView.tableView.register(PlanScheduleHeaderCell.self,
+                                                forCellReuseIdentifier: PlanScheduleHeaderCell.identifier)
+        planScheduleView.tableView.register(PlanScheduleContentCell.self,
+                                                forCellReuseIdentifier: PlanScheduleContentCell.identifier)
+        planScheduleView.tableView.register(PlanScheduleFooterCell.self,
+                                                forCellReuseIdentifier: PlanScheduleFooterCell.identifier)
     }
     
     private func tappedOptionButton(action: UIAction) {
@@ -56,7 +56,7 @@ final class TravelDetailPlanViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension TravelDetailPlanViewController: UITableViewDataSource {
+extension PlanScheduleViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
@@ -73,17 +73,17 @@ extension TravelDetailPlanViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelDetailPlanHeaderCell.identifier, for: indexPath) as? TravelDetailPlanHeaderCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PlanScheduleHeaderCell.identifier, for: indexPath) as? PlanScheduleHeaderCell else { return UITableViewCell() }
             
             cell.selectionStyle = .none
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
-            cell.collectionView.register(TravelDetailPlanHeaderContentCell.self,
-                                         forCellWithReuseIdentifier: TravelDetailPlanHeaderContentCell.identifier)
+            cell.collectionView.register(PlanScheduleHeaderContentCell.self,
+                                         forCellWithReuseIdentifier: PlanScheduleHeaderContentCell.identifier)
             
             return cell
         case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelDetailPlanContentCell.identifier, for: indexPath) as? TravelDetailPlanContentCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PlanScheduleContentCell.identifier, for: indexPath) as? PlanScheduleContentCell else { return UITableViewCell() }
             
             cell.selectionStyle = .none
             cell.optionButton.menu = UIMenu(children: [
@@ -93,7 +93,7 @@ extension TravelDetailPlanViewController: UITableViewDataSource {
             
             return cell
         default:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelDetailPlanFooterCell.identifier, for: indexPath) as? TravelDetailPlanFooterCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PlanScheduleFooterCell.identifier, for: indexPath) as? PlanScheduleFooterCell else { return UITableViewCell() }
             
             cell.selectionStyle = .none
             cell.placeAddButton.addTarget(self, action: #selector(tappedPlaceAddButton), for: .touchUpInside)
@@ -104,25 +104,25 @@ extension TravelDetailPlanViewController: UITableViewDataSource {
     }
 }
 
-extension TravelDetailPlanViewController: UICollectionViewDelegate {
+extension PlanScheduleViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row + 1)
     }
 }
 
-extension TravelDetailPlanViewController: UICollectionViewDataSource {
+extension PlanScheduleViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return temporaryData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TravelDetailPlanHeaderContentCell.identifier, for: indexPath) as? TravelDetailPlanHeaderContentCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlanScheduleHeaderContentCell.identifier, for: indexPath) as? PlanScheduleHeaderContentCell else { return UICollectionViewCell() }
         
         return cell
     }
 }
 
-extension TravelDetailPlanViewController: UICollectionViewDelegateFlowLayout {
+extension PlanScheduleViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSize = ("Day \(indexPath.row + 1)").size(withAttributes: [.font : UIFont.oaGothic(size: 15, weight: .heavy)])
         return CGSize(width: itemSize.width, height: itemSize.height + 7)

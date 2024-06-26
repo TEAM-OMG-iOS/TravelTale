@@ -14,7 +14,7 @@ final class PlanDetailViewController: BaseViewController {
     private let planDetailView = PlanDetailView()
     
     private let floatingPanelController = FloatingPanelController()
-    private let travelDetailPlanViewController = TravelDetailPlanViewController()
+    private let planScheduleViewController = PlanScheduleViewController()
     
     // MARK: - life cycles
     override func loadView() {
@@ -67,7 +67,7 @@ final class PlanDetailViewController: BaseViewController {
         floatingPanelController.contentMode = .fitToBounds
         floatingPanelController.surfaceView.contentPadding = .init(top: 20, left: 0, bottom: 0, right: 0)
         floatingPanelController.layout = TravelDetailFloatingPanelLayout()
-        floatingPanelController.set(contentViewController: travelDetailPlanViewController)
+        floatingPanelController.set(contentViewController: planScheduleViewController)
         floatingPanelController.addPanel(toParent: self)
     }
     
@@ -83,8 +83,8 @@ final class PlanDetailViewController: BaseViewController {
 // MARK: - extensions
 extension PlanDetailViewController: FloatingPanelControllerDelegate {
     func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
-        travelDetailPlanViewController.panelState = fpc.state
-        travelDetailPlanViewController.travelDetailPlanView.tableView.reloadData()
+        planScheduleViewController.panelState = fpc.state
+        planScheduleViewController.planScheduleView.tableView.reloadData()
     }
 }
 
