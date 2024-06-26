@@ -23,7 +23,7 @@ final class MemorySelectView: BaseView {
     let notFoundView = NotFoundView().then {
         $0.setLabel(text: """
 여행이 비어있습니다.
-메인에서 여행을 생성해주세요.
+Plan 탭에서 생성해주세요.
 """)
     }
     
