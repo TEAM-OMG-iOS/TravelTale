@@ -11,13 +11,18 @@ final class DetailScheduleSelectViewController: BaseViewController {
     
     // MARK: - properties
     private let detailScheduleSelectView = DetailScheduleSelectView()
-    private let travels = RealmManager.shared.fetchTravels()
     private let alertMessage = """
 이전으로 돌아가면 작성 내용이 저장되지 않습니다.
 정말 돌아가시겠습니까?
 """
     
     private var preSelectedIndexPath: IndexPath?
+    private var travels = RealmManager.shared.fetchTravels() {
+        didSet {
+            detailScheduleSelectView.showNotFoundView(travels.isEmpty)
+            detailScheduleSelectView.tableView.reloadData()
+        }
+    }
     
     var placeDetail: PlaceDetail
     

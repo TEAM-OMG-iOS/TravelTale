@@ -39,9 +39,16 @@ final class DetailScheduleSelectView: BaseView {
         $0.isEnabled = false
     }
     
+    let notFoundView = NotFoundView().then {
+        $0.setLabel(text: """
+여행이 비어있습니다.
+Plan 탭에서 생성해주세요.
+""")
+    }
+    
     // MARK: - methods
     override func configureHierarchy() {
-        [loadingBackBar, tableViewLabel, tableView, nextBtn].forEach {
+        [loadingBackBar, tableViewLabel, tableView, nextBtn, notFoundView].forEach {
             self.addSubview($0)
         }
         
@@ -79,6 +86,10 @@ final class DetailScheduleSelectView: BaseView {
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(31)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
+        
+        notFoundView.snp.makeConstraints {
+            $0.edges.equalTo(tableView)
+        }
     }
     
     func startLoadingAnimation() {
@@ -102,6 +113,14 @@ final class DetailScheduleSelectView: BaseView {
         } else {
             nextBtn.isEnabled = true
             nextBtn.configureView(color: .green100, cornerRadius: 24)
+        }
+    }
+    
+    func showNotFoundView(_ isNotFound: Bool) {
+        if isNotFound {
+            notFoundView.isHidden = false
+        } else {
+            notFoundView.isHidden = true
         }
     }
 }
