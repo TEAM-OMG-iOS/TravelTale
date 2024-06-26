@@ -30,14 +30,14 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
     
     private var placeDetailData: PlaceDetail? {
         didSet {
-            guard let placeDetail = placeDetailData else { return }
+            guard let placeDetailData = placeDetailData else { return }
             
             setBookmarkData()
             
-            if let url = extractURL(from: placeDetail.homepage) {
-                placeDetailView.bind(placeDetail: placeDetail, url: url, isBookMarked: isBookMarked)
+            if let url = extractURL(from: placeDetailData.homepage) {
+                placeDetailView.bind(placeDetail: placeDetailData, url: url, isBookMarked: isBookMarked)
             } else {
-                placeDetailView.bind(placeDetail: placeDetail, url: nil, isBookMarked: isBookMarked)
+                placeDetailView.bind(placeDetail: placeDetailData, url: nil, isBookMarked: isBookMarked)
             }
         }
     }
@@ -45,13 +45,6 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
     // MARK: - life cycles
     override func loadView() {
         view = placeDetailView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setBookmarkData()
-        placeDetailView.setAddButton(text: "일정에 추가하기")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +60,11 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
     }
     
     // MARK: - methods
+    override func configureStyle() {
+        setBookmarkData()
+        placeDetailView.setAddButton(text: "일정에 추가하기")
+    }
+    
     override func configureDelegate() {
         placeDetailView.mapView.delegate = self
     }
