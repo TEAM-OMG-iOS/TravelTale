@@ -180,6 +180,15 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         self.placeContents.text = self.selectedPlace.title
     }
     
+    private func extractDayNumber(from formattedString: String) -> String? {
+        let components = formattedString.split(separator: " ")
+        if components.count > 1 {
+            let dayNumber = String(components[1])
+            return dayNumber
+        }
+        return ""
+    }
+    
     @objc func updateSelectedDays(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let selectedDays = userInfo["selectedDays"] as? String else { return }
@@ -211,7 +220,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     }
     
     @IBAction func tappedCompletedBtn(_ sender: UIButton) {
-        realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDays, date: selectedTime, internalMemo: memoTV.text)
+        realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDays ?? extractDayNumber(from: scheduleContents.text!), date: selectedTime, internalMemo: memoTV.text)
         navigationController?.popViewController(animated: true)
     }
     

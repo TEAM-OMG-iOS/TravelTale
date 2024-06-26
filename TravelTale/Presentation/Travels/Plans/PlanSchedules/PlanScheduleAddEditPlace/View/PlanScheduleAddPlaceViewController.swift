@@ -144,8 +144,8 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     
     private func configureInitialSchedule(selectedDay: String, alldays: String, travel: Travel) -> String {
         guard let daysCount = Int(selectedDay), let totalDays = Int(alldays), daysCount > 0, daysCount <= totalDays else {
-                return ""
-            }
+            return ""
+        }
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yy년 MM월 dd일"
@@ -177,6 +177,15 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     
     private func checkPlaceDetail() {
         self.placeContents.text = self.placeDetail?.title
+    }
+    
+    private func extractDayNumber(from formattedString: String) -> String? {
+        let components = formattedString.split(separator: " ")
+        if components.count > 1 {
+            let dayNumber = String(components[1])
+            return dayNumber
+        }
+        return ""
     }
     
     @objc func updateSelectedDays(_ notification: Notification) {
@@ -212,7 +221,7 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     }
     
     @IBAction func tappedCompletedBtn(_ sender: UIButton) {
-        realmManager.createSchedule(day: day, date: selectedTime!, travel: travel, placeDetail: placeDetail!, memo: memoTV.text)
+        realmManager.createSchedule(day: extractDayNumber(from: self.selectedDays!) ?? selectedDay, date: selectedTime!, travel: travel, placeDetail: placeDetail!, memo: memoTV.text)
         navigationController?.popViewController(animated: true)
     }
     
