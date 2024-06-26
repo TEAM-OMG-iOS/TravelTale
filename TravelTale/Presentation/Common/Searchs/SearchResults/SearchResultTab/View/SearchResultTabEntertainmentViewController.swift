@@ -90,6 +90,8 @@ final class SearchResultTabEntertainmentViewController: BaseViewController {
         case .failure(_):
             isLoadingLast = true
         }
+        
+        searchResultTabView.bind(hasPlaces: !places.isEmpty)
     }
     
     func bindRefetchedPlaces(searchText: String) {
