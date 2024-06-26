@@ -11,8 +11,16 @@ final class PlanView: BaseView {
     
     // MARK: - properties
     let addButtonView = LightGreenButton()
+    
     let tableView = UITableView(frame: CGRect.zero, style: .grouped).then {
         $0.backgroundColor = .white
+    }
+    
+    let notFoundView = NotFoundView().then {
+        $0.setLabel(text: """
+생성된 여행이 없습니다.
+'새 여행 추가' 버튼을 눌러주세요.
+""")
     }
     
     // MARK: - methods
@@ -23,11 +31,11 @@ final class PlanView: BaseView {
     
     override func configureHierarchy() {
         [addButtonView,
-         tableView].forEach { self.addSubview($0) }
+         tableView,
+         notFoundView].forEach { self.addSubview($0) }
     }
     
     override func configureConstraints() {
-        
         let horizontalInset = 24
         
         addButtonView.snp.makeConstraints {
@@ -39,6 +47,20 @@ final class PlanView: BaseView {
             $0.top.equalTo(addButtonView.snp.bottom).offset(26)
             $0.horizontalEdges.equalToSuperview().inset(horizontalInset)
             $0.bottom.equalToSuperview()
+        }
+        
+        notFoundView.snp.makeConstraints {
+            $0.top.equalTo(tableView)
+            $0.horizontalEdges.equalTo(tableView)
+            $0.bottom.equalTo(tableView).offset(-80)
+        }
+    }
+    
+    func showNotFoundView(_ isNotFound: Bool) {
+        if isNotFound {
+            notFoundView.isHidden = false
+        } else {
+            notFoundView.isHidden = true
         }
     }
 }
