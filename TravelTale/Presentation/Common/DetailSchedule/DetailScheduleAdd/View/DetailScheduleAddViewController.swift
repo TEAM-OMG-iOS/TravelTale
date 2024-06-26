@@ -18,9 +18,9 @@ final class DetailScheduleAddViewController: BaseViewController {
 계속 진행하시겠습니까?
 """
     
-    private lazy var dayPopoverVC = PopoverDayViewController(data: configureData(day: day, travel: selectedTravel), travel: selectedTravel)
+    private lazy var dayPopoverVC = PopoverDayViewController(data: configureData(allDays: allDays, travel: selectedTravel), travel: selectedTravel)
     
-    private var day: String
+    private var allDays: String
     private var selectedTravel: Travel
     private var selectedPlace: PlaceDetail
     
@@ -28,8 +28,8 @@ final class DetailScheduleAddViewController: BaseViewController {
     var selectedTime: Date?
     
     // MARK: - life cycles
-    init(day: String, selectedTravel: Travel, selectedPlace: PlaceDetail) {
-        self.day = day
+    init(allDays: String, selectedTravel: Travel, selectedPlace: PlaceDetail) {
+        self.allDays = allDays
         self.selectedTravel = selectedTravel
         self.selectedPlace = selectedPlace
         super.init(nibName: nil, bundle: nil)
@@ -118,8 +118,8 @@ final class DetailScheduleAddViewController: BaseViewController {
     private func configureBackAlert() {
         let alert = UIAlertController(title: "경고", message: alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
-        let ok = UIAlertAction(title: "확인", style: .destructive) {_ in
-            popToView(pages: 2)
+        let ok = UIAlertAction(title: "확인", style: .destructive) { _ in
+            self.popToView(pages: 2)
         }
         
         alert.addAction(cancel)
@@ -127,8 +127,8 @@ final class DetailScheduleAddViewController: BaseViewController {
         self.present(alert, animated: true)
     }
     
-    private func configureData(day: String, travel: Travel) -> [String] {
-        guard let daysCount = Int(day) else {
+    private func configureData(allDays: String, travel: Travel) -> [String] {
+        guard let daysCount = Int(allDays) else {
             return []
         }
         var results = [String]()
@@ -174,8 +174,8 @@ final class DetailScheduleAddViewController: BaseViewController {
     @objc private func tappedAddScheduleBtn() {
         realmManager.createSchedule(day: selectedDays!, date: selectedTime!, travel: selectedTravel, placeDetail: selectedPlace)
         let alert = UIAlertController(title: "일정 추가 완료", message: "일정 추가가 완료되었습니다.", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "확인", style: .cancel) {
-            popToView(pages: 2)
+        let cancel = UIAlertAction(title: "확인", style: .cancel) { _ in 
+            self.popToView(pages: 2)
         }
         alert.addAction(cancel)
         self.present(alert, animated: true)

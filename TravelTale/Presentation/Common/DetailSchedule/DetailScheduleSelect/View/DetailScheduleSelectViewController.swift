@@ -104,7 +104,7 @@ final class DetailScheduleSelectViewController: BaseViewController {
     @objc private func tappedNextButton() {
         guard let selectedIndexPath = detailScheduleSelectView.tableView.indexPathForSelectedRow else { return }
         let selectedData = travels[selectedIndexPath.row]
-        let nextVC = DetailScheduleAddViewController(day: dayDifference(from: selectedData.startDate, to: selectedData.endDate), selectedTravel: selectedData, selectedPlace: placeDetail)
+        let nextVC = DetailScheduleAddViewController(allDays: dayDifference(from: selectedData.startDate, to: selectedData.endDate), selectedTravel: selectedData, selectedPlace: placeDetail)
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }
