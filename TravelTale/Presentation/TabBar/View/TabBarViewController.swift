@@ -15,8 +15,6 @@ final class TabBarViewController: UITabBarController {
         
         configureViewControllers()
         configureTabBarUI()
-        configureMiddleButton()
-        
         configureNavigationBarAppearance()
     }
     
@@ -41,10 +39,27 @@ final class TabBarViewController: UITabBarController {
             items[2].image = UIImage(systemName: "person")
         }
         
-        tabBar.backgroundColor = .white
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        
+        tabBar.standardAppearance = appearance
         tabBar.tintColor = .green100
         tabBar.unselectedItemTintColor = .gray80
-        tabBar.layer.applyShadow(color: .gray, alpha: 0.3, x: 0, y: 0, blur: 12)
+        
+        configureBorderLine()
+        configureMiddleButton()
+    }
+    
+    private func configureBorderLine() {
+        let borderLine = UIView(frame: CGRect(x: 0,
+                                              y: 0,
+                                              width: self.view.bounds.width,
+                                              height: 1)).then {
+            $0.configureView(color: .gray20)
+        }
+        
+        self.tabBar.addSubview(borderLine)
     }
     
     private func configureMiddleButton() {
@@ -61,8 +76,6 @@ final class TabBarViewController: UITabBarController {
         self.tabBar.addSubview(middleButton)
         
         middleButton.addTarget(self, action: #selector(tappedMiddleButton), for: .touchUpInside)
-        
-        self.view.layoutIfNeeded()
     }
     
     private func configureNavigationBarAppearance() {

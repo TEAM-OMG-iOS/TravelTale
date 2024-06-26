@@ -13,6 +13,7 @@ final class MemoryViewController: BaseViewController {
     private let memoryView = MemoryView()
     private var travels: [Travel] = [] {
         didSet {
+            memoryView.showNotFoundView(travels.isEmpty)
             memoryView.tableView.reloadData()
         }
     }

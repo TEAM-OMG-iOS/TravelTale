@@ -26,19 +26,25 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
 이전으로 돌아가면 작성 내용이 저장되지 않습니다.
 정말 돌아가시겠습니까?
 """
-    private lazy var dayPopoverVC = PopoverDayViewController(data: configureData(day: day, travel: travel), travel: travel)
+    private lazy var dayPopoverVC = PopoverDayViewController(data: configureData(allDays: allDays, travel: travel), travel: travel)
     
     private var selectedDays: String?
     private var selectedTime: Date?
     private var travel: Travel
-    private var day: String
-    
-    var placeDetail: PlaceDetail?
+    private var selectedDay: String
+    private var allDays: String
+    private var placeDetail: PlaceDetail? {
+        didSet {
+            checkPlaceDetail()
+            checkBlackText()
+        }
+    }
     
     // MARK: - life cycles
-    init(travel: Travel, day: String) {
+    init(travel: Travel, selectedDay: String, allDays: String) {
         self.travel = travel
-        self.day = day
+        self.selectedDay = selectedDay
+        self.allDays = allDays
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -48,12 +54,10 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedDays), name: .selectedDaysUpdated, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedTime), name: .selectedTimeUpdated, object: nil)
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(updatePlaceContents), name: .placeSelected, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updatePlaceContents), name: .placeSelected, object: nil)
+        checkBlackText()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +76,7 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     }
     
     override func bind() {
-        scheduleContents.text = configureInitialSchedule(day: day, travel: travel)
+        scheduleContents.text = configureInitialSchedule(selectedDay: selectedDay, alldays: allDays, travel: travel)
     }
     
     private func checkBlackText() {
@@ -138,8 +142,8 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
         self.present(alert, animated: true)
     }
     
-    private func configureInitialSchedule(day: String, travel: Travel) -> String {
-        guard let daysCount = Int(day) else {
+    private func configureInitialSchedule(selectedDay: String, alldays: String, travel: Travel) -> String {
+        guard let daysCount = Int(selectedDay), let totalDays = Int(alldays), daysCount > 0, daysCount <= totalDays else {
             return ""
         }
         
@@ -154,8 +158,8 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
         }
     }
     
-    private func configureData(day: String, travel: Travel) -> [String] {
-        guard let daysCount = Int(day) else {
+    private func configureData(allDays: String, travel: Travel) -> [String] {
+        guard let daysCount = Int(allDays) else {
             return []
         }
         var results = [String]()
@@ -169,6 +173,19 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
             }
         }
         return results
+    }
+    
+    private func checkPlaceDetail() {
+        self.placeContents.text = self.placeDetail?.title
+    }
+    
+    private func extractDayNumber(from formattedString: String) -> String? {
+        let components = formattedString.split(separator: " ")
+        if components.count > 1 {
+            let dayNumber = String(components[1])
+            return dayNumber
+        }
+        return ""
     }
     
     @objc func updateSelectedDays(_ notification: Notification) {
@@ -204,7 +221,7 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     }
     
     @IBAction func tappedCompletedBtn(_ sender: UIButton) {
-        realmManager.createSchedule(day: day, date: selectedTime!, travel: travel, placeDetail: placeDetail!, memo: memoTV.text)
+        realmManager.createSchedule(day: extractDayNumber(from: self.selectedDays!) ?? selectedDay, date: selectedTime!, travel: travel, placeDetail: placeDetail!, memo: memoTV.text)
         navigationController?.popViewController(animated: true)
     }
     
