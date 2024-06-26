@@ -43,7 +43,7 @@ final class NotFoundView: BaseView {
         }
         
         imageView.snp.makeConstraints {
-            $0.height.equalTo(98)
+            $0.height.equalTo(105)
         }
         
         label.snp.makeConstraints {
