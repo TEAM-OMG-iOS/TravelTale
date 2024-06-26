@@ -135,7 +135,7 @@ final class TravelTableViewCell: BaseTableViewCell {
         titleLabel.text = travel.title
         periodLabel.text = String(startDate: travel.startDate,
                                   endDate: travel.endDate)
-        areaNameLabel.text = travel.area ?? "미정"
+        areaNameLabel.text = travel.area
     }
     
     func hideThumbnail() {

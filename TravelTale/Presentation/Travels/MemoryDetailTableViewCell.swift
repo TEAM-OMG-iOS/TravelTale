@@ -22,7 +22,7 @@ final class MemoryDetailTableViewCell: BaseTableViewCell {
         contentView.addSubview(customImageView)
     }
     
-    override func configureConstraints() { 
+    override func configureConstraints() {
         customImageView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(24)
             $0.verticalEdges.equalToSuperview().inset(8)
