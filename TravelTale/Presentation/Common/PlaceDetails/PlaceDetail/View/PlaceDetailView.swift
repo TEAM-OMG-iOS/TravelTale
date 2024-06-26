@@ -435,4 +435,10 @@ final class PlaceDetailView: BaseView {
         
         detailBlurImageView.addSubview(visualEffectView)
     }
+    
+    func setAddButton(text: String) {
+        addButton.configureButton(fontColor: .white,
+                                  font: .pretendard(size: 18, weight: .bold),
+                                  text: text)
+    }
 }
