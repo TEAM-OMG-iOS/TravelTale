@@ -40,16 +40,16 @@
 ## 2. 채택한 개발 기술과 브랜치 전략
 
 ### 3rd Party Libraries
-- Alamofire: https://github.com/Alamofire/Alamofire
-- Kingfisher: https://github.com/onevcat/Kingfisher
-- Then: https://github.com/devxoul/Then
-- Snapkit: https://github.com/SnapKit/SnapKit
-- Realm, RealmDatabase : https://github.com/realm/realm-swift
-- FloatingPanel : https://github.com/scenee/FloatingPanel
-- XLPagerTabStrip : https://github.com/xmartlabs/XLPagerTabStrip
-    - FXPageControl : https://github.com/nicklockwood/FXPageControl
-- HorizonCalendar : https://github.com/airbnb/HorizonCalendar
-- IQKeyboardManager : https://github.com/hackiftekhar/IQKeyboardManager
+- [Alamofire](https://github.com/Alamofire/Alamofire)
+- [Kingfisher](https://github.com/onevcat/Kingfisher)
+- [Then](https://github.com/devxoul/Then)
+- [Snapkit](https://github.com/SnapKit/SnapKit)
+- [Realm, RealmDatabase](https://github.com/realm/realm-swift)
+- [FloatingPanel](https://github.com/scenee/FloatingPanel)
+- [XLPagerTabStrip](https://github.com/xmartlabs/XLPagerTabStrip)
+    - [FXPageControl](https://github.com/nicklockwood/FXPageControl)
+- [HorizonCalendar](https://github.com/airbnb/HorizonCalendar)
+- [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)
 
 
 ### 브랜치 전략
