@@ -33,6 +33,7 @@
 		2E36056B2C19D4CD007DFBC1 /* DiscoveryRegionModalSidoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalSidoViewController.swift */; };
 		2E3B7F772C25614C007D0880 /* DiscoveryRegionModalSigunguViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3B7F762C25614C007D0880 /* DiscoveryRegionModalSigunguViewController.swift */; };
 		2E52F2F32C1B7BAB00E7D6D5 /* MyPageBookMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52F2F22C1B7BAB00E7D6D5 /* MyPageBookMarkButton.swift */; };
+		2E60A40B2C2BEC2C009D39FE /* PlaceDetailTravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E60A40A2C2BEC2C009D39FE /* PlaceDetailTravelViewController.swift */; };
 		2EBBDD482C245FD4006534A9 /* PlaceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE812C2150AD003F7748 /* PlaceDetailView.swift */; };
 		2EC635752C1CD0FF006C1ADB /* DiscoveryCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC635742C1CD0FF006C1ADB /* DiscoveryCategoryViewController.swift */; };
 		2EC635772C1CEB7D006C1ADB /* DiscoveryCategoryTabAccommodationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC635762C1CEB7D006C1ADB /* DiscoveryCategoryTabAccommodationViewController.swift */; };
@@ -40,7 +41,7 @@
 		2EC6357B2C1CED3C006C1ADB /* DiscoveryCategoryTabTouristSpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6357A2C1CED3C006C1ADB /* DiscoveryCategoryTabTouristSpotViewController.swift */; };
 		2EC6357D2C1CED6D006C1ADB /* DiscoveryCategoryTabRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6357C2C1CED6D006C1ADB /* DiscoveryCategoryTabRestaurantViewController.swift */; };
 		2ECECE7F2C211AEA003F7748 /* MyPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE7E2C211AEA003F7748 /* MyPageTableViewCell.swift */; };
-		2ECECE842C2150BB003F7748 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */; };
+		2ECECE842C2150BB003F7748 /* PlaceDetailDiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE832C2150BB003F7748 /* PlaceDetailDiscoveryViewController.swift */; };
 		2ECECE8E2C237928003F7748 /* PlaceDetailToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE8D2C237928003F7748 /* PlaceDetailToastView.swift */; };
 		2ECECE942C238100003F7748 /* PlaceDetailAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE932C238100003F7748 /* PlaceDetailAlertView.swift */; };
 		2ECECE972C238507003F7748 /* PlaceDetailAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE962C238507003F7748 /* PlaceDetailAlertViewController.swift */; };
@@ -211,6 +212,7 @@
 		2E36056A2C19D4CD007DFBC1 /* DiscoveryRegionModalSidoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionModalSidoViewController.swift; sourceTree = "<group>"; };
 		2E3B7F762C25614C007D0880 /* DiscoveryRegionModalSigunguViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryRegionModalSigunguViewController.swift; sourceTree = "<group>"; };
 		2E52F2F22C1B7BAB00E7D6D5 /* MyPageBookMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageBookMarkButton.swift; sourceTree = "<group>"; };
+		2E60A40A2C2BEC2C009D39FE /* PlaceDetailTravelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailTravelViewController.swift; sourceTree = "<group>"; };
 		2EC635742C1CD0FF006C1ADB /* DiscoveryCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryCategoryViewController.swift; sourceTree = "<group>"; };
 		2EC635762C1CEB7D006C1ADB /* DiscoveryCategoryTabAccommodationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryCategoryTabAccommodationViewController.swift; sourceTree = "<group>"; };
 		2EC635782C1CEC03006C1ADB /* DiscoveryCategoryTabEntertainmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryCategoryTabEntertainmentViewController.swift; sourceTree = "<group>"; };
@@ -218,7 +220,7 @@
 		2EC6357C2C1CED6D006C1ADB /* DiscoveryCategoryTabRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryCategoryTabRestaurantViewController.swift; sourceTree = "<group>"; };
 		2ECECE7E2C211AEA003F7748 /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
 		2ECECE812C2150AD003F7748 /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
-		2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
+		2ECECE832C2150BB003F7748 /* PlaceDetailDiscoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailDiscoveryViewController.swift; sourceTree = "<group>"; };
 		2ECECE8D2C237928003F7748 /* PlaceDetailToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailToastView.swift; sourceTree = "<group>"; };
 		2ECECE932C238100003F7748 /* PlaceDetailAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailAlertView.swift; sourceTree = "<group>"; };
 		2ECECE962C238507003F7748 /* PlaceDetailAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailAlertViewController.swift; sourceTree = "<group>"; };
@@ -622,7 +624,8 @@
 			isa = PBXGroup;
 			children = (
 				2ECECE812C2150AD003F7748 /* PlaceDetailView.swift */,
-				2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */,
+				2ECECE832C2150BB003F7748 /* PlaceDetailDiscoveryViewController.swift */,
+				2E60A40A2C2BEC2C009D39FE /* PlaceDetailTravelViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1647,6 +1650,7 @@
 				37961A8B2C2082A6003A994F /* Travel.swift in Sources */,
 				4DA5FBFD2C1EFAE400233A68 /* DaySelectPopoverViewController.swift in Sources */,
 				378CEC342C0D68DE00DF1C3F /* MyPageView.swift in Sources */,
+				2E60A40B2C2BEC2C009D39FE /* PlaceDetailTravelViewController.swift in Sources */,
 				2EC635792C1CEC03006C1ADB /* DiscoveryCategoryTabEntertainmentViewController.swift in Sources */,
 				370B839E2C149AE8009430B9 /* TravelDetailPlanViewController.swift in Sources */,
 				2ECECE942C238100003F7748 /* PlaceDetailAlertView.swift in Sources */,
@@ -1726,7 +1730,7 @@
 				378CEC1E2C0D644D00DF1C3F /* UIColor+Extension.swift in Sources */,
 				3740FE542C12EE020024E08F /* TravelDetailView.swift in Sources */,
 				F1B301F12C10035F00D26B75 /* PlanAddTitleViewController.swift in Sources */,
-				2ECECE842C2150BB003F7748 /* PlaceDetailViewController.swift in Sources */,
+				2ECECE842C2150BB003F7748 /* PlaceDetailDiscoveryViewController.swift in Sources */,
 				F1B301F42C1005DA00D26B75 /* PlanAddTitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

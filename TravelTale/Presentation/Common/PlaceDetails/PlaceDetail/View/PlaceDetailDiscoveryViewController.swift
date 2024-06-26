@@ -8,7 +8,7 @@
 import MapKit
 import UIKit
 
-final class PlaceDetailViewController: BaseViewController {
+final class PlaceDetailDiscoveryViewController: BaseViewController {
     
     // MARK: - properties
     private let placeDetailView = PlaceDetailView()
@@ -42,6 +42,7 @@ final class PlaceDetailViewController: BaseViewController {
         super.viewDidLoad()
         
         setBookmarkData()
+        placeDetailView.setAddButton(text: "일정에 추가하기")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,7 +134,11 @@ final class PlaceDetailViewController: BaseViewController {
     }
     
     @objc private func tappedAddButton() {
-        // TODO: - 일정에 추가하기 페이지로 이동
+        let travelSelectVC = TravelSelectViewController()
+        
+        // TODO: - 내 여행에 추가하기에 placeDetail 정보 넘겨야함.
+        
+        navigationController?.pushViewController(travelSelectVC, animated: true)
     }
     
     private func setBookmarkData() {
@@ -193,7 +198,7 @@ final class PlaceDetailViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension PlaceDetailViewController: MKMapViewDelegate {
+extension PlaceDetailDiscoveryViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: any MKAnnotation) -> MKAnnotationView? {
         let identifier = "CustomAnnotationView"
