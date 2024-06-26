@@ -68,7 +68,7 @@ extension MyPageCategoryTabEntertainmentViewController: UITableViewDataSource {
 
 extension MyPageCategoryTabEntertainmentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let placeDetailVC = PlaceDetailViewController()
+        let placeDetailVC = PlaceDetailDiscoveryViewController()
         
         networkManager.fetchPlaceDetail(contentId: bookmarkData[indexPath.row].contentId) { result in
             switch result {

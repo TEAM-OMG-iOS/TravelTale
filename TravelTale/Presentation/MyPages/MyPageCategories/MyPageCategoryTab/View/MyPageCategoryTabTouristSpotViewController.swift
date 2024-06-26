@@ -67,7 +67,7 @@ extension MyPageCategoryTabTouristSpotViewController: UITableViewDataSource {
 
 extension MyPageCategoryTabTouristSpotViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let placeDetailVC = PlaceDetailViewController()
+        let placeDetailVC = PlaceDetailDiscoveryViewController()
         
         networkManager.fetchPlaceDetail(contentId: bookmarkData[indexPath.row].contentId) { result in
             switch result {

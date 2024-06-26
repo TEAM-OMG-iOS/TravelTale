@@ -103,7 +103,7 @@ extension DiscoveryCategoryTabEntertainmentViewController: UITableViewDataSource
 
 extension DiscoveryCategoryTabEntertainmentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let placeDetailVC = PlaceDetailViewController()
+        let placeDetailVC = PlaceDetailDiscoveryViewController()
         
         guard let id = placeData[indexPath.row].contentId else { return }
         

@@ -16,6 +16,8 @@ final class DiscoveryViewController: BaseViewController {
     
     private let realmManager = RealmManager.shared
     
+//    private let userDefaultsManager = userDefaultsManager.shared
+    
     private let minimumLineSpacing: CGFloat = 16
     
     private var placeDatas: [Place] = [Place(addr1: nil, addr2: nil, contentId: nil, firstImage: nil, title: nil, cpyrhtDivCd: nil)]
@@ -81,7 +83,8 @@ final class DiscoveryViewController: BaseViewController {
     }
     
     @objc private func tappedSearchButton() {
-        // todo : 검색 창 Navi로 띄우기
+        // TODO: - 검색 창 Navi로 띄우기
+        // userDefaultsManager.setTapType(type: .discovery)
     }
     
     @objc private func tappedCategoryButton(_ sender: UIButton) {
@@ -121,24 +124,24 @@ final class DiscoveryViewController: BaseViewController {
 // MARK: - extensions
 extension DiscoveryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let placeDetailVC = PlaceDetailViewController()
+        let placeDetailDiscoveryVC = PlaceDetailDiscoveryViewController()
         
         guard let id = placeDatas[indexPath.row].contentId else { return }
         
         networkManager.fetchPlaceDetail(contentId: id) { result in
             switch result {
             case .success(let placeDetail):
-                placeDetailVC.placeDetailData = placeDetail.placeDetails
+                placeDetailDiscoveryVC.placeDetailData = placeDetail.placeDetails
                 
                 DispatchQueue.main.async {
-                    placeDetailVC.loadView()
+                    placeDetailDiscoveryVC.loadView()
                 }
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
         
-        self.navigationController?.pushViewController(placeDetailVC, animated: true)
+        self.navigationController?.pushViewController(placeDetailDiscoveryVC, animated: true)
     }
 }
 
