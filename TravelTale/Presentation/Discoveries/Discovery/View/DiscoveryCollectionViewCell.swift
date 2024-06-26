@@ -6,19 +6,21 @@
 //
 
 import UIKit
+import Kingfisher
 
-final class DiscoveryCell: BaseCollectionViewCell {
+final class DiscoveryCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - properties
-    static let identifier = String(describing: DiscoveryCell.self)
+    static let identifier = String(describing: DiscoveryCollectionViewCell.self)
     
     private let placeContainerView = UIView().then {
         $0.backgroundColor = .white
     }
     
     private let placeImageView = UIImageView().then {
-        $0.configureView(color: .gray20, clipsToBounds: true, cornerRadius: 15)
         $0.tintColor = .white
+        $0.contentMode = .scaleAspectFill
+        $0.configureView(color: .gray20, clipsToBounds: true, cornerRadius: 15)
     }
     
     private let placeLabel = UILabel().then {
@@ -26,7 +28,7 @@ final class DiscoveryCell: BaseCollectionViewCell {
     }
     
     private let placeAddressLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 10, weight: .regular), numberOfLines: 2)
+        $0.configureLabel(color: .gray120, font: .pretendard(size: 10, weight: .regular), numberOfLines: 2)
     }
     
     // MARK: - life cycles
@@ -67,11 +69,19 @@ final class DiscoveryCell: BaseCollectionViewCell {
         }
     }
     
-    func bind(placeImage: UIImage?, place: String, placeAddress: String) {
-        if let image = placeImage {
-            placeImageView.image = image
+    func bind(place: Place) {
+        if let imageString = place.firstImage, let image = URL(string: imageString) {
+            placeImageView.kf.setImage(with: image)
+        } else {
+            placeImageView.image = .discoveryPlaceThumnail
         }
-        placeLabel.text = place
-        placeAddressLabel.text = placeAddress
+        
+        if let place = place.title {
+            placeLabel.text = place
+        }
+        
+        if let address = place.addr1 {
+            placeAddressLabel.text = address
+        }
     }
 }

@@ -27,6 +27,11 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
     
     var selectedIndexPath = 0
     
+    private let touristSpotVC = DiscoveryCategoryTabTouristSpotViewController()
+    private let restaurantVC = DiscoveryCategoryTabRestaurantViewController()
+    private let accommodationVC = DiscoveryCategoryTabAccommodationViewController()
+    private let entertainmentVC = DiscoveryCategoryTabEntertainmentViewController()
+    
     // MARK: - life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +77,7 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
         buttonBarView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(12)
             $0.horizontalEdges.equalToSuperview().inset(24)
-            $0.height.equalTo(40)
+            $0.height.equalTo(40).priority(999)
         }
         
         topBorder.snp.makeConstraints {
@@ -120,11 +125,6 @@ final class DiscoveryCategoryViewController: ButtonBarPagerTabStripViewControlle
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let touristSpotVC = DiscoveryCategoryTabTouristSpotViewController()
-        let restaurantVC = DiscoveryCategoryTabRestaurantViewController()
-        let accommodationVC = DiscoveryCategoryTabAccommodationViewController()
-        let entertainmentVC = DiscoveryCategoryTabEntertainmentViewController()
-        
         return [touristSpotVC, restaurantVC, accommodationVC, entertainmentVC]
     }
     

@@ -11,7 +11,7 @@ import UIKit
 final class PlaceDetailView: BaseView {
     
     // MARK: - properties
-    private let collectionViewHeight: CGFloat = 350
+    private let imageViewHeight: CGFloat = 300
     private let buttonHeight: CGFloat = 48
     
     private let scrollView = UIScrollView().then {
@@ -23,23 +23,16 @@ final class PlaceDetailView: BaseView {
     private let contentView = UIView()
     
     let backButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         $0.tintColor = .gray90
+        $0.setImage(UIImage(systemName: "chevron.left"), for: .normal)
     }
     
-    lazy var imageCollectionView = UICollectionView(frame: .zero,
-                                               collectionViewLayout: UICollectionViewLayout()).then {
-        $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        $0.isPagingEnabled = true
-        
-        let layout = UICollectionViewFlowLayout()
-        
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.itemSize = .init(width: UIScreen.main.bounds.size.width, height: collectionViewHeight)
-        
-        $0.collectionViewLayout = layout
+    let detailBlurImageView = UIImageView().then {
+        $0.contentMode = .scaleToFill
+    }
+    
+    private let detailImageView = UIImageView().then {
+        $0.contentMode = .scaleAspectFit
     }
     
     private let placeName = UILabel().then {
@@ -98,7 +91,8 @@ final class PlaceDetailView: BaseView {
     }
     
     private let descriptionLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 14, weight: .medium),
+        $0.configureLabel(color: .gray120, 
+                          font: .pretendard(size: 14, weight: .medium),
                           numberOfLines: 0)
     }
     
@@ -116,7 +110,8 @@ final class PlaceDetailView: BaseView {
     }
     
     private let mapLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 14, weight: .medium),
+        $0.configureLabel(color: .gray120,
+                          font: .pretendard(size: 14, weight: .medium),
                           numberOfLines: 0)
     }
     
@@ -129,15 +124,16 @@ final class PlaceDetailView: BaseView {
     private let mapStackView = UIStackView().then {
         $0.spacing = 16
         $0.isHidden = true
-        $0.axis = .horizontal
         $0.alignment = .top
+        $0.axis = .horizontal
         $0.distribution = .fill
     }
     
     let mapView = MKMapView().then {
-        $0.configureView(clipsToBounds: true, cornerRadius: 15)
-        $0.layer.borderColor = UIColor.gray20.cgColor
+        $0.isHidden = true
         $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.gray20.cgColor
+        $0.configureView(clipsToBounds: true, cornerRadius: 15)
     }
     
     private let detailStackView = UIStackView().then {
@@ -166,9 +162,6 @@ final class PlaceDetailView: BaseView {
     }
     
     let addButton = UIButton().then {
-        $0.configureButton(fontColor: .white,
-                           font: .pretendard(size: 18, weight: .bold),
-                           text: "일정에 추가하기")
         $0.configureView(color: .green100, clipsToBounds: true, cornerRadius: 15)
     }
     
@@ -177,8 +170,10 @@ final class PlaceDetailView: BaseView {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         
-        contentView.addSubview(imageCollectionView)
-        contentView.addSubview(backButton)
+        contentView.addSubview(detailBlurImageView)
+        makeBlurEffect(to: detailBlurImageView)
+        detailBlurImageView.addSubview(detailImageView)
+        
         contentView.addSubview(placeName)
         contentView.addSubview(categoryImage)
         contentView.addSubview(categoryName)
@@ -208,10 +203,11 @@ final class PlaceDetailView: BaseView {
         buttonBackground.addSubview(bookMarkButton)
         buttonBackground.addSubview(buttonLine)
         buttonBackground.addSubview(addButton)
+        
+        contentView.addSubview(backButton)
     }
     
     override func configureConstraints() {
-        
         scrollView.snp.makeConstraints {
             $0.horizontalEdges.top.equalToSuperview()
             $0.bottom.equalTo(buttonBackground.snp.top)
@@ -224,19 +220,22 @@ final class PlaceDetailView: BaseView {
         
         backButton.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(24)
-            $0.top.equalTo(safeAreaLayoutGuide).inset(8)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(12)
             $0.size.equalTo(24)
         }
         
-        imageCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(collectionViewHeight)
+        detailBlurImageView.snp.makeConstraints {
+            $0.height.equalTo(imageViewHeight)
+            $0.horizontalEdges.top.equalToSuperview()
+        }
+        
+        detailImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
         
         placeName.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(24)
-            $0.top.equalTo(imageCollectionView.snp.bottom).offset(16)
+            $0.top.equalTo(detailBlurImageView.snp.bottom).offset(16)
         }
         
         categoryImage.snp.makeConstraints {
@@ -314,72 +313,81 @@ final class PlaceDetailView: BaseView {
         }
     }
     
-    func bind(placeName: String,
-              placeCategory: String,
-              placePhoneNumber: String?,
-              placeWebSite: String?,
-              placeDescription: String?,
-              placeAddress: String?,
-              isBookMarked: Bool) {
-        self.placeName.text = placeName
-        configureCategory(category: placeCategory)
+    func bind(placeDetail: PlaceDetail, url: String?, isBookMarked: Bool) {
+        if let image = placeDetail.firstImage, let image = URL(string: image) {
+            detailBlurImageView.kf.setImage(with: image)
+            detailImageView.kf.setImage(with: image)
+        } else {
+            detailBlurImageView.image = .detailPlaceThumnail
+            detailImageView.image = .detailPlaceThumnail
+        }
         
-        configureIfPresent(placePhoneNumber, using: configurePhoneNumber)
-        configureIfPresent(placeWebSite, using: configureWebsite)
-        configureIfPresent(placeDescription, using: configureDescription)
-        configureIfPresent(placeAddress, using: configureMap)
+        if let name = placeDetail.title {
+            self.placeName.text = name
+        }
+        
+        if let typeId = placeDetail.contentTypeId {
+            configureCategory(category: typeId)
+        }
+        
+        if let phoneNumber = placeDetail.tel {
+            if phoneNumber != "" {
+                configureStackView(stackView: phoneNumberStackView, button: phoneNumberButton, text: phoneNumber)
+            }
+        }
+        
+        if let website = url {
+            if website != "" {
+                configureStackView(stackView: websiteStackView, button: websiteButton, text: website)
+            }
+        }
+        
+        if let description = placeDetail.overview {
+            if description != "" {
+                configureStackView(stackView: descriptionStackView, label: descriptionLabel, text: description)
+            }
+        }
+        
+        let address = [placeDetail.addr1, placeDetail.addr2].compactMap { $0 }.joined(separator: " ")
+        
+        if address != "" {
+            configureStackView(stackView: mapStackView, label: mapLabel, text: address)
+        }
         
         configureBookMarkButton(isBookMarked: isBookMarked)
+        
+        if let mapx = placeDetail.mapx, let mapy = placeDetail.mapy,
+            let longitude = Double(mapx), let latitude = Double(mapy) {
+            configureMapView(latitude: latitude, longitude: longitude)
+        }
     }
     
     private func configureCategory(category: String) {
         let categoryConfig: (image: String, text: String) = {
             switch category {
-            case "관광지":
-                return ("building.columns", category)
-            case "음식점":
-                return ("fork.knife", category)
-            case "숙박":
-                return ("tent.fill", category)
-            case "놀거리":
-                return ("balloon.2.fill", category)
+            case "12":
+                return ("building.columns", "관광지")
+            case "39":
+                return ("fork.knife", "음식점")
+            case "32":
+                return ("tent.fill", "숙박")
+            case "15":
+                return ("balloon.2.fill", "놀거리")
             default:
                 return ("star.fill", "카테고리 없음")
             }
         }()
+        
         categoryImage.image = UIImage(systemName: categoryConfig.image)
         categoryName.text = categoryConfig.text
     }
     
-    private func configureIfPresent(_ value: String?, using configure: (String) -> Void) {
-        if let value = value {
-            configure(value)
-        }
-    }
-    
-    private func configurePhoneNumber(phoneNumber: String) {
-        configureStackView(stackView: phoneNumberStackView, button: phoneNumberButton, text: phoneNumber)
-    }
-
-    private func configureWebsite(website: String) {
-        configureStackView(stackView: websiteStackView, button: websiteButton, text: website)
-    }
-
-    private func configureDescription(description: String) {
-        configureStackView(stackView: descriptionStackView, label: descriptionLabel, text: description)
-    }
-
-    private func configureMap(address: String) {
-        configureStackView(stackView: mapStackView, label: mapLabel, text: address)
-    }
-
     private func configureStackView(stackView: UIStackView, button: UIButton? = nil, label: UILabel? = nil, text: String) {
         stackView.isHidden = false
         
-        let attributedString = NSAttributedString(string: text,
-                                                  attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue,
-                                                               .font: UIFont.pretendard(size: 14, weight: .medium),
-                                                               .foregroundColor: UIColor.blue])
+        let attributedString = NSAttributedString(string: text, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue,
+                                                                             .font: UIFont.pretendard(size: 14, weight: .medium),
+                                                                             .foregroundColor: UIColor.blue])
         button?.setAttributedTitle(attributedString, for: .normal)
         
         label?.text = text
@@ -393,10 +401,18 @@ final class PlaceDetailView: BaseView {
         bookMarkButton.tintColor = tintColor
     }
     
-    func configureMapView(latitude: Double, longtitude: Double) {
-        let centerLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
-        let region = MKCoordinateRegion(center: centerLocation, latitudinalMeters: 100, longitudinalMeters: 100)
+    func configureMapView(latitude: Double, longitude: Double) {
+        guard latitude >= -90, latitude <= 90, longitude >= -180, longitude <= 180 else {
+            print("유효하지 않은 위도, 경도 값입니다.")
+            return
+        }
+        
+        mapView.isHidden = false
+        
+        let centerLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let region = MKCoordinateRegion(center: centerLocation, latitudinalMeters: 400, longitudinalMeters: 400)
         let annotation = MKPointAnnotation()
+        
         annotation.coordinate = centerLocation
         
         mapView.addAnnotation(annotation)
@@ -405,5 +421,22 @@ final class PlaceDetailView: BaseView {
     
     func copyAddress() -> String? {
         return mapLabel.text
+    }
+    
+    func makeBlurEffect(to imageView: UIImageView) {
+        let blurEffect = UIBlurEffect(style: .light)
+        let visualEffectView = UIVisualEffectView(effect: blurEffect)
+        
+        visualEffectView.alpha = 1
+        visualEffectView.frame = imageView.bounds
+        visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        detailBlurImageView.addSubview(visualEffectView)
+    }
+    
+    func setAddButton(text: String) {
+        addButton.configureButton(fontColor: .white,
+                                  font: .pretendard(size: 18, weight: .bold),
+                                  text: text)
     }
 }
