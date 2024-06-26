@@ -64,9 +64,8 @@
 		3713879D2C2495B2002C6284 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3713879C2C2495B2002C6284 /* SearchView.swift */; };
 		3713879F2C2495CE002C6284 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3713879E2C2495CE002C6284 /* SearchViewController.swift */; };
 		371387A12C2495F4002C6284 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387A02C2495F4002C6284 /* SearchTableViewCell.swift */; };
-		371387A32C249622002C6284 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387A22C249622002C6284 /* SearchResultView.swift */; };
 		371387A52C249632002C6284 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387A42C249632002C6284 /* SearchResultViewController.swift */; };
-		371387A72C249640002C6284 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387A62C249640002C6284 /* SearchResultTableViewCell.swift */; };
+		371387A72C249640002C6284 /* SearchResultTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387A62C249640002C6284 /* SearchResultTabTableViewCell.swift */; };
 		371387AC2C249803002C6284 /* SearchResultTabTotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387AB2C249803002C6284 /* SearchResultTabTotalViewController.swift */; };
 		371387AE2C249833002C6284 /* SearchResultTabTouristViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387AD2C249833002C6284 /* SearchResultTabTouristViewController.swift */; };
 		371387B02C24986E002C6284 /* SearchResultTabRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371387AF2C24986E002C6284 /* SearchResultTabRestaurantViewController.swift */; };
@@ -139,6 +138,8 @@
 		37E36D872C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E36D862C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift */; };
 		4D0E3CD52C0F36110089D6C1 /* DetailScheduleSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD42C0F36110089D6C1 /* DetailScheduleSelectView.swift */; };
 		4D0E3CD72C0F36280089D6C1 /* DetailScheduleSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CD62C0F36280089D6C1 /* DetailScheduleSelectViewController.swift */; };
+		37FB88112C258A2A00BDA873 /* SearchResultTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB88102C258A2A00BDA873 /* SearchResultTabView.swift */; };
+		37FB88132C25A24400BDA873 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB88122C25A24400BDA873 /* UIImage+Extension.swift */; };
 		4D0E3CDB2C10391A0089D6C1 /* PlanScheduleAddMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDA2C10391A0089D6C1 /* PlanScheduleAddMemoViewController.swift */; };
 		4D0E3CDF2C103D430089D6C1 /* PlanScheduleAddEditMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3CDE2C103D430089D6C1 /* PlanScheduleAddEditMemoView.swift */; };
 		4D0E3CE12C10763C0089D6C1 /* PlanScheduleAddEditPlaceView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D0E3CE02C10763C0089D6C1 /* PlanScheduleAddEditPlaceView.storyboard */; };
@@ -245,9 +246,8 @@
 		3713879C2C2495B2002C6284 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		3713879E2C2495CE002C6284 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		371387A02C2495F4002C6284 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
-		371387A22C249622002C6284 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		371387A42C249632002C6284 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
-		371387A62C249640002C6284 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		371387A62C249640002C6284 /* SearchResultTabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTabTableViewCell.swift; sourceTree = "<group>"; };
 		371387AB2C249803002C6284 /* SearchResultTabTotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTabTotalViewController.swift; sourceTree = "<group>"; };
 		371387AD2C249833002C6284 /* SearchResultTabTouristViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTabTouristViewController.swift; sourceTree = "<group>"; };
 		371387AF2C24986E002C6284 /* SearchResultTabRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTabRestaurantViewController.swift; sourceTree = "<group>"; };
@@ -315,6 +315,8 @@
 		37E36D862C188BFA00F6784A /* TravelDetailPlanHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailPlanHeaderCell.swift; sourceTree = "<group>"; };
 		4D0E3CD42C0F36110089D6C1 /* DetailScheduleSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScheduleSelectView.swift; sourceTree = "<group>"; };
 		4D0E3CD62C0F36280089D6C1 /* DetailScheduleSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScheduleSelectViewController.swift; sourceTree = "<group>"; };
+		37FB88102C258A2A00BDA873 /* SearchResultTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTabView.swift; sourceTree = "<group>"; };
+		37FB88122C25A24400BDA873 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		4D0E3CDA2C10391A0089D6C1 /* PlanScheduleAddMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanScheduleAddMemoViewController.swift; sourceTree = "<group>"; };
 		4D0E3CDE2C103D430089D6C1 /* PlanScheduleAddEditMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanScheduleAddEditMemoView.swift; sourceTree = "<group>"; };
 		4D0E3CE02C10763C0089D6C1 /* PlanScheduleAddEditPlaceView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlanScheduleAddEditPlaceView.storyboard; sourceTree = "<group>"; };
@@ -765,8 +767,6 @@
 		371387A92C249780002C6284 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				371387A22C249622002C6284 /* SearchResultView.swift */,
-				371387A62C249640002C6284 /* SearchResultTableViewCell.swift */,
 				371387A42C249632002C6284 /* SearchResultViewController.swift */,
 			);
 			path = View;
@@ -775,6 +775,8 @@
 		371387AA2C24979B002C6284 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				37FB88102C258A2A00BDA873 /* SearchResultTabView.swift */,
+				371387A62C249640002C6284 /* SearchResultTabTableViewCell.swift */,
 				371387AB2C249803002C6284 /* SearchResultTabTotalViewController.swift */,
 				371387AD2C249833002C6284 /* SearchResultTabTouristViewController.swift */,
 				371387AF2C24986E002C6284 /* SearchResultTabRestaurantViewController.swift */,
@@ -881,6 +883,8 @@
 				37CB88082C0D78C9002798BE /* UIView+Extension.swift */,
 				37CB880C2C0D796C002798BE /* UILabel+Extension.swift */,
 				37CB880E2C0D7979002798BE /* UIButton+Extension.swift */,
+				37FB88122C25A24400BDA873 /* UIImage+Extension.swift */,
+				1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */,
 				1A713BDF2C22B9A20045DECD /* String+Extension.swift */,
 			);
 			path = Extensions;
@@ -1682,8 +1686,8 @@
 				37C08C842C1EF55400F5E308 /* RealmManager.swift in Sources */,
 				2E0671BF2C1DF3D3001CDB2E /* CategoryTabView.swift in Sources */,
 				37CB880F2C0D7979002798BE /* UIButton+Extension.swift in Sources */,
+				371387A72C249640002C6284 /* SearchResultTabTableViewCell.swift in Sources */,
 				1AA861702C1A839D007F69E7 /* MemoryAddEditPhotoCollectionViewCell.swift in Sources */,
-				371387A72C249640002C6284 /* SearchResultTableViewCell.swift in Sources */,
 				374DDDE02C1F4E650040A5F1 /* PlaceDetail.swift in Sources */,
 				37CB88092C0D78C9002798BE /* UIView+Extension.swift in Sources */,
 				F1B302002C10B43F00D26B75 /* PlanAddDateViewController.swift in Sources */,
@@ -1704,6 +1708,9 @@
 				2EC635772C1CEB7D006C1ADB /* DiscoveryCategoryTabAccommodationViewController.swift in Sources */,
 				2EF0E3B42C1F201E00654025 /* MyPageCategoryTabEntertainmentViewController.swift in Sources */,
 				378CEC202C0D649000DF1C3F /* UIFont+Extension.swift in Sources */,
+				F193683B2C21F60E000AC7B2 /* CalendarMonthView.swift in Sources */,
+				F193683F2C21F690000AC7B2 /* CalendarDayRangeIndicatorView.swift in Sources */,
+				F1B301F72C10501000D26B75 /* TravelAddPlaceView.swift in Sources */,
 				F193683B2C21F60E000AC7B2 /* PlanAddDateCalendarMonthView.swift in Sources */,
 				F193683F2C21F690000AC7B2 /* PlanAddDateCalendarDayRangeIndicatorView.swift in Sources */,
 				371387A32C249622002C6284 /* SearchResultView.swift in Sources */,
@@ -1734,7 +1741,9 @@
 				374DDDD82C1F3CEB0040A5F1 /* Sigungu.swift in Sources */,
 				F1B301F92C10501C00D26B75 /* PlanAddSidoViewController.swift in Sources */,
 				3713879F2C2495CE002C6284 /* SearchViewController.swift in Sources */,
+				37FB88112C258A2A00BDA873 /* SearchResultTabView.swift in Sources */,
 				378CEC1E2C0D644D00DF1C3F /* UIColor+Extension.swift in Sources */,
+				37FB88132C25A24400BDA873 /* UIImage+Extension.swift in Sources */,
 				3740FE542C12EE020024E08F /* TravelDetailView.swift in Sources */,
 				F1B301F12C10035F00D26B75 /* PlanAddTitleViewController.swift in Sources */,
 				2ECECE842C2150BB003F7748 /* PlaceDetailDiscoveryViewController.swift in Sources */,
