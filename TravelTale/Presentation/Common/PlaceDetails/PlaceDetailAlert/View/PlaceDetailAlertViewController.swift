@@ -50,7 +50,7 @@ final class PlaceDetailAlertViewController: BaseViewController {
     
     @objc private func tappedPhoneNumberCopyButton() {
         UIPasteboard.general.string = phoneNumber
-        configureToast(text: "전화번호")
+        configureToast(text: "전화번호가 복사되었습니다.")
     }
     
     private func configureToast(text: String) {

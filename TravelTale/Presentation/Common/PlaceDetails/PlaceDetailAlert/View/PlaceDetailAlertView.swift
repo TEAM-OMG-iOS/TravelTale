@@ -25,8 +25,8 @@ final class PlaceDetailAlertView: BaseView {
     }
     
     let callButton = UIButton().then {
-        $0.configureButton(fontColor: .black, font: .pretendard(size: 14, weight: .medium), text: "전화 걸기")
         $0.contentHorizontalAlignment = .left
+        $0.configureButton(fontColor: .black, font: .pretendard(size: 14, weight: .medium), text: "전화 걸기")
     }
     
     private let firstLine = UIView().then {
@@ -34,8 +34,8 @@ final class PlaceDetailAlertView: BaseView {
     }
     
     let copyPhoneNumberButton = UIButton().then {
-        $0.configureButton(fontColor: .black, font: .pretendard(size: 14, weight: .medium), text: "전화번호 복사하기")
         $0.contentHorizontalAlignment = .left
+        $0.configureButton(fontColor: .black, font: .pretendard(size: 14, weight: .medium), text: "전화번호 복사하기")
     }
     
     private let secondLine = UIView().then {

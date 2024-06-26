@@ -8,12 +8,39 @@
 import MapKit
 import UIKit
 
-final class PlaceDetailViewController: BaseViewController {
+final class PlaceDetailDiscoveryViewController: BaseViewController {
     
     // MARK: - properties
     private let placeDetailView = PlaceDetailView()
     
-    private var isBookMarked: Bool = false
+    private let networkManager = NetworkManager.shared
+    private let realmManager = RealmManager.shared
+    
+    private var isBookmarked: Bool = false
+    
+    var completion: (() -> Void)?
+    
+    var placeId: String? {
+        didSet {
+            guard let id = placeId else { return }
+            
+            fetchPlaceDetailData(id: id)
+        }
+    }
+    
+    private var placeDetailData: PlaceDetail? {
+        didSet {
+            guard let placeDetailData = placeDetailData else { return }
+            
+            setBookmarkData()
+            
+            if let url = extractURL(from: placeDetailData.homepage) {
+                placeDetailView.bind(placeDetail: placeDetailData, url: url, isBookMarked: isBookmarked)
+            } else {
+                placeDetailView.bind(placeDetail: placeDetailData, url: nil, isBookMarked: isBookmarked)
+            }
+        }
+    }
     
     // MARK: - life cycles
     override func loadView() {
@@ -33,13 +60,12 @@ final class PlaceDetailViewController: BaseViewController {
     }
     
     // MARK: - methods
+    override func configureStyle() {
+        setBookmarkData()
+        placeDetailView.setAddButton(text: "일정에 추가하기")
+    }
+    
     override func configureDelegate() {
-        placeDetailView.imageCollectionView.dataSource = self
-        placeDetailView.imageCollectionView.delegate = self
-        
-        placeDetailView.imageCollectionView.register(PlaceDetailCollectionViewCell.self, 
-                                                     forCellWithReuseIdentifier: PlaceDetailCollectionViewCell.identifier)
-        
         placeDetailView.mapView.delegate = self
     }
     
@@ -59,15 +85,16 @@ final class PlaceDetailViewController: BaseViewController {
     @objc private func tappedPhoneNumberButton() {
         let PlaceDetailAlertVC = PlaceDetailAlertViewController()
         
-        // TODO: - 전화번호 정보 바인딩
-        PlaceDetailAlertVC.setPhoneNumber(phoneNumber: "010-5145-7665")
+        if let phoneNumber = placeDetailData?.tel {
+            PlaceDetailAlertVC.setPhoneNumber(phoneNumber: phoneNumber)
+        }
+        
         PlaceDetailAlertVC.modalPresentationStyle = .overFullScreen
         present(PlaceDetailAlertVC, animated: false)
     }
     
     @objc private func tappedWebsiteButton() {
-        // TODO: - 홈페이지 정보 바인딩
-        if let url = URL(string: "https://www.naver.com") {
+        if let homepage = extractURL(from: placeDetailData?.homepage), let url = URL(string: homepage){
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
@@ -76,21 +103,70 @@ final class PlaceDetailViewController: BaseViewController {
         if let address = placeDetailView.copyAddress() {
             UIPasteboard.general.string = address
         }
-        configureToast(text: "주소")
+        configureToast(text: "주소가 복사되었습니다.")
     }
     
     @objc private func tappedBookMarkButton() {
-        if isBookMarked {
+        guard let placeDetailData = placeDetailData else { return }
+        
+        if isBookmarked {
             placeDetailView.configureBookMarkButton(isBookMarked: false)
-            isBookMarked = false
-        }else {
+            isBookmarked = false
+            
+            realmManager.deleteBookmark(placeDetail: placeDetailData)
+            
+            configureToast(text: "북마크에서 삭제되었습니다.")
+        } else {
             placeDetailView.configureBookMarkButton(isBookMarked: true)
-            isBookMarked = true
+            isBookmarked = true
+            
+            if let image = placeDetailData.firstImage, let image = URL(string: image) {
+                Task {
+                    do {
+                        let request = URLRequest(url: image)
+                        let (data, _) = try await URLSession.shared.data(for: request)
+                        realmManager.createBookmark(placeDetail: placeDetailData, imageData: data)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            } else {
+                realmManager.createBookmark(placeDetail: placeDetailData, imageData: nil)
+            }
+            
+            configureToast(text: "북마크에 추가되었습니다.")
         }
+        
+        completion?()
     }
     
     @objc private func tappedAddButton() {
-        // TODO: - 일정에 추가하기 페이지로 이동
+        //let travelSelectVC = DetailScheduleSelectViewController()
+        
+        // TODO: - 내 여행에 추가하기에 placeDetail 정보 넘겨야함.
+        
+        //navigationController?.pushViewController(travelSelectVC, animated: true)
+    }
+    
+    private func fetchPlaceDetailData(id: String) {
+        networkManager.fetchPlaceDetail(contentId: id) { result in
+            switch result {
+            case .success(let placeDetail):
+                self.placeDetailData = placeDetail.placeDetails?[0]
+                
+                DispatchQueue.main.async {
+                    self.loadView()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func setBookmarkData() {
+        guard let placeDatailData = placeDetailData else { return }
+        
+        isBookmarked = (realmManager.fetchBookmarks(contentTypeId: .total).filter({ $0.contentId == placeDatailData.contentId }).count > 0)
     }
     
     private func configureToast(text: String) {
@@ -119,32 +195,28 @@ final class PlaceDetailViewController: BaseViewController {
             $0.height.equalTo(44)
         }
     }
+    
+    private func extractURL(from htmlString: String?) -> String? {
+        guard let htmlString = htmlString else { return nil }
+        
+        do {
+            let regex = try NSRegularExpression(pattern: "<a href=\"([^\"]*)\"", options: [])
+            let nsString = htmlString as NSString
+            let results = regex.matches(in: htmlString, options: [], range: NSMakeRange(0, nsString.length))
+            if let match = results.first {
+                let url = nsString.substring(with: match.range(at: 1))
+                return url
+            }
+        } catch let error {
+            print("Error : \(error.localizedDescription)")
+        }
+        
+        return nil
+    }
 }
 
 // MARK: - extensions
-extension PlaceDetailViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height)
-    }
-}
-
-extension PlaceDetailViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // TODO: - 장소 사진 바인딩
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailCollectionViewCell.identifier,
-                                                      for: indexPath) as! PlaceDetailCollectionViewCell
-        // TODO: - 장소 사진 바인딩
-        return cell
-    }
-}
-
-extension PlaceDetailViewController: MKMapViewDelegate {
+extension PlaceDetailDiscoveryViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: any MKAnnotation) -> MKAnnotationView? {
         let identifier = "CustomAnnotationView"
@@ -154,6 +226,7 @@ extension PlaceDetailViewController: MKMapViewDelegate {
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView?.canShowCallout = true
+            
         } else {
             annotationView?.annotation = annotation
         }
@@ -163,9 +236,9 @@ extension PlaceDetailViewController: MKMapViewDelegate {
         let size = CGSize(width: 80, height: 100)
         UIGraphicsBeginImageContext(size)
         annotationImage.draw(in: CGRect(origin: .zero, size: size))
+        
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
         annotationView?.image = resizedImage
         
         return annotationView

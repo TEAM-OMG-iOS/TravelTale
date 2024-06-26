@@ -24,7 +24,9 @@ final class DiscoveryRegionViewController: BaseViewController {
         }
     }
     
-    var completion: ((Sido?, Sigungu?) -> Void)?
+    private let realmManager = RealmManager.shared
+    
+    var completion: (() -> Void)?
     
     // MARK: - life cycles
     override func loadView() {
@@ -62,6 +64,7 @@ final class DiscoveryRegionViewController: BaseViewController {
         let discoveryRegionModalSidoVC = DiscoveryRegionModalSidoViewController()
     
         discoveryRegionModalSidoVC.configureSidoView()
+        
         discoveryRegionModalSidoVC.completion = { [weak self] sido in
             guard let self = self else { return }
             
@@ -78,6 +81,7 @@ final class DiscoveryRegionViewController: BaseViewController {
         
         discoveryRegionModalSigunguVC.setSidoCode(sidoCode: selectedSido?.code ?? "")
         discoveryRegionModalSigunguVC.configureSigunguView()
+        
         discoveryRegionModalSigunguVC.completion = { [weak self] sigungu in
             guard let self = self else { return }
             
@@ -89,7 +93,11 @@ final class DiscoveryRegionViewController: BaseViewController {
     }
     
     @objc private func tappedSubmitButton() {
-        completion?(selectedSido ?? nil, selectedSigungu ?? nil)
+        guard let selectedSido = selectedSido else { return }
+        realmManager.createRegion(sido: selectedSido, sigungu: selectedSigungu ?? nil)
+        
+        completion?()
+        
         navigationController?.popViewController(animated: true)
     }
     
@@ -107,12 +115,11 @@ final class DiscoveryRegionViewController: BaseViewController {
                                                     sigungu: selectedSigungu?.name ?? nil)
     }
     
-    func setRegionLabels(region: String) {
-        if region == DiscoveryView.regionDefaultText {
+    func setRegionLabels() {
+        if let region = realmManager.fetchRegion() {
+            discoveryRegionView.setSidoAndSigunguLabel(sidoText: region.sido, sigunguText: region.sigungu ?? "")
+        } else {
             discoveryRegionView.setSidoAndSigunguLabel(sidoText: "시/도를 선택해주세요.", sigunguText: "")
-        }else {
-            let regionArray = region.components(separatedBy: " ")
-            discoveryRegionView.setSidoAndSigunguLabel(sidoText: regionArray[0], sigunguText: regionArray[1])
         }
     }
 }

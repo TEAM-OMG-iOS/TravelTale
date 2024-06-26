@@ -10,6 +10,8 @@ import UIKit
 final class DiscoveryView: BaseView {
     
     // MARK: - properties
+    private let realmManager = RealmManager.shared
+    
     static let regionDefaultText = "지역을 설정해주세요"
     
     let regionLabelButton = UIButton().then {
@@ -17,8 +19,8 @@ final class DiscoveryView: BaseView {
     }
     
     let regionButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         $0.tintColor = .black
+        $0.setImage(UIImage(systemName: "chevron.down"), for: .normal)
     }
     
     private let regionStackView = UIStackView().then {
@@ -33,24 +35,40 @@ final class DiscoveryView: BaseView {
         $0.image = .search.withRenderingMode(.alwaysOriginal)
     }
     
+    private let separatorLine = UIView().then {
+        $0.configureView(color: .gray5)
+    }
+    
     private let categoryStackView = UIStackView().then {
-        $0.distribution = .fillEqually
+        $0.spacing = 16
+        $0.alignment = .center
+        $0.distribution = .fillProportionally
     }
     
     lazy var touristSpotButton = UIButton().then {
-        $0.configuration = configureButton(titleString: "관광지", image: .touristSpot)
+        $0.tag = 0
+        $0.setImage(.touristSpot, for: .normal)
     }
+    
+    private let line1 = UIImageView(image: .line)
     
     lazy var restaurantButton = UIButton().then {
-        $0.configuration = configureButton(titleString: "음식점", image: .restaurant)
+        $0.tag = 1
+        $0.setImage(.restaurant, for: .normal)
     }
+    
+    private let line2 = UIImageView(image: .line)
     
     lazy var accommodationButton = UIButton().then {
-        $0.configuration = configureButton(titleString: "숙박", image: .accommodation)
+        $0.tag = 2
+        $0.setImage(.accommodation, for: .normal)
     }
     
+    private let line3 = UIImageView(image: .line)
+    
     lazy var entertainmentButton = UIButton().then {
-        $0.configuration = configureButton(titleString: "놀거리", image: .entertainment)
+        $0.tag = 3
+        $0.setImage(.entertainment, for: .normal)
     }
     
     private let recentlyAddedLabel = UILabel().then {
@@ -59,64 +77,55 @@ final class DiscoveryView: BaseView {
     
     let collectionView = UICollectionView(frame: .zero,
                                           collectionViewLayout: UICollectionViewFlowLayout()).then {
-        $0.contentInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        $0.contentInset = UIEdgeInsets(top: 8, left: 20, bottom: 20, right: 20)
     }
     
     // MARK: - methods
     override func configureHierarchy() {
         regionStackView.addArrangedSubview(regionLabelButton)
         regionStackView.addArrangedSubview(regionButton)
+        self.addSubview(separatorLine)
         self.addSubview(categoryStackView)
         categoryStackView.addArrangedSubview(touristSpotButton)
+        categoryStackView.addArrangedSubview(line1)
         categoryStackView.addArrangedSubview(restaurantButton)
+        categoryStackView.addArrangedSubview(line2)
         categoryStackView.addArrangedSubview(accommodationButton)
+        categoryStackView.addArrangedSubview(line3)
         categoryStackView.addArrangedSubview(entertainmentButton)
         self.addSubview(recentlyAddedLabel)
         self.addSubview(collectionView)
     }
     
     override func configureConstraints() {
+        separatorLine.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(8)
+            $0.height.equalTo(6)
+        }
+        
         categoryStackView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(24)
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(32)
-            $0.height.equalToSuperview().multipliedBy(0.06572769953)
+            $0.top.equalTo(separatorLine.snp.bottom).offset(24)
+            $0.height.equalTo(64)
         }
         
         recentlyAddedLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(24)
-            $0.top.equalTo(categoryStackView.snp.bottom).offset(48)
+            $0.top.equalTo(categoryStackView.snp.bottom).offset(32)
         }
         
         collectionView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
-            $0.top.equalTo(recentlyAddedLabel.snp.bottom)
+            $0.top.equalTo(recentlyAddedLabel.snp.bottom).offset(12)
             $0.height.equalTo(476)
         }
     }
     
-    private func configureButton(titleString: String,
-                                 titleFont: UIFont = .pretendard(size: 15, weight: .regular),
-                                 image: UIImage,
-                                 imagePlacement: NSDirectionalRectEdge = .top,
-                                 imagePadding: CGFloat = 4,
-                                 imageSize: CGFloat = 35) -> UIButton.Configuration {
-        var configuration = UIButton.Configuration.plain()
+    func setRegionLabel() {
+        guard let region = realmManager.fetchRegion() else { return }
         
-        var title = AttributedString.init(titleString)
-        title.font = titleFont
-        
-        configuration.attributedTitle = title
-        configuration.baseForegroundColor = .black
-        configuration.image = image
-        configuration.imagePlacement = imagePlacement
-        configuration.imagePadding = imagePadding
-        configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: imageSize)
-        
-        return configuration
-    }
-    
-    func setRegionLable(sido: Sido?, sigungu: Sigungu?) {
-        let regionString = "\(sido?.name ?? "") \(sigungu?.name ?? "")"
+        let regionString = "\(region.sido) \(region.sigungu ?? "")"
         regionLabelButton.configureButton(font: .pretendard(size: 18, weight: .bold), text: regionString)
     }
 }

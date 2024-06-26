@@ -11,7 +11,14 @@ final class DiscoveryViewController: BaseViewController {
     
     // MARK: - properties
     private let discoveryView = DiscoveryView()
+    
+    private let networkManager = NetworkManager.shared
+    private let realmManager = RealmManager.shared
+//    private let userDefaultsManager = userDefaultsManager.shared
+    
     private let minimumLineSpacing: CGFloat = 16
+    
+    private var placeDatas: [Place] = [Place(addr1: nil, addr2: nil, contentId: nil, firstImage: nil, title: nil, cpyrhtDivCd: nil)]
     
     // MARK: - life cycles
     override func loadView() {
@@ -20,22 +27,26 @@ final class DiscoveryViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchPlaceDatas()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - methods
     override func configureStyle() {
         configureNavigationBar()
+        discoveryView.setRegionLabel()
     }
     
     override func configureDelegate() {
         discoveryView.collectionView.delegate = self
         discoveryView.collectionView.dataSource = self
-        discoveryView.collectionView.register(DiscoveryCell.self, forCellWithReuseIdentifier: DiscoveryCell.identifier)
+        discoveryView.collectionView.register(DiscoveryCollectionViewCell.self, forCellWithReuseIdentifier: DiscoveryCollectionViewCell.identifier)
     }
     
     override func configureAddTarget() {
@@ -59,60 +70,78 @@ final class DiscoveryViewController: BaseViewController {
     @objc private func tappedRegionButton() {
         let discoveryRegionVC = DiscoveryRegionViewController()
         
-        guard let region = discoveryView.regionLabelButton.titleLabel?.text else { return }
-        discoveryRegionVC.setRegionLabels(region: region)
+        discoveryRegionVC.setRegionLabels()
         
-        discoveryRegionVC.completion = { [weak self] (sido, sigungu) in
-            guard let self = self else { return }
-            discoveryView.setRegionLable(sido: sido, sigungu: sigungu)
+        discoveryRegionVC.completion = {
+            self.discoveryView.setRegionLabel()
+            self.fetchPlaceDatas()
         }
         
         self.navigationController?.pushViewController(discoveryRegionVC, animated: true)
     }
     
     @objc private func tappedSearchButton() {
-        // todo : 검색 창 Navi로 띄우기
+        // TODO: - 검색 창 Navi로 띄우기
+        // userDefaultsManager.setTapType(type: .discovery)
     }
     
     @objc private func tappedCategoryButton(_ sender: UIButton) {
         let discoveryCategoryVC = DiscoveryCategoryViewController()
         let categoryArray = ["관광지", "음식점", "숙박", "놀거리"]
         
-        guard let categoryText = sender.titleLabel?.text  else { return }
-        
-        discoveryCategoryVC.navigationItem.title = categoryText
-        discoveryCategoryVC.selectedIndexPath = categoryArray.firstIndex(of: categoryText) ?? 0
+        discoveryCategoryVC.navigationItem.title = categoryArray[sender.tag]
+        discoveryCategoryVC.selectedIndexPath = sender.tag
         
         self.navigationController?.pushViewController(discoveryCategoryVC, animated: true)
+    }
+    
+    private func fetchPlaceDatas() {
+        var sidoCode = "", sigunguCode = ""
+        
+        if let region = realmManager.fetchRegion() {
+            sidoCode = region.sidoCode
+            sigunguCode = region.sigunguCode ?? ""
+        }
+        
+        networkManager.fetchPlaces(sidoCode: sidoCode, sigunguCode: sigunguCode, type: .total, page: 1) { [weak self] result in
+            switch result {
+            case .success(let places):
+                self?.placeDatas = places.places ?? []
+                
+                DispatchQueue.main.async {
+                    self?.discoveryView.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
 // MARK: - extensions
 extension DiscoveryViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView,
-                        didSelectItemAt indexPath: IndexPath) {
-        let placeDetailVC = PlaceDetailViewController()
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let placeDetailDiscoveryVC = PlaceDetailDiscoveryViewController()
         
-        // TODO: - 데이터 바인딩
+        guard let id = placeDatas[indexPath.row].contentId else { return }
         
-        self.navigationController?.pushViewController(placeDetailVC, animated: true)
+        placeDetailDiscoveryVC.placeId = id
+        
+        self.navigationController?.pushViewController(placeDetailDiscoveryVC, animated: true)
     }
 }
 
 extension DiscoveryViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        return 4
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return min(4, placeDatas.count)
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoveryCell.identifier,
-                                                            for: indexPath) as? DiscoveryCell else {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoveryCollectionViewCell.identifier, for: indexPath) as? DiscoveryCollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        // TODO: - 데이터 바인딩
+        cell.bind(place: placeDatas[indexPath.row])
         
         return cell
     }

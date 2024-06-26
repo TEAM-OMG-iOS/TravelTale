@@ -40,7 +40,7 @@ final class DiscoveryRegionModalSidoViewController: BaseViewController {
         requestSidos()
     }
     
-    func requestSidos() {
+    private func requestSidos() {
         networkManager.fetchSidos { result in
             switch result {
             case .success(let sidos):
@@ -48,13 +48,9 @@ final class DiscoveryRegionModalSidoViewController: BaseViewController {
                 self.sidoData = sidoData
                 self.regionView.tableView.reloadData()
             case .failure(let error):
-                self.handleError(error)
+                print(error.localizedDescription)
             }
         }
-    }
-
-    func handleError(_ error: Error) {
-        print("error: \(error)")
     }
 }
 

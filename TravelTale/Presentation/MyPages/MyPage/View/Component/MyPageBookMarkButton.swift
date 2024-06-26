@@ -72,7 +72,7 @@ final class MyPageBookMarkButton: UIButton {
             $0.verticalEdges.equalTo(bookMarkLabel)
         }
     }
-    
+
     func getButtonName() -> String {
         return text ?? ""
     }

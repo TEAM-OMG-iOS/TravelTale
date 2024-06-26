@@ -12,50 +12,44 @@ final class DiscoveryRegionView: BaseView {
     // MARK: - properties
     let backButton = UIBarButtonItem().then {
         $0.style = .done
-        $0.image = UIImage(systemName: "chevron.left")
         $0.tintColor = .gray90
+        $0.image = UIImage(systemName: "chevron.left")
     }
     
     private let sidoBackground = GrayBackgroundView()
     
     private let sidoLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 16, weight: .bold),
-                          text: "시/도")
+        $0.configureLabel(font: .pretendard(size: 16, weight: .bold), text: "시/도")
     }
     
     let sidoButton = UIButton().then {
-        $0.setImage(.init(systemName: "chevron.down"), for: .normal)
         $0.tintColor = .gray90
+        $0.setImage(.init(systemName: "chevron.down"), for: .normal)
     }
     
     private let currentSidoLabel = UILabel().then {
-        $0.configureLabel(color: .gray80,
-                          font: .pretendard(size: 16, weight: .regular))
+        $0.configureLabel(color: .gray80, font: .pretendard(size: 16, weight: .regular))
     }
     
     private let sigunguBackground = GrayBackgroundView()
     
     private let sigunguLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 16, weight: .bold),
-                          text: "시/군/구")
+        $0.configureLabel(font: .pretendard(size: 16, weight: .bold), text: "시/군/구")
     }
     
     let sigunguButton = UIButton().then {
-        $0.setImage(.init(systemName: "chevron.down"), for: .normal)
-        $0.tintColor = .gray90
         $0.isEnabled = false
+        $0.tintColor = .gray90
+        $0.setImage(.init(systemName: "chevron.down"), for: .normal)
     }
     
     private let currentSigunguLabel = UILabel().then {
-        $0.configureLabel(color: .gray80,
-                          font: .pretendard(size: 16, weight: .regular))
+        $0.configureLabel(color: .gray80, font: .pretendard(size: 16, weight: .regular))
     }
     
     let submitButton = GreenButton().then {
-        $0.configureButton(fontColor: .white,
-                           font: .pretendard(size: 20, weight: .heavy),
-                           text: "완료")
         $0.isEnabled = false
+        $0.configureButton(fontColor: .white, font: .pretendard(size: 20, weight: .heavy), text: "완료")
     }
     
     // MARK: - methods
