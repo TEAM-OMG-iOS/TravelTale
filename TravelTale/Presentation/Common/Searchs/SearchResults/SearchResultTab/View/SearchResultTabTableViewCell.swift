@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class SearchResultTabTableViewCell: BaseTableViewCell {
     
@@ -33,13 +34,23 @@ final class SearchResultTabTableViewCell: BaseTableViewCell {
         $0.tintColor = .gray80
     }
     
+    // MARK: - life cycles
+    override func prepareForReuse() {
+        placeImageView.image = .placeProfile
+        typeLabel.text = nil
+        titleLabel.text = nil
+        addressLabel.text = nil
+        bookmarkButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
+        bookmarkButton.tintColor = .gray80
+    }
+    
     // MARK: - methods
     override func configureHierarchy() {
-        self.addSubview(placeImageView)
-        self.addSubview(typeLabel)
-        self.addSubview(titleLabel)
-        self.addSubview(addressLabel)
-        self.addSubview(bookmarkButton)
+        self.contentView.addSubview(placeImageView)
+        self.contentView.addSubview(typeLabel)
+        self.contentView.addSubview(titleLabel)
+        self.contentView.addSubview(addressLabel)
+        self.contentView.addSubview(bookmarkButton)
     }
     
     override func configureConstraints() {
@@ -70,6 +81,42 @@ final class SearchResultTabTableViewCell: BaseTableViewCell {
             $0.top.equalTo(typeLabel)
             $0.trailing.equalToSuperview().offset(-24)
             $0.size.equalTo(24)
+        }
+    }
+    
+    func bind(place: PlaceSearch, isBookmarked: Bool) {
+        if let imageURL = place.firstImage, !imageURL.isEmpty {
+            placeImageView.kf.setImage(with: URL(string: imageURL))
+        } else {
+            placeImageView.image = .placeProfile
+        }
+        
+        switch place.contentTypeId {
+        case "12":
+            typeLabel.text = "관광지"
+        case "39":
+            typeLabel.text = "음식점"
+        case "32":
+            typeLabel.text = "숙박"
+        case "15":
+            typeLabel.text = "놀거리"
+        default:
+            typeLabel.text = "카테고리 없음"
+        }
+        
+        titleLabel.text = place.title
+        
+        if let addr1 = place.addr1 {
+            addressLabel.text = addr1
+            
+            if let addr2 = place.addr2 {
+                addressLabel.text! += " " + addr2
+            }
+        }
+        
+        if isBookmarked {
+            bookmarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            bookmarkButton.tintColor = .green100
         }
     }
 }
