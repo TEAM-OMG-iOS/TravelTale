@@ -21,7 +21,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     
     private let timePopoverVC = PopoverTimeViewController()
     private let realmManager = RealmManager.shared
-    private let userDefaults = UserDefaultsManager()
+//    private let userDefaults = UserDefaultsManager()
     private let alertMessage = """
 이전으로 돌아가면 작성 내용이 저장되지 않습니다.
 정말 돌아가시겠습니까?
@@ -59,7 +59,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedDays), name: .selectedDaysUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedTime), name: .selectedTimeUpdated, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updatePlaceContents), name: .placeSelected, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(updatePlaceContents), name: .placeSelected, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -215,7 +215,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     
     @IBAction func tappedPlaceBtn(_ sender: UIButton) {
         let nextVC = SearchResultViewController()
-        userDefaults.setTabType(type: .travel)
+//        userDefaults.setTabType(type: .travel)
         navigationController?.pushViewController(nextVC, animated: true)
     }
     
