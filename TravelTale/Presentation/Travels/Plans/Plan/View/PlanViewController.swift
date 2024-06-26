@@ -15,6 +15,7 @@ final class PlanViewController: BaseViewController {
     private var travels: [Travel] = [] {
         didSet {
             splitTravels()
+            planView.showNotFoundView(travels.isEmpty)
             planView.tableView.reloadData()
         }
     }
@@ -67,7 +68,7 @@ final class PlanViewController: BaseViewController {
     }
     
     @objc func tappedAddButton() {
-        let nextVC = TravelAddTitleViewController()
+        let nextVC = PlanAddTitleViewController()
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
