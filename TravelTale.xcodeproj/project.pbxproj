@@ -41,7 +41,6 @@
 		2EC6357D2C1CED6D006C1ADB /* DiscoveryCategoryTabRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC6357C2C1CED6D006C1ADB /* DiscoveryCategoryTabRestaurantViewController.swift */; };
 		2ECECE7F2C211AEA003F7748 /* MyPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE7E2C211AEA003F7748 /* MyPageTableViewCell.swift */; };
 		2ECECE842C2150BB003F7748 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */; };
-		2ECECE862C219C4E003F7748 /* PlaceDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE852C219C4E003F7748 /* PlaceDetailCollectionViewCell.swift */; };
 		2ECECE8E2C237928003F7748 /* PlaceDetailToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE8D2C237928003F7748 /* PlaceDetailToastView.swift */; };
 		2ECECE942C238100003F7748 /* PlaceDetailAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE932C238100003F7748 /* PlaceDetailAlertView.swift */; };
 		2ECECE972C238507003F7748 /* PlaceDetailAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECECE962C238507003F7748 /* PlaceDetailAlertViewController.swift */; };
@@ -154,6 +153,8 @@
 		4DA5FBFD2C1EFAE400233A68 /* DaySelectPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5FBFB2C1EFAE400233A68 /* DaySelectPopoverViewController.swift */; };
 		F193681A2C194D50000AC7B2 /* PlanEditDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19368192C194D50000AC7B2 /* PlanEditDateView.swift */; };
 		F193681C2C194D73000AC7B2 /* PlanEditDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193681B2C194D73000AC7B2 /* PlanEditDateViewController.swift */; };
+		F19368202C1ACB88000AC7B2 /* RegionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193681F2C1ACB88000AC7B2 /* RegionTableViewCell.swift */; };
+		F19368222C1ACDA8000AC7B2 /* RegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19368212C1ACDA8000AC7B2 /* RegionView.swift */; };
 		F19368392C21F5C1000AC7B2 /* PlanAddDateCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19368382C21F5C1000AC7B2 /* PlanAddDateCalendarDayView.swift */; };
 		F193683B2C21F60E000AC7B2 /* PlanAddDateCalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193683A2C21F60E000AC7B2 /* PlanAddDateCalendarMonthView.swift */; };
 		F193683D2C21F646000AC7B2 /* PlanAddDateCalendarMonthDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193683C2C21F646000AC7B2 /* PlanAddDateCalendarMonthDayView.swift */; };
@@ -168,8 +169,6 @@
 		F1B302002C10B43F00D26B75 /* PlanAddDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B301FF2C10B43F00D26B75 /* PlanAddDateViewController.swift */; };
 		F1B302072C13331800D26B75 /* PlanEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B302062C13331800D26B75 /* PlanEditViewController.swift */; };
 		F1B302132C1457A400D26B75 /* PlanEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B302122C1457A400D26B75 /* PlanEditView.swift */; };
-		F19368202C1ACB88000AC7B2 /* RegionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193681F2C1ACB88000AC7B2 /* RegionTableViewCell.swift */; };
-		F19368222C1ACDA8000AC7B2 /* RegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19368212C1ACDA8000AC7B2 /* RegionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -220,7 +219,6 @@
 		2ECECE7E2C211AEA003F7748 /* MyPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewCell.swift; sourceTree = "<group>"; };
 		2ECECE812C2150AD003F7748 /* PlaceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailView.swift; sourceTree = "<group>"; };
 		2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
-		2ECECE852C219C4E003F7748 /* PlaceDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		2ECECE8D2C237928003F7748 /* PlaceDetailToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailToastView.swift; sourceTree = "<group>"; };
 		2ECECE932C238100003F7748 /* PlaceDetailAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailAlertView.swift; sourceTree = "<group>"; };
 		2ECECE962C238507003F7748 /* PlaceDetailAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailAlertViewController.swift; sourceTree = "<group>"; };
@@ -327,6 +325,8 @@
 		4DA5FBFB2C1EFAE400233A68 /* DaySelectPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaySelectPopoverViewController.swift; sourceTree = "<group>"; };
 		F19368192C194D50000AC7B2 /* PlanEditDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanEditDateView.swift; sourceTree = "<group>"; };
 		F193681B2C194D73000AC7B2 /* PlanEditDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanEditDateViewController.swift; sourceTree = "<group>"; };
+		F193681F2C1ACB88000AC7B2 /* RegionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionTableViewCell.swift; sourceTree = "<group>"; };
+		F19368212C1ACDA8000AC7B2 /* RegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionView.swift; sourceTree = "<group>"; };
 		F19368382C21F5C1000AC7B2 /* PlanAddDateCalendarDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanAddDateCalendarDayView.swift; sourceTree = "<group>"; };
 		F193683A2C21F60E000AC7B2 /* PlanAddDateCalendarMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanAddDateCalendarMonthView.swift; sourceTree = "<group>"; };
 		F193683C2C21F646000AC7B2 /* PlanAddDateCalendarMonthDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanAddDateCalendarMonthDayView.swift; sourceTree = "<group>"; };
@@ -341,8 +341,6 @@
 		F1B301FF2C10B43F00D26B75 /* PlanAddDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanAddDateViewController.swift; sourceTree = "<group>"; };
 		F1B302062C13331800D26B75 /* PlanEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanEditViewController.swift; sourceTree = "<group>"; };
 		F1B302122C1457A400D26B75 /* PlanEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanEditView.swift; sourceTree = "<group>"; };
-		F193681F2C1ACB88000AC7B2 /* RegionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionTableViewCell.swift; sourceTree = "<group>"; };
-		F19368212C1ACDA8000AC7B2 /* RegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -623,7 +621,6 @@
 			isa = PBXGroup;
 			children = (
 				2ECECE812C2150AD003F7748 /* PlaceDetailView.swift */,
-				2ECECE852C219C4E003F7748 /* PlaceDetailCollectionViewCell.swift */,
 				2ECECE832C2150BB003F7748 /* PlaceDetailViewController.swift */,
 			);
 			path = View;
@@ -1608,7 +1605,6 @@
 				1A95EB5B2C168E78007D575A /* MemorySelectView.swift in Sources */,
 				374DDDE22C1F4E730040A5F1 /* PlaceDetailResponseDTO+Mapping.swift in Sources */,
 				37CB88162C0DB648002798BE /* GrayBackgroundView.swift in Sources */,
-				2ECECE862C219C4E003F7748 /* PlaceDetailCollectionViewCell.swift in Sources */,
 				2EED24872C1801DB00F3673A /* DiscoveryRegionViewController.swift in Sources */,
 				371387B42C2498C2002C6284 /* SearchResultTabEntertainmentViewController.swift in Sources */,
 				37961A8D2C2082E6003A994F /* Schedule.swift in Sources */,

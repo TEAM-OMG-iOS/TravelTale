@@ -11,7 +11,7 @@ import UIKit
 final class PlaceDetailView: BaseView {
     
     // MARK: - properties
-    private let collectionViewHeight: CGFloat = 300
+    private let imageViewHeight: CGFloat = 300
     private let buttonHeight: CGFloat = 48
     
     private let scrollView = UIScrollView().then {
@@ -27,19 +27,12 @@ final class PlaceDetailView: BaseView {
         $0.setImage(UIImage(systemName: "chevron.left"), for: .normal)
     }
     
-    lazy var imageCollectionView = UICollectionView(frame: .zero,
-                                               collectionViewLayout: UICollectionViewLayout()).then {
-        $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        $0.isPagingEnabled = true
-        
-        let layout = UICollectionViewFlowLayout()
-        
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.scrollDirection = .horizontal
-        layout.itemSize = .init(width: UIScreen.main.bounds.size.width, height: collectionViewHeight)
-        
-        $0.collectionViewLayout = layout
+    let detailBlurImageView = UIImageView().then {
+        $0.contentMode = .scaleToFill
+    }
+    
+    private let detailImageView = UIImageView().then {
+        $0.contentMode = .scaleAspectFit
     }
     
     private let placeName = UILabel().then {
@@ -180,8 +173,10 @@ final class PlaceDetailView: BaseView {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         
-        contentView.addSubview(imageCollectionView)
-        contentView.addSubview(backButton)
+        contentView.addSubview(detailBlurImageView)
+        makeBlurEffect(to: detailBlurImageView)
+        detailBlurImageView.addSubview(detailImageView)
+        
         contentView.addSubview(placeName)
         contentView.addSubview(categoryImage)
         contentView.addSubview(categoryName)
@@ -211,10 +206,11 @@ final class PlaceDetailView: BaseView {
         buttonBackground.addSubview(bookMarkButton)
         buttonBackground.addSubview(buttonLine)
         buttonBackground.addSubview(addButton)
+        
+        contentView.addSubview(backButton)
     }
     
     override func configureConstraints() {
-        
         scrollView.snp.makeConstraints {
             $0.horizontalEdges.top.equalToSuperview()
             $0.bottom.equalTo(buttonBackground.snp.top)
@@ -231,14 +227,18 @@ final class PlaceDetailView: BaseView {
             $0.size.equalTo(24)
         }
         
-        imageCollectionView.snp.makeConstraints {
+        detailBlurImageView.snp.makeConstraints {
+            $0.height.equalTo(imageViewHeight)
             $0.horizontalEdges.top.equalToSuperview()
-            $0.height.equalTo(collectionViewHeight)
+        }
+        
+        detailImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
         
         placeName.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(24)
-            $0.top.equalTo(imageCollectionView.snp.bottom).offset(16)
+            $0.top.equalTo(detailBlurImageView.snp.bottom).offset(16)
         }
         
         categoryImage.snp.makeConstraints {
@@ -317,6 +317,13 @@ final class PlaceDetailView: BaseView {
     }
     
     func bind(placeDetail: PlaceDetail, url: String?, isBookMarked: Bool) {
+        if let image = placeDetail.firstImage, let image = URL(string: image) {
+            detailBlurImageView.kf.setImage(with: image)
+            detailImageView.kf.setImage(with: image)
+        } else {
+            detailBlurImageView.image = .detailPlaceThumnail
+            detailImageView.image = .detailPlaceThumnail
+        }
         
         if let name = placeDetail.title {
             self.placeName.text = name
@@ -416,5 +423,16 @@ final class PlaceDetailView: BaseView {
     
     func copyAddress() -> String? {
         return mapLabel.text
+    }
+    
+    func makeBlurEffect(to imageView: UIImageView) {
+        let blurEffect = UIBlurEffect(style: .light)
+        let visualEffectView = UIVisualEffectView(effect: blurEffect)
+        
+        visualEffectView.alpha = 1
+        visualEffectView.frame = imageView.bounds
+        visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        detailBlurImageView.addSubview(visualEffectView)
     }
 }

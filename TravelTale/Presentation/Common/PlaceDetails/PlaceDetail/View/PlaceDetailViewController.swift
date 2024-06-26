@@ -17,19 +17,11 @@ final class PlaceDetailViewController: BaseViewController {
     
     private var isBookMarked: Bool = false
     
-    private var placeImage: String = ""
-    
     var completion: (() -> Void)?
     
     var placeDetailData: [PlaceDetail]? {
         didSet {
             guard let placeDetail = placeDetailData?[0] else { return }
-            
-            if let image = placeDetail.firstImage {
-                placeImage = image
-            }
-            
-            placeDetailView.imageCollectionView.reloadData()
             
             setBookmarkData()
             
@@ -66,12 +58,6 @@ final class PlaceDetailViewController: BaseViewController {
     
     // MARK: - methods
     override func configureDelegate() {
-        placeDetailView.imageCollectionView.dataSource = self
-        placeDetailView.imageCollectionView.delegate = self
-        
-        placeDetailView.imageCollectionView.register(PlaceDetailCollectionViewCell.self, 
-                                                     forCellWithReuseIdentifier: PlaceDetailCollectionViewCell.identifier)
-        
         placeDetailView.mapView.delegate = self
     }
     
@@ -126,7 +112,7 @@ final class PlaceDetailViewController: BaseViewController {
             placeDetailView.configureBookMarkButton(isBookMarked: true)
             isBookMarked = true
             
-            if let image = URL(string: placeImage) {
+            if let image = placeDetailData.firstImage, let image = URL(string: image) {
                 Task {
                     do {
                         let request = URLRequest(url: image)
@@ -207,29 +193,6 @@ final class PlaceDetailViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension PlaceDetailViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height)
-    }
-}
-
-extension PlaceDetailViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceDetailCollectionViewCell.identifier,
-                                                      for: indexPath) as! PlaceDetailCollectionViewCell
-        
-        cell.bind(image: placeImage)
-        
-        return cell
-    }
-}
-
 extension PlaceDetailViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: any MKAnnotation) -> MKAnnotationView? {
