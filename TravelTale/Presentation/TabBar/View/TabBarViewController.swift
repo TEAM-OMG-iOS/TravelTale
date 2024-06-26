@@ -39,7 +39,11 @@ final class TabBarViewController: UITabBarController {
             items[2].image = UIImage(systemName: "person")
         }
         
-        tabBar.isTranslucent = false
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        self.tabBar.standardAppearance = appearance
+        
         tabBar.backgroundColor = .white
         tabBar.tintColor = .green100
         tabBar.unselectedItemTintColor = .gray80
