@@ -18,7 +18,6 @@
 		1AA861772C1B4DD8007F69E7 /* MemoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861762C1B4DD8007F69E7 /* MemoryDetailViewController.swift */; };
 		1AA861792C1B53DB007F69E7 /* MemoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA861782C1B53DB007F69E7 /* MemoryDetailTableViewCell.swift */; };
 		1AA8617B2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA8617A2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift */; };
-		1AC9B3DF2C219E4700059246 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */; };
 		1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */; };
 		1AD537902C12CF4900A70D5E /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5378F2C12CF4900A70D5E /* PlanView.swift */; };
 		1AD537942C12DCC600A70D5E /* LightGreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD537932C12DCC600A70D5E /* LightGreenButton.swift */; };
@@ -199,7 +198,6 @@
 		1AA861762C1B4DD8007F69E7 /* MemoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailViewController.swift; sourceTree = "<group>"; };
 		1AA861782C1B53DB007F69E7 /* MemoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailTableViewCell.swift; sourceTree = "<group>"; };
 		1AA8617A2C1B7445007F69E7 /* MemoryDetailTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailTableHeaderView.swift; sourceTree = "<group>"; };
-		1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		1AD537862C104F2C00A70D5E /* TravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTableViewCell.swift; sourceTree = "<group>"; };
 		1AD5378F2C12CF4900A70D5E /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 		1AD537932C12DCC600A70D5E /* LightGreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightGreenButton.swift; sourceTree = "<group>"; };
@@ -876,7 +874,6 @@
 				37CB88082C0D78C9002798BE /* UIView+Extension.swift */,
 				37CB880C2C0D796C002798BE /* UILabel+Extension.swift */,
 				37CB880E2C0D7979002798BE /* UIButton+Extension.swift */,
-				1AC9B3DE2C219E4700059246 /* CALayer+Extension.swift */,
 				1A713BDF2C22B9A20045DECD /* String+Extension.swift */,
 			);
 			path = Extensions;
@@ -1666,7 +1663,6 @@
 				374DDDD52C1F2CBD0040A5F1 /* Sido.swift in Sources */,
 				374DDDE62C1F69100040A5F1 /* PlaceSearchResponseDTO+Mapping.swift in Sources */,
 				2EF0E3B62C1F203200654025 /* MyPageCategoryTabAccommodationViewController.swift in Sources */,
-				1AC9B3DF2C219E4700059246 /* CALayer+Extension.swift in Sources */,
 				378CEC322C0D68C600DF1C3F /* DiscoveryView.swift in Sources */,
 				2EF0E3B22C1F200200654025 /* MyPageCategoryTabRestaurantViewController.swift in Sources */,
 				3713879D2C2495B2002C6284 /* SearchView.swift in Sources */,

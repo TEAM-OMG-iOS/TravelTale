@@ -11,10 +11,10 @@ final class MemorySelectView: BaseView {
     
     // MARK: - properties
     let backButton = UIBarButtonItem().then {
-       $0.style = .done
-       $0.image = UIImage(systemName: "chevron.left")
-       $0.tintColor = .gray90
-     }
+        $0.style = .done
+        $0.image = UIImage(systemName: "chevron.left")
+        $0.tintColor = .gray90
+    }
     
     let tableView = UITableView().then {
         $0.backgroundColor = .white
