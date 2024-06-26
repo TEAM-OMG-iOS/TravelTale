@@ -45,7 +45,7 @@ final class TravelTableViewCell: BaseTableViewCell {
         $0.configureView(color: .blueBlack100, cornerRadius: 10)
     }
     
-    private let areaNameLabel = UILabel().then {
+    private let areaLabel = UILabel().then {
         $0.configureLabel(color: .white, font: .pretendard(size: 12, weight: .medium))
         $0.textAlignment = .center
     }
@@ -68,7 +68,7 @@ final class TravelTableViewCell: BaseTableViewCell {
          areaCapsuleView,
          titleLabel].forEach { detailView.addSubview($0) }
         
-        areaCapsuleView.addSubview(areaNameLabel)
+        areaCapsuleView.addSubview(areaLabel)
     }
     
     override func configureConstraints() {
@@ -102,7 +102,7 @@ final class TravelTableViewCell: BaseTableViewCell {
             $0.trailing.equalTo(borderLine)
         }
         
-        areaNameLabel.snp.makeConstraints{
+        areaLabel.snp.makeConstraints{
             $0.center.equalToSuperview()
         }
         
@@ -135,7 +135,7 @@ final class TravelTableViewCell: BaseTableViewCell {
         titleLabel.text = travel.title
         periodLabel.text = String(startDate: travel.startDate,
                                   endDate: travel.endDate)
-        areaNameLabel.text = travel.area
+        areaLabel.text = travel.area
     }
     
     func hideThumbnail() {
