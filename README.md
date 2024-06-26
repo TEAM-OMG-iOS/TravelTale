@@ -1,6 +1,6 @@
 # 📖 Travel Tale
 
-![readme-mockup](https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/792f417d-bb2e-4afb-afe3-51f7b504ab6d)
+![readme-mockup](https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/8e6b5b40-75b7-413e-b6fb-b2ae1a784300)
 
 
 - 배포 URL : 
