@@ -24,10 +24,6 @@ class PlanScheduleAddEditPlaceView: BaseView {
         $0.tintColor = .gray90
     }
     
-    let deleteButton = UIBarButtonItem().then {
-        $0.tintColor = .gray80
-    }
-    
     private let placeView = UIView().then {
         $0.configureView(color: .gray5, cornerRadius: 20)
     }

@@ -74,8 +74,6 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     override func configureAddTarget() {
         addEditView.backButton.target = self
         addEditView.backButton.action = #selector(tappedExitBtn)
-        addEditView.deleteButton.target = self
-        addEditView.deleteButton.action = #selector(tappedDeleteBtn)
         addEditView.placeBtn.addTarget(self, action: #selector(tappedPlaceBtn), for: .touchUpInside)
         addEditView.scheduleBtn.addTarget(self, action: #selector(tappedScheduleBtn), for: .touchUpInside)
         addEditView.startTimeBtn.addTarget(self, action: #selector(tappedStartTimeBtn), for: .touchUpInside)
@@ -91,7 +89,6 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     private func configureNavigationBar() {
         navigationItem.title = addEditView.editVCNaviLabel
         navigationItem.leftBarButtonItem = addEditView.backButton
-        navigationItem.rightBarButtonItem = addEditView.deleteButton
     }
     
     private func configurePopover(for popoverVC: UIViewController, sourceButton: UIButton) {
@@ -152,23 +149,6 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         let alert = UIAlertController(title: "경고", message: addEditView.alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) {_ in
-            self.navigationController?.popViewController(animated: true)
-        }
-        
-        alert.addAction(cancel)
-        alert.addAction(ok)
-        
-        self.present(alert, animated: true)
-    }
-    
-    @objc private func tappedDeleteBtn(_ sender: UIButton) {
-        let alert = UIAlertController(title: "경고", message: """
-현재 장소를 삭제합니다.
-계속 진행하시겠습니까?
-""", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
-        let ok = UIAlertAction(title: "확인", style: .default) {_ in
-            self.realmManager.deleteSchedule(travel: self.travel, schedule: self.schedule)
             self.navigationController?.popViewController(animated: true)
         }
         
