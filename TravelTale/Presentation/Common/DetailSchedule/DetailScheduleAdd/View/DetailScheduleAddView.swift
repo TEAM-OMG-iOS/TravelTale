@@ -42,7 +42,7 @@ final class DetailScheduleAddView: BaseView {
     }
     
     let placeContents = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 16, weight: .regular), text: "설빙 석촌호수 동호점")
+        $0.configureLabel(font: .pretendard(size: 16, weight: .regular), text: "")
     }
     
     private let scheduleView = UIView().then {
