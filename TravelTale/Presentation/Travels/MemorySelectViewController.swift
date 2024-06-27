@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift // TODO: 삭제
 
 final class MemorySelectViewController: BaseViewController {
     
@@ -31,18 +30,10 @@ final class MemorySelectViewController: BaseViewController {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
         
-        noMemoryTravels = fetchNoMemoryTravels()
+        noMemoryTravels = RealmManager.shared.fetchTravelsWithEmptyMemoryAndPhotos()
     }
     
     // MARK: - methods
-    // TODO: RealmManager로 옮기기
-    func fetchNoMemoryTravels() -> [Travel] {
-        let realm = try! Realm()
-        return realm.objects(Travel.self).filter {
-            ($0.memory == nil) && ($0.photos.isEmpty)
-        }
-    }
-    
     override func configureStyle() {
         configureNavigationBarItems()
         memorySelectView.tableView.separatorStyle = .none
