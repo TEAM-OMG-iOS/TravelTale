@@ -136,7 +136,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     }
     
     @objc private func tappedPlaceBtn(_ sender: UIButton) {
-        let nextVC = SearchResultViewController()
+        let nextVC = SearchViewController()
         userDefaults.setTabType(type: .travel)
         navigationController?.pushViewController(nextVC, animated: true)
     }
