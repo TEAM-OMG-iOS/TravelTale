@@ -92,7 +92,14 @@ final class PlanDetailViewController: BaseViewController {
     }
     
     @objc private func tappedSettingButton() {
+        let planEditVC = PlanEditViewController(travel: travel)
         
+        planEditVC.completion = { travel in
+            self.travel = travel
+            self.planDetailView.bind(travel: travel)
+        }
+        
+        navigationController?.pushViewController(planEditVC, animated: true)
     }
 }
 
