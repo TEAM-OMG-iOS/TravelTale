@@ -20,7 +20,6 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
 """
     private lazy var dayPopoverVC = PopoverDayViewController(data: addEditView.configureData(allDays: allDays, travel: travel), travel: travel)
     
-    private var selectedDays: String?
     private var selectedTime: Date?
     private var travel: Travel
     private var selectedDay: String
@@ -115,8 +114,8 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
         guard let userInfo = notification.userInfo,
               let selectedDays = userInfo["selectedDays"] as? String else { return }
         
-        self.selectedDays = selectedDays
-        addEditView.scheduleContents.text = self.selectedDays
+        self.selectedDay = selectedDays
+        addEditView.scheduleContents.text = self.selectedDay
         addEditView.checkBlackText()
     }
     
@@ -145,7 +144,7 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     
     @objc private func tappedCompletedBtn(_ sender: UIButton) {
         if let placeDetail {
-            realmManager.createSchedule(day: (addEditView.extractDayNumber(from: selectedDays ?? "") ?? selectedDay), date: selectedTime ?? Date(), travel: travel, placeDetail: placeDetail, memo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
+            realmManager.createSchedule(day: selectedDay, date: selectedTime ?? Date(), travel: travel, placeDetail: placeDetail, memo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
             completion?(self.travel)
             navigationController?.popViewController(animated: true)
         }
