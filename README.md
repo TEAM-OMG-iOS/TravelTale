@@ -8,25 +8,14 @@
 
 <br>
 
-## 프로젝트 소개
+## 1. 프로젝트 소개
 
 - 국내 여행을 계획하고 기록하는 것을 도와주는 앱입니다.
 
 <br>
 
-## 팀원 구성
 
-<div align="center">
-
-| **김정호** | **배지해** | **김유림** | **박윤희** | **방기남** |
-| :------: |  :------: | :------: | :------: | :------: |
-| [<img src="https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/1a94246c-426b-44a7-bf9d-d763563f23df" height=150 width=150> <br/> @ohhoooo](https://github.com/ohhoooo) | [<img src="https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/5e36e982-472b-45b3-a228-6da7ead20a4a" height=150 width=150> <br/> @BaeJihae](https://github.com/BaeJihae) | [<img src="https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/f47cc3ad-0bd3-4805-bd44-16e3df0af7c7" height=150 width=150> <br/> @yurim830](https://github.com/yurim830) | [<img src="https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/42f22024-e637-41a9-974e-993db08e4f5b" height=150 width=150> <br/> @yoon3208](https://github.com/yoon3208) | [<img src="https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/821c54a1-49a6-4fda-a16c-06ee42755185" height=150 width=150> <br/> @Bread-kn72](https://github.com/Bread-kn72) |
-
-</div>
-
-<br>
-
-## 1. 개발 환경
+## 2. 개발 환경
 - OS : macOS Sonoma 14.5
 - IDE : Xcode 15.4
 
@@ -42,7 +31,7 @@
 
 <br>
 
-## 2. 채택한 개발 기술과 브랜치 전략
+## 3. 채택한 개발 기술과 브랜치 전략
 
 ### 3rd Party Libraries
 
@@ -85,36 +74,13 @@
 
 <br>
 
-## 3. 프로젝트 구조
+## 4. 프로젝트 구조
 
 
 
 <br>
 
-## 4. 역할 분담
 
-### 김정호
-
-
-<br>
-    
-### 배지해
-
-
-<br>
-
-### 김유림
-
-
-<br>
-
-### 박윤희
-
-<br>
-
-### 방기남
-    
-<br>
 
 ## 5. 개발 기간 및 작업 관리
 
@@ -140,8 +106,33 @@
 
 <br>
 
-## 7. 개선 목표
+## 7. 팀원 소개
 
+<div align="center">
+
+| **김정호** | **배지해** | **김유림** | **박윤희** | **방기남** |
+| :------: |  :------: | :------: | :------: | :------: |
+| [<img src="https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/1a94246c-426b-44a7-bf9d-d763563f23df" height=150 width=150> <br/> @ohhoooo](https://github.com/ohhoooo) | [<img src="https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/5e36e982-472b-45b3-a228-6da7ead20a4a" height=150 width=150> <br/> @BaeJihae](https://github.com/BaeJihae) | [<img src="https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/f47cc3ad-0bd3-4805-bd44-16e3df0af7c7" height=150 width=150> <br/> @yurim830](https://github.com/yurim830) | [<img src="https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/42f22024-e637-41a9-974e-993db08e4f5b" height=150 width=150> <br/> @yoon3208](https://github.com/yoon3208) | [<img src="https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/821c54a1-49a6-4fda-a16c-06ee42755185" height=150 width=150> <br/> @Bread-kn72](https://github.com/Bread-kn72) |
+
+</div>
+
+### 맡은 역할
+
+<div>
+    
+| **팀원** | **맡은 역할** |
+| :----:| :------------------------------: |
+| 김정호 | 내용 |
+| 배지해 | 내용 |
+| 김유림 | 내용 |
+| 박윤희 | 내용 |
+| 방기남 | 내용 |
+    
+</div>
+
+## 7. 개선 목표
+- 다크모드 대응
+- 
     
     
 <br>
