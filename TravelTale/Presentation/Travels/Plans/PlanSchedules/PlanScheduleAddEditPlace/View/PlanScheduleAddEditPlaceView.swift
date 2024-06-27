@@ -301,7 +301,7 @@ final class PlanScheduleAddEditPlaceView: BaseView {
         return results
     }
     
-    func extractDayNumber(from formattedString: String) -> String? {
+    func extractDayNumber(from formattedString: String) -> String {
         let components = formattedString.split(separator: " ")
         if components.count > 1 {
             let dayNumber = String(components[1])
