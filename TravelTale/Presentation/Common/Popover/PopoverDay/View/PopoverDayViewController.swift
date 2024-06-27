@@ -32,6 +32,11 @@ final class PopoverDayViewController: BaseViewController {
         view = daySelectPopoverView
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setDefaultRow()
+    }
+    
     // MARK: - methods
     override func configureDelegate() {
         daySelectPopoverView.pickerView.delegate = self
@@ -41,6 +46,10 @@ final class PopoverDayViewController: BaseViewController {
     override func configureAddTarget() {
         daySelectPopoverView.leftBtn.addTarget(self, action: #selector(tappedcancelBtn), for: .touchUpInside)
         daySelectPopoverView.rightBtn.addTarget(self, action: #selector(tappedOkBtn), for: .touchUpInside)
+    }
+    
+    private func setDefaultRow() {
+        selectedDays = data[0]
     }
     
     @objc private func tappedcancelBtn() {
