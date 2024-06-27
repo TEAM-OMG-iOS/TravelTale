@@ -54,12 +54,29 @@ final class PlanScheduleViewController: BaseViewController {
                                             forCellReuseIdentifier: PlanScheduleFooterCell.identifier)
     }
     
+    private func fetchTotalDay() -> Int {
+        let endDay = Calendar.current.component(.day, from: travel.endDate)
+        let startDay = Calendar.current.component(.day, from: travel.startDate)
+        
+        return endDay - startDay + 1
+    }
+    
     private func tappedOptionButton(action: UIAction) {
         print("tappedOptionButton")
     }
     
     @objc private func tappedPlaceAddButton() {
-        print("tappedPlaceAddButton")
+        let planScheduleAddPlaceVC = PlanScheduleAddPlaceViewController(travel: travel,
+                                                                        selectedDay: String(tappedDay),
+                                                                        allDays: String(fetchTotalDay()))
+        
+        planScheduleAddPlaceVC.completion = { travel in
+            self.travel = travel
+            self.tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
+            self.planScheduleView.tableView.reloadData()
+        }
+        
+        navigationController?.pushViewController(planScheduleAddPlaceVC, animated: true)
     }
     
     @objc private func tappedMemoAddButton() {
@@ -76,7 +93,7 @@ extension PlanScheduleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 1:
-            return travel.schedules.count
+            return tappedDaySchedules.count
         default:
             return 1
         }
@@ -103,6 +120,8 @@ extension PlanScheduleViewController: UITableViewDataSource {
                 UIAction(title: "삭제", attributes: .destructive, handler: tappedOptionButton),
             ])
             
+            cell.bind(state: panelState, schedule: tappedDaySchedules[indexPath.row])
+            
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: PlanScheduleFooterCell.identifier, for: indexPath) as? PlanScheduleFooterCell else { return UITableViewCell() }
@@ -128,10 +147,7 @@ extension PlanScheduleViewController: UICollectionViewDelegate {
 
 extension PlanScheduleViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let endDay = Calendar.current.component(.day, from: travel.endDate)
-        let startDay = Calendar.current.component(.day, from: travel.startDate)
-        
-        return endDay - startDay + 1
+        return fetchTotalDay()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
