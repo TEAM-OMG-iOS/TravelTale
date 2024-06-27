@@ -10,44 +10,33 @@ import UIKit
 final class PlanScheduleEditPlaceViewController: BaseViewController {
     
     // MARK: - properties
-    @IBOutlet weak var placeContents: UILabel!
-    @IBOutlet weak var startTimeContents: UILabel!
-    @IBOutlet weak var startTimeBtn: UIButton!
-    @IBOutlet weak var memoTV: UITextView!
-    @IBOutlet weak var scheduleContents: UILabel!
-    @IBOutlet weak var scheduleBtn: UIButton!
-    @IBOutlet weak var naviTitle: UINavigationItem!
-    @IBOutlet weak var completedBtn: UIButton!
-    
+    private let addEditView = PlanScheduleAddEditPlaceView()
     private let timePopoverVC = PopoverTimeViewController()
     private let realmManager = RealmManager.shared
     private let userDefaults = UserDefaultsManager.shared
-    private let alertMessage = """
-이전으로 돌아가면 작성 내용이 저장되지 않습니다.
-정말 돌아가시겠습니까?
-"""
     
-    private lazy var dayPopoverVC = PopoverDayViewController(data: configureData(alldays: allDays, travel: travel), travel: travel)
+    private lazy var dayPopoverVC = PopoverDayViewController(data: addEditView.configureData(allDays: allDays, travel: travel), travel: travel)
     
     private var selectedDays: String?
     private var selectedTime: Date?
+    
     private var travel: Travel
     private var schedule: Schedule
     private var selectedDay: String
     private var allDays: String
     private var selectedPlace: PlaceDetail {
         didSet {
-            self.placeContents.text = self.selectedPlace.title
+            addEditView.placeContents.text = self.selectedPlace.title
         }
     }
     
     // MARK: - life cycles
-    init(travel: Travel, selectedPlace: PlaceDetail, schedule: Schedule, selectedDay: String, allDays: String) {
+    init(travel: Travel, schedule: Schedule, selectedDay: String, allDays: String, selectedPlace: PlaceDetail) {
         self.travel = travel
-        self.selectedPlace = selectedPlace
         self.schedule = schedule
         self.selectedDay = selectedDay
         self.allDays = allDays
+        self.selectedPlace = selectedPlace
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -73,21 +62,24 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     }
     
     // MARK: - methods
+    override func configureStyle() {
+        configureNavigationBar()
+    }
+    
     override func configureDelegate() {
-        memoTV.delegate = self
+        addEditView.memoTV.delegate = self
     }
     
     override func bind() {
-        placeContents.text = schedule.title
-        scheduleContents.text = configureInitialSchedule(selectedDay: selectedDay, alldays: allDays, travel: travel)
-        startTimeContents.text = configureInitialStartTimeContents(date: (self.schedule.date!))
+        addEditView.placeContents.text = schedule.title
+        addEditView.scheduleContents.text = addEditView.configureInitialSchedule(selectedDay: selectedDay, alldays: allDays, travel: travel)
+        addEditView.startTimeContents.text = addEditView.configureInitialStartTimeContents(date: (self.schedule.date ?? Date()))
     }
     
-    private func dateFormat(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "a hh:mm"
-        return formatter.string(from: date)
+    private func configureNavigationBar() {
+        navigationItem.title = addEditView.editVCNaviLabel
+        navigationItem.leftBarButtonItem = addEditView.backButton
+        navigationItem.rightBarButtonItem = addEditView.deleteButton
     }
     
     private func configurePopover(for popoverVC: UIViewController, sourceButton: UIButton) {
@@ -107,7 +99,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     }
     
     private func configureBackAlert() {
-        let alert = UIAlertController(title: "경고", message: alertMessage, preferredStyle: .alert)
+        let alert = UIAlertController(title: "경고", message: addEditView.alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .default) {_ in
             self.navigationController?.popViewController(animated: true)
@@ -119,7 +111,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         self.present(alert, animated: true)
     }
     
-    private func configureDeleteAlert() {
+    @objc private func configureDeleteAlert() {
         let alert = UIAlertController(title: "경고", message: """
 현재 장소를 삭제합니다.
 계속 진행하시겠습니까?
@@ -136,96 +128,46 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         self.present(alert, animated: true)
     }
     
-    private func configureInitialSchedule(selectedDay: String, alldays: String, travel: Travel) -> String {
-        guard let daysCount = Int(selectedDay), let totalDays = Int(alldays), daysCount > 0, daysCount <= totalDays else {
-                return ""
-            }
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yy년 MM월 dd일"
-        
-        if let targetDate = Calendar.current.date(byAdding: .day, value: daysCount - 1, to: travel.startDate) {
-            let dateString = formatter.string(from: targetDate)
-            return "Day \(daysCount) | \(dateString)"
-        } else {
-            return ""
-        }
-    }
-    
-    private func configureInitialStartTimeContents(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "a hh:mm"
-        let dateString = formatter.string(from: date)
-        return dateString
-    }
-    
-    private func configureData(alldays: String, travel: Travel) -> [String] {
-        guard let daysCount = Int(alldays) else {
-            return []
-        }
-        var results = [String]()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yy년 MM월 dd일"
-        
-        for i in 0...daysCount {
-            if let newDate = Calendar.current.date(byAdding: .day, value: i, to: travel.startDate) {
-                let dateString = formatter.string(from: newDate)
-                results.append("Day \(i + 1) | \(dateString)")
-            }
-        }
-        return results
-    }
-    
-    private func extractDayNumber(from formattedString: String) -> String? {
-        let components = formattedString.split(separator: " ")
-        if components.count > 1 {
-            let dayNumber = String(components[1])
-            return dayNumber
-        }
-        return ""
-    }
-    
-    @objc func updateSelectedDays(_ notification: Notification) {
+    @objc private func updateSelectedDays(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let selectedDays = userInfo["selectedDays"] as? String else { return }
         
         self.selectedDays = selectedDays
-        scheduleContents.text = self.selectedDays
+        addEditView.scheduleContents.text = self.selectedDays
     }
     
-    @objc func updateSelectedTime(_ notification: Notification) {
+    @objc private func updateSelectedTime(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let selectedTime = userInfo["selectedTime"] as? Date else { return }
         
         self.selectedTime = selectedTime
-        startTimeContents.text = dateFormat(date: self.selectedTime ?? Date())
+        addEditView.startTimeContents.text = addEditView.dateFormat(date: self.selectedTime ?? Date())
     }
     
-    @objc func updatePlaceContents(_ notification: Notification) {
+    @objc private func updatePlaceContents(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let selectedPlace = userInfo["dataDetail"] as? PlaceDetail else { return }
         
         self.selectedPlace = selectedPlace
-        self.placeContents.text = self.selectedPlace.title
+        addEditView.placeContents.text = self.selectedPlace.title
     }
     
-    @IBAction func tappedPlaceBtn(_ sender: UIButton) {
+    @objc private func tappedPlaceBtn(_ sender: UIButton) {
         let nextVC = SearchResultViewController()
         userDefaults.setTabType(type: .travel)
         navigationController?.pushViewController(nextVC, animated: true)
     }
     
-    @IBAction func tappedCompletedBtn(_ sender: UIButton) {
-        realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDays ?? extractDayNumber(from: scheduleContents.text!), date: selectedTime, internalMemo: memoTV.text)
+    @objc private func tappedCompletedBtn(_ sender: UIButton) {
+        realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDays ?? addEditView.extractDayNumber(from: addEditView.scheduleContents.text ?? ""), date: selectedTime, internalMemo: addEditView.memoTV.text)
         navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func tappedExitBtn(_ sender: UIButton) {
+    @objc private func tappedExitBtn(_ sender: UIButton) {
         configureBackAlert()
     }
     
-    @IBAction func tappedDeleteBtn(_ sender: UIButton) {
+    @objc private func tappedDeleteBtn(_ sender: UIButton) {
         configureDeleteAlert()
     }
     
@@ -236,14 +178,14 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
 
 // MARK: - extensions
 extension PlanScheduleEditPlaceViewController: UIPopoverPresentationControllerDelegate {
-    @IBAction func tappedScheduleBtn(_ sender: UIButton) {
-        configurePopover(for: dayPopoverVC, sourceButton: scheduleBtn)
+    @objc private func tappedScheduleBtn(_ sender: UIButton) {
+        configurePopover(for: dayPopoverVC, sourceButton: addEditView.scheduleBtn)
         dayPopoverVC.popoverPresentationController?.delegate = self
         present(dayPopoverVC, animated: true)
     }
     
-    @IBAction func tappedStartTimeBtn(_ sender: UIButton) {
-        configurePopover(for: timePopoverVC, sourceButton: startTimeBtn)
+    @objc private func tappedStartTimeBtn(_ sender: UIButton) {
+        configurePopover(for: timePopoverVC, sourceButton: addEditView.startTimeBtn)
         timePopoverVC.popoverPresentationController?.delegate = self
         present(timePopoverVC, animated: true)
     }
@@ -251,16 +193,10 @@ extension PlanScheduleEditPlaceViewController: UIPopoverPresentationControllerDe
 
 extension PlanScheduleEditPlaceViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "메모를 입력해주세요" {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
+        addEditView.setBeginText(textView: textView)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "메모를 입력해주세요"
-            textView.textColor = .gray80
-        }
+        addEditView.setEndText(textView: textView)
     }
 }
