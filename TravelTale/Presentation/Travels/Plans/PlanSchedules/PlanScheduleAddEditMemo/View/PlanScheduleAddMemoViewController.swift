@@ -13,18 +13,24 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     private let memoView = PlanScheduleAddEditMemoView()
     private let realmManager = RealmManager.shared
     
-    var day: String?
-    var travel: Travel? = nil
+    private var day: String
+    private var travel: Travel
+    
+    var completion: ((Travel) -> ())?
     
     // MARK: - life cycles
-    override func loadView() {
-        view = memoView
+    init(day: String, travel: Travel) {
+        self.day = day
+        self.travel = travel
+        super.init(nibName: nil, bundle: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureAddTarget()
-        configureNavigationBar()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func loadView() {
+        view = memoView
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +44,10 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     }
     
     // MARK: - methods
+    override func configureStyle() {
+        configureNavigationBar()
+    }
+    
     override func configureDelegate() {
         memoView.memoTV.delegate = self
     }
@@ -71,7 +81,8 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     }
     
     @objc private func tapCompleteButton() {
-        realmManager.createMemo(day: day!, travel: travel!, memo: memoView.memoTV.text)
+        realmManager.createMemo(day: day, travel: travel, memo: memoView.checkMemo(textColor: memoView.memoTV.textColor ?? .gray80))
+        completion?(self.travel)
         navigationController?.popViewController(animated: true)
     }
 }
