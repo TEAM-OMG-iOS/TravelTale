@@ -10,6 +10,11 @@ import UIKit
 final class DetailScheduleSelectView: BaseView {
     
     // MARK: - properties
+    let alertMessage = """
+이전으로 돌아가면 작성 내용이 저장되지 않습니다.
+정말 돌아가시겠습니까?
+"""
+    
     let backButton = UIBarButtonItem().then {
         $0.style = .done
         $0.image = UIImage(systemName: "chevron.left")
@@ -121,6 +126,17 @@ Plan 탭에서 생성해주세요.
             notFoundView.isHidden = false
         } else {
             notFoundView.isHidden = true
+        }
+    }
+    
+    func dayDifference(from startDate: Date, to endDate: Date) -> String {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: startDate, to: endDate)
+        
+        if let dayDifference = components.day {
+            return dayDifference == 0 ? "1" : String(dayDifference)
+        } else {
+            return "1"
         }
     }
 }

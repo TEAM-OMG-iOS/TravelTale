@@ -11,10 +11,6 @@ final class DetailScheduleSelectViewController: BaseViewController {
     
     // MARK: - properties
     private let detailScheduleSelectView = DetailScheduleSelectView()
-    private let alertMessage = """
-이전으로 돌아가면 작성 내용이 저장되지 않습니다.
-정말 돌아가시겠습니까?
-"""
     
     private var preSelectedIndexPath: IndexPath?
     private var travels = RealmManager.shared.fetchTravels() {
@@ -45,13 +41,13 @@ final class DetailScheduleSelectViewController: BaseViewController {
         detailScheduleSelectView.showNotFoundView(travels.isEmpty)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        detailScheduleSelectView.startLoadingAnimation()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        detailScheduleSelectView.startLoadingAnimation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -82,19 +78,8 @@ final class DetailScheduleSelectViewController: BaseViewController {
         navigationItem.leftBarButtonItem = detailScheduleSelectView.backButton
     }
     
-    private func dayDifference(from startDate: Date, to endDate: Date) -> String {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: startDate, to: endDate)
-        
-        if let dayDifference = components.day {
-            return dayDifference == 0 ? "1" : String(dayDifference)
-        } else {
-            return "1"
-        }
-    }
-    
     @objc private func configureBackAlert() {
-        let alert = UIAlertController(title: "경고", message: alertMessage, preferredStyle: .alert)
+        let alert = UIAlertController(title: "경고", message: detailScheduleSelectView.alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .destructive) {_ in
             self.navigationController?.popViewController(animated: true)
@@ -109,7 +94,7 @@ final class DetailScheduleSelectViewController: BaseViewController {
     @objc private func tappedNextButton() {
         guard let selectedIndexPath = detailScheduleSelectView.tableView.indexPathForSelectedRow else { return }
         let selectedData = travels[selectedIndexPath.row]
-        let nextVC = DetailScheduleAddViewController(allDays: dayDifference(from: selectedData.startDate, to: selectedData.endDate), selectedTravel: selectedData, selectedPlace: placeDetail)
+        let nextVC = DetailScheduleAddViewController(allDays: detailScheduleSelectView.dayDifference(from: selectedData.startDate, to: selectedData.endDate), selectedTravel: selectedData, selectedPlace: placeDetail)
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }

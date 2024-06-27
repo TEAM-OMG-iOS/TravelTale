@@ -10,6 +10,11 @@ import UIKit
 final class DetailScheduleAddView: BaseView {
     
     // MARK: - properties
+    let alertMessage = """
+이전으로 돌아가면 작성 내용이 저장되지 않습니다.
+계속 진행하시겠습니까?
+"""
+    
     let backButton = UIBarButtonItem().then {
         $0.style = .done
         $0.image = UIImage(systemName: "chevron.left")

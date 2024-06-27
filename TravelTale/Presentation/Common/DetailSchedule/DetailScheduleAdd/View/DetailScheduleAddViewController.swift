@@ -13,11 +13,7 @@ final class DetailScheduleAddViewController: BaseViewController {
     private let detailScheduleAddView = DetailScheduleAddView()
     private let timePopoverVC = PopoverTimeViewController()
     private let realmManager = RealmManager.shared
-    private let alertMessage = """
-이전으로 돌아가면 작성 내용이 저장되지 않습니다.
-계속 진행하시겠습니까?
-"""
-    
+
     private lazy var dayPopoverVC = PopoverDayViewController(data: detailScheduleAddView.configureData(allDays: allDays, travel: selectedTravel), travel: selectedTravel)
     
     private var allDays: String
@@ -51,13 +47,13 @@ final class DetailScheduleAddViewController: BaseViewController {
         detailScheduleAddView.checkBlackText()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        detailScheduleAddView.startLoadingAnimation()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        detailScheduleAddView.startLoadingAnimation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -106,7 +102,7 @@ final class DetailScheduleAddViewController: BaseViewController {
     }
     
     private func configureBackAlert() {
-        let alert = UIAlertController(title: "경고", message: alertMessage, preferredStyle: .alert)
+        let alert = UIAlertController(title: "경고", message: detailScheduleAddView.alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let ok = UIAlertAction(title: "확인", style: .destructive) { _ in
             self.popToView(pages: 2)
