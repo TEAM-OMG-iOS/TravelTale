@@ -39,7 +39,7 @@
   <img src="https://img.shields.io/badge/uikit-2396F3?style=for-the-badge&logo=Swift&logoColor=white">
 </div>
 
-### Version Control $ Communication
+### Version Control & Communication
 <div>
   <img src="https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=Github&logoColor=white">  
   <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"> 
@@ -55,16 +55,43 @@
 ## 2. 채택한 개발 기술과 브랜치 전략
 
 ### 3rd Party Libraries
-- [Alamofire](https://github.com/Alamofire/Alamofire)
-- [Kingfisher](https://github.com/onevcat/Kingfisher)
-- [Then](https://github.com/devxoul/Then)
-- [Snapkit](https://github.com/SnapKit/SnapKit)
-- [Realm, RealmDatabase](https://github.com/realm/realm-swift)
-- [FloatingPanel](https://github.com/scenee/FloatingPanel)
-- [XLPagerTabStrip](https://github.com/xmartlabs/XLPagerTabStrip)
-    - [FXPageControl](https://github.com/nicklockwood/FXPageControl)
-- [HorizonCalendar](https://github.com/airbnb/HorizonCalendar)
-- [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)
+[<img src="https://shields.io/badge/Alamofire-gray?&style=for-the-badge">](https://github.com/Alamofire/Alamofire)
+[<img src="https://shields.io/badge/Kingfisher-gray?&style=for-the-badge">](https://github.com/onevcat/Kingfisher)
+<br>
+네트워크 통신을 간편하게 하기 위해 Alamofire와 Kingfisher를 사용했습니다.
+<br>
+
+[<img src="https://shields.io/badge/Then-gray?&style=for-the-badge">](https://github.com/devxoul/Then)
+[<img src="https://shields.io/badge/Snapkit-gray?&style=for-the-badge">](https://github.com/SnapKit/SnapKit)
+<br>
+뷰를 코드로 간결하게 그리기 위해 Then과 Snapkit을 사용했습니다.
+<br>
+  
+[<img src="https://shields.io/badge/Realm-gray?&style=for-the-badge">](https://github.com/realm/realm-swift)
+[<img src="https://shields.io/badge/RealmDatabase-gray?&style=for-the-badge">](https://github.com/realm/realm-swift)
+<br>
+빠른 속도로 내부저장소에 접근하기 위해 Realm을 사용했습니다.
+<br>
+
+[<img src="https://shields.io/badge/FloatingPanel-gray?&style=for-the-badge">](https://github.com/scenee/FloatingPanel)
+<br>
+  사유
+<br>
+
+[<img src="https://shields.io/badge/XLPagerStrip-gray?&style=for-the-badge">](https://github.com/xmartlabs/XLPagerTabStrip)
+<br>
+  사유 + XLPagerTabStrip에서 [<img src="https://shields.io/badge/FXPageControl-gray?&style=for-the-flat-square">](https://github.com/nicklockwood/FXPageControl) 이 사용됩니다.
+<br>
+
+[<img src="https://shields.io/badge/HorizonCalendar-gray?&style=for-the-badge">](https://github.com/airbnb/HorizonCalendar)
+<br>
+  사유
+<br>
+
+[<img src="https://shields.io/badge/IQKeyboardManager-gray?&style=for-the-badge">](https://github.com/hackiftekhar/IQKeyboardManager)
+<br>
+  사유
+<br>
 
 
 ### 브랜치 전략
