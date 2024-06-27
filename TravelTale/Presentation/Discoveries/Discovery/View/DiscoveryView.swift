@@ -119,6 +119,7 @@ final class DiscoveryView: BaseView {
             $0.leading.trailing.equalToSuperview()
             $0.top.equalTo(recentlyAddedLabel.snp.bottom).offset(12)
             $0.height.equalTo(476)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
     
