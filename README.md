@@ -47,7 +47,8 @@
 </div>
 
 ### API
-[Tour API](https://api.visitkorea.or.kr/#/)
+[<img src="https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/5f5c41a9-f435-4ae0-bc78-c8a271ba2d5c" height="30">](https://api.visitkorea.or.kr/#/)
+
 
 <br>
 
