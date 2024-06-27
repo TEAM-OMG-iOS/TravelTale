@@ -96,8 +96,6 @@ class PlanScheduleAddEditPlaceView: BaseView {
         $0.configureButton(fontColor: .white, font: .pretendard(size: 18, weight: .semibold), text: "완료")
     }
     
-    let dummyPlaceDetail = PlaceDetail(contentId: "", contentTypeId: "", title: "No PlaceDetail", tel: "", homepage: "", firstImage: "", firstImage2: "", cpyrhtDivCd: "", addr1: "", addr2: "", mapx: "", mapy: "", overview: "")
-    
     // MARK: - methods
     override func configureHierarchy() {
         [placeView, scheduleView, startTimeView, memoView ,completedBtn].forEach {
@@ -253,6 +251,10 @@ class PlanScheduleAddEditPlaceView: BaseView {
             completedBtn.isEnabled = false
             completedBtn.backgroundColor = .green10
         }
+    }
+    
+    func checkMemo(textColor: UIColor) -> String {
+        return textColor == .gray80 ? "" : memoTV.text
     }
     
     func dateFormat(date: Date) -> String {
