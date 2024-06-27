@@ -21,6 +21,8 @@ final class PlanEditViewController: BaseViewController {
     var editStartDate: Date?
     var editEndDate: Date?
     
+    var completion: ((Travel) -> Void)?
+    
     // MARK: - life cycles
     override func loadView() {
         view = planEditView
@@ -134,7 +136,7 @@ final class PlanEditViewController: BaseViewController {
         present(alert, animated: true)
     }
     
-    private func presentDateAlert() {
+    private func presentDateAlert() { 
         let travelRange = Calendar.current.dateComponents([.day], from: travel.startDate,
                                                           to: travel.endDate).day ?? 0
         let editRange = Calendar.current.dateComponents([.day], from: editStartDate ?? Date(),
@@ -159,7 +161,8 @@ final class PlanEditViewController: BaseViewController {
                 
                 updateTravel()
                 
-                self.navigationController?.popViewController(animated: true)
+                completion?(travel)
+                navigationController?.popViewController(animated: true)
             }
             
             alert.addAction(cancel)
@@ -169,7 +172,8 @@ final class PlanEditViewController: BaseViewController {
         } else {
             updateTravel()
             
-            self.navigationController?.popViewController(animated: true)
+            completion?(travel)
+            navigationController?.popViewController(animated: true)
         }
     }
     
