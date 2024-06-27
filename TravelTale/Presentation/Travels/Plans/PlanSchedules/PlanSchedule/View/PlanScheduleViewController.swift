@@ -15,9 +15,20 @@ final class PlanScheduleViewController: BaseViewController {
     
     var panelState: FloatingPanelState = .tip
     
-    private let temporaryData = [1,2,3,4,5,6,7,8,9,10]
+    private var tappedDay = 1
+    private var travel: Travel
     
     // MARK: - life cycles
+    init(travel: Travel) {
+        self.travel = travel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         view = planScheduleView
     }
@@ -35,11 +46,11 @@ final class PlanScheduleViewController: BaseViewController {
         planScheduleView.tableView.dataSource = self
         
         planScheduleView.tableView.register(PlanScheduleHeaderCell.self,
-                                                forCellReuseIdentifier: PlanScheduleHeaderCell.identifier)
+                                            forCellReuseIdentifier: PlanScheduleHeaderCell.identifier)
         planScheduleView.tableView.register(PlanScheduleContentCell.self,
-                                                forCellReuseIdentifier: PlanScheduleContentCell.identifier)
+                                            forCellReuseIdentifier: PlanScheduleContentCell.identifier)
         planScheduleView.tableView.register(PlanScheduleFooterCell.self,
-                                                forCellReuseIdentifier: PlanScheduleFooterCell.identifier)
+                                            forCellReuseIdentifier: PlanScheduleFooterCell.identifier)
     }
     
     private func tappedOptionButton(action: UIAction) {
@@ -64,7 +75,7 @@ extension PlanScheduleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 1:
-            return temporaryData.count
+            return travel.schedules.count
         default:
             return 1
         }
@@ -106,17 +117,27 @@ extension PlanScheduleViewController: UITableViewDataSource {
 
 extension PlanScheduleViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row + 1)
+        tappedDay = indexPath.row + 1
+        collectionView.reloadData()
     }
 }
 
 extension PlanScheduleViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return temporaryData.count
+        let endDay = Calendar.current.component(.day, from: travel.endDate)
+        let startDay = Calendar.current.component(.day, from: travel.startDate)
+        
+        return endDay - startDay + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlanScheduleHeaderContentCell.identifier, for: indexPath) as? PlanScheduleHeaderContentCell else { return UICollectionViewCell() }
+        
+        if tappedDay == indexPath.row + 1 {
+            cell.bind(day: indexPath.row + 1, isTapped: true)
+        } else {
+            cell.bind(day: indexPath.row + 1, isTapped: false)
+        }
         
         return cell
     }
