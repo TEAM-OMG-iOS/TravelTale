@@ -40,6 +40,11 @@ final class DetailScheduleSelectViewController: BaseViewController {
         view = detailScheduleSelectView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        detailScheduleSelectView.showNotFoundView(travels.isEmpty)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         detailScheduleSelectView.startLoadingAnimation()
     }
@@ -138,6 +143,7 @@ extension DetailScheduleSelectViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as? TravelTableViewCell else { return UITableViewCell() }
         
         let travel = travels[indexPath.row]
+        cell.selectionStyle = .none
         cell.bind(travel: travel)
         return cell
     }
