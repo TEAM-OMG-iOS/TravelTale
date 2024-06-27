@@ -15,6 +15,7 @@ final class PlanScheduleViewController: BaseViewController {
     
     var panelState: FloatingPanelState = .tip
     
+    private lazy var tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
     private var tappedDay = 1
     private var travel: Travel
     
@@ -119,6 +120,9 @@ extension PlanScheduleViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         tappedDay = indexPath.row + 1
         collectionView.reloadData()
+        
+        tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
+        planScheduleView.tableView.reloadData()
     }
 }
 
