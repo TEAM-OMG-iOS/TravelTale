@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PlanScheduleAddEditPlaceView: BaseView {
+final class PlanScheduleAddEditPlaceView: BaseView {
     
     // MARK: - properties
     let alertMessage = """
