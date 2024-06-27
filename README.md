@@ -30,6 +30,10 @@
 - OS : macOS Sonoma 14.5
 - IDE : Xcode 15.4
 
+| **구분** | **기술 스택** |
+| :-----: | :--------: |
+
+
 ### Design
 <img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white">
 
@@ -55,47 +59,39 @@
 ## 2. 채택한 개발 기술과 브랜치 전략
 
 ### 3rd Party Libraries
-[<img src="https://shields.io/badge/Alamofire-gray?&style=for-the-badge">](https://github.com/Alamofire/Alamofire)
-[<img src="https://shields.io/badge/Kingfisher-gray?&style=for-the-badge">](https://github.com/onevcat/Kingfisher)
+
+**네트워크 :**
+[<img src="https://shields.io/badge/Alamofire-gray?&style=flat">](https://github.com/Alamofire/Alamofire)
+[<img src="https://shields.io/badge/Kingfisher-gray?&style=flat">](https://github.com/onevcat/Kingfisher)
 <br>
-네트워크 통신을 간편하게 하기 위해 Alamofire와 Kingfisher를 사용했습니다.
+네트워크 통신을 간편하게 하기 위해 Alamofire를 사용했습니다. <br>
+캐싱을 활용하고 URL 로 된 이미지를 쉽게 가져오기 위해 Kingfisher를 사용했습니다.
 <br>
 
-[<img src="https://shields.io/badge/Then-gray?&style=for-the-badge">](https://github.com/devxoul/Then)
-[<img src="https://shields.io/badge/Snapkit-gray?&style=for-the-badge">](https://github.com/SnapKit/SnapKit)
+**뷰 :**
+[<img src="https://shields.io/badge/Then-gray?&style=flat">](https://github.com/devxoul/Then)
+[<img src="https://shields.io/badge/Snapkit-gray?&style=flat">](https://github.com/SnapKit/SnapKit)
 <br>
 뷰를 코드로 간결하게 그리기 위해 Then과 Snapkit을 사용했습니다.
 <br>
-  
-[<img src="https://shields.io/badge/Realm-gray?&style=for-the-badge">](https://github.com/realm/realm-swift)
-[<img src="https://shields.io/badge/RealmDatabase-gray?&style=for-the-badge">](https://github.com/realm/realm-swift)
+
+**저장소 :**
+[<img src="https://shields.io/badge/Realm-gray?&style=flat">](https://github.com/realm/realm-swift)
+[<img src="https://shields.io/badge/RealmDatabase-gray?&style=flat">](https://github.com/realm/realm-swift)
 <br>
 빠른 속도로 내부저장소에 접근하기 위해 Realm을 사용했습니다.
 <br>
 
-[<img src="https://shields.io/badge/FloatingPanel-gray?&style=for-the-badge">](https://github.com/scenee/FloatingPanel)
-<br>
-  사유
-<br>
-
-[<img src="https://shields.io/badge/XLPagerStrip-gray?&style=for-the-badge">](https://github.com/xmartlabs/XLPagerTabStrip)
-<br>
-  사유 + XLPagerTabStrip에서 [<img src="https://shields.io/badge/FXPageControl-gray?&style=for-the-flat-square">](https://github.com/nicklockwood/FXPageControl) 이 사용됩니다.
-<br>
-
-[<img src="https://shields.io/badge/HorizonCalendar-gray?&style=for-the-badge">](https://github.com/airbnb/HorizonCalendar)
-<br>
-  사유
-<br>
-
-[<img src="https://shields.io/badge/IQKeyboardManager-gray?&style=for-the-badge">](https://github.com/hackiftekhar/IQKeyboardManager)
-<br>
-  사유
-<br>
+**기타 라이브러리**
+[<img src="https://shields.io/badge/FloatingPanel-gray?&style=flat">](https://github.com/scenee/FloatingPanel)
+[<img src="https://shields.io/badge/XLPagerStrip-gray?&style=flat">](https://github.com/xmartlabs/XLPagerTabStrip)
+[<img src="https://shields.io/badge/FXPageControl-gray?&style=flat">](https://github.com/nicklockwood/FXPageControl)
+[<img src="https://shields.io/badge/HorizonCalendar-gray?&style=flat">](https://github.com/airbnb/HorizonCalendar)
+[<img src="https://shields.io/badge/IQKeyboardManager-gray?&style=flat">](https://github.com/hackiftekhar/IQKeyboardManager)
 
 
 ### 브랜치 전략
-- Git-flow 전략을 기반으로 main, develop 브랜치와 feature 보조 브랜치를 운용했습니다.
+- Github-flow 전략을 기반으로 main, develop 브랜치와 feature 보조 브랜치를 운용했습니다.
 - main, develop, Feat 브랜치로 나누어 개발을 하였습니다.
     - **main** 브랜치는 배포 단계에서만 사용하는 브랜치입니다.
     - **develop** 브랜치는 개발 단계에서 git-flow의 master 역할을 하는 브랜치입니다.
@@ -152,55 +148,14 @@
 <br>
 
 
-## 6. 페이지별 기능
 
-
-
-
-
-
-
-
-
-
+## 6. 트러블 슈팅
 
 
 <br>
 
-## 7. 트러블 슈팅
-
-
-<br>
-
-## 8. 개선 목표
+## 7. 개선 목표
 
     
-    
-<br>
-
-## 9. 프로젝트 후기
-
-### 김정호
-
-
-
-<br>
-
-### 배지해
-
-
-
-<br>
-
-### 김유림
-
-
-<br>
-
-### 박윤희
-
-<br>
-
-### 방기남
     
 <br>
