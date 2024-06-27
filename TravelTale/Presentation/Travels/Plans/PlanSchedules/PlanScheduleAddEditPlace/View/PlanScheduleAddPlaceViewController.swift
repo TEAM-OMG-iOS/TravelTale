@@ -143,7 +143,7 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     }
     
     @objc private func tappedCompletedBtn(_ sender: UIButton) {
-        realmManager.createSchedule(day: (addEditView.extractDayNumber(from: self.selectedDays ?? "") ?? selectedDay), date: selectedTime ?? Date(), travel: travel, placeDetail: placeDetail ?? addEditView.dummyPlaceDetail, memo: addEditView.memoTV.text)
+        realmManager.createSchedule(day: (addEditView.extractDayNumber(from: self.selectedDays ?? "") ?? selectedDay), date: selectedTime ?? Date(), travel: travel, placeDetail: placeDetail ?? PlaceDetail(contentId: "", contentTypeId: "", title: "No PlaceDetail", tel: "", homepage: "", firstImage: "", firstImage2: "", cpyrhtDivCd: "", addr1: "", addr2: "", mapx: "", mapy: "", overview: ""), memo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
         print(realmManager.fetchTravels())
         navigationController?.popViewController(animated: true)
     }
