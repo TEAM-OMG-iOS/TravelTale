@@ -1,5 +1,5 @@
 //
-//  DaySelectPopover.swift
+//  PopoverDayViewController.swift
 //  TravelTale
 //
 //  Created by Kinam on 6/7/24.
@@ -7,23 +7,34 @@
 
 import UIKit
 
-final class DaySelectPopoverViewController: BaseViewController {
+final class PopoverDayViewController: BaseViewController {
     
     // MARK: - properties
-    private let daySelectPopoverView = DaySelectPopoverView()
+    private let daySelectPopoverView = PopoverDayView()
     
-    // TODO: - 데이터 변경 시 수정 예정
-    private let days: [String] = ["Day 1", "Day 2", "Day 3", "Day 4"]
+    private var travel: Travel
+    private var data: [String]
     
     var selectedDays: String?
     
     // MARK: - life cycles
+    init(data: [String], travel: Travel) {
+        self.data = data
+        self.travel = travel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         view = daySelectPopoverView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setDefaultRow()
     }
     
     // MARK: - methods
@@ -36,7 +47,11 @@ final class DaySelectPopoverViewController: BaseViewController {
         daySelectPopoverView.leftBtn.addTarget(self, action: #selector(tappedcancelBtn), for: .touchUpInside)
         daySelectPopoverView.rightBtn.addTarget(self, action: #selector(tappedOkBtn), for: .touchUpInside)
     }
-
+    
+    private func setDefaultRow() {
+        selectedDays = data[0]
+    }
+    
     @objc private func tappedcancelBtn() {
         self.dismiss(animated: true)
     }
@@ -49,27 +64,35 @@ final class DaySelectPopoverViewController: BaseViewController {
 }
 
 // MARK: - extensions
-extension DaySelectPopoverViewController: UIPickerViewDelegate {
+extension PopoverDayViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return days[row]
+        return data[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedDays = days[row]
+        selectedDays = data[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 35.0
     }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+        label.text = data[row]
+        label.font = .pretendard(size: 20, weight: .regular)
+        label.textAlignment = .center
+        return label
+    }
 }
 
-extension DaySelectPopoverViewController: UIPickerViewDataSource {
+extension PopoverDayViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return days.count
+        return data.count
     }
 }
 

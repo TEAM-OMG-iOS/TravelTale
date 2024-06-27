@@ -1,5 +1,5 @@
 //
-//  TimeSelectPopover.swift
+//  PopoverTimeViewController.swift
 //  TravelTale
 //
 //  Created by Kinam on 6/7/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class TimeSelectPopoverViewController: BaseViewController {
+final class PopoverTimeViewController: BaseViewController {
     
     // MARK: - properties
-    private let timeSelectPopoverView = TimeSelectPopoverView()
+    private let timeSelectPopoverView = PopoverTimeView()
     
     // MARK: - life cycles
     override func loadView() {
