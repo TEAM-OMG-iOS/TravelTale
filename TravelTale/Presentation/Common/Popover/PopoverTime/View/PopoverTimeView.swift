@@ -1,5 +1,5 @@
 //
-//  TimeSelectPopoverView.swift
+//  PopoverTimeView.swift
 //  TravelTale
 //
 //  Created by Kinam on 6/12/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TimeSelectPopoverView: BaseView {
+final class PopoverTimeView: BaseView {
     
     // MARK: - properties
     private let daySelectView = UIView().then {

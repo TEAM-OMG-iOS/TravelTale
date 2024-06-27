@@ -13,9 +13,20 @@ final class PlanScheduleEditMemoViewController: BaseViewController {
     private let memoView = PlanScheduleAddEditMemoView()
     private let realmManager = RealmManager.shared
     
-    var schedule: Schedule? = nil
+    private var schedule: Schedule
+    
+    var completion: ((Schedule) -> ())?
     
     // MARK: - life cycles
+    init(schedule: Schedule) {
+        self.schedule = schedule
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         view = memoView
     }
@@ -70,7 +81,8 @@ final class PlanScheduleEditMemoViewController: BaseViewController {
     }
     
     @objc private func tapCompleteButton() {
-        realmManager.updateMemo(schedule: schedule!, newMemo: memoView.memoTV.text)
+        realmManager.updateMemo(schedule: schedule, newMemo: memoView.checkMemo(textColor: memoView.memoTV.textColor ?? .gray80))
+        completion?(self.schedule)
         navigationController?.popViewController(animated: true)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  TravelAdditionView2.swift
+//  DetailScheduleAddView.swift
 //  TravelTale
 //
 //  Created by Kinam on 6/6/24.
@@ -7,9 +7,14 @@
 
 import UIKit
 
-final class ScheduleCreateView: BaseView {
+final class DetailScheduleAddView: BaseView {
     
     // MARK: - properties
+    let alertMessage = """
+이전으로 돌아가면 작성 내용이 저장되지 않습니다.
+계속 진행하시겠습니까?
+"""
+    
     let backButton = UIBarButtonItem().then {
         $0.style = .done
         $0.image = UIImage(systemName: "chevron.left")
@@ -36,8 +41,8 @@ final class ScheduleCreateView: BaseView {
         $0.configureLabel(font: .pretendard(size: 16, weight: .bold), text: "장소")
     }
     
-    private let placeContents = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 16, weight: .regular), text: "설빙 석촌호수 동호점")
+    let placeContents = UILabel().then {
+        $0.configureLabel(font: .pretendard(size: 16, weight: .regular), text: "")
     }
     
     private let scheduleView = UIView().then {
@@ -296,5 +301,33 @@ final class ScheduleCreateView: BaseView {
             nextBtn.isEnabled = false
             nextBtn.backgroundColor = .green10
         }
+    }
+    
+    func dateFormat(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "a hh:mm"
+        return formatter.string(from: date)
+    }
+    
+    func configureData(allDays: String, travel: Travel) -> [String] {
+        guard let daysCount = Int(allDays) else {
+            return []
+        }
+        var results = [String]()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy년 MM월 dd일"
+        
+        for i in 0..<daysCount {
+            if let newDate = Calendar.current.date(byAdding: .day, value: i, to: travel.startDate) {
+                let dateString = formatter.string(from: newDate)
+                results.append("Day \(i + 1) | \(dateString)")
+            }
+        }
+        return results
+    }
+    
+    func checkMemo(textColor: UIColor) -> String {
+        return textColor == .gray80 ? "" : memoTV.text
     }
 }
