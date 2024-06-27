@@ -29,12 +29,26 @@
 ## 1. 개발 환경
 - OS : macOS Sonoma 14.5
 - IDE : Xcode 15.4
-- Front : Swift
-- Back-end : 제공된 API 활용
-- 버전 및 이슈관리 : Github, Github Issues
-- 협업 툴 : Zep, Notion, Slack
-- 서비스 배포 환경 : AppStore
-- 디자인 : [Figma](https://www.figma.com/design/ltJmHbGmlPLMrmu9xgQBO7/TravelTale?node-id=0-1&t=bekDSb58xvqRVZSW-1)
+
+### Design
+<img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white">
+
+### Develop
+<div>
+  <img src="https://img.shields.io/badge/Swift-F05138?style=for-the-badge&logo=Swift&logoColor=white">
+  <img src="https://img.shields.io/badge/uikit-2396F3?style=for-the-badge&logo=Swift&logoColor=white">
+</div>
+
+### Version Control $ Communication
+<div>
+  <img src="https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=Github&logoColor=white">  
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"> 
+  <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white">  
+</div>
+
+### API
+[Tour API](https://api.visitkorea.or.kr/#/)
+
 <br>
 
 ## 2. 채택한 개발 기술과 브랜치 전략
