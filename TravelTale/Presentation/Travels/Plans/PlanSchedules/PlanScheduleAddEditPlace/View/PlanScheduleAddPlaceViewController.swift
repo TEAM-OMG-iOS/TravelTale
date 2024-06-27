@@ -21,7 +21,7 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     
     private let timePopoverVC = PopoverTimeViewController()
     private let realmManager = RealmManager.shared
-    private let userDefaults = UserDefaultsManager()
+    private let userDefaults = UserDefaultsManager.shared
     private let alertMessage = """
 이전으로 돌아가면 작성 내용이 저장되지 않습니다.
 정말 돌아가시겠습니까?
@@ -35,7 +35,7 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     private var allDays: String
     private var placeDetail: PlaceDetail? {
         didSet {
-            checkPlaceDetail()
+            self.placeContents.text = self.placeDetail?.title
             checkBlackText()
         }
     }
@@ -166,17 +166,13 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yy년 MM월 dd일"
         
-        for i in 0..<daysCount {
+        for i in 0...daysCount {
             if let newDate = Calendar.current.date(byAdding: .day, value: i, to: travel.startDate) {
                 let dateString = formatter.string(from: newDate)
                 results.append("Day \(i + 1) | \(dateString)")
             }
         }
         return results
-    }
-    
-    private func checkPlaceDetail() {
-        self.placeContents.text = self.placeDetail?.title
     }
     
     private func extractDayNumber(from formattedString: String) -> String? {
@@ -215,7 +211,7 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     }
     
     @IBAction func tappedPlaceBtn(_ sender: UIButton) {
-        let nextVC = SearchResultViewController()
+        let nextVC = SearchViewController()
         userDefaults.setTabType(type: .travel)
         navigationController?.pushViewController(nextVC, animated: true)
     }
