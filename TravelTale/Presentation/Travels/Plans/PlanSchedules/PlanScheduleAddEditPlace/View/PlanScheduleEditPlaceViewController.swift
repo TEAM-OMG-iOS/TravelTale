@@ -70,6 +70,17 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         addEditView.memoTV.delegate = self
     }
     
+    override func configureAddTarget() {
+        addEditView.backButton.target = self
+        addEditView.backButton.action = #selector(tappedExitBtn)
+        addEditView.deleteButton.target = self
+        addEditView.deleteButton.action = #selector(tappedDeleteBtn)
+        addEditView.placeBtn.addTarget(self, action: #selector(tappedPlaceBtn), for: .touchUpInside)
+        addEditView.scheduleBtn.addTarget(self, action: #selector(tappedScheduleBtn), for: .touchUpInside)
+        addEditView.startTimeBtn.addTarget(self, action: #selector(tappedStartTimeBtn), for: .touchUpInside)
+        addEditView.completedBtn.addTarget(self, action: #selector(tappedCompletedBtn), for: .touchUpInside)
+    }
+    
     override func bind() {
         addEditView.placeContents.text = schedule.title
         addEditView.scheduleContents.text = addEditView.configureInitialSchedule(selectedDay: selectedDay, alldays: allDays, travel: travel)
@@ -96,36 +107,6 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
-    }
-    
-    private func configureBackAlert() {
-        let alert = UIAlertController(title: "경고", message: addEditView.alertMessage, preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
-        let ok = UIAlertAction(title: "확인", style: .default) {_ in
-            self.navigationController?.popViewController(animated: true)
-        }
-        
-        alert.addAction(cancel)
-        alert.addAction(ok)
-        
-        self.present(alert, animated: true)
-    }
-    
-    @objc private func configureDeleteAlert() {
-        let alert = UIAlertController(title: "경고", message: """
-현재 장소를 삭제합니다.
-계속 진행하시겠습니까?
-""", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
-        let ok = UIAlertAction(title: "확인", style: .default) {_ in
-            self.realmManager.deleteSchedule(travel: self.travel, schedule: self.schedule)
-            self.navigationController?.popViewController(animated: true)
-        }
-        
-        alert.addAction(cancel)
-        alert.addAction(ok)
-        
-        self.present(alert, animated: true)
     }
     
     @objc private func updateSelectedDays(_ notification: Notification) {
@@ -159,16 +140,38 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     }
     
     @objc private func tappedCompletedBtn(_ sender: UIButton) {
-        realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDays ?? addEditView.extractDayNumber(from: addEditView.scheduleContents.text ?? ""), date: selectedTime, internalMemo: addEditView.memoTV.text)
+        realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDays ?? addEditView.extractDayNumber(from: addEditView.scheduleContents.text ?? ""), date: selectedTime, internalMemo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
         navigationController?.popViewController(animated: true)
     }
     
     @objc private func tappedExitBtn(_ sender: UIButton) {
-        configureBackAlert()
+        let alert = UIAlertController(title: "경고", message: addEditView.alertMessage, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let ok = UIAlertAction(title: "확인", style: .default) {_ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true)
     }
     
     @objc private func tappedDeleteBtn(_ sender: UIButton) {
-        configureDeleteAlert()
+        let alert = UIAlertController(title: "경고", message: """
+현재 장소를 삭제합니다.
+계속 진행하시겠습니까?
+""", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let ok = UIAlertAction(title: "확인", style: .default) {_ in
+            self.realmManager.deleteSchedule(travel: self.travel, schedule: self.schedule)
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true)
     }
     
     deinit {
