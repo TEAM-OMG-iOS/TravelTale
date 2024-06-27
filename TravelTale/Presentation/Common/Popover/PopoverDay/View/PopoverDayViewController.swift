@@ -76,6 +76,14 @@ extension PopoverDayViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 35.0
     }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+        label.text = data[row]
+        label.font = .pretendard(size: 20, weight: .regular)
+        label.textAlignment = .center
+        return label
+    }
 }
 
 extension PopoverDayViewController: UIPickerViewDataSource {
