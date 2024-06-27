@@ -20,7 +20,7 @@ final class DetailScheduleSelectViewController: BaseViewController {
         }
     }
     
-    var placeDetail: PlaceDetail
+    private var placeDetail: PlaceDetail
     
     // MARK: - life cycles
     init(placeDetail: PlaceDetail) {
