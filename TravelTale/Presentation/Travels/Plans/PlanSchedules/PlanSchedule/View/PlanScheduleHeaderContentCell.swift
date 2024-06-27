@@ -44,4 +44,14 @@ final class PlanScheduleHeaderContentCell: BaseCollectionViewCell {
             $0.height.equalTo(3)
         }
     }
+    
+    func bind(day: Int, isTapped: Bool) {
+        if isTapped {
+            dayLabel.configureLabel(alignment: .center, color: .green100, font: .oaGothic(size: 15, weight: .heavy), text: "Day \(day)")
+            underlineView.configureView(color: .green100)
+        } else {
+            dayLabel.configureLabel(alignment: .center, color: .gray70, font: .oaGothic(size: 15, weight: .heavy), text: "Day \(day)")
+            underlineView.configureView(color: .clear)
+        }
+    }
 }
