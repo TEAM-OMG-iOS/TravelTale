@@ -75,11 +75,9 @@ final class DetailScheduleAddViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        //popover
         detailScheduleAddView.scheduleBtn.addTarget(self, action: #selector(tappedScheduleBtn), for: .touchUpInside)
         detailScheduleAddView.startTiemBtn.addTarget(self, action: #selector(tappedStartTimeBtn), for: .touchUpInside)
         
-        //common btn
         detailScheduleAddView.cancelBtn.tag = 0
         detailScheduleAddView.cancelBtn.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
         detailScheduleAddView.backButton.tag = 1
