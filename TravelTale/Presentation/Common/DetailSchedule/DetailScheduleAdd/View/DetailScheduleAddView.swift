@@ -297,4 +297,32 @@ final class DetailScheduleAddView: BaseView {
             nextBtn.backgroundColor = .green10
         }
     }
+    
+    func dateFormat(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "a hh:mm"
+        return formatter.string(from: date)
+    }
+    
+    func configureData(allDays: String, travel: Travel) -> [String] {
+        guard let daysCount = Int(allDays) else {
+            return []
+        }
+        var results = [String]()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy년 MM월 dd일"
+        
+        for i in 0..<daysCount {
+            if let newDate = Calendar.current.date(byAdding: .day, value: i, to: travel.startDate) {
+                let dateString = formatter.string(from: newDate)
+                results.append("Day \(i + 1) | \(dateString)")
+            }
+        }
+        return results
+    }
+    
+    func checkMemo(textColor: UIColor) -> String {
+        return textColor == .gray80 ? "" : memoTV.text
+    }
 }

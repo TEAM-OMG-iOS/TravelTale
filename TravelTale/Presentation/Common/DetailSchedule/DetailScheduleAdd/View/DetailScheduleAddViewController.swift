@@ -18,7 +18,7 @@ final class DetailScheduleAddViewController: BaseViewController {
 계속 진행하시겠습니까?
 """
     
-    private lazy var dayPopoverVC = PopoverDayViewController(data: configureData(allDays: allDays, travel: selectedTravel), travel: selectedTravel)
+    private lazy var dayPopoverVC = PopoverDayViewController(data: detailScheduleAddView.configureData(allDays: allDays, travel: selectedTravel), travel: selectedTravel)
     
     private var allDays: String
     private var selectedTravel: Travel
@@ -45,11 +45,10 @@ final class DetailScheduleAddViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        detailScheduleAddView.checkBlackText()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedDays), name: .selectedDaysUpdated, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedTime), name: .selectedTimeUpdated, object: nil)
+        detailScheduleAddView.checkBlackText()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -76,7 +75,7 @@ final class DetailScheduleAddViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        //popoverview
+        //popover
         detailScheduleAddView.scheduleBtn.addTarget(self, action: #selector(tappedScheduleBtn), for: .touchUpInside)
         detailScheduleAddView.startTiemBtn.addTarget(self, action: #selector(tappedStartTimeBtn), for: .touchUpInside)
         
@@ -96,13 +95,6 @@ final class DetailScheduleAddViewController: BaseViewController {
     private func configureNavigationBar() {
         navigationItem.title = "내 여행에 추가"
         navigationItem.leftBarButtonItem = detailScheduleAddView.backButton
-    }
-    
-    private func dateFormat(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "a hh:mm"
-        return formatter.string(from: date)
     }
     
     private func configurePopover(for popoverVC: UIViewController, sourceButton: UIButton) {
@@ -127,21 +119,13 @@ final class DetailScheduleAddViewController: BaseViewController {
         self.present(alert, animated: true)
     }
     
-    private func configureData(allDays: String, travel: Travel) -> [String] {
-        guard let daysCount = Int(allDays) else {
-            return []
+    private func popToView(pages: Int) {
+        if let navigationController = self.navigationController {
+            let viewControllers = navigationController.viewControllers
+            let targetIndex = max(0, viewControllers.count - pages - 1)
+            let targetViewController = viewControllers[targetIndex]
+            navigationController.popToViewController(targetViewController, animated: true)
         }
-        var results = [String]()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yy년 MM월 dd일"
-        
-        for i in 0..<daysCount {
-            if let newDate = Calendar.current.date(byAdding: .day, value: i, to: travel.startDate) {
-                let dateString = formatter.string(from: newDate)
-                results.append("Day \(i + 1) | \(dateString)")
-            }
-        }
-        return results
     }
     
     @objc private func handleBackButton(_ sender: UIButton) {
@@ -167,27 +151,19 @@ final class DetailScheduleAddViewController: BaseViewController {
               let selectedTime = userInfo["selectedTime"] as? Date else { return }
         
         self.selectedTime = selectedTime
-        self.detailScheduleAddView.startTimeContents.text = dateFormat(date: self.selectedTime ?? Date())
+        self.detailScheduleAddView.startTimeContents.text = detailScheduleAddView.dateFormat(date: self.selectedTime ?? Date())
         self.detailScheduleAddView.checkBlackText()
     }
     
     @objc private func tappedAddScheduleBtn() {
-        realmManager.createSchedule(day: selectedDays!, date: selectedTime!, travel: selectedTravel, placeDetail: selectedPlace)
+        realmManager.createSchedule(day: selectedDays!, date: selectedTime!, travel: selectedTravel, placeDetail: selectedPlace, memo: detailScheduleAddView.checkMemo(textColor: detailScheduleAddView.memoTV.textColor ?? .gray80))
         let alert = UIAlertController(title: "일정 추가 완료", message: "일정 추가가 완료되었습니다.", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "확인", style: .cancel) { _ in 
             self.popToView(pages: 2)
         }
         alert.addAction(cancel)
         self.present(alert, animated: true)
-    }
-    
-    private func popToView(pages: Int) {
-        if let navigationController = self.navigationController {
-            let viewControllers = navigationController.viewControllers
-            let targetIndex = max(0, viewControllers.count - pages - 1)
-            let targetViewController = viewControllers[targetIndex]
-            navigationController.popToViewController(targetViewController, animated: true)
-        }
+        print(realmManager.fetchTravels())
     }
     
     deinit {
