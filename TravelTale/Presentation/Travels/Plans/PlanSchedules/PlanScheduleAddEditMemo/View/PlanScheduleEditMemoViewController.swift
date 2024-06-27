@@ -15,6 +15,8 @@ final class PlanScheduleEditMemoViewController: BaseViewController {
     
     private var schedule: Schedule
     
+    var completion: ((Schedule) -> ())?
+    
     // MARK: - life cycles
     init(schedule: Schedule) {
         self.schedule = schedule
@@ -80,6 +82,7 @@ final class PlanScheduleEditMemoViewController: BaseViewController {
     
     @objc private func tapCompleteButton() {
         realmManager.updateMemo(schedule: schedule, newMemo: memoView.checkMemo(textColor: memoView.memoTV.textColor ?? .gray80))
+        completion?(self.schedule)
         navigationController?.popViewController(animated: true)
     }
 }

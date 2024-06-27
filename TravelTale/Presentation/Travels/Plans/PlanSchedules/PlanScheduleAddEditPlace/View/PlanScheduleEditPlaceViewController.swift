@@ -30,6 +30,8 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         }
     }
     
+    var completion: ((Schedule) -> ())?
+    
     // MARK: - life cycles
     init(travel: Travel, schedule: Schedule, selectedDay: String, allDays: String) {
         self.travel = travel
@@ -139,8 +141,11 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     }
     
     @objc private func tappedCompletedBtn(_ sender: UIButton) {
-        realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace ?? PlaceDetail(contentId: "", contentTypeId: "", title: "No PlaceDetail", tel: "", homepage: "", firstImage: "", firstImage2: "", cpyrhtDivCd: "", addr1: "", addr2: "", mapx: "", mapy: "", overview: ""), day: selectedDays ?? addEditView.extractDayNumber(from: addEditView.scheduleContents.text ?? ""), date: selectedTime, internalMemo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
-        navigationController?.popViewController(animated: true)
+        if let selectedPlace {
+            realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDays ?? addEditView.extractDayNumber(from: addEditView.scheduleContents.text ?? ""), date: selectedTime, internalMemo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
+            completion?(self.schedule)
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     @objc private func tappedExitBtn(_ sender: UIButton) {

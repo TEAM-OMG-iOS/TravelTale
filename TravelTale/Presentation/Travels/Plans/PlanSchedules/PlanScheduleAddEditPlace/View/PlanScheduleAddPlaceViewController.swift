@@ -26,6 +26,7 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     private var selectedDay: String
     private var allDays: String
     
+    var completion: ((Travel) -> ())?
     var placeDetail: PlaceDetail? {
         didSet {
             addEditView.placeContents.text = self.placeDetail?.title
@@ -143,9 +144,11 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     }
     
     @objc private func tappedCompletedBtn(_ sender: UIButton) {
-        realmManager.createSchedule(day: (addEditView.extractDayNumber(from: self.selectedDays ?? "") ?? selectedDay), date: selectedTime ?? Date(), travel: travel, placeDetail: placeDetail ?? PlaceDetail(contentId: "", contentTypeId: "", title: "No PlaceDetail", tel: "", homepage: "", firstImage: "", firstImage2: "", cpyrhtDivCd: "", addr1: "", addr2: "", mapx: "", mapy: "", overview: ""), memo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
-        print(realmManager.fetchTravels())
-        navigationController?.popViewController(animated: true)
+        if let placeDetail {
+            realmManager.createSchedule(day: (addEditView.extractDayNumber(from: selectedDays ?? "") ?? selectedDay), date: selectedTime ?? Date(), travel: travel, placeDetail: placeDetail, memo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
+            completion?(self.travel)
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     @objc private func tappedExitBtn(_ sender: UIButton) {

@@ -16,6 +16,8 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     private var day: String
     private var travel: Travel
     
+    var completion: ((Travel) -> ())?
+    
     // MARK: - life cycles
     init(day: String, travel: Travel) {
         self.day = day
@@ -80,6 +82,7 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     
     @objc private func tapCompleteButton() {
         realmManager.createMemo(day: day, travel: travel, memo: memoView.checkMemo(textColor: memoView.memoTV.textColor ?? .gray80))
+        completion?(self.travel)
         navigationController?.popViewController(animated: true)
     }
 }
