@@ -79,7 +79,7 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     }
     
     @objc private func tapCompleteButton() {
-        realmManager.createMemo(day: day, travel: travel, memo: memoView.memoTV.text)
+        realmManager.createMemo(day: day, travel: travel, memo: memoView.checkMemo(textColor: memoView.memoTV.textColor ?? .gray80))
         navigationController?.popViewController(animated: true)
     }
 }
