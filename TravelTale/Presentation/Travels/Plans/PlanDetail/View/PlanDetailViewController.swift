@@ -14,9 +14,21 @@ final class PlanDetailViewController: BaseViewController {
     private let planDetailView = PlanDetailView()
     
     private let floatingPanelController = FloatingPanelController()
-    private let planScheduleViewController = PlanScheduleViewController()
+    private lazy var planScheduleViewController = PlanScheduleViewController(travel: travel)
+    
+    var travel: Travel
     
     // MARK: - life cycles
+    init(travel: Travel) {
+        self.travel = travel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         view = planDetailView
     }
@@ -35,6 +47,10 @@ final class PlanDetailViewController: BaseViewController {
         super.viewWillDisappear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func bind() {
+        planDetailView.bind(travel: travel)
     }
     
     // MARK: - methods
