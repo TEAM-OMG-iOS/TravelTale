@@ -24,19 +24,18 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     private var schedule: Schedule
     private var selectedDay: String
     private var allDays: String
-    private var selectedPlace: PlaceDetail {
+    private var selectedPlace: PlaceDetail? {
         didSet {
-            addEditView.placeContents.text = self.selectedPlace.title
+            addEditView.placeContents.text = self.selectedPlace?.title
         }
     }
     
     // MARK: - life cycles
-    init(travel: Travel, schedule: Schedule, selectedDay: String, allDays: String, selectedPlace: PlaceDetail) {
+    init(travel: Travel, schedule: Schedule, selectedDay: String, allDays: String) {
         self.travel = travel
         self.schedule = schedule
         self.selectedDay = selectedDay
         self.allDays = allDays
-        self.selectedPlace = selectedPlace
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -130,7 +129,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
               let selectedPlace = userInfo["placeSelected"] as? PlaceDetail else { return }
         
         self.selectedPlace = selectedPlace
-        addEditView.placeContents.text = self.selectedPlace.title
+        addEditView.placeContents.text = self.selectedPlace?.title
     }
     
     @objc private func tappedPlaceBtn(_ sender: UIButton) {
@@ -140,7 +139,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     }
     
     @objc private func tappedCompletedBtn(_ sender: UIButton) {
-        realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDays ?? addEditView.extractDayNumber(from: addEditView.scheduleContents.text ?? ""), date: selectedTime, internalMemo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
+        realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace ?? PlaceDetail(contentId: "", contentTypeId: "", title: "No PlaceDetail", tel: "", homepage: "", firstImage: "", firstImage2: "", cpyrhtDivCd: "", addr1: "", addr2: "", mapx: "", mapy: "", overview: ""), day: selectedDays ?? addEditView.extractDayNumber(from: addEditView.scheduleContents.text ?? ""), date: selectedTime, internalMemo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
         navigationController?.popViewController(animated: true)
     }
     
