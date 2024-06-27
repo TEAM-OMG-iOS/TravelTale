@@ -69,7 +69,6 @@ final class PlanScheduleViewController: BaseViewController {
         let planScheduleAddPlaceVC = PlanScheduleAddPlaceViewController(travel: travel,
                                                                         selectedDay: String(tappedDay),
                                                                         allDays: String(fetchTotalDay()))
-        
         planScheduleAddPlaceVC.completion = { travel in
             self.travel = travel
             self.tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
@@ -80,7 +79,14 @@ final class PlanScheduleViewController: BaseViewController {
     }
     
     @objc private func tappedMemoAddButton() {
-        print("tappedMemoAddButton")
+        let planScheduleAddMemoVC = PlanScheduleAddMemoViewController(day: String(tappedDay), travel: travel)
+        planScheduleAddMemoVC.completion = { travel in
+            self.travel = travel
+            self.tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
+            self.planScheduleView.tableView.reloadData()
+        }
+        
+        navigationController?.pushViewController(planScheduleAddMemoVC, animated: true)
     }
 }
 
