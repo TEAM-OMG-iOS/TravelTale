@@ -48,7 +48,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedDays), name: .selectedDaysUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedTime), name: .selectedTimeUpdated, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(updatePlaceContents), name: .placeSelected, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updatePlaceContents), name: .placeSelected, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -127,7 +127,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     
     @objc private func updatePlaceContents(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
-              let selectedPlace = userInfo["dataDetail"] as? PlaceDetail else { return }
+              let selectedPlace = userInfo["placeSelected"] as? PlaceDetail else { return }
         
         self.selectedPlace = selectedPlace
         addEditView.placeContents.text = self.selectedPlace.title
