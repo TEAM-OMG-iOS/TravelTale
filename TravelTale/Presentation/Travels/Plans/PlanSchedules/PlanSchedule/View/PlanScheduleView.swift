@@ -1,5 +1,5 @@
 //
-//  TravelDetailPlanView.swift
+//  PlanScheduleView.swift
 //  TravelTale
 //
 //  Created by 김정호 on 6/8/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TravelDetailPlanView: BaseView {
+final class PlanScheduleView: BaseView {
     
     // MARK: - properties
     let tableView = UITableView().then {

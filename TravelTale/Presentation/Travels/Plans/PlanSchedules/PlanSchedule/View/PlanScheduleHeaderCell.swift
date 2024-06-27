@@ -1,5 +1,5 @@
 //
-//  TravelDetailPlanHeaderCell.swift
+//  PlanScheduleHeaderCell.swift
 //  TravelTale
 //
 //  Created by 김정호 on 6/11/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class TravelDetailPlanHeaderCell: BaseTableViewCell {
+final class PlanScheduleHeaderCell: BaseTableViewCell {
     
     // MARK: - properties
-    static let identifier = String(describing: TravelDetailPlanHeaderCell.self)
+    static let identifier = String(describing: PlanScheduleHeaderCell.self)
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createFlowLayout()).then {
         $0.showsHorizontalScrollIndicator = false

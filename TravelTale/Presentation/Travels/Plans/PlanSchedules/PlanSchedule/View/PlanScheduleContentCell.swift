@@ -1,5 +1,5 @@
 //
-//  TravelDetailPlanContentCell.swift
+//  PlanScheduleContentCell.swift
 //  TravelTale
 //
 //  Created by 김정호 on 6/8/24.
@@ -8,10 +8,10 @@
 import UIKit
 import FloatingPanel
 
-final class TravelDetailPlanContentCell: BaseTableViewCell {
+final class PlanScheduleContentCell: BaseTableViewCell {
     
     // MARK: - properties
-    static let identifier = String(describing: TravelDetailPlanContentCell.self)
+    static let identifier = String(describing: PlanScheduleContentCell.self)
     
     private let verticalLineView = UIView().then {
         $0.configureView(color: .black)

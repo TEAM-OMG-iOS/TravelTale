@@ -43,6 +43,10 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func loadView() {
+        view = addEditView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedDays), name: .selectedDaysUpdated, object: nil)
@@ -130,7 +134,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     }
     
     @objc private func tappedPlaceBtn(_ sender: UIButton) {
-        let nextVC = SearchResultViewController()
+        let nextVC = SearchViewController()
         userDefaults.setTabType(type: .travel)
         navigationController?.pushViewController(nextVC, animated: true)
     }

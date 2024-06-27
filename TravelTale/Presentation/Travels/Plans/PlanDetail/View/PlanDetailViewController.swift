@@ -1,5 +1,5 @@
 //
-//  TravelDetailViewController.swift
+//  PlanDetailViewController.swift
 //  TravelTale
 //
 //  Created by 김정호 on 6/7/24.
@@ -8,17 +8,29 @@
 import UIKit
 import FloatingPanel
 
-final class TravelDetailViewController: BaseViewController {
+final class PlanDetailViewController: BaseViewController {
     
     // MARK: - properties
-    private let travelDetailView = TravelDetailView()
+    private let planDetailView = PlanDetailView()
     
     private let floatingPanelController = FloatingPanelController()
-    private let travelDetailPlanViewController = TravelDetailPlanViewController()
+    private lazy var planScheduleViewController = PlanScheduleViewController(travel: travel)
+    
+    var travel: Travel
     
     // MARK: - life cycles
+    init(travel: Travel) {
+        self.travel = travel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
-        view = travelDetailView
+        view = planDetailView
     }
     
     override func viewDidLoad() {
@@ -37,6 +49,10 @@ final class TravelDetailViewController: BaseViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    override func bind() {
+        planDetailView.bind(travel: travel)
+    }
+    
     // MARK: - methods
     override func configureStyle() {
         configureNavigation()
@@ -44,11 +60,11 @@ final class TravelDetailViewController: BaseViewController {
     }
     
     override func configureAddTarget() {
-        travelDetailView.backButton.target = self
-        travelDetailView.backButton.action = #selector(tappedBackButton)
+        planDetailView.backButton.target = self
+        planDetailView.backButton.action = #selector(tappedBackButton)
         
-        travelDetailView.settingButton.target = self
-        travelDetailView.settingButton.action = #selector(tappedSettingButton)
+        planDetailView.settingButton.target = self
+        planDetailView.settingButton.action = #selector(tappedSettingButton)
     }
     
     override func configureDelegate() {
@@ -56,8 +72,8 @@ final class TravelDetailViewController: BaseViewController {
     }
     
     private func configureNavigation() {
-        navigationItem.leftBarButtonItem = travelDetailView.backButton
-        navigationItem.rightBarButtonItem = travelDetailView.settingButton
+        navigationItem.leftBarButtonItem = planDetailView.backButton
+        navigationItem.rightBarButtonItem = planDetailView.settingButton
     }
     
     private func configureFloatingPanel() {
@@ -67,7 +83,7 @@ final class TravelDetailViewController: BaseViewController {
         floatingPanelController.contentMode = .fitToBounds
         floatingPanelController.surfaceView.contentPadding = .init(top: 20, left: 0, bottom: 0, right: 0)
         floatingPanelController.layout = TravelDetailFloatingPanelLayout()
-        floatingPanelController.set(contentViewController: travelDetailPlanViewController)
+        floatingPanelController.set(contentViewController: planScheduleViewController)
         floatingPanelController.addPanel(toParent: self)
     }
     
@@ -76,15 +92,22 @@ final class TravelDetailViewController: BaseViewController {
     }
     
     @objc private func tappedSettingButton() {
+        let planEditVC = PlanEditViewController(travel: travel)
         
+        planEditVC.completion = { travel in
+            self.travel = travel
+            self.planDetailView.bind(travel: travel)
+        }
+        
+        navigationController?.pushViewController(planEditVC, animated: true)
     }
 }
 
 // MARK: - extensions
-extension TravelDetailViewController: FloatingPanelControllerDelegate {
+extension PlanDetailViewController: FloatingPanelControllerDelegate {
     func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
-        travelDetailPlanViewController.panelState = fpc.state
-        travelDetailPlanViewController.travelDetailPlanView.tableView.reloadData()
+        planScheduleViewController.panelState = fpc.state
+        planScheduleViewController.planScheduleView.tableView.reloadData()
     }
 }
 
