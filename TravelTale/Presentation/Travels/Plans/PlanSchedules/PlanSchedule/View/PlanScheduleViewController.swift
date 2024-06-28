@@ -54,15 +54,18 @@ final class PlanScheduleViewController: BaseViewController {
                                             forCellReuseIdentifier: PlanScheduleFooterCell.identifier)
     }
     
-    private func fetchTotalDay() -> Int {
-        let endDay = Calendar.current.component(.day, from: travel.endDate)
-        let startDay = Calendar.current.component(.day, from: travel.startDate)
-        
-        return endDay - startDay + 1
-    }
-    
     private func tappedOptionButton(action: UIAction) {
-        print("tappedOptionButton")
+        guard let senderView = action.sender as? UIView else { return }
+        
+        let senderViewPoint = senderView.convert(CGPoint.zero, to: planScheduleView.tableView)
+        
+        if let indexPath = planScheduleView.tableView.indexPathForRow(at: senderViewPoint) {
+            if action.title == "수정" {
+                selectedUpdateButton(indexPath: indexPath)
+            } else {
+                selectedDeleteButton(indexPath: indexPath)
+            }
+        }
     }
     
     @objc private func tappedPlaceAddButton() {
@@ -87,6 +90,33 @@ final class PlanScheduleViewController: BaseViewController {
         }
         
         navigationController?.pushViewController(planScheduleAddMemoVC, animated: true)
+    }
+    
+    private func selectedUpdateButton(indexPath: IndexPath) {
+        if let externalMemo = tappedDaySchedules[indexPath.row].externalMemo {
+            let planScheduleEditMemoVC = PlanScheduleEditMemoViewController(schedule: tappedDaySchedules[indexPath.row])
+            planScheduleEditMemoVC.completion = { _ in
+                self.tappedDaySchedules = Array(self.travel.schedules.filter { $0.day == "\(self.tappedDay)" })
+                self.planScheduleView.tableView.reloadData()
+            }
+            
+            navigationController?.pushViewController(planScheduleEditMemoVC, animated: true)
+        } else {
+            let planScheduleEditPlaceVC = PlanScheduleEditPlaceViewController(travel: travel,
+                                                                              schedule: tappedDaySchedules[indexPath.row],
+                                                                              selectedDay: String(tappedDay),
+                                                                              allDays: String(fetchTotalDay()))
+            planScheduleEditPlaceVC.completion = { _ in
+                self.tappedDaySchedules = Array(self.travel.schedules.filter { $0.day == "\(self.tappedDay)" })
+                self.planScheduleView.tableView.reloadData()
+            }
+            
+            navigationController?.pushViewController(planScheduleEditPlaceVC, animated: true)
+        }
+    }
+    
+    private func selectedDeleteButton(indexPath: IndexPath) {
+        
     }
 }
 
