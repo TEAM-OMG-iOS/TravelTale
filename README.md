@@ -19,55 +19,30 @@
 - OS : macOS Sonoma 14.5
 - IDE : Xcode 15.4
 
-| 구분 | 기술 스택 |
-| :-----: | :--------: |
+|       |          |
+| ----- | -------- |
 | Design | <img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=flat-square&logo=figma&logoColor=white"> |
 | Develop | <img src="https://img.shields.io/badge/Swift-F05138?style=flat-square&logo=Swift&logoColor=white"> <img src="https://img.shields.io/badge/uikit-2396F3?style=flat-square&logo=Swift&logoColor=white"> |
 | Communication | <img src="https://img.shields.io/badge/Github-181717?style=flat-square&logo=Github&logoColor=white"> <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=flat-square&logo=slack&logoColor=white"> |
-
-### API
-[<img src="https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/5f5c41a9-f435-4ae0-bc78-c8a271ba2d5c" height="30">](https://api.visitkorea.or.kr/#/)
-
+| API | [<img src="https://github.com/TEAM-OMG-iOS/TravelTale/assets/157277372/5f5c41a9-f435-4ae0-bc78-c8a271ba2d5c" height="25">](https://api.visitkorea.or.kr/#/) |
 
 <br>
 
 ## 3. 채택한 개발 기술과 브랜치 전략
 
-### 3rd Party Libraries
-
-**네트워크 :**
-[<img src="https://shields.io/badge/Alamofire-gray?&style=flat">](https://github.com/Alamofire/Alamofire)
-[<img src="https://shields.io/badge/Kingfisher-gray?&style=flat">](https://github.com/onevcat/Kingfisher)
-<br>
-네트워크 통신을 간편하게 하기 위해 Alamofire를 사용했습니다. <br>
-캐싱을 활용하고 URL 로 된 이미지를 쉽게 가져오기 위해 Kingfisher를 사용했습니다.
-<br>
-
-**뷰 :**
-[<img src="https://shields.io/badge/Then-gray?&style=flat">](https://github.com/devxoul/Then)
-[<img src="https://shields.io/badge/Snapkit-gray?&style=flat">](https://github.com/SnapKit/SnapKit)
-<br>
-뷰를 코드로 간결하게 그리기 위해 Then과 Snapkit을 사용했습니다.
-<br>
-
-**저장소 :**
-[<img src="https://shields.io/badge/Realm-gray?&style=flat">](https://github.com/realm/realm-swift)
-[<img src="https://shields.io/badge/RealmDatabase-gray?&style=flat">](https://github.com/realm/realm-swift)
-<br>
-빠른 속도로 내부저장소에 접근하기 위해 Realm을 사용했습니다.
-<br>
-
-**기타 라이브러리**
-[<img src="https://shields.io/badge/FloatingPanel-gray?&style=flat">](https://github.com/scenee/FloatingPanel)
-[<img src="https://shields.io/badge/XLPagerStrip-gray?&style=flat">](https://github.com/xmartlabs/XLPagerTabStrip)
-[<img src="https://shields.io/badge/FXPageControl-gray?&style=flat">](https://github.com/nicklockwood/FXPageControl)
-[<img src="https://shields.io/badge/HorizonCalendar-gray?&style=flat">](https://github.com/airbnb/HorizonCalendar)
-[<img src="https://shields.io/badge/IQKeyboardManager-gray?&style=flat">](https://github.com/hackiftekhar/IQKeyboardManager)
+### 3-1. Third Party Libraries
+    
+- **Alamofire :** 네트워크 요청과 서버 응답 처리를 쉽고 효율적으로 하기 위해 사용했습니다.
+- **Kingfisher :** 이미지를 다운로드하고 캐시하여 빠르고 부드러운 이미지 로딩을 보장하기 위해 사용했습니다.
+- **Snapkit :** 코드로 Auto Layout 제약 조건을 간단하게 생성하고 관리하기 위해 사용했습니다.
+- **Then :** 객체 초기화를 더 깔끔하고 읽기 쉽게 하기 위해 사용되었습니다.
+- **Realm :** 로컬 데이터 저장소에 빠르고 쉽게 접근하기 위해 사용했습니다.
+- **기타 :** FloatingPanel, XLPagerStrip,HorizonCalendar, IQKeyboardManager
 
 
-### 브랜치 전략
+### 3-2. 브랜치 전략
 - Github-flow 전략을 기반으로 main, develop 브랜치와 feature 보조 브랜치를 운용했습니다.
-- main, develop, Feat 브랜치로 나누어 개발을 하였습니다.
+- main, develop, Feat 브랜치로 나누어 개발했습니다.
     - **main** 브랜치는 배포 단계에서만 사용하는 브랜치입니다.
     - **develop** 브랜치는 개발 단계에서 git-flow의 master 역할을 하는 브랜치입니다.
     - **Feat** 브랜치는 기능 단위로 독립적인 개발 환경을 위하여 사용했습니다.
@@ -76,6 +51,7 @@
 
 ## 4. 프로젝트 구조
 
+(추가 예정)
 
 
 <br>
@@ -84,7 +60,7 @@
 
 ## 5. 개발 기간 및 작업 관리
 
-### 개발 기간
+### 5-1. 개발 기간
 
 - 전체 개발 기간 : 2024-05-27 ~ 2024-07-05
 - UI 구현 : 2024-05-27 ~ 2024-06-03
@@ -92,7 +68,7 @@
 
 <br>
 
-### 작업 관리
+### 5-2. 작업 관리
 
 - GitHub Projects와 Issues를 사용하여 진행 상황을 공유했습니다.
 - 1일 1회의로 작업 현황을 공유하며 방향성에 대한 고민을 나누었고, 노션(링크 추가)에 기록했습니다.
@@ -103,10 +79,20 @@
 
 ## 6. 트러블 슈팅
 
+(추가 예정)
 
 <br>
 
-## 7. 팀원 소개
+
+
+## 7. 개선 목표
+- 다크모드 대응
+- 내가 갔던 여행지를 지도에서 모아 볼 수 있는 기능
+    
+    
+<br>
+
+## 8. 팀원 소개
 
 <div align="center">
 
@@ -122,17 +108,10 @@
     
 | **팀원** | **맡은 역할** |
 | :----:| :------------------------------: |
-| 김정호 | 내용 |
-| 배지해 | 내용 |
-| 김유림 | 내용 |
-| 박윤희 | 내용 |
-| 방기남 | 내용 |
+| 김정호 | (추가 예정) |
+| 배지해 | (추가 예정) |
+| 김유림 | (추가 예정) |
+| 박윤희 | (추가 예정) |
+| 방기남 | (추가 예정) |
     
 </div>
-
-## 7. 개선 목표
-- 다크모드 대응
-- 
-    
-    
-<br>
