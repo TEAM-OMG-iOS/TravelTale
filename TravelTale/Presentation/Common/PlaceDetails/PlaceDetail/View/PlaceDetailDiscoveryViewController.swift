@@ -47,6 +47,11 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
         view = placeDetailView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.configureNavigationBar()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
@@ -146,6 +151,10 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
         // TODO: - 내 여행에 추가하기에 placeDetail 정보 넘겨야함.
         
         //navigationController?.pushViewController(travelSelectVC, animated: true)
+    }
+    
+    private func configureNavigationBar() {
+        navigationController?.navigationBar.tintColor = .clear
     }
     
     private func fetchPlaceDetailData(id: String) {
