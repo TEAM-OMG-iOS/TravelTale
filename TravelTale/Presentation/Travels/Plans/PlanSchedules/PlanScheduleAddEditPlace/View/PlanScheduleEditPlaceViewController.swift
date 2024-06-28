@@ -35,7 +35,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     var completion: ((Schedule) -> ())?
     
     // MARK: - life cycles
-    init(travel: Travel, schedule: Schedule, selectedDay: String, allDays: String, selectedTime: Date) {
+    init(travel: Travel, schedule: Schedule, selectedDay: String, allDays: String) {
         self.travel = travel
         self.schedule = schedule
         self.selectedDay = selectedDay
