@@ -94,7 +94,7 @@ final class PlanScheduleViewController: BaseViewController {
     }
     
     private func selectedUpdateButton(indexPath: IndexPath) {
-        if let externalMemo = tappedDaySchedules[indexPath.row].externalMemo {
+        if tappedDaySchedules[indexPath.row].externalMemo != nil {
             let planScheduleEditMemoVC = PlanScheduleEditMemoViewController(schedule: tappedDaySchedules[indexPath.row])
             planScheduleEditMemoVC.completion = { _ in
                 self.tappedDaySchedules = Array(self.travel.schedules.filter { $0.day == "\(self.tappedDay)" })
@@ -123,7 +123,7 @@ final class PlanScheduleViewController: BaseViewController {
         let ok = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
             guard let self = self else { return }
             
-            if let externalMemo = tappedDaySchedules[indexPath.row].externalMemo {
+            if tappedDaySchedules[indexPath.row].externalMemo != nil {
                 realmManager.deleteMemo(travel: travel, schedule: tappedDaySchedules[indexPath.row])
             } else {
                 realmManager.deleteSchedule(travel: travel, schedule: tappedDaySchedules[indexPath.row])
@@ -185,7 +185,7 @@ extension PlanScheduleViewController: UITableViewDataSource {
                 UIAction(title: "삭제", attributes: .destructive, handler: tappedOptionButton),
             ])
             
-            cell.bind(state: panelState, schedule: tappedDaySchedules[indexPath.row])
+            cell.bind(state: panelState, schedule: tappedDaySchedules[indexPath.row], index: indexPath.row + 1)
             
             return cell
         default:

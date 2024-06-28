@@ -45,7 +45,7 @@ final class PlanScheduleContentCell: BaseTableViewCell {
     }
     
     private let memoLabel = UILabel().then {
-        $0.configureLabel(font: .pretendard(size: 16, weight: .semibold))
+        $0.configureLabel(color: .gray70, font: .pretendard(size: 16, weight: .semibold))
     }
     
     let optionButton = UIButton().then {
@@ -70,6 +70,12 @@ final class PlanScheduleContentCell: BaseTableViewCell {
         placePlanLabel.text = nil
         memoPlanLabel.text = nil
         memoLabel.text = nil
+        
+        numberLabel.isHidden = false
+        titlePlanLabel.isHidden = false
+        schedulePlanLabel.isHidden = false
+        placePlanLabel.isHidden = false
+        memoPlanLabel.isHidden = false
     }
     
     // MARK: - methods
@@ -111,13 +117,70 @@ final class PlanScheduleContentCell: BaseTableViewCell {
         }
         
         memoLabel.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview().inset(8)
+            $0.verticalEdges.equalToSuperview().inset(12)
             $0.horizontalEdges.equalToSuperview().inset(12)
         }
         
         optionButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(14)
-            $0.trailing.equalToSuperview().offset(-12)
+            $0.top.equalToSuperview().offset(10)
+            $0.trailing.equalToSuperview()
+            $0.width.equalTo(30)
         }
+    }
+    
+    func bind(state: FloatingPanelState, schedule: Schedule, index: Int) {
+        if let externalMemo = schedule.externalMemo {
+            memoLabel.text = externalMemo
+            
+            remakeScheduleConstraints(state: state, isExternalMemo: true)
+        } else {
+            numberLabel.text = String(index)
+            
+            titlePlanLabel.text = schedule.title
+            
+            if let date = schedule.date {
+                schedulePlanLabel.text = "일정  |  \(dateFormat(date: date)) ~"
+            }
+            
+            if let address = schedule.address, !address.isEmpty {
+                placePlanLabel.text = "장소  |  \(address)"
+            }
+            
+            if let memo = schedule.internalMemo, !memo.isEmpty {
+                memoPlanLabel.text = "메모  |  \(memo)"
+            }
+            
+            remakeScheduleConstraints(state: state, isExternalMemo: false)
+        }
+    }
+    
+    func remakeScheduleConstraints(state: FloatingPanelState, isExternalMemo: Bool) {
+        if isExternalMemo {
+            numberLabel.isHidden = true
+            titlePlanLabel.isHidden = true
+            schedulePlanLabel.isHidden = true
+            placePlanLabel.isHidden = true
+            memoPlanLabel.isHidden = true
+        } else {
+            switch state {
+            case .full:
+                schedulePlanLabel.isHidden = false
+                placePlanLabel.isHidden = false
+                memoPlanLabel.isHidden = (memoPlanLabel.text == nil) ? true : false
+            default:
+                schedulePlanLabel.isHidden = true
+                placePlanLabel.isHidden = true
+                memoPlanLabel.isHidden = true
+            }
+        }
+    }
+}
+
+extension PlanScheduleContentCell {
+    func dateFormat(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "a hh:mm"
+        
+        return formatter.string(from: date)
     }
 }
