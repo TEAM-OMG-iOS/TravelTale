@@ -78,6 +78,7 @@ final class DiscoveryView: BaseView {
     let collectionView = UICollectionView(frame: .zero,
                                           collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.contentInset = UIEdgeInsets(top: 8, left: 20, bottom: 20, right: 20)
+        $0.backgroundColor = .white
     }
     
     // MARK: - methods
