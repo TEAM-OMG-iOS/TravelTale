@@ -370,7 +370,7 @@ final class PlaceDetailView: BaseView {
             case "39":
                 return ("fork.knife", "음식점")
             case "32":
-                return ("tent.fill", "숙박")
+                return ("bed.double.fill", "숙박")
             case "15":
                 return ("balloon.2.fill", "놀거리")
             default:
