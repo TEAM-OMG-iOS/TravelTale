@@ -94,6 +94,7 @@ extension PlaceResponseDTO.PlaceDTO {
         return .init(addr1: addr1,
                      addr2: addr2,
                      contentId: contentId,
+                     contentTypeId: contentTypeId,
                      firstImage: firstImage,
                      title: title,
                      cpyrhtDivCd: cpyrhtDivCd)
