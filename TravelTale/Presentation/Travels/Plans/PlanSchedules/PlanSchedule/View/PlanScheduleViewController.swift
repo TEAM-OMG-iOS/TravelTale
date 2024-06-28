@@ -15,6 +15,7 @@ final class PlanScheduleViewController: BaseViewController {
     
     var panelState: FloatingPanelState = .tip
     
+    private let realmManager = RealmManager.shared
     private lazy var tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
     private var tappedDay = 1
     private var travel: Travel
@@ -116,7 +117,26 @@ final class PlanScheduleViewController: BaseViewController {
     }
     
     private func selectedDeleteButton(indexPath: IndexPath) {
+        let alert = UIAlertController(title: "경고", message: "정말로 삭제하시겠습니까?", preferredStyle: .alert)
         
+        let cancel = UIAlertAction(title: "취소", style: .destructive)
+        let ok = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            
+            if let externalMemo = tappedDaySchedules[indexPath.row].externalMemo {
+                realmManager.deleteMemo(travel: travel, schedule: tappedDaySchedules[indexPath.row])
+            } else {
+                realmManager.deleteSchedule(travel: travel, schedule: tappedDaySchedules[indexPath.row])
+            }
+            
+            tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
+            planScheduleView.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        present(alert, animated: true)
     }
 }
 
