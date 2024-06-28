@@ -91,6 +91,15 @@ final class PlanScheduleViewController: BaseViewController {
 }
 
 // MARK: - extensions
+extension PlanScheduleViewController {
+    private func fetchTotalDay() -> Int {
+        let endDay = Calendar.current.component(.day, from: travel.endDate)
+        let startDay = Calendar.current.component(.day, from: travel.startDate)
+        
+        return endDay - startDay + 1
+    }
+}
+
 extension PlanScheduleViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
