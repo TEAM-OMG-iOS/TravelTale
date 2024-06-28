@@ -20,9 +20,11 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
 """
     private lazy var dayPopoverVC = PopoverDayViewController(data: addEditView.configureData(allDays: allDays, travel: travel), travel: travel)
     
+    private var selectedDate: String?
     private var selectedTime: Date?
     private var travel: Travel
     private var selectedDay: String
+    
     private var allDays: String
     
     var completion: ((Travel) -> ())?
@@ -114,8 +116,9 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
         guard let userInfo = notification.userInfo,
               let selectedDays = userInfo["selectedDays"] as? String else { return }
         
-        self.selectedDay = selectedDays
-        addEditView.scheduleContents.text = self.selectedDay
+        self.selectedDay = addEditView.extractDayNumber(from: selectedDays)
+        self.selectedDate = selectedDays
+        addEditView.scheduleContents.text = self.selectedDate
         addEditView.checkBlackText()
     }
     
@@ -144,9 +147,17 @@ final class PlanScheduleAddPlaceViewController: BaseViewController {
     
     @objc private func tappedCompletedBtn(_ sender: UIButton) {
         if let placeDetail {
-            realmManager.createSchedule(day: selectedDay, date: selectedTime ?? Date(), travel: travel, placeDetail: placeDetail, memo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
-            completion?(self.travel)
-            navigationController?.popViewController(animated: true)
+            if let selectedTime {
+                if let selectedDate {
+                    realmManager.createSchedule(day: selectedDay, date: addEditView.combineDate(date: addEditView.configureScheduleDate(selectedDay: selectedDate), withTimeFrom: selectedTime), travel: travel, placeDetail: placeDetail, memo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
+                    completion?(self.travel)
+                    navigationController?.popViewController(animated: true)
+                } else {
+                    realmManager.createSchedule(day: selectedDay, date: addEditView.combineDate(date: addEditView.configureScheduleDate(selectedDay: addEditView.configureInitialSchedule(selectedDay: selectedDay, alldays: allDays, travel: travel)), withTimeFrom: selectedTime), travel: travel, placeDetail: placeDetail, memo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
+                    completion?(self.travel)
+                    navigationController?.popViewController(animated: true)
+                }
+            }
         }
     }
     
