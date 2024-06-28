@@ -1,5 +1,5 @@
 //
-//  TravelAddition.swift
+//  DetailScheduleSelectView.swift
 //  TravelTale
 //
 //  Created by Kinam on 6/4/24.
@@ -7,9 +7,14 @@
 
 import UIKit
 
-final class TravelSelectView: BaseView {
+final class DetailScheduleSelectView: BaseView {
     
     // MARK: - properties
+    let alertMessage = """
+이전으로 돌아가면 작성 내용이 저장되지 않습니다.
+정말 돌아가시겠습니까?
+"""
+    
     let backButton = UIBarButtonItem().then {
         $0.style = .done
         $0.image = UIImage(systemName: "chevron.left")
@@ -39,9 +44,16 @@ final class TravelSelectView: BaseView {
         $0.isEnabled = false
     }
     
+    let notFoundView = NotFoundView().then {
+        $0.setLabel(text: """
+여행이 비어있습니다.
+Plan 탭에서 생성해주세요.
+""")
+    }
+    
     // MARK: - methods
     override func configureHierarchy() {
-        [loadingBackBar, tableViewLabel, tableView, nextBtn].forEach {
+        [loadingBackBar, tableViewLabel, tableView, nextBtn, notFoundView].forEach {
             self.addSubview($0)
         }
         
@@ -79,6 +91,10 @@ final class TravelSelectView: BaseView {
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(31)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
+        
+        notFoundView.snp.makeConstraints {
+            $0.edges.equalTo(tableView)
+        }
     }
     
     func startLoadingAnimation() {
@@ -95,7 +111,6 @@ final class TravelSelectView: BaseView {
         })
     }
     
-    // TODO: 셀 수정 머지 후 삭제
     func updateButtonState() {
         if tableView.indexPathForSelectedRow == nil {
             nextBtn.isEnabled = false
@@ -103,6 +118,25 @@ final class TravelSelectView: BaseView {
         } else {
             nextBtn.isEnabled = true
             nextBtn.configureView(color: .green100, cornerRadius: 24)
+        }
+    }
+    
+    func showNotFoundView(_ isNotFound: Bool) {
+        if isNotFound {
+            notFoundView.isHidden = false
+        } else {
+            notFoundView.isHidden = true
+        }
+    }
+    
+    func dayDifference(from startDate: Date, to endDate: Date) -> String {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: startDate, to: endDate)
+        
+        if let dayDifference = components.day {
+            return dayDifference == 0 ? "1" : String(dayDifference)
+        } else {
+            return "1"
         }
     }
 }

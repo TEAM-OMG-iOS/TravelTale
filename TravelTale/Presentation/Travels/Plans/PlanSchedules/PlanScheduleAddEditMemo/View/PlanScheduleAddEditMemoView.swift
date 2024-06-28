@@ -111,4 +111,8 @@ final class PlanScheduleAddEditMemoView: BaseView {
             textView.textColor = UIColor.lightGray
         }
     }
+    
+    func checkMemo(textColor: UIColor) -> String {
+        return textColor == .gray80 ? "" : memoTV.text
+    }
 }

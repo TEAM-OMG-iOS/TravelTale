@@ -145,7 +145,7 @@ final class PlaceDetailTravelViewController: BaseViewController {
         guard let placeDetail = placeDetailData else { return }
         
         // TODO: - 장소 추가와 장소 수정에 정보 전달
-//        NotificationCenter.default.post(name: NSNotification.Name("placeSelected"), object: nil, userInfo: [NotificationKey.dataDetail : placeDetail])
+        NotificationCenter.default.post(name: .placeSelected, object: nil, userInfo: ["placeSelected" : placeDetail])
         
         popToView(pages: 3)
     }
@@ -258,4 +258,8 @@ extension PlaceDetailTravelViewController: MKMapViewDelegate {
         
         return annotationView
     }
+}
+
+extension Notification.Name {
+    static let placeSelected = Notification.Name("placeSelected")
 }
