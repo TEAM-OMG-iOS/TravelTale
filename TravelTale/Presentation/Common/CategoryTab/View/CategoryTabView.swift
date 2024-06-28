@@ -10,13 +10,16 @@ import UIKit
 final class CategoryTabView: BaseView {
     
     // MARK: - properties
+    private let realmManager = RealmManager.shared
+    
     private let regionImage = UIImageView().then {
-        $0.image = UIImage(systemName: "location.circle")
+        $0.isHidden = true
         $0.tintColor = .gray80
+        $0.image = UIImage(systemName: "location.circle")
     }
     
     private let regionLabel = UILabel().then {
-        $0.configureLabel(color: .gray80, font: .pretendard(size: 12, weight: .bold), text: "대구시 달서구")
+        $0.configureLabel(color: .gray80, font: .pretendard(size: 12, weight: .bold))
     }
     
     let tableView = UITableView()
@@ -65,5 +68,12 @@ final class CategoryTabView: BaseView {
     
     func showNotFoundView(_ isNotFound: Bool) {
         notFoundView.isHidden = !isNotFound
+    }
+    
+    func setRegionLabel() {
+        if let region = realmManager.fetchRegion() {
+            regionImage.isHidden = false
+            regionLabel.text = "\(region.sido) \(region.sigungu ?? "")"
+        }
     }
 }

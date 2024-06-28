@@ -18,7 +18,7 @@ final class DiscoveryViewController: BaseViewController {
     
     private let minimumLineSpacing: CGFloat = 16
     
-    private var placeDatas: [Place] = [Place(addr1: nil, addr2: nil, contentId: nil, contentTypeId: nil, firstImage: nil, title: nil, cpyrhtDivCd: nil)]
+    private var placeDatas: [Place] = []
     
     // MARK: - life cycles
     override func loadView() {
