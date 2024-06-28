@@ -16,7 +16,12 @@ final class MyPageCategoryTabRestaurantViewController: BaseViewController {
     private let realmManager = RealmManager.shared
     private let networkManager = NetworkManager.shared
     
-    private var bookmarkData: [Bookmark] = []
+    private var bookmarkData: [Bookmark] = [] {
+        didSet {
+            categoryTabView.showNotFoundView(bookmarkData.isEmpty)
+            categoryTabView.tableView.reloadData()
+        }
+    }
     
     // MARK: - life cycles
     override func loadView() {
@@ -30,6 +35,13 @@ final class MyPageCategoryTabRestaurantViewController: BaseViewController {
     }
     
     // MARK: - methods
+    override func configureStyle() {
+        categoryTabView.setNotFoundViewText(text: """
+등록된 북마크가 없습니다.
+가고 싶은 장소를 등록해 보세요.
+""")
+    }
+    
     override func configureDelegate() {
         categoryTabView.tableView.dataSource = self
         categoryTabView.tableView.delegate = self
