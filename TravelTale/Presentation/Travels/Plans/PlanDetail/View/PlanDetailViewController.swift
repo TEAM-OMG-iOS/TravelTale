@@ -94,9 +94,13 @@ final class PlanDetailViewController: BaseViewController {
     @objc private func tappedSettingButton() {
         let planEditVC = PlanEditViewController(travel: travel)
         
-        planEditVC.completion = { travel in
-            self.travel = travel
-            self.planDetailView.bind(travel: travel)
+        planEditVC.completion = { [weak self] _ in
+            guard let self = self else { return }
+            
+            planDetailView.bind(travel: travel)
+            
+            guard let cell = planScheduleViewController.planScheduleView.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? PlanScheduleHeaderCell else { return }
+            cell.collectionView.reloadData()
         }
         
         navigationController?.pushViewController(planEditVC, animated: true)
