@@ -77,4 +77,59 @@ final class PlanDetailView: BaseView {
             $0.horizontalEdges.bottom.equalToSuperview()
         }
     }
+    
+    func bind(travel: Travel) {
+        periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate) + " | "
+        locationLabel.text = travel.area
+        titleLabel.text = travel.title
+        
+        if !travel.schedules.isEmpty {
+            var annotations: [MKPointAnnotation] = []
+            
+            for schedule in travel.schedules {
+                if let x = schedule.mapX, let y = schedule.mapY {
+                    if let longitude = Double(x), let latitude = Double(y) {
+                        let annotation = MKPointAnnotation()
+                        
+                        annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                        annotation.title = schedule.title
+                        annotations.append(annotation)
+                    }
+                }
+            }
+            
+            let maxLongitude = annotations.map { $0.coordinate.longitude }.max()
+            let minLongitude = annotations.map { $0.coordinate.longitude }.min()
+            let maxLatitude = annotations.map { $0.coordinate.latitude }.max()
+            let minLatitude = annotations.map { $0.coordinate.latitude }.min()
+            
+            guard let maxLongitude, let minLongitude, let maxLatitude, let minLatitude else { return }
+            
+            let centerLongitude = (maxLongitude.magnitude + minLongitude.magnitude) / 2.0
+            let centerLatitude = (maxLatitude.magnitude + minLatitude.magnitude) / 2.0
+            let centerCoordinate = CLLocationCoordinate2D(latitude: centerLatitude, longitude: centerLongitude)
+            
+            var longDistance: CLLocationDistance = 0.0
+            
+            annotations.forEach { annotation in
+                let annotationCoordinate = annotation.coordinate
+                
+                let annotationLocation = CLLocation(latitude: annotationCoordinate.latitude, longitude: annotationCoordinate.longitude)
+                let centerLocation = CLLocation(latitude: centerLatitude, longitude: centerLongitude)
+                
+                let distanceInMeters = centerLocation.distance(from: annotationLocation)
+                
+                if distanceInMeters > longDistance {
+                    longDistance = distanceInMeters
+                }
+            }
+            
+            let region = MKCoordinateRegion(center: centerCoordinate,
+                                            latitudinalMeters: longDistance * 1.5,
+                                            longitudinalMeters: longDistance * 1.5)
+            
+            mapView.addAnnotations(annotations)
+            mapView.setRegion(region, animated: true)
+        }
+    }
 }
