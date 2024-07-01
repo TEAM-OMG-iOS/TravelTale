@@ -50,7 +50,13 @@ final class PlanDetailViewController: BaseViewController {
     }
     
     override func bind() {
-        planDetailView.bind(travel: travel)
+        planDetailView.bind(travel: travel, tappedDay: 1)
+        
+        planScheduleViewController.completion = { [weak self] tappedDay in
+            guard let self = self else { return }
+            
+            planDetailView.bind(travel: travel, tappedDay: tappedDay)
+        }
     }
     
     // MARK: - methods
@@ -97,7 +103,7 @@ final class PlanDetailViewController: BaseViewController {
         planEditVC.completion = { [weak self] _ in
             guard let self = self else { return }
             
-            planDetailView.bind(travel: travel)
+            planDetailView.bind(travel: travel, tappedDay: 1)
             
             guard let cell = planScheduleViewController.planScheduleView.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? PlanScheduleHeaderCell else { return }
             cell.collectionView.reloadData()

@@ -78,15 +78,19 @@ final class PlanDetailView: BaseView {
         }
     }
     
-    func bind(travel: Travel) {
+    func bind(travel: Travel, tappedDay: Int) {
+        mapView.removeAnnotations(mapView.annotations)
+        
+        let tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(tappedDay)" })
+        
         periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate) + " | "
         locationLabel.text = travel.area
         titleLabel.text = travel.title
         
-        if !travel.schedules.isEmpty {
+        if !tappedDaySchedules.isEmpty {
             var annotations: [MKPointAnnotation] = []
             
-            for schedule in travel.schedules {
+            for schedule in tappedDaySchedules {
                 if let x = schedule.mapX, let y = schedule.mapY {
                     if let longitude = Double(x), let latitude = Double(y) {
                         let annotation = MKPointAnnotation()
@@ -125,8 +129,8 @@ final class PlanDetailView: BaseView {
             }
             
             let region = MKCoordinateRegion(center: centerCoordinate,
-                                            latitudinalMeters: longDistance * 1.5,
-                                            longitudinalMeters: longDistance * 1.5)
+                                            latitudinalMeters: longDistance * 2.0,
+                                            longitudinalMeters: longDistance * 2.0)
             
             mapView.addAnnotations(annotations)
             mapView.setRegion(region, animated: true)

@@ -20,6 +20,8 @@ final class PlanScheduleViewController: BaseViewController {
     private var tappedDay = 1
     private var travel: Travel
     
+    var completion: ((Int) -> ())?
+    
     // MARK: - life cycles
     init(travel: Travel) {
         self.travel = travel
@@ -77,6 +79,7 @@ final class PlanScheduleViewController: BaseViewController {
             self.travel = travel
             self.tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
             self.planScheduleView.tableView.reloadData()
+            self.completion?(self.tappedDay)
         }
         
         navigationController?.pushViewController(planScheduleAddPlaceVC, animated: true)
@@ -88,6 +91,7 @@ final class PlanScheduleViewController: BaseViewController {
             self.travel = travel
             self.tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
             self.planScheduleView.tableView.reloadData()
+            self.completion?(self.tappedDay)
         }
         
         navigationController?.pushViewController(planScheduleAddMemoVC, animated: true)
@@ -99,6 +103,7 @@ final class PlanScheduleViewController: BaseViewController {
             planScheduleEditMemoVC.completion = { _ in
                 self.tappedDaySchedules = Array(self.travel.schedules.filter { $0.day == "\(self.tappedDay)" })
                 self.planScheduleView.tableView.reloadData()
+                self.completion?(self.tappedDay)
             }
             
             navigationController?.pushViewController(planScheduleEditMemoVC, animated: true)
@@ -110,6 +115,7 @@ final class PlanScheduleViewController: BaseViewController {
             planScheduleEditPlaceVC.completion = { _ in
                 self.tappedDaySchedules = Array(self.travel.schedules.filter { $0.day == "\(self.tappedDay)" })
                 self.planScheduleView.tableView.reloadData()
+                self.completion?(self.tappedDay)
             }
             
             navigationController?.pushViewController(planScheduleEditPlaceVC, animated: true)
@@ -131,6 +137,7 @@ final class PlanScheduleViewController: BaseViewController {
             
             tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
             planScheduleView.tableView.deleteRows(at: [indexPath], with: .automatic)
+            completion?(tappedDay)
         }
         
         alert.addAction(cancel)
@@ -203,6 +210,7 @@ extension PlanScheduleViewController: UITableViewDataSource {
 extension PlanScheduleViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         tappedDay = indexPath.row + 1
+        completion?(tappedDay)
         collectionView.reloadData()
         
         tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
