@@ -310,6 +310,15 @@ final class DetailScheduleAddView: BaseView {
         return formatter.string(from: date)
     }
     
+    func extractDayNumber(from formattedString: String) -> String {
+        let components = formattedString.split(separator: " ")
+        if components.count > 1 {
+            let dayNumber = String(components[1])
+            return dayNumber
+        }
+        return ""
+    }
+    
     func configureData(allDays: String, travel: Travel) -> [String] {
         guard let daysCount = Int(allDays) else {
             return []
@@ -329,5 +338,33 @@ final class DetailScheduleAddView: BaseView {
     
     func checkMemo(textColor: UIColor) -> String {
         return textColor == .gray80 ? "" : memoTV.text
+    }
+    
+    func combineDate(date: Date, withTimeFrom timeDate: Date) -> Date {
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: timeDate)
+        
+        var combinedComponents = DateComponents()
+        combinedComponents.year = dateComponents.year ?? 0
+        combinedComponents.month = dateComponents.month ?? 0
+        combinedComponents.day = dateComponents.day ?? 0
+        combinedComponents.hour = timeComponents.hour ?? 0
+        combinedComponents.minute = timeComponents.minute ?? 0
+        combinedComponents.second = timeComponents.second ?? 0
+        
+        return calendar.date(from: combinedComponents) ?? Date()
+    }
+    
+    func configureScheduleDate(selectedDay: String, alldays: String, travel: Travel) -> Date {
+        guard let daysCount = Int(selectedDay), let totalDays = Int(alldays), daysCount > 0, daysCount <= totalDays else {
+            return Date()
+        }
+        
+        if let targetDate = Calendar.current.date(byAdding: .day, value: daysCount - 1, to: travel.startDate) {
+            return targetDate
+        } else {
+            return Date()
+        }
     }
 }
