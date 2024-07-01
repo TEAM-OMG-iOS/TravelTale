@@ -71,7 +71,6 @@ final class PlanScheduleContentCell: BaseTableViewCell {
         memoPlanLabel.text = nil
         memoLabel.text = nil
         
-        numberLabel.isHidden = false
         titlePlanLabel.isHidden = false
         schedulePlanLabel.isHidden = false
         placePlanLabel.isHidden = false
@@ -129,13 +128,13 @@ final class PlanScheduleContentCell: BaseTableViewCell {
     }
     
     func bind(state: FloatingPanelState, schedule: Schedule, index: Int) {
+        numberLabel.text = String(index)
+        
         if let externalMemo = schedule.externalMemo {
             memoLabel.text = externalMemo
             
             remakeScheduleConstraints(state: state, isExternalMemo: true)
         } else {
-            numberLabel.text = String(index)
-            
             titlePlanLabel.text = schedule.title
             
             if let date = schedule.date {
@@ -156,7 +155,6 @@ final class PlanScheduleContentCell: BaseTableViewCell {
     
     func remakeScheduleConstraints(state: FloatingPanelState, isExternalMemo: Bool) {
         if isExternalMemo {
-            numberLabel.isHidden = true
             titlePlanLabel.isHidden = true
             schedulePlanLabel.isHidden = true
             placePlanLabel.isHidden = true
