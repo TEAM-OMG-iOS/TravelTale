@@ -62,6 +62,7 @@ final class PlaceDetailTravelViewController: BaseViewController {
     // MARK: - methods
     override func configureStyle() {
         setBookmarkData()
+        configureNavigationBar()
         placeDetailView.setAddButton(text: "장소 선택하기")
     }
     
@@ -147,6 +148,10 @@ final class PlaceDetailTravelViewController: BaseViewController {
         NotificationCenter.default.post(name: .placeSelected, object: nil, userInfo: ["placeSelected" : placeDetail])
         
         popToView(pages: 3)
+    }
+    
+    private func configureNavigationBar() {
+        navigationController?.navigationBar.tintColor = .clear
     }
     
     private func fetchPlaceDetailData(id: String) {
