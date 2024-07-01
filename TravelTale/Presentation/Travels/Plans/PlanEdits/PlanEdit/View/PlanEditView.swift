@@ -30,7 +30,7 @@ final class PlanEditView: BaseView {
     
     let textField = UITextField().then {
         $0.configureView(color: .gray5, cornerRadius: 24)
-        $0.placeholder = "남자친구와 100일 여행"
+        $0.placeholder = "여행 제목을 입력해주세요"
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
         $0.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
         $0.leftViewMode = .always
