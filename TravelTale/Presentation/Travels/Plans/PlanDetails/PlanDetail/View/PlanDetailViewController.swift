@@ -110,6 +110,7 @@ final class PlanDetailViewController: BaseViewController {
             planDetailView.bind(travel: travel, tappedDay: 1)
             
             guard let cell = planScheduleViewController.planScheduleView.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? PlanScheduleHeaderCell else { return }
+            planScheduleViewController.collectionView(cell.collectionView, didSelectItemAt: IndexPath(item: 0, section: 0))
             cell.collectionView.reloadData()
         }
         
