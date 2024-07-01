@@ -41,7 +41,7 @@ final class MyPageTableViewCell: BaseTableViewCell {
         }
         
         versionLabel.snp.makeConstraints {
-            $0.trailing.equalTo(chevronImage.snp.leading).offset(-16)
+            $0.trailing.equalTo(chevronImage.snp.leading)
             $0.centerY.equalToSuperview()
         }
         

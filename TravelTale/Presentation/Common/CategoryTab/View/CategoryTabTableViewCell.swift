@@ -96,7 +96,7 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
         }
         
         if let title = place.title {
-            placeLabel.text = place.title
+            placeLabel.text = title
         }
         
         placeAddressLabel.text = [place.addr1, place.addr2].compactMap({ $0 }).joined(separator: " ")

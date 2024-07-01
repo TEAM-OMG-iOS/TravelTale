@@ -43,6 +43,7 @@ final class TabBarViewController: UITabBarController {
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
         
+        tabBar.backgroundColor = .white
         tabBar.standardAppearance = appearance
         tabBar.tintColor = .green100
         tabBar.unselectedItemTintColor = .gray80

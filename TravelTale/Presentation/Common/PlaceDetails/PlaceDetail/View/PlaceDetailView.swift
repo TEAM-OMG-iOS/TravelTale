@@ -24,7 +24,7 @@ final class PlaceDetailView: BaseView {
     
     let backButton = UIButton().then {
         $0.tintColor = .gray90
-        $0.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        $0.setBackgroundImage(UIImage(systemName: "chevron.left"), for: .normal)
     }
     
     let detailBlurImageView = UIImageView().then {
@@ -219,9 +219,10 @@ final class PlaceDetailView: BaseView {
         }
         
         backButton.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(24)
-            $0.top.equalTo(safeAreaLayoutGuide).inset(12)
-            $0.size.equalTo(24)
+            $0.leading.equalToSuperview().inset(16)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(8)
+            $0.height.equalTo(24)
+            $0.width.equalTo(16)
         }
         
         detailBlurImageView.snp.makeConstraints {
