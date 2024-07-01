@@ -131,7 +131,10 @@ Plan 탭에서 생성해주세요.
     
     func dayDifference(from startDate: Date, to endDate: Date) -> String {
         let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: startDate, to: endDate)
+        guard let adjustedEndDate = calendar.date(byAdding: .day, value: 1, to: endDate) else {
+            return "1"
+        }
+        let components = calendar.dateComponents([.day], from: startDate, to: adjustedEndDate)
         
         if let dayDifference = components.day {
             return dayDifference == 0 ? "1" : String(dayDifference)
