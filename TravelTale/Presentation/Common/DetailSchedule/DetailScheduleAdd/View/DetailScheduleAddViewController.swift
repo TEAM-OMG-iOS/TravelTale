@@ -16,12 +16,12 @@ final class DetailScheduleAddViewController: BaseViewController {
 
     private lazy var dayPopoverVC = PopoverDayViewController(data: detailScheduleAddView.configureData(allDays: allDays, travel: selectedTravel), travel: selectedTravel)
     
+    private var selectedDate: String?
     private var allDays: String
     private var selectedTravel: Travel
     private var selectedPlace: PlaceDetail
-    
-    var selectedDays: String?
-    var selectedTime: Date?
+    private var selectedDay: String?
+    private var selectedTime: Date?
     
     // MARK: - life cycles
     init(allDays: String, selectedTravel: Travel, selectedPlace: PlaceDetail) {
@@ -135,8 +135,9 @@ final class DetailScheduleAddViewController: BaseViewController {
         guard let userInfo = notification.userInfo,
               let selectedDays = userInfo["selectedDays"] as? String else { return }
         
-        self.selectedDays = selectedDays
-        self.detailScheduleAddView.scheduleContents.text = self.selectedDays
+        self.selectedDay = detailScheduleAddView.extractDayNumber(from: selectedDays)
+        self.selectedDate = selectedDays
+        self.detailScheduleAddView.scheduleContents.text = self.selectedDate
         self.detailScheduleAddView.checkBlackText()
     }
     
@@ -150,14 +151,19 @@ final class DetailScheduleAddViewController: BaseViewController {
     }
     
     @objc private func tappedAddScheduleBtn() {
-        realmManager.createSchedule(day: selectedDays!, date: selectedTime!, travel: selectedTravel, placeDetail: selectedPlace, memo: detailScheduleAddView.checkMemo(textColor: detailScheduleAddView.memoTV.textColor ?? .gray80))
-        let alert = UIAlertController(title: "일정 추가 완료", message: "일정 추가가 완료되었습니다.", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "확인", style: .cancel) { _ in 
-            self.popToView(pages: 2)
+        if let selectedDay {
+            if let selectedTime {
+                if let selectedDate {
+                    realmManager.createSchedule(day: selectedDay, date: detailScheduleAddView.combineDate(date: detailScheduleAddView.configureScheduleDate(selectedDay: selectedDate, alldays: allDays, travel: selectedTravel), withTimeFrom: selectedTime), travel: selectedTravel, placeDetail: selectedPlace, memo: detailScheduleAddView.checkMemo(textColor: detailScheduleAddView.memoTV.textColor ?? .gray80))
+                    let alert = UIAlertController(title: "일정 추가 완료", message: "일정 추가가 완료되었습니다.", preferredStyle: .alert)
+                    let cancel = UIAlertAction(title: "확인", style: .cancel) { _ in
+                        self.popToView(pages: 2)
+                    }
+                    alert.addAction(cancel)
+                    self.present(alert, animated: true)
+                }
+            }
         }
-        alert.addAction(cancel)
-        self.present(alert, animated: true)
-        print(realmManager.fetchTravels())
     }
     
     deinit {
