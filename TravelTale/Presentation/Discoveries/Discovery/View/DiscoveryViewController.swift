@@ -14,11 +14,11 @@ final class DiscoveryViewController: BaseViewController {
     
     private let networkManager = NetworkManager.shared
     private let realmManager = RealmManager.shared
-//    private let userDefaultsManager = userDefaultsManager.shared
+    private let userDefaultsManager = UserDefaultsManager.shared
     
     private let minimumLineSpacing: CGFloat = 16
     
-    private var placeDatas: [Place] = [Place(addr1: nil, addr2: nil, contentId: nil, firstImage: nil, title: nil, cpyrhtDivCd: nil)]
+    private var placeDatas: [Place] = []
     
     // MARK: - life cycles
     override func loadView() {
@@ -81,8 +81,11 @@ final class DiscoveryViewController: BaseViewController {
     }
     
     @objc private func tappedSearchButton() {
-        // TODO: - 검색 창 Navi로 띄우기
-        // userDefaultsManager.setTapType(type: .discovery)
+        let searchVC = SearchViewController()
+        
+        userDefaultsManager.setTabType(type: .discovery)
+        
+        self.navigationController?.pushViewController(searchVC, animated: true)
     }
     
     @objc private func tappedCategoryButton(_ sender: UIButton) {
