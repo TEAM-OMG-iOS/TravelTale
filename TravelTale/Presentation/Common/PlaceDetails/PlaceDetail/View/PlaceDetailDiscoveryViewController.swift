@@ -199,7 +199,7 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
         view.addSubview(toastView)
         
         toastView.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(24)
+            $0.bottom.equalTo(placeDetailView.buttonBackground.snp.top).offset(-12)
             $0.horizontalEdges.equalToSuperview().inset(16)
             $0.height.equalTo(44)
         }

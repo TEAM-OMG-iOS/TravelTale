@@ -143,7 +143,7 @@ final class PlaceDetailView: BaseView {
         $0.distribution = .equalSpacing
     }
     
-    private let buttonBackground = UIView().then {
+    let buttonBackground = UIView().then {
         $0.configureView(color: .white)
         
         let topBorder = CALayer()
