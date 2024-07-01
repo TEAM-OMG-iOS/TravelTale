@@ -35,6 +35,10 @@ final class DiscoveryCategoryTabEntertainmentViewController: BaseViewController 
     }
     
     // MARK: - methods
+    override func configureStyle() {
+        categoryTabView.setNotFoundViewText(text: "등록된 장소가 없습니다.")
+    }
+    
     override func configureDelegate() {
         categoryTabView.tableView.dataSource = self
         categoryTabView.tableView.delegate = self
@@ -62,6 +66,7 @@ final class DiscoveryCategoryTabEntertainmentViewController: BaseViewController 
                 let newPlaces = place.places ?? []
                 
                 if newPlaces.isEmpty {
+                    self.configureNotFoundView()
                     self.hasMoreData = false
                 } else {
                     self.placeData.append(contentsOf: newPlaces)
@@ -72,9 +77,15 @@ final class DiscoveryCategoryTabEntertainmentViewController: BaseViewController 
                     }
                 }
             case .failure(let error):
+                self.configureNotFoundView()
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    private func configureNotFoundView() {
+        categoryTabView.showNotFoundView(placeData.isEmpty)
+        categoryTabView.tableView.reloadData()
     }
 }
 
@@ -119,7 +130,7 @@ extension DiscoveryCategoryTabEntertainmentViewController: UITableViewDelegate {
 
 extension DiscoveryCategoryTabEntertainmentViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        if indexPaths.contains { $0.row >= placeData.count - 1 } {
+        if indexPaths.contains(where: { $0.row >= placeData.count - 1 }) {
             fetchPlaceData()
         }
     }
