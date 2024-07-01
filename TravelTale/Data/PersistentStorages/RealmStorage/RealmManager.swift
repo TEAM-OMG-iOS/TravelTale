@@ -74,9 +74,9 @@ final class RealmManager {
     func fetchTravels() -> [Travel] {
         return realm.objects(Travel.self).sorted { lhs, rhs in
             if lhs.startDate != rhs.startDate {
-                return lhs.startDate < rhs.startDate
+                return lhs.startDate > rhs.startDate
             } else {
-                return lhs.endDate < rhs.endDate
+                return lhs.endDate > rhs.endDate
             }
         }
     }
@@ -84,9 +84,9 @@ final class RealmManager {
     func fetchTravelsWithEmptyMemoryAndPhotos() -> [Travel] {
         return realm.objects(Travel.self).filter { $0.memory == nil }.sorted { lhs, rhs in
             if lhs.startDate != rhs.startDate {
-                return lhs.startDate < rhs.startDate
+                return lhs.startDate > rhs.startDate
             } else {
-                return lhs.endDate < rhs.endDate
+                return lhs.endDate > rhs.endDate
             }
         }
     }
@@ -110,6 +110,8 @@ final class RealmManager {
                     travel.endDate = endDate
                 }
             }
+            
+            updateDateRange(travel: travel)
         } catch {
             print("updateTravel 실패")
         }
@@ -196,6 +198,15 @@ final class RealmManager {
             }
         } catch {
             print("createSchedule 실패")
+        }
+    }
+    
+    func fetchSortedSchedulesForDate(travel: Travel, tappedDay: Int) -> [Schedule] {
+        return travel.schedules.filter { $0.day == "\(tappedDay)" }.sorted { lhs, rhs in
+            let lshDate = lhs.date ?? Date()
+            let rhsDate = rhs.date ?? Date()
+            
+            return lshDate < rhsDate
         }
     }
     
@@ -344,6 +355,48 @@ final class RealmManager {
             }
         } catch {
             print("deleteBookmark 실패")
+        }
+    }
+}
+
+// MARK: - extensions
+extension RealmManager {
+    private func updateDateRange(travel: Travel) {
+        let startDate = travel.startDate
+        let endDate = travel.endDate
+        
+        let calendar = Calendar.current
+        
+        let endDay = calendar.dateComponents([.day], from: endDate).day
+        let startDay = calendar.dateComponents([.day], from: startDate).day
+        
+        for schedule in travel.schedules {
+            if let day = schedule.day, let scheduleDay = Int(day), let endDay, let startDay {
+                if scheduleDay > endDay - startDay + 1 {
+                    deleteSchedule(travel: travel, schedule: schedule)
+                } else {
+                    if let oldDate = schedule.date {
+                        let oldDateComponents = calendar.dateComponents([.hour, .minute, .second], from: oldDate)
+                        var newDateComponents = calendar.dateComponents([.year, .month, .day], from: startDate)
+                        
+                        newDateComponents.hour = oldDateComponents.hour
+                        newDateComponents.minute = oldDateComponents.minute
+                        newDateComponents.second = oldDateComponents.second
+                        
+                        if let newDateComponentsDay = newDateComponents.day, let day = Int(day) {
+                            newDateComponents.day = newDateComponentsDay + day - 1
+                        }
+
+                        do {
+                            try realm.write {
+                                schedule.date = calendar.date(from: newDateComponents) ?? Date()
+                            }
+                        } catch {
+                            print("updateDateRange 실패")
+                        }
+                    }
+                }
+            }
         }
     }
 }

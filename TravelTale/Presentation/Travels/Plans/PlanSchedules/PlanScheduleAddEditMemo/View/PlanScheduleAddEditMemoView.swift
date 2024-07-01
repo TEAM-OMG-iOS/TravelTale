@@ -48,11 +48,11 @@ final class PlanScheduleAddEditMemoView: BaseView {
     }
     
     override func configureHierarchy() {
-        [memoView].forEach {
+        [memoView, completeBtn].forEach {
             self.addSubview($0)
         }
         
-        [memoTitle, memoTV, completeBtn].forEach {
+        [memoTitle, memoTV].forEach {
             self.memoView.addSubview($0)
         }
     }
@@ -114,5 +114,9 @@ final class PlanScheduleAddEditMemoView: BaseView {
     
     func checkMemo(textColor: UIColor) -> String {
         return textColor == .gray80 ? "" : memoTV.text
+    }
+    
+    func changeMemoTextColor() {
+        memoTV.textColor = .black
     }
 }

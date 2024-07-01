@@ -31,12 +31,6 @@ final class PlanScheduleEditMemoViewController: BaseViewController {
         view = memoView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureAddTarget()
-        configureNavigationBar()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
@@ -48,6 +42,10 @@ final class PlanScheduleEditMemoViewController: BaseViewController {
     }
     
     // MARK: - methods
+    override func configureStyle() {
+        configureNavigationBar()
+    }
+    
     override func configureDelegate() {
         memoView.memoTV.delegate = self
     }
@@ -58,6 +56,12 @@ final class PlanScheduleEditMemoViewController: BaseViewController {
         memoView.backButton.action = #selector(tapBackButton)
     }
     
+    override func bind() {
+        memoView.changeMemoTextColor()
+        memoView.memoTV.text = schedule.externalMemo
+        memoView.checkTextViewContent()
+    }
+    
     private func configureNavigationBar() {
         navigationItem.title = "메모 수정"
         navigationItem.leftBarButtonItem = memoView.backButton
@@ -66,7 +70,7 @@ final class PlanScheduleEditMemoViewController: BaseViewController {
     private func configureBackAlert(navigationController: UINavigationController?) {
         let alert = UIAlertController(title: "경고", message: memoView.alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
-        let ok = UIAlertAction(title: "확인", style: .default) {_ in
+        let ok = UIAlertAction(title: "확인", style: .destructive) {_ in
             navigationController?.popViewController(animated: true)
         }
         

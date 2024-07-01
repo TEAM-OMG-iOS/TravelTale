@@ -66,7 +66,7 @@ final class PlanScheduleAddMemoViewController: BaseViewController {
     private func configureBackAlert(navigationController: UINavigationController?) {
         let alert = UIAlertController(title: "경고", message: memoView.alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
-        let ok = UIAlertAction(title: "확인", style: .default) {_ in
+        let ok = UIAlertAction(title: "확인", style: .destructive) {_ in
             navigationController?.popViewController(animated: true)
         }
         
