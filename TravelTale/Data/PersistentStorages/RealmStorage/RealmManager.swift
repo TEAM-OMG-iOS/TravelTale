@@ -74,9 +74,9 @@ final class RealmManager {
     func fetchTravels() -> [Travel] {
         return realm.objects(Travel.self).sorted { lhs, rhs in
             if lhs.startDate != rhs.startDate {
-                return lhs.startDate < rhs.startDate
+                return lhs.startDate > rhs.startDate
             } else {
-                return lhs.endDate < rhs.endDate
+                return lhs.endDate > rhs.endDate
             }
         }
     }
@@ -84,9 +84,9 @@ final class RealmManager {
     func fetchTravelsWithEmptyMemoryAndPhotos() -> [Travel] {
         return realm.objects(Travel.self).filter { $0.memory == nil }.sorted { lhs, rhs in
             if lhs.startDate != rhs.startDate {
-                return lhs.startDate < rhs.startDate
+                return lhs.startDate > rhs.startDate
             } else {
-                return lhs.endDate < rhs.endDate
+                return lhs.endDate > rhs.endDate
             }
         }
     }
