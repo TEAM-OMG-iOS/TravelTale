@@ -146,11 +146,11 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
     }
     
     @objc private func tappedAddButton() {
-        //let travelSelectVC = DetailScheduleSelectViewController()
+        guard let placeDetailData = placeDetailData else { return }
         
-        // TODO: - 내 여행에 추가하기에 placeDetail 정보 넘겨야함.
+        let travelSelectVC = DetailScheduleSelectViewController(placeDetail: placeDetailData)
         
-        //navigationController?.pushViewController(travelSelectVC, animated: true)
+        navigationController?.pushViewController(travelSelectVC, animated: true)
     }
     
     private func configureNavigationBar() {
@@ -199,7 +199,7 @@ final class PlaceDetailDiscoveryViewController: BaseViewController {
         view.addSubview(toastView)
         
         toastView.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(24)
+            $0.bottom.equalTo(placeDetailView.buttonBackground.snp.top).offset(-12)
             $0.horizontalEdges.equalToSuperview().inset(16)
             $0.height.equalTo(44)
         }

@@ -36,6 +36,7 @@ final class DiscoveryCategoryTabAccommodationViewController: BaseViewController 
     
     // MARK: - methods
     override func configureStyle() {
+        categoryTabView.setRegionLabel()
         categoryTabView.setNotFoundViewText(text: "등록된 장소가 없습니다.")
     }
     

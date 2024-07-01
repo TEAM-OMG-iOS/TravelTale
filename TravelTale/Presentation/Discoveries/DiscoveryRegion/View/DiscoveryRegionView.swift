@@ -146,13 +146,10 @@ final class DiscoveryRegionView: BaseView {
     
     func updateSubmitButtonState(sido: String?, sigungu: String?) {
         guard let sido = sido else {
-            submitButton.isEnabled = false
+            submitButton.isEnabled = true
             updateSubmitButtonAppearance()
             return
         }
-        
-        submitButton.isEnabled = sido == "세종특별자치시" || sigungu != nil
-        updateSubmitButtonAppearance()
     }
     
     func setSidoAndSigunguLabel(sidoText: String, sigunguText: String) {

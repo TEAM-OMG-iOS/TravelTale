@@ -21,10 +21,17 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
         $0.configureView(color: .white, clipsToBounds: true, cornerRadius: 15)
     }
     
+    private let categoryImage = UIImageView().then {
+        $0.tintColor = .gray80
+    }
+    
+    private let categoryName = UILabel().then {
+        $0.configureLabel(color: .gray80, font: .pretendard(size: 12, weight: .semibold))
+    }
+    
     private let placeImageView = UIImageView().then {
-        $0.image = .categoryPlaceThumnail
         $0.contentMode = .scaleAspectFill
-        $0.configureView(clipsToBounds: true, cornerRadius: 15)
+        $0.clipsToBounds = true
     }
     
     private let placeLabel = UILabel().then {
@@ -52,6 +59,8 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
     // MARK: - methods
     override func configureHierarchy() {
         contentView.addSubview(containerView)
+        containerView.addSubview(categoryImage)
+        containerView.addSubview(categoryName)
         containerView.addSubview(placeImageView)
         containerView.addSubview(placeLabel)
         containerView.addSubview(placeAddressLabel)
@@ -65,26 +74,35 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
         }
         
         placeImageView.snp.makeConstraints {
-            $0.horizontalEdges.top.equalToSuperview().inset(16)
-            $0.height.equalTo(160)
+            $0.horizontalEdges.top.equalToSuperview()
+            $0.height.equalTo(180)
         }
         
-        placeLabel.snp.makeConstraints {
-            $0.top.equalTo(placeImageView.snp.bottom).offset(12)
+        categoryImage.snp.makeConstraints {
+            $0.top.equalTo(placeImageView.snp.bottom).offset(16)
             $0.leading.equalToSuperview().inset(16)
-            $0.trailing.equalTo(bookmarkButton.snp.leading).offset(-8)
+            $0.size.equalTo(12)
         }
         
-        placeAddressLabel.snp.makeConstraints {
-            $0.top.equalTo(placeLabel.snp.bottom).offset(8)
-            $0.leading.bottom.equalToSuperview().inset(16)
-            $0.trailing.equalTo(placeLabel)
+        categoryName.snp.makeConstraints {
+            $0.leading.equalTo(categoryImage.snp.trailing).offset(4)
+            $0.centerY.equalTo(categoryImage)
         }
         
         bookmarkButton.snp.makeConstraints {
-            $0.top.equalTo(placeImageView.snp.bottom).offset(12)
-            $0.trailing.equalTo(placeImageView)
+            $0.centerY.equalTo(categoryImage)
+            $0.trailing.equalToSuperview().inset(16)
             $0.size.equalTo(24)
+        }
+        
+        placeLabel.snp.makeConstraints {
+            $0.top.equalTo(categoryImage.snp.bottom).offset(12)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+        }
+        
+        placeAddressLabel.snp.makeConstraints {
+            $0.top.equalTo(placeLabel.snp.bottom).offset(4)
+            $0.horizontalEdges.bottom.equalToSuperview().inset(16)
         }
     }
     
@@ -93,6 +111,26 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
             placeImageView.kf.setImage(with: imageURL)
         } else {
             placeImageView.image = .categoryPlaceThumnail
+        }
+        
+        if let category = place.contentTypeId {
+            let categoryConfig: (image: String, text: String) = {
+                switch category {
+                case "12":
+                    return ("building.columns", "관광지")
+                case "39":
+                    return ("fork.knife", "음식점")
+                case "32":
+                    return ("bed.double.fill", "숙박")
+                case "15":
+                    return ("balloon.2.fill", "놀거리")
+                default:
+                    return ("star.fill", "카테고리 없음")
+                }
+            }()
+            
+            categoryImage.image = UIImage(systemName: categoryConfig.image)
+            categoryName.text = categoryConfig.text
         }
         
         if let title = place.title {
@@ -115,6 +153,26 @@ final class CategoryTabTableViewCell: BaseTableViewCell {
             placeImageView.image = image
         } else {
             placeImageView.image = .categoryPlaceThumnail
+        }
+        
+        if let category = bookMark.contentTypeId {
+            let categoryConfig: (image: String, text: String) = {
+                switch category {
+                case "12":
+                    return ("building.columns", "관광지")
+                case "39":
+                    return ("fork.knife", "음식점")
+                case "32":
+                    return ("tent.fill", "숙박")
+                case "15":
+                    return ("balloon.2.fill", "놀거리")
+                default:
+                    return ("star.fill", "카테고리 없음")
+                }
+            }()
+            
+            categoryImage.image = UIImage(systemName: categoryConfig.image)
+            categoryName.text = categoryConfig.text
         }
         
         if let title = bookMark.title {
