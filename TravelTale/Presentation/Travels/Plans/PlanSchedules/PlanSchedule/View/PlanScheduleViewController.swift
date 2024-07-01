@@ -16,7 +16,7 @@ final class PlanScheduleViewController: BaseViewController {
     var panelState: FloatingPanelState = .tip
     
     private let realmManager = RealmManager.shared
-    private lazy var tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
+    private lazy var tappedDaySchedules = realmManager.fetchSortedSchedulesForDate(travel: travel, tappedDay: tappedDay)
     private var tappedDay = 1
     private var travel: Travel
     
@@ -77,7 +77,7 @@ final class PlanScheduleViewController: BaseViewController {
                                                                         allDays: String(fetchTotalDay()))
         planScheduleAddPlaceVC.completion = { travel in
             self.travel = travel
-            self.tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
+            self.tappedDaySchedules = self.realmManager.fetchSortedSchedulesForDate(travel: travel, tappedDay: self.tappedDay)
             self.planScheduleView.tableView.reloadData()
             self.completion?(self.tappedDay)
         }
@@ -89,7 +89,7 @@ final class PlanScheduleViewController: BaseViewController {
         let planScheduleAddMemoVC = PlanScheduleAddMemoViewController(day: String(tappedDay), travel: travel)
         planScheduleAddMemoVC.completion = { travel in
             self.travel = travel
-            self.tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
+            self.tappedDaySchedules = self.realmManager.fetchSortedSchedulesForDate(travel: travel, tappedDay: self.tappedDay)
             self.planScheduleView.tableView.reloadData()
             self.completion?(self.tappedDay)
         }
@@ -101,7 +101,7 @@ final class PlanScheduleViewController: BaseViewController {
         if tappedDaySchedules[indexPath.row].externalMemo != nil {
             let planScheduleEditMemoVC = PlanScheduleEditMemoViewController(schedule: tappedDaySchedules[indexPath.row])
             planScheduleEditMemoVC.completion = { _ in
-                self.tappedDaySchedules = Array(self.travel.schedules.filter { $0.day == "\(self.tappedDay)" })
+                self.tappedDaySchedules = self.realmManager.fetchSortedSchedulesForDate(travel: self.travel, tappedDay: self.tappedDay)
                 self.planScheduleView.tableView.reloadData()
                 self.completion?(self.tappedDay)
             }
@@ -113,7 +113,7 @@ final class PlanScheduleViewController: BaseViewController {
                                                                               selectedDay: String(tappedDay),
                                                                               allDays: String(fetchTotalDay()))
             planScheduleEditPlaceVC.completion = { _ in
-                self.tappedDaySchedules = Array(self.travel.schedules.filter { $0.day == "\(self.tappedDay)" })
+                self.tappedDaySchedules = self.realmManager.fetchSortedSchedulesForDate(travel: self.travel, tappedDay: self.tappedDay)
                 self.planScheduleView.tableView.reloadData()
                 self.completion?(self.tappedDay)
             }
@@ -135,7 +135,7 @@ final class PlanScheduleViewController: BaseViewController {
                 realmManager.deleteSchedule(travel: travel, schedule: tappedDaySchedules[indexPath.row])
             }
             
-            tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
+            tappedDaySchedules = realmManager.fetchSortedSchedulesForDate(travel: travel, tappedDay: tappedDay)
             planScheduleView.tableView.deleteRows(at: [indexPath], with: .automatic)
             completion?(tappedDay)
         }
@@ -213,7 +213,7 @@ extension PlanScheduleViewController: UICollectionViewDelegate {
         completion?(tappedDay)
         collectionView.reloadData()
         
-        tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(self.tappedDay)" })
+        tappedDaySchedules = realmManager.fetchSortedSchedulesForDate(travel: travel, tappedDay: tappedDay)
         planScheduleView.tableView.reloadData()
     }
 }

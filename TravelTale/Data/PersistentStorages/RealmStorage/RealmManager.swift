@@ -201,6 +201,15 @@ final class RealmManager {
         }
     }
     
+    func fetchSortedSchedulesForDate(travel: Travel, tappedDay: Int) -> [Schedule] {
+        return travel.schedules.filter { $0.day == "\(tappedDay)" }.sorted { lhs, rhs in
+            let lshDate = lhs.date ?? Date()
+            let rhsDate = rhs.date ?? Date()
+            
+            return lshDate < rhsDate
+        }
+    }
+    
     func updateSchedule(schedule: Schedule, placeDetail: PlaceDetail? = nil, day: String? = nil, date: Date? = nil, internalMemo: String? = nil) {
         do {
             try realm.write {
