@@ -51,6 +51,10 @@
 
 ## 4. 프로젝트 구조
 
+<details>
+<summary>토글 접기/펼치기</summary>
+<div markdown="1">
+
 ```
 📁TravelTale
 ├── Application
@@ -431,6 +435,10 @@
     ├── OpenSourceLicense.rtf
     └── TermPrivacyPolicy.rtf
 ```
+
+
+</div>
+</details>
 
 
 <br>
