@@ -7,6 +7,7 @@
 
 import UIKit
 import FloatingPanel
+import MapKit
 
 final class PlanDetailViewController: BaseViewController {
     
@@ -74,6 +75,7 @@ final class PlanDetailViewController: BaseViewController {
     }
     
     override func configureDelegate() {
+        planDetailView.mapView.delegate = self
         floatingPanelController.delegate = self
     }
     
@@ -140,5 +142,19 @@ final class TravelDetailFloatingPanelLayout: FloatingPanelLayout {
     
     func backdropAlpha(for state: FloatingPanelState) -> CGFloat {
         return 0.0
+    }
+}
+
+extension PlanDetailViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: any MKOverlay) -> MKOverlayRenderer {
+        if let polyline = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(polyline: polyline)
+            renderer.strokeColor = .black
+            renderer.lineWidth = 2.0
+            
+            return renderer
+        }
+        
+        return MKOverlayRenderer(overlay: overlay)
     }
 }

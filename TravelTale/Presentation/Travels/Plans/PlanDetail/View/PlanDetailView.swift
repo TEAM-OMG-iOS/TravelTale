@@ -39,7 +39,7 @@ final class PlanDetailView: BaseView {
         $0.configureLabel(font: .pretendard(size: 20, weight: .bold))
     }
     
-    private let mapView = MKMapView()
+    let mapView = MKMapView()
     
     // MARK: - methods
     override func configureHierarchy() {
@@ -79,9 +79,15 @@ final class PlanDetailView: BaseView {
     }
     
     func bind(travel: Travel, tappedDay: Int) {
+        mapView.removeOverlays(mapView.overlays)
         mapView.removeAnnotations(mapView.annotations)
         
-        let tappedDaySchedules = Array(travel.schedules.filter { $0.day == "\(tappedDay)" })
+        let tappedDaySchedules = travel.schedules.filter { $0.day == "\(tappedDay)" }.sorted { lhs, rhs in
+            let lshDate = lhs.date ?? Date()
+            let rhsDate = rhs.date ?? Date()
+            
+            return lshDate < rhsDate
+        }
         
         periodLabel.text = String(startDate: travel.startDate, endDate: travel.endDate) + " | "
         locationLabel.text = travel.area
@@ -99,6 +105,15 @@ final class PlanDetailView: BaseView {
                         annotation.title = schedule.title
                         annotations.append(annotation)
                     }
+                }
+            }
+            
+            if !annotations.isEmpty && annotations.count >= 2 {
+                for i in 0..<annotations.count-1 {
+                    let coordinates = [annotations[i].coordinate, annotations[i+1].coordinate]
+                    let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
+                    
+                    mapView.addOverlay(polyline)
                 }
             }
             
