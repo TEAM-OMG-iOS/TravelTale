@@ -76,6 +76,8 @@ final class PlanDetailViewController: BaseViewController {
     
     override func configureDelegate() {
         planDetailView.mapView.delegate = self
+        planDetailView.mapView.register(PlanDetailAnnotationView.self, forAnnotationViewWithReuseIdentifier: PlanDetailAnnotationView.identifier)
+        
         floatingPanelController.delegate = self
     }
     
@@ -156,5 +158,18 @@ extension PlanDetailViewController: MKMapViewDelegate {
         }
         
         return MKOverlayRenderer(overlay: overlay)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let planDetailAnnotation = annotation as? PlanDetailAnnotation else { return nil }
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: PlanDetailAnnotationView.identifier) as? PlanDetailAnnotationView
+        
+        if annotationView == nil {
+            annotationView = PlanDetailAnnotationView(annotation: planDetailAnnotation, reuseIdentifier: PlanDetailAnnotationView.identifier)
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        return annotationView
     }
 }

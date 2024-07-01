@@ -119,6 +119,8 @@
 		378CEC532C0D721200DF1C3F /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 378CEC4A2C0D721200DF1C3F /* Pretendard-Regular.otf */; };
 		378CEC592C0D732600DF1C3F /* OAGothic-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 378CEC572C0D732600DF1C3F /* OAGothic-ExtraBold.otf */; };
 		378CEC5A2C0D732600DF1C3F /* OAGothic-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 378CEC582C0D732600DF1C3F /* OAGothic-Medium.otf */; };
+		378EFE002C32E17F005035AC /* PlanDetailAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378EFDFF2C32E17F005035AC /* PlanDetailAnnotation.swift */; };
+		378EFE032C32E190005035AC /* PlanDetailAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378EFE022C32E190005035AC /* PlanDetailAnnotationView.swift */; };
 		37961A892C208242003A994F /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A882C208242003A994F /* Region.swift */; };
 		37961A8B2C2082A6003A994F /* Travel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A8A2C2082A6003A994F /* Travel.swift */; };
 		37961A8D2C2082E6003A994F /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37961A8C2C2082E6003A994F /* Schedule.swift */; };
@@ -294,6 +296,8 @@
 		378CEC4A2C0D721200DF1C3F /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		378CEC572C0D732600DF1C3F /* OAGothic-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OAGothic-ExtraBold.otf"; sourceTree = "<group>"; };
 		378CEC582C0D732600DF1C3F /* OAGothic-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OAGothic-Medium.otf"; sourceTree = "<group>"; };
+		378EFDFF2C32E17F005035AC /* PlanDetailAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailAnnotation.swift; sourceTree = "<group>"; };
+		378EFE022C32E190005035AC /* PlanDetailAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailAnnotationView.swift; sourceTree = "<group>"; };
 		37961A882C208242003A994F /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		37961A8A2C2082A6003A994F /* Travel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Travel.swift; sourceTree = "<group>"; };
 		37961A8C2C2082E6003A994F /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -1012,6 +1016,31 @@
 			path = OAGothic;
 			sourceTree = "<group>";
 		};
+		378EFDFC2C32E14C005035AC /* PlanDetail */ = {
+			isa = PBXGroup;
+			children = (
+				37E590722C246CEE00999E66 /* View */,
+			);
+			path = PlanDetail;
+			sourceTree = "<group>";
+		};
+		378EFDFD2C32E163005035AC /* PlanDetailAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				378EFDFE2C32E174005035AC /* View */,
+			);
+			path = PlanDetailAnnotation;
+			sourceTree = "<group>";
+		};
+		378EFDFE2C32E174005035AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				378EFDFF2C32E17F005035AC /* PlanDetailAnnotation.swift */,
+				378EFE022C32E190005035AC /* PlanDetailAnnotationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		37C08C7C2C1EF4FD00F5E308 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -1101,7 +1130,7 @@
 				37E590672C246B4700999E66 /* Plan */,
 				37E590842C24773700999E66 /* PlanAdds */,
 				37E5907F2C2472FC00999E66 /* PlanEdits */,
-				37E590712C246CE300999E66 /* PlanDetail */,
+				37E590712C246CE300999E66 /* PlanDetails */,
 				37E590732C246D0500999E66 /* PlanSchedules */,
 			);
 			path = Plans;
@@ -1208,12 +1237,13 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		37E590712C246CE300999E66 /* PlanDetail */ = {
+		37E590712C246CE300999E66 /* PlanDetails */ = {
 			isa = PBXGroup;
 			children = (
-				37E590722C246CEE00999E66 /* View */,
+				378EFDFC2C32E14C005035AC /* PlanDetail */,
+				378EFDFD2C32E163005035AC /* PlanDetailAnnotation */,
 			);
-			path = PlanDetail;
+			path = PlanDetails;
 			sourceTree = "<group>";
 		};
 		37E590722C246CEE00999E66 /* View */ = {
@@ -1605,6 +1635,7 @@
 				1AA861752C1ACDE5007F69E7 /* MemoryDetailView.swift in Sources */,
 				371387AE2C249833002C6284 /* SearchResultTabTouristViewController.swift in Sources */,
 				4D27194C2C1A0295004DDC38 /* PlanScheduleEditPlaceViewController.swift in Sources */,
+				378EFE002C32E17F005035AC /* PlanDetailAnnotation.swift in Sources */,
 				1AD537872C104F2C00A70D5E /* TravelTableViewCell.swift in Sources */,
 				378CEC3D2C0D6B0B00DF1C3F /* TabBarViewController.swift in Sources */,
 				1A95EB5B2C168E78007D575A /* MemorySelectView.swift in Sources */,
@@ -1703,6 +1734,7 @@
 				2EC635772C1CEB7D006C1ADB /* DiscoveryCategoryTabAccommodationViewController.swift in Sources */,
 				2EF0E3B42C1F201E00654025 /* MyPageCategoryTabEntertainmentViewController.swift in Sources */,
 				378CEC202C0D649000DF1C3F /* UIFont+Extension.swift in Sources */,
+				378EFE032C32E190005035AC /* PlanDetailAnnotationView.swift in Sources */,
 				F193683B2C21F60E000AC7B2 /* PlanAddDateCalendarMonthView.swift in Sources */,
 				F193683F2C21F690000AC7B2 /* PlanAddDateCalendarDayRangeIndicatorView.swift in Sources */,
 				F1B301F72C10501000D26B75 /* PlanAddSidoView.swift in Sources */,

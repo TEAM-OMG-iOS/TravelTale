@@ -94,15 +94,12 @@ final class PlanDetailView: BaseView {
         titleLabel.text = travel.title
         
         if !tappedDaySchedules.isEmpty {
-            var annotations: [MKPointAnnotation] = []
+            var annotations: [PlanDetailAnnotation] = []
             
-            for schedule in tappedDaySchedules {
+            for (index, schedule) in tappedDaySchedules.enumerated() {
                 if let x = schedule.mapX, let y = schedule.mapY {
                     if let longitude = Double(x), let latitude = Double(y) {
-                        let annotation = MKPointAnnotation()
-                        
-                        annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                        annotation.title = schedule.title
+                        let annotation = PlanDetailAnnotation(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), index: index + 1)
                         annotations.append(annotation)
                     }
                 }
