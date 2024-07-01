@@ -17,16 +17,18 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
     
     private lazy var dayPopoverVC = PopoverDayViewController(data: addEditView.configureData(allDays: allDays, travel: travel), travel: travel)
     
-    private var selectedDays: String?
+    private var placeDetailIsChanged: Bool?
     private var selectedTime: Date?
-    
     private var travel: Travel
     private var schedule: Schedule
+    private var selectedDate: String?
     private var selectedDay: String
     private var allDays: String
     private var selectedPlace: PlaceDetail? {
         didSet {
+            placeDetailIsChanged = true
             addEditView.placeContents.text = self.selectedPlace?.title
+            addEditView.checkBlackText()
         }
     }
     
@@ -45,11 +47,17 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func loadView() {
+        view = addEditView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedDays), name: .selectedDaysUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedTime), name: .selectedTimeUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updatePlaceContents), name: .placeSelected, object: nil)
+        addEditView.checkBlackText()
+        addEditView.changeContentsText()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,6 +92,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         addEditView.placeContents.text = schedule.title
         addEditView.scheduleContents.text = addEditView.configureInitialSchedule(selectedDay: selectedDay, alldays: allDays, travel: travel)
         addEditView.startTimeContents.text = addEditView.configureInitialStartTimeContents(date: (self.schedule.date ?? Date()))
+        addEditView.memoTV.text = schedule.internalMemo
     }
     
     private func configureNavigationBar() {
@@ -111,8 +120,10 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         guard let userInfo = notification.userInfo,
               let selectedDays = userInfo["selectedDays"] as? String else { return }
         
-        self.selectedDays = selectedDays
-        addEditView.scheduleContents.text = self.selectedDays
+        self.selectedDay = addEditView.extractDayNumber(from: selectedDays)
+        self.selectedDate = selectedDays
+        addEditView.scheduleContents.text = self.selectedDate
+        addEditView.checkBlackText()
     }
     
     @objc private func updateSelectedTime(_ notification: Notification) {
@@ -121,6 +132,7 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         
         self.selectedTime = selectedTime
         addEditView.startTimeContents.text = addEditView.dateFormat(date: self.selectedTime ?? Date())
+        addEditView.checkBlackText()
     }
     
     @objc private func updatePlaceContents(_ notification: Notification) {
@@ -129,26 +141,69 @@ final class PlanScheduleEditPlaceViewController: BaseViewController {
         
         self.selectedPlace = selectedPlace
         addEditView.placeContents.text = self.selectedPlace?.title
+        addEditView.checkBlackText()
     }
     
     @objc private func tappedPlaceBtn(_ sender: UIButton) {
-        let nextVC = SearchResultViewController()
+        let nextVC = SearchViewController()
         userDefaults.setTabType(type: .travel)
         navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @objc private func tappedCompletedBtn(_ sender: UIButton) {
-        if let selectedPlace {
-            realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDays ?? addEditView.extractDayNumber(from: addEditView.scheduleContents.text ?? ""), date: selectedTime, internalMemo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
-            completion?(self.schedule)
-            navigationController?.popViewController(animated: true)
+        if placeDetailIsChanged == true {
+            if let selectedPlace {
+                if let selectedTime {
+                    if let selectedDate {
+                        realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDay, date: addEditView.combineDate(date: addEditView.configureScheduleDate(selectedDay: selectedDate), withTimeFrom: selectedTime), internalMemo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
+                        completion?(self.schedule)
+                        navigationController?.popViewController(animated: true)
+                    } else {
+                        realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDay, date: addEditView.combineDate(date: schedule.date ?? Date(), withTimeFrom: selectedTime), internalMemo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
+                        completion?(self.schedule)
+                        navigationController?.popViewController(animated: true)
+                    }
+                } else {
+                    if let selectedDate {
+                        realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDay, date: addEditView.combineDate(date: addEditView.configureScheduleDate(selectedDay: selectedDate), withTimeFrom: schedule.date ?? Date()), internalMemo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
+                        completion?(self.schedule)
+                        navigationController?.popViewController(animated: true)
+                    } else {
+                        realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDay, date: addEditView.combineDate(date: schedule.date ?? Date(), withTimeFrom: schedule.date ?? Date()), internalMemo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
+                        completion?(self.schedule)
+                        navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
+        } else {
+            if let selectedTime {
+                if let selectedDate {
+                    realmManager.updateSchedule(schedule: schedule, day: selectedDay, date: addEditView.combineDate(date: addEditView.configureScheduleDate(selectedDay: selectedDate), withTimeFrom: selectedTime), internalMemo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
+                    completion?(self.schedule)
+                    navigationController?.popViewController(animated: true)
+                } else {
+                    realmManager.updateSchedule(schedule: schedule, day: selectedDay, date: addEditView.combineDate(date: schedule.date ?? Date(), withTimeFrom: selectedTime), internalMemo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
+                    completion?(self.schedule)
+                    navigationController?.popViewController(animated: true)
+                }
+            } else {
+                if let selectedDate {
+                    realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDay, date: addEditView.combineDate(date: addEditView.configureScheduleDate(selectedDay: selectedDate), withTimeFrom: schedule.date ?? Date()), internalMemo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
+                    completion?(self.schedule)
+                    navigationController?.popViewController(animated: true)
+                } else {
+                    realmManager.updateSchedule(schedule: schedule, placeDetail: selectedPlace, day: selectedDay, date: addEditView.combineDate(date: schedule.date ?? Date(), withTimeFrom: schedule.date ?? Date()), internalMemo: addEditView.checkMemo(textColor: addEditView.memoTV.textColor ?? .gray80))
+                    completion?(self.schedule)
+                    navigationController?.popViewController(animated: true)
+                }
+            }
         }
     }
     
     @objc private func tappedExitBtn(_ sender: UIButton) {
         let alert = UIAlertController(title: "경고", message: addEditView.alertMessage, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
-        let ok = UIAlertAction(title: "확인", style: .default) {_ in
+        let ok = UIAlertAction(title: "확인", style: .destructive) {_ in
             self.navigationController?.popViewController(animated: true)
         }
         

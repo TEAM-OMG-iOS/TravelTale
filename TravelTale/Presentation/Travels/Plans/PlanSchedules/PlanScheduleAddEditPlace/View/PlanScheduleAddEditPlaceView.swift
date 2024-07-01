@@ -129,9 +129,11 @@ final class PlanScheduleAddEditPlaceView: BaseView {
         placeTitle.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(16)
             $0.centerY.equalToSuperview()
+            $0.width.equalTo(80)
         }
         
         placeContents.snp.makeConstraints {
+            $0.leading.greaterThanOrEqualTo(placeTitle.snp.trailing).offset(50)
             $0.trailing.equalToSuperview().inset(16)
             $0.centerY.equalToSuperview()
         }
@@ -209,7 +211,7 @@ final class PlanScheduleAddEditPlaceView: BaseView {
     
     func setEndText(textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "메세지를 입력하세요"
+            textView.text = "메모를 입력하세요"
             textView.textColor = .gray80
         }
     }
@@ -301,12 +303,61 @@ final class PlanScheduleAddEditPlaceView: BaseView {
         return results
     }
     
-    func extractDayNumber(from formattedString: String) -> String? {
+    func extractDayNumber(from formattedString: String) -> String {
         let components = formattedString.split(separator: " ")
         if components.count > 1 {
             let dayNumber = String(components[1])
             return dayNumber
         }
         return ""
+    }
+    
+    func changeContentsText() {
+        placeContents.textColor = .black
+        scheduleContents.textColor = .black
+        startTimeContents.textColor = .black
+        if memoTV.text == "" {
+            memoTV.text = "메모를 입력하세요"
+            memoTV.textColor = .gray80
+        } else {
+            memoTV.textColor = .black
+        }
+    }
+    
+    func combineDate(date: Date, withTimeFrom timeDate: Date) -> Date {
+        let calendar = Calendar.current
+        let timeZone = TimeZone(identifier: "Asia/Seoul")!
+        
+        let dateComponents = calendar.dateComponents(in: timeZone, from: date)
+        let timeComponents = calendar.dateComponents(in: timeZone, from: timeDate)
+        
+        var combinedComponents = DateComponents()
+        combinedComponents.year = dateComponents.year ?? 0
+        combinedComponents.month = dateComponents.month ?? 0
+        combinedComponents.day = dateComponents.day ?? 0
+        combinedComponents.hour = timeComponents.hour ?? 0
+        combinedComponents.minute = timeComponents.minute ?? 0
+        combinedComponents.second = timeComponents.second ?? 0
+        
+        return calendar.date(from: combinedComponents) ?? Date()
+    }
+    
+    func configureScheduleDate(selectedDay: String) -> Date {
+        let components = selectedDay.split(separator: "|").map { $0.trimmingCharacters(in: .whitespaces) }
+        
+        guard components.count > 1 else {
+            return Date()
+        }
+        let dateString = components[1]
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yy년 MM월 dd일"
+        
+        if let date = dateFormatter.date(from: dateString) {
+            return date
+        } else {
+            return Date()
+        }
     }
 }
