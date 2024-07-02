@@ -153,15 +153,13 @@ final class DetailScheduleAddViewController: BaseViewController {
     @objc private func tappedAddScheduleBtn() {
         if let selectedDay {
             if let selectedTime {
-                if let selectedDate {
-                    realmManager.createSchedule(day: selectedDay, date: detailScheduleAddView.combineDate(date: detailScheduleAddView.configureScheduleDate(selectedDay: selectedDate, alldays: allDays, travel: selectedTravel), withTimeFrom: selectedTime), travel: selectedTravel, placeDetail: selectedPlace, memo: detailScheduleAddView.checkMemo(textColor: detailScheduleAddView.memoTV.textColor ?? .gray80))
+                    realmManager.createSchedule(day: selectedDay, date: detailScheduleAddView.combineDate(date: detailScheduleAddView.configureScheduleDate(selectedDay: selectedDay, alldays: allDays, travel: selectedTravel), withTimeFrom: selectedTime), travel: selectedTravel, placeDetail: selectedPlace, memo: detailScheduleAddView.checkMemo(textColor: detailScheduleAddView.memoTV.textColor ?? .gray80))
                     let alert = UIAlertController(title: "일정 추가 완료", message: "일정 추가가 완료되었습니다.", preferredStyle: .alert)
                     let cancel = UIAlertAction(title: "확인", style: .cancel) { _ in
                         self.popToView(pages: 2)
                     }
                     alert.addAction(cancel)
                     self.present(alert, animated: true)
-                }
             }
         }
     }
