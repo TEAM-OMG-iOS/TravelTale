@@ -86,7 +86,7 @@ final class MyPageViewController: BaseViewController {
                                 ================================
                                 """
             
-            composeVC.setToRecipients(["qowlgo00@gmail.com"])
+            composeVC.setToRecipients(["gh7052@gmail.com"])
             composeVC.setSubject("문의 사항")
             composeVC.setMessageBody(bodyString, isHTML: false)
             
