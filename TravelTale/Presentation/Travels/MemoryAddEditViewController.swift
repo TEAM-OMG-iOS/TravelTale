@@ -35,6 +35,11 @@ final class MemoryAddEditViewController: BaseViewController {
         setSelectedPhotos()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        memoryAddEditView.configureConfirmButton()
+    }
+    
     // MARK: - methods
     init(travel: Travel) {
         self.travel = travel
