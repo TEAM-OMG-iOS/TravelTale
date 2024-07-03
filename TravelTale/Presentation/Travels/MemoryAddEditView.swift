@@ -115,11 +115,6 @@ final class MemoryAddEditView: BaseView {
     }
     
     // MARK: - methods
-    override func configureUI() {
-        super.configureUI()
-        configureConfirmButton()
-    }
-    
     override func configureHierarchy() {
         [travelInfoStackView,
          travelTitleLabel,
@@ -234,13 +229,13 @@ final class MemoryAddEditView: BaseView {
         }
     }
     
-    func isTextViewEmpty() -> Bool {
+    private func isTextViewEmpty() -> Bool {
         let text = memoryTextView.text ?? ""
         let isPlaceholder = text == placeHolder
         return text.isEmpty || isPlaceholder ? true : false
     }
     
-    func setTextViewPlaceHolder() {
+    private func setTextViewPlaceHolder() {
         memoryTextView.text = placeHolder
         memoryTextView.textColor = UIColor.gray80
     }
