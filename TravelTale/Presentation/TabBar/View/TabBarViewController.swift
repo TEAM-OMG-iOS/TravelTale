@@ -43,10 +43,22 @@ final class TabBarViewController: UITabBarController {
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
         
-        tabBar.backgroundColor = .white
+        // selected state
+        let selectedAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.green100
+        ]
+        appearance.stackedLayoutAppearance.selected.iconColor = .green100
+        appearance.stackedLayoutAppearance.selected.titleTextAttributes = selectedAttributes
+        
+        // normal state
+        let normalAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.gray80
+        ]
+        appearance.stackedLayoutAppearance.normal.iconColor = .gray80
+        appearance.stackedLayoutAppearance.normal.titleTextAttributes = normalAttributes
+        
         tabBar.standardAppearance = appearance
-        tabBar.tintColor = .green100
-        tabBar.unselectedItemTintColor = .gray80
+        tabBar.scrollEdgeAppearance = tabBar.standardAppearance
         
         configureBorderLine()
         configureMiddleButton()
