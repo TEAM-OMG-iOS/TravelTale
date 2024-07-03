@@ -16,7 +16,7 @@ final class MyPageViewController: BaseViewController {
     private let serviceArray = ["개인정보 처리방침", "오픈소스 라이선스"]
     private let noticeArray = ["버전", "문의하기"]
     
-    static var version = "1.0.0"
+    static let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
     
     // MARK: - life cycles
     override func loadView() {
