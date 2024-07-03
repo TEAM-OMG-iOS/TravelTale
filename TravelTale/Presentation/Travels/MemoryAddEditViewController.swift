@@ -33,6 +33,10 @@ final class MemoryAddEditViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setSelectedPhotos()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         memoryAddEditView.configureConfirmButton()
     }
     
