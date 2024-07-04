@@ -606,6 +606,11 @@ Tab 바를 가지고 있는 ViewController에서 접근하는 버튼에 따른 �
 
 
 ## 7. 개선 목표
+
+<details>
+<summary>토글 접기/펼치기</summary>
+<div markdown="1">
+
 - MVVM 아키텍처 & RxSwift 도입
 
 - 추억 페이지
@@ -634,8 +639,11 @@ Tab 바를 가지고 있는 ViewController에서 접근하는 버튼에 따른 �
  
 - 여행 지도
     - 내가 갔던 모든 여행지를 지도에서 모아 볼 수 있는 기능
-    
-    
+
+
+</div>
+</details>
+
 <br>
 
 ## 8. 팀원 소개
