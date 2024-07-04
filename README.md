@@ -466,7 +466,140 @@
 
 ## 6. 트러블 슈팅
 
-(추가 예정)
+### Data
+<details>
+<summary>Model</summary>
+<div markdown="1">
+    
+**② 발생한 이슈**
+
+- API를 사용할 때 필요한 데이터 모델을 Data 계층에서 구현 하였는데 불편함이 있었음
+    - Data Layer와 UI Layer에서 각각 활용 되는 모델 사이에 차이가 있음
+    - 여러 Layer가 동시에 얽혀있다 보니, 개발 및 유지 & 보수할 때 불편함이 있음
+
+**④ 해결 방법**
+
+1. DTO와 Entity로 나누었음 <br>
+&ensp; a. Data Layer - DTO<br>
+&ensp; b. UI Layer - Entity<br>
+2. DTO를 Entity로 맵핑해서 사용<br>
+    
+</div>
+</details>
+
+### UI
+
+<details>
+<summary>TabBar</summary>
+<div markdown="1">
+    
+**1. 구현하고자 했던 부분**<br>
+&ensp; 흰색 배경의 탭바<br>
+<br>
+**2. 발생한 이슈** <br>
+&ensp; 세 번째 탭이 스크롤뷰이기 때문에 탭바의 색이 회색으로 변함<br>
+
+**3. 시도한 방법** <br>
+아래 두 가지 방법 모두 성공적이나, 각각 장단점이 있음 <br>
+- `tabBar.backgroundImage = UIImage()` <br>
+    → 단점: 간단하지만 UITabBarAppearance API에 비해 미래지향적이지 않음 <br>
+
+- `tabBar.isTranslucent = false` <br>
+    → 단점 1. 다음 뷰에서 tabBar.isHidden = true를 했을 때 탭바 영역이 사라지지 않고 까맣게 보임.<br>
+    → 단점 2. 탭바 전체의 투명도에 영향을 미치기 때문에 바람직하지 않음<br>
+
+**4. 해결 방법 : `UITabBarAppearance` 설정** <br>
+- `configureWithOpaqueBackground()` 메소드 사용 <br>
+    → 탭바를 불투명하게 함<br>
+
+- `scrollEdgeAppearance` 를 `standardAppearance`로 설정 <br>
+    → 탭바 뒤에서 컨텐츠가 스크롤될 때도 탭바의 외양이 유지되도록 함.
+    
+</div>
+</details>
+
+
+<details>
+<summary>Animation</summary>
+<div markdown="1">
+    
+**1. 구현하고자 했던 부분**<br>
+&ensp;progressbar의 animation 추가<br>
+
+**2-1 발생한 이슈** <br>
+&ensp;기준으로 둔 UI객체의 생성시점이 animate가 실행되는 시점과 동일하여 의도하던대로 애니메이션이 적용되지 않는 이슈<br>
+
+**3-1 해결 방법**<br>
+&ensp;기준점이 되는 UI Component 가 생성된 이후인 ViewDidAppear에서 animation이 실행될 수 있도록 설정<br>
+
+
+**2-2 발생한 이슈**<br>
+&ensp;이전 뷰로부터 화면을 전환하는 navigation 동작을 false로 변경한 뒤, loadingBar로 진행도를 나타내는 애니메이션이 제대로 작동하지 않고 화면 전체가 움직임 <br>
+
+**3-2 해결 방법**<br>
+&ensp;.layoutIfNeeded()메서드 삭제 및 CGAffineTransform을 사용하여 loadingBar의 scale값을 조정<br>
+    
+</div>
+</details>
+
+
+<details>
+<summary>Placeholder</summary>
+<div markdown="1">
+
+**1. 구현하고자 했던 부분**<br>
+&ensp; TextView Placeholder
+
+**2. 발생한 이슈**<br>
+&ensp; TextView에는 애초에 placeholder를 넣는 속성이 없음
+
+**3. 해결 방법**<br>
+&ensp; Delegate패턴으로 텍스트뷰의 에디팅이 시작할때, 끝날때의 행동을 구현하여 placeholder를 대신하게 하여 해결
+
+</div>
+</details>
+
+<details>
+<summary>탭바 VC 이동</summary>
+<div markdown="1">
+
+**1. 구현하고자 했던 부분**<br>
+&ensp; 탭바를 통해 여러 VC으로 이동하는 부분 구현
+
+**2. 발생한 이슈**<br>
+&ensp; XLPagerTabStrip 라이브러리를 통해 VC 이동하는 과정에서 첫 번째 탭의 VC 위치만 다른 이슈 발생
+
+**3. 해결 방법**<br>
+&ensp; 방법 1. 각각의 VC에서 View 위에 있는 오토레이아웃을 변경을 시도
+  - 중복되는 코드가 많이 발생하여 좋은 해결책이 아니라고 생각
+  - 각각의 탭마다 다른 오토레이아웃을 잡아주어야 함
+  - SE와 15 기종에서 오토레이아웃 조절이 불가능함.
+
+&ensp; 방법 2. XLPagerTabStrip 라이브러리 코드를 분석하여 self.reloadPagerTabStripView() 함수를 호출
+  - 해결!
+
+**4. 해결 방법**<br>
+Tab 바를 가지고 있는 ViewController에서 접근하는 버튼에 따른 탭의 ViewController를 리로드하는 함수를 비동기적으로 실행하여 해결
+
+</div>
+</details>
+
+<details>
+<summary>Calendar 커스텀</summary>
+<div markdown="1">
+
+**1. 구현하고자 했던 부분**<br>
+&ensp; 캘린더 커스텀(날짜 선택하는 기능)
+
+**2. 발생한 이슈**<br>
+&ensp; 사용한 라이브러리인 Horizontal Calendar에서 선택한 날짜를 표시하는 .dayRangeItemProvider()메서드를 사용해도 날짜 선택 표시가 안 나타남
+
+**3. 해결 방법**<br>
+&ensp; Horizontal Calendar 라이브러리에서 제공하는 예시 코드를 참고하여 protocol 및  BaseView 코드 생성 및 적용
+
+</div>
+</details>
+
 
 <br>
 
